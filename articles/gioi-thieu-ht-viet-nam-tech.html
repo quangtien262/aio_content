@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giới thiệu HT Việt Nam Tech - Kết nối công nghệ với giá trị thực tiễn</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fa;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ea;
+      --brand: #087f73;
+      --brand-dark: #075f57;
+      --accent: #d97706;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand strong { display: block; font-size: 20px; }
+    .brand span { color: var(--muted); font-size: 14px; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 350px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel,
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel {
+      position: sticky;
+      top: 18px;
+      padding: 18px;
+    }
+
+    .panel h2 { margin: 0 0 12px; font-size: 18px; line-height: 1.35; }
+    .field { margin-bottom: 14px; }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font: 14px/1.45 Arial, Helvetica, sans-serif;
+      resize: vertical;
+    }
+
+    .counter {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button,
+    .download-button {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    button:hover,
+    .download-button:hover { background: var(--brand-dark); }
+    button.secondary,
+    .download-button.secondary { background: #e7eef4; color: var(--text); }
+    button.secondary:hover,
+    .download-button.secondary:hover { background: #d9e5ee; }
+    .wide { grid-column: 1 / -1; }
+
+    .note {
+      margin: 14px 0 0;
+      padding: 10px 12px;
+      border-left: 3px solid var(--accent);
+      background: #fff8e8;
+      color: #684312;
+      font-size: 13px;
+    }
+
+    .status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .article-preview { padding: 26px; }
+    .article-content { color: #1d2738; font-size: 16px; }
+
+    .article-content .featured-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 20px;
+      border-radius: 6px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 { color: #101828; line-height: 1.32; }
+    .article-content h1 { margin: 0 0 16px; font-size: 31px; }
+    .article-content h2 { margin: 30px 0 11px; font-size: 23px; }
+    .article-content h3 { margin: 22px 0 8px; font-size: 19px; }
+    .article-content p { margin: 0 0 15px; }
+    .article-content ul { margin: 0 0 17px; padding-left: 23px; }
+    .article-content li { margin-bottom: 8px; }
+
+    .article-content blockquote {
+      margin: 20px 0;
+      padding: 12px 16px;
+      border-left: 4px solid var(--brand);
+      background: #ecfdf8;
+      color: #134e4a;
+    }
+
+    @media (max-width: 880px) {
+      .layout { grid-template-columns: 1fr; }
+      .panel { position: static; }
+      .article-preview { padding: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      .actions { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .article-content h1 { font-size: 27px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Việt Nam Tech Content</strong>
+        <span>Bản duyệt bài viết trước khi đăng lên CKEditor</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="Thông tin SEO và thao tác sao chép">
+        <h2>Thông tin SEO</h2>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Giới thiệu HT Việt Nam Tech - Kết nối công nghệ thực tiễn</textarea>
+          <span class="counter" data-count="meta-title"></span>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="4">HT Việt Nam, HT Việt Nam Tech, công nghệ thông tin, kiến thức công nghệ, lập trình, chuyển đổi số, giải pháp công nghệ</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="5">Khám phá HT Việt Nam Tech - nơi chia sẻ kiến thức công nghệ, lập trình và góc nhìn thực tiễn, đồng hành cùng cá nhân, doanh nghiệp trong hành trình số.</textarea>
+          <span class="counter" data-count="meta-description"></span>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <a class="download-button secondary" href="../assets/gioi-thieu-ht-viet-nam-tech.jpg" download>Tải ảnh đại diện</a>
+          <button class="wide" type="button" data-copy-html="article-content">Copy HTML cho CKEditor</button>
+        </div>
+
+        <p class="note">Khi đăng bài, hãy tải ảnh đại diện lên thư viện của website rồi thay đường dẫn ảnh trong CKEditor bằng đường dẫn được hệ thống cung cấp.</p>
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <div id="article-content" class="article-content">
+          <p><img class="featured-image" src="../assets/gioi-thieu-ht-viet-nam-tech.jpg" alt="Đội ngũ công nghệ cùng trao đổi và phát triển các giải pháp số tại HT Việt Nam"></p>
+
+          <h1>HT Việt Nam Tech - Kết nối công nghệ với những giá trị thực tiễn</h1>
+
+          <p><strong>Công nghệ chỉ thực sự có ý nghĩa khi giúp con người giải quyết vấn đề tốt hơn, làm việc hiệu quả hơn và tạo ra những giá trị bền vững.</strong> Đó cũng là tinh thần HT Việt Nam theo đuổi khi xây dựng <strong>tech.htvietnam.vn</strong>: một không gian chia sẻ kiến thức công nghệ, lập trình và kinh nghiệm ứng dụng dành cho cộng đồng.</p>
+
+          <p>Được phát triển bởi <strong>Công ty Cổ phần Công nghệ và Truyền thông HT Việt Nam</strong>, chuyên trang hướng đến việc thu hẹp khoảng cách giữa kiến thức kỹ thuật và nhu cầu thực tế. Tại đây, những chủ đề tưởng chừng phức tạp sẽ được trình bày rõ ràng, có hệ thống và dễ áp dụng hơn.</p>
+
+          <h2>HT Việt Nam - Khi công nghệ và truyền thông cùng tạo nên giá trị</h2>
+
+          <p>Trong môi trường số thay đổi từng ngày, một sản phẩm tốt không chỉ cần nền tảng kỹ thuật phù hợp mà còn phải truyền tải được đúng thông điệp đến đúng đối tượng. Sự kết hợp giữa công nghệ và truyền thông vì thế ngày càng trở thành một phần quan trọng trong quá trình xây dựng thương hiệu, vận hành tổ chức và phát triển sản phẩm.</p>
+
+          <p>Với định hướng kết nối hai lĩnh vực này, HT Việt Nam mong muốn đồng hành cùng cá nhân và doanh nghiệp trong hành trình tiếp cận công nghệ một cách chủ động. Chúng tôi coi việc hiểu đúng nhu cầu, lựa chọn giải pháp phù hợp và truyền đạt thông tin rõ ràng là nền tảng để mỗi dự án tạo ra hiệu quả lâu dài.</p>
+
+          <blockquote>
+            <p><strong>Tinh thần của HT Việt Nam Tech:</strong> Chia sẻ kiến thức dễ hiểu, ưu tiên khả năng ứng dụng và cùng cộng đồng tiến bộ qua từng trải nghiệm thực tế.</p>
+          </blockquote>
+
+          <h2>Vì sao HT Việt Nam xây dựng chuyên trang công nghệ?</h2>
+
+          <p>Internet có rất nhiều tài liệu về công nghệ, nhưng người đọc không phải lúc nào cũng dễ dàng tìm được nội dung phù hợp với bối cảnh của mình. Người mới bắt đầu có thể gặp khó khăn trước quá nhiều thuật ngữ. Người đã có kinh nghiệm lại cần những góc nhìn cô đọng, ví dụ cụ thể và cách tiếp cận có thể áp dụng vào công việc.</p>
+
+          <p>HT Việt Nam Tech được xây dựng để góp phần giải quyết khoảng trống đó. Đây không chỉ là nơi cập nhật thông tin mà còn là thư viện kiến thức được phát triển theo hướng thực tiễn, phục vụ nhiều nhóm độc giả khác nhau:</p>
+
+          <ul>
+            <li><strong>Người mới học công nghệ và lập trình</strong> cần nền tảng rõ ràng, lộ trình hợp lý và hướng dẫn từng bước.</li>
+            <li><strong>Lập trình viên và người làm sản phẩm số</strong> muốn tham khảo kinh nghiệm triển khai, công cụ và phương pháp làm việc.</li>
+            <li><strong>Chủ doanh nghiệp và nhà quản lý</strong> cần hiểu công nghệ ở góc độ ứng dụng, chi phí, hiệu quả và khả năng phát triển lâu dài.</li>
+            <li><strong>Người yêu công nghệ</strong> muốn khám phá xu hướng mới bằng ngôn ngữ gần gũi, không nặng tính hàn lâm.</li>
+          </ul>
+
+          <h2>Bạn sẽ tìm thấy gì tại tech.htvietnam.vn?</h2>
+
+          <h3>Kiến thức lập trình từ cơ bản đến thực hành</h3>
+
+          <p>Các bài viết sẽ giải thích khái niệm, hướng dẫn công cụ, chia sẻ ví dụ và gợi ý cách xử lý những tình huống thường gặp trong quá trình phát triển phần mềm. Nội dung ưu tiên tính rõ ràng để người đọc không chỉ biết “làm như thế nào” mà còn hiểu “vì sao nên làm như vậy”.</p>
+
+          <h3>Góc nhìn về sản phẩm và giải pháp công nghệ</h3>
+
+          <p>Một quyết định công nghệ luôn liên quan đến nhu cầu sử dụng, nguồn lực, khả năng vận hành và mục tiêu phát triển. Vì vậy, chuyên trang sẽ phân tích các giải pháp dưới góc nhìn tổng thể, giúp người đọc cân nhắc lựa chọn phù hợp thay vì chạy theo công nghệ chỉ vì xu hướng.</p>
+
+          <h3>Kinh nghiệm chuyển đổi số và tối ưu vận hành</h3>
+
+          <p>Chuyển đổi số không đơn thuần là đưa thêm một phần mềm vào doanh nghiệp. Đó là quá trình xem lại cách làm việc, dữ liệu và trải nghiệm của khách hàng để tìm ra điểm có thể cải thiện. Các nội dung trong nhóm chủ đề này sẽ tập trung vào những tình huống gần với hoạt động thực tế của tổ chức.</p>
+
+          <h3>Xu hướng công nghệ được diễn giải dễ hiểu</h3>
+
+          <p>Trí tuệ nhân tạo, dữ liệu, điện toán đám mây, bảo mật hay tự động hóa đều đang phát triển nhanh. HT Việt Nam Tech sẽ chọn lọc và diễn giải các xu hướng đáng chú ý, làm rõ cơ hội, giới hạn và tác động của chúng để người đọc có thêm căn cứ trước khi áp dụng.</p>
+
+          <h2>Nguyên tắc nội dung của HT Việt Nam Tech</h2>
+
+          <p>Để mỗi bài viết mang lại giá trị sử dụng, chúng tôi định hướng nội dung dựa trên bốn nguyên tắc:</p>
+
+          <ul>
+            <li><strong>Dễ hiểu:</strong> Giải thích thuật ngữ cần thiết, trình bày mạch lạc và phù hợp với từng nhóm độc giả.</li>
+            <li><strong>Thực tiễn:</strong> Gắn kiến thức với ví dụ, quy trình, checklist hoặc tình huống có thể gặp trong công việc.</li>
+            <li><strong>Có chọn lọc:</strong> Tập trung vào thông tin hữu ích, hạn chế chạy theo những xu hướng thiếu giá trị ứng dụng.</li>
+            <li><strong>Luôn cập nhật:</strong> Chủ động rà soát nội dung khi công nghệ, công cụ và cách làm thay đổi.</li>
+          </ul>
+
+          <h2>Cùng học hỏi, chia sẻ và phát triển trong kỷ nguyên số</h2>
+
+          <p>HT Việt Nam Tech là một bước đi trong hành trình xây dựng cầu nối giữa doanh nghiệp, người làm công nghệ và cộng đồng quan tâm đến chuyển đổi số. Chúng tôi tin rằng kiến thức khi được chia sẻ đúng cách sẽ giúp nhiều người tự tin hơn trước những thay đổi của công nghệ và đưa ra quyết định phù hợp hơn với mục tiêu của mình.</p>
+
+          <p>Trong thời gian tới, chuyên trang sẽ liên tục bổ sung các bài hướng dẫn, phân tích chuyên sâu, kinh nghiệm thực hành và câu chuyện ứng dụng công nghệ. Mỗi nội dung đều hướng đến một câu hỏi cốt lõi: kiến thức này có thể giúp người đọc làm tốt hơn điều gì?</p>
+
+          <p><strong>Chào mừng bạn đến với HT Việt Nam Tech.</strong> Hãy cùng chúng tôi khám phá công nghệ bằng góc nhìn rõ ràng, thực tế và luôn hướng đến giá trị lâu dài.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 2200);
+    }
+
+    async function copyText(text, label) {
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus('Đã copy ' + label + '.');
+      } catch (error) {
+        const helper = document.createElement('textarea');
+        helper.value = text;
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        helper.remove();
+        setStatus('Đã copy ' + label + '.');
+      }
+    }
+
+    function updateCount(id) {
+      const field = document.getElementById(id);
+      const output = document.querySelector('[data-count="' + id + '"]');
+      output.textContent = field.value.trim().length + ' ký tự';
+    }
+
+    document.querySelectorAll('[data-count]').forEach((output) => {
+      const id = output.dataset.count;
+      document.getElementById(id).addEventListener('input', () => updateCount(id));
+      updateCount(id);
+    });
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        clone.querySelectorAll('[class]').forEach((element) => element.removeAttribute('class'));
+        copyText(clone.innerHTML.trim(), 'HTML cho CKEditor');
+      });
+    });
+  </script>
+</body>
+</html>

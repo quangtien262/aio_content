@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Checklist b&#7843;o m&#7853;t Ubuntu Server sau c&agrave;i &#273;&#7863;t</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">b&#7843;o m&#7853;t Ubuntu Server, hardening Linux, SSH key, UFW firewall, unattended upgrades, AppArmor, audit server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Ubuntu Server, Linux Security, Server Hardening, SSH, Firewall, Qu&#7843;n tr&#7883; h&#7879; th&#7889;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Checklist th&#7921;c t&#7871; &#273;&#7875; t&#259;ng c&#432;&#7901;ng b&#7843;o m&#7853;t Ubuntu Server: c&#7853;p nh&#7853;t, t&agrave;i kho&#7843;n, SSH, firewall, d&#7883;ch v&#7909;, AppArmor, log, backup v&agrave; ki&#7875;m th&#7917;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/ubuntu-server-hardening.jpg" alt="Checklist b&#7843;o m&#7853;t Ubuntu Server sau khi c&agrave;i &#273;&#7863;t" width="1440" height="810"></p><h1>Checklist b&#7843;o m&#7853;t Ubuntu Server sau khi c&agrave;i &#273;&#7863;t</h1><p><strong>C&agrave;i &#273;&#7863;t xong h&#7879; &#273;i&#7873;u h&agrave;nh m&#7899;i ch&#7881; l&agrave; &#273;i&#7875;m b&#7855;t &#273;&#7847;u.</strong> M&#7897;t Ubuntu Server an to&agrave;n c&#7847;n &#273;&#432;&#7907;c c&#7845;u h&igrave;nh theo workload, b&#7873; m&#7863;t m&#7841;ng, d&#7919; li&#7879;u v&agrave; kh&#7843; n&#259;ng v&#7853;n h&agrave;nh c&#7911;a t&#7893; ch&#7913;c. Hardening lu&ocirc;n c&oacute; &#273;&aacute;nh &#273;&#7893;i; thay &#273;&#7893;i qu&aacute; m&#7841;nh m&agrave; kh&ocirc;ng ki&#7875;m th&#7917; c&oacute; th&#7875; t&#7921; kh&oacute;a quy&#7873;n qu&#7843;n tr&#7883; ho&#7863;c l&agrave;m &#7913;ng d&#7909;ng ng&#7915;ng ho&#7841;t &#273;&#7897;ng.</p>
+<blockquote>Th&#7921;c hi&#7879;n qua console ho&#7863;c gi&#7919; m&#7897;t phi&ecirc;n SSH d&#7921; ph&ograve;ng khi thay &#273;&#7893;i SSH/firewall. Ki&#7875;m tra &#273;&#259;ng nh&#7853;p &#7903; phi&ecirc;n m&#7899;i tr&#432;&#7899;c khi &#273;&oacute;ng phi&ecirc;n qu&#7843;n tr&#7883; hi&#7879;n t&#7841;i.</blockquote>
+<h2>1. C&#7853;p nh&#7853;t h&#7879; th&#7889;ng v&agrave; x&aacute;c &#273;&#7883;nh v&ograve;ng &#273;&#7901;i h&#7895; tr&#7907;</h2>
+<pre><code>sudo apt update
+sudo apt full-upgrade
+sudo reboot</code></pre>
+<p>&#431;u ti&ecirc;n b&#7843;n Ubuntu LTS c&ograve;n &#273;&#432;&#7907;c h&#7895; tr&#7907;. Theo d&otilde;i th&ocirc;ng b&aacute;o reboot, c&#7853;p nh&#7853;t kernel v&agrave; security notices. Kh&ocirc;ng th&ecirc;m repository b&ecirc;n th&#7913; ba n&#7871;u ch&#432;a &#273;&aacute;nh gi&aacute; ngu&#7891;n, kh&oacute;a k&yacute; v&agrave; nhu c&#7847;u duy tr&igrave;.</p>
+<h2>2. T&#7841;o t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; ri&ecirc;ng</h2>
+<pre><code>sudo adduser deploy
+sudo usermod -aG sudo deploy
+id deploy</code></pre>
+<p>Ubuntu m&#7863;c &#273;&#7883;nh v&ocirc; hi&#7879;u h&oacute;a &#273;&#259;ng nh&#7853;p tr&#7921;c ti&#7871;p b&#7857;ng m&#7853;t kh&#7849;u root v&agrave; d&ugrave;ng <code>sudo</code> &#273;&#7875; n&acirc;ng quy&#7873;n c&oacute; ki&#7875;m so&aacute;t. M&#7895;i qu&#7843;n tr&#7883; vi&ecirc;n n&ecirc;n c&oacute; t&agrave;i kho&#7843;n ri&ecirc;ng &#273;&#7875; audit r&otilde; r&agrave;ng.</p>
+<h2>3. D&ugrave;ng SSH key v&agrave; ki&#7875;m tra tr&#432;&#7899;c khi t&#7855;t m&#7853;t kh&#7849;u</h2>
+<pre><code>ssh-keygen -t ed25519
+ssh-copy-id deploy@server
+ssh deploy@server</code></pre>
+<p>Sau khi x&aacute;c nh&#7853;n key ho&#7841;t &#273;&#7897;ng, t&#7841;o drop-in c&#7845;u h&igrave;nh ph&ugrave; h&#7907;p trong <code>/etc/ssh/sshd_config.d/</code>:</p>
+<pre><code>PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes</code></pre>
+<pre><code>sudo sshd -t
+sudo systemctl reload ssh</code></pre>
+<p>Ch&#7881; t&#7855;t m&#7853;t kh&#7849;u khi t&#7845;t c&#7843; qu&#7843;n tr&#7883; vi&ecirc;n c&oacute; key v&agrave; c&oacute; ph&#432;&#417;ng &aacute;n console/recovery. B&#7843;o v&#7879; private key b&#7857;ng passphrase v&agrave; ch&iacute;nh s&aacute;ch thi&#7871;t b&#7883;.</p>
+<h2>4. Ch&#7881; m&#7903; port c&#7847;n thi&#7871;t b&#7857;ng firewall</h2>
+<pre><code>sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+sudo ufw status verbose</code></pre>
+<p>&#272;i&#7873;u ch&#7881;nh theo workload. Database n&#7897;i b&#7897; th&#432;&#7901;ng kh&ocirc;ng n&ecirc;n m&#7903; ra Internet; h&atilde;y gi&#7899;i h&#7841;n source network ho&#7863;c d&ugrave;ng private network/VPN.</p>
+<h2>5. Gi&#7843;m b&#7873; m&#7863;t t&#7845;n c&ocirc;ng</h2>
+<pre><code>systemctl list-unit-files --state=enabled
+ss -lntup
+sudo apt autoremove</code></pre>
+<p>V&ocirc; hi&#7879;u h&oacute;a d&#7883;ch v&#7909; kh&ocirc;ng d&ugrave;ng, g&#7905; package kh&ocirc;ng c&#7847;n v&agrave; x&aacute;c minh t&#7915;ng port l&#7855;ng nghe c&oacute; owner r&otilde; r&agrave;ng. Kh&ocirc;ng d&#7915;ng service ch&#7881; v&igrave; t&ecirc;n l&#7841;; c&#7847;n hi&#7875;u dependency tr&#432;&#7899;c.</p>
+<h2>6. B&#7853;t c&#7853;p nh&#7853;t b&#7843;o m&#7853;t t&#7921; &#273;&#7897;ng c&oacute; gi&aacute;m s&aacute;t</h2>
+<pre><code>sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades</code></pre>
+<p>T&#7921; &#273;&#7897;ng c&#7853;p nh&#7853;t gi&uacute;p gi&#7843;m th&#7901;i gian ph&#417;i nhi&#7877;m nh&#432;ng v&#7851;n c&#7847;n theo d&otilde;i l&#7895;i, y&ecirc;u c&#7847;u reboot v&agrave; ki&#7875;m th&#7917; tr&ecirc;n m&ocirc;i tr&#432;&#7901;ng staging v&#7899;i h&#7879; th&#7889;ng quan tr&#7885;ng.</p>
+<h2>7. Gi&#7919; AppArmor ho&#7841;t &#273;&#7897;ng</h2>
+<pre><code>sudo aa-status
+systemctl status apparmor</code></pre>
+<p>AppArmor gi&#7899;i h&#7841;n h&agrave;nh vi c&#7911;a &#7913;ng d&#7909;ng b&#7857;ng profile. Khi g&#7863;p l&#7895;i, &#273;&#7885;c log v&agrave; s&#7917;a profile theo nhu c&#7847;u th&#7921;c t&#7871; thay v&igrave; t&#7855;t to&agrave;n b&#7897; l&#7899;p b&#7843;o v&#7879;.</p>
+<h2>8. B&#7843;o v&#7879; file, secret v&agrave; d&#7919; li&#7879;u</h2>
+<ul><li>D&ugrave;ng quy&#7873;n t&#7889;i thi&#7875;u cho file c&#7845;u h&igrave;nh v&agrave; private key.</li><li>Kh&ocirc;ng l&#432;u secret trong repository ho&#7863;c command history.</li><li>M&atilde; h&oacute;a d&#7919; li&#7879;u nh&#7841;y c&#7843;m v&agrave; backup.</li><li>T&aacute;ch t&agrave;i kho&#7843;n ch&#7841;y &#7913;ng d&#7909;ng kh&#7887;i t&agrave;i kho&#7843;n qu&#7843;n tr&#7883;.</li><li>&#272;&#7863;t owner/group r&otilde; r&agrave;ng cho th&#432; m&#7909;c upload, log v&agrave; cache.</li></ul>
+<h2>9. Thi&#7871;t l&#7853;p log, th&#7901;i gian v&agrave; gi&aacute;m s&aacute;t</h2>
+<pre><code>timedatectl status
+journalctl -p warning..alert -b
+last
+lastb</code></pre>
+<p>&#272;&#7891;ng b&#7897; th&#7901;i gian l&agrave; &#273;i&#7873;u ki&#7879;n &#273;&#7875; &#273;i&#7873;u tra log ch&iacute;nh x&aacute;c. Theo d&otilde;i &#273;&#259;ng nh&#7853;p th&#7845;t b&#7841;i, thay &#273;&#7893;i t&agrave;i kho&#7843;n, service l&#7895;i, dung l&#432;&#7907;ng &#273;&#297;a, t&#7843;i h&#7879; th&#7889;ng v&agrave; certificate s&#7855;p h&#7871;t h&#7841;n. V&#7899;i h&#7879; th&#7889;ng quan tr&#7885;ng, chuy&#7875;n log sang n&#417;i l&#432;u tr&#7919; t&aacute;ch bi&#7879;t.</p>
+<h2>10. Backup v&agrave; di&#7877;n t&#7853;p kh&ocirc;i ph&#7909;c</h2>
+<p>Backup ph&#7843;i bao g&#7891;m d&#7919; li&#7879;u, c&#7845;u h&igrave;nh, kh&oacute;a c&#7847;n thi&#7871;t v&agrave; h&#432;&#7899;ng d&#7851;n ph&#7909;c h&#7891;i. Gi&#7919; &iacute;t nh&#7845;t m&#7897;t b&#7843;n t&aacute;ch kh&#7887;i credential production, ki&#7875;m tra checksum v&agrave; kh&ocirc;i ph&#7909;c th&#7917; &#273;&#7883;nh k&#7923;.</p>
+<h2>11. Ki&#7875;m tra l&#7841;i sau hardening</h2>
+<ul><li>&#272;&#259;ng nh&#7853;p &#273;&#432;&#7907;c b&#7857;ng t&agrave;i kho&#7843;n/key d&#7921; ki&#7871;n.</li><li>Ch&#7881; port c&#7847;n thi&#7871;t c&oacute; th&#7875; truy c&#7853;p t&#7915; &#273;&uacute;ng m&#7841;ng.</li><li>&#7912;ng d&#7909;ng, cron, queue v&agrave; backup v&#7851;n ho&#7841;t &#273;&#7897;ng.</li><li>Update, log rotation, c&#7843;nh b&aacute;o v&agrave; reboot &#273;&#432;&#7907;c ki&#7875;m so&aacute;t.</li><li>C&oacute; t&agrave;i li&#7879;u thay &#273;&#7893;i v&agrave; &#273;&#432;&#7901;ng rollback.</li></ul>
+<h2>Hardening l&agrave; m&#7897;t qu&aacute; tr&igrave;nh</h2>
+<p>Checklist ban &#273;&#7847;u kh&ocirc;ng thay th&#7871; qu&#7843;n l&yacute; l&#7895; h&#7893;ng, review &#273;&#7883;nh k&#7923; v&agrave; &#7913;ng ph&oacute; s&#7921; c&#7889;. H&atilde;y x&aacute;c &#273;&#7883;nh baseline ph&ugrave; h&#7907;p, t&#7921; &#273;&#7897;ng ki&#7875;m tra c&#7845;u h&igrave;nh v&agrave; c&#7853;p nh&#7853;t n&oacute; khi workload ho&#7863;c m&#7889;i &#273;e d&#7885;a thay &#273;&#7893;i.</p>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://ubuntu.com/server/docs/how-to/security/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Security</a></li><li><a href="https://ubuntu.com/server/docs/how-to/security/user-management/" target="_blank" rel="noopener noreferrer">Ubuntu Server: User management</a></li><li><a href="https://documentation.ubuntu.com/security/" target="_blank" rel="noopener noreferrer">Ubuntu Security documentation</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

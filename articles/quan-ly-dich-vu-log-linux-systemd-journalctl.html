@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Qu&#7843;n l&yacute; d&#7883;ch v&#7909; Linux v&#7899;i systemd v&agrave; journalctl</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">systemd, systemctl, journalctl, qu&#7843;n l&yacute; d&#7883;ch v&#7909; Linux, log Linux, unit file, Linux server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, systemd, systemctl, journalctl, Linux Server, Qu&#7843;n tr&#7883; h&#7879; th&#7889;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n qu&#7843;n l&yacute; d&#7883;ch v&#7909; Linux b&#7857;ng systemctl, &#273;&#7885;c v&agrave; l&#7885;c log v&#7899;i journalctl, t&#7841;o unit file v&agrave; x&#7917; l&yacute; l&#7895;i service th&#7921;c t&#7871;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-systemd-journalctl.jpg" alt="Qu&#7843;n l&yacute; d&#7883;ch v&#7909; v&agrave; &#273;&#7885;c log Linux v&#7899;i systemd, systemctl, journalctl" width="1440" height="810"></p><h1>Qu&#7843;n l&yacute; d&#7883;ch v&#7909; v&agrave; &#273;&#7885;c log Linux v&#7899;i systemd, systemctl, journalctl</h1><p><strong>Tr&ecirc;n nhi&#7873;u b&#7843;n ph&acirc;n ph&#7889;i Linux hi&#7879;n &#273;&#7841;i, systemd ch&#7883;u tr&aacute;ch nhi&#7879;m kh&#7903;i &#273;&#7897;ng h&#7879; th&#7889;ng, qu&#7843;n l&yacute; d&#7883;ch v&#7909; v&agrave; thu th&#7853;p log.</strong> N&#7855;m v&#7919;ng <code>systemctl</code> v&agrave; <code>journalctl</code> gi&uacute;p qu&#7843;n tr&#7883; vi&ecirc;n tr&#7843; l&#7901;i nhanh ba c&acirc;u h&#7887;i: d&#7883;ch v&#7909; c&oacute; ch&#7841;y kh&ocirc;ng, v&igrave; sao n&oacute; d&#7915;ng v&agrave; chuy&#7879;n g&igrave; x&#7843;y ra tr&#432;&#7899;c l&#7895;i.</p>
+<h2>Unit trong systemd l&agrave; g&igrave;?</h2>
+<p>Systemd qu&#7843;n l&yacute; nhi&#7873;u lo&#7841;i unit. Ph&#7893; bi&#7871;n nh&#7845;t l&agrave; <code>.service</code> cho d&#7883;ch v&#7909;, <code>.socket</code> cho socket activation, <code>.timer</code> cho l&#7883;ch ch&#7841;y v&agrave; <code>.mount</code> cho &#273;i&#7875;m g&#7855;n k&#7871;t. T&ecirc;n &#273;&#7847;y &#273;&#7911; gi&uacute;p tr&aacute;nh nh&#7847;m khi h&#7879; th&#7889;ng c&oacute; nhi&#7873;u unit li&ecirc;n quan.</p>
+<h2>Ki&#7875;m tra tr&#7841;ng th&aacute;i d&#7883;ch v&#7909;</h2>
+<pre><code>systemctl status nginx.service
+systemctl is-active nginx.service
+systemctl is-enabled nginx.service
+systemctl list-units --type=service --state=failed</code></pre>
+<p><code>active</code> cho bi&#7871;t tr&#7841;ng th&aacute;i hi&#7879;n t&#7841;i; <code>enabled</code> cho bi&#7871;t unit c&oacute; &#273;&#432;&#7907;c g&#7855;n v&agrave;o lu&#7891;ng kh&#7903;i &#273;&#7897;ng hay kh&ocirc;ng. M&#7897;t service c&oacute; th&#7875; &#273;ang ch&#7841;y nh&#432;ng ch&#432;a enabled, ho&#7863;c enabled nh&#432;ng &#273;ang l&#7895;i.</p>
+<h2>Start, stop, restart v&agrave; reload</h2>
+<pre><code>sudo systemctl start nginx
+sudo systemctl stop nginx
+sudo systemctl restart nginx
+sudo systemctl reload nginx</code></pre>
+<p><code>restart</code> d&#7915;ng r&#7891;i ch&#7841;y l&#7841;i ti&#7871;n tr&igrave;nh, c&oacute; th&#7875; g&acirc;y gi&aacute;n &#273;o&#7841;n. <code>reload</code> y&ecirc;u c&#7847;u d&#7883;ch v&#7909; n&#7841;p c&#7845;u h&igrave;nh m&#7899;i m&agrave; kh&ocirc;ng d&#7915;ng ho&agrave;n to&agrave;n, nh&#432;ng ch&#7881; ho&#7841;t &#273;&#7897;ng n&#7871;u service h&#7895; tr&#7907;.</p>
+<h2>Enable kh&ocirc;ng &#273;&#7891;ng ngh&#297;a v&#7899;i start</h2>
+<pre><code>sudo systemctl enable nginx
+sudo systemctl enable --now nginx
+sudo systemctl disable nginx</code></pre>
+<p><code>enable --now</code> v&#7915;a c&#7845;u h&igrave;nh t&#7921; kh&#7903;i &#273;&#7897;ng v&#7915;a ch&#7841;y ngay. Tr&#432;&#7899;c khi enable m&#7897;t service m&#7899;i, c&#7847;n ki&#7875;m tra c&#7845;u h&igrave;nh, port l&#7855;ng nghe v&agrave; quy&#7873;n truy c&#7853;p.</p>
+<h2>&#272;&#7885;c log b&#7857;ng journalctl</h2>
+<pre><code>journalctl -u nginx.service
+journalctl -u nginx.service -n 100
+journalctl -u nginx.service -f
+journalctl -u nginx.service --since "today"
+journalctl -u nginx.service --since "1 hour ago"</code></pre>
+<p><code>-u</code> l&#7885;c theo unit, <code>-n</code> l&#7845;y s&#7889; d&ograve;ng cu&#7889;i v&agrave; <code>-f</code> theo d&otilde;i log m&#7899;i. M&#7889;c th&#7901;i gian gi&uacute;p thu h&#7865;p log &#273;&uacute;ng kho&#7843;ng x&#7843;y ra s&#7921; c&#7889;.</p>
+<h2>L&#7885;c theo m&#7913;c &#432;u ti&ecirc;n v&agrave; l&#7847;n kh&#7903;i &#273;&#7897;ng</h2>
+<pre><code>journalctl -p warning..alert
+journalctl -b
+journalctl -b -1
+journalctl --disk-usage</code></pre>
+<p><code>-b</code> xem boot hi&#7879;n t&#7841;i, <code>-b -1</code> xem boot tr&#432;&#7899;c. &#272;&acirc;y l&agrave; c&aacute;ch h&#7919;u &iacute;ch khi m&aacute;y v&#7915;a reboot sau s&#7921; c&#7889;.</p>
+<h2>Quy tr&igrave;nh x&#7917; l&yacute; m&#7897;t service kh&ocirc;ng kh&#7903;i &#273;&#7897;ng</h2>
+<ol><li>Ch&#7841;y <code>systemctl status ten.service</code> &#273;&#7875; l&#7845;y l&#7895;i ng&#7855;n v&agrave; exit code.</li><li>&#272;&#7885;c log &#273;&#7847;y &#273;&#7911; v&#7899;i <code>journalctl -u ten.service -b</code>.</li><li>Ki&#7875;m tra c&#7845;u h&igrave;nh b&#7857;ng l&#7879;nh test ri&ecirc;ng c&#7911;a &#7913;ng d&#7909;ng.</li><li>X&aacute;c minh user, quy&#7873;n file, bi&#7871;n m&ocirc;i tr&#432;&#7901;ng, port v&agrave; dependency.</li><li>S&#7917;a c&#7845;u h&igrave;nh, d&ugrave;ng <code>daemon-reload</code> n&#7871;u unit file thay &#273;&#7893;i, r&#7891;i restart.</li></ol>
+<h2>T&#7841;o m&#7897;t service &#273;&#417;n gi&#7843;n</h2>
+<pre><code>[Unit]
+Description=Example worker
+After=network-online.target
+
+[Service]
+Type=simple
+User=app
+WorkingDirectory=/srv/example
+ExecStart=/usr/bin/php /srv/example/artisan queue:work
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<p>L&#432;u t&#7841;i <code>/etc/systemd/system/example-worker.service</code>, sau &#273;&oacute;:</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable --now example-worker
+systemctl status example-worker</code></pre>
+<h2>Override thay v&igrave; s&#7917;a unit c&#7911;a package</h2>
+<pre><code>sudo systemctl edit example-worker.service
+systemctl cat example-worker.service</code></pre>
+<p>Drop-in override d&#7877; theo d&otilde;i v&agrave; kh&ocirc;ng b&#7883; package update ghi &#273;&egrave;. Tr&aacute;nh &#273;&#432;a secret tr&#7921;c ti&#7871;p v&agrave;o unit c&oacute; th&#7875; &#273;&#432;&#7907;c nhi&#7873;u ng&#432;&#7901;i &#273;&#7885;c; n&ecirc;n d&ugrave;ng c&#417; ch&#7871; qu&#7843;n l&yacute; secret v&agrave; quy&#7873;n file ph&ugrave; h&#7907;p.</p>
+<h2>Qu&#7843;n l&yacute; dung l&#432;&#7907;ng journal</h2>
+<pre><code>journalctl --disk-usage
+sudo journalctl --vacuum-time=14d
+sudo journalctl --vacuum-size=500M</code></pre>
+<p>&#272;&#7863;t ch&iacute;nh s&aacute;ch l&#432;u gi&#7919; d&#7921;a tr&ecirc;n nhu c&#7847;u &#273;i&#7873;u tra v&agrave; dung l&#432;&#7907;ng, thay v&igrave; x&oacute;a log t&ugrave;y ti&#7879;n trong l&uacute;c &#273;ang x&#7917; l&yacute; s&#7921; c&#7889;.</p>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemctl.html" target="_blank" rel="noopener noreferrer">systemd: systemctl</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html" target="_blank" rel="noopener noreferrer">systemd: journalctl</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html" target="_blank" rel="noopener noreferrer">systemd.service</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

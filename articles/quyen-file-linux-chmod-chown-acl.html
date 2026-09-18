@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Quy&#7873;n file Linux: chmod, chown v&agrave; ACL d&#7877; hi&#7875;u</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">quy&#7873;n file Linux, chmod, chown, chgrp, ACL Linux, setfacl, umask, qu&#7843;n tr&#7883; Linux</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Linux Permissions, chmod, chown, ACL, Qu&#7843;n tr&#7883; h&#7879; th&#7889;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n hi&#7875;u v&agrave; qu&#7843;n l&yacute; quy&#7873;n file Linux b&#7857;ng chmod, chown, chgrp, umask v&agrave; ACL, k&egrave;m v&iacute; d&#7909; an to&agrave;n cho file v&agrave; th&#432; m&#7909;c.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-file-permissions.jpg" alt="Quy&#7873;n file trong Linux: Hi&#7875;u &#273;&uacute;ng chmod, chown v&agrave; ACL" width="1440" height="810"></p><h1>Quy&#7873;n file trong Linux: Hi&#7875;u &#273;&uacute;ng chmod, chown v&agrave; ACL</h1><p><strong>Quy&#7873;n file l&agrave; m&#7897;t trong nh&#7919;ng c&#417; ch&#7871; b&#7843;o v&#7879; n&#7873;n t&#7843;ng c&#7911;a Linux.</strong> Hi&#7875;u sai m&#7897;t k&yacute; t&#7921; trong chu&#7895;i <code>rwx</code> c&oacute; th&#7875; khi&#7871;n &#7913;ng d&#7909;ng kh&ocirc;ng ch&#7841;y, ng&#432;&#7901;i d&ugrave;ng kh&ocirc;ng truy c&#7853;p &#273;&#432;&#7907;c d&#7919; li&#7879;u ho&#7863;c t&#7879; h&#417;n l&agrave; m&#7903; quy&#7873;n ghi cho t&#7845;t c&#7843; m&#7885;i ng&#432;&#7901;i.</p>
+<p>B&agrave;i vi&#7871;t n&agrave;y gi&#7843;i th&iacute;ch m&ocirc; h&igrave;nh owner-group-others, c&aacute;ch d&ugrave;ng <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>umask</code> v&agrave; khi n&agrave;o n&ecirc;n d&ugrave;ng ACL thay v&igrave; li&ecirc;n t&#7909;c thay &#273;&#7893;i group.</p>
+<h2>&#272;&#7885;c quy&#7873;n file b&#7857;ng ls -l</h2>
+<pre><code>ls -l /var/www/example
+-rw-r----- 1 deploy www-data 2840 Sep 18 10:30 config.php</code></pre>
+<p>K&yacute; t&#7921; &#273;&#7847;u cho bi&#7871;t lo&#7841;i &#273;&#7889;i t&#432;&#7907;ng: <code>-</code> l&agrave; file th&#432;&#7901;ng, <code>d</code> l&agrave; th&#432; m&#7909;c v&agrave; <code>l</code> l&agrave; symbolic link. Ch&iacute;n k&yacute; t&#7921; ti&#7871;p theo chia th&agrave;nh ba nh&oacute;m:</p>
+<ul><li><code>rw-</code>: quy&#7873;n c&#7911;a owner <code>deploy</code>.</li><li><code>r--</code>: quy&#7873;n c&#7911;a group <code>www-data</code>.</li><li><code>---</code>: quy&#7873;n c&#7911;a nh&#7919;ng ng&#432;&#7901;i d&ugrave;ng c&ograve;n l&#7841;i.</li></ul>
+<h2>r, w, x c&oacute; &yacute; ngh&#297;a kh&aacute;c nhau tr&ecirc;n th&#432; m&#7909;c</h2>
+<table><thead><tr><th>Quy&#7873;n</th><th>Tr&ecirc;n file</th><th>Tr&ecirc;n th&#432; m&#7909;c</th></tr></thead><tbody><tr><td><code>r</code></td><td>&#272;&#7885;c n&#7897;i dung</td><td>Li&#7879;t k&ecirc; t&ecirc;n b&ecirc;n trong</td></tr><tr><td><code>w</code></td><td>Thay &#273;&#7893;i n&#7897;i dung</td><td>T&#7841;o, x&oacute;a ho&#7863;c &#273;&#7893;i t&ecirc;n m&#7909;c con</td></tr><tr><td><code>x</code></td><td>Th&#7921;c thi file</td><td>&#272;i xuy&ecirc;n qua th&#432; m&#7909;c &#273;&#7875; truy c&#7853;p m&#7909;c con</td></tr></tbody></table>
+<p>M&#7897;t ng&#432;&#7901;i d&ugrave;ng c&oacute; th&#7875; bi&#7871;t t&ecirc;n file nh&#7901; quy&#7873;n &#273;&#7885;c th&#432; m&#7909;c nh&#432;ng v&#7851;n kh&ocirc;ng m&#7903; &#273;&#432;&#7907;c file n&#7871;u thi&#7871;u quy&#7873;n <code>x</code> tr&ecirc;n &#273;&#432;&#7901;ng d&#7851;n.</p>
+<h2>D&ugrave;ng chmod d&#7841;ng k&yacute; hi&#7879;u</h2>
+<p>D&#7841;ng k&yacute; hi&#7879;u th&#432;&#7901;ng d&#7877; review h&#417;n v&igrave; th&#7875; hi&#7879;n r&otilde; &#273;&#7889;i t&#432;&#7907;ng v&agrave; thay &#273;&#7893;i:</p>
+<pre><code>chmod u+x deploy.sh
+chmod g-w config.php
+chmod o= private.txt
+chmod a+r README.md</code></pre>
+<p><code>u</code>, <code>g</code>, <code>o</code>, <code>a</code> l&#7847;n l&#432;&#7907;t l&agrave; owner, group, others v&agrave; t&#7845;t c&#7843;; <code>+</code> th&ecirc;m quy&#7873;n, <code>-</code> b&#7887; quy&#7873;n, c&ograve;n <code>=</code> &#273;&#7863;t ch&iacute;nh x&aacute;c quy&#7873;n m&#7899;i.</p>
+<h2>D&ugrave;ng chmod d&#7841;ng s&#7889;</h2>
+<p>M&#7895;i quy&#7873;n c&oacute; gi&aacute; tr&#7883;: &#273;&#7885;c l&agrave; 4, ghi l&agrave; 2, th&#7921;c thi l&agrave; 1. C&#7897;ng theo t&#7915;ng nh&oacute;m owner-group-others:</p>
+<ul><li><code>640</code>: owner &#273;&#7885;c/ghi, group ch&#7881; &#273;&#7885;c, others kh&ocirc;ng c&oacute; quy&#7873;n.</li><li><code>750</code>: owner &#273;&#7847;y &#273;&#7911;, group &#273;&#7885;c/th&#7921;c thi, others kh&ocirc;ng c&oacute; quy&#7873;n.</li><li><code>644</code>: th&#432;&#7901;ng d&ugrave;ng cho file c&ocirc;ng khai ch&#7881; owner &#273;&#432;&#7907;c s&#7917;a.</li><li><code>755</code>: th&#432;&#7901;ng d&ugrave;ng cho th&#432; m&#7909;c ho&#7863;c ch&#432;&#417;ng tr&igrave;nh c&#7847;n m&#7885;i ng&#432;&#7901;i truy c&#7853;p/th&#7921;c thi.</li></ul>
+<pre><code>chmod 640 config.php
+chmod 750 scripts</code></pre>
+<blockquote>Kh&ocirc;ng d&ugrave;ng <code>chmod -R 777</code> nh&#432; m&#7897;t c&aacute;ch ch&#7919;a l&#7895;i quy&#7873;n. N&oacute; che gi&#7845;u nguy&ecirc;n nh&acirc;n v&agrave; trao quy&#7873;n ghi/th&#7921;c thi qu&aacute; r&#7897;ng.</blockquote>
+<h2>&#272;&#7893;i owner v&agrave; group v&#7899;i chown, chgrp</h2>
+<pre><code>sudo chown deploy app.log
+sudo chown deploy:www-data app.log
+sudo chgrp www-data storage
+sudo chown -R deploy:www-data /var/www/example</code></pre>
+<p>H&atilde;y ki&#7875;m tra k&#7929; &#273;&#432;&#7901;ng d&#7851;n tr&#432;&#7899;c l&#7879;nh &#273;&#7879; quy. V&#7899;i &#7913;ng d&#7909;ng web, ch&#7881; nh&#7919;ng th&#432; m&#7909;c th&#7921;c s&#7921; c&#7847;n ghi nh&#432; cache ho&#7863;c upload m&#7899;i n&ecirc;n c&oacute; quy&#7873;n ghi cho ti&#7871;n tr&igrave;nh web.</p>
+<h2>&#272;&#7863;t group k&#7871; th&#7915;a b&#7857;ng setgid</h2>
+<p>Tr&ecirc;n th&#432; m&#7909;c c&#7897;ng t&aacute;c, setgid gi&uacute;p file m&#7899;i k&#7871; th&#7915;a group c&#7911;a th&#432; m&#7909;c:</p>
+<pre><code>sudo chgrp developers /srv/project
+sudo chmod 2775 /srv/project</code></pre>
+<p>Ch&#7919; s&#7889; <code>2</code> &#273;&#7847;u b&#7853;t setgid. &#272;&acirc;y th&#432;&#7901;ng l&agrave; l&#7921;a ch&#7885;n r&otilde; r&agrave;ng h&#417;n vi&#7879;c s&#7917;a group th&#7911; c&ocirc;ng sau m&#7895;i l&#7847;n t&#7841;o file.</p>
+<h2>umask quy&#7871;t &#273;&#7883;nh quy&#7873;n m&#7863;c &#273;&#7883;nh</h2>
+<pre><code>umask
+umask 027</code></pre>
+<p><code>umask</code> lo&#7841;i b&#7899;t quy&#7873;n kh&#7887;i m&#7913;c m&#7863;c &#273;&#7883;nh c&#7911;a file v&agrave; th&#432; m&#7909;c. V&#7899;i <code>027</code>, file th&#432;&#7901;ng c&oacute; xu h&#432;&#7899;ng th&agrave;nh <code>640</code>, th&#432; m&#7909;c th&agrave;nh <code>750</code>. C&#7845;u h&igrave;nh th&#7921;c t&#7871; c&ograve;n ph&#7909; thu&#7897;c shell, service manager v&agrave; &#7913;ng d&#7909;ng.</p>
+<h2>Khi n&agrave;o c&#7847;n ACL?</h2>
+<p>M&ocirc; h&igrave;nh owner-group-others kh&ocirc;ng ti&#7879;n khi c&#7847;n c&#7845;p ri&ecirc;ng cho m&#7897;t ng&#432;&#7901;i d&ugrave;ng m&agrave; kh&ocirc;ng mu&#7889;n thay owner ho&#7863;c group ch&iacute;nh. ACL gi&#7843;i quy&#7871;t tr&#432;&#7901;ng h&#7907;p n&agrave;y:</p>
+<pre><code>getfacl report.csv
+setfacl -m u:analyst:r report.csv
+setfacl -m d:g:developers:rwx /srv/project
+setfacl -x u:analyst report.csv</code></pre>
+<p>ACL m&#7863;c &#273;&#7883;nh tr&ecirc;n th&#432; m&#7909;c c&oacute; th&#7875; truy&#7873;n quy&#7873;n cho m&#7909;c m&#7899;i. H&atilde;y &#273;&#7885;c d&ograve;ng <code>mask</code> trong <code>getfacl</code>, v&igrave; mask gi&#7899;i h&#7841;n quy&#7873;n hi&#7879;u l&#7921;c c&#7911;a named users v&agrave; groups.</p>
+<h2>Checklist x&#7917; l&yacute; l&#7895;i Permission denied</h2>
+<ol><li>D&ugrave;ng <code>namei -l /duong/dan/file</code> &#273;&#7875; ki&#7875;m tra m&#7885;i th&#432; m&#7909;c cha.</li><li>X&aacute;c nh&#7853;n user v&agrave; group c&#7911;a ti&#7871;n tr&igrave;nh b&#7857;ng <code>ps</code> ho&#7863;c c&#7845;u h&igrave;nh service.</li><li>Ki&#7875;m tra quy&#7873;n c&#417; b&#7843;n b&#7857;ng <code>ls -ld</code>.</li><li>Ki&#7875;m tra ACL v&#7899;i <code>getfacl</code>.</li><li>Xem mount c&oacute; c&#7901; <code>ro</code> ho&#7863;c <code>noexec</code> hay kh&ocirc;ng.</li><li>Ki&#7875;m tra AppArmor/SELinux n&#7871;u quy&#7873;n Unix &#273;&atilde; &#273;&uacute;ng.</li></ol>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/Setting-Permissions.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: Setting Permissions</a></li><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: chmod</a></li><li><a href="https://man7.org/linux/man-pages/man1/setfacl.1.html" target="_blank" rel="noopener noreferrer">Linux manual: setfacl</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

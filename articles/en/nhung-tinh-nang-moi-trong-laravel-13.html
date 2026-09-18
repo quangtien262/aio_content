@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nh&#7919;ng t&iacute;nh n&#259;ng m&#7899;i trong Laravel 13 &#273;&aacute;ng ch&uacute; &yacute;</title>
+  <style>
+    :root{color-scheme:light;--bg:#f4f7fa;--panel:#fff;--text:#172033;--muted:#5d6b82;--line:#dbe3ea;--brand:#e34c45;--brand-dark:#b93833;--code:#18202d;--code-text:#e7edf6}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 56px}.topbar{margin-bottom:20px}.brand strong{display:block;font-size:20px}.brand span{color:var(--muted);font-size:14px}.layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px;align-items:start}.panel,.article-preview{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(23,32,51,.06)}.panel{position:sticky;top:18px;padding:18px}.panel h2{margin:0 0 12px;font-size:18px}.field{margin-bottom:14px}.field label{display:block;margin-bottom:5px;color:var(--muted);font-size:13px;font-weight:700}.copy-box{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:#fbfdff;color:var(--text);font:14px/1.45 Arial,Helvetica,sans-serif;resize:vertical}.counter{display:block;margin-top:4px;color:var(--muted);font-size:12px;text-align:right}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}button,.download-button{display:inline-flex;min-height:40px;align-items:center;justify-content:center;border:0;border-radius:6px;background:var(--brand);color:#fff;cursor:pointer;font-weight:700;padding:9px 12px;text-align:center;text-decoration:none}button:hover,.download-button:hover{background:var(--brand-dark)}.secondary{background:#e7eef4!important;color:var(--text)!important}.wide{grid-column:1/-1}.note{margin:14px 0 0;padding:10px 12px;border-left:3px solid #d97706;background:#fff8e8;color:#684312;font-size:13px}.status{min-height:22px;margin-top:8px;color:var(--brand-dark);font-size:13px;font-weight:700}.article-preview{padding:26px}.article-content{color:#1d2738;font-size:16px}.article-content img{display:block;width:100%;height:auto;margin:0 0 20px;border-radius:6px}.article-content h1,.article-content h2,.article-content h3{color:#101828;line-height:1.32}.article-content h1{margin:0 0 16px;font-size:31px}.article-content h2{margin:30px 0 11px;font-size:23px}.article-content h3{margin:22px 0 8px;font-size:19px}.article-content p{margin:0 0 15px}.article-content ul,.article-content ol{margin:0 0 17px;padding-left:23px}.article-content li{margin-bottom:8px}.article-content blockquote{margin:20px 0;padding:12px 16px;border-left:4px solid var(--brand);background:#fff2f1;color:#71332f}.article-content pre{overflow-x:auto;margin:16px 0 20px;padding:16px;border-radius:6px;background:var(--code);color:var(--code-text);font:14px/1.6 Consolas,Monaco,monospace}.article-content code{font-family:Consolas,Monaco,monospace}.article-content :not(pre)>code{padding:2px 5px;border-radius:4px;background:#eef2f6;color:#b42318}.article-content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}.article-content th,.article-content td{border:1px solid #d7dee8;padding:10px;text-align:left;vertical-align:top}.article-content th{background:#eef4f8}.sources{font-size:14px;color:#455468}.sources a{color:#1769aa}@media(max-width:880px){.layout{grid-template-columns:1fr}.panel{position:static}.article-preview{padding:18px}}@media(max-width:480px){.actions{grid-template-columns:1fr}.wide{grid-column:auto}.article-content h1{font-size:27px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar"><div class="brand"><strong>HT Vi&#7879;t Nam Tech Content</strong><span>Danh m&#7909;c: L&#7853;p tr&igrave;nh</span></div></header>
+    <section class="layout">
+      <aside class="panel" aria-label="Th&ocirc;ng tin SEO v&agrave; thao t&aacute;c sao ch&eacute;p">
+        <h2>Th&ocirc;ng tin SEO</h2>
+        <div class="field"><label for="meta-title">Meta title</label><textarea id="meta-title" class="copy-box" rows="2">Laravel 13: Notable New Features for Developers</textarea><span class="counter" data-count="meta-title"></span></div>
+        <div class="field"><label for="meta-keywords">Meta keyword</label><textarea id="meta-keywords" class="copy-box" rows="4">Laravel 13, Laravel AI SDK, JSON API resources, vector search, PHP attributes, Laravel upgrade</textarea></div>
+        <div class="field"><label for="article-tags">Tags b&agrave;i vi&#7871;t</label><textarea id="article-tags" class="copy-box" rows="3">Laravel 13, Laravel, PHP, Web Development, Backend Development, AI SDK, API Development</textarea></div>
+        <div class="field"><label for="meta-description">Meta description</label><textarea id="meta-description" class="copy-box" rows="5">Explore the most notable Laravel 13 features, including the official AI SDK, JSON:API resources, vector search, attributes, and upgrade guidance.</textarea><span class="counter" data-count="meta-description"></span></div>
+        <div class="actions">
+          <button type="button" data-copy-value="meta-title">Copy title</button><button type="button" data-copy-value="meta-keywords">Copy keyword</button><button type="button" data-copy-value="article-tags">Copy tags</button><button type="button" data-copy-value="meta-description">Copy description</button>
+          <a class="download-button secondary" href="../assets/nhung-tinh-nang-moi-trong-laravel-13.jpg" download>T&#7843;i &#7843;nh &#273;&#7841;i di&#7879;n</a>
+          <button class="wide" type="button" data-copy-html="article-content">Copy HTML cho CKEditor</button>
+        </div>
+        <p class="note">Khi &#273;&#259;ng b&agrave;i, h&atilde;y t&#7843;i &#7843;nh l&ecirc;n th&#432; vi&#7879;n website v&agrave; thay &#273;&#432;&#7901;ng d&#7851;n &#7843;nh trong CKEditor b&#7857;ng URL do h&#7879; th&#7889;ng cung c&#7845;p.</p>
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <div id="article-content" class="article-content"><p><img src="../../assets/nhung-tinh-nang-moi-trong-laravel-13.jpg" alt="Notable New Features in Laravel 13" width="1440" height="810"></p><h1>Notable New Features in Laravel 13</h1><p><strong>Laravel 13 continues the framework's focus on developer productivity while bringing AI, structured APIs, and modern PHP capabilities closer to the core development experience.</strong> The release aims to add practical tools without forcing teams into a disruptive rewrite.</p>
+<h2>1. An official Laravel AI SDK</h2>
+<p>The official AI SDK provides a Laravel-style interface for working with language models, structured output, streaming, tools, embeddings, and related AI workflows. It gives applications a clearer abstraction than scattering provider-specific HTTP calls throughout the codebase.</p>
+<p>Teams should still design provider failure handling, usage limits, data controls, evaluation, and observability. An SDK simplifies integration; it does not remove operational responsibility.</p>
+<h2>2. First-class JSON:API resources</h2>
+<p>Laravel 13 improves support for building responses that follow JSON:API conventions. This is useful for teams that need consistent resource objects, relationships, metadata, links, and error structures across a large API.</p>
+<h2>3. Semantic and vector search near the Query Builder</h2>
+<p>Vector similarity workflows become easier to express alongside familiar database operations. Common use cases include semantic search, recommendation, retrieval-augmented generation, and finding related content.</p>
+<p>Production systems should evaluate index support, embedding dimensions, distance metrics, filtering, and the cost of keeping vectors synchronized with source content.</p>
+<h2>4. Expanded PHP attribute support</h2>
+<p>Attributes provide structured metadata close to the code they describe. Laravel 13 expands opportunities to use them for framework behavior while preserving conventional configuration patterns.</p>
+<h2>5. Queue routing by class</h2>
+<p>Applications can organize queue routing rules more clearly around job classes. Central routing makes it easier to separate urgent work, long-running imports, notifications, and low-priority maintenance without repeating connection and queue names everywhere.</p>
+<h2>6. Stronger request protection</h2>
+<p>Security-related defaults and request-handling improvements reduce common mistakes. Teams should still review trusted proxies, host validation, rate limits, CSRF boundaries, uploaded files, and authorization when upgrading.</p>
+<h2>7. Extend cache lifetime with Cache::touch()</h2>
+<p><code>Cache::touch()</code> refreshes the expiration time of an existing cache entry without rebuilding its value. This is useful for sliding-expiration scenarios, but should be applied carefully so stale data does not live indefinitely.</p>
+<h2>8. Fewer breaking changes does not mean zero testing</h2>
+<p>Laravel's release process favors incremental upgrades, yet application and package compatibility still depends on the exact dependency set. Read the official upgrade guide and test framework internals that the project customizes.</p>
+<h2>Quick upgrade checklist</h2>
+<ol><li>Confirm the required PHP and Composer versions.</li><li>Review direct and transitive package compatibility.</li><li>Create an upgrade branch and update dependencies deterministically.</li><li>Run unit, feature, browser, queue, and scheduled-job tests.</li><li>Review deprecations and application logs.</li><li>Deploy to staging with production-like data and services.</li><li>Prepare monitoring and rollback before production rollout.</li></ol>
+<h2>Should you upgrade?</h2>
+<p>New projects can usually adopt the current release after confirming ecosystem support. Existing stable systems should upgrade when security, support lifetime, or useful framework capabilities justify the work. The best timing depends on business risk, package readiness, and test coverage rather than the release date alone.</p>
+<h2>References</h2><ul><li><a href="https://laravel.com/docs" target="_blank" rel="noopener noreferrer">Laravel documentation</a></li><li><a href="https://github.com/laravel/framework" target="_blank" rel="noopener noreferrer">Laravel framework repository</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+  <script>
+    const statusEl=document.getElementById('copy-status');
+    function setStatus(message){statusEl.textContent=message;clearTimeout(setStatus.timer);setStatus.timer=setTimeout(()=>statusEl.textContent='',2200)}
+    async function copyText(text,label){try{await navigator.clipboard.writeText(text)}catch(error){const helper=document.createElement('textarea');helper.value=text;helper.style.position='fixed';helper.style.opacity='0';document.body.appendChild(helper);helper.select();document.execCommand('copy');helper.remove()}setStatus('&#272;&atilde; copy '+label+'.')}
+    function updateCount(id){const field=document.getElementById(id);document.querySelector('[data-count="'+id+'"]').textContent=field.value.trim().length+' k&yacute; t&#7921;'}
+    document.querySelectorAll('[data-count]').forEach(output=>{const id=output.dataset.count;document.getElementById(id).addEventListener('input',()=>updateCount(id));updateCount(id)});
+    document.querySelectorAll('[data-copy-value]').forEach(button=>button.addEventListener('click',()=>{const field=document.getElementById(button.dataset.copyValue);copyText(field.value.trim(),button.textContent.toLowerCase())}));
+    document.querySelectorAll('[data-copy-html]').forEach(button=>button.addEventListener('click',()=>{const clone=document.getElementById(button.dataset.copyHtml).cloneNode(true);const firstImage=clone.querySelector('img');if(firstImage){const wrapper=firstImage.closest('p');wrapper?wrapper.remove():firstImage.remove()}clone.querySelectorAll('[class]').forEach(element=>element.removeAttribute('class'));copyText(clone.innerHTML.trim(),'HTML cho CKEditor')}));
+  </script>
+<textarea id="article-slug" class="hidden-source">notable-new-features-in-laravel-13</textarea></body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Những tính năng mới trong Laravel 13 đáng chú ý</title>
+  <style>
+    :root{color-scheme:light;--bg:#f4f7fa;--panel:#fff;--text:#172033;--muted:#5d6b82;--line:#dbe3ea;--brand:#e34c45;--brand-dark:#b93833;--code:#18202d;--code-text:#e7edf6}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:28px 0 56px}.topbar{margin-bottom:20px}.brand strong{display:block;font-size:20px}.brand span{color:var(--muted);font-size:14px}.layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px;align-items:start}.panel,.article-preview{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(23,32,51,.06)}.panel{position:sticky;top:18px;padding:18px}.panel h2{margin:0 0 12px;font-size:18px}.field{margin-bottom:14px}.field label{display:block;margin-bottom:5px;color:var(--muted);font-size:13px;font-weight:700}.copy-box{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:#fbfdff;color:var(--text);font:14px/1.45 Arial,Helvetica,sans-serif;resize:vertical}.counter{display:block;margin-top:4px;color:var(--muted);font-size:12px;text-align:right}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}button,.download-button{display:inline-flex;min-height:40px;align-items:center;justify-content:center;border:0;border-radius:6px;background:var(--brand);color:#fff;cursor:pointer;font-weight:700;padding:9px 12px;text-align:center;text-decoration:none}button:hover,.download-button:hover{background:var(--brand-dark)}.secondary{background:#e7eef4!important;color:var(--text)!important}.wide{grid-column:1/-1}.note{margin:14px 0 0;padding:10px 12px;border-left:3px solid #d97706;background:#fff8e8;color:#684312;font-size:13px}.status{min-height:22px;margin-top:8px;color:var(--brand-dark);font-size:13px;font-weight:700}.article-preview{padding:26px}.article-content{color:#1d2738;font-size:16px}.article-content img{display:block;width:100%;height:auto;margin:0 0 20px;border-radius:6px}.article-content h1,.article-content h2,.article-content h3{color:#101828;line-height:1.32}.article-content h1{margin:0 0 16px;font-size:31px}.article-content h2{margin:30px 0 11px;font-size:23px}.article-content h3{margin:22px 0 8px;font-size:19px}.article-content p{margin:0 0 15px}.article-content ul,.article-content ol{margin:0 0 17px;padding-left:23px}.article-content li{margin-bottom:8px}.article-content blockquote{margin:20px 0;padding:12px 16px;border-left:4px solid var(--brand);background:#fff2f1;color:#71332f}.article-content pre{overflow-x:auto;margin:16px 0 20px;padding:16px;border-radius:6px;background:var(--code);color:var(--code-text);font:14px/1.6 Consolas,Monaco,monospace}.article-content code{font-family:Consolas,Monaco,monospace}.article-content :not(pre)>code{padding:2px 5px;border-radius:4px;background:#eef2f6;color:#b42318}.article-content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}.article-content th,.article-content td{border:1px solid #d7dee8;padding:10px;text-align:left;vertical-align:top}.article-content th{background:#eef4f8}.sources{font-size:14px;color:#455468}.sources a{color:#1769aa}@media(max-width:880px){.layout{grid-template-columns:1fr}.panel{position:static}.article-preview{padding:18px}}@media(max-width:480px){.actions{grid-template-columns:1fr}.wide{grid-column:auto}.article-content h1{font-size:27px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar"><div class="brand"><strong>HT Việt Nam Tech Content</strong><span>Danh mục: Lập trình</span></div></header>
+    <section class="layout">
+      <aside class="panel" aria-label="Thông tin SEO và thao tác sao chép">
+        <h2>Thông tin SEO</h2>
+        <div class="field"><label for="meta-title">Meta title</label><textarea id="meta-title" class="copy-box" rows="2">Những tính năng mới trong Laravel 13 đáng chú ý</textarea><span class="counter" data-count="meta-title"></span></div>
+        <div class="field"><label for="meta-keywords">Meta keyword</label><textarea id="meta-keywords" class="copy-box" rows="4">Laravel 13, tính năng mới Laravel 13, Laravel AI SDK, JSON:API Laravel, vector search Laravel, nâng cấp Laravel 13, PHP 8.3</textarea></div>
+        <div class="field"><label for="article-tags">Tags bài viết</label><textarea id="article-tags" class="copy-box" rows="3">Laravel 13, Laravel, PHP, Web Development, Laravel AI SDK, JSON:API, Vector Search</textarea></div>
+        <div class="field"><label for="meta-description">Meta description</label><textarea id="meta-description" class="copy-box" rows="5">Khám phá những tính năng mới trong Laravel 13: AI SDK, JSON:API, vector search, PHP Attributes, queue, cache và các lưu ý khi nâng cấp dự án.</textarea><span class="counter" data-count="meta-description"></span></div>
+        <div class="actions">
+          <button type="button" data-copy-value="meta-title">Copy title</button><button type="button" data-copy-value="meta-keywords">Copy keyword</button><button type="button" data-copy-value="article-tags">Copy tags</button><button type="button" data-copy-value="meta-description">Copy description</button>
+          <a class="download-button secondary" href="../assets/nhung-tinh-nang-moi-trong-laravel-13.jpg" download>Tải ảnh đại diện</a>
+          <button class="wide" type="button" data-copy-html="article-content">Copy HTML cho CKEditor</button>
+        </div>
+        <p class="note">Khi đăng bài, hãy tải ảnh lên thư viện website và thay đường dẫn ảnh trong CKEditor bằng URL do hệ thống cung cấp.</p>
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <div id="article-content" class="article-content">
+          <p><img src="../assets/nhung-tinh-nang-moi-trong-laravel-13.jpg" alt="Những tính năng mới nổi bật trong Laravel 13"></p>
+          <h1>Những tính năng mới trong Laravel 13 đáng chú ý</h1>
+
+          <p><strong>Laravel 13 được phát hành ngày 17/03/2026</strong>, tiếp tục nhịp phát hành phiên bản lớn hằng năm của Laravel. Thay vì thay đổi mạnh kiến trúc quen thuộc, phiên bản này tập trung vào quy trình phát triển có AI, chuẩn mặc định an toàn hơn và các API biểu đạt rõ ràng hơn.</p>
+
+          <p>Những điểm nổi bật nhất gồm Laravel AI SDK chính chủ, JSON:API Resources, tìm kiếm ngữ nghĩa và vector, cơ chế bảo vệ request mới, định tuyến queue theo class, PHP Attributes mở rộng cùng nhiều cải tiến cho cache và vận hành hàng đợi.</p>
+
+          <blockquote><p>Laravel 13 yêu cầu tối thiểu <strong>PHP 8.3</strong>. Framework hỗ trợ PHP 8.3 đến 8.5; bản sửa lỗi dự kiến được duy trì đến quý III/2027 và bản vá bảo mật đến ngày 17/03/2028.</p></blockquote>
+
+          <h2>1. Laravel AI SDK trở thành công cụ chính chủ</h2>
+
+          <p>Thay đổi tạo nhiều chú ý nhất là <strong>Laravel AI SDK</strong>. SDK cung cấp một giao diện thống nhất cho sinh văn bản, agent gọi công cụ, embeddings, hình ảnh, âm thanh và tích hợp vector store. Mục tiêu là giúp lập trình viên xây tính năng AI theo phong cách Laravel mà không khóa toàn bộ mã nguồn vào một nhà cung cấp duy nhất.</p>
+
+          <p>Một agent có thể được gọi bằng API gọn như sau:</p>
+
+          <pre><code>use App\Ai\Agents\SalesCoach;
+
+$response = SalesCoach::make()
+    -&gt;prompt('Phân tích nội dung cuộc gọi bán hàng này...');
+
+return (string) $response;</code></pre>
+
+          <p>SDK cũng hỗ trợ tạo embeddings trực tiếp từ chuỗi. Đây là nền tảng để xây tìm kiếm ngữ nghĩa, hệ thống hỏi đáp trên dữ liệu nội bộ hoặc quy trình RAG mà không phải tự ghép quá nhiều lớp thư viện.</p>
+
+          <pre><code>use Illuminate\Support\Str;
+
+$embedding = Str::of('Tài liệu hướng dẫn Laravel 13')
+    -&gt;toEmbeddings();</code></pre>
+
+          <h2>2. JSON:API Resources được hỗ trợ trực tiếp</h2>
+
+          <p>Laravel 13 bổ sung <strong>JSON:API Resources</strong> chính chủ, giúp ứng dụng trả về dữ liệu tuân theo đặc tả JSON:API. Framework xử lý việc tuần tự hóa resource object, relationships, sparse fieldsets, links và các response header phù hợp với chuẩn.</p>
+
+          <p>Tính năng này hữu ích với đội ngũ xây API dùng chung cho nhiều client, cần cấu trúc phản hồi nhất quán hoặc muốn giảm lượng mã tự viết cho quan hệ và trường dữ liệu tùy chọn. Nó cũng giúp hợp đồng giữa backend và frontend rõ ràng hơn khi hệ thống phát triển.</p>
+
+          <h2>3. Tìm kiếm ngữ nghĩa và vector gần hơn với Query Builder</h2>
+
+          <p>Laravel 13 đưa vector search vào luồng làm việc quen thuộc của lập trình viên. Với PostgreSQL và <code>pgvector</code>, ứng dụng có thể tìm dữ liệu theo độ tương đồng ngữ nghĩa ngay từ Query Builder:</p>
+
+          <pre><code>$documents = DB::table('documents')
+    -&gt;whereVectorSimilarTo(
+        'embedding',
+        'Hướng dẫn tối ưu hàng đợi trong Laravel'
+    )
+    -&gt;limit(10)
+    -&gt;get();</code></pre>
+
+          <p>Laravel Scout trong nhánh 13.x cũng mở rộng tìm kiếm semantic và hybrid cho database engine, Meilisearch và Turbopuffer. Hybrid search kết hợp tìm kiếm từ khóa với độ tương đồng vector, phù hợp cho kho kiến thức, tra cứu sản phẩm hoặc trợ lý AI cần kết quả vừa đúng từ khóa vừa đúng ý định.</p>
+
+          <h2>4. PHP Attributes được mở rộng</h2>
+
+          <p>Laravel 13 tiếp tục mở rộng cách cấu hình bằng PHP Attributes. Middleware và kiểm tra quyền có thể đặt trực tiếp cạnh controller hoặc method, giúp hành vi của mã dễ quan sát hơn:</p>
+
+          <pre><code>use Illuminate\Routing\Attributes\Controllers\Authorize;
+use Illuminate\Routing\Attributes\Controllers\Middleware;
+
+#[Middleware('auth')]
+class CommentController
+{
+    #[Middleware('subscribed')]
+    #[Authorize('create', [Comment::class, 'post'])]
+    public function store(Post $post)
+    {
+        // ...
+    }
+}</code></pre>
+
+          <p>Ngoài controller, attribute còn được bổ sung ở queue, Eloquent, event, notification, validation, testing và resource serialization. Với job, các thiết lập như số lần thử, thời gian chờ hay backoff có thể khai báo bằng <code>#[Tries]</code>, <code>#[Timeout]</code>, <code>#[Backoff]</code> và <code>#[FailOnTimeout]</code>.</p>
+
+          <h2>5. Queue routing theo class</h2>
+
+          <p><code>Queue::route(...)</code> cho phép định tuyến connection và queue mặc định dựa trên class của job tại một vị trí tập trung. Nhờ đó, job không cần lặp lại cấu hình queue hoặc phụ thuộc vào việc gọi <code>onQueue()</code> ở nhiều nơi.</p>
+
+          <pre><code>use Illuminate\Support\Facades\Queue;
+
+Queue::route(
+    ProcessPodcast::class,
+    connection: 'redis',
+    queue: 'podcasts'
+);</code></pre>
+
+          <p>Trong các bản cập nhật 13.x, Laravel còn bổ sung khả năng debounce queued listener, tạm dừng hoặc tiếp tục toàn bộ queue và cung cấp thêm thông tin vận hành worker. Các cải tiến này hữu ích với hệ thống có khối lượng background job lớn hoặc cần triển khai an toàn.</p>
+
+          <h2>6. Bảo vệ request chặt chẽ hơn</h2>
+
+          <p>Middleware chống giả mạo request được hoàn thiện dưới tên <code>PreventRequestForgery</code>. Bên cạnh cơ chế token CSRF quen thuộc, middleware bổ sung kiểm tra dựa trên origin, giúp tăng khả năng phòng vệ trước request không hợp lệ mà vẫn duy trì tính tương thích với ứng dụng hiện có.</p>
+
+          <p>Laravel 13 cũng siết an toàn khi giải tuần tự dữ liệu cache. Cấu hình <code>serializable_classes</code> mặc định là <code>false</code>, hạn chế nguy cơ liên quan đến PHP deserialization gadget chain nếu khóa ứng dụng bị lộ. Dự án cần lưu object PHP trong cache nên khai báo rõ danh sách class được phép.</p>
+
+          <pre><code>'serializable_classes' =&gt; [
+    App\Data\CachedDashboardStats::class,
+    App\Support\CachedPricingSnapshot::class,
+],</code></pre>
+
+          <h2>7. Gia hạn TTL cache bằng Cache::touch()</h2>
+
+          <p><code>Cache::touch()</code> cho phép kéo dài thời gian sống của một cache item mà không cần đọc giá trị rồi ghi lại. Đây là thay đổi nhỏ nhưng tiện lợi với sliding expiration, session nghiệp vụ hoặc dữ liệu cần được duy trì khi còn phát sinh truy cập.</p>
+
+          <pre><code>use Illuminate\Support\Facades\Cache;
+
+Cache::touch('dashboard:summary', 3600);</code></pre>
+
+          <p>Nếu dự án sử dụng cache store tùy chỉnh, cần bổ sung method <code>touch($key, $seconds)</code> để đáp ứng contract mới.</p>
+
+          <h2>8. Ít breaking change, nhưng vẫn cần kiểm tra trước khi nâng cấp</h2>
+
+          <p>Laravel mô tả phiên bản 13 là một bản nâng cấp tương đối nhẹ về công sức. Hướng dẫn chính thức ước tính quá trình nâng cấp cơ bản từ Laravel 12 mất khoảng 10 phút, nhưng thời gian thực tế còn phụ thuộc package, custom contract và mức độ phức tạp của dự án.</p>
+
+          <table>
+            <thead><tr><th>Hạng mục</th><th>Yêu cầu hoặc thay đổi</th></tr></thead>
+            <tbody>
+              <tr><td>PHP</td><td>Tối thiểu PHP 8.3</td></tr>
+              <tr><td>Framework</td><td><code>laravel/framework: ^13.0</code></td></tr>
+              <tr><td>Laravel Boost</td><td><code>laravel/boost: ^2.0</code></td></tr>
+              <tr><td>Laravel Tinker</td><td><code>laravel/tinker: ^3.0</code></td></tr>
+              <tr><td>PHPUnit</td><td><code>phpunit/phpunit: ^12.0</code></td></tr>
+              <tr><td>Pest</td><td><code>pestphp/pest: ^4.0</code></td></tr>
+            </tbody>
+          </table>
+
+          <p>Một số điểm cần rà soát gồm cấu hình cache serialization, giá trị <code>uniqueBy</code> khi dùng <code>upsert</code>, tên prefix cache và session mặc định, custom implementations của các contract, cùng hành vi truy vấn xóa có <code>JOIN</code>, <code>ORDER BY</code> hoặc <code>LIMIT</code>.</p>
+
+          <h3>Checklist nâng cấp nhanh</h3>
+
+          <ol>
+            <li>Kiểm tra môi trường chạy PHP 8.3 trở lên và khả năng tương thích của extension.</li>
+            <li>Rà soát package bên thứ ba trước khi đổi phiên bản trong <code>composer.json</code>.</li>
+            <li>Đọc upgrade guide chính thức, đặc biệt các thay đổi có mức ảnh hưởng cao và trung bình.</li>
+            <li>Nâng cấp trên nhánh riêng, chạy toàn bộ automated test và kiểm tra luồng nghiệp vụ quan trọng.</li>
+            <li>Kiểm tra queue worker, cache, session, API và tác vụ theo lịch trong môi trường staging.</li>
+            <li>Chuẩn bị kế hoạch quay lại phiên bản trước trước khi triển khai production.</li>
+          </ol>
+
+          <h2>Có nên nâng cấp lên Laravel 13?</h2>
+
+          <p>Với dự án mới sử dụng PHP 8.3 trở lên, Laravel 13 là lựa chọn hợp lý nhờ vòng đời hỗ trợ dài, nền tảng AI chính chủ và các API hiện đại hơn. Với dự án Laravel 12 đang vận hành ổn định, việc nâng cấp đáng cân nhắc khi package đã tương thích và đội ngũ có đủ test để kiểm soát rủi ro.</p>
+
+          <p>Laravel 13 không cố gắng thay đổi mọi thứ. Giá trị lớn của phiên bản này nằm ở việc đưa AI, vector search và JSON:API vào hệ sinh thái chính chủ, đồng thời làm rõ hơn cấu hình, bảo mật và vận hành. Đây là hướng phát triển thực dụng: bổ sung năng lực mới nhưng vẫn giữ trải nghiệm quen thuộc của Laravel.</p>
+
+          <h2>Nguồn tham khảo</h2>
+          <ul class="sources">
+            <li><a href="https://laravel.com/framework/docs/releases" target="_blank" rel="noopener noreferrer">Laravel 13 Release Notes</a></li>
+            <li><a href="https://laravel.com/docs/13.x/upgrade" target="_blank" rel="noopener noreferrer">Laravel 13 Upgrade Guide</a></li>
+            <li><a href="https://laravel.com/framework/docs/changelog" target="_blank" rel="noopener noreferrer">Laravel Framework Changelog</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script>
+    const statusEl=document.getElementById('copy-status');
+    function setStatus(message){statusEl.textContent=message;clearTimeout(setStatus.timer);setStatus.timer=setTimeout(()=>statusEl.textContent='',2200)}
+    async function copyText(text,label){try{await navigator.clipboard.writeText(text)}catch(error){const helper=document.createElement('textarea');helper.value=text;helper.style.position='fixed';helper.style.opacity='0';document.body.appendChild(helper);helper.select();document.execCommand('copy');helper.remove()}setStatus('Đã copy '+label+'.')}
+    function updateCount(id){const field=document.getElementById(id);document.querySelector('[data-count="'+id+'"]').textContent=field.value.trim().length+' ký tự'}
+    document.querySelectorAll('[data-count]').forEach(output=>{const id=output.dataset.count;document.getElementById(id).addEventListener('input',()=>updateCount(id));updateCount(id)});
+    document.querySelectorAll('[data-copy-value]').forEach(button=>button.addEventListener('click',()=>{const field=document.getElementById(button.dataset.copyValue);copyText(field.value.trim(),button.textContent.toLowerCase())}));
+    document.querySelectorAll('[data-copy-html]').forEach(button=>button.addEventListener('click',()=>{const clone=document.getElementById(button.dataset.copyHtml).cloneNode(true);const firstImage=clone.querySelector('img');if(firstImage){const wrapper=firstImage.closest('p');wrapper?wrapper.remove():firstImage.remove()}clone.querySelectorAll('[class]').forEach(element=>element.removeAttribute('class'));copyText(clone.innerHTML.trim(),'HTML cho CKEditor')}));
+  </script>
+</body>
+</html>

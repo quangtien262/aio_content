@@ -1,0 +1,67 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hướng dẫn tạo CI cho Laravel bằng GitHub Actions</title>
+<style>:root{--bg:#f4f7fa;--panel:#fff;--text:#172033;--muted:#5d6b82;--line:#dbe3ea;--brand:#c95848;--dark:#994035}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Arial,sans-serif}.page{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.brand{margin-bottom:20px}.brand strong{display:block;font-size:20px}.brand span,.counter{color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px;align-items:start}.panel,.preview{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px #1720330f}.panel{position:sticky;top:18px;padding:18px}.panel h2{margin:0 0 12px;font-size:18px}.field{margin-bottom:13px}.field label{display:block;margin-bottom:5px;color:var(--muted);font-size:13px;font-weight:700}.box{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:#fbfdff;color:var(--text);font:14px/1.45 Arial,sans-serif;resize:vertical}.counter{display:block;text-align:right}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}button,.download{display:flex;min-height:40px;align-items:center;justify-content:center;border:0;border-radius:6px;background:var(--brand);color:#fff;font-weight:700;padding:9px;text-align:center;text-decoration:none;cursor:pointer}.secondary{background:#e7eef4;color:var(--text)}.wide{grid-column:1/-1}.note{padding:10px 12px;border-left:3px solid #d97706;background:#fff8e8;color:#684312;font-size:13px}.status{min-height:22px;color:var(--dark);font-size:13px;font-weight:700}.preview{padding:26px}.content img{display:block;width:100%;height:auto;margin:0 0 20px;border-radius:6px}.content h1,.content h2,.content h3{color:#101828;line-height:1.32}.content h1{margin:0 0 16px;font-size:31px}.content h2{margin:30px 0 11px;font-size:23px}.content h3{margin:22px 0 8px;font-size:19px}.content p{margin:0 0 15px}.content ul,.content ol{padding-left:23px}.content li{margin-bottom:8px}.content blockquote{margin:20px 0;padding:12px 16px;border-left:4px solid var(--brand);background:#fff3ef;color:#75372f}.content pre{overflow:auto;padding:16px;border-radius:6px;background:#101828;color:#e6edf3;font:13px/1.55 Consolas,monospace}.content code{font-family:Consolas,monospace}.content table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}.content th,.content td{border:1px solid #d7dee8;padding:10px;text-align:left;vertical-align:top}.content th{background:#eef4f8}.sources{font-size:14px;color:#455468}@media(max-width:880px){.layout{grid-template-columns:1fr}.panel{position:static}.preview{padding:18px}}@media(max-width:480px){.actions{grid-template-columns:1fr}.wide{grid-column:auto}}</style></head>
+<body><main class="page"><header class="brand"><strong>HT Việt Nam Tech Content</strong><span>Danh mục: Hướng dẫn</span></header><section class="layout"><aside class="panel"><h2>Thông tin SEO</h2>
+<div class="field"><label for="meta-title">Meta title</label><textarea id="meta-title" class="box" rows="2">Hướng dẫn tạo CI cho Laravel bằng GitHub Actions</textarea><span class="counter" data-count="meta-title"></span></div><div class="field"><label for="meta-keywords">Meta keyword</label><textarea id="meta-keywords" class="box" rows="4">GitHub Actions Laravel, CI Laravel, kiểm thử tự động Laravel, Laravel GitHub Actions, PHP CI/CD, artisan test, Composer cache</textarea></div><div class="field"><label for="article-tags">Tags bài viết</label><textarea id="article-tags" class="box" rows="3">Laravel, GitHub Actions, CI/CD, Kiểm thử tự động, PHP, DevOps</textarea></div><div class="field"><label for="meta-description">Meta description</label><textarea id="meta-description" class="box" rows="5">Hướng dẫn thiết lập GitHub Actions để tự động cài dependency và chạy kiểm thử Laravel trên mỗi pull request, kèm workflow YAML mẫu.</textarea><span class="counter" data-count="meta-description"></span></div>
+<div class="actions"><button data-copy-value="meta-title">Copy title</button><button data-copy-value="meta-keywords">Copy keyword</button><button data-copy-value="article-tags">Copy tags</button><button data-copy-value="meta-description">Copy description</button><a class="download secondary" href="../assets/github-actions-ci-laravel.jpg" download>Tải ảnh đại diện</a><button class="wide" data-copy-html="article-content">Copy HTML cho CKEditor</button></div><p class="note">Ảnh JPEG 1.440×810, khoảng 118 KB. Nội dung copy không bao gồm ảnh đầu bài.</p><div id="status" class="status"></div></aside>
+<article class="preview"><div id="article-content" class="content"><p><img src="../assets/github-actions-ci-laravel.jpg" alt="Lập trình viên theo dõi quy trình CI tự động cho dự án Laravel"></p>
+<h1>Hướng dẫn thiết lập CI cho Laravel bằng GitHub Actions</h1>
+<p><strong>Continuous Integration giúp phát hiện lỗi trước khi mã nguồn được hợp nhất.</strong> Với GitHub Actions, mỗi lần mở hoặc cập nhật pull request có thể tự động cài dependency, chuẩn bị môi trường Laravel và chạy bộ kiểm thử. Nhóm phát triển nhận phản hồi nhất quán mà không phụ thuộc vào máy của từng người.</p>
+<h2>CI trong bài này sẽ làm gì?</h2><ol><li>Kích hoạt khi có push hoặc pull request.</li><li>Lấy mã nguồn lên một runner Ubuntu mới.</li><li>Cài đúng phiên bản PHP và các extension cần thiết.</li><li>Cache gói Composer để rút ngắn thời gian chạy.</li><li>Tạo tệp môi trường, application key và cơ sở dữ liệu SQLite.</li><li>Chạy <code>php artisan test</code>.</li></ol>
+<h2>Điều kiện chuẩn bị</h2><ul><li>Dự án Laravel đã được đẩy lên GitHub.</li><li><code>composer.lock</code> được commit để CI cài đúng phiên bản dependency.</li><li>Bộ kiểm thử chạy được trên máy local bằng <code>php artisan test</code>.</li><li>Cấu hình testing không phụ thuộc vào mật khẩu production.</li></ul>
+<h2>Bước 1: Tạo workflow</h2><p>Trong thư mục gốc của dự án, tạo tệp <code>.github/workflows/laravel-tests.yml</code>. GitHub chỉ nhận diện workflow YAML đặt trong thư mục <code>.github/workflows</code>.</p>
+<h2>Bước 2: Thêm cấu hình cơ bản</h2>
+<pre><code>name: Laravel Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, dom, fileinfo, sqlite3
+          coverage: none
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: composer-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Prepare application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          touch database/database.sqlite
+
+      - name: Run tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan test</code></pre>
+<p>Hãy đổi phiên bản PHP và danh sách extension cho khớp với dự án. Các action bên thứ ba cần được đánh giá trước khi sử dụng; với môi trường yêu cầu bảo mật cao, nên ghim action bằng commit SHA đã kiểm chứng thay vì chỉ dùng tag phiên bản.</p>
+<h2>Bước 3: Điều chỉnh cơ sở dữ liệu</h2><p>SQLite phù hợp với nhiều bộ test vì nhanh và không cần dịch vụ riêng. Tuy nhiên, nếu production dùng MySQL hoặc PostgreSQL và mã nguồn phụ thuộc vào hành vi đặc thù của hệ quản trị đó, hãy cấu hình service container tương ứng để kết quả CI gần môi trường thật hơn.</p>
+<h2>Bước 4: Kiểm tra workflow</h2><ol><li>Commit tệp YAML và đẩy lên một nhánh mới.</li><li>Mở pull request vào nhánh <code>main</code>.</li><li>Mở tab Actions hoặc phần Checks của pull request.</li><li>Chọn bước thất bại để đọc log nếu workflow báo lỗi.</li></ol>
+<h2>Các lỗi thường gặp</h2><table><thead><tr><th>Hiện tượng</th><th>Điểm cần kiểm tra</th></tr></thead><tbody><tr><td>Thiếu extension PHP</td><td>So sánh với yêu cầu trong composer.json và môi trường production</td></tr><tr><td>Không tìm thấy APP_KEY</td><td>Đảm bảo đã sao chép .env và chạy key:generate</td></tr><tr><td>Lỗi kết nối database</td><td>Kiểm tra biến DB_CONNECTION, đường dẫn SQLite hoặc service database</td></tr><tr><td>Test qua local nhưng lỗi trên CI</td><td>Tìm phụ thuộc vào timezone, hệ điều hành, cache, tệp local hoặc thứ tự chạy test</td></tr><tr><td>Workflow không chạy</td><td>Kiểm tra vị trí tệp, cú pháp YAML và tên nhánh trong trigger</td></tr></tbody></table>
+<h2>Bước 5: Bảo vệ nhánh chính</h2><p>Khi workflow ổn định, cấu hình ruleset hoặc branch protection để yêu cầu kiểm tra <strong>Laravel Tests</strong> thành công trước khi merge. CI khi đó trở thành cổng chất lượng thực sự, thay vì một báo cáo chỉ để tham khảo.</p>
+<h2>Nâng cấp pipeline theo nhu cầu</h2><ul><li>Thêm PHPStan hoặc Larastan để phân tích tĩnh.</li><li>Thêm Laravel Pint để kiểm tra định dạng mã.</li><li>Dùng test matrix để chạy trên nhiều phiên bản PHP.</li><li>Tách unit test, feature test và kiểm tra chất lượng thành các job phù hợp.</li><li>Chỉ triển khai sau khi toàn bộ kiểm tra bắt buộc thành công.</li></ul>
+<blockquote>Bắt đầu bằng pipeline nhỏ, nhanh và đáng tin cậy. Một workflow phức tạp nhưng thường xuyên lỗi ngẫu nhiên sẽ khiến đội ngũ mất niềm tin và bỏ qua tín hiệu quan trọng.</blockquote>
+<h2>Checklist hoàn thành</h2><ul><li>Workflow chạy trên pull request.</li><li>Phiên bản PHP khớp dự án.</li><li>Dependency được cài từ composer.lock.</li><li>Môi trường test không dùng bí mật production.</li><li>Test thất bại làm job thất bại.</li><li>Nhánh chính yêu cầu CI thành công trước khi merge.</li></ul>
+<h2>Nguồn tham khảo</h2><ul class="sources"><li><a href="https://docs.github.com/en/actions/get-started/understand-github-actions" target="_blank" rel="noopener noreferrer">GitHub Docs: Understanding GitHub Actions</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax" target="_blank" rel="noopener noreferrer">GitHub Docs: Workflow syntax</a></li><li><a href="https://laravel.com/docs/13.x/testing" target="_blank" rel="noopener noreferrer">Laravel 13: Testing</a></li></ul>
+</div></article></section></main><script>const s=document.getElementById('status');function show(m){s.textContent=m;clearTimeout(show.t);show.t=setTimeout(()=>s.textContent='',2000)}async function cp(t,l){try{await navigator.clipboard.writeText(t)}catch(e){const x=document.createElement('textarea');x.value=t;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}show('Đã copy '+l+'.')}function removeCover(c){const i=c.querySelector('img');if(i){const p=i.closest('p');p?p.remove():i.remove()}}document.querySelectorAll('[data-count]').forEach(o=>{const f=document.getElementById(o.dataset.count),u=()=>o.textContent=f.value.trim().length+' ký tự';f.addEventListener('input',u);u()});document.querySelectorAll('[data-copy-value]').forEach(b=>b.onclick=()=>cp(document.getElementById(b.dataset.copyValue).value.trim(),b.textContent.toLowerCase()));document.querySelectorAll('[data-copy-html]').forEach(b=>b.onclick=()=>{const c=document.getElementById(b.dataset.copyHtml).cloneNode(true);removeCover(c);c.querySelectorAll('[class]').forEach(e=>e.removeAttribute('class'));cp(c.innerHTML.trim(),'HTML cho CKEditor')});</script></body></html>
