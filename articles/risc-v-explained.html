@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Ki&#7871;n th&#7913;c c&ocirc;ng ngh&#7879;</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">RISC-V l&agrave; g&igrave; v&agrave; kh&aacute;c ARM, x86 ra sao?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">RISC-V l&agrave; g&igrave;, ki&#7871;n tr&uacute;c t&#7853;p l&#7879;nh, ISA m&#7903;, RISC-V vs ARM, RISC-V vs x86, RV64, chip RISC-V</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">RISC-V, ISA, CPU Architecture, Semiconductor, ARM, x86, Open Standard, Processor</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Gi&#7843;i th&iacute;ch RISC-V l&agrave; ISA m&#7903;, ki&#7871;n tr&uacute;c m&ocirc;-&#273;un, extension v&agrave; profile; so s&aacute;nh v&#7899;i ARM/x86, l&#7907;i &iacute;ch, gi&#7899;i h&#7841;n v&agrave; &#7913;ng d&#7909;ng th&#7921;c t&#7871;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/risc-v-explained.jpg" alt="RISC-V l&agrave; g&igrave;? Ki&#7871;n tr&uacute;c chip m&#7903; kh&aacute;c ARM v&agrave; x86 ra sao" width="1440" height="810"></p><h1>RISC-V l&agrave; g&igrave;? Ki&#7871;n tr&uacute;c chip m&#7903; kh&aacute;c ARM v&agrave; x86 ra sao</h1><p><strong>RISC&#8209;V l&agrave; ki&#7871;n tr&uacute;c t&#7853;p l&#7879;nh (Instruction Set Architecture, ISA) ti&ecirc;u chu&#7849;n m&#7903; d&#7921;a tr&ecirc;n nguy&ecirc;n l&yacute; RISC.</strong> N&oacute; &#273;&#7883;nh ngh&#297;a ng&ocirc;n ng&#7919; m&agrave; ph&#7847;n m&#7873;m d&ugrave;ng &#273;&#7875; giao ti&#7871;p v&#7899;i b&#7897; x&#7917; l&yacute;: instruction, thanh ghi, ch&#7871; &#273;&#7897; &#273;&#7863;c quy&#7873;n v&agrave; c&aacute;c extension. RISC&#8209;V kh&ocirc;ng ph&#7843;i m&#7897;t m&#7851;u CPU duy nh&#7845;t, kh&ocirc;ng ph&#7843;i h&atilde;ng s&#7843;n xu&#7845;t chip v&agrave; c&#361;ng kh&ocirc;ng &#273;&#7891;ng ngh&#297;a m&#7885;i thi&#7871;t k&#7871; li&ecirc;n quan &#273;&#7873;u m&atilde; ngu&#7891;n m&#7903;.</p>
+
+<h2>ISA n&#7857;m &#7903; &#273;&acirc;u trong m&#7897;t h&#7879; th&#7889;ng m&aacute;y t&iacute;nh?</h2>
+<p>ISA l&agrave; h&#7907;p &#273;&#7891;ng gi&#7919;a software v&agrave; hardware. Compiler bi&#7871;n m&atilde; ngu&#7891;n th&agrave;nh instruction c&#7911;a ISA; b&#7897; x&#7917; l&yacute; tri&#7875;n khai c&aacute;ch th&#7921;c thi instruction &#273;&oacute;. Hai chip c&ugrave;ng ch&#7841;y RISC&#8209;V c&oacute; th&#7875; c&oacute; pipeline, cache, s&#7889; l&otilde;i, accelerator, m&#7913;c ti&ecirc;u th&#7909; &#273;i&#7879;n v&agrave; hi&#7879;u n&#259;ng r&#7845;t kh&aacute;c nhau nh&#432;ng v&#7851;n ch&#7841;y &#273;&#432;&#7907;c software t&#432;&#417;ng th&iacute;ch n&#7871;u c&ugrave;ng profile v&agrave; platform contract.</p>
+<p>Microarchitecture l&agrave; c&aacute;ch m&#7897;t nh&agrave; thi&#7871;t k&#7871; hi&#7879;n th&#7921;c ISA. So s&aacute;nh RISC&#8209;V v&#7899;i m&#7897;t model CPU c&#7909; th&#7875; ch&#7881; b&#7857;ng t&ecirc;n ki&#7871;n tr&uacute;c l&agrave; thi&#7871;u c&#417; s&#7903;, gi&#7889;ng nh&#432; kh&ocirc;ng th&#7875; &#273;o t&#7889;c &#273;&#7897; hai chi&#7871;c xe ch&#7881; t&#7915; lo&#7841;i nhi&ecirc;n li&#7879;u.</p>
+
+<h2>&ldquo;M&#7903;&rdquo; trong RISC&#8209;V ngh&#297;a l&agrave; g&igrave;?</h2>
+<p>&#272;&#7863;c t&#7843; ISA v&agrave; c&aacute;c extension &#273;&atilde; ratify &#273;&#432;&#7907;c c&ocirc;ng khai, royalty-free v&agrave; do RISC&#8209;V International qu&#7843;n tr&#7883;. T&#7893; ch&#7913;c c&oacute; th&#7875; x&acirc;y core, SoC ho&#7863;c tool d&#7921;a tr&ecirc;n ti&ecirc;u chu&#7849;n m&agrave; kh&ocirc;ng ph&#7843;i mua quy&#7873;n d&ugrave;ng ISA theo m&ocirc; h&igrave;nh truy&#7873;n th&#7889;ng.</p>
+<p>Tuy nhi&ecirc;n, m&#7897;t implementation RISC&#8209;V c&oacute; th&#7875;:</p>
+<ul><li>L&agrave; core m&atilde; ngu&#7891;n m&#7903; ho&#7863;c IP th&#432;&#417;ng m&#7841;i &#273;&oacute;ng.</li><li>Ch&#7913;a accelerator v&agrave; extension &#273;&#7897;c quy&#7873;n.</li><li>&#272;&#432;&#7907;c s&#7843;n xu&#7845;t b&#7857;ng ti&#7871;n tr&igrave;nh v&agrave; th&#432; vi&#7879;n c&oacute; license.</li><li>D&ugrave;ng firmware, driver ho&#7863;c c&ocirc;ng c&#7909; kh&ocirc;ng m&#7903;.</li></ul>
+<blockquote>RISC&#8209;V m&#7903; &#7903; l&#7899;p &#273;&#7863;c t&#7843; ISA; m&#7913;c &#273;&#7897; m&#7903; c&#7911;a s&#7843;n ph&#7849;m cu&#7889;i ph&#7909; thu&#7897;c t&#7915;ng nh&agrave; cung c&#7845;p.</blockquote>
+
+<h2>Ki&#7871;n tr&uacute;c m&ocirc;-&#273;un: base nh&#7887;, extension theo nhu c&#7847;u</h2>
+<p>M&#7897;t RISC&#8209;V ISA b&#7855;t &#273;&#7847;u t&#7915; base integer nh&#432; RV32I ho&#7863;c RV64I. C&aacute;c extension ti&ecirc;u chu&#7849;n b&#7893; sung kh&#7843; n&#259;ng m&agrave; thi&#7871;t k&#7871; c&#7847;n:</p>
+<ul><li><strong>M:</strong> ph&eacute;p nh&acirc;n v&agrave; chia s&#7889; nguy&ecirc;n.</li><li><strong>A:</strong> atomic instruction cho &#273;&#7891;ng b&#7897; &#273;a l&otilde;i.</li><li><strong>F/D:</strong> floating point &#273;&#7897; ch&iacute;nh x&aacute;c &#273;&#417;n/k&eacute;p.</li><li><strong>C:</strong> instruction n&eacute;n gi&uacute;p gi&#7843;m k&iacute;ch th&#432;&#7899;c code.</li><li><strong>V:</strong> vector operation cho x&#7917; l&yacute; d&#7919; li&#7879;u song song.</li></ul>
+<p>Thi&#7871;t b&#7883; nh&uacute;ng nh&#7887; c&oacute; th&#7875; ch&#7881; l&#7845;y t&#7853;p extension v&#7915;a &#273;&#7911;; application processor ch&#7841;y Linux &#273;&#7847;y &#273;&#7911; c&#7847;n t&#7853;p kh&#7843; n&#259;ng r&#7897;ng h&#417;n. Custom encoding space cho ph&eacute;p th&ecirc;m instruction chuy&ecirc;n bi&#7879;t m&agrave; kh&ocirc;ng va ch&#7841;m v&ugrave;ng d&agrave;nh cho standard extension.</p>
+
+<h2>Profile gi&#7843;i b&agrave;i to&aacute;n ph&acirc;n m&#7843;nh ph&#7847;n m&#7873;m</h2>
+<p>T&iacute;nh m&ocirc;-&#273;un t&#7841;o t&#7921; do nh&#432;ng c&#361;ng sinh nhi&#7873;u t&#7893; h&#7907;p extension. N&#7871;u m&#7895;i chip ch&#7885;n m&#7897;t t&#7853;p kh&aacute;c nhau, h&#7879; &#273;i&#7873;u h&agrave;nh v&agrave; binary kh&oacute; c&oacute; m&#7909;c ti&ecirc;u chung. RISC&#8209;V Profiles gom base v&agrave; c&aacute;c extension b&#7855;t bu&#7897;c/t&ugrave;y ch&#7885;n th&agrave;nh c&#7845;u h&igrave;nh chu&#7849;n.</p>
+<p>RVA23 h&#432;&#7899;ng t&#7899;i application processor 64-bit, gi&uacute;p h&#7879; sinh th&aacute;i software d&#7921;a v&agrave;o m&#7897;t t&#7853;p t&iacute;nh n&#259;ng &#273;&#432;&#7907;c b&#7843;o &#273;&#7843;m thay v&igrave; d&ograve; h&agrave;ng ch&#7909;c extension nh&#7887;. Profile kh&ocirc;ng c&#7845;m custom design; n&oacute; t&#7841;o baseline cho binary portability v&agrave; toolchain.</p>
+
+<h2>RISC&#8209;V kh&aacute;c ARM v&agrave; x86 nh&#432; th&#7871; n&agrave;o?</h2>
+<table><thead><tr><th>Kh&iacute;a c&#7841;nh</th><th>RISC&#8209;V</th><th>ARM</th><th>x86</th></tr></thead><tbody><tr><td>M&ocirc; h&igrave;nh ISA</td><td>Ti&ecirc;u chu&#7849;n m&#7903;, m&ocirc;-&#273;un</td><td>ISA/IP &#273;&#432;&#7907;c c&#7845;p ph&eacute;p th&#432;&#417;ng m&#7841;i</td><td>ISA th&#432;&#417;ng m&#7841;i, t&#7853;p trung &#7903; &iacute;t nh&agrave; s&#7843;n xu&#7845;t</td></tr><tr><td>T&ugrave;y bi&#7871;n</td><td>Extension ti&ecirc;u chu&#7849;n v&agrave; custom space</td><td>T&ugrave;y thu&#7897;c license/IP v&agrave; thi&#7871;t k&#7871; SoC</td><td>&Iacute;t m&#7903; cho b&ecirc;n th&#7913; ba t&#7921; l&agrave;m CPU t&#432;&#417;ng th&iacute;ch</td></tr><tr><td>H&#7879; sinh th&aacute;i desktop/server</td><td>&#272;ang ph&aacute;t tri&#7875;n</td><td>M&#7841;nh v&agrave; t&#259;ng nhanh</td><td>R&#7845;t tr&#432;&#7903;ng th&agrave;nh</td></tr><tr><td>Embedded</td><td>Ph&ugrave; h&#7907;p t&#7915; core nh&#7887; &#273;&#7871;n SoC</td><td>R&#7845;t tr&#432;&#7903;ng th&agrave;nh</td><td>Kh&ocirc;ng ph&#7843;i tr&#7885;ng t&acirc;m ch&iacute;nh</td></tr></tbody></table>
+<p>RISC hay CISC kh&ocirc;ng t&#7921; quy&#7871;t &#273;&#7883;nh hi&#7879;u n&#259;ng ho&#7863;c &#273;i&#7879;n n&#259;ng c&#7911;a chip hi&#7879;n &#273;&#7841;i. Decode, branch prediction, cache, out-of-order execution, memory controller, accelerator, ti&#7871;n tr&igrave;nh s&#7843;n xu&#7845;t v&agrave; software optimization &#273;&#7873;u c&oacute; &#7843;nh h&#432;&#7903;ng l&#7899;n.</p>
+
+<h2>V&igrave; sao doanh nghi&#7879;p v&agrave; nh&agrave; thi&#7871;t k&#7871; chip quan t&acirc;m?</h2>
+<ul><li><strong>Ki&#7875;m so&aacute;t thi&#7871;t k&#7871;:</strong> ch&#7885;n extension v&agrave; t&#7841;o accelerator theo workload.</li><li><strong>Gi&#7843;m ph&#7909; thu&#7897;c &#7903; l&#7899;p ISA:</strong> kh&ocirc;ng b&#7883; kh&oacute;a v&agrave;o m&#7897;t nh&agrave; cung c&#7845;p quy&#7873;n d&ugrave;ng ki&#7871;n tr&uacute;c.</li><li><strong>Chia s&#7867; &#273;&#7847;u t&#432;:</strong> compiler, OS v&agrave; tool c&oacute; th&#7875; c&ugrave;ng h&#432;&#7899;ng t&#7899;i ti&ecirc;u chu&#7849;n chung.</li><li><strong>&#272;&#7893;i m&#7899;i chuy&ecirc;n bi&#7879;t:</strong> IoT, storage controller, automotive, security v&agrave; AI c&oacute; th&#7875; t&#7889;i &#432;u datapath.</li><li><strong>Gi&aacute;o d&#7909;c/nghi&ecirc;n c&#7913;u:</strong> &#273;&#7863;c t&#7843; m&#7903; thu&#7853;n l&#7907;i cho h&#7885;c v&agrave; th&#7917; nghi&#7879;m ki&#7871;n tr&uacute;c.</li></ul>
+<p>Royalty-free ISA kh&ocirc;ng l&agrave;m vi&#7879;c thi&#7871;t k&#7871; chip tr&#7903; n&ecirc;n mi&#7877;n ph&iacute;. Verification, physical design, tape-out, manufacturing, firmware, compliance v&agrave; h&#7895; tr&#7907; software v&#7851;n t&#7889;n ngu&#7891;n l&#7921;c l&#7899;n.</p>
+
+<h2>RISC&#8209;V &#273;ang &#273;&#432;&#7907;c d&ugrave;ng &#7903; &#273;&acirc;u?</h2>
+<p>&#7912;ng d&#7909;ng ban &#273;&#7847;u n&#7893;i b&#7853;t &#7903; microcontroller, embedded core v&agrave; controller n&#7857;m b&ecirc;n trong storage, network ho&#7863;c SoC. &#272;&acirc;y l&agrave; n&#417;i kh&#7843; n&#259;ng t&ugrave;y bi&#7871;n, footprint nh&#7887; v&agrave; quy&#7873;n ki&#7875;m so&aacute;t c&oacute; gi&aacute; tr&#7883; r&otilde; r&agrave;ng.</p>
+<p>Application processor ch&#7841;y Linux, development board, accelerator v&agrave; server c&#361;ng &#273;ang ph&aacute;t tri&#7875;n. Tuy v&#7853;y, &ldquo;ch&#7841;y Linux&rdquo; kh&ocirc;ng &#273;&#7891;ng ngh&#297;a thay th&#7871; ngay m&#7897;t PC x86/ARM: c&#7847;n firmware &#7893;n &#273;&#7883;nh, driver GPU/NPU, power management, multimedia stack, &#7913;ng d&#7909;ng native v&agrave; quy tr&igrave;nh c&#7853;p nh&#7853;t.</p>
+
+<h2>H&#7879; sinh th&aacute;i ph&#7847;n m&#7873;m quan tr&#7885;ng h&#417;n instruction</h2>
+<p>M&#7897;t platform h&#7919;u d&#7909;ng c&#7847;n compiler, debugger, kernel, bootloader, firmware, ABI, package repository, driver v&agrave; t&agrave;i li&#7879;u. GCC, LLVM, Linux v&agrave; nhi&#7873;u d&#7921; &aacute;n l&#7899;n &#273;&atilde; h&#7895; tr&#7907; RISC&#8209;V, nh&#432;ng &#273;&#7897; ho&agrave;n thi&#7879;n ph&#7909; thu&#7897;c profile, board v&agrave; vendor.</p>
+<p>Tr&#432;&#7899;c khi ch&#7885;n s&#7843;n ph&#7849;m, ki&#7875;m tra:</p>
+<ol><li>ISA string v&agrave; profile &#273;&#432;&#7907;c h&#7895; tr&#7907;.</li><li>Distribution/OS c&oacute; image ch&iacute;nh th&#7913;c hay ch&#7881; community build.</li><li>Driver mainline cho network, storage, display v&agrave; accelerator.</li><li>Boot firmware, secure boot, update v&agrave; v&ograve;ng &#273;&#7901;i h&#7895; tr&#7907;.</li><li>Toolchain, profiler, debugger v&agrave; CI runner.</li><li>Binary/application c&#7847;n d&ugrave;ng &#273;&atilde; c&oacute; b&#7843;n native hay ph&#7843;i emulation.</li></ol>
+
+<h2>Security: ISA m&#7903; kh&ocirc;ng t&#7921; &#273;&#7897;ng an to&agrave;n</h2>
+<p>&#272;&#7863;c t&#7843; c&ocirc;ng khai gi&uacute;p review, nh&#432;ng l&#7895; h&#7893;ng c&oacute; th&#7875; n&#7857;m trong microarchitecture, cache, speculative execution, firmware, debug interface, driver, supply chain ho&#7863;c custom extension. S&#7843;n ph&#7849;m v&#7851;n c&#7847;n threat model, secure boot, root of trust, isolation, update c&oacute; ch&#7919; k&yacute; v&agrave; quy tr&igrave;nh disclosure.</p>
+<p>Custom instruction c&oacute; th&#7875; t&#259;ng hi&#7879;u n&#259;ng nh&#432;ng l&agrave;m t&#259;ng chi ph&iacute; audit v&agrave; portability. D&ugrave;ng standard ratified extension khi c&oacute; th&#7875;; ch&#7881; custom khi l&#7907;i &iacute;ch &#273;&#7911; l&#7899;n v&agrave; c&oacute; k&#7871; ho&#7841;ch toolchain, verification, virtualization v&agrave; maintenance.</p>
+
+<h2>Th&aacute;ch th&#7913;c ch&iacute;nh</h2>
+<ul><li>Nhi&#7873;u t&#7893; h&#7907;p extension v&agrave; platform c&oacute; nguy c&#417; ph&acirc;n m&#7843;nh.</li><li>Driver v&agrave; firmware ch&#432;a &#273;&#7891;ng &#273;&#7873;u gi&#7919;a c&aacute;c board.</li><li>Hi&#7879;u n&#259;ng s&#7843;n ph&#7849;m r&#7845;t kh&aacute;c d&ugrave; c&ugrave;ng mang nh&atilde;n RISC&#8209;V.</li><li>Ph&#7847;n m&#7873;m &#273;&oacute;ng ho&#7863;c binary-only c&oacute; th&#7875; ch&#432;a c&oacute; b&#7843;n RISC&#8209;V.</li><li>Custom extension gi&#7843;m kh&#7843; n&#259;ng chuy&#7875;n workload sang ph&#7847;n c&#7913;ng kh&aacute;c.</li><li>Thi&#7871;u k&#7929; s&#432; verification, compiler v&agrave; system software &#7903; m&#7897;t s&#7889; th&#7883; tr&#432;&#7901;ng.</li></ul>
+<p>Profiles, specification ratification v&agrave; upstream support l&agrave; nh&#7919;ng c&ocirc;ng c&#7909; quan tr&#7885;ng &#273;&#7875; thu h&#7865;p c&aacute;c kho&#7843;ng tr&#7889;ng n&agrave;y.</p>
+
+<h2>Khi n&agrave;o RISC&#8209;V ph&ugrave; h&#7907;p?</h2>
+<p><strong>Ph&ugrave; h&#7907;p</strong> khi t&#7893; ch&#7913;c c&#7847;n SoC chuy&ecirc;n bi&#7879;t, mu&#7889;n ki&#7875;m so&aacute;t roadmap, c&oacute; n&#259;ng l&#7921;c hardware/software &#273;&#7891;ng thi&#7871;t k&#7871;, ho&#7863;c x&acirc;y s&#7843;n ph&#7849;m embedded s&#7889; l&#432;&#7907;ng l&#7899;n. N&oacute; c&#361;ng ph&ugrave; h&#7907;p cho &#273;&agrave;o t&#7841;o v&agrave; nghi&ecirc;n c&#7913;u.</p>
+<p><strong>C&#7847;n th&#7853;n tr&#7885;ng</strong> khi d&#7921; &aacute;n ph&#7909; thu&#7897;c nhi&#7873;u &#7913;ng d&#7909;ng binary &#273;&oacute;ng, driver chuy&ecirc;n d&#7909;ng, ch&#7913;ng nh&#7853;n platform ho&#7863;c c&#7847;n time-to-market r&#7845;t ng&#7855;n nh&#432;ng &#273;&#7897;i ng&#361; ch&#432;a c&oacute; kinh nghi&#7879;m. Khi &#273;&oacute; m&#7897;t n&#7873;n t&#7843;ng ARM/x86 tr&#432;&#7903;ng th&agrave;nh c&oacute; th&#7875; gi&#7843;m r&#7911;i ro t&#7893;ng th&#7875; d&ugrave; ISA &iacute;t m&#7903; h&#417;n.</p>
+
+<h2>Nh&#7919;ng hi&#7875;u l&#7847;m ph&#7893; bi&#7871;n</h2>
+<ul><li><strong>&ldquo;RISC&#8209;V l&agrave; chip mi&#7877;n ph&iacute;&rdquo;:</strong> ISA m&#7903;; thi&#7871;t k&#7871; v&agrave; s&#7843;n xu&#7845;t chip v&#7851;n t&#7889;n chi ph&iacute;.</li><li><strong>&ldquo;M&#7885;i chip RISC&#8209;V &#273;&#7873;u open source&rdquo;:</strong> implementation c&oacute; th&#7875; &#273;&oacute;ng.</li><li><strong>&ldquo;RISC&#8209;V lu&ocirc;n nhanh ho&#7863;c ti&#7871;t ki&#7879;m &#273;i&#7879;n h&#417;n&rdquo;:</strong> ph&#7909; thu&#7897;c microarchitecture v&agrave; c&ocirc;ng ngh&#7879;.</li><li><strong>&ldquo;Ph&#7847;n m&#7873;m RISC&#8209;V ch&#7841;y tr&ecirc;n m&#7885;i chip RISC&#8209;V&rdquo;:</strong> c&ograve;n ph&#7909; thu&#7897;c extension, profile, ABI v&agrave; platform.</li><li><strong>&ldquo;RISC&#8209;V s&#7869; thay th&#7871; ARM/x86 ngay&rdquo;:</strong> th&#7883; tr&#432;&#7901;ng c&oacute; th&#7875; c&ugrave;ng t&#7891;n t&#7841;i nhi&#7873;u ISA theo workload.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>RISC&#8209;V thay &#273;&#7893;i l&#7899;p n&#7873;n c&#7911;a ng&agrave;nh chip b&#7857;ng m&#7897;t ISA m&#7903;, m&ocirc;-&#273;un v&agrave; cho ph&eacute;p nhi&#7873;u b&ecirc;n c&ugrave;ng x&acirc;y d&#7921;ng. Gi&aacute; tr&#7883; c&#7911;a n&oacute; l&agrave; quy&#7873;n l&#7921;a ch&#7885;n v&agrave; kh&#7843; n&#259;ng chuy&ecirc;n bi&#7879;t h&oacute;a, kh&ocirc;ng ph&#7843;i l&#7901;i h&#7913;a m&#7885;i chip s&#7869; r&#7867; ho&#7863;c nhanh h&#417;n. Th&agrave;nh c&ocirc;ng c&#7911;a m&#7897;t s&#7843;n ph&#7849;m RISC&#8209;V v&#7851;n &#273;&#432;&#7907;c quy&#7871;t &#273;&#7883;nh b&#7903;i thi&#7871;t k&#7871; silicon, profile t&#432;&#417;ng th&iacute;ch, toolchain, h&#7879; &#273;i&#7873;u h&agrave;nh, driver v&agrave; h&#7895; tr&#7907; d&agrave;i h&#7841;n.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://riscv.org/about/" target="_blank" rel="noopener noreferrer">RISC&#8209;V International: About RISC&#8209;V</a></li><li><a href="https://riscv.org/specifications/ratified/" target="_blank" rel="noopener noreferrer">RISC&#8209;V International: Ratified specifications</a></li><li><a href="https://docs.riscv.org/reference/isa/unpriv/intro.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V ISA: Introduction</a></li><li><a href="https://docs.riscv.org/reference/profiles-overview/index.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V Profiles</a></li><li><a href="https://docs.riscv.org/reference/rva23/v1.0/rva23-profiles.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V RVA23 Profile</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i &#273;&#7863;t m&ocirc;i tr&#432;&#7901;ng React JS hi&#7879;n &#273;&#7841;i</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i React JS, m&ocirc;i tr&#432;&#7901;ng React, Vite React, Node.js, npm, React TypeScript, Create React App</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">React, React JS, Vite, Node.js, TypeScript, Frontend Development</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n c&agrave;i m&ocirc;i tr&#432;&#7901;ng React JS v&#7899;i Node.js, Vite v&agrave; TypeScript, c&#7845;u h&igrave;nh bi&#7871;n m&ocirc;i tr&#432;&#7901;ng, lint, build v&agrave; l&#7921;a ch&#7885;n framework ph&ugrave; h&#7907;p.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/cai-dat-moi-truong-react-js.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t m&ocirc;i tr&#432;&#7901;ng cho d&#7921; &aacute;n React JS hi&#7879;n &#273;&#7841;i" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t m&ocirc;i tr&#432;&#7901;ng cho d&#7921; &aacute;n React JS hi&#7879;n &#273;&#7841;i</h1><p><strong>React hi&#7879;n kh&ocirc;ng c&ograve;n khuy&#7871;n ngh&#7883; Create React App cho d&#7921; &aacute;n m&#7899;i.</strong> T&agrave;i li&#7879;u ch&iacute;nh th&#7913;c &#432;u ti&ecirc;n framework cho &#7913;ng d&#7909;ng production; khi c&#7847;n SPA client-only ho&#7863;c h&#7885;c React t&#7915; n&#7873;n t&#7843;ng, Vite l&agrave; l&#7921;a ch&#7885;n g&#7885;n &#273;&#7875; d&#7921;ng m&ocirc;i tr&#432;&#7901;ng.</p>
+<h2>Ch&#7885;n framework hay Vite</h2><table><thead><tr><th>Nhu c&#7847;u</th><th>Kh&#7903;i &#273;&#7847;u ph&ugrave; h&#7907;p</th></tr></thead><tbody><tr><td>&#7912;ng d&#7909;ng c&#7847;n routing, data fetching, SSR/SSG v&agrave; code splitting t&iacute;ch h&#7907;p</td><td>Framework &#273;&#432;&#7907;c React khuy&#7871;n ngh&#7883; nh&#432; Next.js ho&#7863;c React Router framework</td></tr><tr><td>SPA n&#7897;i b&#7897;, widget, b&agrave;i h&#7885;c ho&#7863;c frontend c&oacute; backend ri&ecirc;ng</td><td>Vite v&#7899;i React</td></tr><tr><td>Th&ecirc;m React v&agrave;o website hi&#7879;n c&oacute;</td><td>T&iacute;ch h&#7907;p d&#7847;n v&agrave; d&ugrave;ng build setup hi&#7879;n h&#7919;u ho&#7863;c Vite</td></tr></tbody></table>
+<h2>C&agrave;i Node.js LTS</h2><p>D&ugrave;ng nvm, fnm ho&#7863;c Volta &#273;&#7875; qu&#7843;n l&yacute; phi&ecirc;n b&#7843;n. Sau khi c&agrave;i:</p><pre><code>node --version
+npm --version
+git --version</code></pre><p>N&ecirc;n commit file lock v&agrave; d&ugrave;ng c&ugrave;ng package manager trong c&#7843; nh&oacute;m. C&oacute; th&#7875; th&ecirc;m <code>.nvmrc</code> ho&#7863;c tr&#432;&#7901;ng <code>engines</code> &#273;&#7875; ghi r&otilde; phi&ecirc;n b&#7843;n.</p>
+<h2>T&#7841;o d&#7921; &aacute;n React v&#7899;i Vite</h2><pre><code>npm create vite@latest my-react-app -- --template react-ts
+cd my-react-app
+npm install
+npm run dev</code></pre><p>Template <code>react-ts</code> d&ugrave;ng TypeScript; &#273;&#7893;i th&agrave;nh <code>react</code> n&#7871;u d&#7921; &aacute;n ch&#7885;n JavaScript. Terminal s&#7869; in URL local, th&#432;&#7901;ng l&agrave; <code>http://localhost:5173</code>.</p>
+<h2>Hi&#7875;u c&#7845;u tr&uacute;c t&#7889;i thi&#7875;u</h2><ul><li><code>src/main.tsx</code>: t&#7841;o React root v&agrave; mount &#7913;ng d&#7909;ng.</li><li><code>src/App.tsx</code>: component g&#7889;c m&#7851;u.</li><li><code>public/</code>: t&agrave;i s&#7843;n &#273;&#432;&#7907;c ph&#7909;c v&#7909; nguy&ecirc;n tr&#7841;ng.</li><li><code>vite.config.ts</code>: plugin, alias, proxy v&agrave; build configuration.</li><li><code>package.json</code>: scripts v&agrave; dependency.</li></ul>
+<h2>Bi&#7871;n m&ocirc;i tr&#432;&#7901;ng</h2><p>Vite ch&#7881; &#273;&#432;a bi&#7871;n c&oacute; ti&#7873;n t&#7889; <code>VITE_</code> v&agrave;o m&atilde; client:</p><pre><code># .env.example
+VITE_API_URL=https://api.example.test
+
+// src/config.ts
+export const apiUrl = import.meta.env.VITE_API_URL;</code></pre><blockquote>M&#7885;i bi&#7871;n &#273;&#432;&#7907;c &#273;&#432;a v&agrave;o bundle frontend &#273;&#7873;u c&oacute; th&#7875; b&#7883; ng&#432;&#7901;i d&ugrave;ng &#273;&#7885;c. Kh&ocirc;ng l&#432;u private key, m&#7853;t kh&#7849;u database ho&#7863;c secret backend trong <code>VITE_*</code>.</blockquote>
+<h2>Thi&#7871;t l&#7853;p ch&#7845;t l&#432;&#7907;ng m&atilde;</h2><p>Gi&#7919; ESLint &#273;i k&egrave;m template v&agrave; b&#7893; sung formatter theo convention c&#7911;a nh&oacute;m. C&aacute;c l&#7879;nh t&#7889;i thi&#7875;u n&ecirc;n ch&#7841;y &#273;&#432;&#7907;c trong CI:</p><pre><code>npm run lint
+npm run build
+npm run preview</code></pre><p><code>preview</code> ch&#7881; d&ugrave;ng &#273;&#7875; ki&#7875;m tra build local, kh&ocirc;ng ph&#7843;i production server.</p>
+<h2>Proxy API khi ph&aacute;t tri&#7875;n</h2><pre><code>export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000',
+    },
+  },
+});</code></pre><p>Proxy gi&uacute;p tr&aacute;nh c&#7845;u h&igrave;nh CORS ph&#7913;c t&#7841;p &#7903; local, nh&#432;ng production v&#7851;n c&#7847;n domain, reverse proxy v&agrave; ch&iacute;nh s&aacute;ch CORS &#273;&uacute;ng.</p>
+<h2>C&agrave;i c&ocirc;ng c&#7909; tr&igrave;nh duy&#7879;t</h2><p>React Developer Tools h&#7895; tr&#7907; xem component tree, props, state v&agrave; profiling. B&ecirc;n c&#7841;nh &#273;&oacute;, d&ugrave;ng tab Network v&agrave; Performance c&#7911;a tr&igrave;nh duy&#7879;t &#273;&#7875; ki&#7875;m tra request, bundle v&agrave; render.</p>
+<h2>L&#7895;i th&#432;&#7901;ng g&#7863;p</h2><ul><li><strong>Unsupported engine:</strong> Node kh&ocirc;ng &#273;&uacute;ng phi&ecirc;n b&#7843;n; chuy&#7875;n phi&ecirc;n b&#7843;n b&#7857;ng tr&igrave;nh qu&#7843;n l&yacute; r&#7891;i c&agrave;i l&#7841;i dependency.</li><li><strong>Port &#273;&atilde; d&ugrave;ng:</strong> Vite ch&#7885;n c&#7893;ng kh&aacute;c ho&#7863;c truy&#7873;n <code>--port</code>.</li><li><strong>Bi&#7871;n m&ocirc;i tr&#432;&#7901;ng undefined:</strong> ki&#7875;m tra ti&#7873;n t&#7889; <code>VITE_</code> v&agrave; kh&#7903;i &#273;&#7897;ng l&#7841;i dev server.</li><li><strong>Trang tr&#7855;ng khi deploy subfolder:</strong> c&#7845;u h&igrave;nh <code>base</code> v&agrave; route fallback ph&ugrave; h&#7907;p.</li><li><strong>Module resolution l&#7895;i:</strong> tr&aacute;nh tr&#7897;n nhi&#7873;u lock file v&agrave; x&oacute;a <code>node_modules</code> ch&#7881; sau khi hi&#7875;u nguy&ecirc;n nh&acirc;n.</li></ul>
+<h2>Checklist tr&#432;&#7899;c khi b&#7855;t &#273;&#7847;u code</h2><ol><li>Nh&oacute;m &#273;&atilde; ch&#7885;n framework hay SPA client-only d&#7921;a tr&ecirc;n y&ecirc;u c&#7847;u th&#7853;t.</li><li>Node v&agrave; package manager &#273;&#432;&#7907;c ghi phi&ecirc;n b&#7843;n.</li><li>Lock file &#273;&#432;&#7907;c commit.</li><li>Lint v&agrave; production build ch&#7841;y th&agrave;nh c&ocirc;ng.</li><li><code>.env.example</code> kh&ocirc;ng ch&#7913;a secret.</li><li>README ghi l&#7879;nh c&agrave;i, ch&#7841;y, test v&agrave; build.</li></ol>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://react.dev/learn/installation" target="_blank" rel="noopener noreferrer">React Installation</a></li><li><a href="https://react.dev/learn/build-a-react-app-from-scratch" target="_blank" rel="noopener noreferrer">Build a React app from scratch</a></li><li><a href="https://vite.dev/guide/" target="_blank" rel="noopener noreferrer">Vite Guide</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Ki&#7871;n th&#7913;c c&ocirc;ng ngh&#7879;</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Wi-Fi 7 l&agrave; g&igrave;? Khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p router v&agrave; thi&#7871;t b&#7883;?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Wi-Fi 7, 802.11be, MLO, 6 GHz, router</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Wi-Fi 7, 802.11be, MLO, 6 GHz, router</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Hi&#7875;u c&aacute;c &#273;i&#7875;m m&#7899;i c&#7911;a Wi-Fi 7 v&agrave; c&aacute;ch quy&#7871;t &#273;&#7883;nh c&oacute; n&ecirc;n n&acirc;ng c&#7845;p router, thi&#7871;t b&#7883; hay &#273;&#432;&#7901;ng truy&#7873;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/ket-noi-wifi-esim.jpg" alt="Wi-Fi 7 l&agrave; g&igrave;? Khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p router v&agrave; thi&#7871;t b&#7883;?" width="1440" height="810"></p><h1>Wi-Fi 7 l&agrave; g&igrave;? Khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p router v&agrave; thi&#7871;t b&#7883;?</h1><p><strong>Wi-Fi 7 kh&ocirc;ng ch&#7881; t&#259;ng t&#7889;c &#273;&#7897; t&#7889;i &#273;a. Chu&#7849;n 802.11be c&ograve;n h&#432;&#7899;ng t&#7899;i &#273;&#7897; tr&#7877; th&#7845;p v&agrave; k&#7871;t n&#7889;i &#7893;n &#273;&#7883;nh h&#417;n trong m&ocirc;i tr&#432;&#7901;ng c&oacute; nhi&#7873;u thi&#7871;t b&#7883;.</strong></p><h2>&#272;i&#7875;m m&#7899;i quan tr&#7885;ng</h2><p>K&ecirc;nh 320 MHz t&#259;ng b&#259;ng th&ocirc;ng tr&ecirc;n d&#7843;i 6 GHz &#7903; th&#7883; tr&#432;&#7901;ng cho ph&eacute;p. Multi-Link Operation c&oacute; th&#7875; ph&#7889;i h&#7907;p nhi&#7873;u li&ecirc;n k&#7871;t, 4K-QAM mang nhi&#7873;u d&#7919; li&#7879;u h&#417;n khi t&iacute;n hi&#7879;u t&#7889;t, c&ograve;n Multi-RU s&#7917; d&#7909;ng ph&#7893; linh ho&#7841;t h&#417;n.</p><h2>Khi n&agrave;o &#273;&aacute;ng n&acirc;ng c&#7845;p?</h2><p>N&ecirc;n c&acirc;n nh&#7855;c khi truy&#7873;n t&#7879;p n&#7897;i b&#7897; l&#7899;n, d&ugrave;ng Internet &#273;a gigabit, ch&#417;i game ho&#7863;c stream nh&#7841;y v&#7899;i &#273;&#7897; tr&#7877; v&agrave; &#273;&atilde; c&oacute; nhi&#7873;u m&aacute;y kh&aacute;ch t&#432;&#417;ng th&iacute;ch. V&#7899;i &#273;&#432;&#7901;ng truy&#7873;n d&#432;&#7899;i 1 Gbps, t&#7889;i &#432;u v&#7883; tr&iacute; router ho&#7863;c th&ecirc;m access point th&#432;&#7901;ng &#273;&aacute;ng ti&#7873;n h&#417;n.</p><h2>Checklist mua router</h2><p>Ki&#7875;m tra kh&#7843; n&#259;ng d&ugrave;ng 6 GHz, t&#7889;c &#273;&#7897; c&#7893;ng WAN/LAN, WPA3, th&#7901;i gian c&#7853;p nh&#7853;t b&#7843;o m&#7853;t v&agrave; v&ugrave;ng ph&#7911; th&#7921;c t&#7871;. Thi&#7871;t b&#7883; Wi-Fi c&#361; v&#7851;n k&#7871;t n&#7889;i &#273;&#432;&#7907;c nh&#432;ng kh&ocirc;ng nh&#7853;n to&agrave;n b&#7897; l&#7907;i &iacute;ch c&#7911;a Wi-Fi 7.</p><h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://www.wi-fi.org/discover-wi-fi/wi-fi-certified-7" target="_blank" rel="noopener noreferrer">www.wi-fi.org</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

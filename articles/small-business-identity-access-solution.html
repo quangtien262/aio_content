@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; t&agrave;i kho&#7843;n cho doanh nghi&#7879;p nh&#7887;</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">qu&#7843;n l&yacute; t&agrave;i kho&#7843;n doanh nghi&#7879;p, password manager, MFA, SSO, passkey, offboarding, qu&#7843;n l&yacute; truy c&#7853;p</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Identity Management, Password Manager, MFA, SSO, Passkey, Access Control, Offboarding, SME Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">X&acirc;y d&#7921;ng gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; t&agrave;i kho&#7843;n cho doanh nghi&#7879;p nh&#7887; v&#7899;i password manager, MFA, SSO, ph&acirc;n quy&#7873;n v&agrave; quy tr&igrave;nh offboarding an to&agrave;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/small-business-identity-access-solution.jpg" alt="Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; t&agrave;i kho&#7843;n cho doanh nghi&#7879;p nh&#7887;: Password manager, MFA, SSO v&agrave; offboarding" width="1440" height="810"></p><h1>Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; t&agrave;i kho&#7843;n cho doanh nghi&#7879;p nh&#7887;: Password manager, MFA, SSO v&agrave; offboarding</h1><p><strong>R&#7911;i ro t&agrave;i kho&#7843;n trong doanh nghi&#7879;p nh&#7887; th&#432;&#7901;ng kh&ocirc;ng b&#7855;t &#273;&#7847;u t&#7915; k&#7929; thu&#7853;t ph&#7913;c t&#7841;p, m&agrave; t&#7915; m&#7853;t kh&#7849;u d&ugrave;ng chung, quy&#7873;n kh&ocirc;ng &#273;&#432;&#7907;c thu h&#7891;i v&agrave; t&agrave;i kho&#7843;n quan tr&#7885;ng ch&#7881; m&#7897;t ng&#432;&#7901;i bi&#7871;t.</strong> M&#7897;t gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; danh t&iacute;nh t&#7889;t ph&#7843;i gi&uacute;p nh&acirc;n vi&ecirc;n &#273;&#259;ng nh&#7853;p thu&#7853;n ti&#7879;n h&#417;n, &#273;&#7891;ng th&#7901;i cho doanh nghi&#7879;p bi&#7871;t ai c&oacute; quy&#7873;n g&igrave; v&agrave; c&oacute; th&#7875; thu h&#7891;i quy&#7873;n nhanh khi c&#7847;n.</p>
+
+<h2>B&#7889;n v&#7845;n &#273;&#7873; c&#7847;n gi&#7843;i quy&#7871;t</h2>
+<ul><li><strong>M&#7853;t kh&#7849;u ph&acirc;n t&aacute;n:</strong> n&#7857;m trong tr&igrave;nh duy&#7879;t c&aacute; nh&acirc;n, b&#7843;ng t&iacute;nh, chat ho&#7863;c tr&iacute; nh&#7899;.</li><li><strong>T&agrave;i kho&#7843;n d&ugrave;ng chung:</strong> kh&ocirc;ng bi&#7871;t ai &#273;&atilde; &#273;&#259;ng nh&#7853;p ho&#7863;c thay &#273;&#7893;i d&#7919; li&#7879;u.</li><li><strong>MFA thi&#7871;u nh&#7845;t qu&aacute;n:</strong> t&agrave;i kho&#7843;n quan tr&#7885;ng v&#7851;n ch&#7881; c&oacute; m&#7853;t kh&#7849;u ho&#7863;c SMS.</li><li><strong>Offboarding kh&ocirc;ng &#273;&#7847;y &#273;&#7911;:</strong> nh&acirc;n s&#7921; ngh&#7881; vi&#7879;c nh&#432;ng token, API key, email chuy&#7875;n ti&#7871;p v&agrave; quy&#7873;n &#7913;ng d&#7909;ng v&#7851;n c&ograve;n.</li></ul>
+<p>M&#7909;c ti&ecirc;u kh&ocirc;ng ph&#7843;i mua c&agrave;ng nhi&#7873;u c&ocirc;ng c&#7909; c&agrave;ng t&#7889;t. M&#7909;c ti&ecirc;u l&agrave; t&#7841;o m&#7897;t ngu&#7891;n danh t&iacute;nh &#273;&aacute;ng tin c&#7853;y, gi&#7843;m s&#7889; l&#7847;n nh&#7853;p m&#7853;t kh&#7849;u, &aacute;p d&#7909;ng x&aacute;c th&#7921;c m&#7841;nh v&agrave; qu&#7843;n l&yacute; to&agrave;n b&#7897; v&ograve;ng &#273;&#7901;i truy c&#7853;p.</p>
+
+<h2>Ki&#7871;n tr&uacute;c ph&ugrave; h&#7907;p cho doanh nghi&#7879;p nh&#7887;</h2>
+<p>M&#7897;t m&ocirc; h&igrave;nh th&#7921;c d&#7909;ng c&oacute; b&#7889;n l&#7899;p:</p>
+<ol><li><strong>Directory/Identity Provider:</strong> n&#417;i qu&#7843;n l&yacute; t&agrave;i kho&#7843;n nh&acirc;n vi&ecirc;n v&agrave; nh&oacute;m.</li><li><strong>SSO:</strong> d&ugrave;ng m&#7897;t danh t&iacute;nh doanh nghi&#7879;p &#273;&#7875; truy c&#7853;p c&aacute;c &#7913;ng d&#7909;ng h&#7895; tr&#7907;.</li><li><strong>Password manager doanh nghi&#7879;p:</strong> l&#432;u credential cho h&#7879; th&#7889;ng ch&#432;a h&#7895; tr&#7907; SSO v&agrave; chia s&#7867; qua vault, kh&ocirc;ng g&#7917;i m&#7853;t kh&#7849;u.</li><li><strong>MFA ho&#7863;c passkey:</strong> b&#7843;o v&#7879; &#273;&#259;ng nh&#7853;p, &#432;u ti&ecirc;n ph&#432;&#417;ng th&#7913;c ch&#7889;ng phishing cho t&agrave;i kho&#7843;n quan tr&#7885;ng.</li></ol>
+<blockquote>SSO kh&ocirc;ng lo&#7841;i b&#7887; nhu c&#7847;u password manager. Nhi&#7873;u website, thi&#7871;t b&#7883;, t&agrave;i kho&#7843;n h&#7841; t&#7847;ng v&agrave; secret kh&#7849;n c&#7845;p v&#7851;n ch&#432;a h&#7895; tr&#7907; federation.</blockquote>
+
+<h2>1. Ki&#7875;m k&ecirc; t&agrave;i kho&#7843;n tr&#432;&#7899;c khi ch&#7885;n c&ocirc;ng c&#7909;</h2>
+<p>T&#7841;o danh s&aacute;ch t&#7889;i thi&#7875;u g&#7891;m &#7913;ng d&#7909;ng, ch&#7911; s&#7903; h&#7919;u nghi&#7879;p v&#7909;, admin, h&igrave;nh th&#7913;c &#273;&#259;ng nh&#7853;p, MFA, d&#7919; li&#7879;u ch&#7913;a b&ecirc;n trong, chi ph&iacute; v&agrave; c&aacute;ch thu h&#7891;i. &#272;&#7863;c bi&#7879;t t&igrave;m:</p>
+<ul><li>T&agrave;i kho&#7843;n t&#7841;o b&#7857;ng email c&aacute; nh&acirc;n.</li><li>T&agrave;i kho&#7843;n admin chung ho&#7863;c kh&ocirc;ng r&otilde; ch&#7911;.</li><li>&#7912;ng d&#7909;ng t&#7921; gia h&#7841;n nh&#432;ng kh&ocirc;ng c&ograve;n ng&#432;&#7901;i d&ugrave;ng.</li><li>API key, SSH key v&agrave; service account t&#7891;n t&#7841;i l&acirc;u.</li><li>Email alias ho&#7863;c forwarding ra ngo&agrave;i t&#7893; ch&#7913;c.</li><li>T&agrave;i kho&#7843;n nh&agrave; cung c&#7845;p c&oacute; th&#7875; truy c&#7853;p d&#7919; li&#7879;u kh&aacute;ch h&agrave;ng.</li></ul>
+<p>X&#7871;p h&#7841;ng theo t&aacute;c &#273;&#7897;ng: email v&agrave; identity provider &#273;&#7913;ng &#273;&#7847;u v&igrave; c&oacute; th&#7875; reset nhi&#7873;u t&agrave;i kho&#7843;n kh&aacute;c; ti&#7871;p theo l&agrave; t&agrave;i ch&iacute;nh, domain/DNS, cloud, source code, CRM v&agrave; backup.</p>
+
+<h2>2. Ch&#7885;n password manager doanh nghi&#7879;p</h2>
+<p>Kh&ocirc;ng d&ugrave;ng m&#7897;t vault c&aacute; nh&acirc;n r&#7891;i chia master password cho c&#7843; nh&oacute;m. S&#7843;n ph&#7849;m d&agrave;nh cho doanh nghi&#7879;p n&ecirc;n c&oacute;:</p>
+<ul><li>M&#7895;i ng&#432;&#7901;i c&oacute; t&agrave;i kho&#7843;n ri&ecirc;ng v&agrave; MFA.</li><li>Vault ho&#7863;c collection theo ph&ograve;ng ban, d&#7921; &aacute;n v&agrave; m&#7913;c nh&#7841;y c&#7843;m.</li><li>Ph&acirc;n quy&#7873;n xem, d&ugrave;ng, s&#7917;a v&agrave; qu&#7843;n tr&#7883;.</li><li>Audit log, c&#7843;nh b&aacute;o m&#7853;t kh&#7849;u y&#7871;u ho&#7863;c t&aacute;i s&#7917; d&#7909;ng.</li><li>Thu h&#7891;i thi&#7871;t b&#7883; v&agrave; session khi nh&acirc;n s&#7921; ngh&#7881; vi&#7879;c.</li><li>Kh&ocirc;i ph&#7909;c qu&#7843;n tr&#7883; c&oacute; ki&#7875;m so&aacute;t, kh&ocirc;ng ph&#7909; thu&#7897;c m&#7897;t ng&#432;&#7901;i.</li><li>Export/backup v&agrave; k&#7871; ho&#7841;ch chuy&#7875;n &#273;&#7893;i nh&agrave; cung c&#7845;p.</li><li>H&#7895; tr&#7907; passkey, extension v&agrave; n&#7873;n t&#7843;ng m&agrave; doanh nghi&#7879;p s&#7917; d&#7909;ng.</li></ul>
+<p>NIST ghi nh&#7853;n password manager gi&uacute;p t&#7841;o m&#7853;t kh&#7849;u d&agrave;i, ng&#7851;u nhi&ecirc;n v&agrave; kh&aacute;c nhau cho t&#7915;ng d&#7883;ch v&#7909;. &#272;i&#7875;m t&#7853;p trung n&agrave;y c&#361;ng khi&#7871;n vault tr&#7903; th&agrave;nh m&#7909;c ti&ecirc;u gi&aacute; tr&#7883; cao, v&igrave; v&#7853;y master passphrase ph&#7843;i m&#7841;nh v&agrave; t&agrave;i kho&#7843;n vault ph&#7843;i b&#7853;t MFA ch&#7889;ng phishing khi c&oacute; th&#7875;.</p>
+
+<h2>3. Ch&iacute;nh s&aacute;ch m&#7853;t kh&#7849;u th&#7921;c t&#7871;</h2>
+<p>Kh&ocirc;ng &eacute;p nh&acirc;n vi&ecirc;n &#273;&#7893;i m&#7853;t kh&#7849;u &#273;&#7883;nh k&#7923; n&#7871;u kh&ocirc;ng c&oacute; d&#7845;u hi&#7879;u l&#7897; l&#7885;t, v&agrave; kh&ocirc;ng d&#7921;a v&agrave;o quy t&#7855;c h&igrave;nh th&#7913;c nh&#432; b&#7855;t bu&#7897;c &#273;&#7893;i ch&#7919; hoa, s&#7889; v&agrave; k&yacute; t&#7921; theo chu k&#7923;. Thay v&agrave;o &#273;&oacute;:</p>
+<ul><li>D&ugrave;ng m&#7853;t kh&#7849;u sinh ng&#7851;u nhi&ecirc;n, d&agrave;i v&agrave; duy nh&#7845;t t&#7915; password manager.</li><li>V&#7899;i master password ph&#7843;i nh&#7899;, d&ugrave;ng passphrase d&agrave;i v&agrave; kh&ocirc;ng t&aacute;i s&#7917; d&#7909;ng.</li><li>Ch&#7863;n m&#7853;t kh&#7849;u ph&#7893; bi&#7871;n ho&#7863;c &#273;&atilde; xu&#7845;t hi&#7879;n trong d&#7919; li&#7879;u r&ograve; r&#7881;.</li><li>Cho ph&eacute;p paste v&agrave; autofill &#273;&#7875; h&#7895; tr&#7907; password manager.</li><li>Rate-limit &#273;&#259;ng nh&#7853;p v&agrave; c&#7843;nh b&aacute;o h&agrave;nh vi b&#7845;t th&#432;&#7901;ng.</li><li>&#272;&#7893;i credential ngay khi c&oacute; b&#7857;ng ch&#7913;ng compromise ho&#7863;c nh&acirc;n s&#7921; li&ecirc;n quan r&#7901;i t&#7893; ch&#7913;c.</li></ul>
+
+<h2>4. MFA: &#432;u ti&ecirc;n ch&#7889;ng phishing</h2>
+<p>Kh&ocirc;ng ph&#7843;i MFA n&agrave;o c&#361;ng c&oacute; s&#7913;c b&#7843;o v&#7879; nh&#432; nhau. SMS v&agrave; m&atilde; OTP v&#7851;n t&#7889;t h&#417;n ch&#7881; d&ugrave;ng m&#7853;t kh&#7849;u nh&#432;ng c&oacute; th&#7875; b&#7883; phishing ho&#7863;c chuy&#7875;n SIM. NIST m&ocirc; t&#7843; WebAuthn/FIDO2 l&agrave; ph&#432;&#417;ng th&#7913;c ch&#7889;ng phishing v&igrave; credential &#273;&#432;&#7907;c r&agrave;ng bu&#7897;c v&#7899;i domain h&#7907;p l&#7879;.</p>
+<p>Th&#7913; t&#7921; &#432;u ti&ecirc;n th&#7921;c t&#7871;:</p>
+<ol><li>Passkey ho&#7863;c security key cho email, IdP, cloud, domain v&agrave; t&agrave;i kho&#7843;n admin.</li><li>Authenticator app v&#7899;i TOTP cho d&#7883;ch v&#7909; ch&#432;a h&#7895; tr&#7907; ph&#432;&#417;ng th&#7913;c ch&#7889;ng phishing.</li><li>Push MFA c&oacute; number matching v&agrave; context, n&#7871;u &#273;&#432;&#7907;c c&#7845;u h&igrave;nh t&#7889;t.</li><li>SMS ch&#7881; nh&#432; ph&#432;&#417;ng &aacute;n chuy&#7875;n ti&#7871;p ho&#7863;c recovery c&oacute; ki&#7875;m so&aacute;t.</li></ol>
+<p>T&agrave;i kho&#7843;n admin n&ecirc;n c&oacute; hai authenticator v&#7853;t l&yacute; ho&#7863;c hai thi&#7871;t b&#7883; &#273;&#7897;c l&#7853;p. M&#7897;t thi&#7871;t b&#7883; &#273;&#432;&#7907;c d&ugrave;ng h&#7857;ng ng&agrave;y, thi&#7871;t b&#7883; d&#7921; ph&ograve;ng ni&ecirc;m phong &#7903; v&#7883; tr&iacute; an to&agrave;n.</p>
+
+<h2>5. D&ugrave;ng SSO &#7903; n&#417;i t&#7841;o ra gi&aacute; tr&#7883;</h2>
+<p>SSO gi&uacute;p v&ocirc; hi&#7879;u h&oacute;a m&#7897;t danh t&iacute;nh trung t&acirc;m &#273;&#7875; c&#7855;t quy&#7873;n tr&ecirc;n nhi&#7873;u &#7913;ng d&#7909;ng, gi&#7843;m s&#7889; m&#7853;t kh&#7849;u v&agrave; cho ph&eacute;p &aacute;p ch&iacute;nh s&aacute;ch &#273;&#259;ng nh&#7853;p th&#7889;ng nh&#7845;t. &#431;u ti&ecirc;n k&#7871;t n&#7889;i SSO cho &#7913;ng d&#7909;ng ch&#7913;a d&#7919; li&#7879;u nh&#7841;y c&#7843;m, nhi&#7873;u ng&#432;&#7901;i d&ugrave;ng ho&#7863;c c&oacute; thay &#273;&#7893;i nh&acirc;n s&#7921; th&#432;&#7901;ng xuy&ecirc;n.</p>
+<p>Tr&#432;&#7899;c khi mua g&oacute;i cao h&#417;n ch&#7881; &#273;&#7875; c&oacute; SSO, t&iacute;nh t&#7893;ng chi ph&iacute;: ph&iacute; license, th&#7901;i gian c&#7845;p/thu h&#7891;i th&#7911; c&ocirc;ng, r&#7911;i ro t&agrave;i kho&#7843;n s&oacute;t v&agrave; chi ph&iacute; audit. V&#7899;i &#7913;ng d&#7909;ng &iacute;t r&#7911;i ro, password manager c&ugrave;ng quy tr&igrave;nh offboarding c&oacute; th&#7875; &#273;&#7911;; v&#7899;i email, CRM, source code ho&#7863;c cloud, SSO th&#432;&#7901;ng &#273;&aacute;ng gi&aacute; h&#417;n.</p>
+
+<h2>6. Ph&acirc;n quy&#7873;n theo nh&oacute;m, kh&ocirc;ng theo t&#7915;ng ng&#432;&#7901;i</h2>
+<p>T&#7841;o nh&oacute;m theo vai tr&ograve; nh&#432; Finance, Sales, Engineering v&agrave; External Contractors. G&aacute;n quy&#7873;n &#7913;ng d&#7909;ng ho&#7863;c vault cho nh&oacute;m, sau &#273;&oacute; th&ecirc;m ng&#432;&#7901;i v&agrave;o nh&oacute;m. C&aacute;ch n&agrave;y gi&#7843;m quy&#7873;n s&oacute;t v&agrave; l&agrave;m review d&#7877; h&#417;n.</p>
+<p>&Aacute;p d&#7909;ng least privilege: quy&#7873;n admin ch&#7881; d&ugrave;ng khi c&#7847;n; t&agrave;i kho&#7843;n th&#432;&#7901;ng d&ugrave;ng cho c&ocirc;ng vi&#7879;c h&#7857;ng ng&agrave;y. V&#7899;i h&#7879; th&#7889;ng quan tr&#7885;ng, t&aacute;ch t&agrave;i kho&#7843;n admin kh&#7887;i t&agrave;i kho&#7843;n email th&ocirc;ng th&#432;&#7901;ng v&agrave; ghi audit log cho thay &#273;&#7893;i quy&#7873;n.</p>
+
+<h2>7. Onboarding c&oacute; th&#7875; l&#7863;p l&#7841;i</h2>
+<ol><li>Qu&#7843;n l&yacute; x&aacute;c nh&#7853;n vai tr&ograve;, ng&agrave;y b&#7855;t &#273;&#7847;u v&agrave; &#7913;ng d&#7909;ng c&#7847;n d&ugrave;ng.</li><li>T&#7841;o t&agrave;i kho&#7843;n b&#7857;ng email doanh nghi&#7879;p, kh&ocirc;ng d&ugrave;ng email c&aacute; nh&acirc;n.</li><li>Th&ecirc;m v&agrave;o nh&oacute;m quy&#7873;n chu&#7849;n, tr&aacute;nh c&#7845;p t&#7915;ng quy&#7873;n ng&#7851;u h&#7913;ng.</li><li>&#272;&#259;ng k&yacute; &iacute;t nh&#7845;t hai ph&#432;&#417;ng th&#7913;c recovery ph&ugrave; h&#7907;p.</li><li>H&#432;&#7899;ng d&#7851;n password manager, MFA, nh&#7853;n bi&#7871;t phishing v&agrave; c&aacute;ch b&aacute;o m&#7845;t thi&#7871;t b&#7883;.</li><li>Y&ecirc;u c&#7847;u &#273;&#7893;i secret t&#7841;m v&agrave; x&aacute;c minh &#273;&#259;ng nh&#7853;p.</li><li>L&#432;u ng&#432;&#7901;i ph&ecirc; duy&#7879;t, th&#7901;i gian v&agrave; quy&#7873;n &#273;&atilde; c&#7845;p.</li></ol>
+
+<h2>8. Offboarding trong ng&agrave;y nh&acirc;n s&#7921; r&#7901;i &#273;i</h2>
+<p>Offboarding ph&#7843;i c&oacute; owner v&agrave; th&#7901;i &#273;i&#7875;m r&otilde; r&agrave;ng gi&#7919;a HR, qu&#7843;n l&yacute; v&agrave; IT:</p>
+<ol><li>V&ocirc; hi&#7879;u h&oacute;a t&agrave;i kho&#7843;n IdP/email v&agrave; thu h&#7891;i session.</li><li>Thu h&#7891;i thi&#7871;t b&#7883;, security key, VPN v&agrave; certificate.</li><li>X&oacute;a kh&#7887;i nh&oacute;m, vault, repository, cloud v&agrave; c&ocirc;ng c&#7909; t&agrave;i ch&iacute;nh.</li><li>Chuy&#7875;n ownership c&#7911;a file, l&#7883;ch, automation, dashboard v&agrave; t&agrave;i kho&#7843;n qu&#7843;ng c&aacute;o.</li><li>Xoay m&#7853;t kh&#7849;u d&ugrave;ng chung, API key, SSH key v&agrave; webhook m&agrave; ng&#432;&#7901;i &#273;&oacute; t&#7915;ng ti&#7871;p c&#7853;n.</li><li>Ki&#7875;m tra forwarding rule, OAuth grant v&agrave; personal access token.</li><li>Gi&#7919; d&#7919; li&#7879;u theo ch&iacute;nh s&aacute;ch ph&aacute;p l&yacute;, sau &#273;&oacute; x&oacute;a &#273;&uacute;ng h&#7841;n.</li><li>Ghi l&#7841;i ng&#432;&#7901;i th&#7921;c hi&#7879;n v&agrave; b&#7857;ng ch&#7913;ng ho&agrave;n t&#7845;t.</li></ol>
+<blockquote>&#272;&#7893;i m&#7853;t kh&#7849;u email kh&ocirc;ng thu h&#7891;i m&#7885;i quy&#7873;n. Session, OAuth token, API key v&agrave; SSH key c&oacute; v&ograve;ng &#273;&#7901;i ri&ecirc;ng.</blockquote>
+
+<h2>9. T&agrave;i kho&#7843;n kh&#7849;n c&#7845;p v&agrave; recovery</h2>
+<p>T&#7841;o t&#7889;i thi&#7875;u hai t&agrave;i kho&#7843;n break-glass cho identity provider ho&#7863;c cloud quan tr&#7885;ng. Kh&ocirc;ng d&ugrave;ng ch&uacute;ng h&#7857;ng ng&agrave;y, kh&ocirc;ng g&#7855;n v&agrave;o email c&#7911;a m&#7897;t nh&acirc;n vi&ecirc;n, b&#7843;o v&#7879; b&#7857;ng security key ri&ecirc;ng v&agrave; c&#7843;nh b&aacute;o m&#7895;i l&#7847;n &#273;&#259;ng nh&#7853;p.</p>
+<p>L&#432;u recovery code m&atilde; h&oacute;a v&agrave; m&#7897;t b&#7843;n offline &#273;&#432;&#7907;c ki&#7875;m so&aacute;t. M&#7895;i qu&yacute;, x&aacute;c minh t&agrave;i kho&#7843;n c&ograve;n ho&#7841;t &#273;&#7897;ng, credential d&#7921; ph&ograve;ng c&ograve;n truy c&#7853;p &#273;&#432;&#7907;c v&agrave; danh s&aacute;ch ng&#432;&#7901;i &#273;&#432;&#7907;c ph&eacute;p s&#7917; d&#7909;ng v&#7851;n &#273;&uacute;ng. Recovery qu&aacute; d&#7877; c&oacute; th&#7875; tr&#7903; th&agrave;nh &#273;&#432;&#7901;ng v&ograve;ng b&#7887; qua MFA.</p>
+
+<h2>10. T&agrave;i kho&#7843;n d&#7883;ch v&#7909; v&agrave; secret m&aacute;y-m&aacute;y</h2>
+<p>Kh&ocirc;ng d&ugrave;ng t&agrave;i kho&#7843;n nh&acirc;n vi&ecirc;n cho automation. Service account c&#7847;n t&ecirc;n m&ocirc; t&#7843; m&#7909;c &#273;&iacute;ch, owner, quy&#7873;n t&#7889;i thi&#7875;u, ng&agrave;y h&#7871;t h&#7841;n ho&#7863;c review, v&agrave; secret n&#7857;m trong secret manager hay CI/CD vault thay v&igrave; source code.</p>
+<p>Khi n&#7873;n t&#7843;ng h&#7895; tr&#7907; workload identity ho&#7863;c credential ng&#7855;n h&#7841;n, &#432;u ti&ecirc;n ch&uacute;ng thay cho API key s&#7889;ng l&acirc;u. Theo d&otilde;i l&#7847;n s&#7917; d&#7909;ng cu&#7889;i &#273;&#7875; ph&aacute;t hi&#7879;n secret b&#7887; qu&ecirc;n v&agrave; xoay key theo r&#7911;i ro, kh&ocirc;ng ch&#7881; theo l&#7883;ch m&aacute;y m&oacute;c.</p>
+
+<h2>11. Review quy&#7873;n &#273;&#7883;nh k&#7923;</h2>
+<p>M&#7895;i qu&yacute;, g&#7917;i danh s&aacute;ch quy&#7873;n cho manager v&agrave; owner &#7913;ng d&#7909;ng x&aacute;c nh&#7853;n. T&#7853;p trung v&agrave;o admin, t&agrave;i kho&#7843;n kh&ocirc;ng &#273;&#259;ng nh&#7853;p, ng&#432;&#7901;i chuy&#7875;n ph&ograve;ng ban, contractor h&#7871;t h&#7907;p &#273;&#7891;ng v&agrave; &#7913;ng d&#7909;ng kh&ocirc;ng c&ograve;n owner. Review ph&#7843;i d&#7851;n t&#7899;i thu h&#7891;i th&#7921;c t&#7871;, kh&ocirc;ng ch&#7881; k&yacute; x&aacute;c nh&#7853;n.</p>
+<p>Theo d&otilde;i c&aacute;c ch&#7881; s&#7889; &#273;&#417;n gi&#7843;n: t&#7927; l&#7879; MFA, t&#7927; l&#7879; ph&#432;&#417;ng th&#7913;c ch&#7889;ng phishing, s&#7889; t&agrave;i kho&#7843;n admin, th&#7901;i gian offboarding, s&#7889; t&agrave;i kho&#7843;n kh&ocirc;ng owner v&agrave; s&#7889; secret qu&aacute; h&#7841;n review.</p>
+
+<h2>L&#7897; tr&igrave;nh tri&#7875;n khai 30 ng&agrave;y</h2>
+<ol><li><strong>Tu&#7847;n 1:</strong> ki&#7875;m k&ecirc; &#7913;ng d&#7909;ng, admin, account chung v&agrave; r&#7911;i ro.</li><li><strong>Tu&#7847;n 2:</strong> tri&#7875;n khai password manager, nh&#7853;p vault theo nh&oacute;m v&agrave; b&#7853;t MFA.</li><li><strong>Tu&#7847;n 3:</strong> k&#7871;t n&#7889;i SSO cho &#7913;ng d&#7909;ng quan tr&#7885;ng, chu&#7849;n h&oacute;a nh&oacute;m quy&#7873;n.</li><li><strong>Tu&#7847;n 4:</strong> ch&#7841;y th&#7917; onboarding/offboarding, ki&#7875;m tra break-glass v&agrave; s&#7917;a kho&#7843;ng tr&#7889;ng.</li></ol>
+<p>B&#7855;t &#273;&#7847;u v&#7899;i email, IdP, domain, cloud v&agrave; t&agrave;i ch&iacute;nh. Kh&ocirc;ng ch&#7901; ki&#7875;m k&ecirc; ho&agrave;n h&#7843;o m&#7899;i b&#7843;o v&#7879; c&aacute;c t&agrave;i kho&#7843;n c&oacute; kh&#7843; n&#259;ng reset ho&#7863;c chi&#7871;m quy&#7873;n to&agrave;n h&#7879; th&#7889;ng.</p>
+
+<h2>Checklist nghi&#7879;m thu</h2>
+<ol><li>M&#7895;i nh&acirc;n vi&ecirc;n c&oacute; danh t&iacute;nh ri&ecirc;ng; kh&ocirc;ng chia s&#7867; t&agrave;i kho&#7843;n c&aacute; nh&acirc;n.</li><li>Password manager doanh nghi&#7879;p c&oacute; vault theo nh&oacute;m v&agrave; audit log.</li><li>Email, IdP, cloud v&agrave; domain d&ugrave;ng MFA ch&#7889;ng phishing khi h&#7895; tr&#7907;.</li><li>Quy&#7873;n &#273;&#432;&#7907;c g&aacute;n qua nh&oacute;m v&agrave; c&oacute; owner ph&ecirc; duy&#7879;t.</li><li>Onboarding v&agrave; offboarding c&oacute; checklist, SLA v&agrave; b&#7857;ng ch&#7913;ng.</li><li>Session, OAuth token, API key v&agrave; SSH key n&#7857;m trong ph&#7841;m vi thu h&#7891;i.</li><li>C&oacute; hai &#273;&#432;&#7901;ng recovery ho&#7863;c break-glass &#273;&#432;&#7907;c ki&#7875;m th&#7917;.</li><li>Service account kh&ocirc;ng ph&#7909; thu&#7897;c t&agrave;i kho&#7843;n nh&acirc;n vi&ecirc;n.</li><li>Review quy&#7873;n &#273;&#432;&#7907;c th&#7921;c hi&#7879;n &iacute;t nh&#7845;t m&#7895;i qu&yacute;.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; t&agrave;i kho&#7843;n hi&#7879;u qu&#7843; kh&ocirc;ng ch&#7881; l&agrave; m&#7897;t password manager hay n&uacute;t b&#7853;t MFA. N&oacute; l&agrave; v&ograve;ng &#273;&#7901;i ho&agrave;n ch&#7881;nh t&#7915; c&#7845;p quy&#7873;n, s&#7917; d&#7909;ng, review &#273;&#7871;n thu h&#7891;i. V&#7899;i doanh nghi&#7879;p nh&#7887;, k&#7871;t h&#7907;p directory, SSO c&oacute; ch&#7885;n l&#7885;c, vault theo nh&oacute;m v&agrave; x&aacute;c th&#7921;c ch&#7889;ng phishing t&#7841;o ra m&#7913;c b&#7843;o v&#7879; cao m&agrave; v&#7851;n gi&#7919; v&#7853;n h&agrave;nh g&#7885;n nh&#7865;.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html" target="_blank" rel="noopener noreferrer">NIST SP 800-63B-4: Authentication and Authenticator Management</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b/authenticators/" target="_blank" rel="noopener noreferrer">NIST: Authenticator Requirements</a></li><li><a href="https://pages.nist.gov/800-63-FAQ/" target="_blank" rel="noopener noreferrer">NIST Digital Identity Guidelines FAQ</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

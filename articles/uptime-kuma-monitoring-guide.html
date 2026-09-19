@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i Uptime Kuma gi&aacute;m s&aacute;t website, API v&agrave; SSL</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Uptime Kuma, gi&aacute;m s&aacute;t website, uptime monitoring, Docker Compose, SSL monitoring, API monitoring, status page</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Uptime Kuma, Monitoring, Docker, Website, API, SSL, Guides</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n tri&#7875;n khai Uptime Kuma b&#7857;ng Docker Compose, c&#7845;u h&igrave;nh HTTPS reverse proxy, monitor website/API/SSL, c&#7843;nh b&aacute;o, status page, backup v&agrave; c&#7853;p nh&#7853;t.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/uptime-kuma-monitoring-guide.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i Uptime Kuma &#273;&#7875; gi&aacute;m s&aacute;t website, API v&agrave; SSL" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i Uptime Kuma &#273;&#7875; gi&aacute;m s&aacute;t website, API v&agrave; SSL</h1><p><strong>Website ho&#7841;t &#273;&#7897;ng khi b&#7841;n m&#7903; th&#7917; kh&ocirc;ng c&oacute; ngh&#297;a l&agrave; n&oacute; &#7893;n &#273;&#7883;nh su&#7889;t ng&agrave;y.</strong> M&#7897;t l&#7895;i DNS theo khu v&#7921;c, ch&#7913;ng ch&#7881; SSL s&#7855;p h&#7871;t h&#7841;n, API tr&#7843; n&#7897;i dung sai ho&#7863;c m&aacute;y ch&#7911; ch&#7853;p ch&#7901;n c&oacute; th&#7875; k&eacute;o d&agrave;i h&agrave;ng gi&#7901; n&#7871;u kh&ocirc;ng c&oacute; gi&aacute;m s&aacute;t ch&#7911; &#273;&#7897;ng. Uptime Kuma l&agrave; c&ocirc;ng c&#7909; self-hosted gi&uacute;p ki&#7875;m tra d&#7883;ch v&#7909; &#273;&#7883;nh k&#7923;, g&#7917;i c&#7843;nh b&aacute;o v&agrave; t&#7841;o status page m&agrave; kh&ocirc;ng c&#7847;n x&acirc;y c&#7843; h&#7879; th&#7889;ng observability ph&#7913;c t&#7841;p.</p>
+<p>H&#432;&#7899;ng d&#7851;n n&agrave;y tri&#7875;n khai Uptime Kuma b&#7857;ng Docker Compose tr&ecirc;n Ubuntu/Debian, &#273;&#7863;t sau Nginx v&agrave; HTTPS. V&iacute; d&#7909; d&ugrave;ng nh&aacute;nh image major <code>2</code>; tr&#432;&#7899;c production h&atilde;y xem release note v&agrave; th&#7917; b&#7843;n c&#7853;p nh&#7853;t tr&ecirc;n backup.</p>
+
+<h2>Uptime Kuma ph&ugrave; h&#7907;p v&#7899;i nhu c&#7847;u n&agrave;o?</h2>
+<p>C&ocirc;ng c&#7909; ph&ugrave; h&#7907;p &#273;&#7875; ki&#7875;m tra t&#7915; b&ecirc;n ngo&agrave;i &#7913;ng d&#7909;ng:</p>
+<ul>
+<li>HTTP/HTTPS, keyword ho&#7863;c JSON response c&#7911;a website v&agrave; API.</li>
+<li>TCP port, ping, DNS v&agrave; m&#7897;t s&#7889; d&#7883;ch v&#7909; h&#7841; t&#7847;ng.</li>
+<li>Ng&agrave;y h&#7871;t h&#7841;n ch&#7913;ng ch&#7881; TLS.</li>
+<li>Heartbeat/push monitor cho cron job ho&#7863;c backup job.</li>
+<li>Status page c&ocirc;ng khai ho&#7863;c n&#7897;i b&#7897;.</li>
+<li>C&#7843;nh b&aacute;o qua email, webhook v&agrave; nhi&#7873;u n&#7873;n t&#7843;ng nh&#7855;n tin.</li>
+</ul>
+<p>Uptime Kuma kh&ocirc;ng thay th&#7871; log, metric, trace hay APM. N&oacute; tr&#7843; l&#7901;i &ldquo;d&#7883;ch v&#7909; c&oacute; d&ugrave;ng &#273;&#432;&#7907;c t&#7915; &#273;i&#7875;m quan s&aacute;t n&agrave;y kh&ocirc;ng?&rdquo;, c&ograve;n nguy&ecirc;n nh&acirc;n CPU, query ho&#7863;c code n&agrave;o g&acirc;y l&#7895;i v&#7851;n c&#7847;n c&ocirc;ng c&#7909; kh&aacute;c.</p>
+
+<h2>1. Ch&#7885;n v&#7883; tr&iacute; &#273;&#7863;t m&aacute;y gi&aacute;m s&aacute;t</h2>
+<p>Kh&ocirc;ng n&ecirc;n &#273;&#7863;t Uptime Kuma tr&ecirc;n c&ugrave;ng m&aacute;y ch&#7911; v&#7899;i website duy nh&#7845;t c&#7847;n theo d&otilde;i. N&#7871;u m&aacute;y &#273;&oacute; m&#7845;t ngu&#7891;n ho&#7863;c m&#7845;t m&#7841;ng, c&#7843; d&#7883;ch v&#7909; v&agrave; c&ocirc;ng c&#7909; c&#7843;nh b&aacute;o &#273;&#7873;u bi&#7871;n m&#7845;t. T&#7889;t h&#417;n l&agrave; d&ugrave;ng VPS nh&#7887; &#7903; nh&agrave; cung c&#7845;p ho&#7863;c v&ugrave;ng m&#7841;ng kh&aacute;c.</p>
+<p>Chu&#7849;n b&#7883;:</p>
+<ul>
+<li>M&aacute;y Linux c&oacute; Docker Engine v&agrave; Docker Compose plugin.</li>
+<li>M&#7897;t subdomain ri&ecirc;ng, v&iacute; d&#7909; <code>status.example.com</code>.</li>
+<li>Firewall ch&#7881; m&#7903; SSH qu&#7843;n tr&#7883;, HTTP v&agrave; HTTPS khi c&#7847;n.</li>
+<li>N&#417;i l&#432;u backup ngo&agrave;i m&aacute;y gi&aacute;m s&aacute;t.</li>
+</ul>
+<p>Kh&ocirc;ng d&ugrave;ng &#273;&#432;&#7901;ng d&#7851;n con nh&#432; <code>example.com/uptime</code>; t&agrave;i li&#7879;u d&#7921; &aacute;n khuy&#7871;n ngh&#7883; domain ho&#7863;c subdomain ri&ecirc;ng.</p>
+
+<h2>2. T&#7841;o c&#7845;u tr&uacute;c th&#432; m&#7909;c</h2>
+<pre><code>sudo mkdir -p /opt/uptime-kuma/data
+cd /opt/uptime-kuma</code></pre>
+<p>Th&#432; m&#7909;c <code>data</code> gi&#7919; database, c&#7845;u h&igrave;nh monitor v&agrave; c&aacute;c d&#7919; li&#7879;u b&#7873;n v&#7919;ng. H&atilde;y gi&#7899;i h&#7841;n quy&#7873;n truy c&#7853;p cho t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; ph&ugrave; h&#7907;p v&agrave; kh&ocirc;ng &#273;&#432;a n&oacute; v&agrave;o Git.</p>
+
+<h2>3. T&#7841;o Docker Compose</h2>
+<p>T&#7841;o file <code>compose.yaml</code>:</p>
+<pre><code>services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - ./data:/app/data
+    security_opt:
+      - no-new-privileges:true</code></pre>
+<p>Binding <code>127.0.0.1</code> ng&#259;n c&#7893;ng 3001 l&#7897; tr&#7921;c ti&#7871;p ra Internet; ng&#432;&#7901;i d&ugrave;ng truy c&#7853;p qua reverse proxy HTTPS. Volume <code>/app/data</code> l&agrave; ph&#7847;n ph&#7843;i backup. Kh&ocirc;ng g&#7855;n Docker socket v&agrave;o container n&#7871;u kh&ocirc;ng d&ugrave;ng ch&#7913;c n&#259;ng c&#7847;n &#273;&#7871;n n&oacute;, v&igrave; socket c&oacute; quy&#7873;n r&#7845;t m&#7841;nh tr&ecirc;n host.</p>
+<pre><code>docker compose pull
+docker compose up -d
+docker compose ps
+docker compose logs --tail=100 uptime-kuma</code></pre>
+<p>Tr&ecirc;n ch&iacute;nh server, ki&#7875;m tra <code>curl -I http://127.0.0.1:3001</code>. N&#7871;u container restart li&ecirc;n t&#7909;c, xem log v&agrave; quy&#7873;n ghi th&#432; m&#7909;c data tr&#432;&#7899;c khi c&#7845;u h&igrave;nh proxy.</p>
+
+<h2>4. C&#7845;u h&igrave;nh Nginx reverse proxy v&agrave; WebSocket</h2>
+<p>Uptime Kuma d&ugrave;ng WebSocket, v&igrave; v&#7853;y proxy ph&#7843;i chuy&#7875;n c&aacute;c header n&acirc;ng c&#7845;p k&#7871;t n&#7889;i:</p>
+<pre><code>server {
+    listen 80;
+    server_name status.example.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 300;
+    }
+}</code></pre>
+<pre><code>sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+<p>T&#7841;o record DNS cho subdomain tr&#7887; v&#7873; VPS, sau &#273;&oacute; c&#7845;p ch&#7913;ng ch&#7881; b&#7857;ng Certbot ho&#7863;c c&ocirc;ng c&#7909; qu&#7843;n l&yacute; TLS ph&ugrave; h&#7907;p. Ch&#7881; m&#7903; trang qu&#7843;n tr&#7883; qua HTTPS. N&#7871;u &#273;&#7863;t sau Cloudflare hay proxy kh&aacute;c, x&aacute;c nh&#7853;n WebSocket &#273;&#432;&#7907;c b&#7853;t v&agrave; ki&#7875;m tra IP ngu&#7891;n trong log.</p>
+
+<h2>5. Kh&#7903;i t&#7841;o t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; an to&agrave;n</h2>
+<p>M&#7903; <code>https://status.example.com</code>, t&#7841;o t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; v&#7899;i m&#7853;t kh&#7849;u d&agrave;i v&agrave; duy nh&#7845;t. B&#7853;t x&aacute;c th&#7921;c hai b&#432;&#7899;c n&#7871;u phi&ecirc;n b&#7843;n &#273;ang d&ugrave;ng h&#7895; tr&#7907;, l&#432;u recovery code ngo&agrave;i server v&agrave; kh&ocirc;ng chia s&#7867; chung t&agrave;i kho&#7843;n.</p>
+<p>Trang qu&#7843;n tr&#7883; ch&#7913;a URL n&#7897;i b&#7897;, token, webhook v&agrave; l&#7883;ch s&#7917; s&#7921; c&#7889;. N&#7871;u kh&ocirc;ng c&#7847;n truy c&#7853;p c&ocirc;ng khai, h&atilde;y h&#7841;n ch&#7871; b&#7857;ng VPN, allowlist IP ho&#7863;c l&#7899;p x&aacute;c th&#7921;c b&#7893; sung. Status page c&ocirc;ng khai n&ecirc;n t&aacute;ch kh&#7887;i quy&#7873;n qu&#7843;n tr&#7883;.</p>
+
+<h2>6. T&#7841;o monitor website &#273;&uacute;ng c&aacute;ch</h2>
+<p>V&#7899;i website, monitor HTTPS t&#7899;i m&#7897;t endpoint nh&#7865; nh&#432;ng ki&#7875;m tra &#273;&#432;&#7907;c dependency quan tr&#7885;ng. Trang ch&#7911; c&oacute; th&#7875; tr&#7843; 200 t&#7915; cache ngay c&#7843; khi database h&#7887;ng. M&#7897;t health endpoint t&#7889;t n&ecirc;n ph&#7843;n &aacute;nh kh&#7843; n&#259;ng ph&#7909;c v&#7909; th&#7853;t nh&#432;ng kh&ocirc;ng ti&#7871;t l&#7897; secret.</p>
+<ul>
+<li><strong>URL:</strong> d&ugrave;ng HTTPS v&agrave; hostname th&#7853;t.</li>
+<li><strong>Interval:</strong> th&#432;&#7901;ng 60 gi&acirc;y l&agrave; &#273;&#7911;; ki&#7875;m tra qu&aacute; d&agrave;y g&acirc;y t&#7843;i v&agrave; nhi&#7877;u.</li>
+<li><strong>Retries:</strong> 2&ndash;3 l&#7847;n gi&uacute;p tr&aacute;nh c&#7843;nh b&aacute;o v&igrave; packet loss tho&aacute;ng qua.</li>
+<li><strong>Timeout:</strong> th&#7845;p h&#417;n interval v&agrave; ph&ugrave; h&#7907;p SLA.</li>
+<li><strong>Accepted status:</strong> ch&#7881; ch&#7845;p nh&#7853;n code ph&#7843;n &aacute;nh th&agrave;nh c&ocirc;ng th&#7921;c s&#7921;.</li>
+<li><strong>Certificate expiry:</strong> b&#7853;t c&#7843;nh b&aacute;o s&#7899;m &#273;&#7875; c&oacute; th&#7901;i gian s&#7917;a renewal.</li>
+</ul>
+<p>&#272;&#7915;ng t&#7921; &#273;&#7897;ng coi m&#7885;i redirect l&agrave; th&agrave;nh c&ocirc;ng. Redirect loop ho&#7863;c chuy&#7875;n sang trang &#273;&#259;ng nh&#7853;p c&oacute; th&#7875; che gi&#7845;u l&#7895;i endpoint.</p>
+
+<h2>7. Gi&aacute;m s&aacute;t API b&#7857;ng n&#7897;i dung ph&#7843;n h&#7891;i</h2>
+<p>M&#7897;t API c&oacute; th&#7875; tr&#7843; HTTP 200 nh&#432;ng body ch&#7913;a l&#7895;i. D&ugrave;ng keyword ho&#7863;c JSON query &#273;&#7875; ki&#7875;m tra t&iacute;n hi&#7879;u nghi&#7879;p v&#7909; &#7893;n &#273;&#7883;nh, v&iacute; d&#7909; tr&#432;&#7901;ng <code>status</code> b&#7857;ng <code>ok</code>.</p>
+<pre><code>GET https://api.example.com/health
+
+{
+  "status": "ok",
+  "database": "ok"
+}</code></pre>
+<p>Health endpoint kh&ocirc;ng n&ecirc;n g&#7885;i d&#7883;ch v&#7909; &#273;&#7855;t ti&#7873;n m&#7895;i ph&uacute;t ho&#7863;c tr&#7843; th&ocirc;ng tin phi&ecirc;n b&#7843;n, stack trace v&agrave; credential. N&#7871;u c&#7847;n header x&aacute;c th&#7921;c, d&ugrave;ng token ch&#7881; &#273;&#7885;c, ph&#7841;m vi t&#7889;i thi&#7875;u v&agrave; c&oacute; k&#7871; ho&#7841;ch rotation.</p>
+
+<h2>8. Monitor cron v&agrave; backup b&#7857;ng Push</h2>
+<p>V&#7899;i job ch&#7841;y theo l&#7883;ch, monitor Push h&#7919;u &iacute;ch h&#417;n ping m&aacute;y ch&#7911;. Job g&#7885;i URL &#273;&#432;&#7907;c c&#7845;p sau khi ho&agrave;n th&agrave;nh th&agrave;nh c&ocirc;ng:</p>
+<pre><code>#!/usr/bin/env sh
+set -eu
+
+/usr/local/bin/run-backup
+curl --fail --retry 3 \
+  "https://status.example.com/api/push/REDACTED?status=up&amp;msg=OK"</code></pre>
+<p>&#272;&#7863;t expected interval v&agrave; grace period l&#7899;n h&#417;n th&#7901;i gian ch&#7841;y th&ocirc;ng th&#432;&#7901;ng. URL push l&agrave; secret: kh&ocirc;ng ghi v&agrave;o log c&ocirc;ng khai, &#7843;nh ch&#7909;p ho&#7863;c repository. Ch&#7881; g&#7917;i t&iacute;n hi&#7879;u th&agrave;nh c&ocirc;ng sau khi &#273;&atilde; ki&#7875;m tra backup th&#7921;c s&#7921; ho&agrave;n t&#7845;t.</p>
+
+<h2>9. C&#7845;u h&igrave;nh c&#7843;nh b&aacute;o c&oacute; kh&#7843; n&#259;ng h&agrave;nh &#273;&#7897;ng</h2>
+<p>T&#7841;o notification channel r&#7891;i d&ugrave;ng n&uacute;t test tr&#432;&#7899;c khi g&#7855;n v&agrave;o monitor. N&ecirc;n c&oacute; &iacute;t nh&#7845;t m&#7897;t k&ecirc;nh kh&ocirc;ng ph&#7909; thu&#7897;c h&#7841; t&#7847;ng &#273;ang &#273;&#432;&#7907;c gi&aacute;m s&aacute;t. V&iacute; d&#7909;, n&#7871;u gi&aacute;m s&aacute;t mail server n&#7897;i b&#7897; th&igrave; &#273;&#7915;ng ch&#7881; g&#7917;i c&#7843;nh b&aacute;o qua ch&iacute;nh mail server &#273;&oacute;.</p>
+<p>Gi&#7843;m alert fatigue b&#7857;ng c&aacute;ch:</p>
+<ul>
+<li>Retry tr&#432;&#7899;c khi chuy&#7875;n tr&#7841;ng th&aacute;i DOWN.</li>
+<li>&#272;&#7863;t maintenance window cho th&#7901;i gian tri&#7875;n khai c&oacute; k&#7871; ho&#7841;ch.</li>
+<li>Ph&acirc;n nh&oacute;m theo production, staging, internal v&agrave; m&#7913;c &#273;&#7897; quan tr&#7885;ng.</li>
+<li>Ch&#7881; &#273;&aacute;nh th&#7913;c ng&#432;&#7901;i tr&#7921;c v&#7899;i d&#7883;ch v&#7909; c&oacute; runbook v&agrave; t&aacute;c &#273;&#7897;ng r&otilde;.</li>
+<li>Ki&#7875;m th&#7917; c&#7843;nh b&aacute;o DOWN v&agrave; RECOVERY &#273;&#7883;nh k&#7923;.</li>
+</ul>
+
+<h2>10. T&#7841;o status page</h2>
+<p>Status page n&ecirc;n tr&igrave;nh b&agrave;y d&#7883;ch v&#7909; theo ng&ocirc;n ng&#7919; ng&#432;&#7901;i d&ugrave;ng hi&#7875;u, ch&#7859;ng h&#7841;n Website, API, Thanh to&aacute;n, Email, thay v&igrave; hostname n&#7897;i b&#7897;. Ch&#7881; c&ocirc;ng khai monitor ph&ugrave; h&#7907;p; &#273;&#7915;ng &#273;&#7875; l&#7897; IP, t&ecirc;n server ho&#7863;c endpoint qu&#7843;n tr&#7883;.</p>
+<p>Tr&#7841;ng th&aacute;i t&#7921; &#273;&#7897;ng kh&ocirc;ng thay th&#7871; c&#7853;p nh&#7853;t s&#7921; c&#7889;. Khi c&oacute; incident, &#273;&#259;ng th&ocirc;ng b&aacute;o ng&#7855;n v&#7873; ph&#7841;m vi &#7843;nh h&#432;&#7903;ng, th&#7901;i &#273;i&#7875;m b&#7855;t &#273;&#7847;u v&agrave; l&#7847;n c&#7853;p nh&#7853;t ti&#7871;p theo. Kh&ocirc;ng suy &#273;o&aacute;n nguy&ecirc;n nh&acirc;n khi ch&#432;a x&aacute;c minh.</p>
+
+<h2>11. Backup d&#7919; li&#7879;u Uptime Kuma</h2>
+<p>Backup th&#432; m&#7909;c &#273;&#432;&#7907;c mount v&agrave;o <code>/app/data</code>. &#272;&#7875; c&oacute; b&#7843;n sao nh&#7845;t qu&aacute;n, d&#7915;ng container ng&#7855;n tr&#432;&#7899;c khi sao ch&eacute;p:</p>
+<pre><code>cd /opt/uptime-kuma
+docker compose stop uptime-kuma
+tar -czf /srv/backups/uptime-kuma-$(date +%F).tar.gz data
+docker compose start uptime-kuma</code></pre>
+<p>Chuy&#7875;n backup sang m&aacute;y kh&aacute;c, m&atilde; h&oacute;a v&agrave; &aacute;p d&#7909;ng retention. &#272;&#7883;nh k&#7923; restore v&agrave;o m&aacute;y th&#7917; nghi&#7879;m &#273;&#7875; x&aacute;c nh&#7853;n file d&ugrave;ng &#273;&#432;&#7907;c. Backup gi&aacute;m s&aacute;t c&#361;ng ch&#7913;a c&#7845;u h&igrave;nh notification v&agrave; token, n&ecirc;n c&#7847;n b&#7843;o v&#7879; nh&#432; secret.</p>
+
+<h2>12. C&#7853;p nh&#7853;t c&oacute; rollback</h2>
+<p>&#272;&#7885;c release note, &#273;&#7863;c bi&#7879;t khi &#273;&#7893;i major version. T&#7841;o backup tr&#432;&#7899;c m&#7895;i l&#7847;n c&#7853;p nh&#7853;t:</p>
+<pre><code>cd /opt/uptime-kuma
+docker compose pull
+docker compose up -d
+docker compose logs --tail=100 uptime-kuma</code></pre>
+<p>Ki&#7875;m tra login, monitor, notification v&agrave; status page sau c&#7853;p nh&#7853;t. Tr&aacute;nh d&ugrave;ng tag kh&ocirc;ng c&#7889; &#273;&#7883;nh trong m&ocirc;i tr&#432;&#7901;ng c&#7847;n thay &#273;&#7893;i c&oacute; ki&#7875;m so&aacute;t; c&oacute; th&#7875; pin phi&ecirc;n b&#7843;n &#273;&atilde; ki&#7875;m th&#7917; r&#7891;i n&acirc;ng theo l&#7883;ch. N&#7871;u ph&#7843;i rollback image, x&aacute;c nh&#7853;n database/data format v&#7851;n t&#432;&#417;ng th&iacute;ch v&#7899;i phi&ecirc;n b&#7843;n c&#361;.</p>
+
+<h2>13. C&aacute;c l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<ul>
+<li><strong>Dashboard m&#7845;t k&#7871;t n&#7889;i:</strong> reverse proxy thi&#7871;u header WebSocket ho&#7863;c timeout qu&aacute; ng&#7855;n.</li>
+<li><strong>Monitor b&aacute;o DOWN nh&#432;ng tr&igrave;nh duy&#7879;t m&#7903; &#273;&#432;&#7907;c:</strong> ki&#7875;m tra DNS, firewall v&agrave; route t&#7915; b&ecirc;n trong container, kh&ocirc;ng ph&#7843;i t&#7915; laptop.</li>
+<li><strong>Ch&#7881; l&#7895;i IPv6:</strong> Docker network ch&#432;a b&#7853;t IPv6 ho&#7863;c DNS tr&#7843; AAAA kh&ocirc;ng d&ugrave;ng &#273;&#432;&#7907;c.</li>
+<li><strong>SSL s&#7855;p h&#7871;t h&#7841;n d&ugrave; &#273;&atilde; renew:</strong> proxy/CDN v&#7851;n ph&#7909;c v&#7909; certificate c&#361; ho&#7863;c monitor &#273;i qua endpoint kh&aacute;c.</li>
+<li><strong>Kh&ocirc;ng c&oacute; c&#7843;nh b&aacute;o:</strong> channel ch&#432;a &#273;&#432;&#7907;c test, token h&#7871;t h&#7841;n ho&#7863;c monitor ch&#432;a g&#7855;n notification.</li>
+<li><strong>M&#7845;t c&#7845;u h&igrave;nh sau khi t&#7841;o l&#7841;i container:</strong> volume ch&#432;a mount &#273;&uacute;ng v&agrave;o <code>/app/data</code>.</li>
+</ul>
+
+<h2>Checklist production</h2>
+<ol>
+<li>&#272;&#7863;t Uptime Kuma ngo&agrave;i h&#7841; t&#7847;ng ch&iacute;nh c&#7847;n gi&aacute;m s&aacute;t.</li>
+<li>Bind c&#7893;ng &#7913;ng d&#7909;ng v&agrave;o localhost v&agrave; d&ugrave;ng HTTPS reverse proxy.</li>
+<li>B&#7843;o v&#7879; admin b&#7857;ng m&#7853;t kh&#7849;u m&#7841;nh, 2FA, VPN ho&#7863;c allowlist ph&ugrave; h&#7907;p.</li>
+<li>D&ugrave;ng retry, timeout v&agrave; interval theo SLA &#273;&#7875; gi&#7843;m false positive.</li>
+<li>Test c&#7843;nh b&aacute;o b&#7857;ng m&#7897;t s&#7921; c&#7889; c&oacute; ki&#7875;m so&aacute;t.</li>
+<li>Backup <code>/app/data</code> ra h&#7879; th&#7889;ng kh&aacute;c v&agrave; th&#7917; restore.</li>
+<li>&#272;&#7885;c release note, pin phi&ecirc;n b&#7843;n &#273;&atilde; ki&#7875;m th&#7917; v&agrave; chu&#7849;n b&#7883; rollback.</li>
+<li>Gi&aacute;m s&aacute;t ch&iacute;nh Uptime Kuma t&#7915; m&#7897;t d&#7883;ch v&#7909; &#273;&#7897;c l&#7853;p n&#7871;u uptime l&agrave; quan tr&#7885;ng.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Uptime Kuma gi&uacute;p x&acirc;y d&#7921;ng l&#7899;p gi&aacute;m s&aacute;t b&ecirc;n ngo&agrave;i g&#7885;n nh&#7865; cho website, API, SSL v&agrave; job &#273;&#7883;nh k&#7923;. Gi&aacute; tr&#7883; kh&ocirc;ng ch&#7881; n&#7857;m &#7903; dashboard xanh, m&agrave; &#7903; vi&#7879;c &#273;i&#7875;m gi&aacute;m s&aacute;t &#273;&#7897;c l&#7853;p, c&#7843;nh b&aacute;o &#273;&#7871;n &#273;&uacute;ng ng&#432;&#7901;i, c&oacute; runbook x&#7917; l&yacute; v&agrave; b&#7843;n th&acirc;n h&#7879; th&#7889;ng gi&aacute;m s&aacute;t c&#361;ng &#273;&#432;&#7907;c backup, c&#7853;p nh&#7853;t v&agrave; ki&#7875;m th&#7917; nh&#432; m&#7897;t d&#7883;ch v&#7909; production.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://github.com/louislam/uptime-kuma/wiki/%F0%9F%94%A7-How-to-Install" target="_blank" rel="noopener noreferrer">Uptime Kuma: How to Install</a></li><li><a href="https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy" target="_blank" rel="noopener noreferrer">Uptime Kuma: Reverse Proxy</a></li><li><a href="https://github.com/louislam/uptime-kuma/releases" target="_blank" rel="noopener noreferrer">Uptime Kuma releases</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

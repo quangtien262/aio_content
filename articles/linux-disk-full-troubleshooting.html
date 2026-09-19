@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Linux</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Linux &#273;&#7847;y &#7893; &#273;&#297;a: Ch&#7849;n &#273;o&aacute;n v&agrave; x&#7917; l&yacute; an to&agrave;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux &#273;&#7847;y &#7893; &#273;&#297;a, df du, inode &#273;&#7847;y, lsof deleted, journalctl vacuum, Docker disk usage, d&#7885;n dung l&#432;&#7907;ng Linux</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Disk Space, System Administration, df, du, lsof, systemd, Docker</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Quy tr&igrave;nh x&#7917; l&yacute; Linux &#273;&#7847;y &#7893; &#273;&#297;a b&#7857;ng df, du, find, lsof, journalctl v&agrave; Docker, k&egrave;m c&aacute;ch ph&acirc;n bi&#7879;t block, inode v&agrave; file &#273;&atilde; x&oacute;a.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-disk-full-troubleshooting.jpg" alt="Linux b&aacute;o &#273;&#7847;y &#7893; &#273;&#297;a: C&aacute;ch t&igrave;m nguy&ecirc;n nh&acirc;n v&agrave; gi&#7843;i ph&oacute;ng dung l&#432;&#7907;ng an to&agrave;n" width="1440" height="810"></p><h1>Linux b&aacute;o &#273;&#7847;y &#7893; &#273;&#297;a: C&aacute;ch t&igrave;m nguy&ecirc;n nh&acirc;n v&agrave; gi&#7843;i ph&oacute;ng dung l&#432;&#7907;ng an to&agrave;n</h1><p><strong>Khi Linux b&aacute;o <code>No space left on device</code>, x&oacute;a ngay v&agrave;i file l&#7899;n ch&#432;a ch&#7855;c l&agrave; c&aacute;ch &#273;&uacute;ng.</strong> Filesystem c&oacute; th&#7875; h&#7871;t block d&#7919; li&#7879;u, h&#7871;t inode, b&#7883; log t&#259;ng &#273;&#7897;t bi&#7871;n, ch&#7913;a image Docker c&#361; ho&#7863;c v&#7851;n gi&#7919; dung l&#432;&#7907;ng c&#7911;a m&#7897;t file &#273;&atilde; x&oacute;a. Quy tr&igrave;nh an to&agrave;n l&agrave; x&aacute;c &#273;&#7883;nh &#273;&uacute;ng filesystem, &#273;o nguy&ecirc;n nh&acirc;n, gi&#7843;i ph&oacute;ng c&oacute; ki&#7875;m so&aacute;t r&#7891;i ng&#259;n s&#7921; c&#7889; l&#7863;p l&#7841;i.</p>
+
+<h2>1. X&aacute;c &#273;&#7883;nh filesystem n&agrave;o &#273;ang &#273;&#7847;y</h2>
+<p>B&#7855;t &#273;&#7847;u b&#7857;ng hai g&oacute;c nh&igrave;n: dung l&#432;&#7907;ng v&agrave; inode.</p>
+<pre><code>df -hT
+df -ih</code></pre>
+<p><code>df -hT</code> hi&#7875;n th&#7883; lo&#7841;i filesystem, t&#7893;ng dung l&#432;&#7907;ng, &#273;&atilde; d&ugrave;ng, c&ograve;n tr&#7889;ng v&agrave; mount point. <code>df -ih</code> ki&#7875;m tra inode. N&#7871;u <code>IUse%</code> &#273;&#7841;t 100%, h&#7879; th&#7889;ng kh&ocirc;ng th&#7875; t&#7841;o file m&#7899;i d&ugrave; v&#7851;n c&ograve;n GB tr&#7889;ng; nguy&ecirc;n nh&acirc;n th&#432;&#7901;ng l&agrave; h&agrave;ng tri&#7879;u file nh&#7887;.</p>
+<p>&#272;&#7915;ng ch&#7881; nh&igrave;n d&ograve;ng <code>/dev/sda...</code>. H&atilde;y x&aacute;c &#273;&#7883;nh mount point ch&#7913;a &#273;&#432;&#7901;ng d&#7851;n &#273;ang l&#7895;i:</p>
+<pre><code>df -hT /var/lib/mysql
+findmnt -T /var/lib/mysql</code></pre>
+<blockquote>Lu&ocirc;n d&#7885;n tr&ecirc;n &#273;&uacute;ng filesystem. X&oacute;a 10 GB trong <code>/home</code> kh&ocirc;ng gi&uacute;p g&igrave; n&#7871;u mount <code>/var</code> m&#7899;i l&agrave; n&#417;i &#273;&atilde; &#273;&#7847;y.</blockquote>
+
+<h2>2. Ki&#7875;m tra tr&#432;&#7899;c khi thay &#273;&#7893;i</h2>
+<p>Ghi l&#7841;i tr&#7841;ng th&aacute;i &#273;&#7875; c&oacute; th&#7875; &#273;&#7889;i chi&#7871;u sau x&#7917; l&yacute;:</p>
+<pre><code>date
+df -hT
+df -ih
+lsblk -f
+findmnt
+sudo dmesg -T | tail -n 50</code></pre>
+<p>N&#7871;u kernel b&aacute;o l&#7895;i I/O, filesystem read-only ho&#7863;c thi&#7871;t b&#7883; l&#432;u tr&#7919; b&#7845;t th&#432;&#7901;ng, &#432;u ti&ecirc;n b&#7843;o to&agrave;n d&#7919; li&#7879;u v&agrave; ki&#7875;m tra ph&#7847;n c&#7913;ng. D&#7885;n file kh&ocirc;ng gi&#7843;i quy&#7871;t &#273;&#432;&#7907;c &#7893; &#273;&#297;a &#273;ang h&#7887;ng.</p>
+
+<h2>3. T&igrave;m th&#432; m&#7909;c chi&#7871;m dung l&#432;&#7907;ng</h2>
+<p>D&ugrave;ng <code>du</code> tr&ecirc;n c&ugrave;ng filesystem &#273;&#7875; tr&aacute;nh &#273;i v&agrave;o mount m&#7841;ng, volume container ho&#7863;c &#7893; kh&aacute;c:</p>
+<pre><code>sudo du -xhd1 / | sort -h
+sudo du -xhd1 /var | sort -h
+sudo du -xhd1 /var/lib | sort -h</code></pre>
+<p>&#272;i t&#7915; mount point xu&#7889;ng t&#7915;ng c&#7845;p cho &#273;&#7871;n khi th&#7845;y nh&aacute;nh t&#259;ng b&#7845;t th&#432;&#7901;ng. <code>-x</code> gi&#7919; ph&eacute;p &#273;o trong m&#7897;t filesystem; <code>-d1</code> ch&#7881; xem m&#7897;t c&#7845;p, tr&aacute;nh t&#7841;o &#273;&#7847;u ra qu&aacute; l&#7899;n. Tr&ecirc;n m&aacute;y &#273;ang t&#7843;i cao, ch&#7841;y <code>du</code> v&agrave;o gi&#7901; th&#7845;p &#273;i&#7875;m v&igrave; qu&eacute;t nhi&#7873;u inode c&oacute; th&#7875; g&acirc;y I/O &#273;&aacute;ng k&#7875;.</p>
+<p>T&igrave;m file l&#7899;n g&#7847;n &#273;&acirc;y:</p>
+<pre><code>sudo find /var -xdev -type f -size +500M \
+  -printf '%s %TY-%Tm-%Td %TH:%TM %p\n' \
+  | sort -n | tail -n 30</code></pre>
+<p>Kh&ocirc;ng x&oacute;a ch&#7881; v&igrave; file l&#7899;n. H&atilde;y x&aacute;c &#273;&#7883;nh owner, ti&#7871;n tr&igrave;nh s&#7917; d&#7909;ng, ch&iacute;nh s&aacute;ch l&#432;u gi&#7919; v&agrave; kh&#7843; n&#259;ng kh&ocirc;i ph&#7909;c.</p>
+
+<h2>4. V&igrave; sao df v&agrave; du kh&ocirc;ng kh&#7899;p?</h2>
+<p><code>df</code> &#273;&#7885;c m&#7913;c s&#7917; d&#7909;ng c&#7911;a to&agrave;n filesystem, c&ograve;n <code>du</code> c&#7897;ng dung l&#432;&#7907;ng c&aacute;c file c&ograve;n xu&#7845;t hi&#7879;n trong c&acirc;y th&#432; m&#7909;c. Hai s&#7889; c&oacute; th&#7875; l&#7879;ch v&igrave; reserved blocks, snapshot, hard link, mount b&#7883; che ho&#7863;c file &#273;&atilde; b&#7883; unlink nh&#432;ng ti&#7871;n tr&igrave;nh v&#7851;n m&#7903;.</p>
+<p>Tr&#432;&#7901;ng h&#7907;p ph&#7893; bi&#7871;n l&agrave; log l&#7899;n &#273;&atilde; &#273;&#432;&#7907;c x&oacute;a nh&#432;ng web server ho&#7863;c database v&#7851;n gi&#7919; file descriptor:</p>
+<pre><code>sudo lsof +L1
+sudo lsof +L1 /var</code></pre>
+<p>T&igrave;m c&aacute;c d&ograve;ng c&oacute; <code>NLINK</code> b&#7857;ng 0 ho&#7863;c t&ecirc;n ch&#7913;a <code>(deleted)</code>. C&aacute;ch gi&#7843;i ph&oacute;ng &#273;&uacute;ng th&#432;&#7901;ng l&agrave; y&ecirc;u c&#7847;u &#7913;ng d&#7909;ng reopen log ho&#7863;c restart &#273;&uacute;ng service sau khi &#273;&aacute;nh gi&aacute; &#7843;nh h&#432;&#7903;ng:</p>
+<pre><code>sudo systemctl reload nginx
+sudo systemctl restart my-application.service</code></pre>
+<p>Kh&ocirc;ng t&#7921; &yacute; ghi r&#7895;ng qua <code>/proc/PID/fd/N</code> v&#7899;i database ho&#7863;c &#7913;ng d&#7909;ng kh&ocirc;ng r&otilde; h&agrave;nh vi; thao t&aacute;c n&agrave;y c&oacute; th&#7875; l&agrave;m h&#7887;ng d&#7919; li&#7879;u hay che m&#7845;t b&#7857;ng ch&#7913;ng s&#7921; c&#7889;.</p>
+
+<h2>5. Ki&#7875;m tra systemd journal v&agrave; log &#7913;ng d&#7909;ng</h2>
+<p>&#272;o journal tr&#432;&#7899;c khi d&#7885;n:</p>
+<pre><code>journalctl --disk-usage
+sudo du -sh /var/log/* 2&gt;/dev/null | sort -h</code></pre>
+<p>C&oacute; th&#7875; x&oacute;a journal &#273;&atilde; archive theo dung l&#432;&#7907;ng ho&#7863;c tu&#7893;i:</p>
+<pre><code>sudo journalctl --rotate
+sudo journalctl --vacuum-size=500M
+# Ho&#7863;c:
+sudo journalctl --vacuum-time=14days</code></pre>
+<p><code>--vacuum-size</code> ch&#7881; t&aacute;c &#273;&#7897;ng tr&#7921;c ti&#7871;p &#273;&#7871;n journal &#273;&atilde; archive, v&igrave; v&#7853;y <code>--rotate</code> gi&uacute;p file active tr&#7903; th&agrave;nh archive tr&#432;&#7899;c khi d&#7885;n. Sau &#273;&oacute; c&#7845;u h&igrave;nh gi&#7899;i h&#7841;n b&#7873;n v&#7919;ng trong <code>/etc/systemd/journald.conf</code>, ch&#7859;ng h&#7841;n <code>SystemMaxUse</code> v&agrave; <code>SystemKeepFree</code>, r&#7891;i ki&#7875;m tra c&#7845;u h&igrave;nh tr&#432;&#7899;c khi restart.</p>
+<p>V&#7899;i log trong <code>/var/log</code>, &#432;u ti&ecirc;n s&#7917;a <code>logrotate</code> ho&#7863;c c&#7845;u h&igrave;nh &#7913;ng d&#7909;ng. X&oacute;a log &#273;ang m&#7903; b&#7857;ng <code>rm</code> c&oacute; th&#7875; t&#7841;o ch&iacute;nh t&igrave;nh hu&#7889;ng <code>df</code> v&agrave; <code>du</code> l&#7879;ch nhau.</p>
+
+<h2>6. Ki&#7875;m tra Docker v&agrave; container runtime</h2>
+<p>Docker c&oacute; th&#7875; gi&#7919; image, layer, build cache, volume v&agrave; JSON log:</p>
+<pre><code>docker system df
+docker system df -v
+sudo du -sh /var/lib/docker/* 2&gt;/dev/null | sort -h</code></pre>
+<p>Xem k&#7929; &#273;&#7889;i t&#432;&#7907;ng n&agrave;o &#273;ang &#273;&#432;&#7907;c container s&#7917; d&#7909;ng tr&#432;&#7899;c khi prune. C&aacute;c l&#7879;nh <code>docker system prune</code> v&agrave; &#273;&#7863;c bi&#7879;t <code>docker volume prune</code> c&oacute; th&#7875; x&oacute;a d&#7919; li&#7879;u kh&ocirc;ng c&ograve;n g&#7855;n v&#7899;i container hi&#7879;n t&#7841;i nh&#432;ng v&#7851;n c&#7847;n cho kh&ocirc;i ph&#7909;c ho&#7863;c l&#7847;n ch&#7841;y sau.</p>
+<p>&#272;&#7863;t gi&#7899;i h&#7841;n log cho Docker daemon ho&#7863;c t&#7915;ng service, v&iacute; d&#7909; d&ugrave;ng driver <code>local</code> hay c&#7845;u h&igrave;nh xoay <code>json-file</code>. Sau khi &#273;&#7893;i daemon config, ki&#7875;m tra JSON h&#7907;p l&#7879; v&agrave; l&ecirc;n k&#7871; ho&#7841;ch restart v&igrave; thay &#273;&#7893;i kh&ocirc;ng t&#7921; &aacute;p d&#7909;ng cho m&#7885;i container c&#361;.</p>
+
+<h2>7. Khi filesystem h&#7871;t inode</h2>
+<p>N&#7871;u <code>df -i</code> &#273;&#7847;y nh&#432;ng dung l&#432;&#7907;ng byte c&ograve;n nhi&#7873;u, t&igrave;m th&#432; m&#7909;c c&oacute; s&#7889; file l&#7899;n:</p>
+<pre><code>sudo find /var -xdev -printf '%h\n' \
+  | sort | uniq -c | sort -n | tail -n 30</code></pre>
+<p>C&aacute;c th&#7911; ph&#7841;m th&#432;&#7901;ng g&#7863;p g&#7891;m session file, cache, mail queue, thumbnail, th&#432; m&#7909;c t&#7841;m v&agrave; job t&#7841;o file nh&#432;ng kh&ocirc;ng d&#7885;n. Kh&ocirc;ng d&ugrave;ng wildcard x&oacute;a h&agrave;ng tri&#7879;u file trong m&#7897;t l&#7879;nh n&#7871;u shell c&oacute; th&#7875; v&#432;&#7907;t gi&#7899;i h&#7841;n &#273;&#7889;i s&#7889;. D&ugrave;ng <code>find</code> v&#7899;i &#273;i&#7873;u ki&#7879;n tu&#7893;i v&agrave; ki&#7875;m tra m&#7851;u tr&#432;&#7899;c:</p>
+<pre><code>find /path/to/cache -xdev -type f -mtime +7 -print | head
+find /path/to/cache -xdev -type f -mtime +7 -delete</code></pre>
+<p>Ch&#7881; ch&#7841;y l&#7879;nh x&oacute;a sau khi danh s&aacute;ch m&#7851;u &#273;&uacute;ng v&agrave; c&oacute; x&aacute;c nh&#7853;n r&#7857;ng d&#7919; li&#7879;u l&agrave; cache c&oacute; th&#7875; t&aacute;i t&#7841;o.</p>
+
+<h2>8. Package cache, kernel c&#361; v&agrave; file t&#7841;m</h2>
+<p>Tr&ecirc;n Debian/Ubuntu, c&oacute; th&#7875; &#273;o v&agrave; d&#7885;n package cache b&#7857;ng c&ocirc;ng c&#7909; qu&#7843;n l&yacute; g&oacute;i:</p>
+<pre><code>sudo du -sh /var/cache/apt/archives
+sudo apt clean
+sudo apt autoremove --purge</code></pre>
+<p>&#272;&#7885;c k&#7929; danh s&aacute;ch c&#7911;a <code>autoremove</code> tr&#432;&#7899;c khi &#273;&#7891;ng &yacute;, &#273;&#7863;c bi&#7879;t tr&ecirc;n m&aacute;y c&oacute; kernel, driver ho&#7863;c package &#273;&#432;&#7907;c c&agrave;i th&#7911; c&ocirc;ng. V&#7899;i <code>/tmp</code>, d&ugrave;ng ch&iacute;nh s&aacute;ch <code>systemd-tmpfiles</code> ho&#7863;c &#273;i&#7873;u ki&#7879;n tu&#7893;i; kh&ocirc;ng x&oacute;a to&agrave;n b&#7897; trong khi &#7913;ng d&#7909;ng &#273;ang ho&#7841;t &#273;&#7897;ng.</p>
+
+<h2>9. Gi&#7843;i ph&oacute;ng kh&#7849;n c&#7845;p theo th&#7913; t&#7921; r&#7911;i ro th&#7845;p</h2>
+<ol><li>T&#7841;m d&#7915;ng t&aacute;c v&#7909; &#273;ang t&#7841;o d&#7919; li&#7879;u nhanh n&#7871;u bi&#7871;t r&otilde; ngu&#7891;n.</li><li>Xoay v&agrave; vacuum journal &#273;&atilde; archive.</li><li>D&#7885;n package cache v&agrave; artifact c&oacute; th&#7875; t&#7843;i l&#7841;i.</li><li>X&#7917; l&yacute; log theo &#273;&uacute;ng c&#417; ch&#7871; reload ho&#7863;c logrotate.</li><li>Thu h&#7891;i image/build cache container &#273;&atilde; x&aacute;c minh kh&ocirc;ng d&ugrave;ng.</li><li>Restart service &#273;ang gi&#7919; file &#273;&atilde; x&oacute;a, theo k&#7871; ho&#7841;ch &#7843;nh h&#432;&#7903;ng.</li><li>M&#7903; r&#7897;ng filesystem ho&#7863;c volume n&#7871;u d&#7919; li&#7879;u h&#7907;p l&#7879; th&#7921;c s&#7921; t&#259;ng.</li></ol>
+<p>Gi&#7919; m&#7897;t kho&#7843;ng tr&#7889;ng t&#7889;i thi&#7875;u tr&#432;&#7899;c khi database ho&#7863;c service ho&#7841;t &#273;&#7897;ng l&#7841;i. Vi&#7879;c gi&#7843;i ph&oacute;ng v&agrave;i MB c&oacute; th&#7875; ch&#7881; &#273;&#7911; &#273;&#7875; h&#7879; th&#7889;ng ghi th&ecirc;m log r&#7891;i &#273;&#7847;y ngay l&#7847;n n&#7919;a.</p>
+
+<h2>10. M&#7903; r&#7897;ng dung l&#432;&#7907;ng khi d&#7919; li&#7879;u t&#259;ng h&#7907;p l&#7879;</h2>
+<p>N&#7871;u workload c&#7847;n to&agrave;n b&#7897; d&#7919; li&#7879;u hi&#7879;n c&oacute;, d&#7885;n file ch&#7881; tr&igrave; ho&atilde;n s&#7921; c&#7889;. X&aacute;c &#273;&#7883;nh storage l&agrave; partition, LVM, cloud volume hay filesystem &#273;&#7897;c l&#7853;p. Quy tr&igrave;nh th&#432;&#7901;ng g&#7891;m m&#7903; r&#7897;ng thi&#7871;t b&#7883; ho&#7863;c logical volume, sau &#273;&oacute; m&#7903; r&#7897;ng filesystem b&#7857;ng c&ocirc;ng c&#7909; ph&ugrave; h&#7907;p nh&#432; <code>resize2fs</code> cho ext4 ho&#7863;c <code>xfs_growfs</code> cho XFS.</p>
+<blockquote>Ch&#7909;p backup ho&#7863;c snapshot &#273;&atilde; ki&#7875;m th&#7917;, x&aacute;c nh&#7853;n &#273;&uacute;ng device v&agrave; &#273;&#7885;c t&agrave;i li&#7879;u c&#7911;a n&#7873;n t&#7843;ng tr&#432;&#7899;c khi s&#7917;a partition hay volume. Kh&ocirc;ng sao ch&eacute;p l&#7879;nh m&#7903; r&#7897;ng t&#7915; m&#7897;t m&aacute;y kh&aacute;c r&#7891;i ch&#7841;y nguy&ecirc;n tr&#7841;ng.</blockquote>
+
+<h2>11. Ng&#259;n &#7893; &#273;&#297;a &#273;&#7847;y l&#7847;n n&#7919;a</h2>
+<ul><li>C&#7843;nh b&aacute;o theo c&#7843; ph&#7847;n tr&#259;m v&agrave; dung l&#432;&#7907;ng c&ograve;n tr&#7889;ng; 10% c&#7911;a &#7893; 10 TB kh&aacute;c 10% c&#7911;a &#7893; 20 GB.</li><li>Theo d&otilde;i inode, t&#7889;c &#273;&#7897; t&#259;ng, th&#7901;i gian d&#7921; ki&#7871;n ch&#7841;m ng&#432;&#7905;ng v&agrave; filesystem read-only.</li><li>Gi&#7899;i h&#7841;n journal, log &#7913;ng d&#7909;ng v&agrave; log container.</li><li>&#272;&#7863;t retention cho backup, artifact, upload, cache v&agrave; snapshot.</li><li>T&aacute;ch d&#7919; li&#7879;u t&#259;ng nhanh kh&#7887;i root filesystem khi ki&#7871;n tr&uacute;c cho ph&eacute;p.</li><li>Ki&#7875;m th&#7917; c&#7843;nh b&aacute;o v&agrave; quy tr&igrave;nh d&#7885;n tr&ecirc;n staging.</li><li>Ghi l&#7841;i nguy&ecirc;n nh&acirc;n g&#7889;c, kh&ocirc;ng ch&#7881; dung l&#432;&#7907;ng &#273;&atilde; x&oacute;a.</li></ul>
+
+<h2>Checklist x&#7917; l&yacute; s&#7921; c&#7889;</h2>
+<ol><li>D&ugrave;ng <code>df -hT</code> v&agrave; <code>df -ih</code> &#273;&#7875; ph&acirc;n bi&#7879;t block v&#7899;i inode.</li><li>X&aacute;c &#273;&#7883;nh &#273;&uacute;ng mount b&#7857;ng <code>findmnt -T</code>.</li><li>D&ugrave;ng <code>du -x</code> &#273;i t&#7915;ng c&#7845;p, tr&aacute;nh v&#432;&#7907;t filesystem.</li><li>N&#7871;u <code>df</code> l&#7899;n h&#417;n nhi&#7873;u so v&#7899;i <code>du</code>, ki&#7875;m tra <code>lsof +L1</code>.</li><li>&#272;o journal, log v&agrave; container tr&#432;&#7899;c khi d&#7885;n.</li><li>Kh&ocirc;ng x&oacute;a database, volume, snapshot hay log &#273;ang m&#7903; theo ph&#7887;ng &#273;o&aacute;n.</li><li>&#272;o l&#7841;i sau m&#7895;i thay &#273;&#7893;i v&agrave; x&aacute;c minh d&#7883;ch v&#7909;.</li><li>Th&ecirc;m gi&#7899;i h&#7841;n, retention v&agrave; c&#7843;nh b&aacute;o &#273;&#7875; ng&#259;n t&aacute;i di&#7877;n.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>S&#7921; c&#7889; &#273;&#7847;y &#7893; &#273;&#297;a tr&ecirc;n Linux c&#7847;n &#273;&#432;&#7907;c x&#7917; l&yacute; nh&#432; m&#7897;t b&agrave;i to&aacute;n ch&#7849;n &#273;o&aacute;n, kh&ocirc;ng ph&#7843;i cu&#7897;c thi x&oacute;a file. <code>df</code> cho bi&#7871;t filesystem, <code>du</code> t&igrave;m d&#7919; li&#7879;u trong c&acirc;y th&#432; m&#7909;c, <code>lsof</code> ph&aacute;t hi&#7879;n file &#273;&atilde; x&oacute;a nh&#432;ng c&ograve;n m&#7903;, c&ograve;n c&ocirc;ng c&#7909; journal v&agrave; container gi&#7843;i th&iacute;ch c&aacute;c ngu&#7891;n t&#259;ng th&#432;&#7901;ng g&#7863;p. Khi nguy&ecirc;n nh&acirc;n &#273;&atilde; r&otilde;, h&atilde;y d&#7885;n c&oacute; ki&#7875;m so&aacute;t ho&#7863;c m&#7903; r&#7897;ng storage v&agrave; b&#7893; sung c&#7843;nh b&aacute;o &#273;&#7875; l&#7847;n sau h&#7879; th&#7889;ng b&aacute;o s&#7899;m h&#417;n.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: df</a></li><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: du</a></li><li><a href="https://man7.org/linux/man-pages/man8/lsof.8.html" target="_blank" rel="noopener noreferrer">Linux manual: lsof</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html" target="_blank" rel="noopener noreferrer">systemd: journalctl</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

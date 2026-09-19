@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Laravel Queue production v&#7899;i Redis v&agrave; Horizon</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel Queue, Laravel Horizon, Redis, queue production, retry job, failed jobs, idempotency</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, PHP, Queue, Redis, Horizon, Backend, DevOps, Production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n v&#7853;n h&agrave;nh Laravel Queue v&#7899;i Redis v&agrave; Horizon: c&#7845;u h&igrave;nh worker, timeout, retry, idempotency, failed jobs v&agrave; deploy an to&agrave;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/laravel-queue-production.jpg" alt="Laravel Queue trong production: Redis, Horizon, retry v&agrave; x&#7917; l&yacute; job an to&agrave;n" width="1440" height="810"></p><h1>Laravel Queue trong production: Redis, Horizon, retry v&agrave; x&#7917; l&yacute; job an to&agrave;n</h1><p><strong>Queue gi&uacute;p request Laravel tr&#7843; v&#7873; nhanh h&#417;n, nh&#432;ng &#273;&#432;a c&ocirc;ng vi&#7879;c sang n&#7873;n kh&ocirc;ng t&#7921; &#273;&#7897;ng l&agrave;m h&#7879; th&#7889;ng &#273;&aacute;ng tin c&#7853;y.</strong> Trong production, worker c&oacute; th&#7875; d&#7915;ng gi&#7919;a ch&#7915;ng, API b&ecirc;n ngo&agrave;i c&oacute; th&#7875; timeout v&agrave; c&ugrave;ng m&#7897;t job c&oacute; th&#7875; &#273;&#432;&#7907;c x&#7917; l&yacute; l&#7841;i. M&#7897;t thi&#7871;t k&#7871; t&#7889;t ph&#7843;i ch&#7911; &#273;&#7897;ng ki&#7875;m so&aacute;t retry, timeout, t&iacute;nh idempotent, t&agrave;i nguy&ecirc;n v&agrave; kh&#7843; n&#259;ng quan s&aacute;t.</p>
+
+<h2>Khi n&agrave;o n&ecirc;n &#273;&#432;a c&ocirc;ng vi&#7879;c v&agrave;o queue?</h2>
+<p>Queue ph&ugrave; h&#7907;p v&#7899;i t&aacute;c v&#7909; kh&ocirc;ng c&#7847;n ho&agrave;n t&#7845;t tr&#432;&#7899;c khi tr&#7843; response: g&#7917;i email, t&#7841;o b&aacute;o c&aacute;o, x&#7917; l&yacute; &#7843;nh, &#273;&#7891;ng b&#7897; d&#7919; li&#7879;u, ph&aacute;t webhook ho&#7863;c nh&#7853;p file l&#7899;n. Nh&#7919;ng thao t&aacute;c quy&#7871;t &#273;&#7883;nh tr&#7921;c ti&#7871;p k&#7871;t qu&#7843; m&agrave; ng&#432;&#7901;i d&ugrave;ng &#273;ang ch&#7901;, ch&#7859;ng h&#7841;n x&aacute;c th&#7921;c quy&#7873;n hay gi&#7919; ch&#7895; t&#7891;n kho, th&#432;&#7901;ng v&#7851;n c&#7847;n x&#7917; l&yacute; &#273;&#7891;ng b&#7897; ho&#7863;c m&#7897;t thi&#7871;t k&#7871; nghi&#7879;p v&#7909; ri&ecirc;ng.</p>
+<blockquote>Queue l&agrave; ranh gi&#7899;i x&#7917; l&yacute; b&#7845;t &#273;&#7891;ng b&#7897;, kh&ocirc;ng ph&#7843;i n&#417;i gi&#7845;u m&#7885;i &#273;o&#7841;n m&atilde; ch&#7853;m.</blockquote>
+
+<h2>Ch&#7885;n Redis v&agrave; c&agrave;i Laravel Horizon</h2>
+<p>Horizon cung c&#7845;p dashboard v&agrave; c&#7845;u h&igrave;nh worker cho Laravel Queue d&ugrave;ng Redis. T&agrave;i li&#7879;u Laravel hi&#7879;n t&#7841;i y&ecirc;u c&#7847;u Horizon s&#7917; d&#7909;ng k&#7871;t n&#7889;i Redis v&agrave; l&#432;u &yacute; Horizon ch&#432;a t&#432;&#417;ng th&iacute;ch v&#7899;i Redis Cluster. C&agrave;i &#273;&#7863;t b&#7857;ng c&aacute;c l&#7879;nh sau:</p>
+<pre><code>composer require laravel/horizon
+php artisan horizon:install
+php artisan migrate</code></pre>
+<p>&#272;&#7863;t queue connection trong m&ocirc;i tr&#432;&#7901;ng production:</p>
+<pre><code>QUEUE_CONNECTION=redis
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379</code></pre>
+<p>Redis kh&ocirc;ng n&ecirc;n &#273;&#432;&#7907;c m&#7903; tr&#7921;c ti&#7871;p ra Internet. H&atilde;y gi&#7899;i h&#7841;n m&#7841;ng, b&#7853;t x&aacute;c th&#7921;c khi ph&ugrave; h&#7907;p, theo d&otilde;i b&#7897; nh&#7899; v&agrave; thi&#7871;t l&#7853;p ch&iacute;nh s&aacute;ch persistence d&#7921;a tr&ecirc;n m&#7913;c &#273;&#7897; ch&#7845;p nh&#7853;n m&#7845;t job c&#7911;a h&#7879; th&#7889;ng.</p>
+
+<h2>T&#7841;o job c&oacute; gi&#7899;i h&#7841;n r&otilde; r&agrave;ng</h2>
+<p>M&#7897;t job production c&#7847;n gi&#7899;i h&#7841;n s&#7889; l&#7847;n th&#7917;, th&#7901;i gian ch&#7841;y v&agrave; kho&#7843;ng ngh&#7881; gi&#7919;a c&aacute;c l&#7847;n retry. M&#7843;ng backoff gi&uacute;p t&#259;ng d&#7847;n th&#7901;i gian ch&#7901; khi d&#7883;ch v&#7909; ph&#7909; thu&#7897;c &#273;ang l&#7895;i t&#7841;m th&#7901;i.</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
+use Throwable;
+
+class SyncInvoice implements ShouldQueue
+{
+    use Queueable;
+
+    public int $tries = 5;
+    public int $timeout = 90;
+    public bool $failOnTimeout = true;
+
+    public function __construct(public int $invoiceId) {}
+
+    public function backoff(): array
+    {
+        return [10, 30, 120, 300];
+    }
+
+    public function handle(): void
+    {
+        // G&#7885;i service v&#7899;i connect timeout v&agrave; request timeout ri&ecirc;ng.
+    }
+
+    public function failed(?Throwable $exception): void
+    {
+        // Ghi nh&#7853;n ng&#7919; c&#7843;nh v&agrave; ph&aacute;t c&#7843;nh b&aacute;o, kh&ocirc;ng nu&#7889;t l&#7895;i.
+    }
+}</code></pre>
+<p>Ch&#7881; retry l&#7895;i t&#7841;m th&#7901;i nh&#432; timeout, 429 ho&#7863;c 5xx. L&#7895;i validation, thi&#7871;u d&#7919; li&#7879;u b&#7855;t bu&#7897;c hay l&#7895;i quy&#7873;n truy c&#7853;p th&#432;&#7901;ng kh&ocirc;ng t&#7921; bi&#7871;n m&#7845;t sau l&#7847;n th&#7917; ti&#7871;p theo; h&atilde;y cho job fail c&oacute; ch&#7911; &#273;&iacute;ch v&agrave; &#273;&#432;a v&agrave;o lu&#7891;ng x&#7917; l&yacute; ph&ugrave; h&#7907;p.</p>
+
+<h2>Ba m&#7889;c th&#7901;i gian ph&#7843;i kh&#7899;p nhau</h2>
+<p>M&#7897;t c&#7845;u h&igrave;nh an to&agrave;n th&#432;&#7901;ng tu&acirc;n theo th&#7913; t&#7921;:</p>
+<pre><code>job timeout &lt; Horizon supervisor timeout &lt; Redis retry_after</code></pre>
+<p>V&iacute; d&#7909; job timeout 90 gi&acirc;y, Horizon timeout 100 gi&acirc;y v&agrave; <code>retry_after</code> 120 gi&acirc;y. Horizon c&#7847;n c&oacute; c&#417; h&#7897;i d&#7915;ng worker b&#7883; treo tr&#432;&#7899;c khi queue coi job l&agrave; m&#7845;t v&agrave; giao l&#7841;i. N&#7871;u timeout c&#7911;a worker d&agrave;i h&#417;n ho&#7863;c qu&aacute; s&aacute;t <code>retry_after</code>, hai worker c&oacute; th&#7875; c&ugrave;ng x&#7917; l&yacute; m&#7897;t job.</p>
+<p>&#7902; t&#7847;ng tr&igrave;nh qu&#7843;n l&yacute; ti&#7871;n tr&igrave;nh, <code>stopwaitsecs</code> ph&#7843;i l&#7899;n h&#417;n th&#7901;i gian ch&#7841;y d&agrave;i nh&#7845;t c&#7911;a job &#273;&#7875; deploy ho&#7863;c restart kh&ocirc;ng gi&#7871;t ti&#7871;n tr&igrave;nh gi&#7919;a c&ocirc;ng vi&#7879;c h&#7907;p l&#7879;.</p>
+
+<h2>Dispatch sau khi transaction &#273;&atilde; commit</h2>
+<p>N&#7871;u job ph&#7909; thu&#7897;c v&agrave;o d&#7919; li&#7879;u v&#7915;a ghi trong transaction, worker nhanh c&oacute; th&#7875; ch&#7841;y tr&#432;&#7899;c khi transaction commit v&agrave; kh&ocirc;ng t&igrave;m th&#7845;y b&#7843;n ghi. C&oacute; th&#7875; b&#7853;t <code>after_commit</code> cho queue connection ho&#7863;c ch&#7881; &#273;&#7883;nh tr&ecirc;n l&#7847;n dispatch:</p>
+<pre><code>DB::transaction(function () use ($order) {
+    $order-&gt;markAsPaid();
+
+    GenerateInvoice::dispatch($order-&gt;id)-&gt;afterCommit();
+});</code></pre>
+<p>Ch&#7881; truy&#7873;n ID v&agrave; d&#7919; li&#7879;u t&#7889;i thi&#7875;u v&agrave;o job. Serialize m&#7897;t object Eloquent c&ugrave;ng nhi&#7873;u relationship &#273;&atilde; load l&agrave;m payload l&#7899;n, d&#7877; gi&#7919; d&#7919; li&#7879;u c&#361; v&agrave; t&#259;ng &aacute;p l&#7921;c l&ecirc;n Redis.</p>
+
+<h2>Idempotency: ph&ograve;ng tuy&#7871;n ch&#7889;ng x&#7917; l&yacute; tr&ugrave;ng</h2>
+<p>Queue th&#432;&#7901;ng mang ng&#7919; ngh&#297;a giao &iacute;t nh&#7845;t m&#7897;t l&#7847;n. Job c&oacute; th&#7875; ho&agrave;n t&#7845;t t&aacute;c &#273;&#7897;ng b&ecirc;n ngo&agrave;i nh&#432;ng worker d&#7915;ng tr&#432;&#7899;c khi x&aacute;c nh&#7853;n, khi&#7871;n job &#273;&#432;&#7907;c giao l&#7841;i. V&igrave; v&#7853;y thao t&aacute;c nh&#432; tr&#7915; ti&#7873;n, t&#7841;o h&oacute;a &#273;&#417;n ho&#7863;c g&#7917;i webhook ph&#7843;i ch&#7883;u &#273;&#432;&#7907;c vi&#7879;c g&#7885;i l&#7863;p.</p>
+<ul><li>D&ugrave;ng kh&oacute;a nghi&#7879;p v&#7909; duy nh&#7845;t, v&iacute; d&#7909; <code>invoice_id + action</code>.</li><li>T&#7841;o unique constraint trong database thay v&igrave; ch&#7881; ki&#7875;m tra b&#7857;ng m&atilde; &#7913;ng d&#7909;ng.</li><li>L&#432;u tr&#7841;ng th&aacute;i v&agrave; c&#7853;p nh&#7853;t nghi&#7879;p v&#7909; trong c&ugrave;ng transaction khi c&oacute; th&#7875;.</li><li>D&ugrave;ng transactional outbox n&#7871;u c&#7847;n ph&#7889;i h&#7907;p database v&#7899;i message ho&#7863;c API b&ecirc;n ngo&agrave;i.</li><li>C&oacute; th&#7875; d&ugrave;ng <code>ShouldBeUnique</code> &#273;&#7875; h&#7841;n ch&#7871; enqueue tr&ugrave;ng, nh&#432;ng kh&ocirc;ng coi &#273;&oacute; l&agrave; b&#7843;o &#273;&#7843;m &ldquo;exactly once&rdquo;.</li></ul>
+
+<h2>Chia queue theo &#273;&#7897; &#432;u ti&ecirc;n v&agrave; t&agrave;i nguy&ecirc;n</h2>
+<p>Kh&ocirc;ng n&ecirc;n &#273;&#7875; email, &#7843;nh n&#7863;ng v&agrave; t&aacute;c v&#7909; thanh to&aacute;n c&#7841;nh tranh trong m&#7897;t queue. M&#7897;t c&aacute;ch chia d&#7877; v&#7853;n h&agrave;nh l&agrave; <code>high</code>, <code>default</code>, <code>notifications</code> v&agrave; <code>media</code>. Trong <code>config/horizon.php</code>, t&#7841;o supervisor ri&ecirc;ng cho workload c&#7847;n t&agrave;i nguy&ecirc;n ho&#7863;c &#273;&#7897; &#432;u ti&ecirc;n kh&aacute;c nhau.</p>
+<pre><code>'production' =&gt; [
+    'supervisor-critical' =&gt; [
+        'connection' =&gt; 'redis',
+        'queue' =&gt; ['high'],
+        'balance' =&gt; 'simple',
+        'processes' =&gt; 4,
+        'tries' =&gt; 3,
+        'timeout' =&gt; 100,
+    ],
+    'supervisor-default' =&gt; [
+        'connection' =&gt; 'redis',
+        'queue' =&gt; ['default', 'notifications'],
+        'balance' =&gt; 'auto',
+        'minProcesses' =&gt; 2,
+        'maxProcesses' =&gt; 10,
+        'balanceMaxShift' =&gt; 1,
+        'balanceCooldown' =&gt; 3,
+        'tries' =&gt; 5,
+        'timeout' =&gt; 100,
+        'backoff' =&gt; [10, 30, 120],
+    ],
+],</code></pre>
+<p><code>auto</code> ph&acirc;n b&#7893; worker theo t&#7843;i, nh&#432;ng kh&ocirc;ng b&#7843;o &#273;&#7843;m &#432;u ti&ecirc;n tuy&#7879;t &#273;&#7889;i gi&#7919;a c&aacute;c queue. Workload quan tr&#7885;ng n&ecirc;n c&oacute; supervisor ri&ecirc;ng v&agrave; gi&#7899;i h&#7841;n worker d&#7921;a tr&ecirc;n CPU, RAM, k&#7871;t n&#7889;i database v&agrave; rate limit c&#7911;a d&#7883;ch v&#7909; ph&#7909; thu&#7897;c.</p>
+
+<h2>Ch&#7841;y Horizon nh&#432; m&#7897;t d&#7883;ch v&#7909;</h2>
+<p>Production c&#7847;n Supervisor, systemd ho&#7863;c tr&igrave;nh qu&#7843;n l&yacute; ti&#7871;n tr&igrave;nh t&#432;&#417;ng &#273;&#432;&#417;ng &#273;&#7875; t&#7921; kh&#7903;i &#273;&#7897;ng l&#7841;i Horizon khi m&aacute;y reboot ho&#7863;c ti&#7871;n tr&igrave;nh l&#7895;i. Ti&#7871;n tr&igrave;nh ch&iacute;nh l&agrave;:</p>
+<pre><code>php artisan horizon</code></pre>
+<p>Dashboard Horizon ch&#7913;a th&ocirc;ng tin v&#7853;n h&agrave;nh, v&igrave; v&#7853;y ph&#7843;i gi&#7899;i h&#7841;n quy&#7873;n truy c&#7853;p qua gate trong <code>HorizonServiceProvider</code>, &#273;&#7891;ng th&#7901;i &#273;&#7863;t sau HTTPS v&agrave; c&#417; ch&#7871; x&aacute;c th&#7921;c c&#7911;a &#7913;ng d&#7909;ng.</p>
+
+<h2>Deploy m&agrave; kh&ocirc;ng &#273;&#7875; worker ch&#7841;y m&atilde; c&#361;</h2>
+<p>Worker l&agrave; ti&#7871;n tr&igrave;nh s&#7889;ng l&acirc;u v&agrave; kh&ocirc;ng t&#7921; n&#7841;p l&#7841;i source code sau m&#7895;i request. V&#7899;i Laravel 13, c&oacute; th&#7875; d&ugrave;ng <code>php artisan reload</code> trong quy tr&igrave;nh deploy &#273;&#7875; reload c&aacute;c d&#7883;ch v&#7909; d&agrave;i h&#7841;n. Ri&ecirc;ng Horizon, <code>php artisan horizon:terminate</code> y&ecirc;u c&#7847;u ti&#7871;n tr&igrave;nh hi&#7879;n t&#7841;i tho&aacute;t nh&#7865; nh&agrave;ng sau khi ho&agrave;n t&#7845;t job; tr&igrave;nh qu&#7843;n l&yacute; ti&#7871;n tr&igrave;nh s&#7869; kh&#7903;i &#273;&#7897;ng phi&ecirc;n b&#7843;n m&#7899;i.</p>
+<pre><code>php artisan migrate --force
+php artisan optimize
+php artisan horizon:terminate</code></pre>
+<p>Kh&ocirc;ng deploy thay &#273;&#7893;i kh&ocirc;ng t&#432;&#417;ng th&iacute;ch v&#7899;i payload job &#273;ang ch&#7901;. Khi &#273;&#7893;i constructor ho&#7863;c &#273;&#7883;nh d&#7841;ng d&#7919; li&#7879;u, h&atilde;y h&#7895; tr&#7907; payload c&#361; trong giai &#273;o&#7841;n chuy&#7875;n ti&#7871;p ho&#7863;c l&agrave;m c&#7841;n queue tr&#432;&#7899;c khi ph&aacute;t h&agrave;nh.</p>
+
+<h2>X&#7917; l&yacute; failed jobs v&agrave; quan s&aacute;t h&#7879; th&#7889;ng</h2>
+<p>&#272;&#7897;i v&#7853;n h&agrave;nh c&#7847;n bi&#7871;t job th&#7845;t b&#7841;i v&igrave; &#273;&acirc;u tr&#432;&#7899;c khi retry h&agrave;ng lo&#7841;t:</p>
+<pre><code>php artisan queue:failed
+php artisan queue:retry &lt;job-id&gt;
+php artisan queue:retry all
+php artisan horizon:forget &lt;job-id&gt;</code></pre>
+<p>Dashboard v&agrave; c&#7843;nh b&aacute;o n&ecirc;n theo d&otilde;i &#273;&#7897; tr&#7877; queue, tu&#7893;i c&#7911;a job l&acirc;u nh&#7845;t, throughput, runtime p95/p99, s&#7889; l&#7847;n retry, failed jobs, worker restart, b&#7897; nh&#7899; Redis v&agrave; l&#7895;i t&#7915; d&#7883;ch v&#7909; ph&#7909; thu&#7897;c. Thi&#7871;t l&#7853;p snapshot Horizon theo scheduler v&agrave; prune d&#7919; li&#7879;u theo th&#7901;i gian l&#432;u gi&#7919; ph&ugrave; h&#7907;p.</p>
+
+<h2>Ki&#7875;m th&#7917; tr&#432;&#7899;c khi &#273;&#432;a l&ecirc;n production</h2>
+<ul><li>D&ugrave;ng <code>Queue::fake()</code> &#273;&#7875; x&aacute;c minh job &#273;&#432;&#7907;c dispatch &#273;&uacute;ng queue v&agrave; &#273;&uacute;ng d&#7919; li&#7879;u.</li><li>Ki&#7875;m th&#7917; <code>handle()</code> ri&ecirc;ng v&#7899;i l&#7895;i t&#7841;m th&#7901;i v&agrave; l&#7895;i v&#297;nh vi&#7877;n.</li><li>Ch&#7841;y integration test v&#7899;i Redis v&agrave; worker th&#7853;t cho &#273;&#432;&#7901;ng &#273;i quan tr&#7885;ng.</li><li>M&ocirc; ph&#7887;ng worker d&#7915;ng sau t&aacute;c &#273;&#7897;ng nghi&#7879;p v&#7909; nh&#432;ng tr&#432;&#7899;c l&uacute;c ACK.</li><li>Ki&#7875;m tra nhi&#7873;u job c&ugrave;ng ch&#7841;y tr&ecirc;n m&#7897;t kh&oacute;a nghi&#7879;p v&#7909;.</li><li>Th&#7917; deploy khi queue &#273;ang c&oacute; t&#7843;i v&agrave; x&aacute;c minh worker m&#7899;i d&ugrave;ng &#273;&uacute;ng phi&ecirc;n b&#7843;n m&atilde;.</li></ul>
+
+<h2>Checklist production</h2>
+<ol><li>Redis ch&#7881; truy c&#7853;p t&#7915; m&#7841;ng tin c&#7853;y v&agrave; c&oacute; gi&aacute;m s&aacute;t b&#7897; nh&#7899;.</li><li>M&#7885;i job c&oacute; timeout, s&#7889; l&#7847;n th&#7917; v&agrave; backoff h&#7919;u h&#7841;n.</li><li>Quan h&#7879; timeout tu&acirc;n theo <code>job &lt; Horizon &lt; retry_after</code>.</li><li>Job ph&#7909; thu&#7897;c transaction ch&#7881; dispatch sau commit.</li><li>T&aacute;c &#273;&#7897;ng nghi&#7879;p v&#7909; quan tr&#7885;ng c&oacute; idempotency key v&agrave; unique constraint.</li><li>Queue n&#7863;ng ho&#7863;c quan tr&#7885;ng c&oacute; supervisor ri&ecirc;ng.</li><li>Horizon ch&#7841;y d&#432;&#7899;i process monitor v&agrave; dashboard &#273;&#432;&#7907;c b&#7843;o v&#7879;.</li><li>Deploy c&oacute; b&#432;&#7899;c reload ho&#7863;c terminate worker nh&#7865; nh&agrave;ng.</li><li>Failed jobs c&oacute; c&#7843;nh b&aacute;o, ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m v&agrave; quy tr&igrave;nh replay.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Laravel Queue &#273;&aacute;ng tin c&#7853;y kh&ocirc;ng n&#7857;m &#7903; s&#7889; l&#432;&#7907;ng worker, m&agrave; &#7903; c&aacute;c gi&#7899;i h&#7841;n &#273;&#432;&#7907;c thi&#7871;t k&#7871; r&otilde;: job c&oacute; th&#7875; retry nh&#432;ng kh&ocirc;ng t&#7841;o t&aacute;c &#273;&#7897;ng tr&ugrave;ng, worker c&oacute; th&#7875; restart m&agrave; kh&ocirc;ng m&#7845;t vi&#7879;c, v&agrave; &#273;&#7897;i v&#7853;n h&agrave;nh nh&igrave;n th&#7845;y queue &#273;ang ch&#7853;m &#7903; &#273;&acirc;u. Redis v&agrave; Horizon cung c&#7845;p n&#7873;n t&#7843;ng t&#7889;t; t&iacute;nh an to&agrave;n &#273;&#7871;n t&#7915; timeout h&#7907;p l&yacute;, idempotency, chia t&#7843;i v&agrave; quy tr&igrave;nh deploy c&oacute; ki&#7875;m so&aacute;t.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://laravel.com/framework/docs/queues" target="_blank" rel="noopener noreferrer">Laravel Documentation: Queues</a></li><li><a href="https://laravel.com/framework/docs/horizon" target="_blank" rel="noopener noreferrer">Laravel Documentation: Horizon</a></li><li><a href="https://laravel.com/framework/docs/deployment" target="_blank" rel="noopener noreferrer">Laravel Documentation: Deployment</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

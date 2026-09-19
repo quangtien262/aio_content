@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ch&#7849;n &#273;o&aacute;n Linux load cao v&agrave; m&aacute;y ch&#7911; ch&#7853;m</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux load cao, load average, top, pidstat, vmstat, iostat, PSI Linux, CPU high, iowait, Linux performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Performance, Load Average, CPU, I/O, PSI, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Quy tr&igrave;nh ch&#7849;n &#273;o&aacute;n Linux load cao b&#7857;ng uptime, top, pidstat, vmstat, iostat v&agrave; PSI; ph&acirc;n bi&#7879;t ngh&#7869;n CPU, I/O, RAM, steal time v&agrave; process k&#7865;t.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-high-load-performance.jpg" alt="Linux load cao v&agrave; m&aacute;y ch&#7911; ch&#7853;m: Ch&#7849;n &#273;o&aacute;n CPU, I/O, RAM v&agrave; process" width="1440" height="810"></p><h1>Linux load cao v&agrave; m&aacute;y ch&#7911; ch&#7853;m: Ch&#7849;n &#273;o&aacute;n CPU, I/O, RAM v&agrave; process</h1><p><strong>Load average 20 kh&ocirc;ng t&#7921; &#273;&#7897;ng c&oacute; ngh&#297;a CPU &#273;ang ch&#7841;y 100%.</strong> Tr&ecirc;n Linux, load c&ograve;n t&iacute;nh c&aacute;c task &#273;ang ch&#7841;y/ch&#7901; CPU v&agrave; task &#7903; tr&#7841;ng th&aacute;i uninterruptible sleep, th&#432;&#7901;ng l&agrave; ch&#7901; I/O. V&igrave; v&#7853;y m&#7897;t server &ldquo;load cao&rdquo; c&oacute; th&#7875; ngh&#7869;n CPU, disk, NFS, memory reclaim, hypervisor ho&#7863;c m&#7897;t kernel path kh&aacute;c.</p>
+<p>B&agrave;i vi&#7871;t n&agrave;y tr&igrave;nh b&agrave;y quy tr&igrave;nh t&#7915; t&iacute;n hi&#7879;u t&#7893;ng quan &#273;&#7871;n &#273;&uacute;ng process/cgroup g&acirc;y ngh&#7869;n b&#7857;ng <code>uptime</code>, <code>top</code>, <code>vmstat</code>, <code>pidstat</code>, <code>iostat</code>, <code>sar</code> v&agrave; Pressure Stall Information (PSI).</p>
+
+<h2>Tr&#432;&#7899;c ti&ecirc;n: x&aacute;c nh&#7853;n ng&#432;&#7901;i d&ugrave;ng &#273;ang th&#7845;y g&igrave;</h2>
+<p>&ldquo;Ch&#7853;m&rdquo; c&#7847;n &#273;&#432;&#7907;c g&#7855;n v&#7899;i m&#7897;t tri&#7879;u ch&#7913;ng &#273;o &#273;&#432;&#7907;c:</p>
+<ul>
+<li>Latency API t&#259;ng hay request timeout?</li>
+<li>SSH lag, shell &#273;&#7913;ng hay ch&#7881; m&#7897;t service?</li>
+<li>Throughput gi&#7843;m d&ugrave; CPU th&#7845;p?</li>
+<li>S&#7921; c&#7889; b&#7855;t &#273;&#7847;u khi deploy, backup, cron hay traffic t&#259;ng?</li>
+<li>&#7842;nh h&#432;&#7903;ng to&agrave;n host, m&#7897;t container hay m&#7897;t tenant?</li>
+</ul>
+<p>Ghi timestamp v&agrave; timezone. &#272;&#7915;ng restart ngay; restart x&oacute;a process state, queue v&agrave; b&#7857;ng ch&#7913;ng quan tr&#7885;ng. N&#7871;u h&#7879; th&#7889;ng &#273;ang m&#7845;t d&#7919; li&#7879;u ho&#7863;c cascade, gi&#7843;m t&#7843;i tr&#432;&#7899;c r&#7891;i v&#7851;n l&#432;u snapshot t&#7889;i thi&#7875;u.</p>
+
+<h2>1. &#272;&#7885;c load average &#273;&uacute;ng c&aacute;ch</h2>
+<pre><code>uptime
+cat /proc/loadavg
+nproc
+lscpu</code></pre>
+<p>Ba s&#7889; load l&agrave; trung b&igrave;nh kho&#7843;ng 1, 5 v&agrave; 15 ph&uacute;t. Ch&uacute;ng ph&#7843;n &aacute;nh s&#7889; task &#7903; tr&#7841;ng th&aacute;i runnable (<code>R</code>) ho&#7863;c ch&#7901; I/O kh&ocirc;ng ng&#7855;t &#273;&#432;&#7907;c (<code>D</code>), kh&ocirc;ng ph&#7843;i ph&#7847;n tr&#259;m CPU.</p>
+<p>So s&aacute;nh load v&#7899;i s&#7889; logical CPU ch&#7881; l&agrave; b&#432;&#7899;c &#273;&#7883;nh h&#432;&#7899;ng. Load 8 tr&ecirc;n m&aacute;y 8 CPU c&oacute; th&#7875; b&igrave;nh th&#432;&#7901;ng n&#7871;u workload CPU-bound v&agrave; latency &#273;&#7841;t SLA; load 4 v&#7851;n c&oacute; th&#7875; nghi&ecirc;m tr&#7885;ng n&#7871;u m&#7885;i request ch&#7901; m&#7897;t disk ch&#7853;m. Xu h&#432;&#7899;ng quan tr&#7885;ng h&#417;n m&#7897;t ng&#432;&#7905;ng c&#7913;ng:</p>
+<ul>
+<li>1 ph&uacute;t cao h&#417;n 5/15 ph&uacute;t: &aacute;p l&#7921;c m&#7899;i t&#259;ng.</li>
+<li>1 ph&uacute;t th&#7845;p h&#417;n 5/15 ph&uacute;t: h&#7879; th&#7889;ng &#273;ang h&#7891;i ph&#7909;c.</li>
+<li>C&#7843; ba cao: &aacute;p l&#7921;c k&eacute;o d&agrave;i.</li>
+</ul>
+
+<h2>2. Snapshot t&#7893;ng quan b&#7857;ng top</h2>
+<pre><code>top
+top -H -p PID</code></pre>
+<p>C&aacute;c tr&#432;&#7901;ng CPU th&#432;&#7901;ng g&#7863;p:</p>
+<ul>
+<li><code>us</code>: user-space code.</li>
+<li><code>sy</code>: kernel/system time.</li>
+<li><code>id</code>: idle.</li>
+<li><code>wa</code>: CPU idle trong l&uacute;c h&#7879; th&#7889;ng c&ograve;n I/O outstanding; l&agrave; t&iacute;n hi&#7879;u, kh&ocirc;ng ph&#7843;i &ldquo;disk s&#7917; d&#7909;ng bao nhi&ecirc;u %&rdquo;.</li>
+<li><code>hi</code>/<code>si</code>: hardware/software interrupt.</li>
+<li><code>st</code>: steal time, vCPU ch&#7901; hypervisor c&#7845;p CPU.</li>
+</ul>
+<p>Nh&#7845;n <code>1</code> &#273;&#7875; xem t&#7915;ng CPU, <code>P</code> &#273;&#7875; sort CPU v&agrave; <code>M</code> &#273;&#7875; sort memory. M&#7897;t process 400% CPU tr&ecirc;n m&aacute;y nhi&#7873;u core c&oacute; ngh&#297;a n&oacute; d&ugrave;ng kho&#7843;ng b&#7889;n logical CPU; kh&ocirc;ng ph&#7843;i l&#7895;i hi&#7875;n th&#7883;.</p>
+<p><code>top</code> d&#7877; d&ugrave;ng nh&#432;ng snapshot c&oacute; th&#7875; b&#7887; l&#7905; burst ng&#7855;n. Ti&#7871;p t&#7909;c b&#7857;ng c&ocirc;ng c&#7909; sampling c&oacute; interval.</p>
+
+<h2>3. vmstat: ph&acirc;n bi&#7879;t runnable, blocked, swap v&agrave; CPU</h2>
+<pre><code>vmstat 1 10
+vmstat -y 1 10</code></pre>
+<p>D&ugrave;ng <code>-y</code> &#273;&#7875; b&#7887; d&ograve;ng &#273;&#7847;u ti&ecirc;n v&#7889;n l&agrave; trung b&igrave;nh t&#7915; l&uacute;c boot. T&#7853;p trung:</p>
+<ul>
+<li><code>r</code>: task runnable/ch&#7901; CPU. Li&ecirc;n t&#7909;c cao h&#417;n s&#7889; CPU g&#7907;i &yacute; CPU queue.</li>
+<li><code>b</code>: task b&#7883; block ch&#7901; I/O.</li>
+<li><code>si</code>/<code>so</code>: swap in/out. Ho&#7841;t &#273;&#7897;ng li&ecirc;n t&#7909;c c&ugrave;ng latency th&#432;&#7901;ng l&agrave; memory pressure.</li>
+<li><code>us</code>/<code>sy</code>/<code>id</code>/<code>wa</code>/<code>st</code>: ph&acirc;n b&#7889; CPU.</li>
+<li><code>cs</code>: context switch; t&#259;ng cao c&#7847;n &#273;&#7863;t c&#7841;nh throughput v&agrave; scheduler activity.</li>
+</ul>
+<p>Pattern th&#432;&#7901;ng g&#7863;p:</p>
+<ul>
+<li><code>r</code> cao, <code>id</code> g&#7847;n 0, <code>wa</code> th&#7845;p: CPU saturation.</li>
+<li><code>b</code> v&agrave; <code>wa</code> cao: I/O path c&oacute; v&#7845;n &#273;&#7873;.</li>
+<li><code>si/so</code> li&ecirc;n t&#7909;c: RAM pressure ho&#7863;c working set v&#432;&#7907;t memory.</li>
+<li><code>st</code> cao: tranh ch&#7845;p CPU &#7903; hypervisor/cloud host.</li>
+</ul>
+
+<h2>4. T&igrave;m process b&#7857;ng pidstat</h2>
+<p>C&agrave;i package <code>sysstat</code> n&#7871;u ch&#432;a c&oacute;. L&#7845;y nhi&#7873;u g&oacute;c nh&igrave;n theo interval:</p>
+<pre><code>pidstat -u -r -d -w -p ALL 1 10
+pidstat -t -u -p PID 1 10</code></pre>
+<ul>
+<li><code>-u</code>: CPU user/system v&agrave; CPU number.</li>
+<li><code>-r</code>: page fault v&agrave; memory.</li>
+<li><code>-d</code>: read/write I/O theo process.</li>
+<li><code>-w</code>: voluntary/non-voluntary context switch.</li>
+<li><code>-t</code>: hi&#7875;n th&#7883; thread.</li>
+</ul>
+<p>Thread view quan tr&#7885;ng v&#7899;i JVM, database, web server v&agrave; runtime c&oacute; thread pool. M&#7897;t thread n&oacute;ng c&oacute; th&#7875; b&#7883; che trong t&#7893;ng process. Ghi command line &#273;&#7847;y &#273;&#7911;:</p>
+<pre><code>ps -eo pid,ppid,stat,psr,ni,%cpu,%mem,wchan:24,comm,args \
+  --sort=-%cpu | head -30</code></pre>
+
+<h2>5. Process state v&agrave; uninterruptible sleep</h2>
+<p>Trong <code>ps</code>, c&aacute;c state ch&iacute;nh g&#7891;m <code>R</code> runnable, <code>S</code> interruptible sleep, <code>D</code> uninterruptible sleep, <code>Z</code> zombie v&agrave; <code>T</code> stopped. Nhi&#7873;u task <code>D</code> th&#432;&#7901;ng l&agrave;m load cao d&ugrave; CPU r&#7843;nh.</p>
+<pre><code>ps -eo state,pid,ppid,wchan:32,comm,args | awk '$1 ~ /^D/'
+cat /proc/PID/stack
+cat /proc/PID/wchan</code></pre>
+<p><code>wchan</code>/kernel stack c&oacute; th&#7875; ch&#7881; ra ch&#7901; block I/O, NFS, filesystem, lock ho&#7863;c driver. Task <code>D</code> th&#432;&#7901;ng kh&ocirc;ng th&#7875; kill ngay; signal ch&#7881; &#273;&#432;&#7907;c x&#7917; l&yacute; khi kernel operation tr&#7903; l&#7841;i. Reboot c&oacute; th&#7875; l&agrave; bi&#7879;n ph&aacute;p cu&#7889;i, nh&#432;ng tr&#432;&#7899;c &#273;&oacute; c&#7847;n x&aacute;c &#273;&#7883;nh storage/network/kernel path &#273;&#7875; l&#7895;i kh&ocirc;ng l&#7863;p l&#7841;i.</p>
+
+<h2>6. iostat: disk n&agrave;o &#273;ang ngh&#7869;n?</h2>
+<pre><code>iostat -xz 1 10</code></pre>
+<p>C&aacute;c tr&#432;&#7901;ng thay &#273;&#7893;i theo phi&ecirc;n b&#7843;n, nh&#432;ng th&#432;&#7901;ng ch&uacute; &yacute;:</p>
+<ul>
+<li><code>r/s</code>, <code>w/s</code>: IOPS.</li>
+<li><code>rkB/s</code>, <code>wkB/s</code>: throughput.</li>
+<li><code>await</code>: latency trung b&igrave;nh g&#7891;m queue + service.</li>
+<li><code>aqu-sz</code>: &#273;&#7897; d&agrave;i queue trung b&igrave;nh.</li>
+<li><code>%util</code>: th&#7901;i gian device b&#7853;n x&#7917; l&yacute; I/O.</li>
+</ul>
+<p>Kh&ocirc;ng d&ugrave;ng m&#7897;t ng&#432;&#7905;ng <code>%util=100</code> cho m&#7885;i storage. NVMe, RAID, SAN v&agrave; virtual block device c&oacute; concurrency kh&aacute;c disk &#273;&#417;n. &#272;&aacute;nh gi&aacute; latency theo SLA v&agrave; baseline c&#7911;a ch&iacute;nh workload, k&#7871;t h&#7907;p queue, throughput v&agrave; application latency.</p>
+<p>T&igrave;m process t&#7841;o I/O b&#7857;ng <code>pidstat -d</code> ho&#7863;c <code>iotop -oPa</code>. Ki&#7875;m tra kernel/storage log:</p>
+<pre><code>dmesg -T | grep -Ei 'error|timeout|reset|nvme|blk|ext4|xfs'
+journalctl -k --since '-30 min'</code></pre>
+
+<h2>7. Ph&acirc;n bi&#7879;t memory usage v&agrave; memory pressure</h2>
+<pre><code>free -h
+vmstat 1
+cat /proc/meminfo
+cat /proc/pressure/memory</code></pre>
+<p>Linux d&ugrave;ng RAM tr&#7889;ng cho page cache; <code>free</code> th&#7845;p kh&ocirc;ng t&#7921; &#273;&#7897;ng l&agrave; thi&#7871;u RAM. Xem <code>available</code>, swap activity, reclaim v&agrave; PSI. Khi memory pressure cao, task b&#7883; stall &#273;&#7875; reclaim/compaction ho&#7863;c swap, khi&#7871;n latency t&#259;ng tr&#432;&#7899;c c&#7843; OOM.</p>
+<p>T&igrave;m process/cgroup:</p>
+<pre><code>ps -eo pid,ppid,%mem,rss,vsz,comm,args --sort=-rss | head -30
+systemd-cgtop
+cat /sys/fs/cgroup/system.slice/SERVICE.service/memory.events</code></pre>
+<p>B&agrave;i to&aacute;n memory leak/OOM c&#7847;n ph&acirc;n t&iacute;ch ri&ecirc;ng; &#273;&#7915;ng drop cache nh&#432; gi&#7843;i ph&aacute;p &#273;&#7883;nh k&#7923;. N&oacute; c&oacute; th&#7875; l&agrave;m I/O t&#259;ng v&agrave; ch&#7881; che tri&#7879;u ch&#7913;ng.</p>
+
+<h2>8. PSI: &#273;o th&#7901;i gian workload th&#7921;c s&#7921; b&#7883; stall</h2>
+<pre><code>cat /proc/pressure/cpu
+cat /proc/pressure/memory
+cat /proc/pressure/io</code></pre>
+<p>PSI b&aacute;o t&#7927; l&#7879; th&#7901;i gian task b&#7883; tr&igrave; ho&atilde;n v&igrave; thi&#7871;u CPU, memory ho&#7863;c I/O trong c&aacute;c c&#7917;a s&#7893; 10, 60 v&agrave; 300 gi&acirc;y:</p>
+<ul>
+<li><code>some</code>: &iacute;t nh&#7845;t m&#7897;t task b&#7883; stall.</li>
+<li><code>full</code>: m&#7885;i task non-idle &#273;&#7891;ng th&#7901;i b&#7883; stall; memory/I/O full k&eacute;o d&agrave;i th&#432;&#7901;ng nghi&ecirc;m tr&#7885;ng.</li>
+</ul>
+<p>Load cho bi&#7871;t bao nhi&ecirc;u task &#273;ang runnable/blocked; PSI cho bi&#7871;t workload m&#7845;t bao nhi&ecirc;u th&#7901;i gian v&igrave; contention. K&#7871;t h&#7907;p hai t&iacute;n hi&#7879;u t&#7889;t h&#417;n ch&#7881; alert load average.</p>
+<p>V&#7899;i cgroup v2, c&oacute; th&#7875; &#273;&#7885;c <code>cpu.pressure</code>, <code>memory.pressure</code> v&agrave; <code>io.pressure</code> theo service/container &#273;&#7875; tr&aacute;nh m&#7897;t workload b&#7883; che trong metric to&agrave;n host.</p>
+
+<h2>9. CPU saturation: user, system, interrupt hay steal?</h2>
+<p>N&#7871;u <code>us</code> cao, x&aacute;c &#273;&#7883;nh function/code b&#7857;ng profiler ph&ugrave; h&#7907;p; &#273;&#7915;ng ch&#7881; kill process. V&#7899;i native workload c&oacute; th&#7875; b&#7855;t &#273;&#7847;u:</p>
+<pre><code>perf top
+perf stat -p PID sleep 10</code></pre>
+<p><code>sy</code> cao c&oacute; th&#7875; li&ecirc;n quan syscall, network packet, filesystem, lock ho&#7863;c kernel work. <code>si</code> cao th&#432;&#7901;ng c&#7847;n xem packet rate v&agrave; NIC distribution:</p>
+<pre><code>mpstat -P ALL 1 10
+mpstat -I ALL 1 10
+cat /proc/interrupts</code></pre>
+<p><code>st</code> cao tr&ecirc;n VM ngh&#297;a hypervisor kh&ocirc;ng c&#7845;p &#273;&#7911; CPU. T&#7889;i &#432;u code trong guest kh&ocirc;ng gi&#7843;i quy&#7871;t noisy neighbor; c&#7847;n &#273;&#7893;i instance/host ho&#7863;c l&agrave;m vi&#7879;c v&#7899;i nh&agrave; cung c&#7845;p.</p>
+
+<h2>10. Scheduler, run queue v&agrave; context switch</h2>
+<p>CPU 100% ch&#432;a ch&#7855;c x&#7845;u n&#7871;u throughput t&#7889;t v&agrave; latency &#273;&#7841;t m&#7909;c ti&ecirc;u. V&#7845;n &#273;&#7873; l&agrave; runnable queue v&agrave; th&#7901;i gian ch&#7901; CPU t&#259;ng. D&ugrave;ng:</p>
+<pre><code>mpstat -P ALL 1
+pidstat -w -p ALL 1
+sar -q 1 10</code></pre>
+<p>Nhi&#7873;u thread h&#417;n CPU kh&ocirc;ng t&#7921; &#273;&#7897;ng sai, nh&#432;ng thread explosion, lock contention ho&#7863;c spin loop c&oacute; th&#7875; t&#7841;o context switch cao v&agrave; throughput th&#7845;p. So s&aacute;nh v&#7899;i deploy/config g&#7847;n nh&#7845;t: worker count, thread pool, connection pool, garbage collector v&agrave; CPU quota.</p>
+
+<h2>11. Container v&agrave; cgroup: host r&#7843;nh nh&#432;ng app v&#7851;n ch&#7853;m</h2>
+<p>Container c&oacute; th&#7875; b&#7883; CPU throttling ho&#7863;c memory limit d&ugrave; host c&ograve;n t&agrave;i nguy&ecirc;n:</p>
+<pre><code>docker stats --no-stream
+systemd-cgtop
+cat /sys/fs/cgroup/CGROUP/cpu.stat
+cat /sys/fs/cgroup/CGROUP/memory.current
+cat /sys/fs/cgroup/CGROUP/memory.events
+</code></pre>
+<p>Trong <code>cpu.stat</code>, <code>nr_throttled</code> v&agrave; <code>throttled_usec</code> t&#259;ng cho th&#7845;y workload ch&#7841;m CPU quota. V&#7899;i Kubernetes, so s&aacute;nh request/limit, pod throttling v&agrave; node pressure. &#272;&#7915;ng t&#259;ng limit tr&#432;&#7899;c khi hi&#7875;u traffic v&agrave; regression.</p>
+
+<h2>12. L&#7883;ch s&#7917; quan tr&#7885;ng h&#417;n snapshot</h2>
+<p>Khi s&#7921; c&#7889; &#273;&atilde; qua, <code>top</code> hi&#7879;n t&#7841;i kh&ocirc;ng tr&#7843; l&#7901;i qu&aacute; kh&#7913;. B&#7853;t <code>sysstat</code> ho&#7863;c monitoring agent t&#7915; tr&#432;&#7899;c:</p>
+<pre><code>sar -u -f /var/log/sysstat/sa19
+sar -q -f /var/log/sysstat/sa19
+sar -r -f /var/log/sysstat/sa19
+sar -d -p -f /var/log/sysstat/sa19</code></pre>
+<p>&#272;&#7889;i chi&#7871;u v&#7899;i deploy, cron, backup, traffic, database checkpoint v&agrave; cloud event. Baseline theo c&ugrave;ng gi&#7901;/ng&agrave;y gi&uacute;p ph&acirc;n bi&#7879;t spike b&igrave;nh th&#432;&#7901;ng v&agrave; regression.</p>
+
+<h2>13. Gi&#7843;m t&#7843;i an to&agrave;n khi &#273;ang s&#7921; c&#7889;</h2>
+<p>T&ugrave;y nguy&ecirc;n nh&acirc;n, &#432;u ti&ecirc;n bi&#7879;n ph&aacute;p c&oacute; th&#7875; rollback:</p>
+<ul>
+<li>Rate-limit/load shed request kh&ocirc;ng quan tr&#7885;ng.</li>
+<li>T&#7841;m d&#7915;ng batch, backup, index build ho&#7863;c worker priority th&#7845;p.</li>
+<li>Scale out/vertical n&#7871;u &#273;&atilde; x&aacute;c nh&#7853;n saturation v&agrave; &#7913;ng d&#7909;ng h&#7895; tr&#7907;.</li>
+<li>Gi&#7843;m concurrency khi dependency &#273;ang ngh&#7869;n; t&#259;ng worker c&oacute; th&#7875; l&agrave;m t&#7879; h&#417;n.</li>
+<li>Rollback deploy/config v&#7915;a g&acirc;y regression.</li>
+<li>D&ugrave;ng <code>renice</code>/<code>ionice</code> th&#7853;n tr&#7885;ng cho batch, kh&ocirc;ng thay th&#7871; s&#7917;a nguy&ecirc;n nh&acirc;n.</li>
+</ul>
+<p>Kh&ocirc;ng kill database, flush cache, drop cache ho&#7863;c reboot ch&#7881; v&igrave; load cao. Ch&#7909;p metrics, process list, stack/log v&agrave; I/O state tr&#432;&#7899;c; &#273;&aacute;nh gi&aacute; t&aacute;c &#273;&#7897;ng d&#7919; li&#7879;u v&agrave; failover.</p>
+
+<h2>14. C&aacute;c k&#7871;t lu&#7853;n sai th&#432;&#7901;ng g&#7863;p</h2>
+<ul>
+<li>&ldquo;Load cao = CPU cao&rdquo; &mdash; task D-state c&#361;ng t&#259;ng load.</li>
+<li>&ldquo;Free RAM th&#7845;p = thi&#7871;u RAM&rdquo; &mdash; page cache l&agrave; s&#7917; d&#7909;ng h&#7919;u &iacute;ch.</li>
+<li>&ldquo;iowait cao = disk ch&#7855;c ch&#7855;n h&#7887;ng&rdquo; &mdash; c&#7847;n iostat, process v&agrave; storage path.</li>
+<li>&ldquo;%util 100 = m&#7885;i disk &#273;&atilde; h&#7871;t capacity&rdquo; &mdash; thi&#7871;t b&#7883; concurrent c&#7847;n &#273;&#7885;c kh&aacute;c.</li>
+<li>&ldquo;M&#7897;t process 300% l&agrave; bug&rdquo; &mdash; c&oacute; th&#7875; d&ugrave;ng ba core h&#7907;p l&#7879;.</li>
+<li>&ldquo;T&#259;ng worker s&#7869; t&#259;ng throughput&rdquo; &mdash; c&oacute; th&#7875; t&#259;ng queue v&agrave; contention.</li>
+<li>&ldquo;Restart xong l&agrave; &#273;&atilde; s&#7917;a&rdquo; &mdash; ch&#7881; x&oacute;a tri&#7879;u ch&#7913;ng v&agrave; b&#7857;ng ch&#7913;ng.</li>
+</ul>
+
+<h2>Playbook 15 ph&uacute;t</h2>
+<ol>
+<li>Ghi latency/error/throughput v&agrave; timestamp.</li>
+<li><code>uptime</code>, <code>nproc</code>: load trend v&agrave; s&#7889; CPU.</li>
+<li><code>vmstat -y 1 10</code>: runnable, blocked, swap, wa, st.</li>
+<li><code>cat /proc/pressure/*</code>: resource n&agrave;o l&agrave;m task stall.</li>
+<li><code>pidstat -u -r -d -w -p ALL 1 10</code>: process n&agrave;o g&acirc;y &aacute;p l&#7921;c.</li>
+<li><code>iostat -xz 1 10</code>: device latency/queue/throughput.</li>
+<li><code>ps</code> t&igrave;m D-state, thread n&oacute;ng v&agrave; command line.</li>
+<li>Ki&#7875;m tra cgroup/container quota v&agrave; throttling.</li>
+<li>&#272;&#7889;i chi&#7871;u log/deploy/cron/traffic.</li>
+<li>Gi&#7843;m t&#7843;i c&oacute; rollback, r&#7891;i x&aacute;c minh SLA v&agrave; vi&#7871;t postmortem.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Load average l&agrave; &#273;i&#7875;m b&#7855;t &#273;&#7847;u, kh&ocirc;ng ph&#7843;i ch&#7849;n &#273;o&aacute;n. Mu&#7889;n hi&#7875;u Linux ch&#7853;m, c&#7847;n ph&acirc;n bi&#7879;t task ch&#7901; CPU v&#7899;i task ch&#7901; I/O, &#273;&#7885;c xu h&#432;&#7899;ng theo interval, t&igrave;m process/thread/cgroup v&agrave; &#273;o th&#7901;i gian stall b&#7857;ng PSI. Khi k&#7871;t h&#7907;p <code>vmstat</code>, <code>pidstat</code>, <code>iostat</code> v&agrave; d&#7919; li&#7879;u l&#7883;ch s&#7917;, b&#7841;n c&oacute; th&#7875; chuy&#7875;n t&#7915; &ldquo;server load cao&rdquo; sang m&#7897;t nguy&ecirc;n nh&acirc;n c&#7909; th&#7875;, bi&#7879;n ph&aacute;p gi&#7843;m t&#7843;i an to&agrave;n v&agrave; thay &#273;&#7893;i ph&ograve;ng ng&#7915;a c&oacute; th&#7875; ki&#7875;m ch&#7913;ng.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://www.man7.org/linux/man-pages/man5/proc_loadavg.5.html" target="_blank" rel="noopener noreferrer">Linux man-pages: /proc/loadavg</a></li><li><a href="https://www.man7.org/linux/man-pages/man8/vmstat.8.html" target="_blank" rel="noopener noreferrer">procps-ng: vmstat</a></li><li><a href="https://man7.org/linux/man-pages/man1/pidstat.1.html" target="_blank" rel="noopener noreferrer">sysstat: pidstat</a></li><li><a href="https://docs.kernel.org/accounting/psi.html" target="_blank" rel="noopener noreferrer">Linux Kernel: Pressure Stall Information</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

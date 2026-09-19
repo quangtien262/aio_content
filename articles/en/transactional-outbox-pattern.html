@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">transactional-outbox-reliable-events-after-transaction</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Transactional Outbox for Reliable Event-Driven Systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">transactional outbox, event driven, message broker, idempotency, PostgreSQL, Kafka, RabbitMQ, microservices</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Transactional Outbox, Event-Driven, PostgreSQL, Kafka, RabbitMQ, Microservices, Backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Implement the Transactional Outbox pattern with atomic event writes, polling or CDC relays, retries, idempotent consumers, ordering, schema evolution, cleanup, and production monitoring.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/transactional-outbox-pattern.jpg" alt="Transactional Outbox in Practice: Reliable Events After a Transaction" width="1440" height="810"></p><h1>Transactional Outbox in Practice: Reliable Events After a Transaction</h1><p><strong>Creating an order commonly requires two writes: persist the order in a database and publish an <code>OrderCreated</code> event to a broker.</strong> If the database commits and publishing fails, inventory and email services never learn about the order. If publishing succeeds before the transaction rolls back, consumers process an order that does not exist. This is the <em>dual-write problem</em>.</p>
+<p>Transactional Outbox solves it by storing business data and an event in the same database transaction. An independent relay reads committed events and sends them to Kafka, RabbitMQ, SQS, or another broker.</p>
+
+<h2>Why is &ldquo;commit, then publish&rdquo; unsafe?</h2>
+<pre><code>$order = $orders-&gt;create($input);
+$database-&gt;commit();
+
+$broker-&gt;publish('OrderCreated', $order);</code></pre>
+<p>The process can crash after commit but before publish. Retrying the HTTP request is not a reliable repair when the client received a timeout or request idempotency is incomplete. Publishing before commit creates the opposite inconsistency.</p>
+<p>Two independent systems cannot participate in a normal local database transaction. Distributed transactions have different costs and support constraints; an outbox is often a more practical choice for web architectures.</p>
+
+<h2>Transactional Outbox flow</h2>
+<ol>
+<li>The application starts a database transaction.</li>
+<li>It writes the business change, such as a new order.</li>
+<li>It inserts an event into the outbox table in that same transaction.</li>
+<li>Commit makes both visible, or rollback removes both.</li>
+<li>A relay reads unpublished events and sends them to the broker.</li>
+<li>The relay marks them published, or CDC records its read position.</li>
+<li>Consumers process each event idempotently.</li>
+</ol>
+<blockquote>An outbox keeps the event atomic with the source transaction; it does not automatically make the entire pipeline exactly-once.</blockquote>
+
+<h2>1. Design the outbox table</h2>
+<pre><code>CREATE TABLE outbox_events (
+    id uuid PRIMARY KEY,
+    aggregate_type varchar(100) NOT NULL,
+    aggregate_id varchar(100) NOT NULL,
+    event_type varchar(150) NOT NULL,
+    event_version integer NOT NULL DEFAULT 1,
+    payload jsonb NOT NULL,
+    occurred_at timestamptz NOT NULL DEFAULT now(),
+    available_at timestamptz NOT NULL DEFAULT now(),
+    published_at timestamptz,
+    attempts integer NOT NULL DEFAULT 0,
+    last_error text
+);
+
+CREATE INDEX idx_outbox_pending
+ON outbox_events (available_at, occurred_at)
+WHERE published_at IS NULL;</code></pre>
+<p>The unique <code>id</code> supports deduplication. <code>aggregate_id</code> usually becomes the message key so events for one order or customer enter the same partition. <code>event_version</code> versions the payload schema, not the application release.</p>
+<p>Include the data consumers need at event time, while avoiding secrets and unnecessary record snapshots. An event is an immutable contract; do not modify historical payloads after insertion.</p>
+
+<h2>2. Write business data and the event atomically</h2>
+<pre><code>BEGIN;
+
+INSERT INTO orders (id, customer_id, total, status)
+VALUES (:order_id, :customer_id, :total, 'pending');
+
+INSERT INTO outbox_events (
+    id, aggregate_type, aggregate_id,
+    event_type, event_version, payload
+) VALUES (
+    :event_id, 'order', :order_id,
+    'OrderCreated', 1, :payload::jsonb
+);
+
+COMMIT;</code></pre>
+<p>Do not call the broker inside this transaction. A network call increases lock duration, and the broker still does not join the database's atomic commit. Keep the transaction local, short, and reversible.</p>
+<p>Generate the event ID before insertion. Validate payloads through schemas or tests before commit so an invalid event does not enter the outbox and block the relay.</p>
+
+<h2>3. Relay events through polling</h2>
+<p>A polling publisher is approachable for moderate volume without CDC infrastructure. Multiple workers can claim batches using <code>FOR UPDATE SKIP LOCKED</code>:</p>
+<pre><code>BEGIN;
+
+SELECT id, aggregate_type, aggregate_id,
+       event_type, event_version, payload
+FROM outbox_events
+WHERE published_at IS NULL
+  AND available_at &lt;= now()
+ORDER BY occurred_at, id
+FOR UPDATE SKIP LOCKED
+LIMIT 100;</code></pre>
+<p>Publishing while holding the transaction simplifies coordination but holds locks and connections longer. Claiming a batch with a lease and committing before publish scales better, but expired claims must recover events when a worker dies.</p>
+<p><code>SKIP LOCKED</code> fits queue-like access. Its inconsistent view makes it unsuitable for general business queries.</p>
+
+<h2>4. The duplicate-delivery window</h2>
+<p>A relay can publish successfully and crash before setting <code>published_at</code>. The next run sends the event again. Marking it first creates a loss window if publishing then fails. Polling outboxes therefore usually provide <strong>at-least-once</strong> delivery.</p>
+<p>Broker deduplication or idempotent producers do not remove every duplicate across an end-to-end distributed workflow. Carry the event ID in a header or envelope and make consumers safe to repeat.</p>
+
+<h2>5. Idempotent consumers with an inbox</h2>
+<pre><code>CREATE TABLE consumed_events (
+    consumer_name varchar(100) NOT NULL,
+    event_id uuid NOT NULL,
+    consumed_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (consumer_name, event_id)
+);</code></pre>
+<p>A consumer starts a transaction, inserts the deduplication key, and updates business data. A uniqueness conflict means that event was already handled and can be acknowledged without repeating the side effect:</p>
+<pre><code>BEGIN;
+
+INSERT INTO consumed_events (consumer_name, event_id)
+VALUES ('inventory-service', :event_id)
+ON CONFLICT DO NOTHING;
+
+-- Continue only when the insert created a row
+UPDATE inventory
+SET reserved = reserved + :quantity
+WHERE product_id = :product_id;
+
+COMMIT;</code></pre>
+<p>Database transactions cannot cover email, payment, or third-party APIs. Use a provider idempotency key, another local outbox, or a persistent state machine so retries do not send or charge twice.</p>
+
+<h2>6. Retries, backoff, and dead letters</h2>
+<p>Retry temporary network failures with exponential backoff and jitter. Permanent payload failures should not spin forever. After a threshold, place the event in a failed/dead-letter state while preserving it for investigation.</p>
+<pre><code>UPDATE outbox_events
+SET attempts = attempts + 1,
+    available_at = now() + (:delay_seconds * interval '1 second'),
+    last_error = :safe_error
+WHERE id = :event_id;</code></pre>
+<p>Do not store credentials or sensitive responses in <code>last_error</code>. Monitor oldest-event age, pending count, publish latency, retry rate, and dead-letter count.</p>
+
+<h2>7. Event ordering and aggregate versions</h2>
+<p>Global ordering is expensive and rarely required. Ordering by aggregate, such as one <code>order_id</code>, is usually enough. Use <code>aggregate_id</code> as a partition key and maintain a monotonically increasing aggregate sequence/version.</p>
+<p>Consumers should not rely solely on timestamps from different machines. They can store the last applied version, ignore stale events, and temporarily defer an event that arrives before a missing version. Define what happens when a gap persists.</p>
+
+<h2>8. Evolve event schemas safely</h2>
+<p>A consumer may lag behind the producer by days. Do not suddenly change field meanings or remove fields. Prefer additive evolution: optional fields, sensible defaults, and a new event version for breaking changes.</p>
+<pre><code>{
+  "event_id": "...",
+  "event_type": "OrderCreated",
+  "event_version": 1,
+  "occurred_at": "2026-09-19T14:00:00+07:00",
+  "aggregate_id": "order-123",
+  "data": {
+    "customer_id": "customer-9",
+    "total": 1250000,
+    "currency": "VND"
+  }
+}</code></pre>
+<p>Use contract tests or a schema registry as the number of producers and consumers grows. Event names should describe facts that happened, not ambiguous commands.</p>
+
+<h2>9. Polling or CDC?</h2>
+<p><strong>Polling</strong> is simple and easy to debug for small and medium systems. You own workers, leases, retries, cleanup, and polling intervals.</p>
+<p><strong>CDC</strong> reads the database change log. For example, Debezium can capture the outbox and route records to Kafka through its Outbox Event Router. The application only inserts events, while the connector publishes them. Throughput and latency can improve, but Kafka Connect, offsets, replication slots, and operations add complexity.</p>
+<p>CDC does not eliminate consumer idempotency. Connectors or brokers can still redeliver under some failures. Choose according to scale and operating capability, not novelty.</p>
+
+<h2>10. Clean up outbox data</h2>
+<p>An ever-growing table inflates indexes and backups. Do not delete events immediately when audit or replay is required, but define retention. In PostgreSQL, delete in small batches and monitor vacuum; high-volume systems can partition by time and drop old partitions.</p>
+<pre><code>DELETE FROM outbox_events
+WHERE id IN (
+    SELECT id
+    FROM outbox_events
+    WHERE published_at &lt; now() - interval '14 days'
+    ORDER BY published_at
+    LIMIT 5000
+);</code></pre>
+<p>Do not replay by mass-resetting <code>published_at</code> without safeguards. Build an audited, filtered, rate-limited replay tool and confirm duplicate impact downstream.</p>
+
+<h2>11. Observability and alerts</h2>
+<ul>
+<li>Age of the oldest pending event.</li>
+<li>Pending, retrying, and dead-letter counts by event type.</li>
+<li>Latency from <code>occurred_at</code> to broker acknowledgement.</li>
+<li>Publish throughput and error rate.</li>
+<li>Consumer lag, duplicate count, and processing failures.</li>
+<li>Table/index size, vacuum health, and replication lag.</li>
+</ul>
+<p>Alert on business delay, not merely process liveness. A healthy worker with an event waiting for 30 minutes is still an incident.</p>
+
+<h2>12. Common design mistakes</h2>
+<ul>
+<li>Inserting the outbox row after the business transaction commits.</li>
+<li>Calling the broker inside the transaction and assuming atomicity.</li>
+<li>Omitting unique event IDs and consumer deduplication.</li>
+<li>Assuming broker exactly-once covers external side effects.</li>
+<li>Using timestamps as the only ordering mechanism.</li>
+<li>Publishing oversized internal models, secrets, or unstable payloads.</li>
+<li>Having no retention, dead-letter flow, replay tooling, or event-age metric.</li>
+</ul>
+
+<h2>Production checklist</h2>
+<ol>
+<li>Write the business row and outbox row in one local transaction.</li>
+<li>Give each event an ID, type, version, aggregate ID, and timestamp.</li>
+<li>Implement relay backoff, safe leases/locks, and dead letters.</li>
+<li>Deduplicate in the same transaction as the consumer's business update.</li>
+<li>Protect external side effects with idempotency keys or state machines.</li>
+<li>Define ordering by aggregate or partition without overpromising.</li>
+<li>Maintain a backward-compatible event-schema strategy.</li>
+<li>Provide dashboards, retention, controlled replay, and an incident runbook.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>Transactional Outbox converts an unsafe dual write into two recoverable steps: commit data with the intent to publish, then relay the committed event to the broker. It embraces the reality of retries and duplicates in distributed systems. Reliability comes from event IDs, idempotent consumers, scoped ordering, stable schemas, and complete observability.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html" target="_blank" rel="noopener noreferrer">AWS: Transactional outbox pattern</a></li><li><a href="https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html" target="_blank" rel="noopener noreferrer">Debezium: Outbox Event Router</a></li><li><a href="https://www.postgresql.org/docs/current/sql-select.html" target="_blank" rel="noopener noreferrer">PostgreSQL: SELECT and SKIP LOCKED</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">laravel-reverb-websockets-production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Laravel Reverb WebSockets in Production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel Reverb, Laravel WebSockets, Laravel Echo, broadcasting, private channel, realtime Laravel, Reverb production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, Reverb, WebSocket, Laravel Echo, Broadcasting, Redis, Realtime, PHP</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Install Laravel Reverb, broadcast realtime events, secure private channels, and operate production with queues, Nginx, Supervisor, Pulse, and Redis.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/laravel-reverb-production.jpg" alt="Laravel Reverb in Practice: Building and Operating Production WebSockets" width="1440" height="810"></p><h1>Laravel Reverb in Practice: Building and Operating Production WebSockets</h1><p><strong>Laravel Reverb brings a WebSocket server into the Laravel ecosystem for notifications, order status, dashboards, and collaborative interfaces without continuous polling.</strong> A local demo is quick, but production also needs channel authorization, queue workers, TLS, a reverse proxy, process management, capacity controls, and monitoring.</p>
+
+<h2>Understand the data path</h2>
+<ol><li>Laravel Echo opens a browser WebSocket to Reverb.</li><li>For private or presence channels, Laravel authorizes the subscription.</li><li>The backend dispatches an event implementing <code>ShouldBroadcast</code>.</li><li>A queue worker processes the broadcast job and publishes to Reverb.</li><li>Reverb sends the message to connections subscribed to that channel.</li></ol>
+<blockquote>Reverb maintains connections and distributes messages; the application must still decide who may receive the data.</blockquote>
+
+<h2>1. Install broadcasting with Reverb</h2>
+<pre><code>php artisan install:broadcasting --reverb
+npm install
+npm run build</code></pre>
+<p>The command creates broadcasting and Reverb configuration, <code>routes/channels.php</code>, environment credentials, and Echo scaffolding. Never commit <code>REVERB_APP_SECRET</code>. Distinguish <code>REVERB_SERVER_HOST/PORT</code>, where the process listens, from <code>REVERB_HOST/PORT/SCHEME</code>, where the application and browser connect.</p>
+<pre><code>BROADCAST_CONNECTION=reverb
+REVERB_SERVER_HOST=127.0.0.1
+REVERB_SERVER_PORT=8080
+REVERB_HOST=ws.example.com
+REVERB_PORT=443
+REVERB_SCHEME=https</code></pre>
+
+<h2>2. Create a broadcast event</h2>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use App\Models\Order;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
+
+class OrderStatusUpdated implements ShouldBroadcast
+{
+    use SerializesModels;
+
+    public function __construct(public Order $order) {}
+
+    public function broadcastOn(): array
+    {
+        return [new PrivateChannel('orders.'.$this-&gt;order-&gt;id)];
+    }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'id' =&gt; $this-&gt;order-&gt;id,
+            'status' =&gt; $this-&gt;order-&gt;status,
+            'updated_at' =&gt; $this-&gt;order-&gt;updated_at?-&gt;toISOString(),
+        ];
+    }
+}</code></pre>
+<p>Send only fields the frontend needs. Do not serialize entire relationship graphs, internal email addresses, or sensitive data. Broadcast events are queued by default, so run a worker or events will wait indefinitely.</p>
+
+<h2>3. Authorize private channels</h2>
+<p>In <code>routes/channels.php</code>:</p>
+<pre><code>use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Facades\Broadcast;
+
+Broadcast::channel('orders.{orderId}', function (User $user, int $orderId) {
+    return Order::query()
+        -&gt;whereKey($orderId)
+        -&gt;where('user_id', $user-&gt;id)
+        -&gt;exists();
+});</code></pre>
+<p>Anyone can subscribe to a public channel, so reserve it for genuinely public data. A private-channel callback must authorize the exact resource, not merely check that a user is signed in. Presence channels expose member information; return only a minimal ID and display name.</p>
+<pre><code>php artisan channel:list</code></pre>
+
+<h2>4. Listen with Laravel Echo</h2>
+<pre><code>window.Echo.private(`orders.${orderId}`)
+    .listen('OrderStatusUpdated', (event) =&gt; {
+        updateOrderStatus(event.status);
+    });</code></pre>
+<p>If the event defines <code>broadcastAs()</code>, listen to the custom name with a leading dot, such as <code>.listen('.order.updated', ...)</code>. Leave the channel when a component unmounts to prevent duplicate handlers and memory leaks.</p>
+
+<h2>5. Dispatch after consistent database state</h2>
+<pre><code>$order-&gt;update(['status' =&gt; 'shipped']);
+
+OrderStatusUpdated::dispatch($order-&gt;fresh());</code></pre>
+<p>When an event is dispatched inside a database transaction, a fast worker may run before commit and read stale state. Use queue after-commit behavior or implement <code>ShouldDispatchAfterCommit</code> when consistency matters. Include an ID, version, or timestamp so clients can ignore late events.</p>
+
+<h2>6. Run and inspect locally</h2>
+<pre><code>php artisan reverb:start --debug
+php artisan queue:work
+npm run dev</code></pre>
+<p><code>--debug</code> is useful locally but noisy in production. Inspect the browser's Network/WebSocket panel, the <code>/broadcasting/auth</code> response, queue logs, and <code>failed_jobs</code>. When the socket connects but events do not arrive, check the queue worker first.</p>
+
+<h2>7. Put Reverb behind Nginx and TLS</h2>
+<p>In production, bind Reverb locally and terminate TLS at Nginx on port 443:</p>
+<pre><code>server {
+    listen 443 ssl http2;
+    server_name ws.example.com;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_read_timeout 60s;
+        proxy_pass http://127.0.0.1:8080;
+    }
+}</code></pre>
+<p>Reverb serves WebSockets at <code>/app</code> and API requests at <code>/apps</code>, so proxy both. Expose only ports 80 and 443; keep 8080 private. Install a valid certificate for the WebSocket hostname and use <code>wss://</code> when the site uses HTTPS.</p>
+
+<h2>8. Restrict origins and channels</h2>
+<p>Set <code>allowed_origins</code> in <code>config/reverb.php</code> to explicit frontend domains. Avoid <code>*</code> in production unless required. Origin checks do not replace authentication; authorization defects remain exploitable by non-browser clients.</p>
+<ul><li>Use private channels for user or tenant data.</li><li>Verify tenant and resource membership, not only authentication.</li><li>Rate-limit endpoints that create events and client events.</li><li>Never include secrets, tokens, or complete models in payloads.</li><li>Set reasonable message-size and subscription limits.</li></ul>
+
+<h2>9. Manage Reverb and queues as processes</h2>
+<p>Reverb is long-running. Use Supervisor or systemd for automatic recovery. Example Supervisor program:</p>
+<pre><code>[program:app-reverb]
+command=php /var/www/app/artisan reverb:start
+directory=/var/www/app
+autostart=true
+autorestart=true
+user=www-data
+redirect_stderr=true
+stdout_logfile=/var/log/supervisor/app-reverb.log
+stopasgroup=true
+killasgroup=true</code></pre>
+<p>The queue worker is a separate supervised process. After deployment, run <code>php artisan reverb:restart</code> for graceful connection termination and automatic restart by the process manager. Restart queue workers so they load new code too.</p>
+
+<h2>10. Capacity, monitoring, and horizontal scaling</h2>
+<p>Every WebSocket consumes memory and a file descriptor. Inspect <code>ulimit -n</code> plus Nginx and Supervisor limits. The default <code>stream_select</code> event loop is typically constrained to about 1,024 open files; Laravel recommends an <code>ext-uv</code> loop beyond roughly 1,000 concurrent connections.</p>
+<p>Laravel Pulse can track Reverb connections and messages. Run <code>pulse:check</code> on only one node in a scaled deployment. Also alert on memory, CPU, reconnect rate, queue lag, failed jobs, and authorization endpoint errors.</p>
+<p>When one node is insufficient, set <code>REVERB_SCALING_ENABLED=true</code>, use central Redis pub/sub, and place several Reverb nodes behind a load balancer. Load-test realistic connection behavior, not only messages per second.</p>
+
+<h2>Common production failures</h2>
+<ul><li><strong>WebSocket 404 or 502:</strong> Nginx does not proxy <code>/app</code>, Reverb stopped, or ports differ.</li><li><strong>Subscription 403:</strong> session, cookie, CSRF, guard, or channel callback mismatch.</li><li><strong>No event:</strong> queue worker is absent, broadcast job failed, or channel/event names differ.</li><li><strong>HTTPS-only failure:</strong> Echo still uses <code>ws://</code>, the certificate is invalid, or Upgrade headers are missing.</li><li><strong>Old behavior after deploy:</strong> Reverb and queue workers were not restarted.</li><li><strong>Drops under load:</strong> file descriptor, event loop, Nginx, memory, or port limits were reached.</li></ul>
+
+<h2>Launch checklist</h2>
+<ol><li>Private and presence channels have allow and deny authorization tests.</li><li>Payloads are minimal and contain no secret or cross-tenant data.</li><li>Queue workers, Reverb, and process management are healthy.</li><li>WSS uses a valid certificate and the internal port is private.</li><li><code>allowed_origins</code> contains only valid frontends.</li><li>The deployment restarts Reverb and queue workers.</li><li>Concurrent connections, queue lag, memory, and reconnects were measured.</li><li>Dashboards, alerts, and a Redis/load-balancer scaling plan exist.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Laravel Reverb makes realtime behavior fit Laravel's event and broadcasting model, but reliability depends on the entire path: correct authorization, healthy queues, WebSocket-aware proxying, supervised processes, and suitable capacity limits. Start with one focused use case, measure real connections, and scale from evidence.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://laravel.com/docs/13.x/reverb" target="_blank" rel="noopener noreferrer">Laravel 13: Reverb</a></li><li><a href="https://laravel.com/docs/13.x/broadcasting" target="_blank" rel="noopener noreferrer">Laravel 13: Broadcasting</a></li><li><a href="https://laravel.com/docs/13.x/queues" target="_blank" rel="noopener noreferrer">Laravel 13: Queues</a></li><li><a href="https://laravel.com/docs/13.x/pulse" target="_blank" rel="noopener noreferrer">Laravel 13: Pulse</a></li><li><a href="https://laravel.com/docs/13.x/deployment" target="_blank" rel="noopener noreferrer">Laravel 13: Deployment</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

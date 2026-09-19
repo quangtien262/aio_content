@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Ki&#7871;n th&#7913;c c&ocirc;ng ngh&#7879;</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">NPU l&agrave; g&igrave;? Vai tr&ograve; c&#7911;a NPU trong thi&#7871;t b&#7883; AI</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">NPU l&agrave; g&igrave;, NPU, AI PC, AI tr&ecirc;n thi&#7871;t b&#7883;, CPU GPU NPU, TOPS, on-device AI</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">NPU, AI PC, On-device AI, CPU, GPU, TOPS, Ph&#7847;n c&#7913;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">T&igrave;m hi&#7875;u NPU l&agrave; g&igrave;, kh&aacute;c CPU v&agrave; GPU nh&#432; th&#7871; n&agrave;o, l&#7907;i &iacute;ch c&#7911;a AI ch&#7841;y tr&ecirc;n thi&#7871;t b&#7883; v&agrave; nh&#7919;ng &#273;i&#7873;u c&#7847;n bi&#7871;t khi so s&aacute;nh TOPS.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/npu-la-gi-ai-tren-thiet-bi.jpg" alt="NPU l&agrave; g&igrave; v&agrave; v&igrave; sao m&aacute;y t&iacute;nh, &#273;i&#7879;n tho&#7841;i hi&#7879;n &#273;&#7841;i c&#7847;n NPU?" width="1440" height="810"></p><h1>NPU l&agrave; g&igrave; v&agrave; v&igrave; sao m&aacute;y t&iacute;nh, &#273;i&#7879;n tho&#7841;i hi&#7879;n &#273;&#7841;i c&#7847;n NPU?</h1><p><strong>NPU &#273;ang xu&#7845;t hi&#7879;n ng&agrave;y c&agrave;ng nhi&#7873;u trong laptop, &#273;i&#7879;n tho&#7841;i v&agrave; m&aacute;y t&iacute;nh b&#7843;ng, nh&#432;ng n&oacute; kh&ocirc;ng ph&#7843;i l&agrave; b&#7897; x&#7917; l&yacute; thay th&#7871; CPU hay GPU.</strong> &#272;&acirc;y l&agrave; ph&#7847;n c&#7913;ng chuy&ecirc;n d&#7909;ng &#273;&#7875; th&#7921;c hi&#7879;n c&aacute;c ph&eacute;p t&iacute;nh m&#7841;ng n&#417;-ron v&#7899;i hi&#7879;u su&#7845;t &#273;i&#7879;n n&#259;ng cao, &#273;&#7863;c bi&#7879;t ph&ugrave; h&#7907;p cho nh&#7919;ng t&aacute;c v&#7909; AI c&#7847;n ch&#7841;y li&ecirc;n t&#7909;c ngay tr&ecirc;n thi&#7871;t b&#7883;.</p>
+
+<h2>NPU l&agrave; g&igrave;?</h2>
+<p>NPU, vi&#7871;t t&#7855;t c&#7911;a <em>Neural Processing Unit</em>, l&agrave; b&#7897; x&#7917; l&yacute; &#273;&#432;&#7907;c t&#7889;i &#432;u cho c&aacute;c ph&eacute;p to&aacute;n th&#432;&#7901;ng g&#7863;p trong m&ocirc; h&igrave;nh h&#7885;c m&aacute;y, ch&#7859;ng h&#7841;n nh&acirc;n ma tr&#7853;n v&agrave; x&#7917; l&yacute; song song l&#432;&#7907;ng l&#7899;n d&#7919; li&#7879;u. Thay v&igrave; c&#7889; g&#7855;ng l&agrave;m t&#7889;t m&#7885;i lo&#7841;i c&ocirc;ng vi&#7879;c, NPU t&#7853;p trung v&agrave;o suy lu&#7853;n AI: s&#7917; d&#7909;ng m&#7897;t m&ocirc; h&igrave;nh &#273;&atilde; &#273;&#432;&#7907;c hu&#7845;n luy&#7879;n &#273;&#7875; nh&#7853;n d&#7841;ng, ph&acirc;n lo&#7841;i ho&#7863;c t&#7841;o ra k&#7871;t qu&#7843;.</p>
+<p>NPU th&#432;&#7901;ng &#273;&#432;&#7907;c t&iacute;ch h&#7907;p trong m&#7897;t h&#7879; th&#7889;ng tr&ecirc;n chip c&ugrave;ng CPU, GPU v&agrave; b&#7897; &#273;i&#7873;u khi&#7875;n b&#7897; nh&#7899;. M&#7895;i b&#7897; x&#7917; l&yacute; &#273;&#7843;m nh&#7853;n ph&#7847;n vi&#7879;c ph&ugrave; h&#7907;p nh&#7845;t, nh&#7901; &#273;&oacute; thi&#7871;t b&#7883; v&#7915;a ph&#7843;n h&#7891;i nhanh v&#7915;a ki&#7875;m so&aacute;t &#273;i&#7879;n n&#259;ng v&agrave; nhi&#7879;t &#273;&#7897; t&#7889;t h&#417;n.</p>
+
+<h2>CPU, GPU v&agrave; NPU kh&aacute;c nhau th&#7871; n&agrave;o?</h2>
+<table><thead><tr><th>B&#7897; x&#7917; l&yacute;</th><th>&#272;i&#7875;m m&#7841;nh</th><th>T&aacute;c v&#7909; ph&ugrave; h&#7907;p</th></tr></thead><tbody><tr><td>CPU</td><td>Linh ho&#7841;t, ph&#7843;n h&#7891;i nhanh, x&#7917; l&yacute; logic tu&#7847;n t&#7921; t&#7889;t</td><td>H&#7879; &#273;i&#7873;u h&agrave;nh, &#7913;ng d&#7909;ng, &#273;i&#7873;u ph&#7889;i to&agrave;n h&#7879; th&#7889;ng</td></tr><tr><td>GPU</td><td>Th&ocirc;ng l&#432;&#7907;ng song song cao, m&#7841;nh v&#7899;i &#273;&#7891; h&#7885;a v&agrave; ph&eacute;p t&iacute;nh l&#7899;n</td><td>&#272;&#7891; h&#7885;a 3D, d&#7921;ng h&igrave;nh, hu&#7845;n luy&#7879;n v&agrave; ch&#7841;y m&ocirc; h&igrave;nh AI n&#7863;ng</td></tr><tr><td>NPU</td><td>Chuy&ecirc;n cho m&#7841;ng n&#417;-ron, hi&#7879;u qu&#7843; &#273;i&#7879;n n&#259;ng cao</td><td>AI ch&#7841;y n&#7873;n, camera, &acirc;m thanh, nh&#7853;n d&#7841;ng v&agrave; m&ocirc; h&igrave;nh c&#7909;c b&#7897;</td></tr></tbody></table>
+<p>Ranh gi&#7899;i n&agrave;y kh&ocirc;ng tuy&#7879;t &#273;&#7889;i. M&#7897;t &#7913;ng d&#7909;ng c&oacute; th&#7875; d&ugrave;ng c&#7843; ba: CPU chu&#7849;n b&#7883; d&#7919; li&#7879;u, NPU ch&#7841;y m&ocirc; h&igrave;nh v&agrave; GPU hi&#7875;n th&#7883; k&#7871;t qu&#7843;. H&#7879; &#273;i&#7873;u h&agrave;nh c&ugrave;ng b&#7897; th&#7921;c thi AI s&#7869; ch&#7885;n ph&#7847;n c&#7913;ng d&#7921;a tr&ecirc;n m&ocirc; h&igrave;nh, tr&igrave;nh &#273;i&#7873;u khi&#7875;n v&agrave; kh&#7843; n&#259;ng h&#7895; tr&#7907;.</p>
+
+<h2>V&igrave; sao AI n&ecirc;n ch&#7841;y ngay tr&ecirc;n thi&#7871;t b&#7883;?</h2>
+<ul><li><strong>&#272;&#7897; tr&#7877; th&#7845;p:</strong> d&#7919; li&#7879;u kh&ocirc;ng ph&#7843;i g&#7917;i l&ecirc;n m&aacute;y ch&#7911; r&#7891;i ch&#7901; ph&#7843;n h&#7891;i, h&#7919;u &iacute;ch cho camera, cu&#7897;c g&#7885;i v&agrave; t&#432;&#417;ng t&aacute;c th&#7901;i gian th&#7921;c.</li><li><strong>Ho&#7841;t &#273;&#7897;ng ngo&#7841;i tuy&#7871;n:</strong> m&#7897;t s&#7889; t&iacute;nh n&#259;ng v&#7851;n d&ugrave;ng &#273;&#432;&#7907;c khi m&#7841;ng y&#7871;u ho&#7863;c kh&ocirc;ng c&oacute; Internet.</li><li><strong>Ti&#7871;t ki&#7879;m &#273;i&#7879;n:</strong> NPU c&oacute; th&#7875; duy tr&igrave; t&aacute;c v&#7909; AI l&acirc;u h&#417;n v&#7899;i m&#7913;c ti&ecirc;u th&#7909; &#273;i&#7879;n v&agrave; nhi&#7879;t th&#7845;p h&#417;n CPU ho&#7863;c GPU trong c&ugrave;ng lo&#7841;i c&ocirc;ng vi&#7879;c.</li><li><strong>Gi&#7843;m d&#7919; li&#7879;u r&#7901;i kh&#7887;i thi&#7871;t b&#7883;:</strong> x&#7917; l&yacute; c&#7909;c b&#7897; c&oacute; th&#7875; h&#7895; tr&#7907; quy&#7873;n ri&ecirc;ng t&#432;, nh&#7845;t l&agrave; v&#7899;i &acirc;m thanh, h&igrave;nh &#7843;nh v&agrave; t&agrave;i li&#7879;u c&aacute; nh&acirc;n.</li></ul>
+<blockquote>Ch&#7841;y c&#7909;c b&#7897; kh&ocirc;ng t&#7921; &#273;&#7897;ng &#273;&#7891;ng ngh&#297;a v&#7899;i ri&ecirc;ng t&#432; tuy&#7879;t &#273;&#7889;i. &#7912;ng d&#7909;ng v&#7851;n c&oacute; th&#7875; g&#7917;i d&#7919; li&#7879;u ho&#7863;c k&#7871;t qu&#7843; l&ecirc;n &#273;&aacute;m m&acirc;y; ng&#432;&#7901;i d&ugrave;ng c&#7847;n xem quy&#7873;n truy c&#7853;p v&agrave; ch&iacute;nh s&aacute;ch c&#7911;a t&#7915;ng d&#7883;ch v&#7909;.</blockquote>
+
+<h2>NPU &#273;ang l&agrave;m nh&#7919;ng vi&#7879;c g&igrave;?</h2>
+<p>C&aacute;c t&aacute;c v&#7909; ph&#7893; bi&#7871;n g&#7891;m kh&#7917; ti&#7871;ng &#7891;n, l&agrave;m m&#7901; n&#7873;n, c&#259;n khung camera, nh&#7853;n d&#7841;ng gi&#7885;ng n&oacute;i, OCR, m&ocirc; t&#7843; ho&#7863;c c&#7843;i thi&#7879;n &#7843;nh, d&#7883;ch v&agrave; t&oacute;m t&#7855;t c&#7909;c b&#7897;. Tr&ecirc;n &#273;i&#7879;n tho&#7841;i, NPU c&ograve;n h&#7895; tr&#7907; nhi&#7871;p &#7843;nh &#273;i&#7879;n to&aacute;n nh&#432; nh&#7853;n di&#7879;n c&#7843;nh, x&#7917; l&yacute; HDR v&agrave; ph&acirc;n t&aacute;ch ch&#7911; th&#7875;.</p>
+<p>NPU &#273;&#7863;c bi&#7879;t c&oacute; gi&aacute; tr&#7883; v&#7899;i c&ocirc;ng vi&#7879;c ch&#7841;y li&ecirc;n t&#7909;c. Thay v&igrave; &#273;&aacute;nh th&#7913;c GPU ch&#7881; &#273;&#7875; x&#7917; l&yacute; t&#7915;ng khung h&igrave;nh webcam ho&#7863;c lu&#7891;ng &acirc;m thanh, h&#7879; th&#7889;ng c&oacute; th&#7875; giao ph&#7847;n suy lu&#7853;n &#7893;n &#273;&#7883;nh &#273;&oacute; cho NPU v&agrave; d&agrave;nh CPU, GPU cho &#7913;ng d&#7909;ng ch&iacute;nh.</p>
+
+<h2>TOPS l&agrave; g&igrave; v&agrave; v&igrave; sao kh&ocirc;ng n&ecirc;n ch&#7881; nh&igrave;n v&agrave;o con s&#7889; n&agrave;y?</h2>
+<p>TOPS l&agrave; s&#7889; ngh&igrave;n t&#7927; ph&eacute;p to&aacute;n m&#7895;i gi&acirc;y, th&#432;&#7901;ng d&ugrave;ng &#273;&#7875; m&ocirc; t&#7843; n&#259;ng l&#7921;c t&iacute;nh to&aacute;n AI c&#7921;c &#273;&#7841;i. &#272;&acirc;y l&agrave; ch&#7881; b&aacute;o h&#7919;u &iacute;ch trong c&ugrave;ng m&#7897;t &#273;i&#7873;u ki&#7879;n &#273;o, nh&#432;ng kh&ocirc;ng ph&#7843;i &#273;i&#7875;m hi&#7879;u n&#259;ng ho&agrave;n ch&#7881;nh.</p>
+<p>K&#7871;t qu&#7843; th&#7921;c t&#7871; c&ograve;n ph&#7909; thu&#7897;c &#273;&#7897; ch&iacute;nh x&aacute;c s&#7889; h&#7885;c, c&aacute;ch t&iacute;nh d&#7919; li&#7879;u th&#432;a, b&#259;ng th&ocirc;ng b&#7897; nh&#7899;, k&iacute;ch th&#432;&#7899;c m&ocirc; h&igrave;nh, ph&#7847;n m&#7873;m th&#7921;c thi v&agrave; m&#7913;c t&#7889;i &#432;u c&#7911;a &#7913;ng d&#7909;ng. Hai NPU c&oacute; TOPS t&#432;&#417;ng t&#7921; v&#7851;n c&oacute; th&#7875; kh&aacute;c &#273;&aacute;ng k&#7875; v&#7873; t&#7889;c &#273;&#7897;, &#273;i&#7879;n n&#259;ng v&agrave; danh s&aacute;ch m&ocirc; h&igrave;nh &#273;&#432;&#7907;c h&#7895; tr&#7907;.</p>
+
+<h2>Ph&#7847;n m&#7873;m quy&#7871;t &#273;&#7883;nh NPU c&oacute; th&#7853;t s&#7921; h&#7919;u &iacute;ch hay kh&ocirc;ng</h2>
+<p>M&#7897;t NPU m&#7841;nh ch&#7881; ph&aacute;t huy t&aacute;c d&#7909;ng khi h&#7879; &#273;i&#7873;u h&agrave;nh, tr&igrave;nh &#273;i&#7873;u khi&#7875;n, b&#7897; th&#7921;c thi v&agrave; &#7913;ng d&#7909;ng c&ugrave;ng h&#7895; tr&#7907; n&oacute;. N&#7871;u m&#7897;t to&aacute;n t&#7917; c&#7911;a m&ocirc; h&igrave;nh kh&ocirc;ng t&#432;&#417;ng th&iacute;ch, &#7913;ng d&#7909;ng c&oacute; th&#7875; chuy&#7875;n m&#7897;t ph&#7847;n ho&#7863;c to&agrave;n b&#7897; c&ocirc;ng vi&#7879;c sang CPU, GPU hay &#273;&aacute;m m&acirc;y.</p>
+<p>V&igrave; v&#7853;y, khi mua thi&#7871;t b&#7883; cho m&#7897;t ph&#7847;n m&#7873;m c&#7909; th&#7875;, n&ecirc;n ki&#7875;m tra t&agrave;i li&#7879;u c&#7911;a &#7913;ng d&#7909;ng thay v&igrave; suy lu&#7853;n t&#7915; nh&atilde;n &ldquo;AI PC&rdquo;. Kh&#7843; n&#259;ng t&#259;ng t&#7889;c h&#7885;p tr&#7921;c tuy&#7871;n kh&ocirc;ng &#273;&#7891;ng ngh&#297;a thi&#7871;t b&#7883; s&#7869; ch&#7841;y t&#7889;t m&#7885;i m&ocirc; h&igrave;nh t&#7841;o sinh.</p>
+
+<h2>C&aacute;ch ch&#7885;n thi&#7871;t b&#7883; c&oacute; NPU</h2>
+<ol><li>X&aacute;c &#273;&#7883;nh t&aacute;c v&#7909; AI th&#7921;c t&#7871;: g&#7885;i video, ch&#7881;nh &#7843;nh, l&#7853;p tr&igrave;nh, phi&ecirc;n &acirc;m hay ch&#7841;y m&ocirc; h&igrave;nh ng&ocirc;n ng&#7919; c&#7909;c b&#7897;.</li><li>Ki&#7875;m tra &#7913;ng d&#7909;ng v&agrave; phi&ecirc;n b&#7843;n h&#7879; &#273;i&#7873;u h&agrave;nh c&oacute; h&#7895; tr&#7907; NPU c&#7911;a n&#7873;n t&#7843;ng &#273;&oacute; hay kh&ocirc;ng.</li><li>&#272;&aacute;nh gi&aacute; c&#7843; RAM, b&#259;ng th&ocirc;ng b&#7897; nh&#7899;, CPU, GPU, th&#7901;i l&#432;&#7907;ng pin v&agrave; kh&#7843; n&#259;ng t&#7843;n nhi&#7879;t.</li><li>So s&aacute;nh TOPS trong c&ugrave;ng lo&#7841;i ph&eacute;p t&iacute;nh v&agrave; c&ugrave;ng &#273;i&#7873;u ki&#7879;n, kh&ocirc;ng c&#7897;ng ho&#7863;c &#273;&#7889;i chi&#7871;u c&aacute;c s&#7889; li&#7879;u kh&aacute;c chu&#7849;n.</li><li>&#431;u ti&ecirc;n &#273;&aacute;nh gi&aacute; th&#7921;c t&#7871; v&#7899;i &#273;&uacute;ng ph&#7847;n m&#7873;m v&agrave; m&ocirc; h&igrave;nh s&#7869; s&#7917; d&#7909;ng.</li></ol>
+
+<h2>Nh&#7919;ng gi&#7899;i h&#7841;n c&#7847;n nh&#7899;</h2>
+<p>NPU kh&ocirc;ng bi&#7871;n m&#7885;i &#7913;ng d&#7909;ng th&agrave;nh &#7913;ng d&#7909;ng AI v&agrave; c&#361;ng kh&ocirc;ng &#273;&#7911; b&#7897; nh&#7899; cho m&#7885;i m&ocirc; h&igrave;nh l&#7899;n. H&#7879; sinh th&aacute;i ph&#7847;n m&#7873;m gi&#7919;a c&aacute;c h&atilde;ng c&ograve;n kh&aacute;c nhau, trong khi nhi&#7873;u t&aacute;c v&#7909; c&#7847;n d&#7919; li&#7879;u m&#7899;i ho&#7863;c m&ocirc; h&igrave;nh r&#7845;t l&#7899;n v&#7851;n ph&ugrave; h&#7907;p v&#7899;i &#273;&aacute;m m&acirc;y. Trong th&#7921;c t&#7871;, m&ocirc; h&igrave;nh lai l&agrave; ph&#7893; bi&#7871;n: thi&#7871;t b&#7883; x&#7917; l&yacute; ph&#7847;n nh&#7841;y c&#7843;m ho&#7863;c c&#7847;n ph&#7843;n h&#7891;i nhanh, c&ograve;n m&aacute;y ch&#7911; &#273;&#7843;m nhi&#7879;m ph&#7847;n n&#7863;ng h&#417;n.</p>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>NPU l&agrave; m&#7897;t b&#7897; m&aacute;y t&iacute;nh chuy&ecirc;n d&#7909;ng b&#7893; sung cho CPU v&agrave; GPU. Gi&aacute; tr&#7883; l&#7899;n nh&#7845;t c&#7911;a n&oacute; n&#7857;m &#7903; kh&#7843; n&#259;ng duy tr&igrave; c&aacute;c t&aacute;c v&#7909; AI c&#7909;c b&#7897; v&#7899;i &#273;&#7897; tr&#7877;, &#273;i&#7879;n n&#259;ng v&agrave; nhi&#7879;t &#273;&#7897; th&#7845;p. Khi ch&#7885;n thi&#7871;t b&#7883;, h&atilde;y quan t&acirc;m &#273;&#7871;n ph&#7847;n m&#7873;m h&#7895; tr&#7907; v&agrave; to&agrave;n b&#7897; c&#7845;u h&igrave;nh thay v&igrave; ch&#7881; theo &#273;u&#7893;i s&#7889; TOPS cao nh&#7845;t.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://support.microsoft.com/en-us/windows/experience/compatibility/all-about-neural-processing-units-npus" target="_blank" rel="noopener noreferrer">Microsoft Support: All about neural processing units</a></li><li><a href="https://learn.microsoft.com/en-us/windows/ai/apis/" target="_blank" rel="noopener noreferrer">Microsoft Learn: Windows AI APIs</a></li><li><a href="https://www.intel.com/content/www/us/en/ai-pc/overview.html" target="_blank" rel="noopener noreferrer">Intel: AI PC overview</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

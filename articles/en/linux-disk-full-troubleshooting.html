@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Linux</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">linux-disk-full-find-cause-free-space-safely</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Linux Disk Full: Diagnose and Recover Safely</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux disk full, df du, inode full, lsof deleted, journalctl vacuum, Docker disk usage, free Linux disk space</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Disk Space, System Administration, df, du, lsof, systemd, Docker</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Diagnose a full Linux disk with df, du, find, lsof, journalctl, and Docker, including inode exhaustion and open deleted files.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/linux-disk-full-troubleshooting.jpg" alt="Linux Disk Full: How to Find the Cause and Free Space Safely" width="1440" height="810"></p><h1>Linux Disk Full: How to Find the Cause and Free Space Safely</h1><p><strong>When Linux reports <code>No space left on device</code>, immediately deleting a few large files may not solve the real problem.</strong> The filesystem may be out of data blocks or inodes, logs may be growing rapidly, Docker may retain old layers, or a process may still hold space from a deleted file. A safe response identifies the filesystem, measures the cause, recovers space deliberately, and prevents recurrence.</p>
+
+<h2>1. Identify the full filesystem</h2>
+<p>Begin with both capacity and inode views:</p>
+<pre><code>df -hT
+df -ih</code></pre>
+<p><code>df -hT</code> shows filesystem type, total, used, available, and mount point. <code>df -ih</code> checks inodes. At 100% <code>IUse%</code>, the system cannot create files even when gigabytes remain; millions of small files are a common cause.</p>
+<p>Identify the mount that contains the failing path:</p>
+<pre><code>df -hT /var/lib/mysql
+findmnt -T /var/lib/mysql</code></pre>
+<blockquote>Always recover space on the correct filesystem. Removing 10 GB from <code>/home</code> does nothing when a separate <code>/var</code> mount is full.</blockquote>
+
+<h2>2. Capture evidence before changing anything</h2>
+<pre><code>date
+df -hT
+df -ih
+lsblk -f
+findmnt
+sudo dmesg -T | tail -n 50</code></pre>
+<p>If the kernel reports I/O errors, a read-only filesystem, or unhealthy storage, prioritize data preservation and hardware investigation. File cleanup cannot repair a failing device.</p>
+
+<h2>3. Find the directory consuming space</h2>
+<p>Use <code>du</code> while staying on the same filesystem:</p>
+<pre><code>sudo du -xhd1 / | sort -h
+sudo du -xhd1 /var | sort -h
+sudo du -xhd1 /var/lib | sort -h</code></pre>
+<p>Walk down one level at a time until an unusual branch appears. <code>-x</code> stays within one filesystem and <code>-d1</code> limits output to one level. On a busy host, schedule broad scans carefully because traversing many inodes can create significant I/O.</p>
+<p>Locate recent large files:</p>
+<pre><code>sudo find /var -xdev -type f -size +500M \
+  -printf '%s %TY-%Tm-%Td %TH:%TM %p\n' \
+  | sort -n | tail -n 30</code></pre>
+<p>Do not delete a file merely because it is large. Identify its owner, active process, retention policy, and recovery path.</p>
+
+<h2>4. Why df and du disagree</h2>
+<p><code>df</code> reads whole-filesystem allocation while <code>du</code> totals files visible in directory trees. They may differ because of reserved blocks, snapshots, hard links, hidden mounts, or unlinked files still open by a process.</p>
+<p>A common case is a large log that was removed while a web server or database retained its file descriptor:</p>
+<pre><code>sudo lsof +L1
+sudo lsof +L1 /var</code></pre>
+<p>Look for zero <code>NLINK</code> values or names containing <code>(deleted)</code>. The normal remedy is to ask the application to reopen logs or restart the correct service after assessing impact:</p>
+<pre><code>sudo systemctl reload nginx
+sudo systemctl restart my-application.service</code></pre>
+<p>Do not blindly truncate <code>/proc/PID/fd/N</code> for a database or unknown process. It can corrupt data or destroy incident evidence.</p>
+
+<h2>5. Inspect systemd journal and application logs</h2>
+<pre><code>journalctl --disk-usage
+sudo du -sh /var/log/* 2&gt;/dev/null | sort -h</code></pre>
+<p>Archived journal files can be vacuumed by size or age:</p>
+<pre><code>sudo journalctl --rotate
+sudo journalctl --vacuum-size=500M
+# Or:
+sudo journalctl --vacuum-time=14days</code></pre>
+<p><code>--vacuum-size</code> directly removes only archived journals, so rotating first makes active data eligible for archival cleanup. Then set durable limits such as <code>SystemMaxUse</code> and <code>SystemKeepFree</code> in <code>/etc/systemd/journald.conf</code>.</p>
+<p>For files under <code>/var/log</code>, fix logrotate or application retention. Removing an open log with <code>rm</code> can create the exact <code>df</code>/<code>du</code> discrepancy described above.</p>
+
+<h2>6. Inspect Docker and container storage</h2>
+<pre><code>docker system df
+docker system df -v
+sudo du -sh /var/lib/docker/* 2&gt;/dev/null | sort -h</code></pre>
+<p>Docker may retain images, layers, build cache, volumes, and JSON logs. Review what running containers use before pruning. <code>docker system prune</code>, especially <code>docker volume prune</code>, can remove data that is detached now but still needed for recovery or a future deployment.</p>
+<p>Set container log limits with the <code>local</code> logging driver or rotation options for <code>json-file</code>. Validate daemon JSON and plan the restart; new settings may not automatically affect existing containers.</p>
+
+<h2>7. Handle inode exhaustion</h2>
+<p>If <code>df -i</code> is full while byte capacity remains, find directories with very high file counts:</p>
+<pre><code>sudo find /var -xdev -printf '%h\n' \
+  | sort | uniq -c | sort -n | tail -n 30</code></pre>
+<p>Common sources include sessions, cache, mail queues, thumbnails, temporary files, and jobs without cleanup. Avoid a shell wildcard over millions of names. Use <code>find</code> with an age condition and inspect a sample first:</p>
+<pre><code>find /path/to/cache -xdev -type f -mtime +7 -print | head
+find /path/to/cache -xdev -type f -mtime +7 -delete</code></pre>
+<p>Run deletion only after confirming that the sample is correct and that the data is reproducible cache.</p>
+
+<h2>8. Package caches, old kernels, and temporary files</h2>
+<p>On Debian and Ubuntu, inspect and clean package caches through the package manager:</p>
+<pre><code>sudo du -sh /var/cache/apt/archives
+sudo apt clean
+sudo apt autoremove --purge</code></pre>
+<p>Review the <code>autoremove</code> proposal before approving it, particularly on systems with manually installed kernels, drivers, or packages. Clean <code>/tmp</code> through <code>systemd-tmpfiles</code> policy or age conditions instead of emptying it while applications run.</p>
+
+<h2>9. Emergency recovery in lower-risk order</h2>
+<ol><li>Pause the known workload that is rapidly generating data.</li><li>Rotate and vacuum archived journals.</li><li>Remove package cache and reproducible artifacts.</li><li>Handle logs through reload or logrotate.</li><li>Remove verified-unused container images and build cache.</li><li>Restart services holding deleted files according to an impact plan.</li><li>Expand the filesystem or volume when valid data growth is the cause.</li></ol>
+<p>Recover a meaningful safety margin before resuming databases and services. A few free megabytes may only allow another burst of logs before the host fills again.</p>
+
+<h2>10. Expand capacity when growth is legitimate</h2>
+<p>If the workload needs all current data, cleanup only delays failure. Determine whether storage is a partition, LVM logical volume, cloud disk, or standalone filesystem. A typical workflow expands the device or logical volume and then grows the filesystem with the appropriate tool, such as <code>resize2fs</code> for ext4 or <code>xfs_growfs</code> for XFS.</p>
+<blockquote>Create a tested backup or snapshot, verify the exact device, and read platform documentation before changing partitions or volumes. Never copy a storage expansion command from another host and run it unchanged.</blockquote>
+
+<h2>11. Prevent recurrence</h2>
+<ul><li>Alert on both percentage and absolute free space.</li><li>Monitor inodes, growth rate, predicted time to threshold, and read-only state.</li><li>Limit journal, application, and container logs.</li><li>Define retention for backups, artifacts, uploads, caches, and snapshots.</li><li>Separate fast-growing data from the root filesystem when appropriate.</li><li>Test alerts and cleanup procedures in staging.</li><li>Record the root cause, not just the number of bytes removed.</li></ul>
+
+<h2>Incident checklist</h2>
+<ol><li>Use <code>df -hT</code> and <code>df -ih</code> to distinguish blocks from inodes.</li><li>Confirm the mount with <code>findmnt -T</code>.</li><li>Walk directories with <code>du -x</code> without crossing filesystems.</li><li>If <code>df</code> greatly exceeds <code>du</code>, inspect <code>lsof +L1</code>.</li><li>Measure journals, logs, and containers before cleanup.</li><li>Never guess-delete databases, volumes, snapshots, or open logs.</li><li>Measure after every change and verify services.</li><li>Add limits, retention, and alerts to prevent recurrence.</li></ol>
+
+<h2>Conclusion</h2>
+<p>A full Linux disk is a diagnostic problem, not a file-deletion contest. <code>df</code> identifies filesystem pressure, <code>du</code> locates visible data, <code>lsof</code> reveals open deleted files, and journal or container tools explain common growth sources. Once the cause is clear, clean up deliberately or expand storage, then add monitoring so the next warning arrives before the outage.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/df-invocation.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: df</a></li><li><a href="https://www.gnu.org/software/coreutils/manual/html_node/du-invocation.html" target="_blank" rel="noopener noreferrer">GNU Coreutils: du</a></li><li><a href="https://man7.org/linux/man-pages/man8/lsof.8.html" target="_blank" rel="noopener noreferrer">Linux manual: lsof</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html" target="_blank" rel="noopener noreferrer">systemd: journalctl</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

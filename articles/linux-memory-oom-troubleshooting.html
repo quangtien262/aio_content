@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ch&#7849;n &#273;o&aacute;n Linux d&ugrave;ng nhi&#7873;u RAM v&agrave; OOM Killer</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux d&ugrave;ng nhi&#7873;u RAM, OOM Killer, memory leak Linux, free available, vmstat, PSI memory, systemd memory limit</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Memory, OOM Killer, Performance, Troubleshooting, systemd, cgroups, Sysadmin</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n &#273;&#7885;c RAM Linux, ph&acirc;n bi&#7879;t cache v&#7899;i memory pressure, t&igrave;m process r&ograve; b&#7897; nh&#7899;, ph&acirc;n t&iacute;ch OOM Killer v&agrave; ng&#259;n s&#7921; c&#7889; t&aacute;i di&#7877;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-memory-oom-troubleshooting.jpg" alt="Linux d&ugrave;ng nhi&#7873;u RAM v&agrave; OOM Killer: C&aacute;ch ch&#7849;n &#273;o&aacute;n, x&#7917; l&yacute; an to&agrave;n" width="1440" height="810"></p><h1>Linux d&ugrave;ng nhi&#7873;u RAM v&agrave; OOM Killer: C&aacute;ch ch&#7849;n &#273;o&aacute;n, x&#7917; l&yacute; an to&agrave;n</h1><p><strong>Linux hi&#7875;n th&#7883; RAM &ldquo;used&rdquo; cao ch&#432;a ch&#7855;c l&agrave; thi&#7871;u b&#7897; nh&#7899;.</strong> Kernel ch&#7911; &#273;&#7897;ng d&ugrave;ng RAM tr&#7889;ng cho page cache v&agrave; c&oacute; th&#7875; thu h&#7891;i khi &#7913;ng d&#7909;ng c&#7847;n. S&#7921; c&#7889; th&#7853;t s&#7921; xu&#7845;t hi&#7879;n khi <code>MemAvailable</code> gi&#7843;m k&eacute;o d&agrave;i, swap ho&#7841;t &#273;&#7897;ng m&#7841;nh, ti&#7871;n tr&igrave;nh b&#7883; stall ho&#7863;c kernel ph&#7843;i d&ugrave;ng OOM Killer &#273;&#7875; gi&#7843;i ph&oacute;ng b&#7897; nh&#7899;.</p>
+
+<h2>Hi&#7875;u &#273;&uacute;ng used, free v&agrave; available</h2>
+<pre><code>free -h
+cat /proc/meminfo | head -20</code></pre>
+<p>Trong <code>free</code>, h&atilde;y nh&igrave;n c&#7897;t <strong>available</strong> tr&#432;&#7899;c c&#7897;t <strong>free</strong>. <code>MemAvailable</code> l&agrave; &#432;&#7899;c t&iacute;nh l&#432;&#7907;ng b&#7897; nh&#7899; c&oacute; th&#7875; c&#7845;p cho &#7913;ng d&#7909;ng m&#7899;i m&agrave; kh&ocirc;ng c&#7847;n swap, c&oacute; t&iacute;nh t&#7899;i ph&#7847;n page cache v&agrave; slab c&oacute; th&#7875; thu h&#7891;i. Cache l&#7899;n th&#432;&#7901;ng l&agrave; t&iacute;n hi&#7879;u Linux t&#7853;n d&#7909;ng RAM hi&#7879;u qu&#7843;, kh&ocirc;ng ph&#7843;i memory leak.</p>
+<p>C&#7843;nh b&aacute;o &#273;&aacute;ng quan t&acirc;m l&agrave; available li&ecirc;n t&#7909;c &#273;i xu&#7889;ng, swap-in/swap-out t&#259;ng, latency x&#7845;u v&agrave; workload b&#7883; kill. M&#7897;t snapshot &#273;&#417;n l&#7867; kh&ocirc;ng &#273;&#7911;; c&#7847;n chu&#7895;i s&#7889; li&#7879;u theo th&#7901;i gian.</p>
+
+<h2>1. X&aacute;c nh&#7853;n memory pressure</h2>
+<pre><code>free -h
+vmstat 1 10
+cat /proc/pressure/memory
+swapon --show</code></pre>
+<p>Trong <code>vmstat</code>, <code>si</code> v&agrave; <code>so</code> cho bi&#7871;t swap-in/swap-out. M&#7897;t &iacute;t swap &#273;&atilde; d&ugrave;ng kh&ocirc;ng &#273;&#7891;ng ngh&#297;a &#273;ang thi&#7871;u RAM; ho&#7841;t &#273;&#7897;ng swap li&ecirc;n t&#7909;c c&ugrave;ng latency cao m&#7899;i &#273;&aacute;ng lo. PSI t&#7841;i <code>/proc/pressure/memory</code> &#273;o t&#7927; l&#7879; th&#7901;i gian task b&#7883; ch&#7863;n do tranh ch&#7845;p memory. D&ograve;ng <code>full</code> t&#259;ng k&eacute;o d&agrave;i cho th&#7845;y to&agrave;n b&#7897; workload kh&ocirc;ng nh&agrave;n r&#7895;i b&#7883; stall v&agrave; h&#7879; th&#7889;ng c&oacute; nguy c&#417; thrashing/OOM.</p>
+
+<h2>2. T&igrave;m process s&#7917; d&#7909;ng b&#7897; nh&#7899;</h2>
+<pre><code>ps -eo pid,ppid,user,comm,rss,vsz,%mem --sort=-rss | head -20
+top
+systemd-cgtop</code></pre>
+<p>RSS l&agrave; ph&#7847;n memory resident c&#7911;a process, nh&#432;ng c&#7897;ng RSS c&#7911;a nhi&#7873;u process c&oacute; th&#7875; &#273;&#7871;m tr&ugrave;ng shared memory. VSZ bao g&#7891;m kh&ocirc;ng gian &#273;&#7883;a ch&#7881; &#273;&atilde; map v&agrave; kh&ocirc;ng &#273;&#7891;ng ngh&#297;a RAM v&#7853;t l&yacute;. V&#7899;i process nghi v&#7845;n, xem chi ti&#7871;t:</p>
+<pre><code>cat /proc/PID/status
+cat /proc/PID/smaps_rollup
+pmap -x PID | tail -1</code></pre>
+<p><code>smaps_rollup</code> gi&uacute;p ph&acirc;n bi&#7879;t private, shared, anonymous v&agrave; file-backed memory. Trong container/systemd, ki&#7875;m tra c&#7843; cgroup v&igrave; OOM c&oacute; th&#7875; x&#7843;y ra b&ecirc;n trong limit d&ugrave; host c&ograve;n RAM.</p>
+
+<h2>3. Ph&acirc;n bi&#7879;t t&#7843;i cao, cache v&agrave; memory leak</h2>
+<ul><li><strong>T&#7843;i h&#7907;p l&#7879;:</strong> memory t&#259;ng theo traffic r&#7891;i gi&#7843;m khi t&#7843;i h&#7841; ho&#7863;c worker &#273;&#432;&#7907;c recycle.</li><li><strong>Page cache:</strong> Cached cao nh&#432;ng MemAvailable v&#7851;n t&#7889;t; kernel thu h&#7891;i khi c&#7847;n.</li><li><strong>Memory leak:</strong> private/anonymous RSS c&#7911;a c&ugrave;ng process t&#259;ng d&#7847;n qua nhi&#7873;u chu k&#7923; t&#7843;i v&agrave; kh&ocirc;ng tr&#7903; l&#7841;i baseline.</li><li><strong>Unbounded queue:</strong> backlog t&#259;ng l&agrave;m process gi&#7919; ng&agrave;y c&agrave;ng nhi&#7873;u object; s&#7917;a throughput v&agrave; backpressure.</li><li><strong>tmpfs/shmem:</strong> d&#7919; li&#7879;u trong <code>/dev/shm</code> ho&#7863;c tmpfs ti&ecirc;u th&#7909; RAM d&ugrave; nh&igrave;n gi&#7889;ng file.</li><li><strong>Kernel/slab:</strong> process RSS kh&ocirc;ng gi&#7843;i th&iacute;ch &#273;&#432;&#7907;c t&#7893;ng memory; ki&#7875;m tra <code>Slab</code>, <code>SReclaimable</code> v&agrave; subsystem li&ecirc;n quan.</li></ul>
+<p>Ghi RSS, request rate, queue depth v&agrave; th&#7901;i &#273;i&#7875;m deploy tr&ecirc;n c&ugrave;ng bi&#7875;u &#273;&#7891;. T&#432;&#417;ng quan theo th&#7901;i gian h&#7919;u &iacute;ch h&#417;n vi&#7879;c restart r&#7891;i m&#7845;t b&#7857;ng ch&#7913;ng.</p>
+
+<h2>4. X&aacute;c nh&#7853;n OOM Killer &#273;&atilde; ho&#7841;t &#273;&#7897;ng</h2>
+<pre><code>journalctl -k -g 'Out of memory|Killed process|oom-kill' --since today
+dmesg -T | grep -Ei 'out of memory|killed process|oom-kill'
+journalctl -u systemd-oomd --since today
+oomctl</code></pre>
+<p>Kernel OOM Killer ch&#7885;n task d&#7921;a tr&ecirc;n heuristic, m&#7913;c memory/swap v&agrave; <code>oom_score_adj</code>. <code>systemd-oomd</code> l&agrave; c&#417; ch&#7871; userspace c&oacute; th&#7875; h&agrave;nh &#273;&#7897;ng s&#7899;m d&#7921;a tr&ecirc;n cgroup v&agrave; memory pressure. &#272;&#7885;c log &#273;&#7875; bi&#7871;t global OOM hay cgroup OOM, process n&agrave;o b&#7883; kill, m&#7913;c memory v&agrave; constraint li&ecirc;n quan.</p>
+<p>Kh&ocirc;ng k&#7871;t lu&#7853;n process b&#7883; kill l&agrave; th&#7911; ph&#7841;m duy nh&#7845;t. N&oacute; c&oacute; th&#7875; ch&#7881; l&agrave; n&#7841;n nh&acirc;n &#273;&#432;&#7907;c ch&#7885;n trong khi nguy&ecirc;n nh&acirc;n l&agrave; traffic t&#259;ng, limit sai, nhi&#7873;u worker, leak &#7903; d&#7883;ch v&#7909; kh&aacute;c ho&#7863;c host overcommit.</p>
+
+<h2>5. &#7892;n &#273;&#7883;nh h&#7879; th&#7889;ng &#273;ang g&#7863;p s&#7921; c&#7889;</h2>
+<ol><li>D&#7915;ng ho&#7863;c gi&#7843;m ngu&#7891;n traffic/job kh&ocirc;ng quan tr&#7885;ng.</li><li>Ch&#7909;p s&#7889; li&#7879;u <code>free</code>, <code>vmstat</code>, process, cgroup v&agrave; OOM log.</li><li>Scale workload sang node kh&aacute;c ho&#7863;c gi&#7843;m concurrency c&oacute; ki&#7875;m so&aacute;t.</li><li>Restart &#273;&uacute;ng service r&ograve; b&#7897; nh&#7899; n&#7871;u c&#7847;n ph&#7909;c h&#7891;i t&#7913;c th&#7901;i.</li><li>Th&ecirc;m swap t&#7841;m th&#7901;i ch&#7881; khi hi&#7875;u r&#7911;i ro latency v&agrave; storage.</li><li>Gi&aacute;m s&aacute;t sau thay &#273;&#7893;i, kh&ocirc;ng coi restart l&agrave; s&#7917;a t&#7853;n g&#7889;c.</li></ol>
+<p>Tr&aacute;nh ch&#7841;y <code>echo 3 &gt; /proc/sys/vm/drop_caches</code> nh&#432; bi&#7879;n ph&aacute;p ch&#7919;a RAM. X&oacute;a cache c&oacute; th&#7875; l&agrave;m I/O v&agrave; latency x&#7845;u h&#417;n; kernel v&#7889;n s&#7869; thu h&#7891;i cache khi c&#7847;n.</p>
+
+<h2>6. Swap: v&ugrave;ng &#273;&#7879;m, kh&ocirc;ng ph&#7843;i RAM mi&#7877;n ph&iacute;</h2>
+<p>Swap c&oacute; th&#7875; t&#7841;o th&#7901;i gian ph&#7843;n &#7913;ng tr&#432;&#7899;c burst v&agrave; &#273;&#7849;y page &iacute;t d&ugrave;ng ra kh&#7887;i RAM, nh&#432;ng storage ch&#7853;m h&#417;n RAM nhi&#7873;u l&#7847;n. Kh&ocirc;ng c&oacute; swap l&agrave;m bi&ecirc;n an to&agrave;n m&#7887;ng h&#417;n; swap qu&aacute; l&#7899;n kh&ocirc;ng s&#7917;a &#273;&#432;&#7907;c leak v&ocirc; h&#7841;n.</p>
+<pre><code>swapon --show
+cat /proc/sys/vm/swappiness
+vmstat 1</code></pre>
+<p>&#272;i&#7873;u ch&#7881;nh <code>vm.swappiness</code> ch&#7881; sau khi &#273;o workload. Gi&aacute; tr&#7883; th&#7845;p kh&ocirc;ng c&oacute; ngh&#297;a kernel tuy&#7879;t &#273;&#7889;i kh&ocirc;ng swap. V&#7899;i database, latency-sensitive service v&agrave; Kubernetes, c&#7847;n tu&acirc;n theo h&#432;&#7899;ng d&#7851;n c&#7909; th&#7875; c&#7911;a workload/orchestrator.</p>
+
+<h2>7. &#272;&#7863;t gi&#7899;i h&#7841;n v&agrave; headroom</h2>
+<p>V&#7899;i systemd service, c&oacute; th&#7875; &#273;&#7863;t gi&#7899;i h&#7841;n cgroup trong unit:</p>
+<pre><code>[Service]
+MemoryHigh=1500M
+MemoryMax=2G
+OOMPolicy=stop</code></pre>
+<p><code>MemoryHigh</code> t&#7841;o pressure/throttling m&#7873;m; <code>MemoryMax</code> l&agrave; tr&#7847;n c&#7913;ng. Ch&#7885;n m&#7913;c t&#7915; d&#7919; li&#7879;u peak h&#7907;p l&#7879;, kh&ocirc;ng t&ugrave;y &yacute;. Sau khi s&#7917;a unit:</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl restart example.service
+systemctl show example.service -p MemoryCurrent -p MemoryPeak -p MemoryHigh -p MemoryMax</code></pre>
+<p>Trong container, memory limit ph&#7843;i bao g&#7891;m heap, native allocation, page cache v&agrave; sidecar. Gi&#7919; headroom cho kernel, SSH, monitoring v&agrave; daemon n&#7873;n; kh&ocirc;ng ph&acirc;n b&#7893; 100% RAM host cho workload.</p>
+
+<h2>8. &#272;i&#7873;u ch&#7881;nh &#7913;ng d&#7909;ng thay v&igrave; ch&#7881; t&#259;ng RAM</h2>
+<ul><li>Gi&#7899;i h&#7841;n worker/concurrency theo peak memory m&#7895;i worker.</li><li>D&ugrave;ng streaming/chunking thay v&igrave; n&#7841;p to&agrave;n b&#7897; file ho&#7863;c query result.</li><li>&#272;&#7863;t gi&#7899;i h&#7841;n queue, timeout, payload v&agrave; upload.</li><li>C&#7845;u h&igrave;nh cache eviction v&agrave; maximum memory.</li><li>Recycle worker sau s&#7889; request h&#7907;p l&yacute; nh&#432; bi&#7879;n ph&aacute;p gi&#7843;m r&#7911;i ro, kh&ocirc;ng che leak m&atilde;i m&atilde;i.</li><li>Profile heap/native memory trong m&ocirc;i tr&#432;&#7901;ng g&#7847;n production.</li></ul>
+<p>T&#259;ng RAM h&#7907;p l&yacute; khi working set th&#7853;t s&#7921; t&#259;ng; n&#7871;u &#273;&#432;&#7901;ng memory v&#7851;n t&#259;ng kh&ocirc;ng gi&#7899;i h&#7841;n, RAM th&ecirc;m ch&#7881; tr&igrave; ho&atilde;n OOM.</p>
+
+<h2>9. Gi&aacute;m s&aacute;t v&agrave; c&#7843;nh b&aacute;o s&#7899;m</h2>
+<p>Theo d&otilde;i <code>MemAvailable</code>, working set theo cgroup, swap I/O, PSI memory, OOM events, restart count v&agrave; queue depth. C&#7843;nh b&aacute;o d&#7921;a tr&ecirc;n th&#7901;i gian k&eacute;o d&agrave;i v&agrave; &aacute;p l&#7921;c, kh&ocirc;ng ch&#7881; ph&#7847;n tr&#259;m RAM used.</p>
+<p>L&#432;u metric sau deploy &#273;&#7911; l&acirc;u &#273;&#7875; nh&#7853;n ra leak ch&#7853;m. Alert n&ecirc;n d&#7851;n t&#7899;i runbook c&oacute; l&#7879;nh thu th&#7853;p b&#7857;ng ch&#7913;ng, owner d&#7883;ch v&#7909; v&agrave; &#273;i&#7873;u ki&#7879;n scale/restart r&otilde; r&agrave;ng.</p>
+
+<h2>Sai l&#7847;m th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li>Th&#7845;y RAM used cao v&agrave; k&#7871;t lu&#7853;n leak m&agrave; kh&ocirc;ng xem available/cache.</li><li>C&#7897;ng RSS m&#7885;i process v&agrave; coi &#273;&oacute; l&agrave; t&#7893;ng RAM ch&iacute;nh x&aacute;c.</li><li>Restart ngay tr&#432;&#7899;c khi l&#432;u log v&agrave; bi&#7875;u &#273;&#7891;.</li><li>T&#7855;t OOM Killer ho&#7863;c &#273;&#7863;t <code>oom_score_adj=-1000</code> tr&agrave;n lan.</li><li>D&ugrave;ng drop_caches &#273;&#7883;nh k&#7923; nh&#432; c&ocirc;ng c&#7909; t&#7889;i &#432;u.</li><li>Ch&#7881; t&#259;ng swap/RAM trong khi queue ho&#7863;c concurrency kh&ocirc;ng gi&#7899;i h&#7841;n.</li><li>Ch&#7881; theo d&otilde;i host, b&#7887; qua cgroup/container OOM.</li></ul>
+
+<h2>Checklist x&#7917; l&yacute;</h2>
+<ol><li>X&aacute;c nh&#7853;n MemAvailable, swap activity v&agrave; PSI theo th&#7901;i gian.</li><li>X&aacute;c &#273;&#7883;nh process/cgroup v&agrave; lo&#7841;i memory &#273;ang t&#259;ng.</li><li>&#272;&#7885;c kernel log v&agrave; systemd-oomd log &#273;&#7875; ph&acirc;n lo&#7841;i OOM.</li><li>L&#432;u b&#7857;ng ch&#7913;ng tr&#432;&#7899;c khi restart ho&#7863;c kill.</li><li>Gi&#7843;m t&#7843;i v&agrave; kh&ocirc;i ph&#7909;c d&#7883;ch v&#7909; theo &#432;u ti&ecirc;n.</li><li>S&#7917;a leak, concurrency, queue ho&#7863;c cache policy.</li><li>&#272;&#7863;t MemoryHigh/MemoryMax v&agrave; headroom ph&ugrave; h&#7907;p.</li><li>Load test v&agrave; t&#7841;o c&#7843;nh b&aacute;o tr&#432;&#7899;c ng&#432;&#7905;ng OOM.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>&#272;i&#7873;u tra memory tr&ecirc;n Linux b&#7855;t &#273;&#7847;u t&#7915; pressure v&agrave; kh&#7843; n&#259;ng thu h&#7891;i, kh&ocirc;ng ph&#7843;i m&agrave;u &#273;&#7887; trong c&#7897;t used. H&atilde;y k&#7871;t h&#7907;p MemAvailable, PSI, swap I/O, process/cgroup metrics v&agrave; OOM log &#273;&#7875; t&igrave;m nguy&ecirc;n nh&acirc;n. Restart c&oacute; th&#7875; c&#7913;u d&#7883;ch v&#7909;, nh&#432;ng gi&#7899;i h&#7841;n h&#7907;p l&yacute;, backpressure v&agrave; s&#7917;a &#7913;ng d&#7909;ng m&#7899;i ng&#259;n s&#7921; c&#7889; quay l&#7841;i.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://docs.kernel.org/filesystems/proc.html" target="_blank" rel="noopener noreferrer">Linux Kernel: The /proc filesystem</a></li><li><a href="https://docs.kernel.org/accounting/psi.html" target="_blank" rel="noopener noreferrer">Linux Kernel: Pressure Stall Information</a></li><li><a href="https://docs.kernel.org/admin-guide/sysctl/vm.html" target="_blank" rel="noopener noreferrer">Linux Kernel: VM sysctl documentation</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html" target="_blank" rel="noopener noreferrer">systemd: Resource control</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-oomd.service.html" target="_blank" rel="noopener noreferrer">systemd: systemd-oomd</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

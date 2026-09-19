@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Transactional Outbox th&#7921;c chi&#7871;n cho h&#7879; th&#7889;ng event-driven</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">transactional outbox, event driven, message broker, idempotency, PostgreSQL, Kafka, RabbitMQ, microservices</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Transactional Outbox, Event-Driven, PostgreSQL, Kafka, RabbitMQ, Microservices, Backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Hi&#7875;u v&agrave; tri&#7875;n khai Transactional Outbox: thi&#7871;t k&#7871; b&#7843;ng event, commit nguy&ecirc;n t&#7917;, relay b&#7857;ng polling ho&#7863;c CDC, retry, idempotency, ordering v&agrave; v&#7853;n h&agrave;nh production.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/transactional-outbox-pattern.jpg" alt="Transactional Outbox th&#7921;c chi&#7871;n: Ph&aacute;t s&#7921; ki&#7879;n &#273;&aacute;ng tin c&#7853;y sau transaction" width="1440" height="810"></p><h1>Transactional Outbox th&#7921;c chi&#7871;n: Ph&aacute;t s&#7921; ki&#7879;n &#273;&aacute;ng tin c&#7853;y sau transaction</h1><p><strong>M&#7897;t request t&#7841;o &#273;&#417;n h&agrave;ng th&#432;&#7901;ng ph&#7843;i l&agrave;m hai vi&#7879;c: l&#432;u &#273;&#417;n v&agrave;o database v&agrave; ph&aacute;t s&#7921; ki&#7879;n <code>OrderCreated</code> sang message broker.</strong> N&#7871;u commit database tr&#432;&#7899;c r&#7891;i publish th&#7845;t b&#7841;i, h&#7879; th&#7889;ng c&oacute; &#273;&#417;n h&agrave;ng nh&#432;ng kho ho&#7863;c email kh&ocirc;ng bi&#7871;t. N&#7871;u publish tr&#432;&#7899;c r&#7891;i transaction rollback, consumer l&#7841;i x&#7917; l&yacute; m&#7897;t &#273;&#417;n kh&ocirc;ng t&#7891;n t&#7841;i. &#272;&acirc;y l&agrave; b&agrave;i to&aacute;n <em>dual write</em>.</p>
+<p>Transactional Outbox gi&#7843;i quy&#7871;t b&#7857;ng c&aacute;ch ghi d&#7919; li&#7879;u nghi&#7879;p v&#7909; v&agrave; event v&agrave;o c&ugrave;ng m&#7897;t database transaction. M&#7897;t relay &#273;&#7897;c l&#7853;p ch&#7881; &#273;&#7885;c event &#273;&atilde; commit r&#7891;i chuy&#7875;n ch&uacute;ng sang Kafka, RabbitMQ, SQS ho&#7863;c broker kh&aacute;c.</p>
+
+<h2>V&igrave; sao &ldquo;commit r&#7891;i publish&rdquo; kh&ocirc;ng &#273;&#7911;?</h2>
+<pre><code>$order = $orders-&gt;create($input);
+$database-&gt;commit();
+
+$broker-&gt;publish('OrderCreated', $order);</code></pre>
+<p>Process c&oacute; th&#7875; crash sau commit nh&#432;ng tr&#432;&#7899;c publish. Retry HTTP request c&#361;ng kh&ocirc;ng ch&#7855;c s&#7917;a &#273;&#432;&#7907;c v&igrave; client c&oacute; th&#7875; &#273;&atilde; nh&#7853;n timeout, ho&#7863;c idempotency c&#7911;a API ch&#432;a &#273;&uacute;ng. &#272;&#7843;o th&#7913; t&#7921; publish tr&#432;&#7899;c commit t&#7841;o l&#7895;i ng&#432;&#7907;c l&#7841;i.</p>
+<p>Hai h&#7879; th&#7889;ng &#273;&#7897;c l&#7853;p kh&ocirc;ng th&#7875; &#273;&#432;&#7907;c b&#7885;c b&#7857;ng transaction database th&ocirc;ng th&#432;&#7901;ng. Distributed transaction/2PC c&oacute; chi ph&iacute; v&agrave; m&#7913;c h&#7895; tr&#7907; kh&aacute;c nhau; v&#7899;i nhi&#7873;u ki&#7871;n tr&uacute;c web, outbox l&agrave; l&#7921;a ch&#7885;n th&#7921;c d&#7909;ng h&#417;n.</p>
+
+<h2>Lu&#7891;ng ho&#7841;t &#273;&#7897;ng c&#7911;a Transactional Outbox</h2>
+<ol>
+<li>&#7912;ng d&#7909;ng b&#7855;t &#273;&#7847;u database transaction.</li>
+<li>Ghi thay &#273;&#7893;i nghi&#7879;p v&#7909;, v&iacute; d&#7909; t&#7841;o order.</li>
+<li>Insert m&#7897;t event v&agrave;o b&#7843;ng outbox trong c&ugrave;ng transaction.</li>
+<li>Commit. Ho&#7863;c c&#7843; hai c&ugrave;ng t&#7891;n t&#7841;i, ho&#7863;c c&#7843; hai c&ugrave;ng rollback.</li>
+<li>Relay &#273;&#7885;c event ch&#432;a ph&aacute;t v&agrave; publish t&#7899;i broker.</li>
+<li>Relay &#273;&aacute;nh d&#7845;u event &#273;&atilde; ph&aacute;t ho&#7863;c CDC ghi nh&#7853;n v&#7883; tr&iacute; &#273;&atilde; &#273;&#7885;c.</li>
+<li>Consumer x&#7917; l&yacute; event theo c&#417; ch&#7871; idempotent.</li>
+</ol>
+<blockquote>Outbox b&#7843;o &#273;&#7843;m event kh&ocirc;ng b&#7883; t&aacute;ch kh&#7887;i transaction ngu&#7891;n; n&oacute; kh&ocirc;ng t&#7921; bi&#7871;n to&agrave;n b&#7897; pipeline th&agrave;nh exactly-once.</blockquote>
+
+<h2>1. Thi&#7871;t k&#7871; b&#7843;ng outbox</h2>
+<pre><code>CREATE TABLE outbox_events (
+    id uuid PRIMARY KEY,
+    aggregate_type varchar(100) NOT NULL,
+    aggregate_id varchar(100) NOT NULL,
+    event_type varchar(150) NOT NULL,
+    event_version integer NOT NULL DEFAULT 1,
+    payload jsonb NOT NULL,
+    occurred_at timestamptz NOT NULL DEFAULT now(),
+    available_at timestamptz NOT NULL DEFAULT now(),
+    published_at timestamptz,
+    attempts integer NOT NULL DEFAULT 0,
+    last_error text
+);
+
+CREATE INDEX idx_outbox_pending
+ON outbox_events (available_at, occurred_at)
+WHERE published_at IS NULL;</code></pre>
+<p><code>id</code> l&agrave; &#273;&#7883;nh danh event duy nh&#7845;t d&ugrave;ng &#273;&#7875; deduplicate. <code>aggregate_id</code> th&#432;&#7901;ng l&agrave;m message key &#273;&#7875; c&aacute;c event c&#7911;a c&ugrave;ng order/customer v&agrave;o c&ugrave;ng partition. <code>event_version</code> l&agrave; phi&ecirc;n b&#7843;n schema payload, kh&ocirc;ng ph&#7843;i phi&ecirc;n b&#7843;n application.</p>
+<p>Payload n&ecirc;n ch&#7913;a d&#7919; li&#7879;u consumer c&#7847;n t&#7841;i th&#7901;i &#273;i&#7875;m s&#7921; ki&#7879;n x&#7843;y ra, nh&#432;ng tr&aacute;nh copy secret ho&#7863;c to&agrave;n b&#7897; record kh&ocirc;ng c&#7847;n thi&#7871;t. Event l&agrave; h&#7907;p &#273;&#7891;ng b&#7845;t bi&#7871;n; &#273;&#7915;ng s&#7917;a payload c&#361; sau khi &#273;&atilde; insert.</p>
+
+<h2>2. Ghi business data v&agrave; event trong c&ugrave;ng transaction</h2>
+<pre><code>BEGIN;
+
+INSERT INTO orders (id, customer_id, total, status)
+VALUES (:order_id, :customer_id, :total, 'pending');
+
+INSERT INTO outbox_events (
+    id, aggregate_type, aggregate_id,
+    event_type, event_version, payload
+) VALUES (
+    :event_id, 'order', :order_id,
+    'OrderCreated', 1, :payload::jsonb
+);
+
+COMMIT;</code></pre>
+<p>Kh&ocirc;ng publish broker b&ecirc;n trong transaction. Network call k&eacute;o d&agrave;i th&#7901;i gian gi&#7919; lock v&agrave; broker v&#7851;n kh&ocirc;ng tham gia atomic commit c&#7911;a database. Transaction ch&#7881; l&agrave;m c&ocirc;ng vi&#7879;c local, ng&#7855;n v&agrave; c&oacute; th&#7875; rollback.</p>
+<p>T&#7841;o event ID t&#7915; &#7913;ng d&#7909;ng tr&#432;&#7899;c khi insert. Payload n&ecirc;n &#273;&#432;&#7907;c validate b&#7857;ng schema/test tr&#432;&#7899;c khi commit &#273;&#7875; tr&aacute;nh event l&#7895;i n&#7857;m trong outbox v&agrave; ch&#7863;n relay.</p>
+
+<h2>3. Relay b&#7857;ng polling</h2>
+<p>Polling publisher d&#7877; tri&#7875;n khai khi l&#432;u l&#432;&#7907;ng v&#7915;a ph&#7843;i v&agrave; ch&#432;a c&oacute; h&#7841; t&#7847;ng CDC. Nhi&#7873;u worker c&oacute; th&#7875; l&#7845;y batch b&#7857;ng <code>FOR UPDATE SKIP LOCKED</code>:</p>
+<pre><code>BEGIN;
+
+SELECT id, aggregate_type, aggregate_id,
+       event_type, event_version, payload
+FROM outbox_events
+WHERE published_at IS NULL
+  AND available_at &lt;= now()
+ORDER BY occurred_at, id
+FOR UPDATE SKIP LOCKED
+LIMIT 100;</code></pre>
+<p>Sau khi ch&#7885;n, c&oacute; hai chi&#7871;n l&#432;&#7907;c. Gi&#7919; transaction trong l&uacute;c publish gi&uacute;p coordination &#273;&#417;n gi&#7843;n nh&#432;ng lock l&acirc;u v&agrave; k&#7871;t n&#7889;i database b&#7883; chi&#7871;m. Claim batch b&#7857;ng tr&#7841;ng th&aacute;i/lease r&#7891;i commit tr&#432;&#7899;c khi publish m&#7903; r&#7897;ng t&#7889;t h&#417;n, nh&#432;ng ph&#7843;i ph&#7909;c h&#7891;i event khi worker ch&#7871;t gi&#7919;a ch&#7915;ng.</p>
+<p><code>SKIP LOCKED</code> ph&ugrave; h&#7907;p cho b&#7843;ng ki&#7875;u queue; n&oacute; t&#7841;o g&oacute;c nh&igrave;n kh&ocirc;ng nh&#7845;t qu&aacute;n n&ecirc;n kh&ocirc;ng d&ugrave;ng cho truy v&#7845;n nghi&#7879;p v&#7909; t&#7893;ng qu&aacute;t.</p>
+
+<h2>4. C&#7917;a s&#7893; g&#7917;i tr&ugrave;ng l&agrave; kh&ocirc;ng th&#7875; tr&aacute;nh ho&agrave;n to&agrave;n</h2>
+<p>Relay publish th&agrave;nh c&ocirc;ng r&#7891;i crash tr&#432;&#7899;c khi ghi <code>published_at</code>. L&#7847;n ch&#7841;y sau n&oacute; s&#7869; publish l&#7841;i event. N&#7871;u &#273;&aacute;nh d&#7845;u tr&#432;&#7899;c khi publish, crash &#7903; gi&#7919;a l&#7841;i l&agrave;m m&#7845;t event. V&igrave; v&#7853;y polling outbox th&#432;&#7901;ng mang ng&#7919; ngh&#297;a <strong>at-least-once</strong>.</p>
+<p>Broker c&oacute; t&iacute;nh n&#259;ng dedup ho&#7863;c producer idempotent v&#7851;n kh&ocirc;ng lo&#7841;i b&#7887; m&#7885;i duplicate xuy&ecirc;n su&#7889;t nhi&#7873;u h&#7879; th&#7889;ng. Event ID ph&#7843;i &#273;i trong message header ho&#7863;c envelope, v&agrave; consumer ph&#7843;i x&#7917; l&yacute; l&#7863;p an to&agrave;n.</p>
+
+<h2>5. Consumer idempotent v&#7899;i inbox</h2>
+<pre><code>CREATE TABLE consumed_events (
+    consumer_name varchar(100) NOT NULL,
+    event_id uuid NOT NULL,
+    consumed_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (consumer_name, event_id)
+);</code></pre>
+<p>Consumer m&#7903; transaction, insert kh&oacute;a dedup r&#7891;i c&#7853;p nh&#7853;t business data. N&#7871;u unique conflict, event &#273;&atilde; &#273;&#432;&#7907;c x&#7917; l&yacute; v&agrave; c&oacute; th&#7875; ack m&agrave; kh&ocirc;ng th&#7921;c hi&#7879;n side effect l&#7847;n n&#7919;a:</p>
+<pre><code>BEGIN;
+
+INSERT INTO consumed_events (consumer_name, event_id)
+VALUES ('inventory-service', :event_id)
+ON CONFLICT DO NOTHING;
+
+-- Ch&#7881; ti&#7871;p t&#7909;c n&#7871;u insert th&#7921;c s&#7921; t&#7841;o m&#7897;t h&agrave;ng
+UPDATE inventory
+SET reserved = reserved + :quantity
+WHERE product_id = :product_id;
+
+COMMIT;</code></pre>
+<p>&#272;&#7889;i v&#7899;i email, thanh to&aacute;n ho&#7863;c API b&ecirc;n th&#7913; ba, database transaction kh&ocirc;ng bao ph&#7911; side effect. D&ugrave;ng idempotency key ph&iacute;a nh&agrave; cung c&#7845;p, m&#7897;t outbox ti&#7871;p theo, ho&#7863;c l&#432;u tr&#7841;ng th&aacute;i state machine &#273;&#7875; retry kh&ocirc;ng g&#7917;i/charge hai l&#7847;n.</p>
+
+<h2>6. Retry, backoff v&agrave; dead-letter</h2>
+<p>L&#7895;i m&#7841;ng t&#7841;m th&#7901;i c&#7847;n retry v&#7899;i exponential backoff v&agrave; jitter. L&#7895;i payload c&#7889; &#273;&#7883;nh kh&ocirc;ng n&ecirc;n retry v&ocirc; h&#7841;n v&#7899;i t&#7889;c &#273;&#7897; cao. Sau s&#7889; l&#7847;n nh&#7845;t &#273;&#7883;nh, chuy&#7875;n event sang tr&#7841;ng th&aacute;i failed/dead-letter nh&#432;ng gi&#7919; d&#7919; li&#7879;u &#273;&#7875; &#273;i&#7873;u tra.</p>
+<pre><code>UPDATE outbox_events
+SET attempts = attempts + 1,
+    available_at = now() + (:delay_seconds * interval '1 second'),
+    last_error = :safe_error
+WHERE id = :event_id;</code></pre>
+<p>Kh&ocirc;ng l&#432;u credential ho&#7863;c to&agrave;n b&#7897; response nh&#7841;y c&#7843;m v&agrave;o <code>last_error</code>. Dashboard c&#7847;n hi&#7875;n th&#7883; tu&#7893;i event c&#361; nh&#7845;t, pending count, publish latency, retry rate v&agrave; dead-letter count.</p>
+
+<h2>7. Th&#7913; t&#7921; event v&agrave; aggregate version</h2>
+<p>Th&#7913; t&#7921; to&agrave;n c&#7909;c r&#7845;t &#273;&#7855;t v&agrave; hi&#7871;m khi c&#7847;n. Th&ocirc;ng th&#432;&#7901;ng ch&#7881; c&#7847;n gi&#7919; th&#7913; t&#7921; theo aggregate, ch&#7859;ng h&#7841;n c&aacute;c event c&#7911;a c&ugrave;ng <code>order_id</code>. D&ugrave;ng <code>aggregate_id</code> l&agrave;m partition key v&agrave; th&ecirc;m sequence/version t&#259;ng d&#7847;n tr&ecirc;n aggregate.</p>
+<p>Consumer kh&ocirc;ng n&ecirc;n ph&#7909; thu&#7897;c tuy&#7879;t &#273;&#7889;i v&agrave;o th&#7901;i gian t&#7841;o t&#7915; nhi&#7873;u m&aacute;y. N&oacute; c&oacute; th&#7875; l&#432;u version cu&#7889;i &#273;&atilde; &aacute;p d&#7909;ng, b&#7887; event c&#361; v&agrave; t&#7841;m gi&#7919; event &#273;&#7871;n s&#7899;m h&#417;n version c&ograve;n thi&#7871;u. C&#7847;n &#273;&#7883;nh ngh&#297;a r&otilde; h&agrave;nh vi khi event &#273;&#7871;n sai th&#7913; t&#7921; ho&#7863;c m&#7845;t qu&aacute; l&acirc;u.</p>
+
+<h2>8. Schema event ph&#7843;i ti&#7871;n h&oacute;a &#273;&#432;&#7907;c</h2>
+<p>Consumer c&oacute; th&#7875; tri&#7875;n khai ch&#7853;m h&#417;n producer nhi&#7873;u ng&agrave;y. Kh&ocirc;ng &#273;&#7893;i ngh&#297;a field hi&#7879;n c&oacute; ho&#7863;c x&oacute;a field &#273;&#7897;t ng&#7897;t. &#431;u ti&ecirc;n thay &#273;&#7893;i additive: th&ecirc;m field optional, gi&#7919; default h&#7907;p l&yacute; v&agrave; version h&oacute;a event khi c&oacute; breaking change.</p>
+<pre><code>{
+  "event_id": "...",
+  "event_type": "OrderCreated",
+  "event_version": 1,
+  "occurred_at": "2026-09-19T14:00:00+07:00",
+  "aggregate_id": "order-123",
+  "data": {
+    "customer_id": "customer-9",
+    "total": 1250000,
+    "currency": "VND"
+  }
+}</code></pre>
+<p>D&ugrave;ng contract test ho&#7863;c schema registry khi s&#7889; producer/consumer t&#259;ng. Event name n&ecirc;n m&ocirc; t&#7843; s&#7921; ki&#7879;n &#273;&atilde; x&#7843;y ra, kh&ocirc;ng ph&#7843;i m&#7879;nh l&#7879;nh m&#417; h&#7891;.</p>
+
+<h2>9. Polling hay CDC?</h2>
+<p><strong>Polling</strong> &#273;&#417;n gi&#7843;n, d&#7877; debug v&agrave; ph&ugrave; h&#7907;p h&#7879; th&#7889;ng nh&#7887;/v&#7915;a. &#272;&#7893;i l&#7841;i, b&#7841;n ph&#7843;i qu&#7843;n l&yacute; worker, lease, retry, cleanup v&agrave; polling interval.</p>
+<p><strong>CDC</strong> d&ugrave;ng log thay &#273;&#7893;i database, v&iacute; d&#7909; Debezium &#273;&#7885;c outbox r&#7891;i Outbox Event Router chuy&#7875;n event t&#7899;i Kafka. &#7912;ng d&#7909;ng ch&#7881; insert event; connector ph&#7909; tr&aacute;ch ph&aacute;t. C&aacute;ch n&agrave;y c&oacute; throughput v&agrave; latency t&#7889;t nh&#432;ng th&ecirc;m Kafka Connect, offset, replication slot v&agrave; y&ecirc;u c&#7847;u v&#7853;n h&agrave;nh ph&#7913;c t&#7841;p.</p>
+<p>CDC kh&ocirc;ng lo&#7841;i b&#7887; idempotency &#7903; consumer. Connector ho&#7863;c broker v&#7851;n c&oacute; th&#7875; redeliver trong m&#7897;t s&#7889; failure mode. Ch&#7885;n theo quy m&ocirc; v&agrave; n&#259;ng l&#7921;c v&#7853;n h&agrave;nh, kh&ocirc;ng ch&#7881; theo m&#7913;c &#273;&#7897; &ldquo;hi&#7879;n &#273;&#7841;i&rdquo;.</p>
+
+<h2>10. D&#7885;n b&#7843;ng outbox</h2>
+<p>B&#7843;ng t&#259;ng li&ecirc;n t&#7909;c s&#7869; l&agrave;m index v&agrave; backup ph&igrave;nh to. Kh&ocirc;ng x&oacute;a event ngay sau publish n&#7871;u c&ograve;n c&#7847;n audit ho&#7863;c replay, nh&#432;ng ph&#7843;i c&oacute; retention r&otilde; r&agrave;ng. V&#7899;i PostgreSQL, x&oacute;a theo batch nh&#7887; v&agrave; theo d&otilde;i vacuum; quy m&ocirc; l&#7899;n c&oacute; th&#7875; partition theo th&#7901;i gian &#273;&#7875; drop partition c&#361;.</p>
+<pre><code>DELETE FROM outbox_events
+WHERE id IN (
+    SELECT id
+    FROM outbox_events
+    WHERE published_at &lt; now() - interval '14 days'
+    ORDER BY published_at
+    LIMIT 5000
+);</code></pre>
+<p>Replay kh&ocirc;ng n&ecirc;n l&agrave; c&#7853;p nh&#7853;t <code>published_at = NULL</code> h&agrave;ng lo&#7841;t m&agrave; kh&ocirc;ng ki&#7875;m so&aacute;t. T&#7841;o c&ocirc;ng c&#7909; replay c&oacute; filter, audit, rate limit v&agrave; x&aacute;c nh&#7853;n t&aacute;c &#273;&#7897;ng duplicate &#7903; consumer.</p>
+
+<h2>11. Observability v&agrave; c&#7843;nh b&aacute;o</h2>
+<ul>
+<li>Tu&#7893;i c&#7911;a event pending c&#361; nh&#7845;t.</li>
+<li>S&#7889; event pending, retry v&agrave; dead-letter theo lo&#7841;i.</li>
+<li>&#272;&#7897; tr&#7877; t&#7915; <code>occurred_at</code> t&#7899;i broker acknowledgement.</li>
+<li>Publish throughput v&agrave; error rate.</li>
+<li>Consumer lag, duplicate count v&agrave; processing failures.</li>
+<li>Dung l&#432;&#7907;ng b&#7843;ng/index, vacuum v&agrave; replication lag.</li>
+</ul>
+<p>C&#7843;nh b&aacute;o theo &#273;&#7897; tr&#7877; kinh doanh, kh&ocirc;ng ch&#7881; theo vi&#7879;c worker c&ograve;n ch&#7841;y. M&#7897;t worker &ldquo;healthy&rdquo; nh&#432;ng event c&#361; nh&#7845;t &#273;&atilde; ch&#7901; 30 ph&uacute;t v&#7851;n l&agrave; s&#7921; c&#7889;.</p>
+
+<h2>12. Nh&#7919;ng l&#7895;i thi&#7871;t k&#7871; th&#432;&#7901;ng g&#7863;p</h2>
+<ul>
+<li>Insert outbox sau khi transaction nghi&#7879;p v&#7909; &#273;&atilde; commit.</li>
+<li>G&#7885;i broker trong database transaction r&#7891;i t&#432;&#7903;ng &#273;&atilde; atomic.</li>
+<li>Kh&ocirc;ng c&oacute; event ID duy nh&#7845;t v&agrave; consumer dedup.</li>
+<li>Cho r&#7857;ng broker b&#7843;o &#273;&#7843;m exactly-once cho c&#7843; side effect b&ecirc;n ngo&agrave;i.</li>
+<li>D&ugrave;ng timestamp l&agrave;m th&#7913; t&#7921; duy nh&#7845;t gi&#7919;a nhi&#7873;u aggregate.</li>
+<li>Payload ch&#7913;a model n&#7897;i b&#7897; kh&#7893;ng l&#7891;, secret ho&#7863;c d&#7919; li&#7879;u d&#7877; thay &#273;&#7893;i.</li>
+<li>Kh&ocirc;ng c&oacute; retention, dead-letter, replay tool v&agrave; metric tu&#7893;i event.</li>
+</ul>
+
+<h2>Checklist production</h2>
+<ol>
+<li>Business row v&agrave; outbox row &#273;&#432;&#7907;c ghi trong &#273;&uacute;ng m&#7897;t local transaction.</li>
+<li>M&#7895;i event c&oacute; ID, type, version, aggregate ID v&agrave; timestamp.</li>
+<li>Relay retry c&oacute; backoff, lease/lock an to&agrave;n v&agrave; dead-letter.</li>
+<li>Consumer deduplicate trong c&ugrave;ng transaction v&#7899;i business update.</li>
+<li>Side effect ngo&agrave;i database d&ugrave;ng idempotency key ho&#7863;c state machine.</li>
+<li>Ordering &#273;&#432;&#7907;c &#273;&#7883;nh ngh&#297;a theo aggregate/partition, kh&ocirc;ng h&#7913;a qu&aacute; m&#7913;c.</li>
+<li>Schema event c&oacute; chi&#7871;n l&#432;&#7907;c t&#432;&#417;ng th&iacute;ch ng&#432;&#7907;c.</li>
+<li>C&oacute; dashboard, retention, replay c&oacute; ki&#7875;m so&aacute;t v&agrave; runbook s&#7921; c&#7889;.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Transactional Outbox bi&#7871;n dual write kh&ocirc;ng an to&agrave;n th&agrave;nh hai b&#432;&#7899;c c&oacute; th&#7875; ph&#7909;c h&#7891;i: commit d&#7919; li&#7879;u c&ugrave;ng &yacute; &#273;&#7883;nh ph&aacute;t event, r&#7891;i relay event &#273;&atilde; commit &#273;&#7871;n broker. Pattern n&agrave;y ch&#7845;p nh&#7853;n th&#7921;c t&#7871; distributed system c&oacute; retry v&agrave; duplicate; &#273;&#7897; tin c&#7853;y &#273;&#7871;n t&#7915; event ID, consumer idempotent, ordering c&oacute; ph&#7841;m vi, schema &#7893;n &#273;&#7883;nh v&agrave; kh&#7843; n&#259;ng quan s&aacute;t &#273;&#7847;y &#273;&#7911;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html" target="_blank" rel="noopener noreferrer">AWS: Transactional outbox pattern</a></li><li><a href="https://debezium.io/documentation/reference/stable/transformations/outbox-event-router.html" target="_blank" rel="noopener noreferrer">Debezium: Outbox Event Router</a></li><li><a href="https://www.postgresql.org/docs/current/sql-select.html" target="_blank" rel="noopener noreferrer">PostgreSQL: SELECT and SKIP LOCKED</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

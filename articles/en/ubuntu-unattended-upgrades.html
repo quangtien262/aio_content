@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">automatic-ubuntu-server-security-updates-unattended-upgrades</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Configure unattended-upgrades Safely on Ubuntu Server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">unattended-upgrades, Ubuntu security updates, Ubuntu Server, apt-daily-upgrade, automatic Linux updates, Ubuntu automatic reboot</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Ubuntu, Linux, Security Updates, unattended-upgrades, APT, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Configure unattended-upgrades on Ubuntu Server for security-only patches, dry-run validation, timer and log monitoring, and controlled reboots.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/ubuntu-unattended-upgrades.jpg" alt="Automatic Ubuntu Server Security Updates with unattended-upgrades" width="1440" height="810"></p><h1>Automatic Ubuntu Server Security Updates with unattended-upgrades</h1><p><strong>An unpatched server is a security risk, but uncontrolled updates can cause an outage.</strong> <code>unattended-upgrades</code> lets Ubuntu Server install patches according to policy. Production environments still need restricted package sources, preflight validation, outcome monitoring, and a deliberate reboot process.</p>
+<p>This guide builds a practical Ubuntu Server policy: prioritize security updates, avoid automatic reboots, keep customization in a manageable drop-in file, test with <code>--dry-run</code>, and roll out changes in stages.</p>
+
+<h2>What does unattended-upgrades do?</h2>
+<p><code>unattended-upgrades</code> is the backend for APT periodic updates. On modern Ubuntu systems, systemd schedules the work through <code>apt-daily.timer</code> and <code>apt-daily-upgrade.timer</code>. It installs packages only from origins allowed by policy. It does not perform an Ubuntu release upgrade, which is a separate <code>do-release-upgrade</code> workflow.</p>
+<p>Ubuntu has included and enabled automatic security updates by default on Desktop and Server since 18.04 LTS. Still, verify the actual state because cloud images, internal templates, or configuration management may change the defaults.</p>
+
+<h2>1. Inspect the current state</h2>
+<pre><code>lsb_release -a
+apt-cache policy unattended-upgrades
+systemctl status apt-daily.timer apt-daily-upgrade.timer
+systemctl list-timers 'apt-*'</code></pre>
+<p>A timer shown as <code>active (waiting)</code> is waiting for its next run. A randomized delay may be added so a fleet does not download updates at the same moment.</p>
+<pre><code>apt-config dump | grep -iE 'APT::Periodic|Unattended-Upgrade'</code></pre>
+
+<h2>2. Install and enable it</h2>
+<pre><code>sudo apt update
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades</code></pre>
+<p>The last command creates or enables the periodic configuration. Check <code>/etc/apt/apt.conf.d/20auto-upgrades</code>:</p>
+<pre><code>APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";</code></pre>
+<p>The value <code>1</code> represents a daily interval; systemd timers determine the effective execution time.</p>
+
+<h2>3. Use a drop-in instead of editing the packaged file</h2>
+<p>Ubuntu advises against modifying <code>50unattended-upgrades</code> directly because package updates can create configuration conflicts. Create a higher-priority file:</p>
+<pre><code>sudo nano /etc/apt/apt.conf.d/60local-unattended-upgrades</code></pre>
+<p>A conservative production policy:</p>
+<pre><code>Unattended-Upgrade::Allowed-Origins {
+    "${distro_id}:${distro_codename}-security";
+};
+
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+Unattended-Upgrade::SyslogEnable "true";</code></pre>
+<p>APT expands <code>${distro_id}</code> and <code>${distro_codename}</code> for the host. Limiting updates to the <code>-security</code> pocket keeps the scope predictable. Do not automatically allow PPAs or third-party repositories without their own test and rollback process.</p>
+
+<h2>4. Should the server reboot automatically?</h2>
+<p>Kernel, libc, and other foundational updates may require a reboot before the running system uses the fix. An automatic reboot on a single production server, however, can drop requests, interrupt jobs, or break quorum.</p>
+<p>The policy above keeps <code>Automatic-Reboot "false"</code>. Detect pending reboots with:</p>
+<pre><code>test -f /var/run/reboot-required &amp;&amp; cat /var/run/reboot-required
+cat /var/run/reboot-required.pkgs 2&gt;/dev/null</code></pre>
+<p>For a load-balanced service, drain one node, wait for connections to finish, reboot, pass health checks, return it to service, and only then proceed to the next node.</p>
+<p>Enable automatic reboot only when the workload tolerates it and a maintenance window exists:</p>
+<pre><code>Unattended-Upgrade::Automatic-Reboot "true";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+Unattended-Upgrade::Automatic-Reboot-Time "03:30";</code></pre>
+<blockquote>The reboot time uses the operating system timezone. Verify it with <code>timedatectl</code>, especially on cloud images that default to UTC.</blockquote>
+
+<h2>5. Temporarily block sensitive packages</h2>
+<p>A blacklist should be temporary, owned, and have an expiry date. Deferring a security fix indefinitely can create more risk than a compatibility issue.</p>
+<pre><code>Unattended-Upgrade::Package-Blacklist {
+    // "mysql-server";
+    // "docker-ce";
+};</code></pre>
+<p>Entries are interpreted as regular expressions, so inspect the package selection and avoid overly broad patterns.</p>
+
+<h2>6. Validate before applying changes</h2>
+<pre><code>sudo unattended-upgrade --dry-run --debug
+sudo apt-get -s upgrade
+apt-config dump | less</code></pre>
+<p><code>--dry-run</code> simulates package selection without installing anything. Review origins, held packages, dependencies, and configuration errors. After a clean test, trigger one observed run:</p>
+<pre><code>sudo unattended-upgrade --verbose</code></pre>
+<p>Do not run it alongside another <code>apt</code>, <code>dpkg</code>, or provisioning process. If a lock error occurs, identify the process holding the lock rather than deleting lock files.</p>
+
+<h2>7. Monitor timers, the journal, and logs</h2>
+<pre><code>systemctl list-timers 'apt-*'
+systemctl status apt-daily-upgrade.service
+journalctl -u apt-daily-upgrade.service --since today
+sudo tail -n 200 /var/log/unattended-upgrades/unattended-upgrades.log
+sudo tail -n 200 /var/log/unattended-upgrades/unattended-upgrades-dpkg.log</code></pre>
+<p>The main log records package selection and results; the dpkg log records installation details. Alert when the timer has not run within the expected interval, an upgrade fails, overdue security patches remain, or a reboot requirement persists.</p>
+
+<h2>8. Design a fleet rollout</h2>
+<p>Do not deploy a new update policy to every server at once. Use a staged process:</p>
+<ol>
+<li><strong>Canary:</strong> select a low-impact host with a representative workload.</li>
+<li><strong>Observe:</strong> monitor service health, error rate, latency, and logs.</li>
+<li><strong>Expand in cohorts:</strong> proceed through staging, part of production, and then the fleet.</li>
+<li><strong>Rolling reboot:</strong> preserve capacity and quorum throughout maintenance.</li>
+<li><strong>Report:</strong> record changed package versions, failed hosts, and completion times.</li>
+</ol>
+<p>A VM snapshot can support recovery but does not replace a verified backup. For databases, confirm consistency and test restoration before treating a snapshot as a rollback plan.</p>
+
+<h2>9. Common configuration mistakes</h2>
+<ul>
+<li><strong>Expecting an exact timer:</strong> APT may apply a randomized delay.</li>
+<li><strong>Auto-rebooting a single server:</strong> a patch becomes an unannounced outage.</li>
+<li><strong>Allowing every repository:</strong> third-party packages have different release and support practices.</li>
+<li><strong>Editing 50unattended-upgrades:</strong> package upgrades become harder to manage; use a drop-in.</li>
+<li><strong>Ignoring logs:</strong> enabled does not mean successfully updated.</li>
+<li><strong>Confusing package and release upgrades:</strong> this tool does not move Ubuntu 22.04 to 24.04.</li>
+</ul>
+
+<h2>Production checklist</h2>
+<ul>
+<li>Backups and the restore process have been tested.</li>
+<li>Package origins are restricted and PPAs are inventoried.</li>
+<li>The dry run succeeds on a representative canary.</li>
+<li>Automatic reboot is disabled by default or has an explicit maintenance window.</li>
+<li>Timers, logs, pending security fixes, and reboot requirements are monitored.</li>
+<li>Multi-node systems update in rolling cohorts while preserving quorum and capacity.</li>
+<li>Every blacklist exception has an owner and removal date.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p><code>unattended-upgrades</code> works best as one part of a patch-management process, not a switch to turn on and forget. Restrict origins, use a drop-in, validate on a canary, separate reboot decisions from package installation, and turn logs into owned alerts. This delivers security patches promptly while keeping production controlled.</p>
+
+<h2>References</h2>
+<ul>
+<li><a href="https://documentation.ubuntu.com/security/security-updates/" target="_blank" rel="noopener noreferrer">Ubuntu Security Documentation: Security updates</a></li>
+<li><a href="https://manpages.ubuntu.com/manpages/jammy/man8/unattended-upgrade.8.html" target="_blank" rel="noopener noreferrer">Ubuntu manpage: unattended-upgrade</a></li>
+<li><a href="https://documentation.ubuntu.com/server/explanation/software/about-apt-upgrade-and-phased-updates/" target="_blank" rel="noopener noreferrer">Ubuntu Server: APT upgrade and phased updates</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

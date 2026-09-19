@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Technology</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">what-is-wifi-7-when-to-upgrade</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">What Is Wi-Fi 7 and When Should You Upgrade?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">what is Wi-Fi 7, 802.11be, Multi-Link Operation, MLO, 320 MHz, 4K QAM, Wi-Fi 6E, Wi-Fi 7 router</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Wi-Fi 7, 802.11be, MLO, 6 GHz, Wireless, Networking, Router, Connectivity</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Understand Wi-Fi 7, MLO, 320 MHz channels, 4K QAM, puncturing, differences from Wi-Fi 6/6E, and when an upgrade provides real value.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/wifi-7-explained.jpg" alt="What Is Wi-Fi 7? MLO, 320 MHz Channels, and When to Upgrade" width="1440" height="810"></p><h1>What Is Wi-Fi 7? MLO, 320 MHz Channels, and When to Upgrade</h1><p><strong>Wi&#8209;Fi 7 is the Wi&#8209;Fi generation based on IEEE 802.11be, focused on extremely high throughput, more consistent latency, and more efficient spectrum use.</strong> Its important change is not merely a higher maximum speed: devices can use multiple links, wider channels, and the clean portions of spectrum when part of a channel is interfered with.</p>
+
+<h2>How does Wi&#8209;Fi 7 differ from Wi&#8209;Fi 6 and 6E?</h2>
+<table><thead><tr><th>Feature</th><th>Wi&#8209;Fi 6/6E</th><th>Wi&#8209;Fi 7</th></tr></thead><tbody><tr><td>Base standard</td><td>802.11ax</td><td>802.11be (EHT)</td></tr><tr><td>Maximum channel width</td><td>160 MHz</td><td>320 MHz</td></tr><tr><td>Highest modulation</td><td>1024-QAM</td><td>4096-QAM (4K QAM)</td></tr><tr><td>Multiple links</td><td>Client typically operates on one link</td><td>Multi-Link Operation</td></tr><tr><td>Interfered channel segment</td><td>More limited handling</td><td>More flexible preamble puncturing</td></tr></tbody></table>
+<p>Wi&#8209;Fi 6E is not an entirely new radio generation; it extends Wi&#8209;Fi 6 capabilities into 6 GHz. Wi&#8209;Fi 7 continues across 2.4, 5, and 6 GHz and adds mechanisms for coordinating links. Availability of 6 GHz and specific channel widths depends on regional rules, the access point, and the client.</p>
+
+<h2>1. Multi-Link Operation is the major change</h2>
+<p>Historically, a client generally selected one band or channel at a time. Multi-Link Operation (MLO) lets a Wi&#8209;Fi 7 device establish several links and, depending on implementation, transmit simultaneously or switch flexibly among them.</p>
+<ul><li><strong>Higher throughput:</strong> traffic may be distributed across multiple links.</li><li><strong>Lower latency:</strong> traffic can use a less-busy link instead of waiting on one channel.</li><li><strong>Greater reliability:</strong> another link can carry traffic when one band is interfered with.</li></ul>
+<p>Real benefit requires both the access point and client to support compatible MLO modes. A Wi&#8209;Fi 7 label does not mean every device uses two radios simultaneously or delivers identical performance.</p>
+
+<h2>2. A 320 MHz channel is wider, but not always better</h2>
+<p>Wi&#8209;Fi 7 can use channels as wide as 320 MHz, twice Wi&#8209;Fi 6/6E's 160 MHz maximum. Like adding traffic lanes, this can increase peak rates for large file transfers and mesh backhaul.</p>
+<p>However, 320 MHz needs clean spectrum, is commonly associated with 6 GHz, and has shorter wall penetration than 2.4 GHz. A narrower channel may be more stable in a crowded apartment. A 160 MHz client cannot obtain the complete benefit of a 320 MHz access point.</p>
+
+<h2>3. 4K QAM packs data more densely</h2>
+<p>4096-QAM encodes more bits in each symbol than 1024-QAM, raising throughput when the signal is strong and clean. Higher modulation requires a better signal-to-noise ratio, so its largest gains usually appear close to the access point.</p>
+<blockquote>4K QAM raises peak speed; it does not make a weak signal penetrate additional walls.</blockquote>
+
+<h2>4. Preamble puncturing uses clean channel segments</h2>
+<p>Interference in one segment of a wide channel can reduce use of the entire channel. Preamble puncturing excludes the affected portion while transmitting over the remainder. It can help in busy environments, although results depend on chipsets, firmware, and radio conditions.</p>
+
+<h2>The number on the box is not one device's speed</h2>
+<p>Routers often advertise the theoretical aggregate of several bands and spatial streams. A 2x2 laptop can use only the streams, width, and modes its adapter supports. Application speed also loses protocol overhead and is limited by:</p>
+<ul><li>The Internet plan and WAN port.</li><li>1 GbE, 2.5 GbE, or 10 GbE LAN ports.</li><li>Router and client spatial-stream counts.</li><li>Distance, obstacles, interference, and access-point placement.</li><li>Wired mesh backhaul versus shared wireless spectrum.</li><li>The destination server, CPU, and storage performance.</li></ul>
+<p>A router may negotiate wireless rates above 1 Gbps, but a NAS on a Gigabit port remains constrained by that wired link.</p>
+
+<h2>Is Wi&#8209;Fi 7 backward compatible?</h2>
+<p>Yes. Wi&#8209;Fi 7 access points are designed to support older clients on compatible bands. A Wi&#8209;Fi 6 client, however, does not gain MLO, 320 MHz, or 4K QAM merely by connecting to a new router.</p>
+<p>Legacy WPA2-only and 2.4 GHz IoT devices may need a separate SSID or policy. Do not weaken the whole network for one outdated device; isolate IoT on a VLAN or guest network where possible.</p>
+
+<h2>How does Wi&#8209;Fi 7 help mesh networks?</h2>
+<p>Mesh systems can use MLO and 6 GHz capacity for stronger wireless backhaul and more flexible client traffic. A node placed too far away still receives a weak signal. Ethernet remains the most stable backhaul when cabling is possible.</p>
+<p>Place a node where it still has a strong path to the previous node, not directly inside a dead zone. Verify multi-gig ports on the router and satellites when Internet or local storage exceeds 1 Gbps.</p>
+
+<h2>When should you upgrade?</h2>
+<p><strong>An upgrade makes sense when:</strong></p>
+<ul><li>You own several Wi&#8209;Fi 7 clients or will replace devices over the next few years.</li><li>Internet exceeds 1 Gbps or large files frequently move to local NAS storage.</li><li>Applications need consistent latency, including gaming, XR, remote desktops, and realtime collaboration.</li><li>A wireless mesh needs stronger backhaul.</li><li>The existing router lacks updates, is overloaded, or provides inadequate coverage.</li></ul>
+<p><strong>There is less urgency when:</strong> most clients remain on Wi&#8209;Fi 5/6, Internet is below 500 Mbps, or placement and access-point count are the real constraints. Replacing a well-designed Wi&#8209;Fi 6/6E network may produce little visible change for normal browsing and streaming.</p>
+
+<h2>How to select a Wi&#8209;Fi 7 router or access point</h2>
+<ol><li>Check supported bands rather than relying on the Wi&#8209;Fi 7 name.</li><li>Determine whether important clients support 160 or 320 MHz and which MLO modes.</li><li>Prefer at least 2.5 GbE WAN/LAN ports when multi-gig speed matters.</li><li>For mesh, inspect backhaul, radio count, and Ethernet ports on every node.</li><li>Evaluate firmware support, WPA3, guest networking, and VLAN options.</li><li>Size access points for the floor plan and wall materials, not a coverage claim.</li></ol>
+
+<h2>Measure performance correctly</h2>
+<p>An Internet speed test mixes Wi&#8209;Fi and ISP performance. To evaluate the LAN, use a multi-gig wired server and a tool such as iPerf3. Test identical locations at several times and record throughput, latency, jitter, and packet loss.</p>
+<p>Test 5 GHz, 6 GHz, and MLO separately when controls permit. A result next to the router does not represent a bedroom behind two walls. In business deployments, spectrum surveys and channel/power design matter more than buying the access point with the largest number.</p>
+
+<h2>Common misconceptions</h2>
+<ul><li><strong>&ldquo;Wi&#8209;Fi 7 makes the Internet faster&rdquo;:</strong> it cannot exceed the plan or WAN port.</li><li><strong>&ldquo;320 MHz is always better&rdquo;:</strong> wide channels need clean spectrum and compatible clients.</li><li><strong>&ldquo;MLO always adds every band's speed&rdquo;:</strong> behavior depends on hardware, drivers, and region.</li><li><strong>&ldquo;A router replacement removes dead zones&rdquo;:</strong> placement, power, and access-point count determine coverage.</li><li><strong>&ldquo;Old clients become as fast as Wi&#8209;Fi 7&rdquo;:</strong> backward compatibility does not add new radio capabilities.</li></ul>
+
+<h2>Conclusion</h2>
+<p>Wi&#8209;Fi 7's greatest value lies in MLO, flexible spectrum use, and more dependable latency rather than one headline speed. Upgrading is worthwhile when clients, wired infrastructure, Internet service, and workloads can all benefit. If the current problem is coverage or poor placement, fix the network design before changing Wi&#8209;Fi generations.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.intel.com/content/www/us/en/products/details/wireless/wi-fi-7-series.html" target="_blank" rel="noopener noreferrer">Intel: Wi&#8209;Fi 7 technology</a></li><li><a href="https://www.qualcomm.com/wi-fi/wi-fi-7" target="_blank" rel="noopener noreferrer">Qualcomm: Wi&#8209;Fi 7 overview</a></li><li><a href="https://standards.ieee.org/ieee/802.11be/7516/" target="_blank" rel="noopener noreferrer">IEEE: 802.11be standard project</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

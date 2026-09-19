@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Thi&#7871;t k&#7871; Idempotency Key an to&agrave;n cho API</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">idempotency key, API idempotency, ch&#7889;ng thanh to&aacute;n tr&ugrave;ng, retry API, duplicate request, PostgreSQL, distributed systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Idempotency, Backend, PostgreSQL, Payments, Distributed Systems, HTTP</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; Idempotency Key production cho API POST/PATCH: request fingerprint, concurrency, l&#432;u response, TTL, transaction, retry, l&#7895;i v&agrave; t&iacute;ch h&#7907;p payment/outbox.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/api-idempotency-key-design.jpg" alt="Idempotency Key cho API: Ch&#7889;ng t&#7841;o tr&ugrave;ng &#273;&#417;n h&agrave;ng v&agrave; thanh to&aacute;n" width="1440" height="810"></p><h1>Idempotency Key cho API: Ch&#7889;ng t&#7841;o tr&ugrave;ng &#273;&#417;n h&agrave;ng v&agrave; thanh to&aacute;n</h1><p><strong>Client g&#7917;i y&ecirc;u c&#7847;u t&#7841;o &#273;&#417;n h&agrave;ng, server x&#7917; l&yacute; th&agrave;nh c&ocirc;ng nh&#432;ng response b&#7883; m&#7845;t tr&ecirc;n &#273;&#432;&#7901;ng truy&#7873;n.</strong> Client ch&#7881; th&#7845;y timeout v&agrave; g&#7917;i l&#7841;i. N&#7871;u API t&#7841;o th&ecirc;m m&#7897;t order ho&#7863;c charge th&#7867; l&#7847;n hai, l&#7895;i n&#7857;m &#7903; thi&#7871;t k&#7871; server ch&#7913; kh&ocirc;ng ph&#7843;i &#7903; h&agrave;nh vi retry h&#7907;p l&yacute; c&#7911;a client.</p>
+<p>Idempotency Key cho ph&eacute;p nhi&#7873;u l&#7847;n th&#7917; c&#7911;a c&ugrave;ng m&#7897;t thao t&aacute;c t&#7841;o ra m&#7897;t hi&#7879;u &#7913;ng nghi&#7879;p v&#7909; duy nh&#7845;t. Server nh&#7853;n di&#7879;n retry b&#7857;ng kh&oacute;a do client g&#7917;i, &#273;&#7889;i chi&#7871;u request v&agrave; tr&#7843; l&#7841;i k&#7871;t qu&#7843; &#273;&atilde; l&#432;u thay v&igrave; th&#7921;c hi&#7879;n l&#7841;i.</p>
+
+<h2>Idempotency l&agrave; g&igrave;?</h2>
+<p>M&#7897;t thao t&aacute;c idempotent c&oacute; c&ugrave;ng hi&#7879;u &#7913;ng sau m&#7897;t hay nhi&#7873;u l&#7847;n th&#7921;c hi&#7879;n gi&#7889;ng nhau. HTTP &#273;&#7883;nh ngh&#297;a GET, PUT v&agrave; DELETE l&agrave; idempotent v&#7873; intended effect, c&ograve;n POST th&#432;&#7901;ng kh&ocirc;ng. Tuy v&#7853;y, method idempotent kh&ocirc;ng c&oacute; ngh&#297;a implementation t&#7921; &#273;&#7897;ng an to&agrave;n: m&#7897;t DELETE g&#7917;i email m&#7895;i l&#7847;n g&#7885;i v&#7851;n t&#7841;o side effect l&#7863;p.</p>
+<p>Idempotency Key ch&#7911; y&#7871;u h&#7919;u &iacute;ch cho c&aacute;c thao t&aacute;c c&oacute; side effect:</p>
+<ul>
+<li>T&#7841;o order, booking, invoice ho&#7863;c payout.</li>
+<li>Charge/refund payment.</li>
+<li>G&#7917;i l&#7879;nh provisioning t&agrave;i nguy&ecirc;n.</li>
+<li>POST/PATCH c&oacute; th&#7875; b&#7883; client, proxy ho&#7863;c job queue retry.</li>
+</ul>
+<blockquote>M&#7909;c ti&ecirc;u kh&ocirc;ng ph&#7843;i ng&#259;n m&#7885;i request l&#7863;p, m&agrave; b&#7843;o &#273;&#7843;m c&aacute;c retry c&#7911;a c&ugrave;ng m&#7897;t &yacute; &#273;&#7883;nh kh&ocirc;ng t&#7841;o th&ecirc;m hi&#7879;u &#7913;ng.</blockquote>
+
+<h2>1. H&#7907;p &#273;&#7891;ng gi&#7919;a client v&agrave; server</h2>
+<p>Client t&#7841;o kh&oacute;a ng&#7851;u nhi&ecirc;n c&oacute; entropy cao, th&#432;&#7901;ng l&agrave; UUID, v&agrave; gi&#7919; nguy&ecirc;n kh&oacute;a cho m&#7885;i retry c&#7911;a c&ugrave;ng thao t&aacute;c:</p>
+<pre><code>POST /v1/orders HTTP/1.1
+Authorization: Bearer ...
+Idempotency-Key: 8e03978e-40d5-43e8-bc93-6894a57f9324
+Content-Type: application/json
+
+{
+  "cart_id": "cart-9821",
+  "shipping_address_id": "address-17"
+}</code></pre>
+<p>M&#7897;t thao t&aacute;c nghi&#7879;p v&#7909; m&#7899;i ph&#7843;i d&ugrave;ng key m&#7899;i. Kh&ocirc;ng d&ugrave;ng timestamp ng&#7855;n, s&#7889; t&#259;ng d&#7847;n ho&#7863;c hash payload &#273;&#417;n thu&#7847;n l&agrave;m key v&igrave; collision, kh&#7843; n&#259;ng &#273;o&aacute;n v&agrave; hai &yacute; &#273;&#7883;nh gi&#7889;ng payload c&oacute; th&#7875; l&agrave; hai giao d&#7883;ch h&#7907;p l&#7879;.</p>
+<p>Server ph&#7843;i c&ocirc;ng b&#7889; &#273;&#7883;nh d&#7841;ng, &#273;&#7897; d&agrave;i t&#7889;i &#273;a, ph&#7841;m vi &aacute;p d&#7909;ng v&agrave; th&#7901;i gian gi&#7919; key. IETF &#273;&atilde; th&#7843;o lu&#7853;n header <code>Idempotency-Key</code> trong m&#7897;t Internet-Draft; &#273;&acirc;y l&agrave; t&agrave;i li&#7879;u work in progress, kh&ocirc;ng n&ecirc;n m&ocirc; t&#7843; nh&#432; ti&ecirc;u chu&#7849;n RFC &#273;&atilde; ho&agrave;n t&#7845;t.</p>
+
+<h2>2. Scope kh&oacute;a theo tenant v&agrave; endpoint</h2>
+<p>Kh&ocirc;ng d&ugrave;ng idempotency key l&agrave;m kh&oacute;a to&agrave;n c&#7909;c duy nh&#7845;t. Hai kh&aacute;ch h&agrave;ng c&oacute; th&#7875; v&ocirc; t&igrave;nh t&#7841;o c&ugrave;ng UUID; c&ugrave;ng key tr&ecirc;n hai endpoint c&#361;ng c&oacute; th&#7875; l&agrave; hai &yacute; &#273;&#7883;nh kh&aacute;c nhau. Lookup key n&ecirc;n l&agrave; composite:</p>
+<pre><code>(tenant_id, operation, idempotency_key)</code></pre>
+<p><code>tenant_id</code> ph&#7843;i l&#7845;y t&#7915; principal &#273;&atilde; x&aacute;c th&#7921;c, kh&ocirc;ng l&#7845;y t&#7915; body do client t&ugrave;y &yacute; g&#7917;i. <code>operation</code> l&agrave; t&ecirc;n route &#7893;n &#273;&#7883;nh nh&#432; <code>orders.create</code>, kh&ocirc;ng nh&#7845;t thi&#7871;t l&agrave; URL ch&#7913;a version ho&#7863;c query &#273;&#7897;ng.</p>
+
+<h2>3. Schema l&#432;u idempotency record</h2>
+<pre><code>CREATE TABLE idempotency_keys (
+    tenant_id uuid NOT NULL,
+    operation varchar(100) NOT NULL,
+    idempotency_key varchar(255) NOT NULL,
+    request_hash char(64) NOT NULL,
+    status varchar(20) NOT NULL,
+    resource_type varchar(100),
+    resource_id varchar(100),
+    response_code integer,
+    response_headers jsonb,
+    response_body jsonb,
+    locked_until timestamptz,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    completed_at timestamptz,
+    expires_at timestamptz NOT NULL,
+    PRIMARY KEY (tenant_id, operation, idempotency_key)
+);
+
+CREATE INDEX idx_idempotency_expiry
+ON idempotency_keys (expires_at);</code></pre>
+<p>C&aacute;c tr&#7841;ng th&aacute;i c&#417; b&#7843;n l&agrave; <code>processing</code>, <code>completed</code> v&agrave; c&oacute; th&#7875; <code>failed</code>. <code>request_hash</code> ng&#259;n m&#7897;t key b&#7883; t&aacute;i s&#7917; d&#7909;ng cho payload kh&aacute;c. T&ugrave;y API, ch&#7881; l&#432;u resource ID r&#7891;i d&#7921;ng l&#7841;i response, ho&#7863;c l&#432;u status/body &#273;&atilde; tr&#7843; &#273;&#7875; replay ch&iacute;nh x&aacute;c.</p>
+
+<h2>4. T&#7841;o request fingerprint &#7893;n &#273;&#7883;nh</h2>
+<p>Hash raw JSON kh&ocirc;ng &#7893;n &#273;&#7883;nh v&igrave; th&#7913; t&#7921; field v&agrave; whitespace c&oacute; th&#7875; kh&aacute;c d&ugrave; &yacute; ngh&#297;a gi&#7889;ng nhau. H&atilde;y canonicalize d&#7919; li&#7879;u:</p>
+<ol>
+<li>Parse JSON v&agrave; t&#7915; ch&#7889;i payload kh&ocirc;ng h&#7907;p l&#7879;.</li>
+<li>Chu&#7849;n h&oacute;a field &#273;&#432;&#7907;c ph&eacute;p, ki&#7875;u d&#7919; li&#7879;u v&agrave; gi&aacute; tr&#7883; m&#7863;c &#273;&#7883;nh.</li>
+<li>S&#7855;p x&#7871;p key object theo quy t&#7855;c x&aacute;c &#273;&#7883;nh.</li>
+<li>Bao g&#7891;m method, operation v&agrave; c&aacute;c tham s&#7889; c&oacute; &#7843;nh h&#432;&#7903;ng.</li>
+<li>Hash canonical representation b&#7857;ng SHA-256.</li>
+</ol>
+<pre><code>fingerprint = SHA256(
+    operation + "\n" + canonical_json(validated_input)
+)</code></pre>
+<p>Kh&ocirc;ng hash authorization token ho&#7863;c header thay &#273;&#7893;i v&ocirc; ngh&#297;a. File upload l&#7899;n c&oacute; th&#7875; d&ugrave;ng checksum n&#7897;i dung/metadata &#273;&atilde; x&aacute;c minh. N&#7871;u c&ugrave;ng key nh&#432;ng fingerprint kh&aacute;c, tr&#7843; l&#7895;i conflict; tuy&#7879;t &#273;&#7889;i kh&ocirc;ng replay response c&#7911;a request &#273;&#7847;u cho payload th&#7913; hai.</p>
+
+<h2>5. Claim key b&#7857;ng unique constraint</h2>
+<p>Hai request c&ugrave;ng key c&oacute; th&#7875; &#273;&#7871;n &#273;&uacute;ng m&#7897;t l&uacute;c. Check-then-insert trong application b&#7883; race. H&atilde;y &#273;&#7875; unique constraint ph&acirc;n x&#7917;:</p>
+<pre><code>INSERT INTO idempotency_keys (
+    tenant_id, operation, idempotency_key,
+    request_hash, status, locked_until, expires_at
+) VALUES (
+    :tenant_id, :operation, :key,
+    :hash, 'processing', now() + interval '30 seconds',
+    now() + interval '24 hours'
+)
+ON CONFLICT DO NOTHING;</code></pre>
+<p>Request insert th&agrave;nh c&ocirc;ng l&agrave; owner. Request c&ograve;n l&#7841;i &#273;&#7885;c row hi&#7879;n c&oacute;:</p>
+<ul>
+<li>Hash kh&aacute;c: tr&#7843; <code>409 Conflict</code> v&igrave; key b&#7883; d&ugrave;ng sai.</li>
+<li><code>completed</code>: tr&#7843; l&#7841;i response &#273;&atilde; l&#432;u.</li>
+<li><code>processing</code>: ch&#7901; ng&#7855;n/poll c&oacute; gi&#7899;i h&#7841;n ho&#7863;c tr&#7843; conflict/in-progress &#273;&#7875; client retry sau.</li>
+<li>Lease h&#7871;t h&#7841;n: ch&#7881; takeover n&#7871;u quy tr&igrave;nh c&oacute; th&#7875; x&aacute;c &#273;&#7883;nh an to&agrave;n thao t&aacute;c tr&#432;&#7899;c ch&#432;a t&#7841;o side effect.</li>
+</ul>
+
+<h2>6. Transaction ph&#7843;i bao g&#7891;m business data</h2>
+<p>V&#7899;i thao t&aacute;c ch&#7881; ghi m&#7897;t database, t&#7841;o business record v&agrave; ho&agrave;n t&#7845;t idempotency row trong c&ugrave;ng transaction:</p>
+<pre><code>BEGIN;
+
+SELECT * FROM idempotency_keys
+WHERE tenant_id = :tenant
+  AND operation = 'orders.create'
+  AND idempotency_key = :key
+FOR UPDATE;
+
+INSERT INTO orders (...) VALUES (...)
+RETURNING id;
+
+UPDATE idempotency_keys
+SET status = 'completed',
+    resource_type = 'order',
+    resource_id = :order_id,
+    response_code = 201,
+    response_body = :body,
+    completed_at = now()
+WHERE tenant_id = :tenant
+  AND operation = 'orders.create'
+  AND idempotency_key = :key;
+
+COMMIT;</code></pre>
+<p>N&#7871;u process crash tr&#432;&#7899;c commit, c&#7843; order v&agrave; k&#7871;t qu&#7843; idempotency rollback. N&#7871;u crash sau commit nh&#432;ng tr&#432;&#7899;c khi g&#7917;i response, retry &#273;&#7885;c row completed v&agrave; tr&#7843; &#273;&uacute;ng order &#273;&atilde; t&#7841;o.</p>
+
+<h2>7. L&#432;u response hay tham chi&#7871;u resource?</h2>
+<p><strong>L&#432;u full response</strong> replay ch&iacute;nh x&aacute;c, ph&ugrave; h&#7907;p response nh&#7887; v&agrave; y&ecirc;u c&#7847;u client nh&#7853;n c&ugrave;ng status/body. Nh&#432;&#7907;c &#273;i&#7875;m l&agrave; t&#7889;n storage, gi&#7919; PII v&agrave; response c&oacute; th&#7875; ch&#7913;a d&#7919; li&#7879;u kh&ocirc;ng n&ecirc;n l&#432;u l&acirc;u.</p>
+<p><strong>L&#432;u resource reference</strong> nh&#7865; h&#417;n v&agrave; d&#7877; d&#7885;n, nh&#432;ng response d&#7921;ng l&#7841;i c&oacute; th&#7875; kh&aacute;c n&#7871;u resource &#273;&atilde; thay &#273;&#7893;i. M&#7897;t ph&#432;&#417;ng &aacute;n lai l&#432;u resource ID, status code v&agrave; snapshot t&#7889;i thi&#7875;u c&#7847;n cho contract.</p>
+<p>Kh&ocirc;ng l&#432;u <code>Set-Cookie</code>, token ng&#7855;n h&#7841;n ho&#7863;c header nh&#7841;y c&#7843;m &#273;&#7875; replay. Allowlist response header an to&agrave;n thay v&igrave; serialize t&#7845;t c&#7843;.</p>
+
+<h2>8. Validation error v&agrave; server error c&oacute; n&ecirc;n &#273;&#432;&#7907;c cache?</h2>
+<p>Policy ph&#7843;i r&otilde; r&agrave;ng:</p>
+<ul>
+<li><strong>Validation ch&#432;a b&#7855;t &#273;&#7847;u execution:</strong> th&#432;&#7901;ng kh&ocirc;ng claim/l&#432;u key; client s&#7917;a payload v&agrave; c&oacute; th&#7875; retry.</li>
+<li><strong>Business rejection &#273;&atilde; quy&#7871;t &#273;&#7883;nh:</strong> c&oacute; th&#7875; l&#432;u k&#7871;t qu&#7843; 4xx &#273;&#7875; retry nh&#7853;n c&ugrave;ng quy&#7871;t &#273;&#7883;nh.</li>
+<li><strong>L&#7895;i 5xx tr&#432;&#7899;c side effect:</strong> th&#432;&#7901;ng cho retry th&#7921;c thi l&#7841;i.</li>
+<li><strong>L&#7895;i sau side effect:</strong> ph&#7843;i l&#432;u tr&#7841;ng th&aacute;i &#273;&#7911; &#273;&#7875; reconcile, kh&ocirc;ng &#273;&#432;&#7907;c m&ugrave; qu&aacute;ng ch&#7841;y l&#7841;i.</li>
+</ul>
+<p>M&#7897;t s&#7889; API nh&#432; Stripe l&#432;u status v&agrave; body khi endpoint &#273;&atilde; b&#7855;t &#273;&#7847;u execution, k&#7875; c&#7843; l&#7895;i 500. Kh&ocirc;ng sao ch&eacute;p policy m&aacute;y m&oacute;c; ch&#7885;n theo kh&#7843; n&#259;ng x&aacute;c &#273;&#7883;nh side effect c&#7911;a h&#7879; th&#7889;ng v&agrave; m&ocirc; t&#7843; cho client.</p>
+
+<h2>9. T&iacute;ch h&#7907;p payment provider</h2>
+<p>Idempotency t&#7841;i API c&#7911;a b&#7841;n v&agrave; t&#7841;i payment provider l&agrave; hai l&#7899;p kh&aacute;c nhau. T&#7841;o provider key &#7893;n &#273;&#7883;nh t&#7915; payment attempt n&#7897;i b&#7897;, kh&ocirc;ng t&#7841;o UUID m&#7899;i m&#7895;i l&#7847;n worker retry:</p>
+<pre><code>provider_key = "payment-attempt:" + payment_attempt_id</code></pre>
+<p>L&#432;u provider request ID v&agrave; tr&#7841;ng th&aacute;i. N&#7871;u timeout kh&ocirc;ng r&otilde; charge &#273;&atilde; th&agrave;nh c&ocirc;ng, query provider b&#7857;ng idempotency key/request ID tr&#432;&#7899;c khi g&#7917;i l&#7879;nh m&#7899;i. Webhook c&#361;ng ph&#7843;i deduplicate b&#7857;ng event ID c&#7911;a provider.</p>
+<p>Kh&ocirc;ng gi&#7919; database transaction m&#7903; trong l&uacute;c g&#7885;i payment network. D&ugrave;ng state machine v&agrave; transactional outbox &#273;&#7875; commit &yacute; &#273;&#7883;nh, sau &#273;&oacute; worker th&#7921;c hi&#7879;n side effect c&oacute; idempotency key.</p>
+
+<h2>10. Idempotency v&agrave; Transactional Outbox b&#7893; sung nhau</h2>
+<p>Idempotency Key b&#7843;o v&#7879; request v&agrave;o h&#7879; th&#7889;ng. Outbox b&#7843;o &#273;&#7843;m event sau khi business transaction commit s&#7869; &#273;&#432;&#7907;c ph&aacute;t &#273;&aacute;ng tin c&#7853;y. Trong transaction t&#7841;o order, c&oacute; th&#7875; &#273;&#7891;ng th&#7901;i:</p>
+<ol>
+<li>Kh&oacute;a/claim idempotency key.</li>
+<li>T&#7841;o order.</li>
+<li>Insert <code>OrderCreated</code> v&agrave;o outbox.</li>
+<li>L&#432;u response idempotent.</li>
+<li>Commit t&#7845;t c&#7843;.</li>
+</ol>
+<p>Consumer event v&#7851;n c&#7847;n dedup ri&ecirc;ng v&igrave; broker c&oacute; th&#7875; giao l&#7841;i message. M&#7897;t idempotency key kh&ocirc;ng t&#7921; truy&#7873;n guarantee xuy&ecirc;n qua m&#7885;i service.</p>
+
+<h2>11. TTL v&agrave; t&aacute;i s&#7917; d&#7909;ng key</h2>
+<p>TTL ph&#7843;i d&agrave;i h&#417;n c&#7917;a s&#7893; retry th&#7921;c t&#7871; c&#7911;a client, queue, mobile offline v&agrave; webhook. 24 gi&#7901; c&oacute; th&#7875; &#273;&#7911; cho API t&#432;&#417;ng t&aacute;c, nh&#432;ng payout ho&#7863;c provisioning d&agrave;i ng&agrave;y c&oacute; th&#7875; c&#7847;n l&acirc;u h&#417;n. C&ocirc;ng b&#7889; TTL trong t&agrave;i li&#7879;u.</p>
+<p>Khi record h&#7871;t h&#7841;n v&agrave; b&#7883; x&oacute;a, d&ugrave;ng l&#7841;i key c&oacute; th&#7875; t&#7841;o thao t&aacute;c m&#7899;i. V&igrave; v&#7853;y client kh&ocirc;ng n&ecirc;n t&aacute;i ch&#7871; key. V&#7899;i giao d&#7883;ch gi&aacute; tr&#7883; cao, unique business identifier nh&#432; <code>merchant_order_id</code> n&ecirc;n c&oacute; constraint ri&ecirc;ng v&agrave; retention d&agrave;i h&#417;n idempotency cache.</p>
+<pre><code>DELETE FROM idempotency_keys
+WHERE expires_at &lt; now()
+  AND status &lt;&gt; 'processing'
+LIMIT 5000;</code></pre>
+<p>D&#7885;n theo batch/partition v&agrave; kh&ocirc;ng x&oacute;a row processing ch&#432;a &#273;&#432;&#7907;c reconcile.</p>
+
+<h2>12. B&#7843;o m&#7853;t v&agrave; abuse</h2>
+<ul>
+<li>Gi&#7899;i h&#7841;n &#273;&#7897; d&agrave;i v&agrave; format key &#273;&#7875; tr&aacute;nh storage abuse.</li>
+<li>Scope theo authenticated principal &#273;&#7875; ng&#259;n d&ograve; key tenant kh&aacute;c.</li>
+<li>Kh&ocirc;ng tr&#7843; response cache tr&#432;&#7899;c khi ki&#7875;m tra authorization hi&#7879;n t&#7841;i.</li>
+<li>Rate-limit s&#7889; key m&#7899;i; attacker c&oacute; th&#7875; g&#7917;i UUID m&#7899;i li&ecirc;n t&#7909;c.</li>
+<li>M&atilde; h&oacute;a ho&#7863;c gi&#7843;m PII trong response &#273;&atilde; l&#432;u.</li>
+<li>Kh&ocirc;ng log body/payment data ch&#7881; &#273;&#7875; debug idempotency.</li>
+</ul>
+<p>Key kh&ocirc;ng ph&#7843;i credential. Bi&#7871;t idempotency key kh&ocirc;ng &#273;&#432;&#7907;c ph&eacute;p cung c&#7845;p quy&#7873;n truy c&#7853;p resource.</p>
+
+<h2>13. Observability</h2>
+<ul>
+<li>T&#7927; l&#7879; request m&#7899;i, replay, conflict v&agrave; in-progress.</li>
+<li>Th&#7901;i gian t&#7915; processing &#273;&#7871;n completed.</li>
+<li>S&#7889; lease h&#7871;t h&#7841;n v&agrave; thao t&aacute;c c&#7847;n reconcile.</li>
+<li>Dung l&#432;&#7907;ng b&#7843;ng, t&#7889;c &#273;&#7897; t&#7841;o/x&oacute;a v&agrave; tu&#7893;i record.</li>
+<li>Duplicate b&#7883; ch&#7863;n theo operation, kh&ocirc;ng theo raw key.</li>
+<li>Provider timeout v&agrave; k&#7871;t qu&#7843; query l&#7841;i.</li>
+</ul>
+<p>G&#7855;n request ID v&agrave; trace ID ri&ecirc;ng v&#7899;i idempotency key. Request ID x&aacute;c &#273;&#7883;nh t&#7915;ng attempt; idempotency key nh&oacute;m nhi&#7873;u attempt c&#7911;a c&ugrave;ng logical operation.</p>
+
+<h2>14. K&#7883;ch b&#7843;n ki&#7875;m th&#7917; b&#7855;t bu&#7897;c</h2>
+<ol>
+<li>Hai request gi&#7889;ng nhau ch&#7841;y &#273;&#7891;ng th&#7901;i ch&#7881; t&#7841;o m&#7897;t resource.</li>
+<li>C&ugrave;ng key, payload kh&aacute;c tr&#7843; conflict.</li>
+<li>Crash tr&#432;&#7899;c commit kh&ocirc;ng &#273;&#7875; l&#7841;i business record.</li>
+<li>Crash sau commit tr&#432;&#7899;c response &#273;&#432;&#7907;c replay &#273;&uacute;ng.</li>
+<li>Timeout t&#7915; payment provider &#273;&#432;&#7907;c reconcile kh&ocirc;ng charge l&#7841;i.</li>
+<li>Retry sau TTL ho&#7841;t &#273;&#7897;ng &#273;&uacute;ng policy &#273;&atilde; c&ocirc;ng b&#7889;.</li>
+<li>Authorization thay &#273;&#7893;i kh&ocirc;ng l&agrave;m l&#7897; response c&#361;.</li>
+<li>Cleanup kh&ocirc;ng x&oacute;a request &#273;ang processing.</li>
+</ol>
+
+<h2>Checklist production</h2>
+<ul>
+<li>Client sinh key entropy cao v&agrave; gi&#7919; nguy&ecirc;n qua retry.</li>
+<li>Server scope theo tenant + operation + key.</li>
+<li>Payload canonical h&oacute;a v&agrave; fingerprint &#273;&#432;&#7907;c so s&aacute;nh.</li>
+<li>Unique constraint x&#7917; l&yacute; race, kh&ocirc;ng d&ugrave;ng check-then-insert.</li>
+<li>Business data v&agrave; k&#7871;t qu&#7843; idempotency commit nguy&ecirc;n t&#7917; khi c&oacute; th&#7875;.</li>
+<li>Policy cho 4xx, 5xx, in-progress v&agrave; lease expiry &#273;&#432;&#7907;c &#273;&#7883;nh ngh&#297;a.</li>
+<li>External side effect c&oacute; provider key/state machine ri&ecirc;ng.</li>
+<li>TTL, cleanup, b&#7843;o m&#7853;t v&agrave; metric &#273;&#432;&#7907;c v&#7853;n h&agrave;nh r&otilde; r&agrave;ng.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Idempotency Key bi&#7871;n retry t&#7915; r&#7911;i ro th&agrave;nh m&#7897;t ph&#7847;n b&igrave;nh th&#432;&#7901;ng c&#7911;a API fault-tolerant. Thi&#7871;t k&#7871; &#273;&uacute;ng c&#7847;n nhi&#7873;u h&#417;n b&#7843;ng cache: kh&oacute;a ph&#7843;i c&oacute; scope, request ph&#7843;i c&oacute; fingerprint, race ph&#7843;i &#273;&#432;&#7907;c gi&#7843;i b&#7857;ng unique constraint, business effect ph&#7843;i g&#7855;n v&#7899;i transaction v&agrave; side effect ngo&agrave;i database c&#7847;n state machine ri&ecirc;ng. Idempotency kh&ocirc;ng h&#7913;a &ldquo;request ch&#7881; ch&#7841;y &#273;&uacute;ng m&#7897;t l&#7847;n&rdquo;; n&oacute; b&#7843;o &#273;&#7843;m nhi&#7873;u attempt c&#7911;a c&ugrave;ng &yacute; &#273;&#7883;nh ch&#7881; t&#7841;o m&#7897;t k&#7871;t qu&#7843; nghi&#7879;p v&#7909;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener noreferrer">Stripe: Idempotent requests</a></li><li><a href="https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/" target="_blank" rel="noopener noreferrer">IETF Internet-Draft: Idempotency-Key HTTP Header Field</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110.html" target="_blank" rel="noopener noreferrer">RFC 9110: HTTP Semantics</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

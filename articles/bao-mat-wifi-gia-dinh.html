@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">H&#432;&#7899;ng d&#7851;n b&#7843;o m&#7853;t Wi-Fi gia &#273;&igrave;nh: 10 b&#432;&#7899;c n&ecirc;n l&agrave;m ngay</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">b&#7843;o m&#7853;t Wi-Fi, router gia &#273;&igrave;nh, WPA3, m&#7841;ng kh&aacute;ch</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">b&#7843;o m&#7853;t Wi-Fi, router gia &#273;&igrave;nh, WPA3, m&#7841;ng kh&aacute;ch</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Checklist thi&#7871;t l&#7853;p router gia &#273;&igrave;nh an to&agrave;n b&#7857;ng c&#7853;p nh&#7853;t, WPA3, m&#7841;ng kh&aacute;ch v&agrave; gi&aacute;m s&aacute;t thi&#7871;t b&#7883;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/huong-dan-bao-mat-va-chuyen-du-lieu.jpg" alt="H&#432;&#7899;ng d&#7851;n b&#7843;o m&#7853;t Wi-Fi gia &#273;&igrave;nh: 10 b&#432;&#7899;c n&ecirc;n l&agrave;m ngay" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n b&#7843;o m&#7853;t Wi-Fi gia &#273;&igrave;nh: 10 b&#432;&#7899;c n&ecirc;n l&agrave;m ngay</h1><p><strong>Router l&agrave; c&#7917;a ng&otilde; c&#7911;a m&#7841;ng gia &#273;&igrave;nh. C&#7845;u h&igrave;nh m&#7863;c &#273;&#7883;nh y&#7871;u c&oacute; th&#7875; &#7843;nh h&#432;&#7903;ng m&aacute;y t&iacute;nh, &#273;i&#7879;n tho&#7841;i, camera v&agrave; thi&#7871;t b&#7883; th&ocirc;ng minh.</strong></p><h2>B&#7843;o v&#7879; ph&#7847;n qu&#7843;n tr&#7883;</h2><p>C&#7853;p nh&#7853;t firmware, b&#7853;t c&#7853;p nh&#7853;t t&#7921; &#273;&#7897;ng, &#273;&#7893;i m&#7853;t kh&#7849;u qu&#7843;n tr&#7883; v&agrave; t&#7855;t qu&#7843;n tr&#7883; t&#7915; Internet n&#7871;u kh&ocirc;ng c&#7847;n. Kh&ocirc;ng d&ugrave;ng chung m&#7853;t kh&#7849;u qu&#7843;n tr&#7883; v&#7899;i m&#7853;t kh&#7849;u Wi-Fi.</p><h2>Thi&#7871;t l&#7853;p Wi-Fi</h2><p>D&ugrave;ng WPA3 ho&#7863;c WPA2-AES, &#273;&#7863;t m&#7853;t kh&#7849;u d&agrave;i v&agrave; duy nh&#7845;t, t&#7855;t WPS khi kh&ocirc;ng d&ugrave;ng. T&#7841;o m&#7841;ng kh&aacute;ch cho kh&aacute;ch v&agrave; thi&#7871;t b&#7883; IoT &#273;&#7875; gi&#7843;m ph&#7841;m vi &#7843;nh h&#432;&#7903;ng n&#7871;u m&#7897;t thi&#7871;t b&#7883; b&#7883; x&acirc;m nh&#7853;p.</p><h2>Ki&#7875;m tra &#273;&#7883;nh k&#7923;</h2><p>Xem danh s&aacute;ch thi&#7871;t b&#7883; k&#7871;t n&#7889;i, x&oacute;a thi&#7871;t b&#7883; l&#7841; v&agrave; thay router &#273;&atilde; h&#7871;t h&#7895; tr&#7907;. N&#7871;u nghi b&#7883; x&acirc;m nh&#7853;p, c&#7853;p nh&#7853;t, &#273;&#7893;i th&ocirc;ng tin &#273;&#259;ng nh&#7853;p, ki&#7875;m tra DNS ho&#7863;c &#273;&#7863;t l&#7841;i v&agrave; c&#7845;u h&igrave;nh th&#7911; c&ocirc;ng.</p><h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://consumer.ftc.gov/articles/how-secure-your-home-wi-fi-network" target="_blank" rel="noopener noreferrer">consumer.ftc.gov</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

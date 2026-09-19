@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Solutions</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">small-business-device-management-mdm-encryption-patching-remote-wipe</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">MDM and Device Management for Small Businesses</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">small business MDM, device management, laptop encryption, endpoint patching, remote wipe, BYOD, device security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">MDM, Endpoint Management, Device Security, BYOD, Encryption, Patch Management, Remote Wipe, SME Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Manage small-business laptops and phones with MDM, encryption, patching, compliance, remote lock, remote wipe, and secure offboarding.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/small-business-device-management.jpg" alt="Device Management for Small Businesses: MDM, Encryption, Patching, and Remote Wipe" width="1440" height="810"></p><h1>Device Management for Small Businesses: MDM, Encryption, Patching, and Remote Wipe</h1><p><strong>Laptops and phones are now entry points to email, customer data, cloud platforms, and internal accounts.</strong> When a business cannot identify its devices, their encryption state, or who retained equipment after departure, one lost laptop can become a significant data incident.</p>
+
+<h2>What does MDM solve?</h2>
+<p>Mobile Device Management and endpoint management platforms enroll devices, deliver configuration, enforce policy, monitor compliance, and perform remote actions. MDM does not replace every security layer; it is the control plane for device state throughout the lifecycle.</p>
+<p>A minimum solution should show device owner, OS version, encryption, screen-lock state, last check-in, required applications, and whether the device can be remotely locked or wiped.</p>
+
+<h2>Choose an ownership model</h2>
+<table><thead><tr><th>Model</th><th>Benefit</th><th>Tradeoff</th></tr></thead><tbody><tr><td>Corporate-owned</td><td>Strongest control over configuration, data, and lifecycle</td><td>Higher purchase, inventory, and support cost</td></tr><tr><td>COPE</td><td>Company-owned with limited personal use</td><td>Requires a clear personal-data policy</td></tr><tr><td>BYOD</td><td>Lower cost and employee convenience</td><td>Less control, privacy concerns, diverse support</td></tr><tr><td>Application management only</td><td>Separates work data on personal devices</td><td>Less visibility into overall device state</td></tr></tbody></table>
+<p>Do not impose full-control policy on personal devices without notice. BYOD policy must explain collected data, what can be erased, when action is allowed, and how users can unenroll.</p>
+
+<h2>Inventory before deployment</h2>
+<p>List laptops, desktops, phones, and tablets with serial number, owner, operating system, purchase date, warranty, encryption, and critical applications. Reconcile devices with workforce accounts to identify ownerless assets or devices that still reach cloud systems but no longer appear in inventory.</p>
+<p>Group by risk: administrators and finance, customer-data devices, standard employees, contractors, and shared or kiosk devices. Each group can have a different baseline and access level.</p>
+
+<h2>Minimum security baseline</h2>
+<ul><li>Full-disk encryption with recovery keys escrowed centrally.</li><li>Automatic screen lock, suitable PIN or password, and retry limits.</li><li>MFA or passkeys for business identities.</li><li>Enabled, centrally configured host firewall.</li><li>Deadlines for OS, browser, and application updates.</li><li>Block or flag rooted, jailbroken, and unsupported systems.</li><li>Endpoint protection appropriate to risk.</li><li>Work data backup independent of local storage.</li><li>Local administrator rights only with justification.</li></ul>
+<blockquote>Encryption protects data when a device is powered off or properly locked. An unlocked laptop with active cloud sessions remains exposed.</blockquote>
+
+<h2>Automate enrollment</h2>
+<p>Prefer zero-touch or automated enrollment through platform purchasing programs. New devices receive business configuration during setup, reducing the chance that users skip agents or profiles.</p>
+<p>Provisioning should bind the asset to its user, validate the baseline, sign in with business identity, install required software, and verify backup. Do not deliver unmanaged devices and plan to add controls weeks later.</p>
+
+<h2>Risk-based patch management</h2>
+<p>NIST frames patching as preventive maintenance: identify, prioritize, install, and verify updates. Use deployment rings:</p>
+<ol><li><strong>Pilot:</strong> a representative small group receives updates first.</li><li><strong>Standard:</strong> most devices update after pilot stability.</li><li><strong>Critical or exception:</strong> specialized devices use an approved window and owner.</li></ol>
+<p>Define service levels by severity. Emergency fixes may shorten pilot time; major feature upgrades require testing with VPN, security agents, accounting software, and peripherals. Measure installation success rather than merely issuing a command.</p>
+
+<h2>Compliance and conditional access</h2>
+<p>MDM becomes more valuable when device state influences access. Require enrollment, encryption, supported software, and patch compliance before allowing email or sensitive-data access.</p>
+<p>Roll out gradually: report first, warn users next, and block last. Maintain expiring exceptions and emergency access so one incorrect policy cannot lock out the entire organization.</p>
+
+<h2>Business applications and data</h2>
+<p>Maintain an approved application catalog, install required agents automatically, and remove obsolete software. For BYOD, prefer managed applications, work containers, or selective wipe so business data can be removed without deleting personal photos.</p>
+<p>Collect no more data than operations require. Limit location, browser history, and personal application inventory according to privacy policy and applicable law. Protect the MDM console with MFA, roles, and audit logs.</p>
+
+<h2>Lost or stolen devices</h2>
+<ol><li>The employee reports immediately through a published channel.</li><li>IT confirms the asset, user, and last check-in.</li><li>Revoke sessions, tokens, VPN certificates, and related credentials.</li><li>Mark the device lost, lock it, and display contact information when appropriate.</li><li>Remote-wipe after assessing risk and recovery likelihood.</li><li>Preserve evidence and notify legal or customers when required.</li><li>Replace the device and review the cause and policy.</li></ol>
+<p>Remote wipe is not guaranteed because a device may remain offline or be tampered with. Encryption, screen lock, and credential revocation remain primary defenses.</p>
+
+<h2>Offboarding and device recovery</h2>
+<p>HR, management, and IT must agree on timing. Disable accounts, revoke sessions, recover devices and accessories, transfer work data, remove management correctly, and update inventory. Before reuse, securely erase, clear activation locks, and confirm enrollment ownership.</p>
+<p>Disposal requires media sanitization or destruction, evidence, and asset-register updates. Manually deleting files is insufficient before selling or donating equipment.</p>
+
+<h2>Platform selection criteria</h2>
+<ul><li>Support for the actual Windows, macOS, iOS, Android, and Linux fleet.</li><li>Integration with directory, SSO, and conditional access.</li><li>Automated enrollment and recovery-key management.</li><li>OS and third-party application patching.</li><li>Selective wipe for BYOD and full wipe for company devices.</li><li>Audit logs, role-based access, APIs, and data export.</li><li>Actionable compliance reporting.</li><li>Device or user licensing plus operational and support cost.</li><li>An export, unenrollment, and provider migration path.</li></ul>
+
+<h2>A 30-day rollout</h2>
+<ol><li><strong>Week 1:</strong> inventory, ownership model, and baseline.</li><li><strong>Week 2:</strong> pilot with 5-10 representative devices without access blocking.</li><li><strong>Week 3:</strong> deploy by group, escrow recovery keys, and enable patch rings.</li><li><strong>Week 4:</strong> test lost-device response, selective wipe, offboarding, and policy rollback.</li></ol>
+<p>Start with devices that access email, cloud platforms, and customer data. Do not try to manage every specialized or IoT device in the first phase.</p>
+
+<h2>Operational metrics</h2>
+<ul><li>Percentage of managed devices with assigned owners.</li><li>Encryption coverage and successful recovery-key escrow.</li><li>Patch compliance within SLA and unsupported devices.</li><li>Noncompliant devices by cause.</li><li>Time from lost report to session revocation and lock.</li><li>Offboarding completion and asset recovery rate.</li><li>Expired exceptions.</li></ul>
+
+<h2>Acceptance checklist</h2>
+<ol><li>Every device accessing critical data has an owner and inventory record.</li><li>Corporate, COPE, or BYOD is explicit for each group.</li><li>Encryption, lock, MFA, firewall, and patch baselines are enforced.</li><li>Recovery keys are escrowed and recovery has been tested.</li><li>Patch rings, service levels, and exception handling exist.</li><li>Conditional access ran in report-only mode before blocking.</li><li>Lost-device and remote-wipe procedures were exercised.</li><li>Offboarding covers accounts, sessions, data, and physical assets.</li><li>The MDM console uses MFA, roles, audit, and configuration backup.</li></ol>
+
+<h2>Conclusion</h2>
+<p>MDM creates value only when tied to device lifecycle and human process. Small businesses should begin with inventory, encryption, patching, and lost-device response, then expand into conditional access and automation. A simple baseline applied consistently is more effective than a feature-rich console with unenrolled devices and ignored findings.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.nist.gov/publications/guidelines-managing-security-mobile-devices-enterprise-0" target="_blank" rel="noopener noreferrer">NIST SP 800-124 Rev. 2: Managing Mobile Device Security</a></li><li><a href="https://csrc.nist.gov/pubs/sp/800/40/r4/final" target="_blank" rel="noopener noreferrer">NIST SP 800-40 Rev. 4: Enterprise Patch Management</a></li><li><a href="https://csrc.nist.gov/pubs/sp/1800/22/final" target="_blank" rel="noopener noreferrer">NIST SP 1800-22: BYOD Security</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

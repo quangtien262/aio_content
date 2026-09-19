@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i WireGuard VPN tr&ecirc;n Ubuntu Server an to&agrave;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i WireGuard Ubuntu, WireGuard VPN server, c&#7845;u h&igrave;nh wg0, UFW WireGuard, VPN truy c&#7853;p t&#7915; xa, split tunnel</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">WireGuard, Ubuntu Server, VPN, UFW, Remote Access, Network Security, Linux, Sysadmin</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n c&agrave;i WireGuard tr&ecirc;n Ubuntu Server, t&#7841;o kh&oacute;a, c&#7845;u h&igrave;nh peer, UFW, NAT, split/full tunnel, &#273;i&#7879;n tho&#7841;i v&agrave; x&#7917; l&yacute; l&#7895;i th&#432;&#7901;ng g&#7863;p.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/wireguard-ubuntu-server-guide.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i WireGuard VPN tr&ecirc;n Ubuntu Server an to&agrave;n t&#7915; A-Z" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i WireGuard VPN tr&ecirc;n Ubuntu Server an to&agrave;n t&#7915; A-Z</h1><p><strong>WireGuard l&agrave; m&#7897;t VPN hi&#7879;n &#273;&#7841;i, g&#7885;n v&agrave; &#273;a n&#7873;n t&#7843;ng, ph&ugrave; h&#7907;p &#273;&#7875; nh&acirc;n vi&ecirc;n truy c&#7853;p an to&agrave;n v&agrave;o server ho&#7863;c m&#7841;ng n&#7897;i b&#7897; t&#7915; xa.</strong> B&agrave;i n&agrave;y x&acirc;y d&#7921;ng m&ocirc; h&igrave;nh peer-to-site tr&ecirc;n Ubuntu Server: m&#7895;i thi&#7871;t b&#7883; c&oacute; m&#7897;t c&#7863;p kh&oacute;a ri&ecirc;ng, server &#273;&#7883;nh tuy&#7871;n l&#432;u l&#432;&#7907;ng VPN v&agrave; quy&#7873;n &#273;&#432;&#7907;c gi&#7899;i h&#7841;n b&#7857;ng firewall.</p>
+<blockquote>VPN kh&ocirc;ng thay th&#7871; ph&acirc;n quy&#7873;n &#7913;ng d&#7909;ng. Ng&#432;&#7901;i d&ugrave;ng k&#7871;t n&#7889;i &#273;&#432;&#7907;c v&agrave;o m&#7841;ng v&#7851;n ch&#7881; n&ecirc;n truy c&#7853;p &#273;&uacute;ng d&#7883;ch v&#7909; c&#7847;n thi&#7871;t.</blockquote>
+
+<h2>M&ocirc; h&igrave;nh v&agrave; th&ocirc;ng s&#7889; v&iacute; d&#7909;</h2>
+<ul><li>Ubuntu Server c&oacute; IP public ho&#7863;c &#273;&#432;&#7907;c router NAT c&#7893;ng UDP t&#7899;i.</li><li>Interface Internet c&#7911;a server: <code>eth0</code> (h&atilde;y thay b&#7857;ng t&ecirc;n th&#7921;c t&#7871;).</li><li>M&#7841;ng WireGuard: <code>10.66.66.0/24</code>.</li><li>Server VPN: <code>10.66.66.1</code>; client &#273;&#7847;u ti&ecirc;n: <code>10.66.66.2</code>.</li><li>C&#7893;ng UDP: <code>51820</code>.</li></ul>
+<p>Ki&#7875;m tra interface b&#7857;ng <code>ip route get 1.1.1.1</code>. N&#7871;u server n&#7857;m sau router, chuy&#7875;n ti&#7871;p UDP 51820 t&#7899;i IP LAN c&#7911;a server v&agrave; n&ecirc;n c&#7889; &#273;&#7883;nh IP &#273;&oacute; b&#7857;ng DHCP reservation. V&#7899;i CGNAT, port forwarding th&ocirc;ng th&#432;&#7901;ng s&#7869; kh&ocirc;ng ho&#7841;t &#273;&#7897;ng; c&#7847;n public IP, IPv6 ph&ugrave; h&#7907;p, VPS trung gian ho&#7863;c tunnel kh&aacute;c.</p>
+
+<h2>1. C&#7853;p nh&#7853;t h&#7879; th&#7889;ng v&agrave; c&agrave;i WireGuard</h2>
+<pre><code>sudo apt update
+sudo apt upgrade
+sudo apt install wireguard qrencode
+sudo mkdir -p /etc/wireguard
+sudo chmod 700 /etc/wireguard</code></pre>
+<p><code>qrencode</code> ch&#7881; c&#7847;n n&#7871;u mu&#7889;n th&ecirc;m c&#7845;u h&igrave;nh v&agrave;o &#273;i&#7879;n tho&#7841;i b&#7857;ng QR. Tr&#432;&#7899;c khi s&#7917;a firewall t&#7915; xa, gi&#7919; m&#7897;t phi&ecirc;n SSH th&#7913; hai &#273;ang m&#7903; ho&#7863;c c&oacute; console c&#7911;a nh&agrave; cung c&#7845;p &#273;&#7875; tr&aacute;nh t&#7921; kh&oacute;a quy&#7873;n qu&#7843;n tr&#7883;.</p>
+
+<h2>2. T&#7841;o kh&oacute;a ri&ecirc;ng cho server</h2>
+<pre><code>sudo sh -c 'umask 077; wg genkey &gt; /etc/wireguard/server.key'
+sudo sh -c 'wg pubkey &lt; /etc/wireguard/server.key &gt; /etc/wireguard/server.pub'
+sudo cat /etc/wireguard/server.pub</code></pre>
+<p>Private key ph&#7843;i ch&#7881; root &#273;&#7885;c &#273;&#432;&#7907;c v&agrave; kh&ocirc;ng &#273;&#432;&#7907;c g&#7917;i qua chat, email ho&#7863;c commit v&agrave;o Git. Public key c&oacute; th&#7875; chia s&#7867; cho peer. M&#7895;i client c&#7847;n m&#7897;t c&#7863;p kh&oacute;a ri&ecirc;ng &#273;&#7875; c&oacute; th&#7875; thu h&#7891;i t&#7915;ng thi&#7871;t b&#7883; m&agrave; kh&ocirc;ng &#7843;nh h&#432;&#7903;ng to&agrave;n h&#7879; th&#7889;ng.</p>
+
+<h2>3. B&#7853;t IP forwarding</h2>
+<p>N&#7871;u client ch&#7881; truy c&#7853;p d&#7883;ch v&#7909; ch&#7841;y ngay tr&ecirc;n server, forwarding c&oacute; th&#7875; kh&ocirc;ng c&#7847;n. N&#7871;u server &#273;&oacute;ng vai tr&ograve; gateway t&#7899;i Internet ho&#7863;c m&#7841;ng LAN, t&#7841;o c&#7845;u h&igrave;nh:</p>
+<pre><code>sudo tee /etc/sysctl.d/70-wireguard-routing.conf &gt; /dev/null &lt;&lt;'EOF'
+net.ipv4.ip_forward = 1
+EOF
+sudo sysctl -p /etc/sysctl.d/70-wireguard-routing.conf</code></pre>
+<p>X&aacute;c nh&#7853;n b&#7857;ng <code>sysctl net.ipv4.ip_forward</code>; k&#7871;t qu&#7843; ph&#7843;i l&agrave; <code>1</code>. Ch&#7881; b&#7853;t IPv6 forwarding khi &#273;&atilde; thi&#7871;t k&#7871; &#273;&#7883;a ch&#7881; v&agrave; firewall IPv6 &#273;&#7847;y &#273;&#7911;, kh&ocirc;ng sao ch&eacute;p m&aacute;y m&oacute;c c&#7845;u h&igrave;nh IPv4.</p>
+
+<h2>4. T&#7841;o c&#7845;u h&igrave;nh server</h2>
+<p>M&#7903; <code>/etc/wireguard/wg0.conf</code> v&agrave; &#273;i&#7873;n:</p>
+<pre><code>[Interface]
+Address = 10.66.66.1/24
+ListenPort = 51820
+PrivateKey = SERVER_PRIVATE_KEY
+
+# Client laptop
+[Peer]
+PublicKey = CLIENT_PUBLIC_KEY
+AllowedIPs = 10.66.66.2/32</code></pre>
+<p>Thay placeholder b&#7857;ng n&#7897;i dung kh&oacute;a th&#7921;c t&#7871;, sau &#273;&oacute; ch&#7841;y <code>sudo chmod 600 /etc/wireguard/wg0.conf</code>. Trong WireGuard, <code>AllowedIPs</code> v&#7915;a ch&#7885;n peer cho l&#432;u l&#432;&#7907;ng &#273;i ra, v&#7915;a gi&#7899;i h&#7841;n &#273;&#7883;a ch&#7881; ngu&#7891;n peer &#273;&#432;&#7907;c ph&eacute;p d&ugrave;ng khi nh&#7853;n. Kh&ocirc;ng g&aacute;n c&ugrave;ng m&#7897;t IP <code>/32</code> cho hai client.</p>
+<p>C&oacute; th&#7875; tr&aacute;nh &#273;&#7863;t private key tr&#7921;c ti&#7871;p trong file ch&iacute;nh b&#7857;ng c&aacute;ch d&ugrave;ng <code>PostUp = wg set %i private-key /etc/wireguard/server.key</code>, nh&#432; t&agrave;i li&#7879;u Ubuntu minh h&#7885;a. D&ugrave; ch&#7885;n c&aacute;ch n&agrave;o, h&atilde;y b&#7843;o v&#7879; file kh&oacute;a v&agrave; c&#7845;u h&igrave;nh b&#7857;ng quy&#7873;n h&#7879; th&#7889;ng t&#7879;p.</p>
+
+<h2>5. C&#7845;u h&igrave;nh UFW v&agrave; NAT</h2>
+<p>Cho ph&eacute;p SSH tr&#432;&#7899;c, r&#7891;i m&#7903; c&#7893;ng WireGuard:</p>
+<pre><code>sudo ufw allow OpenSSH
+sudo ufw allow 51820/udp
+sudo ufw route allow in on wg0 out on eth0 from 10.66.66.0/24
+sudo ufw route allow in on eth0 out on wg0 to 10.66.66.0/24</code></pre>
+<p>&#272;&#7875; client d&ugrave;ng server l&agrave;m c&#7893;ng ra Internet, th&ecirc;m kh&#7889;i NAT &#7903; &#273;&#7847;u <code>/etc/ufw/before.rules</code>, tr&#432;&#7899;c c&aacute;c b&#7843;ng <code>*filter</code> hi&#7879;n c&oacute;:</p>
+<pre><code>*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s 10.66.66.0/24 -o eth0 -j MASQUERADE
+COMMIT</code></pre>
+<p>Trong <code>/etc/default/ufw</code>, &#273;&#7863;t <code>DEFAULT_FORWARD_POLICY="ACCEPT"</code>, sau &#273;&oacute;:</p>
+<pre><code>sudo ufw enable
+sudo ufw reload
+sudo ufw status verbose</code></pre>
+<p>Thay <code>eth0</code> b&#7857;ng interface Internet th&#7853;t. N&#7871;u ch&#7881; c&#7847;n truy c&#7853;p m&#7841;ng n&#7897;i b&#7897; v&agrave; router LAN c&oacute; route quay v&#7873; <code>10.66.66.0/24</code>, &#273;&#7883;nh tuy&#7871;n thu&#7847;n kh&ocirc;ng NAT gi&uacute;p log gi&#7919; &#273;&#432;&#7907;c IP client; c&#7845;u h&igrave;nh route v&agrave; firewall theo ki&#7871;n tr&uacute;c th&#7921;c t&#7871;.</p>
+
+<h2>6. T&#7841;o client &#273;&#7847;u ti&ecirc;n</h2>
+<p>T&#7841;o kh&oacute;a tr&ecirc;n ch&iacute;nh client l&agrave; l&#7921;a ch&#7885;n t&#7889;t nh&#7845;t v&igrave; private key kh&ocirc;ng r&#7901;i thi&#7871;t b&#7883;. Tr&ecirc;n Linux:</p>
+<pre><code>umask 077
+wg genkey &gt; client.key
+wg pubkey &lt; client.key &gt; client.pub</code></pre>
+<p>Th&ecirc;m public key c&#7911;a client v&agrave;o block <code>[Peer]</code> tr&ecirc;n server. File c&#7845;u h&igrave;nh client:</p>
+<pre><code>[Interface]
+PrivateKey = CLIENT_PRIVATE_KEY
+Address = 10.66.66.2/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY
+Endpoint = vpn.example.com:51820
+AllowedIPs = 10.66.66.0/24
+PersistentKeepalive = 25</code></pre>
+<p><code>PersistentKeepalive = 25</code> h&#7919;u &iacute;ch khi client n&#7857;m sau NAT v&agrave; c&#7847;n gi&#7919; &aacute;nh x&#7841;, nh&#432;ng kh&ocirc;ng b&#7855;t bu&#7897;c cho m&#7885;i peer. D&ugrave;ng hostname &#273;&#7897;ng n&#7871;u IP public c&#7911;a server thay &#273;&#7893;i.</p>
+
+<h2>7. Ch&#7885;n split tunnel ho&#7863;c full tunnel</h2>
+<p>C&#7845;u h&igrave;nh tr&ecirc;n l&agrave; <strong>split tunnel</strong>: ch&#7881; m&#7841;ng <code>10.66.66.0/24</code> &#273;i qua VPN. N&#7871;u c&#7847;n truy c&#7853;p LAN, th&ecirc;m subnet LAN, v&iacute; d&#7909; <code>192.168.10.0/24</code>, v&agrave;o <code>AllowedIPs</code> c&#7911;a client v&agrave; m&#7903; &#273;&uacute;ng rule forwarding.</p>
+<p>V&#7899;i <strong>full tunnel</strong>, &#273;&#7863;t <code>AllowedIPs = 0.0.0.0/0</code> (v&agrave; <code>::/0</code> ch&#7881; khi &#273;&atilde; c&#7845;u h&igrave;nh IPv6). To&agrave;n b&#7897; Internet c&#7911;a client s&#7869; &#273;i qua server, v&igrave; v&#7853;y ph&#7843;i c&oacute; forwarding, NAT, DNS v&agrave; &#273;&#7911; b&#259;ng th&ocirc;ng. Full tunnel b&#7843;o v&#7879; l&#432;u l&#432;&#7907;ng tr&ecirc;n Wi-Fi c&ocirc;ng c&#7897;ng nh&#432;ng t&#259;ng t&#7843;i, &#273;&#7897; tr&#7877; v&agrave; tr&aacute;ch nhi&#7879;m v&#7853;n h&agrave;nh.</p>
+
+<h2>8. Kh&#7903;i &#273;&#7897;ng v&agrave; ki&#7875;m tra</h2>
+<pre><code>sudo wg-quick up wg0
+sudo wg show
+ip address show wg0
+sudo systemctl enable wg-quick@wg0</code></pre>
+<p>K&#7871;t n&#7889;i client r&#7891;i ki&#7875;m tra <code>ping 10.66.66.1</code>, truy c&#7853;p d&#7883;ch v&#7909; n&#7897;i b&#7897; v&agrave; quan s&aacute;t <code>latest handshake</code>, <code>transfer</code> trong <code>sudo wg show</code>. N&#7871;u d&ugrave;ng full tunnel, ki&#7875;m tra IP public v&agrave; DNS c&#7911;a client &#273;&#7875; ch&#7855;c ch&#7855;n l&#432;u l&#432;&#7907;ng &#273;i &#273;&uacute;ng &#273;&#432;&#7901;ng.</p>
+<p>&#272;&#7875; n&#7841;p th&ecirc;m peer m&agrave; &iacute;t gi&aacute;n &#273;o&#7841;n, c&oacute; th&#7875; d&ugrave;ng <code>sudo systemctl reload wg-quick@wg0</code>. M&#7897;t s&#7889; thay &#273;&#7893;i v&#7873; &#273;&#7883;a ch&#7881;, route ho&#7863;c hook v&#7851;n c&#7847;n restart &#273;&#7847;y &#273;&#7911;.</p>
+
+<h2>9. Th&ecirc;m &#273;i&#7879;n tho&#7841;i b&#7857;ng QR an to&agrave;n</h2>
+<pre><code>qrencode -t ansiutf8 &lt; phone.conf</code></pre>
+<p>Trong &#7913;ng d&#7909;ng WireGuard tr&ecirc;n &#273;i&#7879;n tho&#7841;i, ch&#7885;n t&#7841;o tunnel t&#7915; QR r&#7891;i qu&eacute;t tr&#7921;c ti&#7871;p trong phi&ecirc;n qu&#7843;n tr&#7883; ri&ecirc;ng t&#432;. QR ch&#7913;a private key n&ecirc;n ph&#7843;i &#273;&#432;&#7907;c xem nh&#432; m&#7853;t kh&#7849;u: kh&ocirc;ng ch&#7909;p m&agrave;n h&igrave;nh, kh&ocirc;ng l&#432;u v&agrave;o ticket v&agrave; x&oacute;a file t&#7841;m an to&agrave;n sau khi c&#7845;p thi&#7871;t b&#7883;.</p>
+
+<h2>10. Thu h&#7891;i m&#7897;t thi&#7871;t b&#7883;</h2>
+<p>X&oacute;a block <code>[Peer]</code> t&#432;&#417;ng &#7913;ng kh&#7887;i server v&agrave; reload d&#7883;ch v&#7909;. Kh&ocirc;ng t&aacute;i s&#7917; d&#7909;ng kh&oacute;a cho thi&#7871;t b&#7883; thay th&#7871;. N&#7871;u server private key b&#7883; l&#7897;, t&#7841;o c&#7863;p kh&oacute;a server m&#7899;i v&agrave; c&#7853;p nh&#7853;t public key tr&ecirc;n t&#7845;t c&#7843; client; ch&#7881; &#273;&#7893;i m&#7897;t peer khi private key c&#7911;a peer &#273;&oacute; b&#7883; l&#7897;.</p>
+
+<h2>X&#7917; l&yacute; l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li><strong>Kh&ocirc;ng c&oacute; handshake:</strong> ki&#7875;m tra UDP 51820, port forwarding, public IP/CGNAT, Endpoint v&agrave; c&#7863;p public key.</li><li><strong>C&oacute; handshake nh&#432;ng kh&ocirc;ng ping:</strong> ki&#7875;m tra <code>AllowedIPs</code>, IP tr&ugrave;ng, UFW v&agrave; route b&#7857;ng <code>ip route</code>.</li><li><strong>Truy c&#7853;p server &#273;&#432;&#7907;c nh&#432;ng kh&ocirc;ng v&agrave;o LAN/Internet:</strong> ki&#7875;m tra IP forwarding, rule FORWARD, NAT ho&#7863;c route quay v&#7873;.</li><li><strong>Truy c&#7853;p IP &#273;&#432;&#7907;c nh&#432;ng t&ecirc;n mi&#7873;n l&#7895;i:</strong> ki&#7875;m tra DNS trong client v&agrave; resolver c&oacute; th&#7875; &#273;i qua tunnel.</li><li><strong>M&#7897;t s&#7889; website treo:</strong> th&#7917; gi&#7843;m MTU, ch&#7859;ng h&#7841;n <code>MTU = 1380</code>, sau khi x&aacute;c nh&#7853;n c&oacute; v&#7845;n &#273;&#7873; path MTU.</li><li><strong>K&#7871;t n&#7889;i di &#273;&#7897;ng kh&ocirc;ng &#7893;n &#273;&#7883;nh:</strong> d&ugrave;ng <code>PersistentKeepalive = 25</code> &#7903; peer n&#7857;m sau NAT.</li></ul>
+<pre><code>sudo wg show
+sudo journalctl -u wg-quick@wg0
+ip route
+sudo ufw status verbose
+sudo ss -lunp | grep 51820</code></pre>
+
+<h2>Checklist b&#7843;o m&#7853;t v&agrave; v&#7853;n h&agrave;nh</h2>
+<ol><li>M&#7895;i thi&#7871;t b&#7883; c&oacute; kh&oacute;a v&agrave; &#273;&#7883;a ch&#7881; VPN ri&ecirc;ng.</li><li>Private key v&agrave; file c&#7845;u h&igrave;nh c&oacute; quy&#7873;n h&#7841;n ch&#7871;.</li><li>Firewall ch&#7881; cho ph&eacute;p subnet VPN t&#7899;i &#273;&uacute;ng d&#7883;ch v&#7909; c&#7847;n d&ugrave;ng.</li><li>Kh&ocirc;ng m&#7903; SSH public n&#7871;u c&oacute; th&#7875; qu&#7843;n tr&#7883; qua VPN.</li><li>Ghi l&#7841;i ch&#7911; s&#7903; h&#7919;u peer, ng&agrave;y c&#7845;p v&agrave; ng&agrave;y thu h&#7891;i.</li><li>Sao l&#432;u c&#7845;u h&igrave;nh server d&#432;&#7899;i d&#7841;ng m&atilde; h&oacute;a, t&aacute;ch kh&#7887;i m&aacute;y ch&#7911;.</li><li>C&#7853;p nh&#7853;t Ubuntu &#273;&#7883;nh k&#7923; v&agrave; theo d&otilde;i handshake b&#7845;t th&#432;&#7901;ng.</li><li>Ki&#7875;m th&#7917; thu h&#7891;i peer v&agrave; kh&ocirc;i ph&#7909;c c&#7845;u h&igrave;nh.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>M&#7897;t WireGuard VPN t&#7889;t kh&ocirc;ng ch&#7881; l&agrave; tunnel c&oacute; handshake. C&#7845;u h&igrave;nh c&#7847;n kh&oacute;a ri&ecirc;ng cho t&#7915;ng thi&#7871;t b&#7883;, <code>AllowedIPs</code> ch&iacute;nh x&aacute;c, firewall gi&#7899;i h&#7841;n quy&#7873;n, routing/NAT c&oacute; ch&#7911; &#273;&iacute;ch v&agrave; quy tr&igrave;nh thu h&#7891;i r&otilde; r&agrave;ng. H&atilde;y b&#7855;t &#273;&#7847;u b&#7857;ng split tunnel nh&#7887;, x&aacute;c minh t&#7915;ng lu&#7891;ng r&#7891;i m&#7899;i m&#7903; r&#7897;ng sang LAN ho&#7863;c full tunnel.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/" target="_blank" rel="noopener noreferrer">Ubuntu Server: WireGuard VPN</a></li><li><a href="https://ubuntu.com/server/docs/explanation/intro-to/wireguard-vpn/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Introduction to WireGuard</a></li><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/common-tasks/" target="_blank" rel="noopener noreferrer">Ubuntu Server: WireGuard common tasks</a></li><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/troubleshooting/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Troubleshooting WireGuard</a></li><li><a href="https://ubuntu.com/server/docs/how-to/security/firewalls/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Firewalls and IP masquerading</a></li><li><a href="https://www.wireguard.com/quickstart/" target="_blank" rel="noopener noreferrer">WireGuard: Quick Start</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

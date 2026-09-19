@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Thi&#7871;t k&#7871; webhook &#273;&aacute;ng tin c&#7853;y v&agrave; an to&agrave;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">webhook, idempotency, webhook signature, retry, queue, event processing</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Webhook, Idempotency, API, Queue, Security, Backend, Distributed Systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; webhook an to&agrave;n v&#7899;i x&aacute;c minh ch&#7919; k&yacute;, ch&#7889;ng x&#7917; l&yacute; tr&ugrave;ng, ph&#7843;n h&#7891;i nhanh, queue, retry v&agrave; observability.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/thiet-ke-webhook-dang-tin-cay.jpg" alt="Thi&#7871;t k&#7871; webhook &#273;&aacute;ng tin c&#7853;y: Ch&#7919; k&yacute;, idempotency, retry v&agrave; h&agrave;ng &#273;&#7907;i" width="1440" height="810"></p><h1>Thi&#7871;t k&#7871; webhook &#273;&aacute;ng tin c&#7853;y: Ch&#7919; k&yacute;, idempotency, retry v&agrave; h&agrave;ng &#273;&#7907;i</h1><p><strong>Webhook l&agrave; m&#7897;t k&ecirc;nh giao s&#7921; ki&#7879;n qua m&#7841;ng, v&igrave; v&#7853;y &#7913;ng d&#7909;ng ph&#7843;i gi&#7843; &#273;&#7883;nh s&#7921; ki&#7879;n c&oacute; th&#7875; &#273;&#7871;n tr&#7877;, &#273;&#7871;n nhi&#7873;u l&#7847;n, sai th&#7913; t&#7921; ho&#7863;c kh&ocirc;ng &#273;&#7871;n trong l&#7847;n th&#7917; &#273;&#7847;u ti&ecirc;n.</strong> M&#7897;t endpoint tr&#7843; v&#7873; 200 kh&ocirc;ng &#273;&#7891;ng ngh&#297;a nghi&#7879;p v&#7909; &#273;&atilde; ho&agrave;n t&#7845;t; ki&#7871;n tr&uacute;c &#273;&aacute;ng tin c&#7853;y c&#7847;n t&aacute;ch ti&#7871;p nh&#7853;n kh&#7887;i x&#7917; l&yacute;.</p>
+
+<h2>Lu&#7891;ng ti&#7871;p nh&#7853;n t&#7889;i thi&#7875;u</h2>
+<ol><li>&#272;&#7885;c raw request body v&agrave; c&aacute;c header c&#7847;n thi&#7871;t.</li><li>X&aacute;c minh ch&#7919; k&yacute; c&ugrave;ng gi&#7899;i h&#7841;n th&#7901;i gian &#273;&#7875; ch&#7889;ng replay.</li><li>Ki&#7875;m tra event ID trong kho idempotency.</li><li>L&#432;u event v&agrave; tr&#7841;ng th&aacute;i ti&#7871;p nh&#7853;n trong m&#7897;t transaction.</li><li>&#272;&#432;a c&ocirc;ng vi&#7879;c v&agrave;o queue.</li><li>Tr&#7843; ph&#7843;n h&#7891;i 2xx nhanh.</li></ol>
+<p>Stripe l&#432;u &yacute; r&#7857;ng thay &#273;&#7893;i raw body tr&#432;&#7899;c khi x&aacute;c minh s&#7869; l&agrave;m ki&#7875;m tra ch&#7919; k&yacute; th&#7845;t b&#7841;i. C&aacute;ch k&yacute;, header v&agrave; tolerance kh&aacute;c nhau theo nh&agrave; cung c&#7845;p, n&ecirc;n lu&ocirc;n d&ugrave;ng SDK ho&#7863;c t&agrave;i li&#7879;u ch&iacute;nh th&#7913;c c&#7911;a ngu&#7891;n ph&aacute;t.</p>
+
+<h2>Idempotency ch&#7889;ng t&aacute;c &#273;&#7897;ng l&#7863;p</h2>
+<p>Nh&agrave; cung c&#7845;p c&oacute; th&#7875; g&#7917;i l&#7841;i c&ugrave;ng event khi timeout ho&#7863;c nh&#7853;n l&#7895;i. T&#7841;o unique constraint theo <code>provider + event_id</code> v&agrave; coi vi ph&#7841;m unique l&agrave; s&#7921; ki&#7879;n &#273;&atilde; nh&#7853;n. Ch&#7881; ki&#7875;m tra r&#7891;i ch&egrave;n b&#7857;ng hai thao t&aacute;c r&#7901;i r&#7841;c c&oacute; th&#7875; t&#7841;o race condition.</p>
+<pre><code>BEGIN;
+INSERT INTO webhook_events(provider, event_id, payload, status)
+VALUES (?, ?, ?, 'received')
+ON CONFLICT(provider, event_id) DO NOTHING;
+COMMIT;</code></pre>
+<p>Idempotency c&#7847;n k&eacute;o d&agrave;i &#273;&#7871;n t&aacute;c &#273;&#7897;ng nghi&#7879;p v&#7909;. V&iacute; d&#7909;, c&#7853;p nh&#7853;t &#273;&#417;n h&agrave;ng v&agrave; ghi d&#7845;u event n&ecirc;n n&#7857;m trong c&ugrave;ng transaction; g&#7917;i email ho&#7863;c g&#7885;i d&#7883;ch v&#7909; kh&aacute;c c&#7847;n kh&oacute;a nghi&#7879;p v&#7909; ho&#7863;c outbox &#273;&#7875; tr&aacute;nh ch&#7841;y hai l&#7847;n.</p>
+
+<h2>Ph&#7843;n h&#7891;i nhanh, x&#7917; l&yacute; &#7903; n&#7873;n</h2>
+<p>Endpoint kh&ocirc;ng n&ecirc;n t&#7841;o h&oacute;a &#273;&#417;n, g&#7917;i email v&agrave; &#273;&#7891;ng b&#7897; CRM tr&#432;&#7899;c khi tr&#7843; l&#7901;i. Ghi b&#7873;n event, enqueue r&#7891;i tr&#7843; 2xx gi&uacute;p tr&aacute;nh timeout v&agrave; retry kh&ocirc;ng c&#7847;n thi&#7871;t. Worker c&oacute; th&#7875; retry &#273;&#7897;c l&#7853;p v&#7899;i backoff v&agrave; &#273;&#432;a l&#7895;i l&acirc;u d&agrave;i v&agrave;o dead-letter queue.</p>
+<blockquote>Ch&#7881; tr&#7843; 2xx sau khi event &#273;&atilde; &#273;&#432;&#7907;c l&#432;u b&#7873;n ho&#7863;c &#273;&#432;&#7907;c giao ch&#7855;c ch&#7855;n cho queue. Tr&#7843; th&agrave;nh c&ocirc;ng tr&#432;&#7899;c b&#432;&#7899;c n&agrave;y c&oacute; th&#7875; l&agrave;m m&#7845;t s&#7921; ki&#7879;n n&#7871;u ti&#7871;n tr&igrave;nh d&#7915;ng.</blockquote>
+
+<h2>Kh&ocirc;ng gi&#7843; &#273;&#7883;nh th&#7913; t&#7921; s&#7921; ki&#7879;n</h2>
+<p>C&aacute;c event c&oacute; th&#7875; &#273;&#432;&#7907;c x&#7917; l&yacute; song song ho&#7863;c &#273;&#7871;n sai th&#7913; t&#7921;. D&ugrave;ng version, timestamp, state machine v&agrave; &#273;i&#7873;u ki&#7879;n c&#7853;p nh&#7853;t &#273;&#7875; t&#7915; ch&#7889;i tr&#7841;ng th&aacute;i c&#361;. Khi nh&agrave; cung c&#7845;p h&#7895; tr&#7907;, c&oacute; th&#7875; &#273;&#7885;c l&#7841;i resource hi&#7879;n t&#7841;i t&#7915; API thay v&igrave; tin ho&agrave;n to&agrave;n v&agrave;o snapshot c&#361;.</p>
+
+<h2>Retry c&oacute; gi&#7899;i h&#7841;n</h2>
+<p>Ch&#7881; retry l&#7895;i t&#7841;m th&#7901;i nh&#432; timeout, 429 ho&#7863;c 5xx. L&#7895;i d&#7919; li&#7879;u kh&ocirc;ng h&#7907;p l&#7879; c&#7847;n &#273;&#432;&#7907;c ghi nh&#7853;n v&agrave; chuy&#7875;n sang h&agrave;ng ch&#7901; x&#7917; l&yacute; th&#7911; c&ocirc;ng. D&ugrave;ng exponential backoff c&oacute; jitter, gi&#7899;i h&#7841;n s&#7889; l&#7847;n th&#7917; v&agrave; &#273;&#7863;t timeout cho m&#7885;i request &#273;i ra.</p>
+
+<h2>B&#7843;o m&#7853;t endpoint</h2>
+<ul><li>Ch&#7881; nh&#7853;n HTTPS v&agrave; x&aacute;c minh ch&#7919; k&yacute; tr&#432;&#7899;c khi parse nghi&#7879;p v&#7909;.</li><li>L&#432;u secret trong secret manager v&agrave; h&#7895; tr&#7907; xoay kh&oacute;a c&oacute; giai &#273;o&#7841;n ch&#7891;ng l&#7845;n.</li><li>Gi&#7899;i h&#7841;n k&iacute;ch th&#432;&#7899;c body v&agrave; lo&#7841;i event &#273;&#259;ng k&yacute;.</li><li>Kh&ocirc;ng ghi secret ho&#7863;c d&#7919; li&#7879;u nh&#7841;y c&#7843;m &#273;&#7847;y &#273;&#7911; v&agrave;o log.</li><li>IP allowlist ch&#7881; l&agrave; l&#7899;p b&#7893; sung v&igrave; d&#7843;i IP c&oacute; th&#7875; thay &#273;&#7893;i.</li></ul>
+
+<h2>Observability v&agrave; v&#7853;n h&agrave;nh</h2>
+<p>M&#7895;i event c&#7847;n correlation ID, th&#7901;i &#273;i&#7875;m nh&#7853;n, s&#7889; l&#7847;n th&#7917;, tr&#7841;ng th&aacute;i, l&#7895;i cu&#7889;i v&agrave; th&#7901;i gian x&#7917; l&yacute;. Dashboard n&ecirc;n hi&#7875;n th&#7883; t&#7927; l&#7879; x&aacute;c minh th&#7845;t b&#7841;i, &#273;&#7897; tr&#7877; queue, retry, dead-letter v&agrave; tu&#7893;i c&#7911;a event ch&#432;a ho&agrave;n t&#7845;t. X&acirc;y c&ocirc;ng c&#7909; replay c&oacute; ph&acirc;n quy&#7873;n, audit log v&agrave; v&#7851;n &#273;i qua idempotency.</p>
+
+<h2>K&#7883;ch b&#7843;n ki&#7875;m th&#7917; b&#7855;t bu&#7897;c</h2>
+<ul><li>Ch&#7919; k&yacute; sai, timestamp qu&aacute; c&#361; v&agrave; body b&#7883; thay &#273;&#7893;i.</li><li>C&ugrave;ng event &#273;&#432;&#7907;c g&#7917;i &#273;&#7891;ng th&#7901;i nhi&#7873;u l&#7847;n.</li><li>Worker d&#7915;ng sau khi c&#7853;p nh&#7853;t database nh&#432;ng tr&#432;&#7899;c khi ack.</li><li>Event &#273;&#7871;n sai th&#7913; t&#7921;.</li><li>D&#7883;ch v&#7909; ph&#7909; thu&#7897;c tr&#7843; 429, 500 ho&#7863;c timeout.</li><li>Replay t&#7915; dead-letter queue.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Webhook &#273;&aacute;ng tin c&#7853;y &#273;&#432;&#7907;c x&acirc;y tr&ecirc;n gi&#7843; &#273;&#7883;nh giao &iacute;t nh&#7845;t m&#7897;t l&#7847;n: x&aacute;c minh ngu&#7891;n g&#7917;i, l&#432;u b&#7873;n, ch&#7889;ng tr&ugrave;ng, x&#7917; l&yacute; b&#7845;t &#273;&#7891;ng b&#7897; v&agrave; quan s&aacute;t &#273;&#432;&#7907;c. Khi c&aacute;c l&#7899;p n&agrave;y r&otilde; r&agrave;ng, retry tr&#7903; th&agrave;nh c&#417; ch&#7871; ph&#7909;c h&#7891;i thay v&igrave; nguy&ecirc;n nh&acirc;n t&#7841;o d&#7919; li&#7879;u tr&ugrave;ng.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener noreferrer">Stripe Docs: Receive events in a webhook endpoint</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

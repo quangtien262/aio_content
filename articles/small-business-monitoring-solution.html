@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Gi&#7843;i ph&aacute;p gi&aacute;m s&aacute;t website v&agrave; server cho SME</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">gi&aacute;m s&aacute;t website, gi&aacute;m s&aacute;t server, monitoring doanh nghi&#7879;p nh&#7887;, uptime monitoring, Prometheus Grafana, c&#7843;nh b&aacute;o h&#7879; th&#7889;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Monitoring, Website Monitoring, Server Monitoring, Prometheus, Grafana, Uptime, SME, IT Operations</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; gi&#7843;i ph&aacute;p gi&aacute;m s&aacute;t website v&agrave; server cho doanh nghi&#7879;p nh&#7887;: uptime, metrics, dashboard, c&#7843;nh b&aacute;o, runbook v&agrave; l&#7897; tr&igrave;nh tri&#7875;n khai.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/small-business-monitoring-solution.jpg" alt="Gi&#7843;i ph&aacute;p gi&aacute;m s&aacute;t website v&agrave; server cho doanh nghi&#7879;p nh&#7887;: T&#7915; uptime &#273;&#7871;n c&#7843;nh b&aacute;o c&oacute; h&agrave;nh &#273;&#7897;ng" width="1440" height="810"></p><h1>Gi&#7843;i ph&aacute;p gi&aacute;m s&aacute;t website v&agrave; server cho doanh nghi&#7879;p nh&#7887;: T&#7915; uptime &#273;&#7871;n c&#7843;nh b&aacute;o c&oacute; h&agrave;nh &#273;&#7897;ng</h1><p><strong>M&#7897;t h&#7879; th&#7889;ng gi&aacute;m s&aacute;t t&#7889;t kh&ocirc;ng ph&#7843;i h&#7879; th&#7889;ng c&oacute; nhi&#7873;u bi&#7875;u &#273;&#7891; nh&#7845;t, m&agrave; l&agrave; h&#7879; th&#7889;ng ph&aacute;t hi&#7879;n &#273;&uacute;ng s&#7921; c&#7889;, b&aacute;o &#273;&uacute;ng ng&#432;&#7901;i v&agrave; &#273;&#432;a &#273;&#7911; th&ocirc;ng tin &#273;&#7875; h&agrave;nh &#273;&#7897;ng.</strong> V&#7899;i doanh nghi&#7879;p nh&#7887;, m&#7909;c ti&ecirc;u n&ecirc;n l&agrave; nh&igrave;n th&#7845;y tr&#7843;i nghi&#7879;m c&#7911;a kh&aacute;ch h&agrave;ng, s&#7913;c kh&#7887;e h&#7841; t&#7847;ng v&agrave; r&#7911;i ro s&#7855;p x&#7843;y ra m&agrave; kh&ocirc;ng t&#7841;o th&ecirc;m m&#7897;t n&#7873;n t&#7843;ng qu&aacute; ph&#7913;c t&#7841;p &#273;&#7875; v&#7853;n h&agrave;nh.</p>
+
+<h2>B&#7855;t &#273;&#7847;u t&#7915; c&acirc;u h&#7887;i kinh doanh</h2>
+<p>Tr&#432;&#7899;c khi ch&#7885;n c&ocirc;ng c&#7909;, h&atilde;y x&aacute;c &#273;&#7883;nh d&#7883;ch v&#7909; n&agrave;o &#7843;nh h&#432;&#7903;ng tr&#7921;c ti&#7871;p &#273;&#7871;n doanh thu ho&#7863;c ho&#7841;t &#273;&#7897;ng: website b&aacute;n h&agrave;ng, API, email, VPN, ph&#7847;n m&#7873;m n&#7897;i b&#7897;, database hay &#273;&#432;&#7901;ng truy&#7873;n v&#259;n ph&ograve;ng. M&#7895;i d&#7883;ch v&#7909; c&#7847;n m&#7897;t ch&#7911; s&#7903; h&#7919;u, th&#7901;i gian ho&#7841;t &#273;&#7897;ng mong mu&#7889;n v&agrave; m&#7913;c gi&aacute;n &#273;o&#7841;n ch&#7845;p nh&#7853;n &#273;&#432;&#7907;c.</p>
+<p>V&iacute; d&#7909;, website gi&#7899;i thi&#7879;u c&oacute; th&#7875; ch&#7845;p nh&#7853;n ph&#7843;n h&#7891;i trong gi&#7901; h&agrave;nh ch&iacute;nh, c&ograve;n checkout ho&#7863;c API nh&#7853;n &#273;&#417;n c&#7847;n c&#7843;nh b&aacute;o ngay. N&#7871;u m&#7885;i s&#7921; ki&#7879;n &#273;&#7873;u &#273;&#432;&#7907;c x&#7871;p m&#7913;c kh&#7849;n c&#7845;p, &#273;&#7897;i ng&#361; s&#7869; nhanh ch&oacute;ng b&#7887; qua c&#7843;nh b&aacute;o.</p>
+
+<h2>B&#7889;n l&#7899;p gi&aacute;m s&aacute;t c&#7847;n thi&#7871;t</h2>
+<table><thead><tr><th>L&#7899;p</th><th>C&acirc;u h&#7887;i tr&#7843; l&#7901;i</th><th>T&iacute;n hi&#7879;u ch&iacute;nh</th></tr></thead><tbody><tr><td>Ki&#7875;m tra b&ecirc;n ngo&agrave;i</td><td>Kh&aacute;ch h&agrave;ng c&oacute; truy c&#7853;p &#273;&#432;&#7907;c kh&ocirc;ng?</td><td>HTTP, DNS, TLS, TCP, n&#7897;i dung trang, th&#7901;i gian ph&#7843;n h&#7891;i</td></tr><tr><td>H&#7841; t&#7847;ng</td><td>M&aacute;y ch&#7911; c&oacute; s&#7855;p c&#7841;n t&agrave;i nguy&ecirc;n kh&ocirc;ng?</td><td>CPU, RAM, disk, inode, network, load, service</td></tr><tr><td>&#7912;ng d&#7909;ng</td><td>&#7912;ng d&#7909;ng c&oacute; ph&#7909;c v&#7909; &#273;&uacute;ng v&agrave; &#273;&#7911; nhanh kh&ocirc;ng?</td><td>Request rate, error rate, latency, queue, database connections</td></tr><tr><td>Nghi&#7879;p v&#7909;</td><td>Lu&#7891;ng t&#7841;o gi&aacute; tr&#7883; c&oacute; ho&#7841;t &#273;&#7897;ng kh&ocirc;ng?</td><td>&#272;&#417;n h&agrave;ng, thanh to&aacute;n, &#273;&#259;ng nh&#7853;p, email giao d&#7883;ch, &#273;&#7891;ng b&#7897; d&#7919; li&#7879;u</td></tr></tbody></table>
+<p>Ch&#7881; ping server l&agrave; ch&#432;a &#273;&#7911;: m&aacute;y c&oacute; th&#7875; tr&#7843; l&#7901;i ping trong khi website l&#7895;i 500. Ng&#432;&#7907;c l&#7841;i, CPU cao ch&#432;a ch&#7855;c kh&aacute;ch h&agrave;ng b&#7883; &#7843;nh h&#432;&#7903;ng. C&#7847;n k&#7871;t h&#7907;p t&iacute;n hi&#7879;u h&#432;&#7899;ng ng&#432;&#7901;i d&ugrave;ng v&#7899;i d&#7919; li&#7879;u n&#7897;i b&#7897; &#273;&#7875; v&#7915;a ph&aacute;t hi&#7879;n v&#7915;a ch&#7849;n &#273;o&aacute;n.</p>
+
+<h2>Ki&#7871;n tr&uacute;c t&#7889;i thi&#7875;u cho doanh nghi&#7879;p nh&#7887;</h2>
+<p>M&#7897;t ki&#7871;n tr&uacute;c th&#7921;c d&#7909;ng g&#7891;m:</p>
+<ol><li>M&#7897;t d&#7883;ch v&#7909; uptime &#273;&#7863;t ngo&agrave;i h&#7841; t&#7847;ng ch&iacute;nh &#273;&#7875; ki&#7875;m tra website, API, DNS v&agrave; ch&#7913;ng ch&#7881; TLS.</li><li>Agent ho&#7863;c exporter tr&ecirc;n server &#273;&#7875; ph&aacute;t metrics t&agrave;i nguy&ecirc;n v&agrave; d&#7883;ch v&#7909;.</li><li>Kho metrics theo chu&#7895;i th&#7901;i gian, ch&#7859;ng h&#7841;n Prometheus, khi c&#7847;n l&#7883;ch s&#7917; v&agrave; truy v&#7845;n s&acirc;u.</li><li>Dashboard, ch&#7859;ng h&#7841;n Grafana, &#273;&#7875; &#273;i&#7873;u tra v&agrave; theo d&otilde;i xu h&#432;&#7899;ng.</li><li>Alert manager ho&#7863;c c&#417; ch&#7871; th&ocirc;ng b&aacute;o c&oacute; grouping, silence v&agrave; routing.</li><li>K&ecirc;nh th&ocirc;ng b&aacute;o &#273;&#7897;c l&#7853;p v&#7899;i h&#7879; th&#7889;ng &#273;ang &#273;&#432;&#7907;c gi&aacute;m s&aacute;t.</li></ol>
+<blockquote>Kh&ocirc;ng &#273;&#7863;t to&agrave;n b&#7897; monitoring tr&ecirc;n c&ugrave;ng m&aacute;y ch&#7911; v&#7899;i website. Khi m&aacute;y &#273;&oacute; m&#7845;t &#273;i&#7879;n ho&#7863;c &#273;&#7847;y disk, h&#7879; th&#7889;ng gi&aacute;m s&aacute;t c&#361;ng bi&#7871;n m&#7845;t v&agrave; kh&ocirc;ng th&#7875; b&aacute;o l&#7895;i.</blockquote>
+
+<h2>Ch&#7885;n c&ocirc;ng c&#7909; theo &#273;&#7897; tr&#432;&#7903;ng th&agrave;nh</h2>
+<h3>M&#7913;c 1: M&#7897;t v&agrave;i website ho&#7863;c VPS</h3>
+<p>D&ugrave;ng d&#7883;ch v&#7909; uptime &#273;&#432;&#7907;c qu&#7843;n l&yacute; ho&#7863;c c&ocirc;ng c&#7909; self-hosted g&#7885;n nh&#7865; &#273;&#7875; ki&#7875;m tra HTTP, keyword, TCP v&agrave; TLS. Th&ecirc;m c&#7843;nh b&aacute;o disk, RAM v&agrave; service t&#7915; nh&agrave; cung c&#7845;p VPS. &#272;&acirc;y l&agrave; m&#7913;c ph&ugrave; h&#7907;p khi ch&#432;a c&oacute; ng&#432;&#7901;i chuy&ecirc;n v&#7853;n h&agrave;nh.</p>
+<h3>M&#7913;c 2: Nhi&#7873;u server v&agrave; &#7913;ng d&#7909;ng</h3>
+<p>D&ugrave;ng Prometheus thu th&#7853;p time-series metrics qua HTTP, exporters cho h&#7879; &#273;i&#7873;u h&agrave;nh v&agrave; &#7913;ng d&#7909;ng, Grafana cho dashboard, Alertmanager ho&#7863;c Grafana Alerting cho th&ocirc;ng b&aacute;o. Stack n&agrave;y linh ho&#7841;t nh&#432;ng c&#7847;n ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m c&#7853;p nh&#7853;t, backup, retention v&agrave; b&#7843;o m&#7853;t.</p>
+<h3>M&#7913;c 3: Nhi&#7873;u d&#7883;ch v&#7909; ho&#7863;c y&ecirc;u c&#7847;u tr&#7921;c ca</h3>
+<p>B&#7893; sung log t&#7853;p trung, tracing, SLO, on-call schedule, escalation v&agrave; qu&#7843;n l&yacute; incident. Ch&#7881; n&acirc;ng c&#7845;p khi &#273;&#7897; ph&#7913;c t&#7841;p gi&uacute;p gi&#7843;m th&#7901;i gian ph&aacute;t hi&#7879;n ho&#7863;c kh&#7855;c ph&#7909;c; kh&ocirc;ng tri&#7875;n khai &#273;&#7911; b&#7897; observability ch&#7881; v&igrave; c&ocirc;ng c&#7909; c&oacute; s&#7861;n.</p>
+
+<h2>Nh&#7919;ng monitor &#273;&#7847;u ti&ecirc;n n&ecirc;n t&#7841;o</h2>
+<ul><li><strong>Website ch&iacute;nh:</strong> HTTPS 200, ki&#7875;m tra m&#7897;t chu&#7895;i n&#7897;i dung quan tr&#7885;ng v&agrave; latency.</li><li><strong>API health:</strong> endpoint nh&#7865; nh&#432;ng ki&#7875;m tra &#273;&#432;&#7907;c dependency c&#7889;t l&otilde;i.</li><li><strong>DNS:</strong> ph&acirc;n gi&#7843;i &#273;&uacute;ng IP ho&#7863;c record quan tr&#7885;ng.</li><li><strong>TLS:</strong> c&#7843;nh b&aacute;o tr&#432;&#7899;c khi ch&#7913;ng ch&#7881; h&#7871;t h&#7841;n 30, 14 v&agrave; 7 ng&agrave;y.</li><li><strong>Lu&#7891;ng nghi&#7879;p v&#7909; t&#7893;ng h&#7907;p:</strong> &#273;&#259;ng nh&#7853;p th&#7917; ho&#7863;c t&#7841;o giao d&#7883;ch sandbox n&#7871;u r&#7911;i ro cho ph&eacute;p.</li><li><strong>Server:</strong> disk, inode, RAM, load, network v&agrave; service process.</li><li><strong>Database:</strong> k&#7871;t n&#7889;i, query latency, storage, replication v&agrave; backup status.</li><li><strong>Queue:</strong> &#273;&#7897; d&agrave;i, tu&#7893;i job l&acirc;u nh&#7845;t, failed jobs v&agrave; worker count.</li><li><strong>Backup:</strong> th&#7901;i &#273;i&#7875;m th&agrave;nh c&ocirc;ng g&#7847;n nh&#7845;t v&agrave; k&#7871;t qu&#7843; restore test, kh&ocirc;ng ch&#7881; tr&#7841;ng th&aacute;i job.</li></ul>
+
+<h2>&Aacute;p d&#7909;ng t&iacute;n hi&#7879;u v&agrave;ng thay v&igrave; theo d&otilde;i m&#7885;i th&#7913;</h2>
+<p>V&#7899;i d&#7883;ch v&#7909; web, b&#7889;n nh&oacute;m t&iacute;n hi&#7879;u h&#7919;u &iacute;ch l&agrave; latency, traffic, errors v&agrave; saturation. Ch&uacute;ng tr&#7843; l&#7901;i ng&#432;&#7901;i d&ugrave;ng c&oacute; b&#7883; ch&#7853;m hay l&#7895;i, t&#7843;i &#273;ang &#7903; m&#7913;c n&agrave;o v&agrave; t&agrave;i nguy&ecirc;n n&agrave;o g&#7847;n gi&#7899;i h&#7841;n. Dashboard h&#7841; t&#7847;ng v&#7851;n c&#7847;n thi&#7871;t, nh&#432;ng c&#7843;nh b&aacute;o &#273;&aacute;nh th&#7913;c ng&#432;&#7901;i tr&#7921;c n&ecirc;n &#432;u ti&ecirc;n tri&#7879;u ch&#7913;ng t&aacute;c &#273;&#7897;ng &#273;&#7871;n ng&#432;&#7901;i d&ugrave;ng.</p>
+<p>V&iacute; d&#7909;, CPU 90% trong m&#7897;t ph&uacute;t c&oacute; th&#7875; l&agrave; t&aacute;c v&#7909; b&igrave;nh th&#432;&#7901;ng. T&#7927; l&#7879; l&#7895;i 5% k&eacute;o d&agrave;i n&#259;m ph&uacute;t tr&ecirc;n checkout th&#432;&#7901;ng &#273;&aacute;ng b&aacute;o h&#417;n. H&atilde;y d&ugrave;ng c&#7917;a s&#7893; th&#7901;i gian v&agrave; &#273;i&#7873;u ki&#7879;n k&eacute;o d&agrave;i &#273;&#7875; gi&#7843;m c&#7843;nh b&aacute;o do spike ng&#7855;n.</p>
+
+<h2>Thi&#7871;t k&#7871; c&#7843;nh b&aacute;o c&oacute; h&agrave;nh &#273;&#7897;ng</h2>
+<p>M&#7895;i c&#7843;nh b&aacute;o c&#7847;n tr&#7843; l&#7901;i s&aacute;u c&acirc;u h&#7887;i:</p>
+<ol><li>D&#7883;ch v&#7909; n&agrave;o g&#7863;p v&#7845;n &#273;&#7873;?</li><li>Kh&aacute;ch h&agrave;ng ho&#7863;c nghi&#7879;p v&#7909; b&#7883; &#7843;nh h&#432;&#7903;ng ra sao?</li><li>T&iacute;n hi&#7879;u n&agrave;o v&#432;&#7907;t ng&#432;&#7905;ng v&agrave; k&eacute;o d&agrave;i bao l&acirc;u?</li><li>M&#7913;c &#273;&#7897; kh&#7849;n c&#7845;p l&agrave; g&igrave;?</li><li>Ai ch&#7883;u tr&aacute;ch nhi&#7879;m?</li><li>Runbook v&agrave; dashboard &#273;i&#7873;u tra &#7903; &#273;&acirc;u?</li></ol>
+<p>Prometheus t&aacute;ch vi&#7879;c &#273;&aacute;nh gi&aacute; rule kh&#7887;i g&#7917;i th&ocirc;ng b&aacute;o: alert rule t&#7841;o alert, c&ograve;n Alertmanager th&#7921;c hi&#7879;n grouping, inhibition, silence v&agrave; routing. M&ocirc; h&igrave;nh n&agrave;y gi&uacute;p gom nhi&#7873;u c&#7843;nh b&aacute;o c&ugrave;ng nguy&ecirc;n nh&acirc;n v&agrave; tr&aacute;nh g&#7917;i h&agrave;ng ch&#7909;c th&ocirc;ng b&aacute;o khi m&#7897;t database l&agrave;m nhi&#7873;u d&#7883;ch v&#7909; l&#7895;i theo.</p>
+
+<h2>Ba m&#7913;c &#273;&#7897; th&ocirc;ng b&aacute;o</h2>
+<table><thead><tr><th>M&#7913;c</th><th>V&iacute; d&#7909;</th><th>K&ecirc;nh</th></tr></thead><tbody><tr><td>Critical</td><td>Checkout kh&ocirc;ng ho&#7841;t &#273;&#7897;ng, m&#7845;t d&#7919; li&#7879;u, API l&#7895;i di&#7879;n r&#7897;ng</td><td>Cu&#7897;c g&#7885;i ho&#7863;c push t&#7899;i ng&#432;&#7901;i tr&#7921;c, c&oacute; escalation</td></tr><tr><td>Warning</td><td>Disk t&#259;ng nhanh, latency cao nh&#432;ng ch&#432;a v&#432;&#7907;t SLO</td><td>K&ecirc;nh v&#7853;n h&agrave;nh trong gi&#7901; l&agrave;m vi&#7879;c</td></tr><tr><td>Info</td><td>Deploy, backup ho&agrave;n t&#7845;t, certificate v&#7915;a gia h&#7841;n</td><td>Dashboard ho&#7863;c nh&#7853;t k&yacute;, kh&ocirc;ng &#273;&aacute;nh th&#7913;c ng&#432;&#7901;i tr&#7921;c</td></tr></tbody></table>
+<p>N&#7871;u kh&ocirc;ng c&oacute; h&agrave;nh &#273;&#7897;ng c&#7909; th&#7875;, s&#7921; ki&#7879;n n&ecirc;n n&#7857;m tr&ecirc;n dashboard thay v&igrave; th&agrave;nh alert. R&agrave; so&aacute;t c&#7843;nh b&aacute;o h&agrave;ng th&aacute;ng: c&#7843;nh b&aacute;o n&agrave;o kh&ocirc;ng d&#7851;n t&#7899;i h&agrave;nh &#273;&#7897;ng c&#7847;n &#273;&#432;&#7907;c s&#7917;a ho&#7863;c lo&#7841;i b&#7887;.</p>
+
+<h2>Dashboard d&agrave;nh cho quy&#7871;t &#273;&#7883;nh</h2>
+<p>Kh&ocirc;ng nh&#7891;i m&#7885;i metric v&agrave;o m&#7897;t m&agrave;n h&igrave;nh. N&ecirc;n c&oacute; ba dashboard:</p>
+<ul><li><strong>T&#7893;ng quan d&#7883;ch v&#7909;:</strong> availability, latency, error rate, traffic v&agrave; s&#7921; c&#7889; &#273;ang m&#7903;.</li><li><strong>&#272;i&#7873;u tra:</strong> CPU, RAM, disk, database, queue, dependency v&agrave; deploy marker.</li><li><strong>N&#259;ng l&#7921;c:</strong> xu h&#432;&#7899;ng 30-90 ng&agrave;y, t&#7889;c &#273;&#7897; t&#259;ng storage, peak traffic v&agrave; d&#7921; b&aacute;o gi&#7899;i h&#7841;n.</li></ul>
+<p>M&#7895;i bi&#7875;u &#273;&#7891; c&#7847;n &#273;&#417;n v&#7883;, ngu&#7891;n d&#7919; li&#7879;u v&agrave; ph&#7841;m vi r&otilde; r&agrave;ng. Average latency c&oacute; th&#7875; che request r&#7845;t ch&#7853;m; d&ugrave;ng percentile nh&#432; p95 ho&#7863;c p99 khi th&iacute;ch h&#7907;p.</p>
+
+<h2>Runbook bi&#7871;n c&#7843;nh b&aacute;o th&agrave;nh ph&#7843;n &#7913;ng</h2>
+<p>Runbook ng&#7855;n n&ecirc;n ch&#7913;a c&aacute;ch x&aacute;c minh, thay &#273;&#7893;i an to&agrave;n &#273;&#7847;u ti&ecirc;n, &#273;i&#7873;u ki&#7879;n rollback, ng&#432;&#7901;i c&#7847;n g&#7885;i v&agrave; b&#7857;ng ch&#7913;ng ph&#7843;i l&#432;u. V&iacute; d&#7909; alert disk s&#7855;p &#273;&#7847;y li&ecirc;n k&#7871;t t&#7899;i quy tr&igrave;nh ki&#7875;m tra filesystem, inode, log, container v&agrave; file &#273;&atilde; x&oacute;a c&ograve;n m&#7903;.</p>
+<p>Trong maintenance, d&ugrave;ng silence c&oacute; ph&#7841;m vi v&agrave; th&#7901;i h&#7841;n thay v&igrave; t&#7855;t to&agrave;n b&#7897; alert. Sau maintenance, x&aacute;c nh&#7853;n monitor &#273;&atilde; tr&#7903; l&#7841;i v&agrave; silence t&#7921; h&#7871;t h&#7841;n.</p>
+
+<h2>B&#7843;o m&#7853;t h&#7879; th&#7889;ng monitoring</h2>
+<ul><li>Kh&ocirc;ng m&#7903; dashboard ho&#7863;c endpoint metrics ra Internet n&#7871;u kh&ocirc;ng c&#7847;n.</li><li>D&ugrave;ng HTTPS, SSO/MFA v&agrave; ph&acirc;n quy&#7873;n &#273;&#7885;c/ghi.</li><li>Kh&ocirc;ng &#273;&#432;a password, token, email kh&aacute;ch h&agrave;ng hay query nh&#7841;y c&#7843;m v&agrave;o label metrics.</li><li>B&#7843;o v&#7879; webhook c&#7843;nh b&aacute;o v&agrave; xoay secret &#273;&#7883;nh k&#7923;.</li><li>Gi&#7899;i h&#7841;n cardinality; label ch&#7913;a user ID ho&#7863;c request ID c&oacute; th&#7875; l&agrave;m kho metrics t&#259;ng r&#7845;t nhanh.</li><li>Sao l&#432;u c&#7845;u h&igrave;nh, dashboard, rule v&agrave; contact point.</li><li>&#272;&#7863;t monitoring &#7903; failure domain kh&aacute;c v&#7899;i workload quan tr&#7885;ng.</li></ul>
+
+<h2>L&#7897; tr&igrave;nh tri&#7875;n khai trong 30 ng&agrave;y</h2>
+<ol><li><strong>Tu&#7847;n 1:</strong> l&#7853;p danh s&aacute;ch d&#7883;ch v&#7909;, owner, m&#7913;c quan tr&#7885;ng v&agrave; k&ecirc;nh li&ecirc;n h&#7879;.</li><li><strong>Tu&#7847;n 2:</strong> tri&#7875;n khai external uptime, TLS expiry v&agrave; c&#7843;nh b&aacute;o backup.</li><li><strong>Tu&#7847;n 3:</strong> thu metrics server/&#7913;ng d&#7909;ng, t&#7841;o dashboard t&#7893;ng quan v&agrave; n&#259;m alert quan tr&#7885;ng nh&#7845;t.</li><li><strong>Tu&#7847;n 4:</strong> di&#7877;n t&#7853;p m&#7897;t website down, m&#7897;t disk g&#7847;n &#273;&#7847;y v&agrave; m&#7897;t c&#7843;nh b&aacute;o gi&#7843;; ch&#7881;nh threshold, routing v&agrave; runbook.</li></ol>
+<p>&#272;o hai ch&#7881; s&#7889; v&#7853;n h&agrave;nh c&#417; b&#7843;n: th&#7901;i gian ph&aacute;t hi&#7879;n trung b&igrave;nh v&agrave; th&#7901;i gian kh&ocirc;i ph&#7909;c trung b&igrave;nh. M&#7909;c ti&ecirc;u &#273;&#7847;u ti&ecirc;n kh&ocirc;ng ph&#7843;i &#273;&#7841;t dashboard &#273;&#7865;p, m&agrave; l&agrave; ph&aacute;t hi&#7879;n tr&#432;&#7899;c kh&aacute;ch h&agrave;ng v&agrave; gi&#7843;m th&#7901;i gian loay hoay khi s&#7921; c&#7889; x&#7843;y ra.</p>
+
+<h2>&#431;&#7899;c t&iacute;nh chi ph&iacute; &#273;&uacute;ng c&aacute;ch</h2>
+<p>Self-hosted kh&ocirc;ng &#273;&#7891;ng ngh&#297;a mi&#7877;n ph&iacute;. Chi ph&iacute; g&#7891;m m&aacute;y ch&#7911; monitoring, storage metrics/log, backup, c&#7853;p nh&#7853;t, b&#7843;o m&#7853;t v&agrave; th&#7901;i gian tr&#7921;c. D&#7883;ch v&#7909; managed c&oacute; ph&iacute; thu&ecirc; bao nh&#432;ng gi&#7843;m c&ocirc;ng v&#7853;n h&agrave;nh. V&#7899;i nh&oacute;m nh&#7887;, m&ocirc; h&igrave;nh hybrid th&#432;&#7901;ng h&#7907;p l&yacute;: external uptime t&#7915; b&ecirc;n ngo&agrave;i, metrics n&#7897;i b&#7897; t&#7921; qu&#7843;n l&yacute; ho&#7863;c managed t&ugrave;y n&#259;ng l&#7921;c.</p>
+<p>&#272;&#7915;ng l&#432;u m&#7885;i metric m&atilde;i m&atilde;i. Ch&#7885;n scrape interval v&agrave; retention theo nhu c&#7847;u &#273;i&#7873;u tra, b&aacute;o c&aacute;o v&agrave; capacity planning. D&#7919; li&#7879;u chi ti&#7871;t c&oacute; th&#7875; gi&#7919; ng&#7855;n, d&#7919; li&#7879;u t&#7893;ng h&#7907;p gi&#7919; l&acirc;u h&#417;n.</p>
+
+<h2>Checklist nghi&#7879;m thu</h2>
+<ol><li>M&#7895;i d&#7883;ch v&#7909; quan tr&#7885;ng c&oacute; owner v&agrave; m&#7913;c &#273;&#7897; &#432;u ti&ecirc;n.</li><li>Monitoring b&ecirc;n ngo&agrave;i kh&ocirc;ng ph&#7909; thu&#7897;c c&ugrave;ng h&#7841; t&#7847;ng v&#7899;i website.</li><li>C&oacute; ki&#7875;m tra HTTP, DNS, TLS v&agrave; lu&#7891;ng nghi&#7879;p v&#7909; quan tr&#7885;ng.</li><li>Server, database, queue v&agrave; backup c&oacute; t&iacute;n hi&#7879;u c&#7847;n thi&#7871;t.</li><li>C&#7843;nh b&aacute;o c&oacute; th&#7901;i gian ch&#7901; &#273;&#7875; tr&aacute;nh spike v&agrave; c&oacute; ng&#432;&#7901;i nh&#7853;n r&otilde; r&agrave;ng.</li><li>M&#7895;i alert critical li&ecirc;n k&#7871;t t&#7899;i dashboard v&agrave; runbook.</li><li>&#272;&atilde; ki&#7875;m tra k&ecirc;nh th&ocirc;ng b&aacute;o v&agrave; escalation b&#7857;ng di&#7877;n t&#7853;p.</li><li>Dashboard, rule v&agrave; c&#7845;u h&igrave;nh &#273;&#432;&#7907;c backup.</li><li>C&oacute; l&#7883;ch r&agrave; so&aacute;t alert noise v&agrave; capacity h&agrave;ng th&aacute;ng.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Gi&#7843;i ph&aacute;p gi&aacute;m s&aacute;t ph&ugrave; h&#7907;p cho doanh nghi&#7879;p nh&#7887; n&ecirc;n b&#7855;t &#273;&#7847;u t&#7915; d&#7883;ch v&#7909; quan tr&#7885;ng v&agrave; ph&#7843;n &#7913;ng c&#7911;a con ng&#432;&#7901;i, kh&ocirc;ng b&#7855;t &#273;&#7847;u t&#7915; danh s&aacute;ch c&ocirc;ng c&#7909;. M&#7897;t external check &#273;&aacute;ng tin, v&agrave;i metric &#273;&uacute;ng, c&#7843;nh b&aacute;o c&oacute; owner v&agrave; runbook th&#432;&#7901;ng t&#7841;o nhi&#7873;u gi&aacute; tr&#7883; h&#417;n h&agrave;ng tr&#259;m dashboard. Khi h&#7879; th&#7889;ng l&#7899;n d&#7847;n, Prometheus, Grafana v&agrave; alert routing cung c&#7845;p &#273;&#432;&#7901;ng m&#7903; r&#7897;ng m&agrave; kh&ocirc;ng bu&#7897;c doanh nghi&#7879;p ph&#7843;i tri&#7875;n khai t&#7845;t c&#7843; ngay t&#7915; ng&agrave;y &#273;&#7847;u.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener noreferrer">Prometheus: Overview</a></li><li><a href="https://prometheus.io/docs/alerting/latest/overview/" target="_blank" rel="noopener noreferrer">Prometheus: Alerting overview</a></li><li><a href="https://grafana.com/docs/grafana/latest/alerting/best-practices/" target="_blank" rel="noopener noreferrer">Grafana: Alerting best practices</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

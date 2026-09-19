@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i &#273;&#7863;t aaPanel tr&ecirc;n Ubuntu an to&agrave;n t&#7915; A-Z</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i &#273;&#7863;t aaPanel, aaPanel Ubuntu, qu&#7843;n l&yacute; VPS, c&agrave;i LEMP, aaPanel SSL, b&#7843;o m&#7853;t aaPanel</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">aaPanel, Ubuntu Server, VPS, LEMP, Web Hosting, Server Security, SSL</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n c&agrave;i aaPanel tr&ecirc;n Ubuntu, hardening panel, d&#7921;ng LEMP, th&ecirc;m website, SSL, backup ngo&agrave;i m&aacute;y v&agrave; ki&#7875;m tra v&#7853;n h&agrave;nh.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/huong-dan-cai-dat-aapanel.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t aaPanel tr&ecirc;n Ubuntu v&agrave; c&#7845;u h&igrave;nh an to&agrave;n" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t aaPanel tr&ecirc;n Ubuntu v&agrave; c&#7845;u h&igrave;nh an to&agrave;n</h1><p><strong>aaPanel gi&uacute;p qu&#7843;n l&yacute; website, PHP, database, SSL, cron, backup v&agrave; t&agrave;i nguy&ecirc;n VPS qua tr&igrave;nh duy&#7879;t.</strong> B&agrave;i h&#432;&#7899;ng d&#7851;n n&agrave;y c&agrave;i aaPanel tr&ecirc;n m&#7897;t Ubuntu Server m&#7899;i, sau &#273;&oacute; kh&oacute;a giao di&#7879;n qu&#7843;n tr&#7883; tr&#432;&#7899;c khi &#273;&#432;a website v&agrave;o ho&#7841;t &#273;&#7897;ng.</p>
+<blockquote>aaPanel c&#7847;n quy&#7873;n root v&agrave; thay &#273;&#7893;i nhi&#7873;u th&agrave;nh ph&#7847;n h&#7879; th&#7889;ng. H&atilde;y d&ugrave;ng VPS m&#7899;i ho&#7863;c snapshot c&oacute; th&#7875; ph&#7909;c h&#7891;i; kh&ocirc;ng c&agrave;i tr&#7921;c ti&#7871;p l&ecirc;n m&aacute;y &#273;ang ch&#7841;y stack production &#273;&#432;&#7907;c c&#7845;u h&igrave;nh th&#7911; c&ocirc;ng.</blockquote>
+
+<h2>1. C&#7845;u h&igrave;nh v&agrave; th&ocirc;ng tin c&#7847;n chu&#7849;n b&#7883;</h2>
+<ul><li>VPS c&oacute; IP public, t&#7889;i thi&#7875;u 1 vCPU v&agrave; 1 GB RAM cho th&#7917; nghi&#7879;m; production n&ecirc;n sizing theo website v&agrave; database.</li><li>Ubuntu 22.04 ho&#7863;c phi&ecirc;n b&#7843;n &#273;ang &#273;&#432;&#7907;c aaPanel h&#7895; tr&#7907;; t&agrave;i li&#7879;u ch&iacute;nh th&#7913;c hi&#7879;n khuy&#7871;n ngh&#7883; Ubuntu 22.04.</li><li>T&agrave;i kho&#7843;n root ho&#7863;c t&agrave;i kho&#7843;n c&oacute; quy&#7873;n <code>sudo</code>, &#273;&#259;ng nh&#7853;p b&#7857;ng SSH key.</li><li>M&#7897;t domain cho website; n&ecirc;n c&oacute; th&ecirc;m subdomain ri&ecirc;ng cho panel.</li><li>N&#417;i l&#432;u backup ngo&agrave;i VPS, ch&#7859;ng h&#7841;n object storage ho&#7863;c m&aacute;y ch&#7911; kh&aacute;c.</li></ul>
+<p>Kh&ocirc;ng d&ugrave;ng m&aacute;y &#273;&atilde; c&agrave;i s&#7861;n Nginx, Apache, MySQL ho&#7863;c control panel kh&aacute;c n&#7871;u ch&#432;a hi&#7875;u xung &#273;&#7897;t. Tr&#432;&#7899;c khi b&#7855;t &#273;&#7847;u, t&#7841;o snapshot t&#7841;i nh&agrave; cung c&#7845;p VPS.</p>
+
+<h2>2. K&#7871;t n&#7889;i SSH v&agrave; c&#7853;p nh&#7853;t h&#7879; &#273;i&#7873;u h&agrave;nh</h2>
+<pre><code>ssh -i ~/.ssh/server_key root@SERVER_IP
+
+apt update
+apt full-upgrade -y
+apt install -y curl ca-certificates
+reboot</code></pre>
+<p>Sau khi m&aacute;y kh&#7903;i &#273;&#7897;ng l&#7841;i, k&#7871;t n&#7889;i SSH l&#7847;n n&#7919;a. Ki&#7875;m tra h&#7879; &#273;i&#7873;u h&agrave;nh, dung l&#432;&#7907;ng v&agrave; RAM:</p>
+<pre><code>cat /etc/os-release
+df -h
+free -h</code></pre>
+
+<h2>3. C&#7845;u h&igrave;nh firewall &#7903; nh&agrave; cung c&#7845;p</h2>
+<p>Ban &#273;&#7847;u ch&#7881; cho ph&eacute;p:</p>
+<table><thead><tr><th>C&#7893;ng</th><th>M&#7909;c &#273;&iacute;ch</th><th>Ngu&#7891;n n&ecirc;n cho ph&eacute;p</th></tr></thead><tbody><tr><td>22/TCP</td><td>SSH</td><td>IP qu&#7843;n tr&#7883; ho&#7863;c VPN</td></tr><tr><td>80/TCP</td><td>HTTP v&agrave; x&aacute;c minh ch&#7913;ng ch&#7881;</td><td>Internet</td></tr><tr><td>443/TCP</td><td>HTTPS website</td><td>Internet</td></tr><tr><td>C&#7893;ng panel</td><td>Qu&#7843;n tr&#7883; aaPanel</td><td>Ch&#7881; IP qu&#7843;n tr&#7883; ho&#7863;c VPN</td></tr></tbody></table>
+<p>Ch&#432;a m&#7903; MySQL 3306, Redis 6379, FTP ho&#7863;c c&#7893;ng panel cho to&agrave;n Internet. Sau khi c&agrave;i, aaPanel in URL v&agrave; c&#7893;ng qu&#7843;n tr&#7883; th&#7921;c t&#7871;; khi &#273;&oacute; m&#7899;i th&ecirc;m rule gi&#7899;i h&#7841;n ngu&#7891;n.</p>
+
+<h2>4. T&#7843;i v&agrave; ki&#7875;m tra script c&agrave;i &#273;&#7863;t</h2>
+<p>T&agrave;i li&#7879;u aaPanel cung c&#7845;p script ch&iacute;nh th&#7913;c t&#7841;i t&ecirc;n mi&#7873;n <code>aapanel.com</code>. Thay v&igrave; t&#7843;i v&#7899;i t&ugrave;y ch&#7885;n b&#7887; qua x&aacute;c minh ch&#7913;ng ch&#7881;, h&atilde;y d&ugrave;ng TLS b&igrave;nh th&#432;&#7901;ng:</p>
+<pre><code>cd /root
+curl --fail --location --proto '=https' --tlsv1.2 \
+  --output install_panel_en.sh \
+  https://www.aapanel.com/script/install_panel_en.sh
+
+ls -lh install_panel_en.sh
+less install_panel_en.sh</code></pre>
+<p>Ki&#7875;m tra URL ngu&#7891;n, c&aacute;c package v&agrave; &#273;&#432;&#7901;ng d&#7851;n m&agrave; script s&#7869; thay &#273;&#7893;i. N&#7871;u TLS b&aacute;o l&#7895;i, h&atilde;y s&#7917;a th&#7901;i gian h&#7879; th&#7889;ng ho&#7863;c CA certificate; kh&ocirc;ng d&ugrave;ng <code>-k</code> &#273;&#7875; b&#7887; x&aacute;c minh tr&ecirc;n m&aacute;y production.</p>
+<p>aaPanel ch&#432;a c&ocirc;ng b&#7889; checksum c&#7889; &#273;&#7883;nh ngay tr&ecirc;n trang Quick Start cho script &#273;&#7897;ng, v&igrave; v&#7853;y vi&#7879;c t&#7843;i t&#7915; &#273;&uacute;ng HTTPS, xem script v&agrave; l&#432;u b&#7843;n &#273;&atilde; d&ugrave;ng trong h&#7891; s&#417; thay &#273;&#7893;i l&agrave; quan tr&#7885;ng.</p>
+
+<h2>5. Ch&#7841;y c&agrave;i &#273;&#7863;t aaPanel</h2>
+<pre><code>bash install_panel_en.sh forum</code></pre>
+<p>X&aacute;c nh&#7853;n th&#432; m&#7909;c c&agrave;i &#273;&#7863;t khi script h&#7887;i. Qu&aacute; tr&igrave;nh s&#7869; c&agrave;i panel v&agrave; in ra:</p>
+<ul><li>URL truy c&#7853;p b&ecirc;n ngo&agrave;i v&agrave; n&#7897;i b&#7897;;</li><li>c&#7893;ng panel;</li><li>security entrance d&#7841;ng &#273;&#432;&#7901;ng d&#7851;n ng&#7851;u nhi&ecirc;n;</li><li>username v&agrave; password ban &#273;&#7847;u.</li></ul>
+<p>L&#432;u th&ocirc;ng tin v&agrave;o password manager, kh&ocirc;ng g&#7917;i qua chat ho&#7863;c email. Gi&#7919; phi&ecirc;n SSH m&#7903; cho &#273;&#7871;n khi &#273;&#259;ng nh&#7853;p panel th&agrave;nh c&ocirc;ng.</p>
+
+<h2>6. M&#7903; &#273;&uacute;ng c&#7893;ng panel v&agrave; &#273;&#259;ng nh&#7853;p l&#7847;n &#273;&#7847;u</h2>
+<p>Th&ecirc;m c&#7893;ng panel v&agrave;o security group nh&#432;ng ch&#7881; cho ph&eacute;p IP qu&#7843;n tr&#7883; ho&#7863;c d&#7843;i VPN. Truy c&#7853;p ch&iacute;nh x&aacute;c URL &#273;&#432;&#7907;c script in ra, bao g&#7891;m HTTPS, c&#7893;ng v&agrave; security entrance.</p>
+<p>aaPanel c&oacute; th&#7875; d&ugrave;ng ch&#7913;ng ch&#7881; t&#7921; k&yacute; ban &#273;&#7847;u n&ecirc;n tr&igrave;nh duy&#7879;t hi&#7875;n th&#7883; c&#7843;nh b&aacute;o. H&atilde;y x&aacute;c minh IP/URL &#273;&uacute;ng v&#7899;i phi&ecirc;n c&agrave;i &#273;&#7863;t tr&#432;&#7899;c khi ti&#7871;p t&#7909;c; sau &#273;&oacute; thay b&#7857;ng ch&#7913;ng ch&#7881; tin c&#7853;y.</p>
+<p>N&#7871;u qu&ecirc;n th&ocirc;ng tin, t&agrave;i li&#7879;u ch&iacute;nh th&#7913;c n&ecirc;u c&aacute;c l&#7879;nh:</p>
+<pre><code>bt default   # xem th&ocirc;ng tin truy c&#7853;p m&#7863;c &#273;&#7883;nh
+bt 5         # &#273;&#7893;i m&#7853;t kh&#7849;u panel
+bt           # m&#7903; menu qu&#7843;n l&yacute; aaPanel</code></pre>
+
+<h2>7. Hardening ngay sau &#273;&#259;ng nh&#7853;p</h2>
+<ol><li>&#272;&#7893;i username v&agrave; m&#7853;t kh&#7849;u panel th&agrave;nh gi&aacute; tr&#7883; duy nh&#7845;t.</li><li>B&#7853;t <strong>Panel SSL</strong> v&#7899;i domain v&agrave; ch&#7913;ng ch&#7881; tin c&#7853;y.</li><li>B&#7853;t <strong>Google Authenticator</strong>; l&#432;u m&atilde; kh&ocirc;i ph&#7909;c an to&agrave;n.</li><li>B&#7853;t <strong>BasicAuth</strong> n&#7871;u ph&ugrave; h&#7907;p &#273;&#7875; th&ecirc;m m&#7897;t l&#7899;p tr&#432;&#7899;c trang &#273;&#259;ng nh&#7853;p.</li><li>Bind domain panel &#273;&#7875; ch&#7863;n truy c&#7853;p tr&#7921;c ti&#7871;p b&#7857;ng IP.</li><li>D&ugrave;ng <strong>Authorized IP</strong> ho&#7863;c VPN &#273;&#7875; ch&#7881; m&aacute;y qu&#7843;n tr&#7883; truy c&#7853;p.</li><li>Gi&#7919; security entrance kh&oacute; &#273;o&aacute;n, nh&#432;ng kh&ocirc;ng coi &#273;&acirc;y l&agrave; l&#7899;p b&#7843;o m&#7853;t ch&iacute;nh.</li><li>&#272;&#7863;t timeout phi&ecirc;n ng&#7855;n v&agrave; b&#7853;t c&#7843;nh b&aacute;o thay &#273;&#7893;i t&agrave;i kho&#7843;n/log.</li><li>Ki&#7875;m tra host firewall trong m&#7909;c Security; ch&iacute;nh s&aacute;ch m&#7863;c &#273;&#7883;nh n&ecirc;n t&#7915; ch&#7889;i c&#7893;ng kh&ocirc;ng c&#7847;n.</li></ol>
+<blockquote>&#272;&#7893;i c&#7893;ng panel ch&#7881; gi&#7843;m nhi&#7877;u t&#7915; bot qu&eacute;t. MFA, gi&#7899;i h&#7841;n IP, c&#7853;p nh&#7853;t v&agrave; backup m&#7899;i l&agrave; c&aacute;c l&#7899;p b&#7843;o v&#7879; quan tr&#7885;ng.</blockquote>
+
+<h2>8. Ch&#7885;n LEMP hay LAMP</h2>
+<table><thead><tr><th>Stack</th><th>N&ecirc;n ch&#7885;n khi</th></tr></thead><tbody><tr><td>LEMP: Nginx + PHP-FPM</td><td>Website m&#7899;i, c&#7847;n hi&#7879;u n&#259;ng t&#7889;t v&agrave; c&#7845;u h&igrave;nh reverse proxy hi&#7879;n &#273;&#7841;i</td></tr><tr><td>LAMP: Apache + PHP</td><td>&#7912;ng d&#7909;ng ph&#7909; thu&#7897;c <code>.htaccess</code> ho&#7863;c module Apache c&#7909; th&#7875;</td></tr></tbody></table>
+<p>Trong l&#7847;n kh&#7903;i t&#7841;o, ch&#7881; c&agrave;i web server, PHP, database v&agrave; cache th&#7921;c s&#7921; c&#7847;n. Ch&#7885;n phi&ecirc;n b&#7843;n PHP/database c&ograve;n &#273;&#432;&#7907;c h&#7895; tr&#7907; b&#7903;i &#7913;ng d&#7909;ng. Kh&ocirc;ng c&agrave;i mail server, FTP, Docker ho&#7863;c nhi&#7873;u database engine &ldquo;&#273;&#7875; s&#7861;n&rdquo;.</p>
+<p>Sau khi c&agrave;i stack, ki&#7875;m tra service v&agrave; t&agrave;i nguy&ecirc;n. Gi&#7919; &#273;&#7911; RAM tr&#7889;ng cho database; tr&ecirc;n VPS nh&#7887;, qu&aacute; nhi&#7873;u service s&#7869; g&acirc;y swap v&agrave; ch&#7853;m I/O.</p>
+
+<h2>9. Th&ecirc;m website &#273;&#7847;u ti&ecirc;n</h2>
+<ol><li>Tr&#7887; b&#7843;n ghi A/AAAA c&#7911;a domain v&#7873; IP m&aacute;y ch&#7911;.</li><li>Trong <strong>Website</strong>, ch&#7885;n lo&#7841;i project v&agrave; th&ecirc;m domain.</li><li>&#272;&#7863;t document root &#273;&uacute;ng; v&#7899;i Laravel th&#432;&#7901;ng l&agrave; th&#432; m&#7909;c <code>public</code>.</li><li>T&#7841;o database v&agrave; user ri&ecirc;ng cho website, d&ugrave;ng m&#7853;t kh&#7849;u sinh ng&#7851;u nhi&ecirc;n.</li><li>Upload ho&#7863;c deploy m&atilde; ngu&#7891;n b&#7857;ng quy tr&igrave;nh c&oacute; ki&#7875;m so&aacute;t.</li><li>Thi&#7871;t l&#7853;p rewrite, PHP version v&agrave; extension theo t&agrave;i li&#7879;u &#7913;ng d&#7909;ng.</li><li>Ki&#7875;m tra website qua HTTP tr&#432;&#7899;c khi c&#7845;p SSL.</li></ol>
+<p>Kh&ocirc;ng d&ugrave;ng t&agrave;i kho&#7843;n database root trong &#7913;ng d&#7909;ng. File c&#7845;u h&igrave;nh ch&#7913;a secret ph&#7843;i n&#7857;m ngo&agrave;i public root ho&#7863;c b&#7883; web server ch&#7863;n truy c&#7853;p.</p>
+
+<h2>10. C&#7845;p SSL v&agrave; chuy&#7875;n sang HTTPS</h2>
+<p>Sau khi DNS &#273;&atilde; tr&#7887; &#273;&uacute;ng v&agrave; c&#7893;ng 80/443 m&#7903;, v&agrave;o c&#7845;u h&igrave;nh website, y&ecirc;u c&#7847;u ch&#7913;ng ch&#7881; Let's Encrypt r&#7891;i b&#7853;t chuy&#7875;n h&#432;&#7899;ng HTTPS. Ki&#7875;m tra:</p>
+<ul><li>domain v&agrave; <code>www</code> c&#7847;n thi&#7871;t &#273;&#7873;u n&#7857;m trong ch&#7913;ng ch&#7881;;</li><li>kh&ocirc;ng c&oacute; mixed content;</li><li>t&#7921; &#273;&#7897;ng gia h&#7841;n ho&#7841;t &#273;&#7897;ng;</li><li>website v&#7851;n truy c&#7853;p sau khi reload web server.</li></ul>
+
+<h2>11. Thi&#7871;t l&#7853;p backup ngo&agrave;i m&aacute;y</h2>
+<p>T&#7841;o l&#7883;ch backup ri&ecirc;ng cho file website v&agrave; database. Kh&ocirc;ng d&#7915;ng &#7903; th&#432; m&#7909;c <code>/www/backup</code> tr&ecirc;n c&ugrave;ng VPS. &#272;&#7891;ng b&#7897; b&#7843;n sao sang storage ho&#7863;c t&agrave;i kho&#7843;n &#273;&#7897;c l&#7853;p, m&atilde; h&oacute;a v&agrave; &#273;&#7863;t retention ph&ugrave; h&#7907;p.</p>
+<ol><li>Ch&#7841;y m&#7897;t b&#7843;n backup th&#7911; c&ocirc;ng.</li><li>T&#7843;i ho&#7863;c chuy&#7875;n b&#7843;n backup ra ngo&agrave;i m&aacute;y.</li><li>D&#7921;ng database/site th&#7917; t&#7915; b&#7843;n sao.</li><li>Ghi l&#7841;i th&#7901;i gian v&agrave; c&aacute;c b&#432;&#7899;c kh&ocirc;i ph&#7909;c.</li></ol>
+<p>Snapshot VPS h&#7919;u &iacute;ch nh&#432;ng kh&ocirc;ng thay th&#7871; backup c&#7845;p &#7913;ng d&#7909;ng, v&igrave; snapshot c&oacute; th&#7875; c&ugrave;ng t&agrave;i kho&#7843;n cloud v&agrave; c&ugrave;ng mi&#7873;n s&#7921; c&#7889;.</p>
+
+<h2>12. C&#7853;p nh&#7853;t, monitoring v&agrave; v&#7853;n h&agrave;nh</h2>
+<ul><li>B&#7853;t c&#7843;nh b&aacute;o CPU, RAM, disk, service, SSL v&agrave; backup.</li><li>Ki&#7875;m tra b&#7843;n c&#7853;p nh&#7853;t aaPanel/plugin &#273;&#7883;nh k&#7923;; th&#7917; tr&ecirc;n staging khi c&oacute; th&#7875;.</li><li>C&#7853;p nh&#7853;t Ubuntu v&agrave; l&ecirc;n l&#7883;ch reboot cho kernel.</li><li>&#272;&#7885;c log web server, PHP v&agrave; panel khi c&oacute; l&#7895;i, kh&ocirc;ng ch&#7881; restart d&#7883;ch v&#7909;.</li><li>Ki&#7875;m tra dung l&#432;&#7907;ng tr&#432;&#7899;c khi backup ho&#7863;c n&acirc;ng c&#7845;p database.</li><li>L&#432;u t&agrave;i li&#7879;u domain, port, stack, phi&ecirc;n b&#7843;n, backup v&agrave; ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m.</li></ul>
+
+<h2>L&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<table><thead><tr><th>Hi&#7879;n t&#432;&#7907;ng</th><th>Ki&#7875;m tra</th></tr></thead><tbody><tr><td>Kh&ocirc;ng m&#7903; &#273;&#432;&#7907;c panel</td><td>Security group, host firewall, &#273;&uacute;ng c&#7893;ng v&agrave; security entrance</td></tr><tr><td>C&#7843;nh b&aacute;o ch&#7913;ng ch&#7881;</td><td>Ban &#273;&#7847;u c&oacute; th&#7875; l&agrave; self-signed; c&#7845;u h&igrave;nh domain v&agrave; Panel SSL tin c&#7853;y</td></tr><tr><td>Website kh&ocirc;ng hi&#7879;n</td><td>DNS, domain trong site, document root, HTTP/HTTPS v&agrave; log web server</td></tr><tr><td>SSL c&#7845;p th&#7845;t b&#7841;i</td><td>DNS &#273;&atilde; propagate, c&#7893;ng 80, proxy/CDN v&agrave; b&#7843;n ghi AAAA</td></tr><tr><td>502 Bad Gateway</td><td>PHP-FPM/runtime &#273;ang ch&#7841;y, socket/port, phi&ecirc;n b&#7843;n v&agrave; log l&#7895;i</td></tr><tr><td>VPS ch&#7853;m sau c&agrave;i</td><td>RAM, swap, disk I/O v&agrave; c&aacute;c service/plugin kh&ocirc;ng c&#7847;n thi&#7871;t</td></tr></tbody></table>
+
+<h2>Checklist tr&#432;&#7899;c khi &#273;&#432;a v&agrave;o production</h2>
+<ul><li>Panel ch&#7881; truy c&#7853;p qua HTTPS v&agrave; IP/VPN &#273;&#432;&#7907;c ph&eacute;p.</li><li>MFA ho&#7841;t &#273;&#7897;ng v&agrave; m&atilde; kh&ocirc;i ph&#7909;c &#273;&atilde; &#273;&#432;&#7907;c l&#432;u.</li><li>SSH d&ugrave;ng key; &#273;&#259;ng nh&#7853;p root b&#7857;ng m&#7853;t kh&#7849;u b&#7883; h&#7841;n ch&#7871; theo ch&iacute;nh s&aacute;ch.</li><li>Ch&#7881; m&#7903; 22, 80, 443 v&agrave; c&#7893;ng th&#7853;t s&#7921; c&#7847;n.</li><li>Database/cache kh&ocirc;ng public.</li><li>Website ch&#7841;y HTTPS v&agrave; t&#7921; gia h&#7841;n ch&#7913;ng ch&#7881;.</li><li>Backup file/database n&#7857;m ngo&agrave;i VPS v&agrave; &#273;&atilde; restore th&#7917;.</li><li>C&#7843;nh b&aacute;o t&agrave;i nguy&ecirc;n, SSL v&agrave; backup &#273;&atilde; &#273;&#432;&#7907;c ki&#7875;m tra.</li><li>C&oacute; snapshot ho&#7863;c k&#7871; ho&#7841;ch rollback tr&#432;&#7899;c m&#7895;i n&acirc;ng c&#7845;p l&#7899;n.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>C&agrave;i aaPanel ch&#7881; m&#7845;t &iacute;t ph&uacute;t, nh&#432;ng m&#7897;t m&aacute;y ch&#7911; c&oacute; th&#7875; v&#7853;n h&agrave;nh an to&agrave;n c&#7847;n nhi&#7873;u b&#432;&#7899;c h&#417;n: gi&#7899;i h&#7841;n &#273;&#432;&#7901;ng qu&#7843;n tr&#7883;, b&#7853;t MFA, c&agrave;i stack t&#7889;i thi&#7875;u, t&aacute;ch secret, backup ngo&agrave;i m&aacute;y v&agrave; ki&#7875;m th&#7917; ph&#7909;c h&#7891;i. N&#7871;u kh&ocirc;ng c&oacute; ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m c&#7853;p nh&#7853;t v&agrave; x&#7917; l&yacute; s&#7921; c&#7889; Linux, managed hosting v&#7851;n l&agrave; l&#7921;a ch&#7885;n ph&ugrave; h&#7907;p h&#417;n t&#7921; qu&#7843;n l&yacute; VPS.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.aapanel.com/docs/guide/quickstart.html" target="_blank" rel="noopener noreferrer">aaPanel Documentation: Quick Start</a></li><li><a href="https://www.aapanel.com/docs/Function/Settings.html" target="_blank" rel="noopener noreferrer">aaPanel Documentation: Settings</a></li><li><a href="https://www.aapanel.com/docs/Function/Security.html" target="_blank" rel="noopener noreferrer">aaPanel Documentation: Security</a></li><li><a href="https://www.aapanel.com/docs/Function/Website.html" target="_blank" rel="noopener noreferrer">aaPanel Documentation: Website Basics</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

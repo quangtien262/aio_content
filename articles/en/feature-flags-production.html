@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">feature-flags-safe-progressive-release</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Production Feature Flags in Practice</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">feature flags, feature toggles, progressive rollout, canary release, kill switch, OpenFeature, software delivery</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Feature Flags, Progressive Delivery, OpenFeature, DevOps, Backend, Observability</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design production feature flags with stable rollout, targeting context, safe fallbacks, kill switches, variant telemetry, testing, and lifecycle cleanup.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/feature-flags-production.jpg" alt="Feature Flags in Practice: Release Safely Without Redeploying" width="1440" height="810"></p><h1>Feature Flags in Practice: Release Safely Without Redeploying</h1><p><strong>Feature flags separate deploying code from releasing behavior.</strong> A team can ship disabled code, expose it internally, increase the audience gradually, and turn it off during an incident without another build. Without lifecycle discipline, however, flags become permanent configuration and make every code path harder to understand.</p>
+<h2>Deployment is not release</h2><p>Deployment moves an artifact into an environment. Release decides who receives new behavior:</p><pre><code>const enabled = flags.getBooleanValue(
+  'checkout-v2', false,
+  { targetingKey: user.id, plan: user.plan }
+);
+return enabled ? checkoutV2(order) : checkoutV1(order);</code></pre><p>The default is a safety decision. An unproven feature normally falls back to <code>false</code>. A protective kill switch needs unambiguous naming and semantics so operators cannot invert it under pressure.</p>
+<h2>Four common flag types</h2><table><thead><tr><th>Type</th><th>Purpose</th><th>Lifetime</th></tr></thead><tbody><tr><td>Release</td><td>Hide unfinished code and roll out gradually</td><td>Short</td></tr><tr><td>Experiment</td><td>Compare variants against a hypothesis</td><td>Until enough evidence</td></tr><tr><td>Ops / kill switch</td><td>Shed load or disable a failing integration</td><td>Potentially long</td></tr><tr><td>Entitlement</td><td>Grant behavior by plan or contract</td><td>Long; manage as policy</td></tr></tbody></table><p>Do not treat a release flag as authorization. Access control belongs on the server with auditability and deny-by-default behavior.</p>
+<h2>Percentage rollout must be stable</h2><p>Do not choose randomly on every request. Hash a stable subject:</p><pre><code>bucket = hash(flagKey + ':' + targetingKey) % 10000
+enabled = bucket &lt; rolloutBasisPoints</code></pre><p>Choose user, account, or tenant according to the required consistency boundary. B2B workflows often need tenant-level allocation so colleagues see the same behavior.</p>
+<h2>Evaluation context without unnecessary PII</h2><p>OpenFeature standardizes evaluation APIs, providers, context, and hooks. Context can include application, region, tenant, plan, and targeting key. Include only attributes required by rules; prefer an opaque identifier over names or email addresses. Order rules clearly: emergency override, internal allowlist, compatibility constraints, percentage rollout, then default.</p>
+<h2>Client-side or server-side?</h2><ul><li><strong>Server-side:</strong> business logic, algorithms, integrations, and data control.</li><li><strong>Client-side:</strong> presentation changes, while assuming downloaded flags are observable and modifiable.</li></ul><p>Never use a client flag to protect secrets or authorization. When both frontend and backend participate, the backend remains authoritative for data-changing behavior.</p>
+<h2>When the flag system fails</h2><p>SDKs should cache configuration locally; evaluation should not make a synchronous network call per request. Define each default, acceptable stale-cache duration, provider-not-ready behavior, type mismatch handling, and alerts that distinguish an error fallback from a rule result.</p><p>There is no universal fail-open choice. Cosmetic behavior may default on, a new payment path should return to the old flow, and authorization must fail closed.</p>
+<h2>Observe by variant</h2><p>Aggregate dashboards can hide a regression affecting a 5% cohort. Split request count, errors, latency, conversion, and business invariants by variant. Record key, variant, reason, provider, and ruleset version while minimizing sensitive context. Set rollback guardrails before rollout and test the kill switch before an incident.</p>
+<h2>A rollout sequence</h2><ol><li>Deploy disabled and verify the old path.</li><li>Enable for developers or employees.</li><li>Canary at 1% for a representative load cycle.</li><li>Advance through 5%, 25%, 50%, and 100% checkpoints.</li><li>Stop or disable when a guardrail fails.</li><li>After stabilization, delete the old path and flag.</li></ol><p>Observation time must match the business cycle; five minutes cannot validate an end-of-day job or monthly billing.</p>
+<h2>Testing without combinatorial explosion</h2><ul><li>Unit-test enabled and disabled paths at key decisions.</li><li>Contract-test types, defaults, and required context.</li><li>Integration-test provider failures, timeout, and stale cache.</li><li>Use E2E tests for critical journeys, not every flag combination.</li><li>Run production smoke tests on an internal cohort.</li></ul><p>Reducing simultaneous flags and nested branches is more effective than attempting every possible combination.</p>
+<h2>Cleanup belongs in the Definition of Done</h2><p>Every flag needs an owner, purpose, creation date, expiry date, default, and removal ticket. At stable 100% rollout, remove the old branch, temporary rules and dashboards, and the control-plane flag. Linting and expiry reports can highlight stale flags.</p>
+<h2>Production checklist</h2><ul><li>Stable key and behavior-oriented name.</li><li>Safe default tested without a provider.</li><li>Consistent hashing by user, account, or tenant.</li><li>No client flag used as authorization.</li><li>Variant telemetry without leaking PII.</li><li>RBAC, audit logs, and an emergency process for rule changes.</li><li>An owner and removal date for every release flag.</li></ul>
+<h2>Conclusion</h2><p>Feature flags control release risk; they are not permanent storage for unfinished branches. Safe defaults, deterministic rollout, variant telemetry, a tested kill switch, and disciplined cleanup let teams release in smaller steps, learn sooner, and recover without waiting for another deployment.</p>
+<h2>References</h2><ul><li><a href="https://openfeature.dev/docs/reference/intro/" target="_blank" rel="noopener noreferrer">OpenFeature: Introduction</a></li><li><a href="https://openfeature.dev/specification/sections/evaluation-context/" target="_blank" rel="noopener noreferrer">OpenFeature: Evaluation Context</a></li><li><a href="https://opentelemetry.io/docs/specs/semconv/feature-flags/" target="_blank" rel="noopener noreferrer">OpenTelemetry: Feature flag semantic conventions</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

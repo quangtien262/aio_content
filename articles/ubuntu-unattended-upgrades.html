@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&#7845;u h&igrave;nh unattended-upgrades an to&agrave;n tr&ecirc;n Ubuntu Server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">unattended-upgrades, c&#7853;p nh&#7853;t b&#7843;o m&#7853;t Ubuntu, Ubuntu Server, apt-daily-upgrade, t&#7921; &#273;&#7897;ng c&#7853;p nh&#7853;t Linux, automatic reboot Ubuntu</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Ubuntu, Linux, Security Updates, unattended-upgrades, APT, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n c&#7845;u h&igrave;nh unattended-upgrades tr&ecirc;n Ubuntu Server: ch&#7881; nh&#7853;n b&#7843;n v&aacute; b&#7843;o m&#7853;t, th&#7917; dry-run, ki&#7875;m tra timer v&agrave; log, qu&#7843;n l&yacute; reboot an to&agrave;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/ubuntu-unattended-upgrades.jpg" alt="C&#7853;p nh&#7853;t b&#7843;o m&#7853;t Ubuntu Server t&#7921; &#273;&#7897;ng v&#7899;i unattended-upgrades" width="1440" height="810"></p><h1>C&#7853;p nh&#7853;t b&#7843;o m&#7853;t Ubuntu Server t&#7921; &#273;&#7897;ng v&#7899;i unattended-upgrades</h1><p><strong>M&aacute;y ch&#7911; kh&ocirc;ng &#273;&#432;&#7907;c c&#7853;p nh&#7853;t l&agrave; r&#7911;i ro b&#7843;o m&#7853;t; c&#7853;p nh&#7853;t thi&#7871;u ki&#7875;m so&aacute;t l&#7841;i c&oacute; th&#7875; g&acirc;y gi&aacute;n &#273;o&#7841;n.</strong> <code>unattended-upgrades</code> gi&uacute;p Ubuntu Server t&#7921; c&agrave;i b&#7843;n v&aacute; theo ch&iacute;nh s&aacute;ch, nh&#432;ng production v&#7851;n c&#7847;n gi&#7899;i h&#7841;n ngu&#7891;n package, ki&#7875;m tra tr&#432;&#7899;c, gi&aacute;m s&aacute;t k&#7871;t qu&#7843; v&agrave; t&aacute;ch vi&#7879;c reboot th&agrave;nh m&#7897;t quy&#7871;t &#273;&#7883;nh v&#7853;n h&agrave;nh.</p>
+<p>B&agrave;i vi&#7871;t n&agrave;y x&acirc;y d&#7921;ng c&#7845;u h&igrave;nh th&#7921;c t&#7871; cho Ubuntu Server: &#432;u ti&ecirc;n security update, kh&ocirc;ng t&#7921; kh&#7903;i &#273;&#7897;ng l&#7841;i, d&ugrave;ng t&#7879;p drop-in d&#7877; qu&#7843;n l&yacute;, th&#7917; b&#7857;ng <code>--dry-run</code> v&agrave; tri&#7875;n khai theo t&#7915;ng nh&oacute;m m&aacute;y.</p>
+
+<h2>unattended-upgrades l&agrave;m g&igrave;?</h2>
+<p><code>unattended-upgrades</code> l&agrave; backend c&#7911;a c&#417; ch&#7871; APT periodic. Tr&ecirc;n c&aacute;c b&#7843;n Ubuntu hi&#7879;n &#273;&#7841;i, systemd k&iacute;ch ho&#7841;t c&ocirc;ng vi&#7879;c qua <code>apt-daily.timer</code> v&agrave; <code>apt-daily-upgrade.timer</code>. C&ocirc;ng c&#7909; ch&#7881; c&agrave;i package t&#7915; nh&#7919;ng ngu&#7891;n &#273;&#432;&#7907;c ph&eacute;p trong c&#7845;u h&igrave;nh; n&oacute; kh&ocirc;ng thay th&#7871; vi&#7879;c n&acirc;ng c&#7845;p phi&ecirc;n b&#7843;n Ubuntu b&#7857;ng <code>do-release-upgrade</code>.</p>
+<p>Ubuntu &#273;&atilde; c&agrave;i v&agrave; b&#7853;t c&#417; ch&#7871; n&agrave;y m&#7863;c &#273;&#7883;nh tr&ecirc;n Desktop v&agrave; Server t&#7915; 18.04 LTS. Tuy v&#7853;y, qu&#7843;n tr&#7883; vi&ecirc;n v&#7851;n n&ecirc;n ki&#7875;m tra tr&#7841;ng th&aacute;i th&#7921;c t&#7871; v&igrave; image cloud, template n&#7897;i b&#7897; ho&#7863;c c&ocirc;ng c&#7909; c&#7845;u h&igrave;nh c&oacute; th&#7875; &#273;&atilde; thay &#273;&#7893;i m&#7863;c &#273;&#7883;nh.</p>
+
+<h2>1. Ki&#7875;m tra phi&ecirc;n b&#7843;n v&agrave; tr&#7841;ng th&aacute;i hi&#7879;n t&#7841;i</h2>
+<pre><code>lsb_release -a
+apt-cache policy unattended-upgrades
+systemctl status apt-daily.timer apt-daily-upgrade.timer
+systemctl list-timers 'apt-*'</code></pre>
+<p>Timer &#7903; tr&#7841;ng th&aacute;i <code>active (waiting)</code> ngh&#297;a l&agrave; systemd &#273;ang ch&#7901; l&#7847;n ch&#7841;y ti&#7871;p theo. Th&#7901;i &#273;i&#7875;m c&oacute; th&#7875; c&oacute; &#273;&#7897; tr&#7877; ng&#7851;u nhi&ecirc;n &#273;&#7875; nhi&#7873;u m&aacute;y kh&ocirc;ng &#273;&#7891;ng lo&#7841;t t&#7843;i update.</p>
+<p>Ki&#7875;m tra APT periodic &#273;ang &#273;&#432;&#7907;c b&#7853;t hay ch&#432;a:</p>
+<pre><code>apt-config dump | grep -iE 'APT::Periodic|Unattended-Upgrade'</code></pre>
+
+<h2>2. C&agrave;i v&agrave; b&#7853;t d&#7883;ch v&#7909;</h2>
+<pre><code>sudo apt update
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades</code></pre>
+<p>L&#7879;nh cu&#7889;i t&#7841;o ho&#7863;c k&iacute;ch ho&#7841;t c&#7845;u h&igrave;nh periodic. C&oacute; th&#7875; ki&#7875;m tra t&#7879;p <code>/etc/apt/apt.conf.d/20auto-upgrades</code>:</p>
+<pre><code>APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";</code></pre>
+<p>Gi&aacute; tr&#7883; <code>1</code> bi&#7875;u th&#7883; chu k&#7923; theo ng&agrave;y. Timer systemd quy&#7871;t &#273;&#7883;nh th&#7901;i &#273;i&#7875;m ch&#7841;y th&#7921;c t&#7871;.</p>
+
+<h2>3. D&ugrave;ng t&#7879;p drop-in, kh&ocirc;ng s&#7917;a c&#7845;u h&igrave;nh g&#7889;c</h2>
+<p>Ubuntu khuy&#7871;n ngh&#7883; kh&ocirc;ng ch&#7881;nh tr&#7921;c ti&#7871;p <code>50unattended-upgrades</code>, v&igrave; package update c&oacute; th&#7875; t&#7841;o xung &#273;&#7897;t c&#7845;u h&igrave;nh. H&atilde;y t&#7841;o t&#7879;p c&oacute; th&#7913; t&#7921; cao h&#417;n, v&iacute; d&#7909;:</p>
+<pre><code>sudo nano /etc/apt/apt.conf.d/60local-unattended-upgrades</code></pre>
+<p>C&#7845;u h&igrave;nh production th&#7853;n tr&#7885;ng:</p>
+<pre><code>Unattended-Upgrade::Allowed-Origins {
+    "${distro_id}:${distro_codename}-security";
+};
+
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+Unattended-Upgrade::SyslogEnable "true";</code></pre>
+<p><code>${distro_id}</code> v&agrave; <code>${distro_codename}</code> &#273;&#432;&#7907;c APT thay b&#7857;ng gi&aacute; tr&#7883; c&#7911;a m&aacute;y. Ch&#7881; cho ph&eacute;p pocket <code>-security</code> gi&uacute;p ph&#7841;m vi thay &#273;&#7893;i d&#7877; d&#7921; &#273;o&aacute;n. Kh&ocirc;ng n&ecirc;n t&#7921; th&ecirc;m PPA ho&#7863;c repository b&ecirc;n th&#7913; ba v&agrave;o danh s&aacute;ch n&#7871;u ch&#432;a c&oacute; quy tr&igrave;nh ki&#7875;m th&#7917; v&agrave; rollback ri&ecirc;ng.</p>
+
+<h2>4. C&oacute; n&ecirc;n t&#7921; &#273;&#7897;ng reboot?</h2>
+<p>Kernel, libc v&agrave; m&#7897;t s&#7889; th&agrave;nh ph&#7847;n n&#7873;n c&oacute; th&#7875; c&#7847;n reboot &#273;&#7875; d&ugrave;ng b&#7843;n v&aacute; m&#7899;i. Nh&#432;ng t&#7921; reboot m&#7897;t m&aacute;y production &#273;&#417;n l&#7867; c&oacute; th&#7875; l&agrave;m r&#7899;t request, ng&#7855;t job ho&#7863;c m&#7845;t quorum.</p>
+<p>C&#7845;u h&igrave;nh &#7903; tr&ecirc;n &#273;&#7875; <code>Automatic-Reboot "false"</code>. Sau c&#7853;p nh&#7853;t, ki&#7875;m tra:</p>
+<pre><code>test -f /var/run/reboot-required &amp;&amp; cat /var/run/reboot-required
+cat /var/run/reboot-required.pkgs 2&gt;/dev/null</code></pre>
+<p>N&#7871;u h&#7879; th&#7889;ng c&oacute; load balancer v&agrave; nhi&#7873;u node, quy tr&igrave;nh t&#7889;t h&#417;n l&agrave;: r&uacute;t m&#7897;t node kh&#7887;i traffic, ch&#7901; k&#7871;t n&#7889;i c&#7841;n, reboot, health check, &#273;&#432;a node tr&#7903; l&#7841;i r&#7891;i m&#7899;i chuy&#7875;n sang node k&#7871; ti&#7871;p.</p>
+<p>Ch&#7881; b&#7853;t t&#7921; reboot khi workload ch&#7883;u &#273;&#432;&#7907;c v&agrave; &#273;&atilde; c&oacute; maintenance window:</p>
+<pre><code>Unattended-Upgrade::Automatic-Reboot "true";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+Unattended-Upgrade::Automatic-Reboot-Time "03:30";</code></pre>
+<blockquote>Gi&#7901; reboot d&ugrave;ng timezone c&#7911;a h&#7879; &#273;i&#7873;u h&agrave;nh. Ki&#7875;m tra b&#7857;ng <code>timedatectl</code>, &#273;&#7863;c bi&#7879;t v&#7899;i cloud image m&#7863;c &#273;&#7883;nh UTC.</blockquote>
+
+<h2>5. Ch&#7863;n package nh&#7841;y c&#7843;m khi c&#7847;n</h2>
+<p>Blacklist ch&#7881; n&ecirc;n l&agrave; bi&#7879;n ph&aacute;p t&#7841;m th&#7901;i, c&oacute; ticket v&agrave; ng&agrave;y h&#7871;t h&#7841;n. Gi&#7919; b&#7843;n v&aacute; b&#7843;o m&#7853;t qu&aacute; l&acirc;u c&oacute; th&#7875; t&#7841;o l&#7895; h&#7893;ng l&#7899;n h&#417;n r&#7911;i ro t&#432;&#417;ng th&iacute;ch.</p>
+<pre><code>Unattended-Upgrade::Package-Blacklist {
+    // "mysql-server";
+    // "docker-ce";
+};</code></pre>
+<p>Chu&#7895;i &#273;&#432;&#7907;c hi&#7875;u nh&#432; bi&#7875;u th&#7913;c ch&iacute;nh quy. V&igrave; v&#7853;y c&#7847;n xem tr&#432;&#7899;c danh s&aacute;ch package th&#7921;c t&#7871;, kh&ocirc;ng d&ugrave;ng pattern qu&aacute; r&#7897;ng.</p>
+
+<h2>6. Ki&#7875;m tra c&#7845;u h&igrave;nh tr&#432;&#7899;c khi ch&#7841;y th&#7853;t</h2>
+<pre><code>sudo unattended-upgrade --dry-run --debug
+sudo apt-get -s upgrade
+apt-config dump | less</code></pre>
+<p><code>--dry-run</code> m&ocirc; ph&#7887;ng l&#7921;a ch&#7885;n package nh&#432;ng kh&ocirc;ng c&agrave;i &#273;&#7863;t. &#272;&#7885;c k&#7929; origin, package b&#7883; gi&#7919; l&#7841;i, dependency v&agrave; l&#7895;i c&#7845;u h&igrave;nh. Sau khi ki&#7875;m tra, c&oacute; th&#7875; ch&#7841;y th&#7911; c&ocirc;ng m&#7897;t l&#7847;n:</p>
+<pre><code>sudo unattended-upgrade --verbose</code></pre>
+<p>Kh&ocirc;ng ch&#7841;y &#273;&#7891;ng th&#7901;i v&#7899;i <code>apt</code>, <code>dpkg</code> ho&#7863;c pipeline provisioning kh&aacute;c. N&#7871;u g&#7863;p l&#7895;i lock, h&atilde;y t&igrave;m ti&#7871;n tr&igrave;nh &#273;ang gi&#7919; lock thay v&igrave; x&oacute;a file lock.</p>
+
+<h2>7. Theo d&otilde;i timer, journal v&agrave; log</h2>
+<pre><code>systemctl list-timers 'apt-*'
+systemctl status apt-daily-upgrade.service
+journalctl -u apt-daily-upgrade.service --since today
+sudo tail -n 200 /var/log/unattended-upgrades/unattended-upgrades.log
+sudo tail -n 200 /var/log/unattended-upgrades/unattended-upgrades-dpkg.log</code></pre>
+<p>Log ch&iacute;nh ghi package &#273;&#432;&#7907;c x&eacute;t v&agrave; k&#7871;t qu&#7843;; log <code>dpkg</code> ghi chi ti&#7871;t qu&aacute; tr&igrave;nh c&agrave;i. N&ecirc;n c&#7843;nh b&aacute;o khi timer kh&ocirc;ng ch&#7841;y trong th&#7901;i gian mong &#273;&#7907;i, update th&#7845;t b&#7841;i, c&ograve;n b&#7843;n v&aacute; security qu&aacute; h&#7841;n ho&#7863;c c&oacute; <code>reboot-required</code> k&eacute;o d&agrave;i.</p>
+
+<h2>8. Thi&#7871;t k&#7871; rollout cho nhi&#7873;u m&aacute;y ch&#7911;</h2>
+<p>Kh&ocirc;ng n&ecirc;n &aacute;p c&#7845;u h&igrave;nh m&#7899;i &#273;&#7891;ng lo&#7841;t l&ecirc;n to&agrave;n b&#7897; fleet. M&#7897;t quy tr&igrave;nh b&#7873;n v&#7919;ng:</p>
+<ol>
+<li><strong>Canary:</strong> ch&#7885;n m&#7897;t m&aacute;y &iacute;t quan tr&#7885;ng nh&#432;ng c&oacute; workload &#273;&#7841;i di&#7879;n.</li>
+<li><strong>Quan s&aacute;t:</strong> theo d&otilde;i service health, error rate, latency v&agrave; log sau c&#7853;p nh&#7853;t.</li>
+<li><strong>Theo nh&oacute;m:</strong> m&#7903; r&#7897;ng sang staging, m&#7897;t ph&#7847;n production r&#7891;i to&agrave;n b&#7897; fleet.</li>
+<li><strong>Reboot cu&#7889;n chi&#7871;u:</strong> duy tr&igrave; capacity v&agrave; quorum trong su&#7889;t maintenance.</li>
+<li><strong>B&aacute;o c&aacute;o:</strong> l&#432;u package/version &#273;&atilde; &#273;&#7893;i, m&aacute;y th&#7845;t b&#7841;i v&agrave; th&#7901;i &#273;i&#7875;m ho&agrave;n t&#7845;t.</li>
+</ol>
+<p>Snapshot VM c&oacute; th&#7875; h&#7895; tr&#7907; ph&#7909;c h&#7891;i nh&#432;ng kh&ocirc;ng thay th&#7871; backup &#273;&atilde; ki&#7875;m ch&#7913;ng. V&#7899;i database, c&#7847;n b&#7843;o &#273;&#7843;m consistency v&agrave; th&#7917; restore tr&#432;&#7899;c khi xem snapshot l&agrave; ph&#432;&#417;ng &aacute;n rollback.</p>
+
+<h2>9. Nh&#7919;ng l&#7895;i c&#7845;u h&igrave;nh th&#432;&#7901;ng g&#7863;p</h2>
+<ul>
+<li><strong>T&#432;&#7903;ng timer ch&#7841;y &#273;&uacute;ng gi&#7901; tuy&#7879;t &#273;&#7889;i:</strong> APT c&oacute; th&#7875; th&ecirc;m randomized delay.</li>
+<li><strong>B&#7853;t reboot tr&ecirc;n m&aacute;y duy nh&#7845;t:</strong> b&#7843;n v&aacute; th&agrave;nh downtime kh&ocirc;ng b&aacute;o tr&#432;&#7899;c.</li>
+<li><strong>Cho ph&eacute;p m&#7885;i repository:</strong> package b&ecirc;n th&#7913; ba c&oacute; v&ograve;ng &#273;&#7901;i v&agrave; ch&#7845;t l&#432;&#7907;ng kh&aacute;c archive Ubuntu.</li>
+<li><strong>S&#7917;a t&#7879;p 50unattended-upgrades:</strong> kh&oacute; qu&#7843;n l&yacute; khi package n&acirc;ng c&#7845;p; d&ugrave;ng drop-in ri&ecirc;ng.</li>
+<li><strong>Kh&ocirc;ng &#273;&#7885;c log:</strong> &ldquo;&#273;&atilde; b&#7853;t&rdquo; kh&ocirc;ng &#273;&#7891;ng ngh&#297;a &ldquo;&#273;&atilde; c&#7853;p nh&#7853;t th&agrave;nh c&ocirc;ng&rdquo;.</li>
+<li><strong>Nh&#7847;m package update v&#7899;i release upgrade:</strong> c&ocirc;ng c&#7909; n&agrave;y kh&ocirc;ng n&acirc;ng Ubuntu 22.04 l&ecirc;n 24.04.</li>
+</ul>
+
+<h2>Checklist production</h2>
+<ul>
+<li>Backup v&agrave; quy tr&igrave;nh restore &#273;&atilde; &#273;&#432;&#7907;c ki&#7875;m tra.</li>
+<li>Ngu&#7891;n package &#273;&#432;&#7907;c gi&#7899;i h&#7841;n, PPA &#273;&#432;&#7907;c ki&#7875;m k&ecirc;.</li>
+<li>Dry-run s&#7841;ch tr&ecirc;n canary c&oacute; workload &#273;&#7841;i di&#7879;n.</li>
+<li>T&#7921; reboot m&#7863;c &#273;&#7883;nh t&#7855;t ho&#7863;c c&oacute; maintenance window r&otilde; r&agrave;ng.</li>
+<li>C&oacute; gi&aacute;m s&aacute;t timer, log, b&#7843;n v&aacute; t&#7891;n &#273;&#7885;ng v&agrave; reboot-required.</li>
+<li>C&#7909;m nhi&#7873;u node &#273;&#432;&#7907;c c&#7853;p nh&#7853;t cu&#7889;n chi&#7871;u, gi&#7919; quorum v&agrave; capacity.</li>
+<li>C&oacute; ng&#432;&#7901;i s&#7903; h&#7919;u blacklist v&agrave; ng&agrave;y g&#7905; b&#7887; ngo&#7841;i l&#7879;.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p><code>unattended-upgrades</code> hi&#7879;u qu&#7843; nh&#7845;t khi l&agrave; m&#7897;t ph&#7847;n c&#7911;a quy tr&igrave;nh qu&#7843;n tr&#7883; b&#7843;n v&aacute;, kh&ocirc;ng ph&#7843;i c&ocirc;ng t&#7855;c &ldquo;b&#7853;t r&#7891;i qu&ecirc;n&rdquo;. H&atilde;y gi&#7899;i h&#7841;n origin, c&#7845;u h&igrave;nh b&#7857;ng drop-in, th&#7917; tr&ecirc;n canary, t&aacute;ch reboot kh&#7887;i c&agrave;i package v&agrave; bi&#7871;n log th&agrave;nh c&#7843;nh b&aacute;o c&oacute; ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m. Khi &#273;&oacute; b&#7843;n v&aacute; &#273;&#7871;n &#273;&#7911; nhanh m&agrave; production v&#7851;n gi&#7919; &#273;&#432;&#7907;c kh&#7843; n&#259;ng ki&#7875;m so&aacute;t.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul>
+<li><a href="https://documentation.ubuntu.com/security/security-updates/" target="_blank" rel="noopener noreferrer">Ubuntu Security Documentation: Security updates</a></li>
+<li><a href="https://manpages.ubuntu.com/manpages/jammy/man8/unattended-upgrade.8.html" target="_blank" rel="noopener noreferrer">Ubuntu manpage: unattended-upgrade</a></li>
+<li><a href="https://documentation.ubuntu.com/server/explanation/software/about-apt-upgrade-and-phased-updates/" target="_blank" rel="noopener noreferrer">Ubuntu Server: APT upgrade and phased updates</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

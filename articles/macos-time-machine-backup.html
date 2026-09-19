@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Sao l&#432;u v&agrave; kh&ocirc;i ph&#7909;c macOS b&#7857;ng Time Machine</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Time Machine macOS, sao l&#432;u MacBook, kh&ocirc;i ph&#7909;c macOS, backup Mac, Migration Assistant, APFS Encrypted</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">macOS, Time Machine, Backup, Data Recovery, MacBook, Migration Assistant, APFS, Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n thi&#7871;t l&#7853;p Time Machine, m&atilde; h&oacute;a &#7893; backup, kh&ocirc;i ph&#7909;c file, chuy&#7875;n d&#7919; li&#7879;u sang Mac m&#7899;i v&agrave; ki&#7875;m th&#7917; b&#7843;n sao l&#432;u macOS.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/macos-time-machine-backup.jpg" alt="Sao l&#432;u v&agrave; kh&ocirc;i ph&#7909;c macOS v&#7899;i Time Machine: H&#432;&#7899;ng d&#7851;n an to&agrave;n t&#7915; A-Z" width="1440" height="810"></p><h1>Sao l&#432;u v&agrave; kh&ocirc;i ph&#7909;c macOS v&#7899;i Time Machine: H&#432;&#7899;ng d&#7851;n an to&agrave;n t&#7915; A-Z</h1><p><strong>Time Machine l&agrave; c&ocirc;ng c&#7909; sao l&#432;u t&iacute;ch h&#7907;p tr&ecirc;n macOS, c&oacute; th&#7875; l&#432;u nhi&#7873;u phi&ecirc;n b&#7843;n c&#7911;a t&agrave;i li&#7879;u, &#7913;ng d&#7909;ng, t&agrave;i kho&#7843;n v&agrave; c&agrave;i &#273;&#7863;t.</strong> Tuy nhi&ecirc;n, c&#7855;m &#7893; ngo&agrave;i r&#7891;i th&#7845;y bi&#7875;u t&#432;&#7907;ng sao l&#432;u ch&#432;a &#273;&#7911; &#273;&#7875; b&#7843;o &#273;&#7843;m d&#7919; li&#7879;u c&oacute; th&#7875; ph&#7909;c h&#7891;i. M&#7897;t c&#7845;u h&igrave;nh t&#7889;t c&#7847;n &#7893; &#273;&#297;a ph&ugrave; h&#7907;p, m&atilde; h&oacute;a, l&#7883;ch ch&#7841;y th&#7921;c t&#7871;, ki&#7875;m tra &#273;&#7883;nh k&#7923; v&agrave; th&ecirc;m m&#7897;t b&#7843;n sao n&#7857;m ngo&agrave;i m&aacute;y.</p>
+
+<h2>iCloud kh&ocirc;ng ho&agrave;n to&agrave;n thay th&#7871; backup</h2>
+<p>iCloud Drive ch&#7911; y&#7871;u &#273;&#7891;ng b&#7897; d&#7919; li&#7879;u gi&#7919;a thi&#7871;t b&#7883;. N&#7871;u m&#7897;t file b&#7883; x&oacute;a ho&#7863;c thay &#273;&#7893;i ngo&agrave;i &yacute; mu&#7889;n, thay &#273;&#7893;i &#273;&oacute; c&oacute; th&#7875; &#273;&#432;&#7907;c &#273;&#7891;ng b&#7897; sang c&aacute;c thi&#7871;t b&#7883; kh&aacute;c. Time Machine l&#432;u l&#7883;ch s&#7917; theo th&#7901;i &#273;i&#7875;m, gi&uacute;p l&#7845;y l&#7841;i phi&ecirc;n b&#7843;n c&#361; ho&#7863;c d&#7919; li&#7879;u &#273;&atilde; x&oacute;a. Hai d&#7883;ch v&#7909; b&#7893; sung cho nhau nh&#432;ng gi&#7843;i quy&#7871;t hai b&agrave;i to&aacute;n kh&aacute;c nhau.</p>
+<p>V&#7899;i d&#7919; li&#7879;u quan tr&#7885;ng, n&ecirc;n &aacute;p d&#7909;ng nguy&ecirc;n t&#7855;c 3-2-1: c&oacute; &iacute;t nh&#7845;t ba b&#7843;n d&#7919; li&#7879;u, tr&ecirc;n hai lo&#7841;i ph&#432;&#417;ng ti&#7879;n, trong &#273;&oacute; m&#7897;t b&#7843;n n&#7857;m ngo&agrave;i &#273;&#7883;a &#273;i&#7875;m ho&#7863;c ngo&agrave;i thi&#7871;t b&#7883; ch&iacute;nh. Time Machine tr&ecirc;n m&#7897;t &#7893; &#273;&#7863;t c&#7841;nh Mac v&#7851;n c&oacute; th&#7875; m&#7845;t c&ugrave;ng m&aacute;y khi tr&#7897;m c&#7855;p, h&#7887;a ho&#7841;n ho&#7863;c s&#7921; c&#7889; &#273;i&#7879;n.</p>
+
+<h2>1. Ch&#7885;n &#7893; sao l&#432;u ph&ugrave; h&#7907;p</h2>
+<p>Apple khuy&#7871;n ngh&#7883; &#7893; Time Machine c&oacute; dung l&#432;&#7907;ng &iacute;t nh&#7845;t g&#7845;p &#273;&ocirc;i l&#432;&#7907;ng d&#7919; li&#7879;u c&#7847;n sao l&#432;u. V&iacute; d&#7909; Mac d&ugrave;ng kho&#7843;ng 700 GB th&igrave; &#7893; 2 TB h&#7907;p l&yacute; h&#417;n &#7893; 1 TB v&igrave; Time Machine c&#7847;n kh&ocirc;ng gian gi&#7919; nhi&#7873;u phi&ecirc;n b&#7843;n.</p>
+<ul><li><strong>&#7892; g&#7855;n tr&#7921;c ti&#7871;p:</strong> USB ho&#7863;c Thunderbolt, d&#7877; thi&#7871;t l&#7853;p v&agrave; th&#432;&#7901;ng nhanh nh&#7845;t.</li><li><strong>NAS h&#7895; tr&#7907; Time Machine:</strong> ti&#7879;n sao l&#432;u t&#7921; &#273;&#7897;ng trong m&#7841;ng; &#432;u ti&ecirc;n SMB n&#7871;u thi&#7871;t b&#7883; cho l&#7921;a ch&#7885;n.</li><li><strong>Nhi&#7873;u &#7893; lu&acirc;n phi&ecirc;n:</strong> gi&#7843;m r&#7911;i ro m&#7897;t &#7893; h&#7887;ng v&agrave; cho ph&eacute;p c&#7845;t m&#7897;t &#7893; &#7903; v&#7883; tr&iacute; kh&aacute;c.</li></ul>
+<p>APFS ho&#7863;c APFS Encrypted l&agrave; &#273;&#7883;nh d&#7841;ng &#273;&#432;&#7907;c &#432;u ti&ecirc;n cho &#7893; Time Machine m&#7899;i. N&#7871;u &#7893; &#273;ang ch&#7913;a d&#7919; li&#7879;u, h&atilde;y sao ch&eacute;p d&#7919; li&#7879;u &#273;&oacute; sang n&#417;i an to&agrave;n tr&#432;&#7899;c khi format v&igrave; thao t&aacute;c Erase trong Disk Utility s&#7869; x&oacute;a to&agrave;n b&#7897; &#7893;.</p>
+
+<h2>2. Chu&#7849;n b&#7883; v&agrave; m&atilde; h&oacute;a &#7893; backup</h2>
+<p>K&#7871;t n&#7889;i &#7893;, m&#7903; <strong>Disk Utility</strong>, ch&#7885;n &#273;&uacute;ng thi&#7871;t b&#7883; v&#7853;t l&yacute; v&agrave; d&ugrave;ng <strong>Erase</strong> n&#7871;u c&#7847;n. Ch&#7885;n scheme GUID Partition Map v&agrave; APFS. N&#7871;u mu&#7889;n d&ugrave;ng c&ugrave;ng &#7893; cho file th&ocirc;ng th&#432;&#7901;ng, h&atilde;y t&#7841;o m&#7897;t APFS volume ri&ecirc;ng thay v&igrave; tr&#7897;n file v&agrave;o volume Time Machine.</p>
+<blockquote>M&atilde; h&oacute;a backup l&agrave; m&#7863;c &#273;&#7883;nh n&ecirc;n d&ugrave;ng. &#7892; sao l&#432;u ch&#7913;a l&#7883;ch s&#7917; t&agrave;i li&#7879;u, email v&agrave; d&#7919; li&#7879;u t&agrave;i kho&#7843;n; ng&#432;&#7901;i c&#7847;m &#7893; kh&ocirc;ng n&ecirc;n &#273;&#7885;c &#273;&#432;&#7907;c ch&uacute;ng n&#7871;u thi&#7871;u m&#7853;t kh&#7849;u.</blockquote>
+<p>L&#432;u m&#7853;t kh&#7849;u m&atilde; h&oacute;a trong password manager ho&#7863;c n&#417;i kh&ocirc;i ph&#7909;c &#273;&#432;&#7907;c. N&#7871;u m&#7845;t m&#7853;t kh&#7849;u, Apple kh&ocirc;ng th&#7875; m&#7903; kh&oacute;a b&#7843;n backup thay b&#7841;n. V&#7899;i &#7893; m&#7841;ng, m&#7853;t kh&#7849;u chia s&#7867; NAS v&agrave; m&#7853;t kh&#7849;u m&atilde; h&oacute;a backup l&agrave; hai l&#7899;p kh&aacute;c nhau.</p>
+
+<h2>3. Thi&#7871;t l&#7853;p Time Machine</h2>
+<ol><li>M&#7903; <strong>Apple menu &gt; System Settings &gt; General &gt; Time Machine</strong>.</li><li>Ch&#7885;n <strong>Add Backup Disk</strong>.</li><li>Ch&#7885;n &#7893; ngo&agrave;i ho&#7863;c &#273;&iacute;ch m&#7841;ng &#273;&#432;&#7907;c h&#7895; tr&#7907;.</li><li>B&#7853;t m&atilde; h&oacute;a, &#273;&#7863;t m&#7853;t kh&#7849;u m&#7841;nh v&agrave; l&#432;u m&#7853;t kh&#7849;u an to&agrave;n.</li><li>Ch&#7901; l&#7847;n sao l&#432;u &#273;&#7847;u ti&ecirc;n ho&agrave;n t&#7845;t tr&#432;&#7899;c khi th&aacute;o &#7893;.</li></ol>
+<p>L&#7847;n &#273;&#7847;u c&oacute; th&#7875; m&#7845;t nhi&#7873;u gi&#7901; v&igrave; ph&#7843;i sao ch&eacute;p ph&#7847;n l&#7899;n d&#7919; li&#7879;u. C&aacute;c l&#7847;n sau th&#432;&#7901;ng nhanh h&#417;n v&igrave; Time Machine ch&#7881; sao l&#432;u thay &#273;&#7893;i. V&#7899;i MacBook, n&ecirc;n c&#7855;m ngu&#7891;n trong l&#7847;n &#273;&#7847;u v&agrave; k&#7871;t n&#7889;i &#7893; tr&#7921;c ti&#7871;p thay v&igrave; qua hub kh&ocirc;ng &#7893;n &#273;&#7883;nh.</p>
+
+<h2>4. Ch&#7885;n t&#7847;n su&#7845;t v&agrave; danh s&aacute;ch lo&#7841;i tr&#7915;</h2>
+<p>Trong <strong>Time Machine &gt; Options</strong>, macOS cho ph&eacute;p ch&#7885;n sao l&#432;u th&#7911; c&ocirc;ng ho&#7863;c t&#7921; &#273;&#7897;ng theo t&#7847;n su&#7845;t &#273;&#432;&#7907;c h&#7895; tr&#7907;. L&#7883;ch t&#7889;t nh&#7845;t l&agrave; l&#7883;ch di&#7877;n ra m&agrave; kh&ocirc;ng ph&#7909; thu&#7897;c v&agrave;o tr&iacute; nh&#7899;. &#7892; lu&ocirc;n k&#7871;t n&#7889;i ho&#7863;c NAS ph&ugrave; h&#7907;p h&#417;n n&#7871;u ng&#432;&#7901;i d&ugrave;ng th&#432;&#7901;ng qu&ecirc;n c&#7855;m &#7893;.</p>
+<p>Ch&#7881; lo&#7841;i tr&#7915; d&#7919; li&#7879;u c&oacute; th&#7875; t&aacute;i t&#7841;o ho&#7863;c &#273;&atilde; &#273;&#432;&#7907;c b&#7843;o v&#7879; b&#7857;ng h&#7879; th&#7889;ng kh&aacute;c, ch&#7859;ng h&#7841;n cache l&#7899;n, m&aacute;y &#7843;o th&#7917; nghi&#7879;m hay th&#432; m&#7909;c build. Kh&ocirc;ng lo&#7841;i tr&#7915; <code>Documents</code>, th&#432; vi&#7879;n &#7843;nh ho&#7863;c source code ch&#432;a c&oacute; remote ch&#7881; &#273;&#7875; l&#7847;n backup &#273;&#7847;u ch&#7841;y nhanh h&#417;n.</p>
+<p>Apple l&#432;u &yacute; r&#7857;ng m&#7909;c b&#7883; lo&#7841;i tr&#7915; v&#7851;n c&oacute; th&#7875; xu&#7845;t hi&#7879;n trong local snapshots. Local snapshot gi&uacute;p ph&#7909;c h&#7891;i ng&#7855;n h&#7841;n khi &#7893; backup ch&#432;a k&#7871;t n&#7889;i, nh&#432;ng n&oacute; n&#7857;m tr&ecirc;n ch&iacute;nh Mac n&ecirc;n kh&ocirc;ng ph&#7843;i b&#7843;n sao &#273;&#7897;c l&#7853;p.</p>
+
+<h2>5. Theo d&otilde;i v&agrave; ki&#7875;m tra b&#7843;n sao l&#432;u</h2>
+<p>Sau l&#7847;n ch&#7841;y, m&#7903; Time Machine settings v&agrave; x&aacute;c nh&#7853;n th&#7901;i gian backup g&#7847;n nh&#7845;t. Th&#7881;nh tho&#7843;ng m&#7903; giao di&#7879;n Time Machine, ch&#7885;n m&#7897;t file th&#7917; nghi&#7879;m t&#7915; m&#7889;c c&#361; v&agrave; kh&ocirc;i ph&#7909;c v&agrave;o th&#432; m&#7909;c t&#7841;m. Ki&#7875;m tra file c&oacute; m&#7903; &#273;&#432;&#7907;c v&agrave; n&#7897;i dung &#273;&uacute;ng.</p>
+<p>V&#7899;i backup m&#7841;ng &#273;&atilde; t&#7915;ng ch&#7841;y th&agrave;nh c&ocirc;ng, c&oacute; th&#7875; gi&#7919; ph&iacute;m Option khi m&#7903; menu Time Machine &#273;&#7875; ch&#7885;n <strong>Verify Backups</strong> tr&ecirc;n c&aacute;c phi&ecirc;n b&#7843;n macOS h&#7895; tr&#7907;. V&#7899;i &#7893; g&#7855;n tr&#7921;c ti&#7871;p, d&ugrave;ng <strong>First Aid</strong> trong Disk Utility khi nghi ng&#7901; l&#7895;i filesystem, nh&#432;ng v&#7851;n c&#7847;n th&#7917; kh&ocirc;i ph&#7909;c file th&#7921;c t&#7871;.</p>
+<blockquote>&ldquo;Backup completed&rdquo; ch&#7881; x&aacute;c nh&#7853;n t&aacute;c v&#7909; &#273;&atilde; k&#7871;t th&uacute;c. M&#7897;t l&#7847;n restore th&#7917; m&#7899;i x&aacute;c nh&#7853;n quy tr&igrave;nh ph&#7909;c h&#7891;i ho&#7841;t &#273;&#7897;ng.</blockquote>
+
+<h2>6. Kh&ocirc;i ph&#7909;c m&#7897;t file ho&#7863;c phi&ecirc;n b&#7843;n c&#361;</h2>
+<ol><li>K&#7871;t n&#7889;i &#7893; Time Machine.</li><li>M&#7903; Finder t&#7841;i th&#432; m&#7909;c t&#7915;ng ch&#7913;a file.</li><li>M&#7903; Time Machine t&#7915; menu ho&#7863;c Spotlight.</li><li>Di chuy&#7875;n t&#7899;i th&#7901;i &#273;i&#7875;m c&#7847;n l&#7845;y l&#7841;i.</li><li>Ch&#7885;n file ho&#7863;c th&#432; m&#7909;c v&agrave; b&#7845;m <strong>Restore</strong>.</li></ol>
+<p>N&#7871;u file hi&#7879;n t&#7841;i v&#7851;n t&#7891;n t&#7841;i, macOS c&oacute; th&#7875; h&#7887;i gi&#7919; b&#7843;n g&#7889;c, thay th&#7871; ho&#7863;c gi&#7919; c&#7843; hai. V&#7899;i t&agrave;i li&#7879;u quan tr&#7885;ng, n&ecirc;n kh&ocirc;i ph&#7909;c sang v&#7883; tr&iacute; t&#7841;m v&agrave; so s&aacute;nh tr&#432;&#7899;c khi ghi &#273;&egrave;.</p>
+
+<h2>7. Kh&ocirc;i ph&#7909;c to&agrave;n b&#7897; ho&#7863;c chuy&#7875;n sang Mac m&#7899;i</h2>
+<p>Time Machine kh&ocirc;ng &#273;&#417;n gi&#7843;n ch&eacute;p nguy&ecirc;n h&#7879; &#273;i&#7873;u h&agrave;nh c&#361; &#273;&egrave; l&ecirc;n m&aacute;y m&#7899;i. N&#7871;u &#7893; kh&#7903;i &#273;&#7897;ng h&#7887;ng, tr&#432;&#7899;c ti&ecirc;n s&#7917;a ho&#7863;c thay &#7893; v&agrave; c&agrave;i l&#7841;i macOS. Sau &#273;&oacute; d&ugrave;ng <strong>Migration Assistant</strong> &#273;&#7875; chuy&#7875;n t&agrave;i kho&#7843;n, &#7913;ng d&#7909;ng, t&agrave;i li&#7879;u v&agrave; c&agrave;i &#273;&#7863;t t&#7915; b&#7843;n Time Machine.</p>
+<p>Tr&ecirc;n m&aacute;y &#273;&atilde; thi&#7871;t l&#7853;p, m&#7903; <strong>Applications &gt; Utilities &gt; Migration Assistant</strong>, ch&#7885;n chuy&#7875;n t&#7915; Mac, Time Machine ho&#7863;c startup disk, ch&#7885;n b&#7843;n backup v&agrave; c&aacute;c nh&oacute;m d&#7919; li&#7879;u. N&#7871;u t&ecirc;n t&agrave;i kho&#7843;n &#273;&atilde; t&#7891;n t&#7841;i, &#273;&#7885;c k&#7929; l&#7921;a ch&#7885;n thay th&#7871; hay &#273;&#7893;i t&ecirc;n &#273;&#7875; tr&aacute;nh ghi &#273;&egrave; ngo&agrave;i &yacute; mu&#7889;n.</p>
+<p>Sau khi chuy&#7875;n xong, ki&#7875;m tra &#273;&#259;ng nh&#7853;p, th&#432; vi&#7879;n &#7843;nh, email, &#7913;ng d&#7909;ng c&oacute; license, project l&#7853;p tr&igrave;nh, SSH key v&agrave; d&#7919; li&#7879;u cloud ch&#432;a t&#7843;i v&#7873;. M&#7897;t s&#7889; &#7913;ng d&#7909;ng c&#7847;n &#273;&#259;ng nh&#7853;p ho&#7863;c c&#7845;p quy&#7873;n l&#7841;i.</p>
+
+<h2>8. X&#7917; l&yacute; Time Machine ch&#7841;y ch&#7853;m ho&#7863;c th&#7845;t b&#7841;i</h2>
+<ul><li><strong>Preparing k&eacute;o d&agrave;i:</strong> ch&#7901; indexing, ki&#7875;m tra antivirus v&agrave; file l&#7899;n thay &#273;&#7893;i th&#432;&#7901;ng xuy&ecirc;n.</li><li><strong>&#7892; kh&ocirc;ng xu&#7845;t hi&#7879;n:</strong> k&#7871;t n&#7889;i tr&#7921;c ti&#7871;p, &#273;&#7893;i c&aacute;p ho&#7863;c c&#7893;ng, ki&#7875;m tra Finder v&agrave; Disk Utility.</li><li><strong>&#7892; read-only:</strong> ch&#7841;y First Aid, ki&#7875;m tra filesystem v&agrave; quy&#7873;n truy c&#7853;p.</li><li><strong>Kh&ocirc;ng &#273;&#7911; dung l&#432;&#7907;ng:</strong> d&ugrave;ng &#7893; l&#7899;n h&#417;n ho&#7863;c lo&#7841;i tr&#7915; d&#7919; li&#7879;u c&oacute; th&#7875; t&aacute;i t&#7841;o; Apple &#273;&#7873; xu&#7845;t dung l&#432;&#7907;ng l&yacute; t&#432;&#7903;ng &iacute;t nh&#7845;t g&#7845;p &#273;&ocirc;i d&#7919; li&#7879;u c&#7847;n backup.</li><li><strong>Backup m&#7841;ng l&#7895;i:</strong> ki&#7875;m tra Wi-Fi/Ethernet, SMB, firmware NAS, VPN v&agrave; firewall b&ecirc;n th&#7913; ba.</li><li><strong>Mac g&#7847;n &#273;&#7847;y:</strong> gi&#7843;i ph&oacute;ng dung l&#432;&#7907;ng &#7893; trong v&igrave; Time Machine c&#7847;n kh&ocirc;ng gian t&#7841;m v&agrave; local snapshot.</li></ul>
+<p>Kh&ocirc;ng x&oacute;a th&#7911; c&ocirc;ng c&#7845;u tr&uacute;c th&#432; m&#7909;c b&ecirc;n trong backup &#273;&#7875; l&#7845;y ch&#7895;. Time Machine t&#7921; qu&#7843;n l&yacute; l&#7883;ch s&#7917; v&agrave; lo&#7841;i b&#7887; b&#7843;n c&#361; khi c&#7847;n. N&#7871;u ph&#7843;i b&#7855;t &#273;&#7847;u l&#7841;i, ch&#7881; erase &#7893; sau khi &#273;&atilde; x&aacute;c nh&#7853;n c&ograve;n b&#7843;n sao kh&aacute;c c&#7911;a d&#7919; li&#7879;u quan tr&#7885;ng.</p>
+
+<h2>9. Nh&#7919;ng d&#7919; li&#7879;u c&#7847;n chi&#7871;n l&#432;&#7907;c ri&ecirc;ng</h2>
+<p>Database &#273;ang ch&#7841;y, m&aacute;y &#7843;o, th&#432; vi&#7879;n video l&#7899;n v&agrave; d&#7919; li&#7879;u &#7913;ng d&#7909;ng chuy&ecirc;n d&#7909;ng c&oacute; th&#7875; thay &#273;&#7893;i trong l&uacute;c backup. H&atilde;y d&ugrave;ng c&#417; ch&#7871; export ho&#7863;c snapshot nh&#7845;t qu&aacute;n c&#7911;a &#7913;ng d&#7909;ng, r&#7891;i &#273;&#7875; Time Machine sao l&#432;u artifact &#273;&oacute;. Developer c&#361;ng n&ecirc;n push Git repository l&ecirc;n remote; Time Machine b&#7843;o v&#7879; working tree, c&ograve;n remote Git t&#7841;o th&ecirc;m l&#7883;ch s&#7917; v&agrave; b&#7843;n sao ngo&agrave;i m&aacute;y.</p>
+<p>Th&#432; vi&#7879;n &#7843;nh d&ugrave;ng iCloud Photos v&#7899;i t&ugrave;y ch&#7885;n Optimize Mac Storage c&oacute; th&#7875; kh&ocirc;ng gi&#7919; to&agrave;n b&#7897; b&#7843;n g&#7889;c tr&ecirc;n Mac. H&atilde;y hi&#7875;u d&#7919; li&#7879;u n&agrave;o th&#7921;c s&#7921; c&oacute; tr&ecirc;n &#7893; trong v&agrave; c&acirc;n nh&#7855;c t&#7843;i b&#7843;n g&#7889;c ho&#7863;c c&oacute; ph&#432;&#417;ng &aacute;n xu&#7845;t &#273;&#7897;c l&#7853;p.</p>
+
+<h2>10. Checklist backup macOS &#273;&aacute;ng tin c&#7853;y</h2>
+<ol><li>&#7892; backup c&oacute; dung l&#432;&#7907;ng t&#7889;i thi&#7875;u kho&#7843;ng g&#7845;p &#273;&ocirc;i d&#7919; li&#7879;u &#273;ang d&ugrave;ng.</li><li>Backup &#273;&#432;&#7907;c m&atilde; h&oacute;a v&agrave; m&#7853;t kh&#7849;u n&#7857;m trong password manager.</li><li>L&#7883;ch ch&#7841;y ph&ugrave; h&#7907;p v&#7899;i t&#7847;n su&#7845;t thay &#273;&#7893;i d&#7919; li&#7879;u.</li><li>Danh s&aacute;ch lo&#7841;i tr&#7915; ch&#7881; ch&#7913;a d&#7919; li&#7879;u c&oacute; th&#7875; t&aacute;i t&#7841;o.</li><li>Th&#7901;i gian backup g&#7847;n nh&#7845;t &#273;&#432;&#7907;c ki&#7875;m tra &#273;&#7883;nh k&#7923;.</li><li>M&#7895;i th&aacute;ng th&#7917; kh&ocirc;i ph&#7909;c &iacute;t nh&#7845;t m&#7897;t file.</li><li>C&oacute; th&ecirc;m m&#7897;t b&#7843;n sao ngo&agrave;i m&aacute;y ho&#7863;c ngo&agrave;i &#273;&#7883;a &#273;i&#7875;m.</li><li>D&#7919; li&#7879;u &#273;&#7863;c th&ugrave; nh&#432; database v&agrave; m&aacute;y &#7843;o c&oacute; quy tr&igrave;nh nh&#7845;t qu&aacute;n ri&ecirc;ng.</li><li>Quy tr&igrave;nh Migration Assistant &#273;&#432;&#7907;c ghi l&#7841;i tr&#432;&#7899;c khi c&oacute; s&#7921; c&#7889;.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Time Machine cung c&#7845;p m&#7897;t n&#7873;n t&#7843;ng backup thu&#7853;n ti&#7879;n cho macOS, nh&#432;ng &#273;&#7897; tin c&#7853;y &#273;&#7871;n t&#7915; c&aacute;ch v&#7853;n h&agrave;nh: ch&#7885;n &#7893; &#273;&#7911; l&#7899;n, b&#7853;t m&atilde; h&oacute;a, sao l&#432;u t&#7921; &#273;&#7897;ng, gi&#7919; th&ecirc;m b&#7843;n ngo&agrave;i m&aacute;y v&agrave; th&#7917; restore &#273;&#7883;nh k&#7923;. Khi nh&#7919;ng b&#432;&#7899;c n&agrave;y tr&#7903; th&agrave;nh th&oacute;i quen, Time Machine kh&ocirc;ng ch&#7881; l&agrave; l&#7883;ch s&#7917; file m&agrave; l&agrave; m&#7897;t k&#7871; ho&#7841;ch ph&#7909;c h&#7891;i th&#7921;c s&#7921;.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://support.apple.com/mac-backup" target="_blank" rel="noopener noreferrer">Apple Support: Back up your Mac</a></li><li><a href="https://support.apple.com/guide/mac-help/back-up-files-mh35860/mac" target="_blank" rel="noopener noreferrer">Apple macOS User Guide: Back up files with Time Machine</a></li><li><a href="https://support.apple.com/102551" target="_blank" rel="noopener noreferrer">Apple Support: Restore your Mac from a backup</a></li><li><a href="https://support.apple.com/102220" target="_blank" rel="noopener noreferrer">Apple Support: Time Machine troubleshooting</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

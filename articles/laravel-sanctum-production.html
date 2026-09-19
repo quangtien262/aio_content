@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Laravel Sanctum: X&aacute;c th&#7921;c SPA v&agrave; API an to&agrave;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel Sanctum, x&aacute;c th&#7921;c Laravel, SPA authentication, API token, CSRF, Bearer token, token abilities</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, Sanctum, PHP, API Security, Authentication, SPA, Mobile API, Backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n Laravel Sanctum cho SPA, mobile v&agrave; API: cookie session, CSRF, CORS, token abilities, thu h&#7891;i token v&agrave; b&#7843;o m&#7853;t production.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/laravel-sanctum-production.jpg" alt="Laravel Sanctum th&#7921;c chi&#7871;n: X&aacute;c th&#7921;c SPA, mobile v&agrave; API token an to&agrave;n" width="1440" height="810"></p><h1>Laravel Sanctum th&#7921;c chi&#7871;n: X&aacute;c th&#7921;c SPA, mobile v&agrave; API token an to&agrave;n</h1><p><strong>Laravel Sanctum gi&#7843;i quy&#7871;t hai b&agrave;i to&aacute;n kh&aacute;c nhau: x&aacute;c th&#7921;c SPA ch&iacute;nh ch&#7911; b&#7857;ng session cookie v&agrave; c&#7845;p personal access token cho mobile ho&#7863;c API client.</strong> Ph&#7847;n l&#7899;n l&#7895;i tri&#7875;n khai &#273;&#7871;n t&#7915; vi&#7879;c tr&#7897;n hai m&ocirc; h&igrave;nh n&agrave;y, ch&#7859;ng h&#7841;n l&#432;u Bearer token c&#7911;a SPA trong localStorage ho&#7863;c c&#7845;u h&igrave;nh CORS &#273;&uacute;ng nh&#432;ng qu&ecirc;n g&#7917;i cookie.</p>
+
+<h2>Ch&#7885;n &#273;&uacute;ng m&ocirc; h&igrave;nh tr&#432;&#7899;c khi vi&#7871;t code</h2>
+<table><thead><tr><th>Client</th><th>C&#417; ch&#7871; n&ecirc;n d&ugrave;ng</th><th>L&yacute; do</th></tr></thead><tbody><tr><td>SPA ch&iacute;nh ch&#7911; c&ugrave;ng top-level domain</td><td>Session cookie + CSRF</td><td>Th&ocirc;ng tin x&aacute;c th&#7921;c n&#7857;m trong cookie HttpOnly v&agrave; h&#432;&#7903;ng c&#417; ch&#7871; session c&#7911;a Laravel</td></tr><tr><td>&#7912;ng d&#7909;ng mobile</td><td>Personal access token</td><td>Client g&#7917;i Bearer token tr&ecirc;n m&#7895;i request</td></tr><tr><td>CLI ho&#7863;c t&iacute;ch h&#7907;p &#273;&#417;n gi&#7843;n</td><td>Personal access token c&oacute; abilities</td><td>D&#7877; c&#7845;p, gi&#7899;i h&#7841;n v&agrave; thu h&#7891;i theo thi&#7871;t b&#7883; ho&#7863;c m&#7909;c &#273;&iacute;ch</td></tr><tr><td>&#7910;y quy&#7873;n b&ecirc;n th&#7913; ba chu&#7849;n OAuth</td><td>Laravel Passport ho&#7863;c OAuth provider</td><td>Sanctum kh&ocirc;ng thay th&#7871; &#273;&#7847;y &#273;&#7911; authorization code flow, client credentials v&agrave; consent</td></tr></tbody></table>
+<blockquote>V&#7899;i SPA ch&iacute;nh ch&#7911;, t&agrave;i li&#7879;u Laravel khuy&#7871;n ngh&#7883; d&ugrave;ng x&aacute;c th&#7921;c SPA d&#7921;a tr&ecirc;n cookie c&#7911;a Sanctum, kh&ocirc;ng d&ugrave;ng API token.</blockquote>
+
+<h2>C&agrave;i Sanctum v&agrave; b&#7843;o v&#7879; route</h2>
+<p>Trong Laravel 13, l&#7879;nh c&agrave;i API s&#7869; c&agrave;i v&agrave; c&#7845;u h&igrave;nh Sanctum:</p>
+<pre><code>php artisan install:api
+php artisan migrate</code></pre>
+<p>Model ng&#432;&#7901;i d&ugrave;ng c&#7847;n trait <code>HasApiTokens</code> n&#7871;u &#7913;ng d&#7909;ng ph&aacute;t personal access token:</p>
+<pre><code>use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+}</code></pre>
+<p>D&ugrave;ng c&ugrave;ng middleware <code>auth:sanctum</code> cho route nh&#7853;n cookie t&#7915; SPA ho&#7863;c Bearer token t&#7915; client b&ecirc;n ngo&agrave;i:</p>
+<pre><code>Route::middleware('auth:sanctum')-&gt;group(function () {
+    Route::get('/user', fn (Request $request) =&gt; $request-&gt;user());
+    Route::post('/projects', [ProjectController::class, 'store']);
+});</code></pre>
+
+<h2>Lu&#7891;ng &#273;&#259;ng nh&#7853;p &#273;&uacute;ng cho SPA</h2>
+<p>SPA v&agrave; API ph&#7843;i d&ugrave;ng chung top-level domain, d&ugrave; c&oacute; th&#7875; n&#7857;m &#7903; c&aacute;c subdomain kh&aacute;c nhau, v&iacute; d&#7909; <code>app.example.com</code> v&agrave; <code>api.example.com</code>. B&#7853;t stateful API middleware trong <code>bootstrap/app.php</code>:</p>
+<pre><code>use Illuminate\Foundation\Configuration\Middleware;
+
+-&gt;withMiddleware(function (Middleware $middleware): void {
+    $middleware-&gt;statefulApi();
+})</code></pre>
+<p>Tr&#432;&#7899;c khi &#273;&#259;ng nh&#7853;p, client g&#7885;i endpoint CSRF, sau &#273;&oacute; m&#7899;i g&#7917;i th&ocirc;ng tin &#273;&#259;ng nh&#7853;p:</p>
+<pre><code>axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+
+await axios.get('/sanctum/csrf-cookie');
+await axios.post('/login', { email, password });
+const { data } = await axios.get('/api/user');</code></pre>
+<p>Request &#273;&#7847;u ti&ecirc;n &#273;&#7863;t cookie <code>XSRF-TOKEN</code>. Axios &#273;&#7885;c gi&aacute; tr&#7883; &#273;&oacute; v&agrave; g&#7917;i header <code>X-XSRF-TOKEN</code> cho request thay &#273;&#7893;i d&#7919; li&#7879;u. Cookie session x&aacute;c &#273;&#7883;nh ng&#432;&#7901;i d&ugrave;ng; CSRF token ch&#7913;ng minh request &#273;&#7871;n t&#7915; giao di&#7879;n h&#7907;p l&#7879;. Hai th&agrave;nh ph&#7847;n c&oacute; vai tr&ograve; kh&aacute;c nhau.</p>
+
+<h2>C&#7845;u h&igrave;nh domain, cookie v&agrave; CORS</h2>
+<p>C&aacute;c bi&#7871;n m&ocirc;i tr&#432;&#7901;ng ph&#7909; thu&#7897;c domain th&#7921;c t&#7871;, nh&#432;ng m&#7897;t c&#7845;u h&igrave;nh nhi&#7873;u subdomain th&#432;&#7901;ng c&oacute; d&#7841;ng:</p>
+<pre><code>APP_URL=https://api.example.com
+FRONTEND_URL=https://app.example.com
+SESSION_DOMAIN=.example.com
+SESSION_SECURE_COOKIE=true
+SANCTUM_STATEFUL_DOMAINS=app.example.com</code></pre>
+<p>N&#7871;u development d&ugrave;ng port, ph&#7843;i &#273;&#432;a c&#7843; port v&agrave;o danh s&aacute;ch stateful. Khi frontend g&#7885;i kh&aacute;c origin, c&#7845;u h&igrave;nh CORS ph&#7843;i cho ph&eacute;p &#273;&uacute;ng origin v&agrave; b&#7853;t <code>supports_credentials</code>. Kh&ocirc;ng th&#7875; d&ugrave;ng wildcard <code>*</code> cho origin khi g&#7917;i credential.</p>
+<ul><li>Ch&#7881; d&ugrave;ng HTTPS &#7903; production v&agrave; b&#7853;t Secure cho session cookie.</li><li>Gi&#7919; HttpOnly cho cookie session &#273;&#7875; JavaScript kh&ocirc;ng &#273;&#7885;c &#273;&#432;&#7907;c.</li><li>Ch&#7885;n SameSite ph&ugrave; h&#7907;p v&#7899;i ki&#7871;n tr&uacute;c; kh&ocirc;ng h&#7841; xu&#7889;ng <code>None</code> n&#7871;u kh&ocirc;ng th&#7921;c s&#7921; c&#7847;n.</li><li>Kh&ocirc;ng cho ph&eacute;p origin &#273;&#7897;ng d&#7921;a tr&#7921;c ti&#7871;p tr&ecirc;n header c&#7911;a request.</li><li>Proxy ho&#7863;c load balancer ph&#7843;i chuy&#7875;n ti&#7871;p scheme ch&iacute;nh x&aacute;c &#273;&#7875; Laravel nh&#7853;n bi&#7871;t HTTPS.</li></ul>
+
+<h2>C&#7845;p token cho mobile v&agrave; API client</h2>
+<p>Token ch&#7881; hi&#7875;n th&#7883; d&#7841;ng r&otilde; m&#7897;t l&#7847;n khi &#273;&#432;&#7907;c t&#7841;o; Sanctum l&#432;u b&#7843;n b&#259;m SHA-256 trong database. H&atilde;y &#273;&#7863;t t&ecirc;n theo thi&#7871;t b&#7883; ho&#7863;c m&#7909;c &#273;&iacute;ch v&agrave; ch&#7881; c&#7845;p abilities c&#7847;n thi&#7871;t:</p>
+<pre><code>$token = $user-&gt;createToken(
+    'iphone-15',
+    ['projects:read', 'projects:update'],
+    now()-&gt;addDays(30),
+);
+
+return ['token' =&gt; $token-&gt;plainTextToken];</code></pre>
+<p>Client g&#7917;i token qua header, kh&ocirc;ng &#273;&#7863;t trong query string:</p>
+<pre><code>Authorization: Bearer 1|plain-text-token</code></pre>
+<p>Tr&ecirc;n mobile, l&#432;u token trong Keychain ho&#7863;c Keystore. V&#7899;i CLI v&agrave; server integration, d&ugrave;ng secret manager ho&#7863;c credential store c&#7911;a h&#7879; &#273;i&#7873;u h&agrave;nh; kh&ocirc;ng commit token v&agrave;o source, file c&#7845;u h&igrave;nh m&#7851;u hay log.</p>
+
+<h2>Abilities kh&ocirc;ng thay th&#7871; authorization policy</h2>
+<p>Abilities gi&#7899;i h&#7841;n token &#273;&#432;&#7907;c ph&eacute;p l&agrave;m g&igrave;, c&ograve;n policy x&aacute;c &#273;&#7883;nh ng&#432;&#7901;i d&ugrave;ng c&oacute; quy&#7873;n tr&ecirc;n resource c&#7909; th&#7875; hay kh&ocirc;ng. Route c&oacute; th&#7875; y&ecirc;u c&#7847;u m&#7897;t ho&#7863;c nhi&#7873;u ability:</p>
+<pre><code>Route::put('/projects/{project}', UpdateProjectController::class)
+    -&gt;middleware(['auth:sanctum', 'abilities:projects:update']);</code></pre>
+<p>Trong policy, v&#7851;n ph&#7843;i ki&#7875;m tra quy&#7873;n s&#7903; h&#7919;u ho&#7863;c vai tr&ograve;:</p>
+<pre><code>public function update(User $user, Project $project): bool
+{
+    return $user-&gt;id === $project-&gt;owner_id
+        &amp;&amp; $user-&gt;tokenCan('projects:update');
+}</code></pre>
+<p>V&#7899;i request t&#7915; SPA ch&iacute;nh ch&#7911;, <code>tokenCan()</code> c&oacute; th&#7875; tr&#7843; v&#7873; true theo thi&#7871;t k&#7871; c&#7911;a Sanctum. V&igrave; v&#7853;y policy ho&#7863;c gate m&#7899;i l&agrave; n&#417;i b&#7855;t bu&#7897;c th&#7921;c thi quy&#7873;n nghi&#7879;p v&#7909;.</p>
+
+<h2>Thu h&#7891;i, h&#7871;t h&#7841;n v&agrave; d&#7885;n token</h2>
+<p>M&#7863;c &#273;&#7883;nh token Sanctum kh&ocirc;ng h&#7871;t h&#7841;n n&#7871;u &#7913;ng d&#7909;ng kh&ocirc;ng c&#7845;u h&igrave;nh expiration. Production n&ecirc;n c&oacute; th&#7901;i h&#7841;n ph&ugrave; h&#7907;p, danh s&aacute;ch thi&#7871;t b&#7883; &#273;ang &#273;&#259;ng nh&#7853;p v&agrave; ch&#7913;c n&#259;ng thu h&#7891;i:</p>
+<pre><code>// Thu h&#7891;i token hi&#7879;n t&#7841;i
+$request-&gt;user()-&gt;currentAccessToken()-&gt;delete();
+
+// Thu h&#7891;i m&#7897;t token c&#7909; th&#7875;
+$user-&gt;tokens()-&gt;whereKey($tokenId)-&gt;delete();
+
+// Thu h&#7891;i m&#7885;i token
+$user-&gt;tokens()-&gt;delete();</code></pre>
+<p>L&ecirc;n l&#7883;ch d&#7885;n b&#7843;n ghi token &#273;&atilde; h&#7871;t h&#7841;n:</p>
+<pre><code>use Illuminate\Support\Facades\Schedule;
+
+Schedule::command('sanctum:prune-expired --hours=24')-&gt;daily();</code></pre>
+<p>&#272;&#7893;i m&#7853;t kh&#7849;u, kh&oacute;a t&agrave;i kho&#7843;n ho&#7863;c ph&aacute;t hi&#7879;n thi&#7871;t b&#7883; m&#7845;t n&ecirc;n k&iacute;ch ho&#7841;t ch&iacute;nh s&aacute;ch thu h&#7891;i t&#432;&#417;ng &#7913;ng. V&#7899;i h&#7879; th&#7889;ng nh&#7841;y c&#7843;m, ghi audit log cho vi&#7879;c t&#7841;o, s&#7917; d&#7909;ng g&#7847;n nh&#7845;t v&agrave; thu h&#7891;i token, nh&#432;ng kh&ocirc;ng ghi gi&aacute; tr&#7883; token d&#7841;ng r&otilde;.</p>
+
+<h2>Rate limit endpoint &#273;&#259;ng nh&#7853;p v&agrave; API</h2>
+<p>Rate limiting gi&#7843;m brute force v&agrave; l&#7841;m d&#7909;ng API. Ph&acirc;n &#273;o&#7841;n gi&#7899;i h&#7841;n theo user khi &#273;&atilde; &#273;&#259;ng nh&#7853;p, theo IP v&agrave; &#273;&#7883;nh danh &#273;&atilde; chu&#7849;n h&oacute;a khi ch&#432;a &#273;&#259;ng nh&#7853;p:</p>
+<pre><code>RateLimiter::for('login', function (Request $request) {
+    $email = Str::lower((string) $request-&gt;input('email'));
+
+    return [
+        Limit::perMinute(20)-&gt;by('ip:'.$request-&gt;ip()),
+        Limit::perMinute(5)-&gt;by('login:'.$email.'|'.$request-&gt;ip()),
+    ];
+});</code></pre>
+<p>Kh&ocirc;ng ch&#7881; d&#7921;a v&agrave;o email v&igrave; k&#7867; t&#7845;n c&ocirc;ng c&oacute; th&#7875; l&agrave;m kh&oacute;a t&agrave;i kho&#7843;n c&#7911;a ng&#432;&#7901;i kh&aacute;c. Trong h&#7879; th&#7889;ng nhi&#7873;u m&aacute;y ch&#7911;, d&ugrave;ng cache t&#7853;p trung nh&#432; Redis &#273;&#7875; m&#7885;i instance chia s&#7867; c&ugrave;ng b&#7897; &#273;&#7871;m.</p>
+
+<h2>C&aacute;c l&#7895;i production th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li><strong>401:</strong> request kh&ocirc;ng g&#7917;i cookie ho&#7863;c Bearer token, route d&ugrave;ng sai guard.</li><li><strong>419:</strong> ch&#432;a g&#7885;i <code>/sanctum/csrf-cookie</code>, thi&#7871;u header XSRF ho&#7863;c session &#273;&atilde; h&#7871;t h&#7841;n.</li><li><strong>CORS error:</strong> origin kh&ocirc;ng kh&#7899;p, thi&#7871;u credentials ho&#7863;c preflight b&#7883; proxy ch&#7863;n.</li><li><strong>Ho&#7841;t &#273;&#7897;ng local nh&#432;ng l&#7895;i production:</strong> sai session domain, Secure cookie ho&#7863;c trusted proxy.</li><li><strong>Token c&oacute; ability nh&#432;ng v&#7851;n 403:</strong> policy t&#7915; ch&#7889;i quy&#7873;n tr&ecirc;n resource c&#7909; th&#7875;.</li><li><strong>&#272;&#259;ng xu&#7845;t nh&#432;ng token c&ograve;n d&ugrave;ng &#273;&#432;&#7907;c:</strong> ch&#7881; x&oacute;a session m&agrave; ch&#432;a thu h&#7891;i personal access token.</li></ul>
+
+<h2>Ki&#7875;m th&#7917; b&#7855;t bu&#7897;c</h2>
+<ul><li>SPA l&#7845;y CSRF cookie, &#273;&#259;ng nh&#7853;p, g&#7885;i route b&#7843;o v&#7879; v&agrave; &#273;&#259;ng xu&#7845;t.</li><li>Request thay &#273;&#7893;i d&#7919; li&#7879;u thi&#7871;u CSRF token ph&#7843;i b&#7883; t&#7915; ch&#7889;i.</li><li>Token &#273;&uacute;ng ability &#273;&#432;&#7907;c ph&eacute;p; token thi&#7871;u ability nh&#7853;n 403.</li><li>User kh&ocirc;ng s&#7903; h&#7919;u resource v&#7851;n b&#7883; policy t&#7915; ch&#7889;i d&ugrave; token c&oacute; ability.</li><li>Token h&#7871;t h&#7841;n ho&#7863;c &#273;&atilde; thu h&#7891;i nh&#7853;n 401.</li><li>Rate limiter tr&#7843; 429 v&agrave; header retry ph&ugrave; h&#7907;p.</li><li>CORS ch&#7881; ch&#7845;p nh&#7853;n origin &#273;&atilde; &#273;&#7883;nh tr&#432;&#7899;c.</li></ul>
+
+<h2>Checklist tr&#432;&#7899;c khi ph&aacute;t h&agrave;nh</h2>
+<ol><li>SPA ch&iacute;nh ch&#7911; d&ugrave;ng cookie session, kh&ocirc;ng l&#432;u personal token trong localStorage.</li><li>Stateful domains, session domain, CORS v&agrave; HTTPS &#273;&atilde; kh&#7899;p m&ocirc;i tr&#432;&#7901;ng th&#7853;t.</li><li>Mobile/API token c&oacute; abilities t&#7889;i thi&#7875;u v&agrave; th&#7901;i h&#7841;n h&#7919;u h&#7841;n.</li><li>M&#7885;i route nh&#7841;y c&#7843;m c&oacute; c&#7843; authentication v&agrave; policy/gate.</li><li>Token c&oacute; giao di&#7879;n qu&#7843;n l&yacute; thi&#7871;t b&#7883; v&agrave; quy tr&igrave;nh thu h&#7891;i.</li><li>Endpoint login, reset password v&agrave; API quan tr&#7885;ng c&oacute; rate limit.</li><li>Log che token, cookie, m&#7853;t kh&#7849;u v&agrave; d&#7919; li&#7879;u b&iacute; m&#7853;t.</li><li>Ki&#7875;m th&#7917; 401, 403, 419, 429 v&agrave; lu&#7891;ng thu h&#7891;i token.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Sanctum &#273;&#417;n gi&#7843;n khi m&#7895;i lo&#7841;i client &#273;i &#273;&uacute;ng lu&#7891;ng: SPA d&ugrave;ng session cookie v&agrave; CSRF; mobile ho&#7863;c API client d&ugrave;ng Bearer token c&oacute; abilities. L&#7899;p x&aacute;c th&#7921;c n&agrave;y ch&#7881; l&agrave; &#273;i&#7875;m b&#7855;t &#273;&#7847;u. M&#7897;t h&#7879; th&#7889;ng production c&ograve;n c&#7847;n policy, th&#7901;i h&#7841;n v&agrave; thu h&#7891;i token, rate limit, HTTPS, c&#7845;u h&igrave;nh cookie ch&#7863;t ch&#7869; v&agrave; ki&#7875;m th&#7917; c&aacute;c t&igrave;nh hu&#7889;ng th&#7845;t b&#7841;i.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://laravel.com/framework/docs/13.x/sanctum" target="_blank" rel="noopener noreferrer">Laravel 13 Documentation: Sanctum</a></li><li><a href="https://laravel.com/framework/docs/13.x/authorization" target="_blank" rel="noopener noreferrer">Laravel 13 Documentation: Authorization</a></li><li><a href="https://laravel.com/framework/docs/13.x/routing#rate-limiting" target="_blank" rel="noopener noreferrer">Laravel 13 Documentation: Rate Limiting</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

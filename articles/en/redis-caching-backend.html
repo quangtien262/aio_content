@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">safe-redis-caching-backends-ttl-invalidation-stampede</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Safe Redis Caching Design for Backends</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Redis cache, cache-aside, cache invalidation, cache stampede, Redis TTL, backend performance, negative caching</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Redis, Caching, Backend, Performance, Cache Aside, Distributed Systems, Database, Scalability</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design safe backend caching with Redis cache-aside, TTLs, invalidation, stampede protection, memory limits, fallbacks, and production monitoring.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/redis-caching-backend.jpg" alt="Safe Redis Caching for Backends: TTLs, Invalidation, and Stampede Protection" width="1440" height="810"></p><h1>Safe Redis Caching for Backends: TTLs, Invalidation, and Stampede Protection</h1><p><strong>A cache can sharply reduce latency and database load, but it can also serve stale data, hide failures, and unleash concurrent queries when a hot key expires.</strong> Production cache design must define the authoritative source, acceptable staleness, invalidation strategy, and application behavior when Redis is unavailable.</p>
+
+<h2>When should you add a cache?</h2>
+<p>Add caching only after measuring the bottleneck. It fits repeatedly read data that is expensive to compute, changes less often than it is read, and can tolerate bounded staleness. Examples include product catalogs, public configuration, profiles, aggregate queries, and responses from slow dependencies.</p>
+<p>Do not use a cache to hide poor queries, missing indexes, or bad API design. Balances, payment state, and authorization require special care; a fast but incorrect cache hit is still a defect.</p>
+
+<h2>Cache-aside is easy to reason about</h2>
+<ol><li>Read Redis using a cache key.</li><li>On a hit, deserialize and return.</li><li>On a miss, read the authoritative database.</li><li>Store the result in Redis with a TTL.</li><li>When data changes, write the database and delete the cache key.</li></ol>
+<pre><code>async function getProduct(id) {
+  const key = `shop:v3:product:${id}`;
+  const cached = await redis.get(key);
+
+  if (cached !== null) return JSON.parse(cached);
+
+  const product = await database.products.findById(id);
+  await redis.set(key, JSON.stringify(product), { EX: 300 });
+  return product;
+}</code></pre>
+<p>The cache holds only requested data and the database remains authoritative. The tradeoffs are slower misses, application-managed cache logic, and concurrency concerns.</p>
+
+<h2>Namespace and version keys</h2>
+<pre><code>shop:v3:product:8421
+shop:v3:category:18:page:2:sort:newest
+billing:v1:customer-summary:991</code></pre>
+<p>A schema version enables a new cache format without rewriting old entries. Do not embed secrets or unnormalized user input in keys. Canonicalize and hash complex query parameters to avoid multiple keys for the same query.</p>
+
+<h2>TTL is a staleness boundary</h2>
+<p>Choose TTL from business tolerance and acceptable primary-store load. Product data may tolerate minutes, a critical feature flag seconds, and static content much longer.</p>
+<p>Add random jitter so keys do not expire together:</p>
+<pre><code>const baseTtl = 300;
+const jitter = Math.floor(Math.random() * 60);
+await redis.set(key, payload, { EX: baseTtl + jitter });</code></pre>
+<p>Every cache-aside entry should have a TTL even with explicit invalidation. It limits stale duration when an invalidation is missed.</p>
+
+<h2>Write the database, then invalidate</h2>
+<pre><code>await database.transaction(async (tx) =&gt; {
+  await tx.products.update(productId, changes);
+});
+
+await redis.del(`shop:v3:product:${productId}`);</code></pre>
+<p>Deleting is usually safer than updating the cached value because the next read reloads the authoritative source. If cache deletion happens before a slow or failed database update, another request may repopulate the old database value.</p>
+<p>A failure window remains between database commit and <code>DEL</code>. For important data, use a transactional outbox or change-data-capture event that can retry invalidation. TTL bounds staleness if delivery ultimately fails.</p>
+
+<h2>Control read-write races</h2>
+<p>A miss may read an old value, another request may update and invalidate, and then the first request may write the old value back. Mitigations include:</p>
+<ul><li>Shorter TTL for frequently changing data.</li><li>A version or <code>updated_at</code> value checked before cache writes.</li><li>Delayed double deletion for measured race conditions.</li><li>Post-commit invalidation events with idempotent consumers.</li><li>Bypassing cache on strict read-after-write paths.</li></ul>
+
+<h2>Prevent cache stampedes</h2>
+<p>When a hot key expires, many concurrent requests may hit the database. Use per-key single-flight or a mutex so only one caller loads:</p>
+<pre><code>const lockKey = `lock:${key}`;
+const token = crypto.randomUUID();
+const acquired = await redis.set(lockKey, token, { NX: true, PX: 5000 });
+
+if (acquired) {
+  try {
+    const value = await loadFromDatabase();
+    await redis.set(key, JSON.stringify(value), { EX: 300 });
+    return value;
+  } finally {
+    await releaseOnlyIfTokenMatches(lockKey, token);
+  }
+}
+
+return await waitBrieflyAndReadCacheAgain();</code></pre>
+<p>The lock TTL must exceed worst-case loading time, use a unique token, and be released only by its owner. Callers that lose the lock should wait briefly, retry the cache, or use a stale value rather than spin forever.</p>
+
+<h2>Use stale-while-revalidate selectively</h2>
+<p>Store a soft and hard expiration. After soft expiry, return stale data while one worker refreshes it; after hard expiry, require the authoritative source. This reduces latency and stampedes but only works when bounded staleness is acceptable.</p>
+<p>Do not use stale-while-revalidate for permissions, limits, or transactional values where an old answer can cause an incorrect action.</p>
+
+<h2>Negative caching</h2>
+<p>Repeated requests for missing IDs can bypass the cache and overload the database. Cache a short-lived not-found sentinel:</p>
+<pre><code>if (cached === '__NOT_FOUND__') return null;
+
+const value = await loadFromDatabase(id);
+if (value === null) {
+  await redis.set(key, '__NOT_FOUND__', { EX: 30 });
+  return null;
+}</code></pre>
+<p>Keep negative TTL shorter than positive TTL so newly created records appear quickly. Validate ID formats, rate-limit clients, and prevent attackers from generating unlimited random keys.</p>
+
+<h2>Memory limits and eviction policy</h2>
+<p>Configure Redis <code>maxmemory</code> and a suitable policy. For a cache-only instance, <code>allkeys-lru</code> or <code>allkeys-lfu</code> is often a reasonable starting point depending on access patterns. <code>noeviction</code> returns errors for new writes at the memory limit.</p>
+<p>Avoid mixing evictable cache with durable queues or critical sessions in one instance when separation is possible. <code>volatile-*</code> policies evict only keys with TTL and can behave like noeviction when other keys consume memory.</p>
+
+<h2>Behavior when Redis fails</h2>
+<ul><li>Use short connect and read timeouts.</li><li>Circuit-break cache calls after repeated failures.</li><li>Rate-limit and cap concurrent database fallback.</li><li>Do not fail a request solely because a cache write failed when business rules allow.</li><li>Record metrics and alert on failure rate instead of silently swallowing every error.</li></ul>
+<p>If Redis stores sessions, locks, or rate-limit state, it is no longer a pure optimization layer; design its availability and failure behavior separately.</p>
+
+<h2>Serialization and payload size</h2>
+<p>Cache small, stable objects containing only needed fields. Large payloads increase network, serialization CPU, and memory fragmentation. Version the value schema, treat deserialization failures as misses, and delete corrupt entries.</p>
+<p>Compress only when measurements show that memory or bandwidth savings exceed CPU cost. Do not cache secrets or personal data without evaluating encryption, retention, and Redis access controls.</p>
+
+<h2>Production metrics</h2>
+<ul><li>Hit and miss rates by key family.</li><li>Redis and database-loader p50, p95, and p99 latency.</li><li>Evictions, expirations, used memory, and fragmentation.</li><li>Connections, rejected connections, and timeouts.</li><li>Lock contention, wait time, and loader concurrency.</li><li>Database fallback rate during Redis failures.</li><li>Invalidation delay and retry or dead-letter events.</li></ul>
+<p>A high hit rate is not automatically good. The cache may be hitting incorrect data or retaining low-value objects. Also measure database load, end-to-end latency, and freshness.</p>
+
+<h2>Test production behavior</h2>
+<ol><li>Hits, misses, expiration, and invalidation after updates.</li><li>Concurrent requests for one cold key produce only one database load.</li><li>Redis timeout, disconnection, and maxmemory behavior.</li><li>A slow database while the lock approaches expiration.</li><li>Duplicate or out-of-order invalidation events.</li><li>Negative caching does not hide new records for too long.</li><li>A new value schema deploy fails safely or produces controlled misses.</li></ol>
+
+<h2>Pre-release checklist</h2>
+<ol><li>The bottleneck was measured and caching is justified.</li><li>The database or origin service remains authoritative.</li><li>Keys have namespaces and versions and contain no secrets.</li><li>Every entry has a TTL based on acceptable staleness.</li><li>Updates write the source first and invalidate after commit.</li><li>Hot keys use jitter and stampede protection.</li><li>Redis has maxmemory, an eviction policy, and monitoring.</li><li>Fallback is bounded to protect the database.</li><li>Cache failure cannot corrupt business behavior.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Safe Redis caching is more than placing a <code>GET</code> before a query. A sound design assumes cached data can disappear, become stale, or be unavailable. Cache-aside, deliberate TTLs, post-commit invalidation, single-flight loading, and memory limits improve backend performance without turning the cache into an uncontrolled source of failures.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://redis.io/docs/latest/develop/use-cases/cache-aside/" target="_blank" rel="noopener noreferrer">Redis Docs: Cache-aside</a></li><li><a href="https://redis.io/docs/latest/develop/reference/eviction/" target="_blank" rel="noopener noreferrer">Redis Docs: Key eviction</a></li><li><a href="https://redis.io/docs/latest/develop/use/keyspace/" target="_blank" rel="noopener noreferrer">Redis Docs: Keys and expiration</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

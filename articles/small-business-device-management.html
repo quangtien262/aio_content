@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Gi&#7843;i ph&aacute;p MDM cho doanh nghi&#7879;p nh&#7887;</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">MDM doanh nghi&#7879;p nh&#7887;, qu&#7843;n l&yacute; thi&#7871;t b&#7883;, m&atilde; h&oacute;a laptop, c&#7853;p nh&#7853;t endpoint, remote wipe, BYOD, b&#7843;o m&#7853;t thi&#7871;t b&#7883;</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">MDM, Endpoint Management, Device Security, BYOD, Encryption, Patch Management, Remote Wipe, SME Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; laptop v&agrave; &#273;i&#7879;n tho&#7841;i cho doanh nghi&#7879;p nh&#7887; v&#7899;i MDM, m&atilde; h&oacute;a, c&#7853;p nh&#7853;t, compliance, remote lock v&agrave; offboarding.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/small-business-device-management.jpg" alt="Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; thi&#7871;t b&#7883; cho doanh nghi&#7879;p nh&#7887;: MDM, m&atilde; h&oacute;a, c&#7853;p nh&#7853;t v&agrave; x&oacute;a d&#7919; li&#7879;u t&#7915; xa" width="1440" height="810"></p><h1>Gi&#7843;i ph&aacute;p qu&#7843;n l&yacute; thi&#7871;t b&#7883; cho doanh nghi&#7879;p nh&#7887;: MDM, m&atilde; h&oacute;a, c&#7853;p nh&#7853;t v&agrave; x&oacute;a d&#7919; li&#7879;u t&#7915; xa</h1><p><strong>Laptop v&agrave; &#273;i&#7879;n tho&#7841;i &#273;&atilde; tr&#7903; th&agrave;nh c&aacute;nh c&#7917;a v&agrave;o email, d&#7919; li&#7879;u kh&aacute;ch h&agrave;ng, cloud v&agrave; t&agrave;i kho&#7843;n n&#7897;i b&#7897;.</strong> Khi doanh nghi&#7879;p kh&ocirc;ng bi&#7871;t &#273;ang c&oacute; bao nhi&ecirc;u thi&#7871;t b&#7883;, m&aacute;y n&agrave;o ch&#432;a m&atilde; h&oacute;a ho&#7863;c ai c&ograve;n gi&#7919; thi&#7871;t b&#7883; sau khi ngh&#7881; vi&#7879;c, m&#7897;t s&#7921; c&#7889; m&#7845;t m&aacute;y nh&#7887; c&oacute; th&#7875; tr&#7903; th&agrave;nh r&ograve; r&#7881; d&#7919; li&#7879;u l&#7899;n.</p>
+
+<h2>MDM gi&#7843;i quy&#7871;t &#273;i&#7873;u g&igrave;?</h2>
+<p>Mobile Device Management v&agrave; c&aacute;c n&#7873;n t&#7843;ng qu&#7843;n l&yacute; endpoint gi&uacute;p &#273;&#259;ng k&yacute; thi&#7871;t b&#7883;, &#273;&#7849;y c&#7845;u h&igrave;nh, &aacute;p ch&iacute;nh s&aacute;ch, theo d&otilde;i compliance v&agrave; th&#7921;c hi&#7879;n h&agrave;nh &#273;&#7897;ng t&#7915; xa. &#272;&acirc;y kh&ocirc;ng ph&#7843;i antivirus thay th&#7871; m&#7885;i l&#7899;p b&#7843;o m&#7853;t; n&oacute; l&agrave; control plane &#273;&#7875; doanh nghi&#7879;p qu&#7843;n l&yacute; tr&#7841;ng th&aacute;i thi&#7871;t b&#7883; trong su&#7889;t v&ograve;ng &#273;&#7901;i.</p>
+<p>M&#7897;t gi&#7843;i ph&aacute;p t&#7889;i thi&#7875;u c&#7847;n tr&#7843; l&#7901;i &#273;&#432;&#7907;c: thi&#7871;t b&#7883; thu&#7897;c v&#7873; ai, phi&ecirc;n b&#7843;n h&#7879; &#273;i&#7873;u h&agrave;nh n&agrave;o, &#273;&atilde; m&atilde; h&oacute;a ch&#432;a, c&oacute; kh&oacute;a m&agrave;n h&igrave;nh kh&ocirc;ng, l&#7847;n cu&#7889;i k&#7871;t n&#7889;i khi n&agrave;o, &#7913;ng d&#7909;ng b&#7855;t bu&#7897;c &#273;&atilde; c&agrave;i ch&#432;a v&agrave; c&oacute; th&#7875; kh&oacute;a/x&oacute;a d&#7919; li&#7879;u khi m&#7845;t hay kh&ocirc;ng.</p>
+
+<h2>Ch&#7885;n m&ocirc; h&igrave;nh s&#7903; h&#7919;u thi&#7871;t b&#7883;</h2>
+<table><thead><tr><th>M&ocirc; h&igrave;nh</th><th>&#431;u &#273;i&#7875;m</th><th>&#272;&aacute;nh &#273;&#7893;i</th></tr></thead><tbody><tr><td>Thi&#7871;t b&#7883; c&ocirc;ng ty</td><td>Ki&#7875;m so&aacute;t c&#7845;u h&igrave;nh, d&#7919; li&#7879;u v&agrave; v&ograve;ng &#273;&#7901;i t&#7889;t nh&#7845;t</td><td>Chi ph&iacute; mua, t&#7891;n kho v&agrave; h&#7895; tr&#7907; cao h&#417;n</td></tr><tr><td>COPE</td><td>C&ocirc;ng ty s&#7903; h&#7919;u, cho ph&eacute;p s&#7917; d&#7909;ng c&aacute; nh&acirc;n c&oacute; gi&#7899;i h&#7841;n</td><td>C&#7847;n ch&iacute;nh s&aacute;ch r&otilde; v&#7873; d&#7919; li&#7879;u c&aacute; nh&acirc;n</td></tr><tr><td>BYOD</td><td>Gi&#7843;m chi ph&iacute;, thu&#7853;n ti&#7879;n cho nh&acirc;n vi&ecirc;n</td><td>Kh&oacute; ki&#7875;m so&aacute;t, r&#7911;i ro ri&ecirc;ng t&#432; v&agrave; h&#7895; tr&#7907; &#273;a d&#7841;ng thi&#7871;t b&#7883;</td></tr><tr><td>Ch&#7881; qu&#7843;n l&yacute; &#7913;ng d&#7909;ng</td><td>T&aacute;ch d&#7919; li&#7879;u c&ocirc;ng vi&#7879;c tr&ecirc;n m&aacute;y c&aacute; nh&acirc;n</td><td>&Iacute;t kh&#7843; n&#259;ng ki&#7875;m so&aacute;t tr&#7841;ng th&aacute;i to&agrave;n thi&#7871;t b&#7883;</td></tr></tbody></table>
+<p>Kh&ocirc;ng n&ecirc;n &aacute;p ch&iacute;nh s&aacute;ch to&agrave;n quy&#7873;n l&ecirc;n thi&#7871;t b&#7883; c&aacute; nh&acirc;n m&agrave; kh&ocirc;ng th&ocirc;ng b&aacute;o. V&#7899;i BYOD, ghi r&otilde; d&#7919; li&#7879;u n&agrave;o &#273;&#432;&#7907;c thu th&#7853;p, ph&#7847;n n&agrave;o c&oacute; th&#7875; x&oacute;a, khi n&agrave;o doanh nghi&#7879;p &#273;&#432;&#7907;c h&agrave;nh &#273;&#7897;ng v&agrave; c&aacute;ch ng&#432;&#7901;i d&ugrave;ng g&#7905; enrollment.</p>
+
+<h2>Ki&#7875;m k&ecirc; tr&#432;&#7899;c khi tri&#7875;n khai</h2>
+<p>L&#7853;p danh s&aacute;ch laptop, desktop, &#273;i&#7879;n tho&#7841;i v&agrave; tablet c&ugrave;ng serial, ch&#7911; s&#7903; h&#7919;u, h&#7879; &#273;i&#7873;u h&agrave;nh, ng&agrave;y mua, b&#7843;o h&agrave;nh, tr&#7841;ng th&aacute;i m&atilde; h&oacute;a v&agrave; &#7913;ng d&#7909;ng quan tr&#7885;ng. &#272;&#7889;i chi&#7871;u v&#7899;i t&agrave;i kho&#7843;n nh&acirc;n vi&ecirc;n &#273;&#7875; ph&aacute;t hi&#7879;n thi&#7871;t b&#7883; kh&ocirc;ng owner ho&#7863;c thi&#7871;t b&#7883; v&#7851;n truy c&#7853;p cloud nh&#432;ng kh&ocirc;ng c&ograve;n trong kho.</p>
+<p>Ph&acirc;n nh&oacute;m theo r&#7911;i ro: admin v&agrave; t&agrave;i ch&iacute;nh; thi&#7871;t b&#7883; ch&#7913;a d&#7919; li&#7879;u kh&aacute;ch h&agrave;ng; nh&acirc;n vi&ecirc;n th&ocirc;ng th&#432;&#7901;ng; contractor; kiosk ho&#7863;c thi&#7871;t b&#7883; d&ugrave;ng chung. M&#7895;i nh&oacute;m c&oacute; baseline v&agrave; quy&#7873;n truy c&#7853;p kh&aacute;c nhau.</p>
+
+<h2>Baseline b&#7843;o m&#7853;t t&#7889;i thi&#7875;u</h2>
+<ul><li>M&atilde; h&oacute;a to&agrave;n b&#7897; &#7893; &#273;&#297;a v&agrave; escrow recovery key v&agrave;o h&#7879; th&#7889;ng qu&#7843;n l&yacute;.</li><li>Kh&oacute;a m&agrave;n h&igrave;nh t&#7921; &#273;&#7897;ng, PIN/password ph&ugrave; h&#7907;p v&agrave; gi&#7899;i h&#7841;n th&#7917; sai.</li><li>MFA ho&#7863;c passkey cho t&agrave;i kho&#7843;n doanh nghi&#7879;p.</li><li>T&#432;&#7901;ng l&#7917;a m&aacute;y tr&#7841;m b&#7853;t v&agrave; c&#7845;u h&igrave;nh t&#7853;p trung.</li><li>C&#7853;p nh&#7853;t h&#7879; &#273;i&#7873;u h&agrave;nh, tr&igrave;nh duy&#7879;t v&agrave; &#7913;ng d&#7909;ng c&oacute; th&#7901;i h&#7841;n.</li><li>Ch&#7863;n ho&#7863;c c&#7843;nh b&aacute;o thi&#7871;t b&#7883; root/jailbreak v&agrave; h&#7879; &#273;i&#7873;u h&agrave;nh h&#7871;t h&#7895; tr&#7907;.</li><li>Endpoint protection ph&ugrave; h&#7907;p v&#7899;i r&#7911;i ro.</li><li>Backup d&#7919; li&#7879;u c&ocirc;ng vi&#7879;c, kh&ocirc;ng d&#7921;a v&agrave;o &#7893; local.</li><li>Quy&#7873;n local administrator ch&#7881; c&#7845;p khi c&oacute; l&yacute; do.</li></ul>
+<blockquote>M&atilde; h&oacute;a ch&#7881; b&#7843;o v&#7879; d&#7919; li&#7879;u khi thi&#7871;t b&#7883; t&#7855;t ho&#7863;c b&#7883; kh&oacute;a &#273;&uacute;ng c&aacute;ch. M&#7897;t laptop &#273;ang m&#7903; kh&oacute;a c&ugrave;ng session cloud c&ograve;n ho&#7841;t &#273;&#7897;ng v&#7851;n l&agrave; r&#7911;i ro.</blockquote>
+
+<h2>Enrollment kh&ocirc;ng ph&#7909; thu&#7897;c thao t&aacute;c th&#7911; c&ocirc;ng</h2>
+<p>&#431;u ti&ecirc;n zero-touch ho&#7863;c automated enrollment qua ch&#432;&#417;ng tr&igrave;nh c&#7911;a nh&agrave; s&#7843;n xu&#7845;t v&agrave; h&#7879; &#273;i&#7873;u h&agrave;nh. Thi&#7871;t b&#7883; m&#7899;i t&#7921; nh&#7853;n c&#7845;u h&igrave;nh doanh nghi&#7879;p trong l&uacute;c setup, gi&#7843;m kh&#7843; n&#259;ng ng&#432;&#7901;i d&ugrave;ng b&#7887; qua agent ho&#7863;c profile.</p>
+<p>Quy tr&igrave;nh c&#7845;p ph&aacute;t n&ecirc;n g&#7855;n asset v&#7899;i ng&#432;&#7901;i nh&#7853;n, ki&#7875;m tra baseline, &#273;&#259;ng nh&#7853;p b&#7857;ng danh t&iacute;nh doanh nghi&#7879;p, c&agrave;i &#7913;ng d&#7909;ng b&#7855;t bu&#7897;c v&agrave; x&aacute;c minh backup. Kh&ocirc;ng giao m&aacute;y r&#7891;i m&#7899;i b&#7893; sung qu&#7843;n l&yacute; nhi&#7873;u tu&#7847;n sau.</p>
+
+<h2>Qu&#7843;n l&yacute; c&#7853;p nh&#7853;t theo m&#7913;c r&#7911;i ro</h2>
+<p>NIST xem patching l&agrave; b&#7843;o tr&igrave; ph&ograve;ng ng&#7915;a: x&aacute;c &#273;&#7883;nh, &#432;u ti&ecirc;n, c&agrave;i v&agrave; x&aacute;c minh b&#7843;n v&aacute;. Chia thi&#7871;t b&#7883; th&agrave;nh ring:</p>
+<ol><li><strong>Pilot:</strong> m&#7897;t nh&oacute;m nh&#7887; nh&#7853;n update tr&#432;&#7899;c &#273;&#7875; ph&aacute;t hi&#7879;n l&#7895;i t&#432;&#417;ng th&iacute;ch.</li><li><strong>Standard:</strong> ph&#7847;n l&#7899;n thi&#7871;t b&#7883; nh&#7853;n sau khi pilot &#7893;n &#273;&#7883;nh.</li><li><strong>Critical/exception:</strong> m&aacute;y &#273;&#7863;c th&ugrave; c&oacute; c&#7917;a s&#7893; ri&ecirc;ng v&agrave; owner ph&ecirc; duy&#7879;t.</li></ol>
+<p>&#272;&#7863;t SLA theo severity, kh&ocirc;ng ch&#7881; &ldquo;t&#7921; &#273;&#7897;ng khi c&oacute; th&#7875;&rdquo;. Emergency patch c&oacute; th&#7875; r&uacute;t ng&#7855;n pilot; feature upgrade l&#7899;n c&#7847;n ki&#7875;m th&#7917; VPN, agent, ph&#7847;n m&#7873;m k&#7871; to&aacute;n v&agrave; thi&#7871;t b&#7883; ngo&#7841;i vi. Sau tri&#7875;n khai, &#273;o t&#7927; l&#7879; th&agrave;nh c&ocirc;ng thay v&igrave; ch&#7881; ph&aacute;t l&#7879;nh.</p>
+
+<h2>Compliance v&agrave; conditional access</h2>
+<p>MDM c&oacute; gi&aacute; tr&#7883; h&#417;n khi tr&#7841;ng th&aacute;i thi&#7871;t b&#7883; &#7843;nh h&#432;&#7903;ng quy&#7873;n truy c&#7853;p. C&oacute; th&#7875; y&ecirc;u c&#7847;u thi&#7871;t b&#7883; &#273;&atilde; enrollment, m&atilde; h&oacute;a, kh&ocirc;ng root v&agrave; &#273;&#7841;t patch level tr&#432;&#7899;c khi v&agrave;o email ho&#7863;c d&#7919; li&#7879;u nh&#7841;y c&#7843;m.</p>
+<p>Tri&#7875;n khai t&#7915;ng b&#432;&#7899;c: &#273;&#7847;u ti&ecirc;n ch&#7881; b&aacute;o c&aacute;o, sau &#273;&oacute; c&#7843;nh b&aacute;o ng&#432;&#7901;i d&ugrave;ng, cu&#7889;i c&ugrave;ng m&#7899;i block. Lu&ocirc;n c&oacute; quy tr&igrave;nh ngo&#7841;i l&#7879; c&oacute; th&#7901;i h&#7841;n v&agrave; t&agrave;i kho&#7843;n kh&#7849;n c&#7845;p; m&#7897;t policy sai kh&ocirc;ng n&ecirc;n kh&oacute;a to&agrave;n b&#7897; c&ocirc;ng ty.</p>
+
+<h2>&#7912;ng d&#7909;ng v&agrave; d&#7919; li&#7879;u doanh nghi&#7879;p</h2>
+<p>Duy tr&igrave; catalog &#7913;ng d&#7909;ng &#273;&#432;&#7907;c ph&ecirc; duy&#7879;t, t&#7921; &#273;&#7897;ng c&agrave;i agent c&#7847;n thi&#7871;t v&agrave; g&#7905; ph&#7847;n m&#7873;m kh&ocirc;ng c&ograve;n d&ugrave;ng. V&#7899;i BYOD, &#432;u ti&ecirc;n managed app, container d&#7919; li&#7879;u ho&#7863;c selective wipe &#273;&#7875; x&oacute;a d&#7919; li&#7879;u c&ocirc;ng vi&#7879;c m&agrave; kh&ocirc;ng x&oacute;a &#7843;nh v&agrave; d&#7919; li&#7879;u c&aacute; nh&acirc;n.</p>
+<p>Kh&ocirc;ng thu th&#7853;p nhi&#7873;u h&#417;n nhu c&#7847;u v&#7853;n h&agrave;nh. Gi&#7899;i h&#7841;n v&#7883; tr&iacute;, l&#7883;ch s&#7917; duy&#7879;t web v&agrave; inventory &#7913;ng d&#7909;ng c&aacute; nh&acirc;n theo ch&iacute;nh s&aacute;ch ri&ecirc;ng t&#432; v&agrave; ph&aacute;p lu&#7853;t &aacute;p d&#7909;ng. Console MDM ch&#7913;a d&#7919; li&#7879;u nh&#7841;y c&#7843;m n&ecirc;n ph&#7843;i c&oacute; MFA, ph&acirc;n quy&#7873;n v&agrave; audit log.</p>
+
+<h2>Khi thi&#7871;t b&#7883; b&#7883; m&#7845;t ho&#7863;c &#273;&aacute;nh c&#7855;p</h2>
+<ol><li>Nh&acirc;n vi&ecirc;n b&aacute;o ngay qua k&ecirc;nh &#273;&atilde; c&ocirc;ng b&#7889;.</li><li>IT x&aacute;c nh&#7853;n asset, ng&#432;&#7901;i d&ugrave;ng v&agrave; th&#7901;i &#273;i&#7875;m cu&#7889;i online.</li><li>Thu h&#7891;i session, token, VPN certificate v&agrave; credential li&ecirc;n quan.</li><li>&#272;&aacute;nh d&#7845;u lost, kh&oacute;a thi&#7871;t b&#7883; v&agrave; hi&#7875;n th&#7883; th&ocirc;ng tin li&ecirc;n h&#7879; n&#7871;u ph&ugrave; h&#7907;p.</li><li>Remote wipe khi &#273;&aacute;nh gi&aacute; nguy c&#417; v&agrave; kh&#7843; n&#259;ng thu h&#7891;i.</li><li>Ghi b&#7857;ng ch&#7913;ng, b&aacute;o b&#7897; ph&#7853;n ph&aacute;p l&yacute; ho&#7863;c kh&aacute;ch h&agrave;ng n&#7871;u ngh&#297;a v&#7909; y&ecirc;u c&#7847;u.</li><li>Thay thi&#7871;t b&#7883; v&agrave; xem l&#7841;i nguy&ecirc;n nh&acirc;n, ch&iacute;nh s&aacute;ch.</li></ol>
+<p>Remote wipe kh&ocirc;ng b&#7843;o &#273;&#7843;m tuy&#7879;t &#273;&#7889;i: thi&#7871;t b&#7883; c&oacute; th&#7875; kh&ocirc;ng c&ograve;n m&#7841;ng ho&#7863;c &#273;&atilde; b&#7883; can thi&#7879;p. M&atilde; h&oacute;a, kh&oacute;a m&agrave;n h&igrave;nh v&agrave; thu h&#7891;i credential v&#7851;n l&agrave; ph&ograve;ng tuy&#7871;n ch&iacute;nh.</p>
+
+<h2>Offboarding v&agrave; thu h&#7891;i thi&#7871;t b&#7883;</h2>
+<p>HR, qu&#7843;n l&yacute; v&agrave; IT c&#7847;n th&#7889;ng nh&#7845;t th&#7901;i &#273;i&#7875;m. V&ocirc; hi&#7879;u h&oacute;a t&agrave;i kho&#7843;n, thu h&#7891;i session, l&#7845;y l&#7841;i thi&#7871;t b&#7883;/ph&#7909; ki&#7879;n, chuy&#7875;n d&#7919; li&#7879;u c&ocirc;ng vi&#7879;c, g&#7905; kh&#7887;i MDM &#273;&uacute;ng quy tr&igrave;nh v&agrave; c&#7853;p nh&#7853;t kho. V&#7899;i thi&#7871;t b&#7883; t&aacute;i s&#7917; d&#7909;ng, x&oacute;a an to&agrave;n, ki&#7875;m tra activation lock v&agrave; enrollment ownership tr&#432;&#7899;c khi c&#7845;p cho ng&#432;&#7901;i m&#7899;i.</p>
+<p>Thi&#7871;t b&#7883; thanh l&yacute; c&#7847;n quy tr&igrave;nh x&oacute;a ho&#7863;c h&#7911;y media, b&#7857;ng ch&#7913;ng x&#7917; l&yacute; v&agrave; c&#7853;p nh&#7853;t asset register. Kh&ocirc;ng b&aacute;n ho&#7863;c cho t&#7863;ng m&aacute;y ch&#7881; sau khi x&oacute;a file b&#7857;ng tay.</p>
+
+<h2>Ti&ecirc;u ch&iacute; ch&#7885;n n&#7873;n t&#7843;ng</h2>
+<ul><li>H&#7895; tr&#7907; &#273;&uacute;ng Windows, macOS, iOS, Android v&agrave; Linux &#273;ang d&ugrave;ng.</li><li>T&iacute;ch h&#7907;p directory, SSO v&agrave; conditional access hi&#7879;n c&oacute;.</li><li>Automated enrollment v&agrave; qu&#7843;n l&yacute; recovery key.</li><li>Patch OS v&agrave; &#7913;ng d&#7909;ng b&ecirc;n th&#7913; ba.</li><li>Selective wipe cho BYOD; full wipe cho thi&#7871;t b&#7883; c&ocirc;ng ty.</li><li>Audit log, RBAC, API v&agrave; export d&#7919; li&#7879;u.</li><li>B&aacute;o c&aacute;o compliance d&#7877; h&agrave;nh &#273;&#7897;ng.</li><li>Chi ph&iacute; theo thi&#7871;t b&#7883;/ng&#432;&#7901;i d&ugrave;ng, c&ocirc;ng s&#7913;c v&#7853;n h&agrave;nh v&agrave; h&#7895; tr&#7907;.</li><li>K&#7871; ho&#7841;ch export, unenroll v&agrave; chuy&#7875;n nh&agrave; cung c&#7845;p.</li></ul>
+
+<h2>L&#7897; tr&igrave;nh 30 ng&agrave;y</h2>
+<ol><li><strong>Tu&#7847;n 1:</strong> inventory, ch&#7885;n m&ocirc; h&igrave;nh s&#7903; h&#7919;u v&agrave; baseline.</li><li><strong>Tu&#7847;n 2:</strong> pilot 5-10 thi&#7871;t b&#7883; &#273;&#7841;i di&#7879;n, ch&#432;a block truy c&#7853;p.</li><li><strong>Tu&#7847;n 3:</strong> tri&#7875;n khai theo nh&oacute;m, escrow recovery key, b&#7853;t patch rings.</li><li><strong>Tu&#7847;n 4:</strong> ki&#7875;m th&#7917; lost device, selective wipe, offboarding v&agrave; rollback policy.</li></ol>
+<p>B&#7855;t &#273;&#7847;u v&#7899;i thi&#7871;t b&#7883; truy c&#7853;p email, cloud v&agrave; d&#7919; li&#7879;u kh&aacute;ch h&agrave;ng. Kh&ocirc;ng c&#7889; qu&#7843;n l&yacute; m&#7885;i thi&#7871;t b&#7883; IoT ho&#7863;c m&aacute;y chuy&ecirc;n d&#7909;ng trong c&ugrave;ng giai &#273;o&#7841;n &#273;&#7847;u.</p>
+
+<h2>Ch&#7881; s&#7889; v&#7853;n h&agrave;nh</h2>
+<ul><li>T&#7927; l&#7879; thi&#7871;t b&#7883; &#273;&#432;&#7907;c qu&#7843;n l&yacute; v&agrave; c&oacute; owner.</li><li>T&#7927; l&#7879; m&atilde; h&oacute;a v&agrave; recovery key escrow th&agrave;nh c&ocirc;ng.</li><li>T&#7927; l&#7879; patch &#273;&uacute;ng SLA, thi&#7871;t b&#7883; h&#7871;t h&#7895; tr&#7907;.</li><li>S&#7889; thi&#7871;t b&#7883; non-compliant theo nguy&ecirc;n nh&acirc;n.</li><li>Th&#7901;i gian t&#7915; b&aacute;o m&#7845;t &#273;&#7871;n thu h&#7891;i session/kh&oacute;a m&aacute;y.</li><li>Th&#7901;i gian offboarding v&agrave; t&#7927; l&#7879; thu h&#7891;i t&agrave;i s&#7843;n.</li><li>S&#7889; ngo&#7841;i l&#7879; qu&aacute; h&#7841;n.</li></ul>
+
+<h2>Checklist nghi&#7879;m thu</h2>
+<ol><li>M&#7885;i thi&#7871;t b&#7883; truy c&#7853;p d&#7919; li&#7879;u quan tr&#7885;ng &#273;&#7873;u c&oacute; owner v&agrave; inventory.</li><li>&#272;&atilde; ch&#7885;n r&otilde; corporate, COPE ho&#7863;c BYOD cho t&#7915;ng nh&oacute;m.</li><li>Baseline m&atilde; h&oacute;a, kh&oacute;a m&agrave;n h&igrave;nh, MFA, firewall v&agrave; patch &#273;&#432;&#7907;c &aacute;p d&#7909;ng.</li><li>Recovery key &#273;&#432;&#7907;c escrow v&agrave; th&#7917; kh&ocirc;i ph&#7909;c.</li><li>C&oacute; pilot ring, SLA patch v&agrave; c&aacute;ch x&#7917; l&yacute; exception.</li><li>Conditional access &#273;&atilde; ch&#7841;y report-only tr&#432;&#7899;c khi block.</li><li>Lost-device v&agrave; remote wipe &#273;&atilde; di&#7877;n t&#7853;p.</li><li>Offboarding bao g&#7891;m account, session, d&#7919; li&#7879;u v&agrave; t&agrave;i s&#7843;n v&#7853;t l&yacute;.</li><li>Console MDM c&oacute; MFA, RBAC, audit v&agrave; backup c&#7845;u h&igrave;nh.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>MDM ch&#7881; t&#7841;o gi&aacute; tr&#7883; khi g&#7855;n v&#7899;i v&ograve;ng &#273;&#7901;i thi&#7871;t b&#7883; v&agrave; quy tr&igrave;nh con ng&#432;&#7901;i. Doanh nghi&#7879;p nh&#7887; n&ecirc;n b&#7855;t &#273;&#7847;u t&#7915; inventory, m&atilde; h&oacute;a, patching v&agrave; x&#7917; l&yacute; m&#7845;t m&aacute;y, sau &#273;&oacute; m&#7899;i m&#7903; r&#7897;ng conditional access v&agrave; automation. M&#7897;t baseline &#273;&#417;n gi&#7843;n &#273;&#432;&#7907;c &aacute;p d&#7909;ng nh&#7845;t qu&aacute;n hi&#7879;u qu&#7843; h&#417;n m&#7897;t console nhi&#7873;u t&iacute;nh n&#259;ng nh&#432;ng thi&#7871;t b&#7883; kh&ocirc;ng enrollment ho&#7863;c kh&ocirc;ng ai x&#7917; l&yacute; c&#7843;nh b&aacute;o.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.nist.gov/publications/guidelines-managing-security-mobile-devices-enterprise-0" target="_blank" rel="noopener noreferrer">NIST SP 800-124 Rev. 2: Managing Mobile Device Security</a></li><li><a href="https://csrc.nist.gov/pubs/sp/800/40/r4/final" target="_blank" rel="noopener noreferrer">NIST SP 800-40 Rev. 4: Enterprise Patch Management</a></li><li><a href="https://csrc.nist.gov/pubs/sp/1800/22/final" target="_blank" rel="noopener noreferrer">NIST SP 1800-22: BYOD Security</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

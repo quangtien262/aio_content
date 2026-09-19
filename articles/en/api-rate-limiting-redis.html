@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">api-rate-limiting-redis-algorithms-design-operations</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Production API Rate Limiting with Redis</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">API rate limiting, Redis, token bucket, sliding window, fixed window, HTTP 429, distributed rate limiter</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Rate Limiting, Redis, Backend, HTTP, Distributed Systems, Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design production API rate limiting with Redis: algorithms, identity and quotas, atomic Lua, HTTP 429 responses, burst control, failure policies, observability, and testing.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/api-rate-limiting-redis.jpg" alt="API Rate Limiting with Redis: Algorithms, Design, and Operations" width="1440" height="810"></p><h1>API Rate Limiting with Redis: Algorithms, Design, and Operations</h1><p><strong>Rate limiting is not only for blocking bots.</strong> It protects databases and dependencies from bursts, distributes resources fairly between tenants, controls API costs, and helps a system degrade predictably under load. A poorly designed limiter can instead block thousands of legitimate users behind NAT or become a new single point of failure.</p>
+<p>This guide moves from algorithm selection to distributed Redis enforcement, with the goal of a policy that is explainable, observable, and consistent across application instances.</p>
+
+<h2>Rate limits, quotas, and concurrency limits</h2>
+<ul>
+<li><strong>Rate limit:</strong> requests within an interval, such as 100 per minute.</li>
+<li><strong>Quota:</strong> total usage over a longer billing cycle.</li>
+<li><strong>Concurrency limit:</strong> operations currently in progress.</li>
+</ul>
+<p>A file-upload API may need all three: rate limiting for spam, quota for cost, and concurrency control for CPU and I/O. A minute counter should not replace every mechanism.</p>
+
+<h2>1. Define the goal before choosing an algorithm</h2>
+<p>Identify the protected resource, the subject (user, API key, tenant, IP, or device), acceptable burst size, regional consistency requirement, and failure behavior when Redis is unavailable. Tie policy to cost: a cached read should not consume the same budget as report export or AI inference.</p>
+
+<h2>2. Choose safe identities and keys</h2>
+<p>Prefer authenticated tenant, user, or API-key IDs. IP is secondary because NAT may group an entire office while attackers can rotate proxies.</p>
+<pre><code>rl:v1:{tenant_id}:{route_group}:{window}</code></pre>
+<p>Do not place raw API keys, emails, or personal data in Redis keys or logs. Trust <code>X-Forwarded-For</code> only from controlled proxies. Production commonly layers coarse IP limits at CDN/WAF, user or API-key limits at the gateway, tenant budgets, and global dependency protection.</p>
+
+<h2>3. Fixed window: simple with boundary bursts</h2>
+<pre><code>bucket = floor(current_time / 60)
+key = "rl:user:42:" + bucket
+count = INCR(key)
+EXPIRE(key, 120)
+allow = count &lt;= 100</code></pre>
+<p>This is O(1), memory-efficient, and operationally simple. A client can still send 100 requests at the end of one minute and another 100 at the beginning of the next. Execute <code>INCR</code> and <code>EXPIRE</code> atomically through a transaction or script so a crash cannot leak a permanent key.</p>
+
+<h2>4. Sliding window log: accurate but memory-intensive</h2>
+<pre><code>ZREMRANGEBYSCORE key 0 (now - window)
+ZADD key now unique_request_id
+ZCARD key
+EXPIRE key window</code></pre>
+<p>A sorted set stores each request timestamp. It provides an accurate rolling window but costs memory proportional to traffic and needs unique members for same-millisecond requests. Use it for sensitive moderate-volume endpoints, not millions of continuously active keys.</p>
+
+<h2>5. Sliding window counter: a practical compromise</h2>
+<pre><code>estimated = current_count
+          + previous_count * remaining_fraction</code></pre>
+<p>Interpolating current and previous counters uses less memory than a log and smooths boundaries better than a fixed window. It is approximate, which is often acceptable for general request quotas.</p>
+
+<h2>6. Token bucket: useful when legitimate bursts exist</h2>
+<p>A bucket has a <code>capacity</code> and refills at <code>refill_rate</code>. Requests consume one or more tokens. A capacity of 60 with one token per second allows a 60-request burst after idle time while sustaining one request per second over the long term. Expensive operations can cost more tokens.</p>
+
+<h2>7. Atomic token bucket with Redis Lua</h2>
+<pre><code>local key = KEYS[1]
+local capacity = tonumber(ARGV[1])
+local refill_rate = tonumber(ARGV[2])
+local now_ms = tonumber(ARGV[3])
+local cost = tonumber(ARGV[4])
+
+local values = redis.call('HMGET', key, 'tokens', 'updated_at')
+local tokens = tonumber(values[1]) or capacity
+local updated_at = tonumber(values[2]) or now_ms
+
+local elapsed = math.max(0, now_ms - updated_at) / 1000
+tokens = math.min(capacity, tokens + elapsed * refill_rate)
+
+local allowed = 0
+if tokens &gt;= cost then
+    tokens = tokens - cost
+    allowed = 1
+end
+
+redis.call('HSET', key, 'tokens', tokens, 'updated_at', now_ms)
+redis.call('PEXPIRE', key, math.ceil((capacity / refill_rate) * 2000))
+
+return { allowed, math.floor(tokens) }</code></pre>
+<p>The read&ndash;decide&ndash;write cycle must be atomic so concurrent requests cannot spend the same token. Use a consistent clock or Redis time to reduce skew. Keep scripts short because Redis blocks other activity while they execute. In Redis Cluster, all keys in one invocation must share a hash slot; one key per subject keeps this manageable.</p>
+
+<h2>8. Where should enforcement live?</h2>
+<ul>
+<li><strong>CDN/WAF:</strong> blocks bots and volumetric abuse early but knows little business identity.</li>
+<li><strong>API gateway:</strong> centralizes API-key and tenant policies.</li>
+<li><strong>Application:</strong> understands users, routes, and business cost.</li>
+<li><strong>Downstream service:</strong> protects its own capacity from faulty internal callers.</li>
+</ul>
+<p>Use layers. An application limiter is not DDoS protection because traffic already reached the stack; a CDN limiter cannot replace a business tenant quota.</p>
+
+<h2>9. Return a useful HTTP 429 response</h2>
+<pre><code>HTTP/1.1 429 Too Many Requests
+Content-Type: application/problem+json
+Retry-After: 12
+RateLimit-Limit: 100
+RateLimit-Remaining: 0
+RateLimit-Reset: 12
+
+{
+  "type": "https://api.example.com/problems/rate-limit",
+  "title": "Rate limit exceeded",
+  "status": 429,
+  "retry_after": 12
+}</code></pre>
+<p><code>Retry-After</code> tells a client when to retry. RFC 9333 defines RateLimit fields for limit, remaining quota, and reset; keep their semantics consistent when supported and never treat headers as a security control.</p>
+<p>Clients should honor <code>Retry-After</code>, use exponential backoff with jitter, cap retries, and avoid synchronizing every retry at the same instant.</p>
+
+<h2>10. Treat failure classes deliberately</h2>
+<p>The limiter usually runs before the handler, so an allowed request consumes budget even if the response is 4xx or 5xx. Refunding tokens adds races and can be abused. Instead, design separate budgets: strict account-plus-IP limits for failed logins, charge validation failures to deter spam, give health checks a distinct policy, and use concurrency/backpressure for queued work.</p>
+
+<h2>11. Redis failure: fail open or fail closed?</h2>
+<p><strong>Fail-open</strong> allows requests when the limiter is unavailable. It preserves availability for low-risk reads but may overload dependencies. <strong>Fail-closed</strong> rejects requests and fits login, OTP, payment, or hard cost controls, but makes Redis part of endpoint availability.</p>
+<p>A hybrid can combine very short Redis timeouts, a local emergency limiter per instance, a circuit breaker, and route-specific policy. Never bypass silently; emit metrics and alerts whenever fallback activates.</p>
+
+<h2>12. Hot keys, memory, and multiple regions</h2>
+<p>One global key can become hot. Distribute limits by tenant and route, or allocate regional budgets when perfect global consistency is unnecessary. Strong multi-region synchronization increases latency; independent regional budgets can temporarily exceed the global target, so reserve a safety margin.</p>
+<p>Every temporary key needs TTL. Monitor memory, eviction, command latency, and hit rate. If limiter keys are evicted as ordinary cache entries, clients may receive an early budget reset.</p>
+
+<h2>13. Observability</h2>
+<ul>
+<li>Allowed and rejected requests by route, plan, and region.</li>
+<li>429 ratio and number of subjects reaching limits.</li>
+<li>Redis latency, timeout, errors, memory, and eviction.</li>
+<li>Lua/function execution time and hot keys.</li>
+<li>Fail-open, fail-closed, and local-fallback activations.</li>
+<li>Correlation between rejection, downstream latency, and saturation.</li>
+</ul>
+<p>Avoid raw user IDs in high-cardinality metrics. Sample logs and hash identities; keep dashboard dimensions bounded.</p>
+
+<h2>14. Test before production</h2>
+<ol>
+<li>Unit-test window boundaries, refill math, and weighted cost.</li>
+<li>Concurrency-test many requests against one key.</li>
+<li>Load-test many keys and a single hot key.</li>
+<li>Chaos-test Redis timeout, failover, and connection-pool exhaustion.</li>
+<li>Verify TTL, memory growth, and cleanup.</li>
+<li>Test client behavior for 429, Retry-After, and jitter.</li>
+<li>Canary a high threshold in observation-only mode before enforcement.</li>
+</ol>
+
+<h2>Design checklist</h2>
+<ul>
+<li>Policy reflects real resource cost.</li>
+<li>Identity favors user, API key, or tenant rather than IP alone.</li>
+<li>The algorithm matches burst and accuracy requirements.</li>
+<li>Redis decisions are atomic and every key expires.</li>
+<li>429 responses provide consistent retry guidance.</li>
+<li>Failure behavior is route-specific and observable.</li>
+<li>Limits are versioned, feature-flagged, and reversible.</li>
+<li>Dashboards connect rejection to dependency health.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Good rate limiting coordinates capacity rather than placing an arbitrary number in front of an API. Start with identity and cost, choose fixed window, sliding window, or token bucket according to burst behavior, enforce decisions atomically in Redis, return useful 429 responses, and plan for Redis failure itself. Observable policies and gradual rollout protect the system without unnecessarily punishing legitimate users.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.rfc-editor.org/rfc/rfc9333.html" target="_blank" rel="noopener noreferrer">RFC 9333: RateLimit Fields for HTTP</a></li><li><a href="https://redis.io/docs/latest/develop/use-cases/rate-limiter/" target="_blank" rel="noopener noreferrer">Redis: Rate limiter use case</a></li><li><a href="https://redis.io/docs/latest/develop/programmability/" target="_blank" rel="noopener noreferrer">Redis programmability and atomic execution</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

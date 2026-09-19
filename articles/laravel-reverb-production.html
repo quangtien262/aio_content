@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Laravel Reverb WebSocket trong production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel Reverb, WebSocket Laravel, Laravel Echo, broadcasting, private channel, realtime Laravel, Reverb production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, Reverb, WebSocket, Laravel Echo, Broadcasting, Redis, Realtime, PHP</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">C&agrave;i Laravel Reverb, ph&aacute;t s&#7921; ki&#7879;n realtime, b&#7843;o v&#7879; private channel v&agrave; tri&#7875;n khai production v&#7899;i queue, Nginx, Supervisor, TLS, Pulse v&agrave; Redis.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/laravel-reverb-production.jpg" alt="Laravel Reverb th&#7921;c chi&#7871;n: X&acirc;y realtime WebSocket v&agrave; v&#7853;n h&agrave;nh production" width="1440" height="810"></p><h1>Laravel Reverb th&#7921;c chi&#7871;n: X&acirc;y realtime WebSocket v&agrave; v&#7853;n h&agrave;nh production</h1><p><strong>Laravel Reverb &#273;&#432;a WebSocket server v&agrave;o h&#7879; sinh th&aacute;i Laravel, gi&uacute;p x&acirc;y th&ocirc;ng b&aacute;o, tr&#7841;ng th&aacute;i &#273;&#417;n h&agrave;ng, dashboard v&agrave; c&#7897;ng t&aacute;c realtime m&agrave; kh&ocirc;ng ph&#7843;i polling li&ecirc;n t&#7909;c.</strong> Demo local kh&aacute; nhanh, nh&#432;ng production c&#7847;n th&ecirc;m channel authorization, queue worker, TLS, reverse proxy, process manager, gi&#7899;i h&#7841;n k&#7871;t n&#7889;i v&agrave; gi&aacute;m s&aacute;t.</p>
+
+<h2>Lu&#7891;ng d&#7919; li&#7879;u c&#7847;n hi&#7875;u</h2>
+<ol><li>Tr&igrave;nh duy&#7879;t d&ugrave;ng Laravel Echo m&#7903; WebSocket t&#7899;i Reverb.</li><li>V&#7899;i private/presence channel, &#7913;ng d&#7909;ng Laravel x&aacute;c th&#7921;c y&ecirc;u c&#7847;u subscription.</li><li>Backend dispatch event tri&#7875;n khai <code>ShouldBroadcast</code>.</li><li>Queue worker x&#7917; l&yacute; broadcast job v&agrave; g&#7917;i message t&#7899;i Reverb.</li><li>Reverb chuy&#7875;n message t&#7899;i c&aacute;c connection &#273;&atilde; subscribe &#273;&uacute;ng channel.</li></ol>
+<blockquote>Reverb gi&#7919; k&#7871;t n&#7889;i v&agrave; ph&acirc;n ph&#7889;i message; quy&#7873;n &#273;&#432;&#7907;c nghe d&#7919; li&#7879;u v&#7851;n ph&#7843;i do &#7913;ng d&#7909;ng quy&#7871;t &#273;&#7883;nh.</blockquote>
+
+<h2>1. C&agrave;i broadcasting v&#7899;i Reverb</h2>
+<pre><code>php artisan install:broadcasting --reverb
+npm install
+npm run build</code></pre>
+<p>L&#7879;nh c&agrave;i t&#7841;o c&#7845;u h&igrave;nh broadcasting, Reverb, <code>routes/channels.php</code>, th&ocirc;ng tin m&ocirc;i tr&#432;&#7901;ng v&agrave; scaffolding Echo. Kh&ocirc;ng commit <code>REVERB_APP_SECRET</code>. Ph&acirc;n bi&#7879;t hai nh&oacute;m bi&#7871;n: <code>REVERB_SERVER_HOST/PORT</code> l&agrave; n&#417;i process l&#7855;ng nghe; <code>REVERB_HOST/PORT/SCHEME</code> l&agrave; &#273;&#7883;a ch&#7881; &#7913;ng d&#7909;ng v&agrave; browser s&#7917; d&#7909;ng.</p>
+<pre><code>BROADCAST_CONNECTION=reverb
+REVERB_SERVER_HOST=127.0.0.1
+REVERB_SERVER_PORT=8080
+REVERB_HOST=ws.example.com
+REVERB_PORT=443
+REVERB_SCHEME=https</code></pre>
+
+<h2>2. T&#7841;o m&#7897;t broadcast event</h2>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use App\Models\Order;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
+
+class OrderStatusUpdated implements ShouldBroadcast
+{
+    use SerializesModels;
+
+    public function __construct(public Order $order) {}
+
+    public function broadcastOn(): array
+    {
+        return [new PrivateChannel('orders.'.$this-&gt;order-&gt;id)];
+    }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'id' =&gt; $this-&gt;order-&gt;id,
+            'status' =&gt; $this-&gt;order-&gt;status,
+            'updated_at' =&gt; $this-&gt;order-&gt;updated_at?-&gt;toISOString(),
+        ];
+    }
+}</code></pre>
+<p>Ch&#7881; g&#7917;i field frontend th&#7921;c s&#7921; c&#7847;n. Kh&ocirc;ng serialize c&#7843; model c&oacute; quan h&#7879;, email n&#7897;i b&#7897; ho&#7863;c d&#7919; li&#7879;u nh&#7841;y c&#7843;m. Broadcast m&#7863;c &#273;&#7883;nh &#273;&#432;&#7907;c &#273;&#432;a v&agrave;o queue; h&atilde;y ch&#7841;y worker &#273;&#7875; event kh&ocirc;ng n&#7857;m ch&#7901; v&ocirc; th&#7901;i h&#7841;n.</p>
+
+<h2>3. Authorization cho private channel</h2>
+<p>Trong <code>routes/channels.php</code>:</p>
+<pre><code>use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Facades\Broadcast;
+
+Broadcast::channel('orders.{orderId}', function (User $user, int $orderId) {
+    return Order::query()
+        -&gt;whereKey($orderId)
+        -&gt;where('user_id', $user-&gt;id)
+        -&gt;exists();
+});</code></pre>
+<p>Public channel cho ph&eacute;p b&#7845;t k&#7923; client n&agrave;o subscribe n&ecirc;n ch&#7881; d&ugrave;ng cho d&#7919; li&#7879;u th&#7921;c s&#7921; c&ocirc;ng khai. Private channel y&ecirc;u c&#7847;u x&aacute;c th&#7921;c v&agrave; callback ph&#7843;i ki&#7875;m tra quy&#7873;n tr&ecirc;n &#273;&uacute;ng resource. Presence channel c&ograve;n tr&#7843; th&ocirc;ng tin th&agrave;nh vi&ecirc;n; ch&#7881; tr&#7843; d&#7919; li&#7879;u t&#7889;i thi&#7875;u nh&#432; ID v&agrave; t&ecirc;n hi&#7875;n th&#7883;.</p>
+<pre><code>php artisan channel:list</code></pre>
+
+<h2>4. L&#7855;ng nghe b&#7857;ng Laravel Echo</h2>
+<pre><code>window.Echo.private(`orders.${orderId}`)
+    .listen('OrderStatusUpdated', (event) =&gt; {
+        updateOrderStatus(event.status);
+    });</code></pre>
+<p>N&#7871;u &#273;&#7883;nh ngh&#297;a <code>broadcastAs()</code>, listener ph&#7843;i d&ugrave;ng t&ecirc;n t&ugrave;y ch&#7881;nh v&#7899;i d&#7845;u ch&#7845;m &#273;&#7847;u, v&iacute; d&#7909; <code>.listen('.order.updated', ...)</code>. Khi component b&#7883; h&#7911;y, r&#7901;i channel &#273;&#7875; tr&aacute;nh listener tr&ugrave;ng v&agrave; r&ograve; b&#7897; nh&#7899;.</p>
+
+<h2>5. Dispatch &#273;&uacute;ng th&#7901;i &#273;i&#7875;m giao d&#7883;ch</h2>
+<pre><code>$order-&gt;update(['status' =&gt; 'shipped']);
+
+OrderStatusUpdated::dispatch($order-&gt;fresh());</code></pre>
+<p>N&#7871;u event &#273;&#432;&#7907;c dispatch trong database transaction, worker c&oacute; th&#7875; ch&#7841;y tr&#432;&#7899;c khi commit v&agrave; &#273;&#7885;c tr&#7841;ng th&aacute;i c&#361;. D&ugrave;ng after-commit c&#7911;a queue ho&#7863;c tri&#7875;n khai <code>ShouldDispatchAfterCommit</code> cho event khi t&iacute;nh nh&#7845;t qu&aacute;n quan tr&#7885;ng. Thi&#7871;t k&#7871; payload c&oacute; ID, version ho&#7863;c timestamp &#273;&#7875; client b&#7887; qua event &#273;&#7871;n tr&#7877;.</p>
+
+<h2>6. Ch&#7841;y local v&agrave; ki&#7875;m tra</h2>
+<pre><code>php artisan reverb:start --debug
+php artisan queue:work
+npm run dev</code></pre>
+<p><code>--debug</code> h&#7919;u &iacute;ch &#7903; local nh&#432;ng t&#7841;o log l&#7899;n, kh&ocirc;ng n&ecirc;n b&#7853;t th&#432;&#7901;ng xuy&ecirc;n trong production. Ki&#7875;m tra tab Network/WebSocket c&#7911;a tr&igrave;nh duy&#7879;t, response c&#7911;a <code>/broadcasting/auth</code>, log queue v&agrave; <code>failed_jobs</code>. N&#7871;u WebSocket k&#7871;t n&#7889;i nh&#432;ng kh&ocirc;ng c&oacute; event, queue worker l&agrave; &#273;i&#7875;m c&#7847;n ki&#7875;m tra &#273;&#7847;u ti&ecirc;n.</p>
+
+<h2>7. &#272;&#7863;t Reverb sau Nginx v&agrave; TLS</h2>
+<p>Trong production, &#273;&#7875; Reverb nghe &#7903; localhost v&agrave; Nginx k&#7871;t th&uacute;c TLS tr&ecirc;n c&#7893;ng 443:</p>
+<pre><code>server {
+    listen 443 ssl http2;
+    server_name ws.example.com;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_read_timeout 60s;
+        proxy_pass http://127.0.0.1:8080;
+    }
+}</code></pre>
+<p>Reverb d&ugrave;ng URI <code>/app</code> cho WebSocket v&agrave; <code>/apps</code> cho API, n&ecirc;n proxy ph&#7843;i ph&#7909;c v&#7909; c&#7843; hai. Ch&#7881; m&#7903; 80/443 ra Internet; c&#7893;ng 8080 n&ecirc;n b&#7883; gi&#7899;i h&#7841;n n&#7897;i b&#7897;. C&agrave;i ch&#7913;ng ch&#7881; h&#7907;p l&#7879; cho hostname WebSocket v&agrave; d&ugrave;ng <code>wss://</code> khi website ch&#7841;y HTTPS.</p>
+
+<h2>8. Gi&#7899;i h&#7841;n origin v&agrave; b&#7843;o v&#7879; channel</h2>
+<p>Trong <code>config/reverb.php</code>, &#273;&#7863;t <code>allowed_origins</code> th&agrave;nh c&aacute;c domain frontend c&#7909; th&#7875;, kh&ocirc;ng d&ugrave;ng <code>*</code> tr&ecirc;n production n&#7871;u kh&ocirc;ng th&#7921;c s&#7921; c&#7847;n. Origin check kh&ocirc;ng thay th&#7871; authentication; attacker v&#7851;n c&oacute; th&#7875; g&#7885;i backend b&#7857;ng c&ocirc;ng c&#7909; ri&ecirc;ng n&#7871;u authorization sai.</p>
+<ul><li>D&ugrave;ng private channel cho d&#7919; li&#7879;u ng&#432;&#7901;i d&ugrave;ng ho&#7863;c tenant.</li><li>Ki&#7875;m tra tenant/resource trong callback, kh&ocirc;ng ch&#7881; ki&#7875;m tra &#273;&atilde; &#273;&#259;ng nh&#7853;p.</li><li>Rate-limit endpoint t&#7841;o event v&agrave; c&aacute;c client event.</li><li>Kh&ocirc;ng &#273;&#432;a secret, token ho&#7863;c model &#273;&#7847;y &#273;&#7911; v&agrave;o payload.</li><li>Gi&#7899;i h&#7841;n k&iacute;ch th&#432;&#7899;c message v&agrave; s&#7889; subscription h&#7907;p l&yacute;.</li></ul>
+
+<h2>9. Ch&#7841;y Reverb v&agrave; queue b&#7857;ng process manager</h2>
+<p>Reverb l&agrave; process s&#7889;ng l&acirc;u. D&ugrave;ng Supervisor ho&#7863;c systemd &#273;&#7875; t&#7921; kh&#7903;i &#273;&#7897;ng l&#7841;i. V&iacute; d&#7909; Supervisor:</p>
+<pre><code>[program:app-reverb]
+command=php /var/www/app/artisan reverb:start
+directory=/var/www/app
+autostart=true
+autorestart=true
+user=www-data
+redirect_stderr=true
+stdout_logfile=/var/log/supervisor/app-reverb.log
+stopasgroup=true
+killasgroup=true</code></pre>
+<p>Queue worker l&agrave; process ri&ecirc;ng v&agrave; c&#361;ng ph&#7843;i &#273;&#432;&#7907;c gi&aacute;m s&aacute;t. Sau deploy, ch&#7841;y <code>php artisan reverb:restart</code> &#273;&#7875; k&#7871;t th&uacute;c connection nh&#7865; nh&agrave;ng r&#7891;i process manager kh&#7903;i &#273;&#7897;ng phi&ecirc;n b&#7843;n m&#7899;i. &#272;&#7891;ng th&#7901;i restart queue worker &#273;&#7875; n&#7841;p code m&#7899;i.</p>
+
+<h2>10. Capacity, monitoring v&agrave; scale ngang</h2>
+<p>M&#7895;i WebSocket gi&#7919; memory v&agrave; m&#7897;t file descriptor. Ki&#7875;m tra <code>ulimit -n</code>, gi&#7899;i h&#7841;n Nginx v&agrave; Supervisor. Event loop m&#7863;c &#273;&#7883;nh d&#7921;a tr&ecirc;n <code>stream_select</code> th&#432;&#7901;ng b&#7883; gi&#7899;i h&#7841;n kho&#7843;ng 1.024 file; t&agrave;i li&#7879;u Laravel khuy&#7871;n ngh&#7883; event loop <code>ext-uv</code> khi v&#432;&#7907;t kho&#7843;ng 1.000 connection &#273;&#7891;ng th&#7901;i.</p>
+<p>T&iacute;ch h&#7907;p Laravel Pulse &#273;&#7875; theo d&otilde;i connection v&agrave; message; ch&#7881; ch&#7841;y daemon <code>pulse:check</code> tr&ecirc;n m&#7897;t node khi scale ngang. C&#7843;nh b&aacute;o th&ecirc;m memory, CPU, reconnect rate, queue lag, failed jobs v&agrave; l&#7895;i 4xx/5xx c&#7911;a endpoint authorization.</p>
+<p>Khi m&#7897;t node kh&ocirc;ng &#273;&#7911;, b&#7853;t <code>REVERB_SCALING_ENABLED=true</code>, d&ugrave;ng Redis t&#7853;p trung cho pub/sub v&agrave; &#273;&#7863;t nhi&#7873;u Reverb node sau load balancer. Ki&#7875;m th&#7917; t&#7843;i b&#7857;ng m&ocirc; h&igrave;nh connection th&#7921;c t&#7871;, kh&ocirc;ng ch&#7881; s&#7889; message/gi&acirc;y.</p>
+
+<h2>Nh&#7919;ng l&#7895;i production th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li><strong>WebSocket 404/502:</strong> Nginx ch&#432;a proxy &#273;&uacute;ng <code>/app</code>, process Reverb d&#7915;ng ho&#7863;c sai port.</li><li><strong>403 subscription:</strong> session/cookie, CSRF, guard ho&#7863;c callback channel kh&ocirc;ng kh&#7899;p.</li><li><strong>Event kh&ocirc;ng &#273;&#7871;n:</strong> queue worker ch&#432;a ch&#7841;y, broadcast job th&#7845;t b&#7841;i ho&#7863;c sai channel/event name.</li><li><strong>Ch&#7881; l&#7895;i tr&ecirc;n HTTPS:</strong> Echo v&#7851;n d&ugrave;ng <code>ws://</code>, certificate sai ho&#7863;c proxy thi&#7871;u header Upgrade.</li><li><strong>Deploy xong v&#7851;n ch&#7841;y code c&#361;:</strong> ch&#432;a restart Reverb v&agrave; queue worker.</li><li><strong>R&#7899;t connection khi t&#7843;i t&#259;ng:</strong> ch&#7841;m gi&#7899;i h&#7841;n file descriptor, event loop, Nginx, memory ho&#7863;c port.</li></ul>
+
+<h2>Checklist tr&#432;&#7899;c khi ra m&#7855;t</h2>
+<ol><li>Private/presence channel c&oacute; test authorization cho ph&eacute;p v&agrave; t&#7915; ch&#7889;i.</li><li>Payload t&#7889;i thi&#7875;u, kh&ocirc;ng ch&#7913;a secret ho&#7863;c d&#7919; li&#7879;u tenant kh&aacute;c.</li><li>Queue worker, Reverb v&agrave; process manager &#273;&#7873;u ho&#7841;t &#273;&#7897;ng.</li><li>WSS qua certificate h&#7907;p l&#7879;; port n&#7897;i b&#7897; kh&ocirc;ng public.</li><li><code>allowed_origins</code> ch&#7881; ch&#7913;a frontend h&#7907;p l&#7879;.</li><li>Deploy script restart Reverb v&agrave; queue worker.</li><li>&#272;&atilde; &#273;o connection &#273;&#7891;ng th&#7901;i, queue lag, memory v&agrave; reconnect.</li><li>C&oacute; dashboard, c&#7843;nh b&aacute;o v&agrave; k&#7871; ho&#7841;ch scale Redis/load balancer.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Laravel Reverb l&agrave;m ph&#7847;n realtime h&ograve;a v&agrave;o event v&agrave; broadcasting c&#7911;a Laravel, nh&#432;ng &#273;&#7897; tin c&#7853;y &#273;&#7871;n t&#7915; to&agrave;n b&#7897; &#273;&#432;&#7901;ng truy&#7873;n: authorization &#273;&uacute;ng, queue kh&ocirc;ng ngh&#7869;n, reverse proxy h&#7895; tr&#7907; upgrade, process &#273;&#432;&#7907;c gi&aacute;m s&aacute;t v&agrave; h&#7841; t&#7847;ng c&oacute; gi&#7899;i h&#7841;n ph&ugrave; h&#7907;p. B&#7855;t &#273;&#7847;u b&#7857;ng m&#7897;t use case nh&#7887;, &#273;o t&#7843;i th&#7853;t r&#7891;i scale theo connection thay v&igrave; d&#7921; &#273;o&aacute;n.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://laravel.com/docs/13.x/reverb" target="_blank" rel="noopener noreferrer">Laravel 13: Reverb</a></li><li><a href="https://laravel.com/docs/13.x/broadcasting" target="_blank" rel="noopener noreferrer">Laravel 13: Broadcasting</a></li><li><a href="https://laravel.com/docs/13.x/queues" target="_blank" rel="noopener noreferrer">Laravel 13: Queues</a></li><li><a href="https://laravel.com/docs/13.x/pulse" target="_blank" rel="noopener noreferrer">Laravel 13: Pulse</a></li><li><a href="https://laravel.com/docs/13.x/deployment" target="_blank" rel="noopener noreferrer">Laravel 13: Deployment</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

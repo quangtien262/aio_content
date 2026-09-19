@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">automated-laravel-testing-with-pest</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Automated Laravel Testing with Pest: A Practical Guide</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel testing, Pest PHP, feature tests, unit tests, automated testing, Laravel CI</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, Pest PHP, Automated Testing, Feature Testing, PHP, CI/CD</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Build useful automated tests for Laravel with Pest: prioritize valuable behavior, manage databases, write feature tests, and run them in CI.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/kiem-thu-tu-dong-laravel-pest.jpg" alt="Automated Laravel Testing with Pest: From Your First Test to CI" width="1440" height="810"></p><h1>Automated Laravel Testing with Pest: From Your First Test to CI</h1><p><strong>Automated testing does not prove that software contains no bugs; it provides an early signal when important behavior changes unexpectedly.</strong> With Laravel and Pest, a team can begin with a few business-critical flows, write readable tests, and gradually build protection around the riskiest parts of the system.</p>
+<h2>Where should you start?</h2>
+<p>Do not make complete code coverage the first target. Prioritize behavior whose failure creates clear damage: authentication, authorization, ordering, payments, inventory, integration APIs, and defects that have already reached production.</p>
+<table><thead><tr><th>Test type</th><th>Best suited to</th><th>Characteristics</th></tr></thead><tbody><tr><td>Unit</td><td>Calculations and isolated business rules</td><td>Fast, with few framework dependencies</td></tr><tr><td>Feature</td><td>HTTP, databases, middleware, and access control</td><td>Signals behavior close to the real application</td></tr><tr><td>Browser</td><td>Critical interface journeys</td><td>High value, but slower to maintain</td></tr><tr><td>Architecture</td><td>Structure and dependency rules</td><td>Prevents drift from agreed conventions</td></tr></tbody></table>
+<h2>Your first Pest test</h2>
+<pre><code>&lt;?php
+
+it('redirects guests away from the dashboard', function () {
+    $response = $this-&gt;get('/dashboard');
+
+    $response-&gt;assertRedirect('/login');
+});</code></pre>
+<p>A test name should state an observable result. Avoid naming it after an internal method, because refactoring may change the method while preserving user-facing behavior.</p>
+<h2>Testing a database-backed flow</h2>
+<pre><code>&lt;?php
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
+it('allows an active user to update their profile', function () {
+    $user = User::factory()-&gt;create(['is_active' =&gt; true]);
+
+    $response = $this-&gt;actingAs($user)-&gt;put('/profile', [
+        'name' =&gt; 'Alex Nguyen',
+        'email' =&gt; 'alex@example.test',
+    ]);
+
+    $response-&gt;assertRedirect('/profile');
+    $this-&gt;assertDatabaseHas('users', [
+        'id' =&gt; $user-&gt;id,
+        'name' =&gt; 'Alex Nguyen',
+    ]);
+});</code></pre>
+<p><code>RefreshDatabase</code> lets every test start from controlled data. Factories create records whose intent is clearer than relying on data already present on a developer's computer.</p>
+<h2>Test success and rejection paths</h2>
+<p>Testing only valid input can leave serious gaps. For a profile endpoint, add cases for guests, invalid email, duplicate email, and suspended accounts. For authorization, verify both a role that has permission and one that does not.</p>
+<blockquote>A high-value test protects a business promise. It does not need to know how many methods a controller calls; it needs to prove that the right user receives the right result.</blockquote>
+<h2>Keep tests stable and maintainable</h2>
+<ul><li>Use factory states such as <code>active()</code> or <code>admin()</code> so test data communicates intent.</li><li>Do not call real third-party APIs; fake mail, queues, notifications, storage, and HTTP clients.</li><li>Freeze time when logic involves expiry or schedules.</li><li>Never depend on test order; each test prepares its own state.</li><li>Assert business outcomes instead of fragile HTML or internal structure.</li></ul>
+<h2>Fake secondary work</h2>
+<pre><code>use Illuminate\Support\Facades\Queue;
+use App\Jobs\SendWelcomeEmail;
+
+it('queues a welcome email after registration', function () {
+    Queue::fake();
+
+    $this-&gt;post('/register', [
+        'name' =&gt; 'Taylor',
+        'email' =&gt; 'taylor@example.test',
+        'password' =&gt; 'Strong-password-123',
+        'password_confirmation' =&gt; 'Strong-password-123',
+    ])-&gt;assertRedirect('/dashboard');
+
+    Queue::assertPushed(SendWelcomeEmail::class);
+});</code></pre>
+<h2>Run tests efficiently</h2>
+<pre><code>php artisan test
+php artisan test --stop-on-failure
+php artisan test --filter=profile
+php artisan test --parallel --processes=4</code></pre>
+<p>Parallel execution can reduce feedback time, but tests must isolate resources. Shared files, fixed network ports, or external services can create intermittent failures between processes.</p>
+<h2>Put the suite in CI</h2>
+<pre><code>name: tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - run: composer install --no-interaction --prefer-dist
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: php artisan test</code></pre>
+<p>This is a starting frame. Projects using MySQL, Redis, or browser testing need the corresponding services and configuration. Keep production secrets out of CI and use a separate test database.</p>
+<h2>Signs tests are becoming a burden</h2>
+<ul><li>Tests fail intermittently even when the code has not changed.</li><li>A small interface adjustment breaks many unrelated tests.</li><li>Fixtures are so large that readers cannot identify relevant data.</li><li>Tests mock every layer and merely verify the current implementation.</li><li>The suite is slow enough that developers skip it before pushing.</li></ul>
+<p>When these signs appear, reduce data, isolate external services, divide tests by level, and preserve a fast smoke suite. Removing duplicate tests is valuable maintenance too.</p>
+<h2>A practical adoption path</h2>
+<ol><li>Select three to five business flows with the highest risk.</li><li>Write feature tests for success, validation, and authorization.</li><li>Add a regression test whenever a production defect is fixed.</li><li>Run the fast suite on every pull request.</li><li>Track execution time and flaky failures.</li><li>Add browser or architecture tests when their value is clear.</li></ol>
+<h2>Conclusion</h2>
+<p>A useful test suite is not measured only by a coverage percentage. Its real value is detecting dangerous changes early, explaining failures clearly, and running quickly enough that the team uses it every day. With Laravel and Pest, begin with important behavior, control test data carefully, and let CI turn those promises into a repeatable quality check.</p>
+<h2>References</h2><ul><li><a href="https://laravel.com/docs/testing" target="_blank" rel="noopener noreferrer">Laravel Testing</a></li><li><a href="https://pestphp.com/docs/writing-tests" target="_blank" rel="noopener noreferrer">Writing Tests with Pest</a></li><li><a href="https://pestphp.com/docs/arch-testing" target="_blank" rel="noopener noreferrer">Pest Architecture Testing</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Solutions</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">3-2-1-backup-strategy-for-businesses</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">3-2-1 Business Backups Against Ransomware</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">3-2-1 backup, business backup, ransomware protection, data recovery, RPO, RTO, immutable backup</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">3-2-1 Backup, Business Backup, Ransomware, Data Recovery, RPO, RTO, Data Protection</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">A practical guide to 3-2-1 business backups, RPO and RTO planning, ransomware-resistant copies, retention, and regular recovery testing.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/chien-luoc-sao-luu-3-2-1-cho-doanh-nghiep.jpg" alt="The 3-2-1 Backup Strategy for Businesses: Protect Data from Ransomware" width="1440" height="810"></p><h1>The 3-2-1 Backup Strategy for Businesses: Protect Data from Ransomware</h1><p><strong>A copy on a NAS or in a cloud-sync folder is not a complete backup strategy.</strong> If an administrator account is compromised, ransomware may encrypt production data, delete snapshots, and destroy connected copies. The 3-2-1 model creates independent recovery layers so one incident cannot eliminate every way back.</p>
+
+<h2>What is the 3-2-1 backup rule?</h2>
+<ul><li><strong>3 copies of data:</strong> one production copy and at least two backups.</li><li><strong>2 media types or platforms:</strong> for example, an office backup appliance and cloud object storage.</li><li><strong>1 off-site copy:</strong> kept in an independent location or account so a local incident does not affect it.</li></ul>
+<p>For ransomware resilience, businesses often extend the idea to 3-2-1-1-0: add an offline or immutable copy and aim for zero errors after integrity checks. This is not a rigid formula. Its purpose is to remove shared failure points between production and recovery data.</p>
+
+<h2>Sync is not a replacement for backup</h2>
+<p>Synchronization makes new files quickly available on several devices, but deletions, encryption, and unwanted overwrites may also propagate. A real backup keeps versions under a separate retention policy and can restore data to a point before the incident.</p>
+<table><thead><tr><th>Tool</th><th>Primary purpose</th><th>Risk to manage</th></tr></thead><tbody><tr><td>File sync</td><td>Convenient collaboration and access</td><td>Bad changes spread to synced copies</td></tr><tr><td>Snapshot</td><td>Fast rollback on the same system</td><td>Shared device or administrative domain</td></tr><tr><td>Backup</td><td>Recovery after deletion, failure, or attack</td><td>Requires monitoring, protection, and testing</td></tr><tr><td>Replication</td><td>Service continuity during infrastructure failure</td><td>Corrupted data may also be replicated</td></tr></tbody></table>
+
+<h2>Start with RPO and RTO</h2>
+<p><strong>Recovery Point Objective (RPO)</strong> is the maximum acceptable data loss measured in time. If the order system has a 15-minute RPO, a nightly backup is insufficient. <strong>Recovery Time Objective (RTO)</strong> is the maximum time allowed to restore the service.</p>
+<p>Not every system needs the highest tier. Transaction data may require a short RPO and recovery within hours, while a rarely changed archive may be backed up daily and restored more slowly. These decisions directly shape cost.</p>
+
+<h2>A reference architecture for a small business</h2>
+<ol><li><strong>Production copy:</strong> active data on servers, endpoints, SaaS platforms, and databases.</li><li><strong>Local backup:</strong> a separate appliance or NAS using dedicated credentials and not mounted for every employee. This copy enables fast recovery.</li><li><strong>Off-site backup:</strong> cloud storage or another data center with encryption, versioning, and retention controls.</li><li><strong>Immutable or offline layer:</strong> object lock, an immutable vault, or removable media disconnected after backup.</li></ol>
+<p>If one provider hosts both production and backups, separate accounts, administrative roles, and credentials. For critical data, an independent administrative domain or provider can further reduce common risk.</p>
+
+<h2>Protect backups from the attacker</h2>
+<ul><li>Use dedicated backup accounts, MFA, and least-privilege access.</li><li>Do not reuse domain administrator credentials for backup infrastructure.</li><li>Enable immutability, delete protection, or object lock where available.</li><li>Encrypt data in transit and at rest, and store recovery keys separately.</li><li>Patch backup servers and restrict management interfaces from user networks.</li><li>Alert on failed jobs, unusual storage growth, and bulk deletion requests.</li></ul>
+
+<h2>Design schedules and retention</h2>
+<p>A simple schedule might include daily incremental, weekly full, and monthly recovery points. The actual schedule must follow the RPO, rate of data change, and the time ransomware could remain undetected.</p>
+<p>Keeping versions across different time ranges reduces the chance that every recent backup already contains damaged data. Retention also needs a lawful deletion policy; personal data should not be stored forever merely because it might be useful someday.</p>
+
+<h2>Test recovery, not just backup jobs</h2>
+<p>A &ldquo;successful&rdquo; job does not prove that the business can recover. Quarterly, or according to system criticality, restore sample files, a database, and a virtual machine into an isolated environment. Measure real recovery time against the RTO.</p>
+<ol><li>Confirm that files can be read and databases can start.</li><li>Scan recovered data before returning it to production.</li><li>Validate applications, permissions, and dependent systems.</li><li>Document who can initiate a restore and who approves it.</li><li>Update the runbook after every exercise or infrastructure change.</li></ol>
+
+<h2>A 30-day implementation plan</h2>
+<table><thead><tr><th>Stage</th><th>Actions</th></tr></thead><tbody><tr><td>Days 1-7</td><td>Inventory data, owners, and dependencies; define RPO, RTO, and recovery order</td></tr><tr><td>Days 8-14</td><td>Configure local and off-site copies; separate administrative accounts</td></tr><tr><td>Days 15-21</td><td>Enable encryption, MFA, immutability, alerts, and retention</td></tr><tr><td>Days 22-30</td><td>Run a restore test, measure results, revise the runbook, and assign responsibilities</td></tr></tbody></table>
+
+<h2>Conclusion</h2>
+<p>3-2-1 backup is not simply a purchase of more storage. It is the design of independent copies, protected from shared credentials, followed by regular proof that recovery works. A modest system that is tested consistently is more valuable than an expensive platform that has never completed a recovery exercise.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.cisa.gov/stopransomware/ransomware-guide" target="_blank" rel="noopener noreferrer">CISA: StopRansomware Guide</a></li><li><a href="https://csrc.nist.gov/pubs/other/2020/04/24/protecting-data-from-ransomware-and-other-data-los/final" target="_blank" rel="noopener noreferrer">NIST: Protecting Data from Ransomware and Other Data Loss Events</a></li><li><a href="https://learn.microsoft.com/en-us/security/ransomware/protect-against-ransomware-phase1" target="_blank" rel="noopener noreferrer">Microsoft: Prepare for ransomware with backup and recovery</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

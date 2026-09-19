@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Technology Knowledge</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">what-is-an-npu-on-device-ai</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">What Is an NPU? Its Role in On-Device AI</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">what is NPU, neural processing unit, AI PC, on-device AI, CPU GPU NPU, TOPS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">NPU, AI PC, On-device AI, CPU, GPU, TOPS, Hardware</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Learn what an NPU is, how it differs from a CPU and GPU, why on-device AI matters, and what TOPS does and does not tell you.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/npu-la-gi-ai-tren-thiet-bi.jpg" alt="What Is an NPU, and Why Do Modern Computers and Phones Need One?" width="1440" height="810"></p><h1>What Is an NPU, and Why Do Modern Computers and Phones Need One?</h1><p><strong>NPUs are becoming common in laptops, phones, and tablets, but they do not replace the CPU or GPU.</strong> An NPU is specialized hardware designed to execute neural-network calculations efficiently, especially for AI workloads that run continuously on the device.</p>
+
+<h2>What is an NPU?</h2>
+<p>NPU stands for <em>Neural Processing Unit</em>. It is optimized for operations frequently used by machine-learning models, including matrix multiplication and highly parallel data processing. Instead of handling every kind of computing task, an NPU focuses on AI inference: applying an already-trained model to recognize, classify, or generate a result.</p>
+<p>NPUs are commonly integrated into a system-on-chip alongside the CPU, GPU, and memory controllers. Each engine can handle the work it does best, helping the device remain responsive while controlling power consumption and heat.</p>
+
+<h2>How do the CPU, GPU, and NPU differ?</h2>
+<table><thead><tr><th>Processor</th><th>Strength</th><th>Typical work</th></tr></thead><tbody><tr><td>CPU</td><td>Flexible, responsive, strong at sequential logic</td><td>Operating system, applications, system coordination</td></tr><tr><td>GPU</td><td>High parallel throughput for graphics and large computations</td><td>3D graphics, rendering, AI training, and demanding inference</td></tr><tr><td>NPU</td><td>Neural-network specialization and power efficiency</td><td>Background AI, camera, audio, recognition, and local models</td></tr></tbody></table>
+<p>These boundaries are not absolute. An application may use all three: the CPU prepares data, the NPU runs a model, and the GPU displays the result. The operating system and AI runtime select hardware according to model compatibility, drivers, and available acceleration.</p>
+
+<h2>Why run AI on the device?</h2>
+<ul><li><strong>Lower latency:</strong> data does not need a round trip to a server, which helps camera, calling, and real-time interactions.</li><li><strong>Offline operation:</strong> some features remain available with weak or no internet access.</li><li><strong>Power efficiency:</strong> an NPU can sustain suitable AI workloads with less power and heat than a CPU or GPU.</li><li><strong>Less data leaving the device:</strong> local processing can support privacy for personal audio, images, and documents.</li></ul>
+<blockquote>Local processing does not guarantee privacy by itself. An application may still upload inputs or results, so its permissions and data policy still matter.</blockquote>
+
+<h2>What does an NPU do today?</h2>
+<p>Common workloads include noise suppression, background effects, camera framing, speech recognition, OCR, image description or enhancement, translation, and local summarization. In phones, the NPU also contributes to computational photography, including scene recognition, HDR processing, and subject segmentation.</p>
+<p>An NPU is particularly valuable for continuous workloads. Instead of activating the GPU for every webcam frame or audio segment, the system can assign sustained inference to the NPU and leave the CPU and GPU available for the main application.</p>
+
+<h2>What is TOPS, and why is it not the whole story?</h2>
+<p>TOPS means trillions of operations per second and usually describes theoretical peak AI compute. It can be useful when measurements use the same conditions, but it is not a complete performance score.</p>
+<p>Real results also depend on numerical precision, sparse-data assumptions, memory bandwidth, model size, the software runtime, and application optimization. Two NPUs with similar TOPS ratings may differ substantially in speed, power use, and supported models.</p>
+
+<h2>Software determines whether the NPU is useful</h2>
+<p>A capable NPU helps only when the operating system, driver, runtime, and application support it. If model operators are incompatible, the application may move part or all of the work to the CPU, GPU, or cloud.</p>
+<p>When buying a device for specific software, check that application's documentation instead of relying on an &ldquo;AI PC&rdquo; label. Acceleration for video-call effects does not mean the system will run every generative model efficiently.</p>
+
+<h2>How to choose a device with an NPU</h2>
+<ol><li>Define the real workload: video calls, photo editing, coding, transcription, or local language models.</li><li>Confirm that the application and operating-system version support the platform's NPU.</li><li>Evaluate RAM, memory bandwidth, CPU, GPU, battery life, and cooling as a complete system.</li><li>Compare TOPS only under equivalent data types and measurement conditions.</li><li>Prefer tests using the actual applications and models you plan to run.</li></ol>
+
+<h2>Limitations to remember</h2>
+<p>An NPU does not make every application AI-enabled, and it does not have enough memory for every large model. Vendor software ecosystems still differ, while workloads requiring fresh information or enormous models often remain better suited to the cloud. Hybrid designs are therefore common: the device handles sensitive or latency-critical steps, and servers perform heavier work.</p>
+
+<h2>Conclusion</h2>
+<p>An NPU is a specialized compute engine that complements the CPU and GPU. Its main value is sustaining local AI with lower latency, power use, and heat. When choosing a device, prioritize software support and the complete system over the largest TOPS number.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://support.microsoft.com/en-us/windows/experience/compatibility/all-about-neural-processing-units-npus" target="_blank" rel="noopener noreferrer">Microsoft Support: All about neural processing units</a></li><li><a href="https://learn.microsoft.com/en-us/windows/ai/apis/" target="_blank" rel="noopener noreferrer">Microsoft Learn: Windows AI APIs</a></li><li><a href="https://www.intel.com/content/www/us/en/ai-pc/overview.html" target="_blank" rel="noopener noreferrer">Intel: AI PC overview</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Solutions</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">small-business-account-management-passwords-mfa-sso-offboarding</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Account Management Solutions for Small Businesses</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">business account management, password manager, MFA, SSO, passkeys, offboarding, access management</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Identity Management, Password Manager, MFA, SSO, Passkey, Access Control, Offboarding, SME Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Build small-business account management with a password manager, MFA, SSO, group permissions, recovery, and secure offboarding.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/small-business-identity-access-solution.jpg" alt="Account Management for Small Businesses: Password Managers, MFA, SSO, and Offboarding" width="1440" height="810"></p><h1>Account Management for Small Businesses: Password Managers, MFA, SSO, and Offboarding</h1><p><strong>Account risk in a small business rarely begins with advanced technology; it begins with shared passwords, access that was never revoked, and critical accounts known by only one person.</strong> A sound identity solution makes sign-in easier for staff while letting the business know who has access and revoke it quickly.</p>
+
+<h2>The four problems to solve</h2>
+<ul><li><strong>Scattered passwords:</strong> stored in personal browsers, spreadsheets, chats, or memory.</li><li><strong>Shared accounts:</strong> no reliable record of who signed in or changed data.</li><li><strong>Inconsistent MFA:</strong> important accounts still rely on passwords or SMS.</li><li><strong>Incomplete offboarding:</strong> sessions, tokens, API keys, forwarding rules, and application access remain after departure.</li></ul>
+<p>The goal is not to buy the most tools. It is to establish a trustworthy identity source, reduce password entry, apply strong authentication, and manage the entire access lifecycle.</p>
+
+<h2>A practical small-business architecture</h2>
+<ol><li><strong>Directory or identity provider:</strong> manages employee accounts and groups.</li><li><strong>SSO:</strong> uses one business identity for supported applications.</li><li><strong>Business password manager:</strong> stores credentials for systems without SSO and shares through vaults rather than messages.</li><li><strong>MFA or passkeys:</strong> protects sign-in, prioritizing phishing-resistant methods for critical accounts.</li></ol>
+<blockquote>SSO does not eliminate the password manager. Many websites, devices, infrastructure accounts, and emergency secrets do not support federation.</blockquote>
+
+<h2>1. Inventory accounts before choosing tools</h2>
+<p>Record the application, business owner, administrators, login method, MFA, stored data, cost, and revocation process. Pay particular attention to:</p>
+<ul><li>Accounts created with personal email addresses.</li><li>Shared or ownerless administrator accounts.</li><li>Auto-renewing applications with no active users.</li><li>Long-lived API keys, SSH keys, and service accounts.</li><li>Email aliases or forwarding outside the organization.</li><li>Vendor accounts that can access customer data.</li></ul>
+<p>Rank by impact. Email and the identity provider come first because they can reset many other accounts, followed by finance, domains and DNS, cloud, source code, CRM, and backups.</p>
+
+<h2>2. Select a business password manager</h2>
+<p>Do not share one personal vault and its master password with a team. A business product should provide:</p>
+<ul><li>Individual accounts with MFA.</li><li>Vaults or collections by department, project, and sensitivity.</li><li>Permissions for use, viewing, editing, and administration.</li><li>Audit logs and weak or reused password reporting.</li><li>Device and session revocation during offboarding.</li><li>Controlled administrative recovery without one-person dependency.</li><li>Export, backup, and provider-exit planning.</li><li>Passkey, browser, and platform support that matches the organization.</li></ul>
+<p>NIST notes that password managers support long, random, unique passwords for every service. This concentration also makes the vault a high-value target, so use a strong master passphrase and phishing-resistant MFA where available.</p>
+
+<h2>3. Use a practical password policy</h2>
+<p>Do not force periodic password changes without evidence of compromise, and do not rely on rotating composition rules. Instead:</p>
+<ul><li>Generate long, random, unique passwords with the manager.</li><li>Use a long, unique passphrase for a memorized master password.</li><li>Block common and known-compromised passwords.</li><li>Allow paste and autofill.</li><li>Rate-limit sign-in and alert on unusual behavior.</li><li>Rotate immediately after compromise or a relevant employee departure.</li></ul>
+
+<h2>4. Prioritize phishing-resistant MFA</h2>
+<p>MFA methods do not offer equal protection. SMS and manually entered OTP codes are better than passwords alone but can still be phished. NIST identifies WebAuthn and FIDO2 as phishing-resistant because credentials are bound to the legitimate domain.</p>
+<ol><li>Passkeys or security keys for email, identity, cloud, domain, and admin accounts.</li><li>TOTP authenticator apps where phishing-resistant methods are unavailable.</li><li>Push MFA with number matching and context when configured well.</li><li>SMS only as a transitional or controlled recovery method.</li></ol>
+<p>Administrator accounts should have two independent authenticators. Use one daily and seal the backup in a controlled location.</p>
+
+<h2>5. Deploy SSO where it creates value</h2>
+<p>SSO lets one central identity disable access across applications, reduces password count, and applies consistent sign-in policy. Prioritize applications with sensitive data, many users, or frequent staffing changes.</p>
+<p>Before upgrading a plan solely for SSO, calculate subscription cost, manual provisioning time, orphan-account risk, and audit cost. A low-risk application may be adequately controlled through a password manager and offboarding checklist, while email, CRM, source code, and cloud generally justify SSO sooner.</p>
+
+<h2>6. Assign access through groups</h2>
+<p>Create role groups such as Finance, Sales, Engineering, and External Contractors. Assign application and vault access to groups, then place people in those groups. This reduces orphaned permissions and simplifies reviews.</p>
+<p>Apply least privilege. Use administrator rights only when necessary and standard accounts for daily work. For critical systems, separate administrative accounts from ordinary email identities and audit permission changes.</p>
+
+<h2>7. Repeatable onboarding</h2>
+<ol><li>The manager confirms role, start date, and required applications.</li><li>Create the account with a business email, never a personal address.</li><li>Add standard access groups instead of granting ad hoc permissions.</li><li>Register at least two suitable recovery methods.</li><li>Train on the password manager, MFA, phishing, and lost-device reporting.</li><li>Replace temporary secrets and verify sign-in.</li><li>Record approver, time, and granted access.</li></ol>
+
+<h2>8. Same-day offboarding</h2>
+<ol><li>Disable identity and email accounts and revoke sessions.</li><li>Recover devices, security keys, VPN profiles, and certificates.</li><li>Remove access to groups, vaults, repositories, cloud, and finance tools.</li><li>Transfer ownership of files, calendars, automations, dashboards, and advertising accounts.</li><li>Rotate shared passwords, API keys, SSH keys, and webhooks the person could access.</li><li>Inspect forwarding rules, OAuth grants, and personal access tokens.</li><li>Retain and delete data according to legal policy.</li><li>Record completion evidence and the person responsible.</li></ol>
+<blockquote>Changing an email password does not revoke every form of access. Sessions, OAuth tokens, API keys, and SSH keys have separate lifecycles.</blockquote>
+
+<h2>9. Emergency access and recovery</h2>
+<p>Create at least two break-glass accounts for critical identity or cloud platforms. Do not use them daily or tie them to one employee's email. Protect them with separate security keys and alert on every sign-in.</p>
+<p>Store encrypted recovery codes plus a controlled offline copy. Quarterly, verify that emergency accounts work, backup credentials remain available, and authorized users are still correct. An overly easy recovery path can bypass MFA.</p>
+
+<h2>10. Service accounts and machine secrets</h2>
+<p>Do not run automation under employee accounts. Each service account needs a purpose, owner, minimum permissions, review or expiration date, and secrets in a secret manager or CI/CD vault rather than source code.</p>
+<p>Prefer workload identity or short-lived credentials over long-lived API keys where supported. Track last use to find abandoned secrets and rotate according to risk, not merely a calendar.</p>
+
+<h2>11. Review access regularly</h2>
+<p>Each quarter, have managers and application owners confirm access lists. Focus on administrators, inactive accounts, transfers, expired contractors, and applications without owners. Reviews must result in actual revocation, not only a signed report.</p>
+<p>Track simple measures: MFA coverage, phishing-resistant coverage, administrator count, offboarding time, ownerless accounts, and secrets overdue for review.</p>
+
+<h2>A 30-day rollout</h2>
+<ol><li><strong>Week 1:</strong> inventory applications, administrators, shared accounts, and risk.</li><li><strong>Week 2:</strong> deploy the password manager, build group vaults, and enable MFA.</li><li><strong>Week 3:</strong> connect SSO for critical applications and standardize permission groups.</li><li><strong>Week 4:</strong> test onboarding and offboarding, validate break-glass access, and close gaps.</li></ol>
+<p>Start with email, identity, domains, cloud, and finance. Do not wait for a perfect inventory before protecting accounts that can reset or take over the wider environment.</p>
+
+<h2>Acceptance checklist</h2>
+<ol><li>Every employee has an individual identity; personal accounts are not shared.</li><li>The business password manager uses group vaults and audit logs.</li><li>Email, identity, cloud, and domain accounts use phishing-resistant MFA where supported.</li><li>Access is assigned through groups with an approving owner.</li><li>Onboarding and offboarding have checklists, service levels, and evidence.</li><li>Session, OAuth token, API key, and SSH key revocation is in scope.</li><li>Two tested recovery or break-glass paths exist.</li><li>Service accounts do not depend on employee identities.</li><li>Access is reviewed at least quarterly.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Effective account management is not just a password manager or an MFA switch. It is a complete lifecycle from provisioning and use through review and revocation. For a small business, a directory, selective SSO, group vaults, and phishing-resistant authentication provide strong protection while keeping operations manageable.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html" target="_blank" rel="noopener noreferrer">NIST SP 800-63B-4: Authentication and Authenticator Management</a></li><li><a href="https://pages.nist.gov/800-63-4/sp800-63b/authenticators/" target="_blank" rel="noopener noreferrer">NIST: Authenticator Requirements</a></li><li><a href="https://pages.nist.gov/800-63-FAQ/" target="_blank" rel="noopener noreferrer">NIST Digital Identity Guidelines FAQ</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

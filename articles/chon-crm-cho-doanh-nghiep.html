@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&aacute;ch ch&#7885;n CRM ph&ugrave; h&#7907;p m&agrave; kh&ocirc;ng l&atilde;ng ph&iacute; ng&acirc;n s&aacute;ch</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">ch&#7885;n CRM, CRM doanh nghi&#7879;p, tri&#7875;n khai CRM, TCO</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">ch&#7885;n CRM, CRM doanh nghi&#7879;p, tri&#7875;n khai CRM, TCO</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Khung &#273;&aacute;nh gi&aacute; CRM theo quy tr&igrave;nh, d&#7919; li&#7879;u, t&iacute;ch h&#7907;p, kh&#7843; n&#259;ng s&#7917; d&#7909;ng v&agrave; t&#7893;ng chi ph&iacute; s&#7903; h&#7919;u.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/giai-phap-zero-trust-crm.jpg" alt="C&aacute;ch ch&#7885;n CRM ph&ugrave; h&#7907;p m&agrave; kh&ocirc;ng l&atilde;ng ph&iacute; ng&acirc;n s&aacute;ch" width="1440" height="810"></p><h1>C&aacute;ch ch&#7885;n CRM ph&ugrave; h&#7907;p m&agrave; kh&ocirc;ng l&atilde;ng ph&iacute; ng&acirc;n s&aacute;ch</h1><p><strong>CRM t&#7889;t nh&#7845;t kh&ocirc;ng ph&#7843;i h&#7879; th&#7889;ng nhi&#7873;u t&iacute;nh n&#259;ng nh&#7845;t, m&agrave; l&agrave; h&#7879; th&#7889;ng &#273;&#7897;i ng&#361; s&#7917; d&#7909;ng &#273;&#7873;u &#273;&#7863;n &#273;&#7875; t&#7841;o d&#7919; li&#7879;u tin c&#7853;y v&agrave; h&agrave;nh &#273;&#7897;ng ti&#7871;p theo r&otilde; r&agrave;ng.</strong></p><h2>B&#7855;t &#273;&#7847;u t&#7915; quy tr&igrave;nh</h2><p>V&#7869; h&agrave;nh tr&igrave;nh t&#7915; kh&aacute;ch ti&#7873;m n&#259;ng &#273;&#7871;n h&#7907;p &#273;&#7891;ng v&agrave; ch&#259;m s&oacute;c sau b&aacute;n. X&aacute;c &#273;&#7883;nh d&#7919; li&#7879;u b&#7855;t bu&#7897;c, ng&#432;&#7901;i ch&#7883;u tr&aacute;ch nhi&#7879;m, &#273;i&#7875;m b&agrave;n giao v&agrave; b&aacute;o c&aacute;o tr&#432;&#7899;c khi xem demo.</p><h2>L&#7853;p ma tr&#7853;n &#273;&aacute;nh gi&aacute;</h2><p>Ch&#7845;m &#273;i&#7875;m m&#7913;c ph&ugrave; h&#7907;p quy tr&igrave;nh, tr&#7843;i nghi&#7879;m di &#273;&#7897;ng, t&iacute;ch h&#7907;p, API, ph&acirc;n quy&#7873;n, nh&#7853;t k&yacute;, xu&#7845;t d&#7919; li&#7879;u v&agrave; t&#7893;ng chi ph&iacute; g&#7891;m gi&#7845;y ph&eacute;p, tri&#7875;n khai, &#273;&agrave;o t&#7841;o, v&#7853;n h&agrave;nh.</p><h2>Th&#7917; nghi&#7879;m tr&#432;&#7899;c khi mua</h2><p>D&ugrave;ng m&#7897;t nh&oacute;m nh&#7887; v&agrave; pipeline th&#7853;t trong 4-6 tu&#7847;n. &#272;o t&#7927; l&#7879; nh&#7853;p d&#7919; li&#7879;u, th&#7901;i gian c&#7853;p nh&#7853;t, c&#417; h&#7897;i b&#7883; b&#7887; qu&ecirc;n v&agrave; ch&#7845;t l&#432;&#7907;ng d&#7921; b&aacute;o. Tr&aacute;nh t&ugrave;y bi&#7871;n s&acirc;u tr&#432;&#7899;c khi hi&#7875;u quy tr&igrave;nh chu&#7849;n.</p><h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://www.nist.gov/system/files/documents/2019/10/17/nist_choosing_a_vendor.pdf" target="_blank" rel="noopener noreferrer">www.nist.gov</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

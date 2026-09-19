@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i n8n b&#7857;ng Docker Compose, PostgreSQL v&agrave; HTTPS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i n8n, n8n Docker Compose, n8n PostgreSQL, self-host n8n, n8n HTTPS, n8n webhook, workflow automation</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">n8n, Docker Compose, PostgreSQL, Automation, Self-Hosted, HTTPS, Guides</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n self-host n8n v&#7899;i Docker Compose, PostgreSQL, Nginx HTTPS, webhook URL, encryption key, backup, c&#7853;p nh&#7853;t, b&#7843;o m&#7853;t v&agrave; gi&aacute;m s&aacute;t production.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/n8n-docker-postgresql-guide.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i n8n b&#7857;ng Docker Compose, PostgreSQL v&agrave; HTTPS" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i n8n b&#7857;ng Docker Compose, PostgreSQL v&agrave; HTTPS</h1><p><strong>n8n gi&uacute;p k&#7871;t n&#7889;i API, webhook, l&#7883;ch ch&#7841;y v&agrave; nhi&#7873;u &#7913;ng d&#7909;ng th&agrave;nh workflow t&#7921; &#273;&#7897;ng h&oacute;a.</strong> Self-host mang l&#7841;i quy&#7873;n ki&#7875;m so&aacute;t d&#7919; li&#7879;u v&agrave; h&#7841; t&#7847;ng, nh&#432;ng c&#361;ng khi&#7871;n b&#7841;n ch&#7883;u tr&aacute;ch nhi&#7879;m v&#7873; secret, backup, HTTPS, c&#7853;p nh&#7853;t v&agrave; kh&#7843; n&#259;ng kh&ocirc;i ph&#7909;c.</p>
+<p>H&#432;&#7899;ng d&#7851;n n&agrave;y tri&#7875;n khai m&#7897;t instance n8n &#273;&#417;n b&#7857;ng Docker Compose, PostgreSQL v&agrave; Nginx reverse proxy. &#272;&acirc;y l&agrave; c&#7845;u h&igrave;nh ph&ugrave; h&#7907;p cho nh&oacute;m nh&#7887; ho&#7863;c t&#7843;i v&#7915;a; queue mode nhi&#7873;u worker c&#7847;n Redis v&agrave; ki&#7871;n tr&uacute;c ri&ecirc;ng.</p>
+
+<h2>Ki&#7871;n tr&uacute;c s&#7869; tri&#7875;n khai</h2>
+<ul>
+<li>Nginx nh&#7853;n HTTPS t&#7841;i <code>automation.example.com</code>.</li>
+<li>n8n ch&#7881; bind c&#7893;ng 5678 v&agrave;o localhost.</li>
+<li>PostgreSQL n&#7857;m trong network n&#7897;i b&#7897;, kh&ocirc;ng public port.</li>
+<li>Database v&agrave; th&#432; m&#7909;c <code>/home/node/.n8n</code> c&oacute; volume b&#7873;n v&#7919;ng.</li>
+<li>Secret n&#7857;m trong file env c&oacute; quy&#7873;n h&#7841;n ch&#7871;, kh&ocirc;ng commit Git.</li>
+</ul>
+<blockquote>Backup database m&agrave; m&#7845;t <code>N8N_ENCRYPTION_KEY</code> c&oacute; th&#7875; khi&#7871;n credential &#273;&atilde; m&atilde; h&oacute;a kh&ocirc;ng c&ograve;n s&#7917; d&#7909;ng &#273;&#432;&#7907;c. H&atilde;y b&#7843;o v&#7879; key nh&#432; d&#7919; li&#7879;u quan tr&#7885;ng nh&#7845;t c&#7911;a h&#7879; th&#7889;ng.</blockquote>
+
+<h2>1. Chu&#7849;n b&#7883; m&aacute;y ch&#7911; v&agrave; DNS</h2>
+<p>D&ugrave;ng m&#7897;t m&aacute;y Linux &#273;&#432;&#7907;c c&#7853;p nh&#7853;t, &#273;&atilde; c&agrave;i Docker Engine v&agrave; Docker Compose plugin. T&#7841;o record DNS cho <code>automation.example.com</code> tr&#7887; t&#7899;i IP m&aacute;y ch&#7911;. Firewall ch&#7881; m&#7903; SSH qu&#7843;n tr&#7883;, HTTP v&agrave; HTTPS; kh&ocirc;ng m&#7903; 5432 ho&#7863;c 5678 ra Internet.</p>
+<p>Tr&#432;&#7899;c khi tri&#7875;n khai, ki&#7875;m tra:</p>
+<pre><code>docker --version
+docker compose version
+df -h
+free -h</code></pre>
+<p>T&aacute;ch instance development v&agrave; production n&#7871;u workflow c&oacute; t&aacute;c &#273;&#7897;ng th&#7853;t nh&#432; g&#7917;i email, t&#7841;o invoice ho&#7863;c x&oacute;a d&#7919; li&#7879;u. Kh&ocirc;ng th&#7917; node l&#7841; tr&#7921;c ti&#7871;p tr&ecirc;n production.</p>
+
+<h2>2. T&#7841;o th&#432; m&#7909;c d&#7921; &aacute;n</h2>
+<pre><code>sudo mkdir -p /opt/n8n
+sudo chown "$USER":"$USER" /opt/n8n
+cd /opt/n8n
+mkdir -p n8n_data postgres_data backups</code></pre>
+<p>Kh&ocirc;ng &#273;&#7863;t backup trong web root. N&#7871;u d&ugrave;ng bind mount, ki&#7875;m tra UID/GID v&agrave; quy&#7873;n ghi c&#7911;a container; named volume c&oacute; th&#7875; &#273;&#417;n gi&#7843;n h&#417;n &#7903; m&#7897;t s&#7889; m&ocirc;i tr&#432;&#7901;ng.</p>
+
+<h2>3. T&#7841;o secret v&agrave; file m&ocirc;i tr&#432;&#7901;ng</h2>
+<p>T&#7841;o password database v&agrave; encryption key &#273;&#7911; d&agrave;i:</p>
+<pre><code>openssl rand -base64 36
+openssl rand -hex 32</code></pre>
+<p>T&#7841;o file <code>.env</code>:</p>
+<pre><code>N8N_VERSION=2.5.5
+POSTGRES_PASSWORD=replace-with-a-long-random-password
+N8N_ENCRYPTION_KEY=replace-with-a-stable-random-key
+N8N_DOMAIN=automation.example.com
+GENERIC_TIMEZONE=Asia/Ho_Chi_Minh</code></pre>
+<pre><code>chmod 600 .env</code></pre>
+<p>Phi&ecirc;n b&#7843;n tr&ecirc;n ch&#7881; l&agrave; v&iacute; d&#7909; pin. H&atilde;y ch&#7885;n release &#273;ang &#273;&#432;&#7907;c h&#7895; tr&#7907;, &#273;&#7885;c release note v&agrave; th&#7917; tr&#432;&#7899;c khi n&acirc;ng. Kh&ocirc;ng d&ugrave;ng <code>latest</code> cho production v&igrave; m&#7897;t l&#7847;n pull c&oacute; th&#7875; &#273;&#432;a thay &#273;&#7893;i breaking kh&ocirc;ng &#273;&#432;&#7907;c ki&#7875;m so&aacute;t.</p>
+
+<h2>4. T&#7841;o Docker Compose</h2>
+<p>T&#7841;o <code>compose.yaml</code>:</p>
+<pre><code>services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: n8n
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n -d n8n"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [backend]
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_PORT: 5432
+      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_USER: n8n
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD}
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      N8N_HOST: ${N8N_DOMAIN}
+      N8N_PORT: 5678
+      N8N_PROTOCOL: https
+      N8N_PROXY_HOPS: 1
+      WEBHOOK_URL: https://${N8N_DOMAIN}/
+      N8N_EDITOR_BASE_URL: https://${N8N_DOMAIN}/
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE}
+      TZ: ${GENERIC_TIMEZONE}
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: 336
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    networks: [backend]
+
+networks:
+  backend:</code></pre>
+<p>PostgreSQL kh&ocirc;ng c&oacute; <code>ports</code>, n&ecirc;n ch&#7881; container trong network truy c&#7853;p &#273;&#432;&#7907;c. n8n bind localhost &#273;&#7875; Nginx l&agrave; c&#7893;ng c&ocirc;ng khai duy nh&#7845;t. <code>WEBHOOK_URL</code> r&#7845;t quan tr&#7885;ng: n&oacute; quy&#7871;t &#273;&#7883;nh callback URL n8n hi&#7875;n th&#7883; cho webhook v&agrave; OAuth.</p>
+<p><code>EXECUTIONS_DATA_MAX_AGE</code> c&#7847;n &#273;i&#7873;u ch&#7881;nh theo ch&iacute;nh s&aacute;ch l&#432;u tr&#7919; v&agrave; nhu c&#7847;u &#273;i&#7873;u tra. L&#432;u execution qu&aacute; l&acirc;u c&oacute; th&#7875; l&agrave;m database ph&igrave;nh to v&agrave; gi&#7919; d&#7919; li&#7879;u nh&#7841;y c&#7843;m.</p>
+
+<h2>5. Kh&#7903;i &#273;&#7897;ng v&agrave; ki&#7875;m tra container</h2>
+<pre><code>docker compose config
+docker compose pull
+docker compose up -d
+docker compose ps
+docker compose logs --tail=100 n8n</code></pre>
+<p><code>docker compose config</code> gi&uacute;p ph&aacute;t hi&#7879;n bi&#7871;n thi&#7871;u, nh&#432;ng output c&oacute; th&#7875; ch&#7913;a secret &#273;&atilde; resolve; kh&ocirc;ng &#273;&#259;ng n&oacute; v&agrave;o ticket ho&#7863;c chat c&ocirc;ng khai. Ki&#7875;m tra local:</p>
+<pre><code>curl -I http://127.0.0.1:5678</code></pre>
+<p>N&#7871;u n8n kh&ocirc;ng k&#7871;t n&#7889;i database, ki&#7875;m tra healthcheck, password, quy&#7873;n th&#432; m&#7909;c v&agrave; log PostgreSQL. Kh&ocirc;ng x&oacute;a volume &#273;&#7875; &ldquo;th&#7917; l&#7841;i&rdquo; khi ch&#432;a c&oacute; backup.</p>
+
+<h2>6. C&#7845;u h&igrave;nh Nginx reverse proxy</h2>
+<pre><code>server {
+    listen 80;
+    server_name automation.example.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:5678;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 300;
+        proxy_send_timeout 300;
+    }
+}</code></pre>
+<pre><code>sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+<p>C&#7845;p ch&#7913;ng ch&#7881; TLS b&#7857;ng Certbot ho&#7863;c gi&#7843;i ph&aacute;p c&#7911;a nh&agrave; cung c&#7845;p, b&#7853;t redirect HTTP sang HTTPS r&#7891;i truy c&#7853;p domain th&#7853;t. n8n d&ugrave;ng k&#7871;t n&#7889;i th&#7901;i gian d&agrave;i cho editor v&agrave; execution view, n&ecirc;n header WebSocket c&ugrave;ng timeout proxy ph&#7843;i &#273;&uacute;ng.</p>
+<p>N&#7871;u c&ograve;n th&ecirc;m CDN/load balancer tr&#432;&#7899;c Nginx, <code>N8N_PROXY_HOPS</code> ph&#7843;i ph&#7843;n &aacute;nh &#273;&uacute;ng s&#7889; proxy tin c&#7853;y. C&#7845;u h&igrave;nh sai c&oacute; th&#7875; l&agrave;m n8n hi&#7875;u sai protocol/IP ho&#7863;c tin header do client gi&#7843; m&#7841;o.</p>
+
+<h2>7. T&#7841;o owner v&agrave; b&#7843;o v&#7879; editor</h2>
+<p>&#7902; l&#7847;n m&#7903; &#273;&#7847;u, t&#7841;o t&agrave;i kho&#7843;n owner b&#7857;ng email qu&#7843;n tr&#7883; v&agrave; m&#7853;t kh&#7849;u duy nh&#7845;t. B&#7853;t 2FA n&#7871;u phi&ecirc;n b&#7843;n/edition h&#7895; tr&#7907;. Kh&ocirc;ng d&ugrave;ng chung owner account; c&#7845;p quy&#7873;n theo vai tr&ograve; v&agrave; thu h&#7891;i ngay khi nh&acirc;n s&#7921; r&#7901;i nh&oacute;m.</p>
+<p>Editor c&oacute; credential &#273;&#7875; truy c&#7853;p email, database, cloud v&agrave; API. N&#7871;u ch&#7881; &#273;&#7897;i n&#7897;i b&#7897; s&#7917; d&#7909;ng, n&ecirc;n &#273;&#7863;t sau VPN, identity-aware proxy ho&#7863;c allowlist IP ngo&agrave;i HTTPS. Public webhook v&#7851;n c&#7847;n truy c&#7853;p t&#7915; Internet, do &#273;&oacute; c&oacute; th&#7875; t&aacute;ch ch&iacute;nh s&aacute;ch &#273;&#432;&#7901;ng d&#7851;n &#7903; reverse proxy ho&#7863;c d&ugrave;ng ki&#7871;n tr&uacute;c ingress ph&ugrave; h&#7907;p.</p>
+
+<h2>8. Ki&#7875;m tra webhook t&#7915; &#273;&#7847;u &#273;&#7871;n cu&#7889;i</h2>
+<ol>
+<li>T&#7841;o workflow v&#7899;i Webhook node v&agrave; Respond to Webhook.</li>
+<li>D&ugrave;ng Test URL khi editor &#273;ang l&#7855;ng nghe.</li>
+<li>Activate workflow r&#7891;i chuy&#7875;n sang Production URL.</li>
+<li>G&#7917;i request t&#7915; m&#7897;t m&aacute;y b&ecirc;n ngo&agrave;i, kh&ocirc;ng ch&#7881; localhost.</li>
+<li>Ki&#7875;m tra execution, status code v&agrave; response.</li>
+</ol>
+<pre><code>curl -X POST https://automation.example.com/webhook/health-test \
+  -H 'Content-Type: application/json' \
+  -d '{"source":"external-check"}'</code></pre>
+<p>B&#7843;o v&#7879; webhook b&#7857;ng secret header, ch&#7919; k&yacute; HMAC, OAuth ho&#7863;c c&#417; ch&#7871; node h&#7895; tr&#7907;. URL kh&oacute; &#273;o&aacute;n kh&ocirc;ng ph&#7843;i authentication. V&#7899;i webhook t&#7841;o side effect, th&ecirc;m idempotency/dedup &#273;&#7875; provider retry kh&ocirc;ng t&#7841;o t&aacute;c v&#7909; tr&ugrave;ng.</p>
+
+<h2>9. Qu&#7843;n l&yacute; credential v&agrave; encryption key</h2>
+<p>n8n m&atilde; h&oacute;a credential b&#7857;ng encryption key. Gi&#7919; key &#7893;n &#273;&#7883;nh qua restart, migration v&agrave; restore. N&#7871;u thay key t&ugrave;y &yacute;, credential c&#361; c&oacute; th&#7875; kh&ocirc;ng gi&#7843;i m&atilde; &#273;&#432;&#7907;c.</p>
+<ul>
+<li>Kh&ocirc;ng &#273;&#7863;t key trong Compose &#273;&#432;&#7907;c commit l&ecirc;n Git.</li>
+<li>L&#432;u b&#7843;n sao trong password manager/secret manager v&agrave; backup b&#7843;o m&#7853;t.</li>
+<li>Kh&ocirc;ng xu&#7845;t workflow k&egrave;m credential ho&#7863;c chia s&#7867; screenshot secret.</li>
+<li>D&ugrave;ng API credential ri&ecirc;ng cho n8n, scope t&#7889;i thi&#7875;u v&agrave; c&oacute; rotation.</li>
+<li>&#431;u ti&ecirc;n OAuth/service account thay v&igrave; t&agrave;i kho&#7843;n c&aacute; nh&acirc;n.</li>
+</ul>
+
+<h2>10. X&#7917; l&yacute; file v&agrave; d&#7919; li&#7879;u execution</h2>
+<p>Workflow c&oacute; file l&#7899;n c&oacute; th&#7875; nhanh ch&oacute;ng &#273;&#7847;y disk. Gi&#7899;i h&#7841;n k&iacute;ch th&#432;&#7899;c &#273;&#7847;u v&agrave;o, &#273;&#7863;t execution retention v&agrave; gi&aacute;m s&aacute;t volume. Kh&ocirc;ng l&#432;u binary ho&#7863;c payload nh&#7841;y c&#7843;m l&acirc;u h&#417;n nhu c&#7847;u nghi&#7879;p v&#7909;.</p>
+<p>Tr&aacute;nh &#273;&#432;a secret v&agrave;o d&#7919; li&#7879;u node v&igrave; execution log c&oacute; th&#7875; l&#432;u input/output. D&ugrave;ng Credential store v&agrave; environment/secret mechanism ph&ugrave; h&#7907;p. V&#7899;i l&#432;u l&#432;&#7907;ng cao ho&#7863;c binary l&#7899;n, &#273;&aacute;nh gi&aacute; t&iacute;nh n&#259;ng external storage theo edition v&agrave; t&agrave;i li&#7879;u phi&ecirc;n b&#7843;n &#273;ang d&ugrave;ng.</p>
+
+<h2>11. Backup &#273;&uacute;ng ba th&agrave;nh ph&#7847;n</h2>
+<p>C&#7847;n b&#7843;o v&#7879;:</p>
+<ol>
+<li>PostgreSQL ch&#7913;a workflow, execution v&agrave; metadata.</li>
+<li>Th&#432; m&#7909;c <code>n8n_data</code> ch&#7913;a d&#7919; li&#7879;u instance c&#7909;c b&#7897;.</li>
+<li><code>N8N_ENCRYPTION_KEY</code> v&agrave; c&#7845;u h&igrave;nh deployment.</li>
+</ol>
+<pre><code>cd /opt/n8n
+
+docker compose exec -T postgres \
+  pg_dump -U n8n -d n8n -Fc \
+  &gt; backups/n8n-$(date +%F).dump
+
+tar -czf backups/n8n-data-$(date +%F).tar.gz n8n_data</code></pre>
+<p>Copy backup sang storage kh&aacute;c, m&atilde; h&oacute;a, &#273;&#7863;t retention v&agrave; ki&#7875;m tra restore tr&ecirc;n m&aacute;y th&#7917;. File n&#7857;m c&ugrave;ng VPS kh&ocirc;ng b&#7843;o v&#7879; kh&#7887;i m&#7845;t disk ho&#7863;c b&#7883; x&acirc;m nh&#7853;p.</p>
+
+<h2>12. C&#7853;p nh&#7853;t an to&agrave;n</h2>
+<ol>
+<li>&#272;&#7885;c release note v&agrave; breaking changes.</li>
+<li>Backup database, data directory v&agrave; encryption key.</li>
+<li>Th&#7917; phi&ecirc;n b&#7843;n m&#7899;i tr&ecirc;n staging v&#7899;i workflow quan tr&#7885;ng.</li>
+<li>&#272;&#7893;i <code>N8N_VERSION</code> sang phi&ecirc;n b&#7843;n &#273;&atilde; duy&#7879;t.</li>
+<li>Pull v&agrave; recreate container trong c&#7917;a s&#7893; thay &#273;&#7893;i.</li>
+<li>Ki&#7875;m tra login, webhook, schedule, credential v&agrave; execution.</li>
+</ol>
+<pre><code>docker compose pull
+docker compose up -d
+docker compose logs --tail=200 n8n</code></pre>
+<p>Migration database c&oacute; th&#7875; khi&#7871;n rollback image kh&ocirc;ng &#273;&#417;n gi&#7843;n. X&aacute;c minh t&agrave;i li&#7879;u downgrade, gi&#7919; backup tr&#432;&#7899;c migration v&agrave; kh&ocirc;ng t&#7921; &#273;&#7897;ng c&#7853;p nh&#7853;t production kh&ocirc;ng ki&#7875;m so&aacute;t.</p>
+
+<h2>13. Gi&aacute;m s&aacute;t v&agrave; c&#7843;nh b&aacute;o</h2>
+<ul>
+<li>Container restart, health v&agrave; log error.</li>
+<li>CPU, RAM, disk, inode v&agrave; volume growth.</li>
+<li>PostgreSQL connection, size, slow query v&agrave; backup age.</li>
+<li>Workflow failure rate, duration v&agrave; s&#7889; execution ch&#7901;.</li>
+<li>Webhook latency, 4xx/5xx v&agrave; certificate expiry.</li>
+<li>Schedule kh&ocirc;ng ch&#7841;y &#273;&uacute;ng h&#7841;n v&agrave; credential h&#7871;t h&#7841;n.</li>
+</ul>
+<p>T&#7841;o m&#7897;t monitor b&ecirc;n ngo&agrave;i g&#7885;i health/webhook kh&ocirc;ng c&oacute; side effect. C&#7843;nh b&aacute;o ph&#7843;i &#273;i qua k&ecirc;nh kh&ocirc;ng ph&#7909; thu&#7897;c ho&agrave;n to&agrave;n v&agrave;o ch&iacute;nh n8n, n&#7871;u kh&ocirc;ng workflow c&#7843;nh b&aacute;o c&#361;ng im l&#7863;ng khi n8n down.</p>
+
+<h2>14. Hardening b&#7893; sung</h2>
+<ul>
+<li>Ch&#7881; c&agrave;i community node &#273;&atilde; review; node c&oacute; th&#7875; ch&#7841;y code v&agrave; truy c&#7853;p credential.</li>
+<li>Gi&#7899;i h&#7841;n Code/Execute Command v&agrave; node r&#7911;i ro theo nhu c&#7847;u.</li>
+<li>Ch&#7863;n outbound network t&#7899;i metadata/internal service n&#7871;u kh&ocirc;ng c&#7847;n.</li>
+<li>Ch&#7841;y security audit c&#7911;a n8n &#273;&#7883;nh k&#7923;.</li>
+<li>C&#7853;p nh&#7853;t host, Docker, image v&agrave; dependency theo l&#7883;ch.</li>
+<li>T&aacute;ch credential development v&agrave; production.</li>
+<li>D&ugrave;ng least privilege cho database v&agrave; m&#7885;i integration.</li>
+</ul>
+
+<h2>Checklist production</h2>
+<ol>
+<li>Image &#273;&#432;&#7907;c pin phi&ecirc;n b&#7843;n v&agrave; &#273;&atilde; th&#7917; tr&ecirc;n staging.</li>
+<li>PostgreSQL/5678 kh&ocirc;ng public; editor ch&#7881; qua HTTPS.</li>
+<li><code>WEBHOOK_URL</code>, timezone v&agrave; proxy hops &#273;&uacute;ng.</li>
+<li>Encryption key c&#7889; &#273;&#7883;nh, &#273;&#432;&#7907;c backup v&agrave; kh&ocirc;ng n&#7857;m trong Git.</li>
+<li>Owner/2FA/quy&#7873;n user &#273;&#432;&#7907;c ki&#7875;m so&aacute;t.</li>
+<li>Webhook c&oacute; authentication, validation v&agrave; idempotency.</li>
+<li>Execution/binary retention ph&ugrave; h&#7907;p v&agrave; disk &#273;&#432;&#7907;c gi&aacute;m s&aacute;t.</li>
+<li>Database + data + secret &#273;&atilde; &#273;&#432;&#7907;c restore th&#7917;.</li>
+<li>C&oacute; monitor ngo&agrave;i h&#7879; th&#7889;ng v&agrave; runbook rollback.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Self-host n8n production kh&ocirc;ng k&#7871;t th&uacute;c &#7903; l&#7879;nh <code>docker compose up</code>. C&#7845;u h&igrave;nh t&#7889;t c&#7847;n database b&#7873;n v&#7919;ng, encryption key &#273;&#432;&#7907;c b&#7843;o v&#7879;, URL webhook &#273;&uacute;ng, reverse proxy HTTPS, credential t&#7889;i thi&#7875;u v&agrave; backup &#273;&atilde; th&#7917; restore. Khi n&#7873;n t&#7843;ng &#273;&#432;&#7907;c v&#7853;n h&agrave;nh nh&#432; m&#7897;t d&#7883;ch v&#7909; production, workflow t&#7921; &#273;&#7897;ng h&oacute;a m&#7899;i th&#7921;c s&#7921; &#273;&aacute;ng tin c&#7853;y.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://docs.n8n.io/hosting/installation/docker/" target="_blank" rel="noopener noreferrer">n8n Docs: Docker installation</a></li><li><a href="https://docs.n8n.io/hosting/configuration/configuration-examples/webhook-url/" target="_blank" rel="noopener noreferrer">n8n Docs: Webhook URL behind a reverse proxy</a></li><li><a href="https://docs.n8n.io/hosting/securing/security-audit/" target="_blank" rel="noopener noreferrer">n8n Docs: Security audit</a></li><li><a href="https://docs.n8n.io/hosting/installation/updating/" target="_blank" rel="noopener noreferrer">n8n Docs: Updating</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

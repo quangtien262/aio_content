@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Internet d&#7921; ph&ograve;ng Dual-WAN v&agrave; 4G/5G cho doanh nghi&#7879;p</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Internet d&#7921; ph&ograve;ng, dual-WAN, 4G 5G failover, c&acirc;n b&#7857;ng t&#7843;i, doanh nghi&#7879;p nh&#7887;, WAN backup, m&#7841;ng v&#259;n ph&ograve;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Dual-WAN, Internet Failover, 4G/5G, Network Resilience, SME, SD-WAN, Business Continuity, Networking</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; Internet d&#7921; ph&ograve;ng cho doanh nghi&#7879;p nh&#7887; v&#7899;i dual-WAN, 4G/5G failover, health check, &#273;&#7883;nh tuy&#7871;n, ngu&#7891;n &#273;i&#7879;n v&agrave; quy tr&igrave;nh ki&#7875;m th&#7917;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/small-business-dual-wan-failover.jpg" alt="Gi&#7843;i ph&aacute;p Internet d&#7921; ph&ograve;ng cho doanh nghi&#7879;p nh&#7887;: Dual-WAN v&agrave; 4G/5G failover" width="1440" height="810"></p><h1>Gi&#7843;i ph&aacute;p Internet d&#7921; ph&ograve;ng cho doanh nghi&#7879;p nh&#7887;: Dual-WAN v&agrave; 4G/5G failover</h1><p><strong>M&#7897;t &#273;&#432;&#7901;ng Internet th&#7913; hai ch&#432;a t&#7921; t&#7841;o ra kh&#7843; n&#259;ng d&#7921; ph&ograve;ng.</strong> N&#7871;u hai &#273;&#432;&#7901;ng d&ugrave;ng chung nh&agrave; m&#7841;ng, chung tuy&#7871;n c&aacute;p, chung thi&#7871;t b&#7883; ho&#7863;c router ch&#7881; ki&#7875;m tra tr&#7841;ng th&aacute;i c&#7893;ng, c&#7843; hai v&#7851;n c&oacute; th&#7875; ng&#7915;ng c&ugrave;ng l&uacute;c. Gi&#7843;i ph&aacute;p &#273;&uacute;ng ph&#7843;i lo&#7841;i b&#7887; c&aacute;c &#273;i&#7875;m l&#7895;i chung, ph&aacute;t hi&#7879;n &#273;&#432;&#7907;c t&igrave;nh tr&#7841;ng &ldquo;c&oacute; link nh&#432;ng m&#7845;t Internet&rdquo;, t&#7921; chuy&#7875;n tuy&#7871;n v&agrave; &#273;&#432;&#7907;c ki&#7875;m th&#7917; &#273;&#7883;nh k&#7923;.</p>
+
+<h2>Khi n&agrave;o doanh nghi&#7879;p c&#7847;n Internet d&#7921; ph&ograve;ng?</h2>
+<p>H&atilde;y &#273;o t&aacute;c &#273;&#7897;ng thay v&igrave; ch&#7881; nh&igrave;n s&#7889; nh&acirc;n vi&ecirc;n. Internet d&#7921; ph&ograve;ng &#273;&aacute;ng &#273;&#7847;u t&#432; khi m&#7845;t k&#7871;t n&#7889;i l&agrave;m gi&aacute;n &#273;o&#7841;n POS, h&oacute;a &#273;&#417;n &#273;i&#7879;n t&#7917;, t&#7893;ng &#273;&agrave;i IP, h&#7885;p tr&#7921;c tuy&#7871;n, VPN, camera cloud, &#7913;ng d&#7909;ng SaaS ho&#7863;c h&#7895; tr&#7907; kh&aacute;ch h&agrave;ng. T&iacute;nh chi ph&iacute; m&#7897;t gi&#7901; gi&aacute;n &#273;o&#7841;n g&#7891;m doanh thu m&#7845;t, th&#7901;i gian ch&#7901; c&#7911;a nh&acirc;n vi&ecirc;n, giao d&#7883;ch ph&#7843;i nh&#7853;p l&#7841;i v&agrave; &#7843;nh h&#432;&#7903;ng uy t&iacute;n.</p>
+<p>V&#259;n ph&ograve;ng ch&#7881; d&ugrave;ng email kh&ocirc;ng kh&#7849;n c&#7845;p c&oacute; th&#7875; d&ugrave;ng hotspot th&#7911; c&ocirc;ng. &#272;i&#7875;m b&aacute;n h&agrave;ng ho&#7863;c &#273;&#7897;i v&#7853;n h&agrave;nh ph&#7909; thu&#7897;c cloud n&ecirc;n c&oacute; failover t&#7921; &#273;&#7897;ng. H&#7879; th&#7889;ng c&#7847;n cam k&#7871;t cao h&#417;n ph&#7843;i b&#7893; sung ngu&#7891;n &#273;i&#7879;n d&#7921; ph&ograve;ng, gi&aacute;m s&aacute;t v&agrave; quy tr&igrave;nh &#7913;ng ph&oacute;.</p>
+
+<h2>Ba m&ocirc; h&igrave;nh tri&#7875;n khai th&#7921;c t&#7871;</h2>
+<table><thead><tr><th>M&ocirc; h&igrave;nh</th><th>Ph&ugrave; h&#7907;p</th><th>&#272;&aacute;nh &#273;&#7893;i</th></tr></thead><tbody><tr><td>C&aacute;p quang ch&iacute;nh + 4G/5G d&#7921; ph&ograve;ng</td><td>V&#259;n ph&ograve;ng nh&#7887;, c&#7917;a h&agrave;ng</td><td>D&#7877; tri&#7875;n khai nh&#432;ng b&#259;ng th&ocirc;ng, CGNAT v&agrave; dung l&#432;&#7907;ng data c&oacute; th&#7875; h&#7841;n ch&#7871;</td></tr><tr><td>Hai &#273;&#432;&#7901;ng c&#7889; &#273;&#7883;nh t&#7915; hai ISP</td><td>VoIP, nhi&#7873;u ng&#432;&#7901;i d&ugrave;ng, t&#7843;i l&#7899;n</td><td>&#7892;n &#273;&#7883;nh h&#417;n nh&#432;ng c&#7847;n x&aacute;c minh hai tuy&#7871;n v&#7853;t l&yacute; &#273;&#7897;c l&#7853;p</td></tr><tr><td>Hai WAN + SD-WAN/VPN &#273;a tuy&#7871;n</td><td>Nhi&#7873;u chi nh&aacute;nh, &#7913;ng d&#7909;ng quan tr&#7885;ng</td><td>Ki&#7875;m so&aacute;t t&#7889;t h&#417;n, chi ph&iacute; v&agrave; v&#7853;n h&agrave;nh cao h&#417;n</td></tr></tbody></table>
+<p>V&#7899;i ph&#7847;n l&#7899;n doanh nghi&#7879;p nh&#7887;, c&aacute;p quang t&#7915; ISP A v&agrave; 4G/5G t&#7915; nh&agrave; m&#7841;ng B l&agrave; &#273;i&#7875;m kh&#7903;i &#273;&#7847;u h&#7907;p l&yacute;. N&#417;i s&oacute;ng di &#273;&#7897;ng y&#7871;u n&ecirc;n d&ugrave;ng &#273;&#432;&#7901;ng c&#7889; &#273;&#7883;nh th&#7913; hai ho&#7863;c anten ngo&agrave;i &#273;&#432;&#7907;c l&#7855;p &#273;&uacute;ng quy &#273;&#7883;nh.</p>
+
+<h2>1. Lo&#7841;i b&#7887; &#273;i&#7875;m l&#7895;i chung</h2>
+<p>Hai h&#7907;p &#273;&#7891;ng kh&aacute;c nhau ch&#432;a ch&#7855;c l&agrave; hai h&#7841; t&#7847;ng kh&aacute;c nhau. H&#7887;i nh&agrave; cung c&#7845;p v&#7873; last-mile, &#273;i&#7875;m t&#7853;p trung v&agrave; tuy&#7871;n c&aacute;p v&agrave;o t&ograve;a nh&agrave;. Quan s&aacute;t xem hai d&acirc;y c&oacute; &#273;i chung &#7889;ng ho&#7863;c c&ugrave;ng t&#7911; k&#7929; thu&#7853;t kh&ocirc;ng. V&#7899;i cellular, ch&#7885;n nh&agrave; m&#7841;ng kh&aacute;c ISP ch&iacute;nh v&agrave; kh&#7843;o s&aacute;t t&iacute;n hi&#7879;u trong gi&#7901; cao &#273;i&#7875;m.</p>
+<ul><li>D&ugrave;ng modem/ONT ri&ecirc;ng cho t&#7915;ng WAN.</li><li>K&#7871;t n&#7889;i v&agrave;o hai c&#7893;ng WAN &#273;&#7897;c l&#7853;p tr&ecirc;n gateway.</li><li>C&#7845;p &#273;i&#7879;n cho ONT, modem di &#273;&#7897;ng, router, switch v&agrave; access point b&#7857;ng UPS.</li><li>&#272;&#7863;t thi&#7871;t b&#7883; 4G/5G &#7903; v&#7883; tr&iacute; t&iacute;n hi&#7879;u t&#7889;t, tr&aacute;nh t&#7911; kim lo&#7841;i.</li><li>Kh&ocirc;ng &#273;&#7875; m&#7897;t &#7893; c&#7855;m, adapter ho&#7863;c switch trung gian tr&#7903; th&agrave;nh &#273;i&#7875;m l&#7895;i duy nh&#7845;t.</li></ul>
+<blockquote>D&#7921; ph&ograve;ng Internet nh&#432;ng kh&ocirc;ng d&#7921; ph&ograve;ng &#273;i&#7879;n cho ONT v&agrave; router ch&#7881; gi&#7843;i quy&#7871;t m&#7897;t n&#7917;a b&agrave;i to&aacute;n.</blockquote>
+
+<h2>2. Ch&#7885;n router theo n&#259;ng l&#7921;c, kh&ocirc;ng ch&#7881; s&#7889; c&#7893;ng</h2>
+<p>Gateway c&#7847;n h&#7895; tr&#7907; t&#7889;i thi&#7875;u hai WAN, health check ch&#7911; &#273;&#7897;ng, failover/failback, NAT v&agrave; firewall tr&ecirc;n c&#7843; hai &#273;&#432;&#7901;ng. Th&ocirc;ng l&#432;&#7907;ng c&ocirc;ng b&#7889; ph&#7843;i x&eacute;t khi b&#7853;t IPS, VPN, QoS v&agrave; l&#7885;c n&#7897;i dung; con s&#7889; routing thu&#7847;n th&#432;&#7901;ng cao h&#417;n nhi&#7873;u hi&#7879;u n&#259;ng th&#7921;c t&#7871;.</p>
+<p>C&aacute;c t&iacute;nh n&#259;ng n&ecirc;n c&oacute; g&#7891;m log s&#7921; ki&#7879;n, c&#7843;nh b&aacute;o, policy-based routing, gi&#7899;i h&#7841;n b&#259;ng th&ocirc;ng &#273;&#432;&#7901;ng d&#7921; ph&ograve;ng, DNS ho&#7841;t &#273;&#7897;ng khi chuy&#7875;n WAN v&agrave; kh&#7843; n&#259;ng qu&#7843;n tr&#7883; t&#7915; xa an to&agrave;n. N&#7871;u c&#7847;n nh&#7853;n k&#7871;t n&#7889;i t&#7915; ngo&agrave;i, ki&#7875;m tra public IP, CGNAT, port forwarding, VPN v&agrave; DDNS tr&ecirc;n t&#7915;ng &#273;&#432;&#7901;ng.</p>
+
+<h2>3. Failover hay load balancing?</h2>
+<p><strong>Active/standby</strong> &#273;&#432;a to&agrave;n b&#7897; l&#432;u l&#432;&#7907;ng qua WAN ch&iacute;nh v&agrave; ch&#7881; d&ugrave;ng WAN ph&#7909; khi l&#7895;i. M&ocirc; h&igrave;nh n&agrave;y d&#7877; d&#7921; &#273;o&aacute;n, ph&ugrave; h&#7907;p &#273;&#432;&#7901;ng cellular t&iacute;nh theo data v&agrave; c&aacute;c &#7913;ng d&#7909;ng nh&#7841;y v&#7899;i vi&#7879;c &#273;&#7893;i IP.</p>
+<p><strong>Load balancing</strong> ph&acirc;n ph&#7889;i c&aacute;c phi&ecirc;n m&#7899;i gi&#7919;a hai WAN theo tr&#7885;ng s&#7889;. N&oacute; t&#259;ng t&#7893;ng dung l&#432;&#7907;ng cho nhi&#7873;u ng&#432;&#7901;i d&ugrave;ng, nh&#432;ng kh&ocirc;ng c&#7897;ng b&#259;ng th&ocirc;ng c&#7911;a hai &#273;&#432;&#7901;ng cho m&#7897;t phi&ecirc;n t&#7843;i &#273;&#417;n l&#7867;. M&#7895;i phi&ecirc;n th&#432;&#7901;ng &#273;&#432;&#7907;c gi&#7919; tr&ecirc;n m&#7897;t WAN &#273;&#7875; tr&aacute;nh thay &#273;&#7893;i &#273;&#7883;a ch&#7881; ngu&#7891;n gi&#7919;a ch&#7915;ng.</p>
+<p>VoIP, giao d&#7883;ch thanh to&aacute;n, VPN v&agrave; d&#7883;ch v&#7909; gi&#7899;i h&#7841;n IP ngu&#7891;n th&#432;&#7901;ng &#7893;n &#273;&#7883;nh h&#417;n v&#7899;i failover ho&#7863;c policy c&#7889; &#273;&#7883;nh. Wi-Fi kh&aacute;ch, c&#7853;p nh&#7853;t ph&#7847;n m&#7873;m v&agrave; l&#432;u l&#432;&#7907;ng &iacute;t nh&#7841;y c&#7843;m c&oacute; th&#7875; &#273;i &#273;&#432;&#7901;ng th&#7913; hai &#273;&#7875; t&#7853;n d&#7909;ng b&#259;ng th&ocirc;ng.</p>
+
+<h2>4. Health check ph&#7843;i nh&igrave;n xa h&#417;n gateway</h2>
+<p>Ki&#7875;m tra c&aacute;p ho&#7863;c ping default gateway ch&#7881; ch&#7913;ng minh &#273;o&#7841;n t&#7915; router t&#7899;i thi&#7871;t b&#7883; ISP c&ograve;n ho&#7841;t &#273;&#7897;ng. ISP v&#7851;n c&oacute; th&#7875; m&#7845;t route, DNS ho&#7863;c k&#7871;t n&#7889;i upstream. H&atilde;y ki&#7875;m tra nhi&#7873;u &#273;&iacute;ch Internet &#7893;n &#273;&#7883;nh qua t&#7915;ng WAN, b&#7857;ng ICMP, DNS ho&#7863;c HTTPS t&ugrave;y thi&#7871;t b&#7883;.</p>
+<ul><li>D&ugrave;ng &iacute;t nh&#7845;t hai ho&#7863;c ba m&#7909;c ti&ecirc;u thu&#7897;c c&aacute;c m&#7841;ng kh&aacute;c nhau.</li><li>Ch&#7881; tuy&ecirc;n b&#7889; WAN l&#7895;i sau nhi&#7873;u l&#7847;n ki&#7875;m tra th&#7845;t b&#7841;i li&ecirc;n ti&#7871;p.</li><li>&#272;&#7863;t ng&#432;&#7905;ng kh&ocirc;i ph&#7909;c v&agrave; th&#7901;i gian &#7893;n &#273;&#7883;nh tr&#432;&#7899;c khi failback.</li><li>Theo d&otilde;i th&ecirc;m latency, packet loss v&agrave; jitter, kh&ocirc;ng ch&#7881; up/down.</li><li>Tr&aacute;nh m&#7909;c ti&ecirc;u ch&#7863;n ICMP ho&#7863;c ph&#7909; thu&#7897;c ch&iacute;nh h&#7841; t&#7847;ng c&#7911;a doanh nghi&#7879;p.</li></ul>
+<p>Chuy&#7875;n qu&aacute; nhanh g&acirc;y flapping khi m&#7841;ng ch&#7853;p ch&#7901;n; chuy&#7875;n qu&aacute; ch&#7853;m l&agrave;m ng&#432;&#7901;i d&ugrave;ng ph&#7843;i ch&#7901; l&acirc;u. B&#7855;t &#273;&#7847;u v&#7899;i ng&#432;&#7905;ng th&#7853;n tr&#7885;ng, &#273;o th&#7921;c t&#7871; r&#7891;i &#273;i&#7873;u ch&#7881;nh. T&agrave;i li&#7879;u MikroTik c&#361;ng minh h&#7885;a vi&#7879;c d&ugrave;ng nhi&#7873;u m&#7909;c ti&ecirc;u ki&#7875;m tra &#273;&#7875; tr&aacute;nh m&#7897;t host &#273;&#417;n l&#7867; l&agrave;m sai quy&#7871;t &#273;&#7883;nh.</p>
+
+<h2>5. Thi&#7871;t k&#7871; ch&iacute;nh s&aacute;ch khi ch&#7841;y b&#7857;ng &#273;&#432;&#7901;ng d&#7921; ph&ograve;ng</h2>
+<p>4G/5G th&#432;&#7901;ng c&oacute; b&#259;ng th&ocirc;ng, data cap ho&#7863;c &#273;&#7897; &#7893;n &#273;&#7883;nh th&#7845;p h&#417;n c&aacute;p quang. Khi failover, &#432;u ti&ecirc;n POS, DNS, x&aacute;c th&#7921;c, email, VoIP v&agrave; &#7913;ng d&#7909;ng nghi&#7879;p v&#7909;. T&#7841;m h&#7841;n ch&#7871; backup cloud, c&#7853;p nh&#7853;t h&#7879; &#273;i&#7873;u h&agrave;nh, video &#273;&#7897; ph&acirc;n gi&#7843;i cao v&agrave; Wi-Fi kh&aacute;ch.</p>
+<p>&Aacute;p d&#7909;ng QoS theo nhu c&#7847;u th&#7921;c t&#7871; nh&#432;ng kh&ocirc;ng h&#7913;a h&#7865;n QoS c&oacute; th&#7875; s&#7917;a m&#7897;t &#273;&#432;&#7901;ng truy&#7873;n &#273;&atilde; b&atilde;o h&ograve;a. C&#7845;u h&igrave;nh shaping th&#7845;p h&#417;n m&#7897;t ch&uacute;t so v&#7899;i t&#7889;c &#273;&#7897; uplink &#273;o &#273;&#432;&#7907;c gi&uacute;p router ki&#7875;m so&aacute;t h&agrave;ng &#273;&#7907;i. V&#7899;i cellular dao &#273;&#7897;ng m&#7841;nh, d&ugrave;ng m&#7913;c b&#7843;o th&#7911;.</p>
+
+<h2>6. Chu&#7849;n b&#7883; cho vi&#7879;c thay &#273;&#7893;i &#273;&#7883;a ch&#7881; IP</h2>
+<p>Failover th&#432;&#7901;ng l&agrave;m public IP thay &#273;&#7893;i, khi&#7871;n phi&ecirc;n TCP &#273;ang ch&#7841;y, cu&#7897;c g&#7885;i, VPN ho&#7863;c phi&ecirc;n &#273;&#259;ng nh&#7853;p ph&#7843;i k&#7871;t n&#7889;i l&#7841;i. &#272;&acirc;y l&agrave; h&agrave;nh vi b&igrave;nh th&#432;&#7901;ng c&#7911;a dual-WAN c&#417; b&#7843;n, kh&ocirc;ng ph&#7843;i chuy&#7875;n tuy&#7871;n &ldquo;kh&ocirc;ng gi&aacute;n &#273;o&#7841;n&rdquo; tuy&#7879;t &#273;&#7889;i.</p>
+<ul><li>D&ugrave;ng VPN c&oacute; kh&#7843; n&#259;ng t&aacute;i k&#7871;t n&#7889;i nhanh ho&#7863;c tunnel ch&#7911; &#273;&#7897;ng t&#7915; trong ra ngo&agrave;i.</li><li>Cho ph&eacute;p c&#7843; hai IP t&#7841;i SaaS n&#7871;u d&#7883;ch v&#7909; d&ugrave;ng allowlist.</li><li>C&#7853;p nh&#7853;t DNS/DDNS n&#7871;u c&oacute; d&#7883;ch v&#7909; inbound v&agrave; ch&#7845;p nh&#7853;n th&#7901;i gian cache.</li><li>V&#7899;i CGNAT tr&ecirc;n 4G/5G, d&ugrave;ng tunnel outbound thay v&igrave; tr&ocirc;ng ch&#7901; port forwarding.</li><li>L&#432;u &yacute; SIP/VoIP c&oacute; th&#7875; c&#7847;n failover thay v&igrave; load balancing &#273;&#7875; gi&#7919; &#273;&#432;&#7901;ng &#273;i nh&#7845;t qu&aacute;n.</li></ul>
+<p>N&#7871;u &#7913;ng d&#7909;ng b&#7855;t bu&#7897;c gi&#7919; nguy&ecirc;n IP v&agrave; phi&ecirc;n khi &#273;&#7893;i &#273;&#432;&#7901;ng, c&#7847;n gi&#7843;i ph&aacute;p SD-WAN bonding, overlay ho&#7863;c nh&agrave; cung c&#7845;p managed service; dual-WAN NAT th&ocirc;ng th&#432;&#7901;ng kh&ocirc;ng &#273;&aacute;p &#7913;ng y&ecirc;u c&#7847;u &#273;&oacute;.</p>
+
+<h2>7. DNS, VPN v&agrave; d&#7883;ch v&#7909; n&#7897;i b&#7897;</h2>
+<p>Router v&agrave; client ph&#7843;i c&oacute; DNS d&ugrave;ng &#273;&#432;&#7907;c tr&ecirc;n c&#7843; hai WAN. Kh&ocirc;ng ph&#7909; thu&#7897;c duy nh&#7845;t v&agrave;o DNS ch&#7881; truy c&#7853;p &#273;&#432;&#7907;c qua &#273;&#432;&#7901;ng ch&iacute;nh. V&#7899;i site-to-site VPN, t&#7841;o tunnel tr&ecirc;n c&#7843; hai uplink ho&#7863;c x&aacute;c &#273;&#7883;nh r&otilde; c&aacute;ch tunnel &#273;&#432;&#7907;c d&#7921;ng l&#7841;i sau chuy&#7875;n tuy&#7871;n.</p>
+<p>D&#7883;ch v&#7909; &#273;&#7863;t t&#7841;i v&#259;n ph&ograve;ng c&#7847;n &#273;&#432;&#7907;c xem x&eacute;t ri&ecirc;ng. M&#7897;t &#273;&#432;&#7901;ng backup sau CGNAT c&oacute; th&#7875; cho ng&#432;&#7901;i d&ugrave;ng &#273;i ra Internet nh&#432;ng kh&ocirc;ng cho kh&aacute;ch h&agrave;ng k&#7871;t n&#7889;i v&agrave;o. Website, email v&agrave; &#7913;ng d&#7909;ng c&ocirc;ng khai th&#432;&#7901;ng n&ecirc;n &#273;&#7863;t t&#7841;i cloud ho&#7863;c data center thay v&igrave; ph&#7909; thu&#7897;c &#273;&#432;&#7901;ng truy&#7873;n v&#259;n ph&ograve;ng.</p>
+
+<h2>8. Quy tr&igrave;nh tri&#7875;n khai theo giai &#273;o&#7841;n</h2>
+<ol><li>&#272;o b&#259;ng th&ocirc;ng, latency v&agrave; t&#7843;i cao &#273;i&#7875;m c&#7911;a WAN hi&#7879;n t&#7841;i.</li><li>Li&#7879;t k&ecirc; &#7913;ng d&#7909;ng quan tr&#7885;ng, y&ecirc;u c&#7847;u inbound v&agrave; IP allowlist.</li><li>Ch&#7885;n &#273;&#432;&#7901;ng ph&#7909; kh&aacute;c nh&agrave; m&#7841;ng v&agrave;, n&#7871;u c&oacute; th&#7875;, kh&aacute;c tuy&#7871;n v&#7853;t l&yacute;.</li><li>L&#7855;p gateway dual-WAN v&agrave; UPS nh&#432;ng ch&#432;a b&#7853;t failover t&#7921; &#273;&#7897;ng.</li><li>Ki&#7875;m th&#7917; ri&ecirc;ng t&#7915;ng WAN, DNS, NAT, VPN v&agrave; firewall.</li><li>C&#7845;u h&igrave;nh health check, active/standby v&agrave; th&#7901;i gian failback.</li><li>Thi&#7871;t l&#7853;p QoS ho&#7863;c h&#7841;n ch&#7871; l&#432;u l&#432;&#7907;ng tr&ecirc;n &#273;&#432;&#7901;ng ph&#7909;.</li><li>B&#7853;t c&#7843;nh b&aacute;o v&agrave; th&#7921;c hi&#7879;n b&agrave;i ki&#7875;m th&#7917; c&oacute; ki&#7875;m so&aacute;t.</li><li>Ghi l&#7841;i c&#7845;u h&igrave;nh, li&ecirc;n h&#7879; ISP v&agrave; thao t&aacute;c chuy&#7875;n th&#7911; c&ocirc;ng.</li></ol>
+
+<h2>9. Ki&#7875;m th&#7917; thay v&igrave; gi&#7843; &#273;&#7883;nh</h2>
+<p>Th&#7921;c hi&#7879;n trong khung gi&#7901; th&ocirc;ng b&aacute;o tr&#432;&#7899;c. R&uacute;t c&aacute;p WAN ch&iacute;nh &#273;&#7875; ki&#7875;m tra l&#7895;i v&#7853;t l&yacute;, sau &#273;&oacute; th&#7917; t&igrave;nh hu&#7889;ng c&aacute;p v&#7851;n c&#7855;m nh&#432;ng ch&#7863;n upstream &#273;&#7875; x&aacute;c minh health check ph&aacute;t hi&#7879;n l&#7895;i Internet. &#272;o th&#7901;i gian t&#7915; l&uacute;c l&#7895;i t&#7899;i l&uacute;c ng&#432;&#7901;i d&ugrave;ng truy c&#7853;p l&#7841;i &#273;&#432;&#7907;c.</p>
+<p>Trong l&uacute;c ch&#7841;y WAN ph&#7909;, th&#7917; POS, cu&#7897;c g&#7885;i, VPN, h&#7885;p video, DNS, &#7913;ng d&#7909;ng cloud v&agrave; c&#7843;nh b&aacute;o gi&aacute;m s&aacute;t. Kh&ocirc;i ph&#7909;c WAN ch&iacute;nh r&#7891;i quan s&aacute;t failback c&oacute; g&acirc;y ng&#7855;t l&#7847;n n&#7919;a hay flapping kh&ocirc;ng. Ki&#7875;m tra UPS b&#7857;ng c&aacute;ch m&ocirc; ph&#7887;ng m&#7845;t &#273;i&#7879;n an to&agrave;n v&agrave; x&aacute;c nh&#7853;n th&#7901;i l&#432;&#7907;ng &#273;&#7911; cho to&agrave;n b&#7897; chu&#7895;i m&#7841;ng.</p>
+<blockquote>M&#7897;t b&agrave;i ki&#7875;m th&#7917; t&#7889;t ph&#7843;i t&#7841;o b&#7857;ng ch&#7913;ng: th&#7901;i gian ph&aacute;t hi&#7879;n, th&#7901;i gian kh&ocirc;i ph&#7909;c, &#7913;ng d&#7909;ng b&#7883; ng&#7855;t v&agrave; h&agrave;nh &#273;&#7897;ng c&#7847;n c&#7843;i thi&#7879;n.</blockquote>
+
+<h2>10. Gi&aacute;m s&aacute;t v&agrave; v&#7853;n h&agrave;nh</h2>
+<p>G&#7917;i c&#7843;nh b&aacute;o khi WAN &#273;&#7893;i tr&#7841;ng th&aacute;i, packet loss t&#259;ng, t&iacute;n hi&#7879;u cellular gi&#7843;m ho&#7863;c dung l&#432;&#7907;ng data g&#7847;n h&#7871;t. N&#7871;u failover di&#7877;n ra &ldquo;&ecirc;m&rdquo;, &#273;&#7897;i v&#7853;n h&agrave;nh v&#7851;n c&#7847;n bi&#7871;t &#273;&#7875; m&#7903; ticket v&#7899;i ISP v&agrave; tr&aacute;nh ho&#7841;t &#273;&#7897;ng nhi&#7873;u ng&agrave;y tr&ecirc;n &#273;&#432;&#7901;ng ph&#7909;.</p>
+<ul><li>Ki&#7875;m th&#7917; failover m&#7895;i qu&yacute; v&agrave; sau khi n&acirc;ng c&#7845;p firmware.</li><li>Ki&#7875;m tra SIM, g&oacute;i data, ng&agrave;y gia h&#7841;n v&agrave; pin/UPS h&#7857;ng th&aacute;ng.</li><li>Sao l&#432;u c&#7845;u h&igrave;nh gateway sau m&#7895;i thay &#273;&#7893;i.</li><li>Gi&#7919; firmware &#273;&#432;&#7907;c h&#7895; tr&#7907; v&agrave; gi&#7899;i h&#7841;n quy&#7873;n qu&#7843;n tr&#7883;.</li><li>R&agrave; so&aacute;t log &#273;&#7875; ph&aacute;t hi&#7879;n chuy&#7875;n tuy&#7871;n l&#7863;p l&#7841;i ho&#7863;c suy gi&#7843;m ch&#7845;t l&#432;&#7907;ng.</li></ul>
+
+<h2>&#431;&#7899;c t&iacute;nh chi ph&iacute; &#273;&uacute;ng</h2>
+<p>T&#7893;ng chi ph&iacute; g&#7891;m gateway, modem, anten, UPS, l&#7855;p &#273;&#7863;t, thu&ecirc; bao th&aacute;ng, SIM/data, gi&aacute;m s&aacute;t v&agrave; th&#7901;i gian v&#7853;n h&agrave;nh. So s&aacute;nh chi ph&iacute; n&agrave;y v&#7899;i t&#7893;n th&#7845;t k&#7923; v&#7885;ng do gi&aacute;n &#273;o&#7841;n. Kh&ocirc;ng nh&#7845;t thi&#7871;t mua thi&#7871;t b&#7883; cao c&#7845;p nh&#7845;t; m&#7897;t thi&#7871;t k&#7871; &#273;&#417;n gi&#7843;n &#273;&#432;&#7907;c ki&#7875;m th&#7917; th&#432;&#7901;ng &#273;&aacute;ng tin h&#417;n c&#7845;u h&igrave;nh ph&#7913;c t&#7841;p kh&ocirc;ng ai theo d&otilde;i.</p>
+
+<h2>Checklist nghi&#7879;m thu</h2>
+<ol><li>Hai WAN kh&ocirc;ng ph&#7909; thu&#7897;c c&ugrave;ng ISP ho&#7863;c c&ugrave;ng tuy&#7871;n v&#7853;t l&yacute; n&#7871;u c&oacute; th&#7875;.</li><li>ONT, modem, gateway, switch v&agrave; access point &#273;&#7873;u &#273;&#432;&#7907;c UPS b&#7843;o v&#7879;.</li><li>Health check d&ugrave;ng nhi&#7873;u m&#7909;c ti&ecirc;u Internet, kh&ocirc;ng ch&#7881; link ho&#7863;c gateway.</li><li>Failover v&agrave; failback c&oacute; ng&#432;&#7905;ng ch&#7889;ng flapping.</li><li>&#7912;ng d&#7909;ng quan tr&#7885;ng &#273;&#432;&#7907;c &#432;u ti&ecirc;n tr&ecirc;n &#273;&#432;&#7901;ng d&#7921; ph&ograve;ng.</li><li>&#272;&atilde; x&#7917; l&yacute; CGNAT, public IP, VPN v&agrave; allowlist.</li><li>C&#7843;nh b&aacute;o ho&#7841;t &#273;&#7897;ng khi WAN &#273;&#7893;i tr&#7841;ng th&aacute;i ho&#7863;c data g&#7847;n h&#7871;t.</li><li>&#272;&atilde; &#273;o th&#7901;i gian kh&ocirc;i ph&#7909;c b&#7857;ng c&#7843; l&#7895;i c&aacute;p v&agrave; l&#7895;i upstream.</li><li>C&#7845;u h&igrave;nh, li&ecirc;n h&#7879; ISP v&agrave; quy tr&igrave;nh thao t&aacute;c &#273;&#432;&#7907;c l&#432;u ngo&agrave;i thi&#7871;t b&#7883;.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Internet d&#7921; ph&ograve;ng hi&#7879;u qu&#7843; l&agrave; m&#7897;t h&#7879; th&#7889;ng g&#7891;m &#273;&#432;&#7901;ng truy&#7873;n &#273;&#7897;c l&#7853;p, gateway ph&ugrave; h&#7907;p, health check &#273;&aacute;ng tin, ngu&#7891;n &#273;i&#7879;n, ch&iacute;nh s&aacute;ch &#432;u ti&ecirc;n v&agrave; ki&#7875;m th&#7917; &#273;&#7883;nh k&#7923;. V&#7899;i doanh nghi&#7879;p nh&#7887;, m&ocirc; h&igrave;nh c&aacute;p quang ch&iacute;nh c&#7897;ng 4G/5G t&#7915; nh&agrave; m&#7841;ng kh&aacute;c th&#432;&#7901;ng mang l&#7841;i t&#7927; l&#7879; chi ph&iacute;&ndash;l&#7907;i &iacute;ch t&#7889;t. Khi nhu c&#7847;u t&#259;ng, c&oacute; th&#7875; n&acirc;ng l&ecirc;n hai &#273;&#432;&#7901;ng c&#7889; &#273;&#7883;nh, policy routing ho&#7863;c SD-WAN m&agrave; kh&ocirc;ng ph&#7843;i thay &#273;&#7893;i nguy&ecirc;n t&#7855;c n&#7873;n t&#7843;ng.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://help.ui.com/hc/en-us/articles/360052548713-WAN-Failover-Load-Balancing-and-Port-Remapping-on-UniFi-Gateways" target="_blank" rel="noopener noreferrer">Ubiquiti: WAN Failover and Load Balancing</a></li><li><a href="https://help.mikrotik.com/docs/spaces/ROS/pages/26476608/Failover%2BWAN%2BBackup" target="_blank" rel="noopener noreferrer">MikroTik: Failover WAN Backup</a></li><li><a href="https://docs.fortinet.com/document/fortigate/6.4.6/administration-guide/360563/dual-internet-connections" target="_blank" rel="noopener noreferrer">Fortinet: Dual Internet Connections</a></li><li><a href="https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco_unified_branch_design_guide.html" target="_blank" rel="noopener noreferrer">Cisco: Unified Branch Design Guide</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

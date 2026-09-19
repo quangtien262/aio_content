@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Docker Compose: M&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh &#273;&#7891;ng nh&#7845;t</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Docker Compose, m&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh, container, Docker cho developer, compose.yaml, local development</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Docker Compose, Docker, Container, M&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh, DevOps, Backend Development</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n d&ugrave;ng Docker Compose &#273;&#7875; chu&#7849;n h&oacute;a m&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh, qu&#7843;n l&yacute; d&#7883;ch v&#7909;, d&#7919; li&#7879;u, bi&#7871;n m&ocirc;i tr&#432;&#7901;ng v&agrave; quy tr&igrave;nh l&agrave;m vi&#7879;c nh&oacute;m hi&#7879;u qu&#7843;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/docker-compose-moi-truong-lap-trinh.jpg" alt="Docker Compose: X&acirc;y d&#7921;ng m&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh &#273;&#7891;ng nh&#7845;t cho c&#7843; nh&oacute;m" width="1440" height="810"></p><h1>Docker Compose: X&acirc;y d&#7921;ng m&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh &#273;&#7891;ng nh&#7845;t cho c&#7843; nh&oacute;m</h1><p><strong>&ldquo;M&aacute;y em ch&#7841;y &#273;&#432;&#7907;c&rdquo; th&#432;&#7901;ng l&agrave; d&#7845;u hi&#7879;u m&ocirc;i tr&#432;&#7901;ng ph&aacute;t tri&#7875;n ch&#432;a &#273;&#432;&#7907;c m&ocirc; t&#7843; &#273;&#7911; r&otilde;.</strong> Khi m&#7895;i th&agrave;nh vi&ecirc;n t&#7921; c&agrave;i PHP, c&#417; s&#7903; d&#7919; li&#7879;u, b&#7897; nh&#7899; &#273;&#7879;m v&agrave; c&ocirc;ng c&#7909; ph&#7909; tr&#7907; theo m&#7897;t c&aacute;ch kh&aacute;c nhau, l&#7895;i phi&ecirc;n b&#7843;n v&agrave; c&#7845;u h&igrave;nh s&#7869; xu&#7845;t hi&#7879;n s&#7899;m hay mu&#7897;n. Docker Compose gi&uacute;p bi&#7871;n c&aacute;c ph&#7909; thu&#7897;c &#273;&oacute; th&agrave;nh m&#7897;t c&#7845;u h&igrave;nh c&oacute; th&#7875; l&#432;u c&ugrave;ng m&atilde; ngu&#7891;n v&agrave; kh&#7903;i &#273;&#7897;ng l&#7841;i nh&#7845;t qu&aacute;n.</p>
+<h2>Docker Compose gi&#7843;i quy&#7871;t v&#7845;n &#273;&#7873; g&igrave;?</h2>
+<p>M&#7897;t &#7913;ng d&#7909;ng web hi&#7871;m khi ch&#7881; c&oacute; m&atilde; ngu&#7891;n. N&oacute; c&oacute; th&#7875; c&#7847;n m&aacute;y ch&#7911; &#7913;ng d&#7909;ng, MySQL ho&#7863;c PostgreSQL, Redis, d&#7883;ch v&#7909; email gi&#7843; l&#7853;p v&agrave; ti&#7871;n tr&igrave;nh ch&#7841;y h&agrave;ng &#273;&#7907;i. Compose m&ocirc; t&#7843; c&aacute;c th&agrave;nh ph&#7847;n n&agrave;y d&#432;&#7899;i d&#7841;ng <em>service</em>, c&ugrave;ng m&#7841;ng, &#7893; &#273;&#297;a v&agrave; bi&#7871;n m&ocirc;i tr&#432;&#7901;ng c&#7847;n thi&#7871;t.</p>
+<p>Thay v&igrave; vi&#7871;t t&agrave;i li&#7879;u c&agrave;i &#273;&#7863;t d&agrave;i v&agrave; hy v&#7885;ng m&#7885;i ng&#432;&#7901;i l&agrave;m gi&#7889;ng nhau, nh&oacute;m c&oacute; th&#7875; d&ugrave;ng m&#7897;t l&#7879;nh &#273;&#7875; t&#7841;o c&ugrave;ng m&#7897;t h&#7879; th&#7889;ng d&#7883;ch v&#7909;. C&aacute;ch l&agrave;m n&agrave;y &#273;&#7863;c bi&#7879;t h&#7919;u &iacute;ch khi ti&#7871;p nh&#7853;n th&agrave;nh vi&ecirc;n m&#7899;i, chuy&#7875;n m&aacute;y ho&#7863;c t&aacute;i hi&#7879;n l&#7895;i.</p>
+<h2>M&#7897;t c&#7845;u h&igrave;nh t&#7889;i thi&#7875;u d&#7877; hi&#7875;u</h2>
+<pre><code>services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: local_password
+      MYSQL_ROOT_PASSWORD: local_root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  db_data:</code></pre>
+<p><code>depends_on</code> th&#7875; hi&#7879;n th&#7913; t&#7921; ph&#7909; thu&#7897;c, c&ograve;n <code>healthcheck</code> gi&uacute;p Compose bi&#7871;t c&#417; s&#7903; d&#7919; li&#7879;u &#273;&atilde; s&#7861;n s&agrave;ng nh&#7853;n k&#7871;t n&#7889;i hay ch&#432;a. &#272;i&#7873;u n&agrave;y &#273;&aacute;ng tin c&#7853;y h&#417;n vi&#7879;c ch&#7881; ch&#7901; container &#273;&#432;&#7907;c kh&#7903;i &#273;&#7897;ng.</p>
+<h2>Ph&acirc;n bi&#7879;t c&aacute;c th&agrave;nh ph&#7847;n ch&iacute;nh</h2>
+<table><thead><tr><th>Th&agrave;nh ph&#7847;n</th><th>Vai tr&ograve;</th><th>L&#432;u &yacute;</th></tr></thead><tbody><tr><td>Image</td><td>M&#7851;u ch&#7881; &#273;&#7885;c d&ugrave;ng &#273;&#7875; t&#7841;o container</td><td>N&ecirc;n ghim phi&ecirc;n b&#7843;n ph&ugrave; h&#7907;p thay v&igrave; ph&#7909; thu&#7897;c m&#417; h&#7891; v&agrave;o <code>latest</code></td></tr><tr><td>Container</td><td>Ti&#7871;n tr&igrave;nh &#273;ang ch&#7841;y t&#7915; image</td><td>C&oacute; th&#7875; x&oacute;a v&agrave; t&#7841;o l&#7841;i; kh&ocirc;ng d&ugrave;ng filesystem b&ecirc;n trong &#273;&#7875; l&#432;u d&#7919; li&#7879;u l&acirc;u d&agrave;i</td></tr><tr><td>Volume</td><td>L&#432;u d&#7919; li&#7879;u b&#7873;n v&#7919;ng nh&#432; database</td><td>Ch&#7881; x&oacute;a khi ch&#7855;c ch&#7855;n kh&ocirc;ng c&#7847;n d&#7919; li&#7879;u local</td></tr><tr><td>Network</td><td>Cho c&aacute;c service li&ecirc;n l&#7841;c b&#7857;ng t&ecirc;n</td><td>&#7912;ng d&#7909;ng k&#7871;t n&#7889;i t&#7899;i host <code>db</code> ho&#7863;c <code>redis</code>, kh&ocirc;ng d&ugrave;ng <code>localhost</code></td></tr></tbody></table>
+<h2>Qu&#7843;n l&yacute; bi&#7871;n m&ocirc;i tr&#432;&#7901;ng v&agrave; b&iacute; m&#7853;t</h2>
+<p>Compose h&#7895; tr&#7907; khai b&aacute;o bi&#7871;n tr&#7921;c ti&#7871;p, n&#7897;i suy t&#7915; shell ho&#7863;c &#273;&#7885;c t&#7879;p m&ocirc;i tr&#432;&#7901;ng. Tuy nhi&ecirc;n, t&#7879;p ch&#7913;a m&#7853;t kh&#7849;u th&#7853;t kh&ocirc;ng n&ecirc;n &#273;&#432;&#7907;c commit. H&atilde;y cung c&#7845;p <code>.env.example</code> ch&#7881; g&#7891;m t&ecirc;n bi&#7871;n v&agrave; gi&aacute; tr&#7883; m&#7851;u an to&agrave;n; d&#7919; li&#7879;u nh&#7841;y c&#7843;m cho staging ho&#7863;c production n&ecirc;n &#273;i qua c&#417; ch&#7871; secrets c&#7911;a n&#7873;n t&#7843;ng tri&#7875;n khai.</p>
+<blockquote>Container h&oacute;a m&ocirc;i tr&#432;&#7901;ng local kh&ocirc;ng &#273;&#7891;ng ngh&#297;a c&#7845;u h&igrave;nh local c&oacute; th&#7875; &#273;&#432;&#7907;c b&ecirc; nguy&ecirc;n l&ecirc;n production. Production v&#7851;n c&#7847;n chi&#7871;n l&#432;&#7907;c ri&ecirc;ng cho secrets, backup, gi&aacute;m s&aacute;t, c&#7853;p nh&#7853;t v&agrave; kh&#7843; n&#259;ng ph&#7909;c h&#7891;i.</blockquote>
+<h2>Quy tr&igrave;nh l&agrave;m vi&#7879;c h&#7857;ng ng&agrave;y</h2>
+<pre><code>docker compose up -d --build
+docker compose ps
+docker compose logs -f app
+docker compose exec app php artisan migrate
+docker compose down</code></pre>
+<p>Ch&#7881; th&ecirc;m <code>-v</code> v&agrave;o <code>docker compose down</code> khi ch&#7911; &#273;&iacute;ch mu&#7889;n x&oacute;a c&#7843; volume. V&#7899;i database local c&oacute; d&#7919; li&#7879;u ki&#7875;m th&#7917; quan tr&#7885;ng, thao t&aacute;c n&agrave;y c&oacute; th&#7875; l&agrave;m m&#7845;t c&ocirc;ng s&#7913;c chu&#7849;n b&#7883; d&#7919; li&#7879;u.</p>
+<h2>T&#7889;i &#432;u tr&#7843;i nghi&#7879;m l&#7853;p tr&igrave;nh</h2>
+<ul><li>T&#7841;o <code>Dockerfile</code> ri&ecirc;ng cho development n&#7871;u c&#7847;n debugger ho&#7863;c c&ocirc;ng c&#7909; ch&#7845;t l&#432;&#7907;ng m&atilde;.</li><li>D&ugrave;ng bind mount cho m&atilde; ngu&#7891;n nh&#432;ng tr&aacute;nh mount &#273;&egrave; th&#432; m&#7909;c dependency n&#7871;u h&#7879; &#273;i&#7873;u h&agrave;nh host g&acirc;y ch&#7853;m I/O.</li><li>Th&ecirc;m healthcheck cho database v&agrave; message broker m&agrave; &#7913;ng d&#7909;ng ph&#7843;i ch&#7901;.</li><li>Ghim phi&ecirc;n b&#7843;n image c&oacute; ch&#7911; &#273;&iacute;ch v&agrave; l&ecirc;n l&#7883;ch c&#7853;p nh&#7853;t.</li><li>&#272;&#7863;t c&aacute;c l&#7879;nh th&#432;&#7901;ng d&ugrave;ng trong script ho&#7863;c Makefile &#273;&#7875; ng&#432;&#7901;i m&#7899;i kh&ocirc;ng ph&#7843;i nh&#7899; chi ti&#7871;t d&agrave;i.</li></ul>
+<h2>C&aacute;c l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<h3>&#7912;ng d&#7909;ng kh&ocirc;ng k&#7871;t n&#7889;i &#273;&#432;&#7907;c database</h3><p>B&ecirc;n trong network c&#7911;a Compose, <code>DB_HOST</code> ph&#7843;i l&agrave; t&ecirc;n service nh&#432; <code>db</code>, kh&ocirc;ng ph&#7843;i <code>127.0.0.1</code>. &#272;&#7891;ng th&#7901;i ki&#7875;m tra c&#7893;ng n&#7897;i b&#7897;, healthcheck v&agrave; log c&#7911;a c&#7843; hai service.</p>
+<h3>S&#7917;a m&atilde; nh&#432;ng container kh&ocirc;ng c&#7853;p nh&#7853;t</h3><p>Ki&#7875;m tra &#273;&#432;&#7901;ng d&#7851;n volume, working directory v&agrave; cache c&#7911;a framework. Thay &#273;&#7893;i dependency ho&#7863;c extension h&#7879; th&#7889;ng c&#7847;n build l&#7841;i image; thay &#273;&#7893;i m&atilde; ngu&#7891;n th&ocirc;ng th&#432;&#7901;ng ch&#7881; c&#7847;n bind mount &#273;&uacute;ng.</p>
+<h3>D&#7919; li&#7879;u bi&#7871;n m&#7845;t sau khi kh&#7903;i &#273;&#7897;ng l&#7841;i</h3><p>Database c&#7847;n d&ugrave;ng named volume v&agrave; mount &#273;&uacute;ng th&#432; m&#7909;c d&#7919; li&#7879;u c&#7911;a image. Vi&#7879;c x&oacute;a volume ho&#7863;c &#273;&#7893;i t&ecirc;n project Compose c&oacute; th&#7875; khi&#7871;n h&#7879; th&#7889;ng t&#7841;o m&#7897;t v&ugrave;ng d&#7919; li&#7879;u m&#7899;i.</p>
+<h2>Checklist tr&#432;&#7899;c khi &#273;&#432;a v&agrave;o nh&oacute;m</h2>
+<ol><li>Th&agrave;nh vi&ecirc;n m&#7899;i c&oacute; th&#7875; kh&#7903;i &#273;&#7897;ng d&#7921; &aacute;n t&#7915; README m&agrave; kh&ocirc;ng c&#7847;n h&#432;&#7899;ng d&#7851;n mi&#7879;ng.</li><li>C&aacute;c phi&ecirc;n b&#7843;n image &#273;&#432;&#7907;c ghi r&otilde; v&agrave; c&oacute; k&#7871; ho&#7841;ch c&#7853;p nh&#7853;t.</li><li>Kh&ocirc;ng c&oacute; m&#7853;t kh&#7849;u th&#7853;t, token hay d&#7919; li&#7879;u kh&aacute;ch h&agrave;ng trong repository.</li><li>Database v&agrave; d&#7883;ch v&#7909; ph&#7909; thu&#7897;c c&oacute; healthcheck h&#7907;p l&yacute;.</li><li>L&#7879;nh migrate, seed, test v&agrave; xem log &#273;&#7873;u &#273;&#432;&#7907;c t&agrave;i li&#7879;u h&oacute;a.</li><li>Nh&oacute;m &#273;&atilde; th&#7917; x&oacute;a container v&agrave; d&#7921;ng l&#7841;i &#273;&#7875; x&aacute;c nh&#7853;n d&#7919; li&#7879;u c&#7847;n thi&#7871;t v&#7851;n &#273;&#432;&#7907;c gi&#7919;.</li></ol>
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Docker Compose kh&ocirc;ng lo&#7841;i b&#7887; m&#7885;i kh&aacute;c bi&#7879;t gi&#7919;a local v&agrave; production, nh&#432;ng n&oacute; t&#7841;o ra m&#7897;t h&#7907;p &#273;&#7891;ng m&ocirc;i tr&#432;&#7901;ng r&otilde; r&agrave;ng cho &#273;&#7897;i ph&aacute;t tri&#7875;n. H&atilde;y b&#7855;t &#273;&#7847;u t&#7915; v&agrave;i service th&#7853;t s&#7921; c&#7847;n thi&#7871;t, chu&#7849;n h&oacute;a l&#7879;nh h&#7857;ng ng&agrave;y v&agrave; ki&#7875;m tra kh&#7843; n&#259;ng d&#7921;ng l&#7841;i t&#7915; &#273;&#7847;u.</p>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://docs.docker.com/compose/" target="_blank" rel="noopener noreferrer">Docker Compose documentation</a></li><li><a href="https://docs.docker.com/compose/how-tos/environment-variables/" target="_blank" rel="noopener noreferrer">Environment variables in Compose</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

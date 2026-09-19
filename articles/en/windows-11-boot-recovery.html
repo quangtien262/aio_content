@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">windows-11-will-not-boot-winre-recovery</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Recover Windows 11 Boot Failures with WinRE</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Windows 11 not booting, WinRE, Startup Repair, Safe Mode, System Restore, DISM SFC, Reset this PC</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Windows 11, WinRE, Startup Repair, Safe Mode, System Restore, DISM, BitLocker, Recovery</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Recover a Windows 11 boot failure using WinRE, Startup Repair, Safe Mode, update removal, System Restore, DISM/SFC, and safe reset options.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/windows-11-boot-recovery.jpg" alt="Windows 11 Will Not Boot: A Safe Recovery Guide Using WinRE" width="1440" height="810"></p><h1>Windows 11 Will Not Boot: A Safe Recovery Guide Using WinRE</h1><p><strong>When Windows 11 is stuck at its logo, a black or blue screen, or a restart loop, do not rush to reinstall it.</strong> Windows Recovery Environment (WinRE) offers recovery layers from minimally disruptive to destructive. Using them in order reduces the risk to applications and data.</p>
+<blockquote>Before Reset or reinstall, back up accessible data and obtain the BitLocker recovery key.</blockquote>
+
+<h2>First distinguish Windows failure from hardware failure</h2>
+<p>If the PC does not power on, cannot enter BIOS/UEFI, no longer detects its drive, makes unusual storage noises, or shuts down thermally, WinRE cannot fix the cause. Disconnect unnecessary USB devices and inspect power, display, memory, and storage detection first.</p>
+<p>If firmware sees the drive and Windows starts loading before failure, the process below is appropriate. Record the stop code, onset time, and latest change, such as an update, driver, security application, or hardware replacement.</p>
+
+<h2>Prepare data and the BitLocker key</h2>
+<p>Many WinRE operations request the 48-digit recovery key when the system drive is encrypted. Retrieve it from the Microsoft account, work account, printout, or storage location prepared earlier. Never post the key publicly or include it in screenshots.</p>
+<p>If data is not backed up and the drive appears unhealthy, minimize writes. Create an image or seek professional recovery. Reset, repair-mode CHKDSK, and reinstallation can make physical-drive recovery harder.</p>
+
+<h2>1. Enter Windows Recovery Environment</h2>
+<p>From working Windows, open <strong>Settings &gt; System &gt; Recovery &gt; Advanced startup &gt; Restart now</strong>. Windows normally enters WinRE after repeated boot failures. Alternatively, boot official Windows installation media and select <strong>Repair your computer</strong> instead of Install.</p>
+<p>Interrupting power during startup should be a last resort for triggering Automatic Repair; poorly timed repeated shutdowns can corrupt active writes. Keep a laptop connected to power during recovery.</p>
+
+<h2>2. Run Startup Repair</h2>
+<p>Select <strong>Troubleshoot &gt; Advanced options &gt; Startup Repair</strong>. It checks several problems that prevent Windows from loading and is the first low-impact tool to try.</p>
+<p>If it cannot repair the PC, do not repeat it indefinitely. Record any displayed log path and choose the next step based on the latest system change.</p>
+
+<h2>3. Boot Safe Mode</h2>
+<p>Select <strong>Advanced options &gt; Startup Settings &gt; Restart</strong>, then choose Safe Mode or Safe Mode with Networking. This loads a minimal set of drivers and services.</p>
+<ul><li>Remove software or drivers installed immediately before the failure.</li><li>Use Device Manager to roll back graphics, storage, or network drivers.</li><li>Disable unnecessary startup applications and inspect Event Viewer.</li><li>Run Windows Security if malware is suspected.</li></ul>
+<p>If Safe Mode is stable, the cause is more likely a driver, service, application, or configuration than the basic boot path.</p>
+
+<h2>4. Uninstall the latest update</h2>
+<p>If failure began immediately after Windows Update, open <strong>Advanced options &gt; Uninstall Updates</strong>. Remove the latest quality update first because it has a smaller scope. Remove a feature update only with good reason and while the option remains available.</p>
+<p>After recovery, pause updates briefly to investigate the incident and compatible drivers, but do not disable security updates permanently.</p>
+
+<h2>5. Use System Restore</h2>
+<p>Select <strong>Advanced options &gt; System Restore</strong>, choose a restore point before the incident, and use <strong>Scan for affected programs</strong>. System Restore rolls back system files, registry, drivers, and installed applications without targeting personal documents.</p>
+<p>Applications and drivers installed after the restore point may be removed. Do not power off during restoration. This option requires an existing restore point.</p>
+
+<h2>6. Repair the component store and system files</h2>
+<p>If Safe Mode works, open an elevated Terminal or Command Prompt:</p>
+<pre><code>DISM.exe /Online /Cleanup-Image /RestoreHealth
+sfc /scannow</code></pre>
+<p>DISM repairs the component store used by SFC, so run DISM first. Restart afterward. If DISM reports a missing source, use a matching Windows image/build or valid repair source; never download loose DLLs from untrusted websites.</p>
+<p>Inside WinRE Command Prompt, the Windows volume may not be <code>C:</code>. Identify it before offline commands. The <code>/Online</code> target in WinRE refers to the recovery environment itself, not automatically to the broken Windows installation.</p>
+
+<h2>7. Check storage deliberately</h2>
+<p>Use the manufacturer's SMART diagnostics when storage failure is suspected. <code>chkdsk</code> examines the filesystem and does not prove complete device health. A read-only pass can help assess it:</p>
+<pre><code>chkdsk C:</code></pre>
+<p>Do not immediately use <code>/r</code> on a failing drive; its full-surface read is lengthy and stressful. Back up or clone important data before aggressive repair.</p>
+
+<h2>8. Reinstall through Windows Update when Windows still starts</h2>
+<p>On supported Windows 11 systems, <strong>Settings &gt; System &gt; Recovery &gt; Fix problems using Windows Update</strong> can reinstall the current version while preserving files, applications, and settings. It is less disruptive than Reset when Windows starts but system components are damaged.</p>
+<p>The option may be unavailable on managed devices or older Windows releases. Back up first because no recovery process is entirely risk-free.</p>
+
+<h2>9. Understand Reset this PC</h2>
+<p>In WinRE, use <strong>Troubleshoot &gt; Reset this PC</strong> after earlier steps fail:</p>
+<ul><li><strong>Keep my files:</strong> retains personal files but removes applications and resets settings.</li><li><strong>Remove everything:</strong> removes files, applications, and settings; use after backup for disposal or deeper cleanup.</li></ul>
+<p><strong>Cloud download</strong> retrieves a fresh image and needs stable Internet. <strong>Local reinstall</strong> uses existing files but may fail when they are damaged. Review every affected drive, especially on multi-drive systems.</p>
+
+<h2>10. Reinstall from USB as the last resort</h2>
+<p>Use a trusted PC to obtain Microsoft's installation-media tool and an 8 GB or larger USB drive. Consider the manufacturer's recovery image when model-specific drivers and utilities matter.</p>
+<p>A clean installation can remove all files, applications, and settings. Confirm backups, BitLocker keys, software licenses, browser data, and synchronized accounts. Disconnect unnecessary drives to reduce the risk of selecting the wrong destination.</p>
+
+<h2>When to stop self-repair</h2>
+<ul><li>The drive disappears from firmware, makes noise, or reports critical SMART errors.</li><li>Valuable data has no backup.</li><li>BitLocker is enabled but no recovery key exists.</li><li>The device is company-managed with MDM or security policy.</li><li>Failure returns after a clean installation, suggesting RAM, SSD, power, or motherboard trouble.</li></ul>
+
+<h2>Prevention checklist</h2>
+<ol><li>Enable Windows Backup or an independent backup solution.</li><li>Store the BitLocker key securely in at least one off-device location.</li><li>Create a Recovery Drive while the system is healthy.</li><li>Maintain restore points before major driver or system changes.</li><li>Keep installation media and important software/license information.</li><li>Monitor SSD health and free space.</li><li>Install supported firmware, drivers, and security updates from official sources.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Windows 11 recovery should follow a ladder: Startup Repair, Safe Mode, update removal, System Restore, system-file repair, a preserving reinstall, and only then Reset or clean installation. This order preserves options and limits unnecessary change. A current backup and accessible BitLocker key remain the most valuable recovery tools.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/recovery-options-in-windows" target="_blank" rel="noopener noreferrer">Microsoft Support: Recovery options in Windows</a></li><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/system-restore" target="_blank" rel="noopener noreferrer">Microsoft Support: System Restore</a></li><li><a href="https://support.microsoft.com/en-us/windows/deployment/install-upgrade/fix-issues-by-reinstalling-the-current-version-of-windows" target="_blank" rel="noopener noreferrer">Microsoft Support: Reinstall the current version using Windows Update</a></li><li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/installing-updates-features-roles/common-windows-update-errors" target="_blank" rel="noopener noreferrer">Microsoft Learn: DISM and SFC for update errors</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

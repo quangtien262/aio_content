@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Gi&#7843;i ph&aacute;p</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Sao l&#432;u 3-2-1 cho doanh nghi&#7879;p ch&#7889;ng ransomware</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">sao l&#432;u 3-2-1, backup doanh nghi&#7879;p, ch&#7889;ng ransomware, kh&ocirc;i ph&#7909;c d&#7919; li&#7879;u, RPO, RTO, immutable backup</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Sao l&#432;u 3-2-1, Backup, Ransomware, Kh&ocirc;i ph&#7909;c d&#7919; li&#7879;u, RPO, RTO, An to&agrave;n d&#7919; li&#7879;u</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n doanh nghi&#7879;p tri&#7875;n khai sao l&#432;u 3-2-1, x&aacute;c &#273;&#7883;nh RPO v&agrave; RTO, b&#7843;o v&#7879; b&#7843;n sao kh&#7887;i ransomware v&agrave; ki&#7875;m th&#7917; kh&ocirc;i ph&#7909;c &#273;&#7883;nh k&#7923;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/chien-luoc-sao-luu-3-2-1-cho-doanh-nghiep.jpg" alt="Chi&#7871;n l&#432;&#7907;c sao l&#432;u 3-2-1 cho doanh nghi&#7879;p: Gi&#7919; d&#7919; li&#7879;u an to&agrave;n tr&#432;&#7899;c ransomware" width="1440" height="810"></p><h1>Chi&#7871;n l&#432;&#7907;c sao l&#432;u 3-2-1 cho doanh nghi&#7879;p: Gi&#7919; d&#7919; li&#7879;u an to&agrave;n tr&#432;&#7899;c ransomware</h1><p><strong>M&#7897;t b&#7843;n sao tr&ecirc;n NAS ho&#7863;c th&#432; m&#7909;c &#273;&#7891;ng b&#7897; &#273;&aacute;m m&acirc;y ch&#432;a ph&#7843;i l&agrave; chi&#7871;n l&#432;&#7907;c sao l&#432;u ho&agrave;n ch&#7881;nh.</strong> Khi t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; b&#7883; chi&#7871;m quy&#7873;n, ransomware c&oacute; th&#7875; m&atilde; h&oacute;a d&#7919; li&#7879;u g&#7889;c, x&oacute;a snapshot v&agrave; ph&aacute; h&#7911;y c&aacute;c b&#7843;n sao &#273;ang k&#7871;t n&#7889;i. M&ocirc; h&igrave;nh 3-2-1 gi&uacute;p doanh nghi&#7879;p t&#7841;o nhi&#7873;u l&#7899;p ph&#7909;c h&#7891;i &#273;&#7897;c l&#7853;p &#273;&#7875; m&#7897;t s&#7921; c&#7889; kh&ocirc;ng th&#7875; x&oacute;a s&#7841;ch m&#7885;i ph&#432;&#417;ng &aacute;n quay l&#7841;i.</p>
+
+<h2>Quy t&#7855;c sao l&#432;u 3-2-1 l&agrave; g&igrave;?</h2>
+<ul><li><strong>3 b&#7843;n d&#7919; li&#7879;u:</strong> m&#7897;t b&#7843;n &#273;ang v&#7853;n h&agrave;nh v&agrave; &iacute;t nh&#7845;t hai b&#7843;n sao l&#432;u.</li><li><strong>2 lo&#7841;i ph&#432;&#417;ng ti&#7879;n ho&#7863;c n&#7873;n t&#7843;ng:</strong> ch&#7859;ng h&#7841;n m&aacute;y ch&#7911;/NAS t&#7841;i v&#259;n ph&ograve;ng v&agrave; kho l&#432;u tr&#7919; &#273;&#7889;i t&#432;&#7907;ng tr&ecirc;n &#273;&aacute;m m&acirc;y.</li><li><strong>1 b&#7843;n &#7903; ngo&agrave;i &#273;&#7883;a &#273;i&#7875;m:</strong> n&#7857;m t&#7841;i khu v&#7921;c ho&#7863;c t&agrave;i kho&#7843;n &#273;&#7897;c l&#7853;p &#273;&#7875; s&#7921; c&#7889; t&#7841;i v&#259;n ph&ograve;ng kh&ocirc;ng &#7843;nh h&#432;&#7903;ng &#273;&#7891;ng th&#7901;i.</li></ul>
+<p>Trong b&#7889;i c&#7843;nh ransomware, doanh nghi&#7879;p n&ecirc;n m&#7903; r&#7897;ng th&agrave;nh 3-2-1-1-0: c&oacute; th&ecirc;m m&#7897;t b&#7843;n ngo&#7841;i tuy&#7871;n ho&#7863;c b&#7845;t bi&#7871;n v&agrave; h&#432;&#7899;ng t&#7899;i kh&ocirc;ng c&oacute; l&#7895;i sau khi ki&#7875;m tra t&iacute;nh to&agrave;n v&#7865;n. &#272;&acirc;y kh&ocirc;ng ph&#7843;i c&ocirc;ng th&#7913;c c&#7913;ng nh&#7855;c; m&#7909;c ti&ecirc;u l&agrave; lo&#7841;i b&#7887; c&aacute;c &#273;i&#7875;m l&#7895;i chung gi&#7919;a d&#7919; li&#7879;u s&#7843;n xu&#7845;t v&agrave; b&#7843;n sao.</p>
+
+<h2>&#272;&#7891;ng b&#7897; kh&ocirc;ng thay th&#7871; sao l&#432;u</h2>
+<p>D&#7883;ch v&#7909; &#273;&#7891;ng b&#7897; gi&uacute;p t&#7879;p m&#7899;i nhanh ch&oacute;ng xu&#7845;t hi&#7879;n tr&ecirc;n nhi&#7873;u thi&#7871;t b&#7883;, nh&#432;ng thao t&aacute;c x&oacute;a, m&atilde; h&oacute;a ho&#7863;c ghi &#273;&egrave; c&#361;ng c&oacute; th&#7875; &#273;&#432;&#7907;c &#273;&#7891;ng b&#7897;. M&#7897;t h&#7879; th&#7889;ng sao l&#432;u &#273;&uacute;ng ngh&#297;a c&#7847;n l&#432;u nhi&#7873;u phi&ecirc;n b&#7843;n, c&oacute; th&#7901;i h&#7841;n gi&#7919; ri&ecirc;ng v&agrave; cho ph&eacute;p kh&ocirc;i ph&#7909;c v&#7873; th&#7901;i &#273;i&#7875;m tr&#432;&#7899;c s&#7921; c&#7889;.</p>
+<table><thead><tr><th>C&ocirc;ng c&#7909;</th><th>M&#7909;c ti&ecirc;u ch&iacute;nh</th><th>R&#7911;i ro c&#7847;n ki&#7875;m so&aacute;t</th></tr></thead><tbody><tr><td>&#272;&#7891;ng b&#7897; t&#7879;p</td><td>L&agrave;m vi&#7879;c v&agrave; chia s&#7867; thu&#7853;n ti&#7879;n</td><td>Thay &#273;&#7893;i x&#7845;u lan sang c&aacute;c b&#7843;n &#273;&#7891;ng b&#7897;</td></tr><tr><td>Snapshot</td><td>Quay l&#7841;i nhanh tr&ecirc;n c&ugrave;ng h&#7879; th&#7889;ng</td><td>C&ugrave;ng mi&#7873;n qu&#7843;n tr&#7883; ho&#7863;c c&ugrave;ng thi&#7871;t b&#7883;</td></tr><tr><td>Sao l&#432;u</td><td>Kh&ocirc;i ph&#7909;c sau x&oacute;a nh&#7847;m, h&#7887;ng h&oacute;c ho&#7863;c t&#7845;n c&ocirc;ng</td><td>C&#7847;n gi&aacute;m s&aacute;t, b&#7843;o v&#7879; v&agrave; ki&#7875;m th&#7917;</td></tr><tr><td>Sao ch&eacute;p d&#7921; ph&ograve;ng</td><td>Duy tr&igrave; d&#7883;ch v&#7909; khi h&#7841; t&#7847;ng l&#7895;i</td><td>D&#7919; li&#7879;u l&#7895;i c&#361;ng c&oacute; th&#7875; &#273;&#432;&#7907;c sao ch&eacute;p</td></tr></tbody></table>
+
+<h2>B&#7855;t &#273;&#7847;u b&#7857;ng RPO v&agrave; RTO</h2>
+<p><strong>RPO</strong> l&agrave; l&#432;&#7907;ng d&#7919; li&#7879;u t&#7889;i &#273;a doanh nghi&#7879;p ch&#7845;p nh&#7853;n m&#7845;t, t&iacute;nh theo th&#7901;i gian. N&#7871;u RPO c&#7911;a h&#7879; th&#7889;ng &#273;&#417;n h&agrave;ng l&agrave; 15 ph&uacute;t, sao l&#432;u m&#7895;i &#273;&ecirc;m r&otilde; r&agrave;ng kh&ocirc;ng &#273;&#7911;. <strong>RTO</strong> l&agrave; th&#7901;i gian t&#7889;i &#273;a &#273;&#7875; &#273;&#432;a d&#7883;ch v&#7909; ho&#7841;t &#273;&#7897;ng tr&#7903; l&#7841;i.</p>
+<p>Kh&ocirc;ng c&#7847;n &#273;&#7863;t m&#7885;i h&#7879; th&#7889;ng &#7903; m&#7913;c cao nh&#7845;t. H&atilde;y ph&acirc;n t&#7847;ng: d&#7919; li&#7879;u giao d&#7883;ch c&oacute; th&#7875; c&#7847;n RPO ng&#7855;n v&agrave; ph&#7909;c h&#7891;i trong v&agrave;i gi&#7901;; t&agrave;i li&#7879;u l&#432;u tr&#7919; &iacute;t thay &#273;&#7893;i c&oacute; th&#7875; sao l&#432;u h&#7857;ng ng&agrave;y v&agrave; ph&#7909;c h&#7891;i ch&#7853;m h&#417;n. Quy&#7871;t &#273;&#7883;nh n&agrave;y tr&#7921;c ti&#7871;p chi ph&#7889;i chi ph&iacute;.</p>
+
+<h2>Ki&#7871;n tr&uacute;c tham kh&#7843;o cho doanh nghi&#7879;p nh&#7887;</h2>
+<ol><li><strong>B&#7843;n v&#7853;n h&agrave;nh:</strong> d&#7919; li&#7879;u tr&ecirc;n m&aacute;y ch&#7911;, m&aacute;y tr&#7841;m, SaaS v&agrave; c&#417; s&#7903; d&#7919; li&#7879;u &#273;ang s&#7917; d&#7909;ng.</li><li><strong>B&#7843;n sao c&#7909;c b&#7897;:</strong> thi&#7871;t b&#7883; sao l&#432;u ri&ecirc;ng ho&#7863;c NAS, d&ugrave;ng t&agrave;i kho&#7843;n ri&ecirc;ng v&agrave; kh&ocirc;ng g&#7855;n nh&#432; &#7893; &#273;&#297;a cho m&#7885;i nh&acirc;n vi&ecirc;n. B&#7843;n n&agrave;y ph&#7909;c v&#7909; kh&ocirc;i ph&#7909;c nhanh.</li><li><strong>B&#7843;n sao ngo&agrave;i &#273;&#7883;a &#273;i&#7875;m:</strong> kho &#273;&aacute;m m&acirc;y ho&#7863;c trung t&acirc;m d&#7919; li&#7879;u kh&aacute;c, b&#7853;t m&atilde; h&oacute;a, versioning v&agrave; ch&iacute;nh s&aacute;ch l&#432;u gi&#7919;.</li><li><strong>L&#7899;p b&#7845;t bi&#7871;n ho&#7863;c ngo&#7841;i tuy&#7871;n:</strong> kh&oacute;a &#273;&#7889;i t&#432;&#7907;ng trong m&#7897;t kho&#7843;ng th&#7901;i gian, vault b&#7845;t bi&#7871;n ho&#7863;c thi&#7871;t b&#7883; ch&#7881; k&#7871;t n&#7889;i khi sao l&#432;u r&#7891;i th&aacute;o ra.</li></ol>
+<p>N&#7871;u d&ugrave;ng m&#7897;t nh&agrave; cung c&#7845;p cho c&#7843; s&#7843;n xu&#7845;t v&agrave; sao l&#432;u, n&ecirc;n t&aacute;ch t&agrave;i kho&#7843;n, quy&#7873;n qu&#7843;n tr&#7883; v&agrave; th&ocirc;ng tin x&aacute;c th&#7921;c. T&#7889;t h&#417;n n&#7919;a, b&#7843;n sao quan tr&#7885;ng c&oacute; th&#7875; n&#7857;m &#7903; mi&#7873;n qu&#7843;n tr&#7883; ho&#7863;c nh&agrave; cung c&#7845;p &#273;&#7897;c l&#7853;p.</p>
+
+<h2>B&#7843;o v&#7879; h&#7879; th&#7889;ng sao l&#432;u kh&#7887;i ch&iacute;nh k&#7867; t&#7845;n c&ocirc;ng</h2>
+<ul><li>D&ugrave;ng t&agrave;i kho&#7843;n sao l&#432;u ri&ecirc;ng, b&#7853;t MFA v&agrave; c&#7845;p quy&#7873;n t&#7889;i thi&#7875;u.</li><li>Kh&ocirc;ng t&aacute;i s&#7917; d&#7909;ng t&agrave;i kho&#7843;n qu&#7843;n tr&#7883; mi&#7873;n cho m&aacute;y ch&#7911; sao l&#432;u.</li><li>B&#7853;t t&iacute;nh b&#7845;t bi&#7871;n, ch&#7889;ng x&oacute;a ho&#7863;c object lock khi n&#7873;n t&#7843;ng h&#7895; tr&#7907;.</li><li>M&atilde; h&oacute;a d&#7919; li&#7879;u khi truy&#7873;n v&agrave; khi l&#432;u; b&#7843;o qu&#7843;n kh&oacute;a kh&ocirc;i ph&#7909;c t&aacute;ch bi&#7879;t.</li><li>V&aacute; l&#7895;i m&aacute;y ch&#7911; sao l&#432;u v&agrave; h&#7841;n ch&#7871; c&#7893;ng qu&#7843;n tr&#7883; kh&#7887;i m&#7841;ng ng&#432;&#7901;i d&ugrave;ng.</li><li>C&#7843;nh b&aacute;o khi t&aacute;c v&#7909; th&#7845;t b&#7841;i, dung l&#432;&#7907;ng t&#259;ng b&#7845;t th&#432;&#7901;ng ho&#7863;c c&oacute; y&ecirc;u c&#7847;u x&oacute;a h&agrave;ng lo&#7841;t.</li></ul>
+
+<h2>Thi&#7871;t k&#7871; l&#7883;ch v&agrave; th&#7901;i h&#7841;n l&#432;u gi&#7919;</h2>
+<p>M&#7897;t l&#7883;ch &#273;&#417;n gi&#7843;n c&oacute; th&#7875; g&#7891;m b&#7843;n t&#259;ng d&#7847;n h&#7857;ng ng&agrave;y, b&#7843;n &#273;&#7847;y &#273;&#7911; h&#7857;ng tu&#7847;n v&agrave; &#273;i&#7875;m ph&#7909;c h&#7891;i h&#7857;ng th&aacute;ng. Tuy nhi&ecirc;n, l&#7883;ch ph&#7843;i xu&#7845;t ph&aacute;t t&#7915; RPO, t&#7889;c &#273;&#7897; thay &#273;&#7893;i d&#7919; li&#7879;u v&agrave; th&#7901;i gian ransomware c&oacute; th&#7875; &#7849;n m&igrave;nh tr&#432;&#7899;c khi b&#7883; ph&aacute;t hi&#7879;n.</p>
+<p>Gi&#7919; nhi&#7873;u phi&ecirc;n b&#7843;n &#7903; c&aacute;c m&#7889;c kh&aacute;c nhau gi&uacute;p tr&aacute;nh t&igrave;nh hu&#7889;ng t&#7845;t c&#7843; b&#7843;n g&#7847;n nh&#7845;t &#273;&#7873;u &#273;&atilde; ch&#7913;a d&#7919; li&#7879;u h&#7887;ng. &#272;&#7891;ng th&#7901;i c&#7847;n ch&iacute;nh s&aacute;ch x&oacute;a h&#7907;p ph&aacute;p, tr&aacute;nh l&#432;u d&#7919; li&#7879;u c&aacute; nh&acirc;n v&ocirc; th&#7901;i h&#7841;n ch&#7881; v&igrave; &ldquo;c&oacute; th&#7875; s&#7869; c&#7847;n&rdquo;.</p>
+
+<h2>Ki&#7875;m th&#7917; kh&ocirc;i ph&#7909;c: b&#432;&#7899;c th&#432;&#7901;ng b&#7883; b&#7887; qu&ecirc;n</h2>
+<p>T&aacute;c v&#7909; b&aacute;o &ldquo;th&agrave;nh c&ocirc;ng&rdquo; kh&ocirc;ng ch&#7913;ng minh doanh nghi&#7879;p c&oacute; th&#7875; ph&#7909;c h&#7891;i. M&#7895;i qu&yacute; ho&#7863;c theo m&#7913;c &#273;&#7897; quan tr&#7885;ng, h&atilde;y ch&#7885;n m&#7851;u t&#7879;p, c&#417; s&#7903; d&#7919; li&#7879;u v&agrave; m&#7897;t m&aacute;y &#7843;o &#273;&#7875; kh&ocirc;i ph&#7909;c v&agrave;o m&ocirc;i tr&#432;&#7901;ng c&ocirc; l&#7853;p. &#272;o th&#7901;i gian th&#7921;c t&#7871; v&agrave; &#273;&#7889;i chi&#7871;u v&#7899;i RTO.</p>
+<ol><li>X&aacute;c minh t&#7879;p c&oacute; th&#7875; &#273;&#7885;c v&agrave; c&#417; s&#7903; d&#7919; li&#7879;u kh&#7903;i &#273;&#7897;ng &#273;&#432;&#7907;c.</li><li>Qu&eacute;t m&atilde; &#273;&#7897;c tr&#432;&#7899;c khi &#273;&#432;a d&#7919; li&#7879;u tr&#7903; l&#7841;i s&#7843;n xu&#7845;t.</li><li>Ki&#7875;m tra &#7913;ng d&#7909;ng, quy&#7873;n truy c&#7853;p v&agrave; c&aacute;c h&#7879; th&#7889;ng ph&#7909; thu&#7897;c.</li><li>Ghi nh&#7853;n ai c&oacute; quy&#7873;n k&iacute;ch ho&#7841;t kh&ocirc;i ph&#7909;c v&agrave; ai ph&ecirc; duy&#7879;t.</li><li>C&#7853;p nh&#7853;t h&#432;&#7899;ng d&#7851;n sau m&#7895;i l&#7847;n di&#7877;n t&#7853;p ho&#7863;c thay &#273;&#7893;i h&#7841; t&#7847;ng.</li></ol>
+
+<h2>K&#7871; ho&#7841;ch tri&#7875;n khai trong 30 ng&agrave;y</h2>
+<table><thead><tr><th>Giai &#273;o&#7841;n</th><th>Vi&#7879;c c&#7847;n l&agrave;m</th></tr></thead><tbody><tr><td>Ng&agrave;y 1-7</td><td>L&#7853;p danh m&#7909;c d&#7919; li&#7879;u, ch&#7911; s&#7903; h&#7919;u, ph&#7909; thu&#7897;c; x&aacute;c &#273;&#7883;nh RPO/RTO v&agrave; th&#7913; t&#7921; ph&#7909;c h&#7891;i</td></tr><tr><td>Ng&agrave;y 8-14</td><td>Thi&#7871;t l&#7853;p b&#7843;n sao c&#7909;c b&#7897; v&agrave; ngo&agrave;i &#273;&#7883;a &#273;i&#7875;m; t&aacute;ch t&agrave;i kho&#7843;n qu&#7843;n tr&#7883;</td></tr><tr><td>Ng&agrave;y 15-21</td><td>B&#7853;t m&atilde; h&oacute;a, MFA, b&#7845;t bi&#7871;n, c&#7843;nh b&aacute;o v&agrave; ch&iacute;nh s&aacute;ch l&#432;u gi&#7919;</td></tr><tr><td>Ng&agrave;y 22-30</td><td>Kh&ocirc;i ph&#7909;c th&#7917;, &#273;o th&#7901;i gian, s&#7917;a runbook v&agrave; ph&acirc;n c&ocirc;ng tr&aacute;ch nhi&#7879;m</td></tr></tbody></table>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Sao l&#432;u 3-2-1 kh&ocirc;ng ch&#7881; l&agrave; mua th&ecirc;m dung l&#432;&#7907;ng. &#272;&oacute; l&agrave; thi&#7871;t k&#7871; c&aacute;c b&#7843;n sao &#273;&#7897;c l&#7853;p, b&#7843;o v&#7879; ch&uacute;ng kh&#7887;i c&ugrave;ng th&ocirc;ng tin x&aacute;c th&#7921;c v&agrave; th&#432;&#7901;ng xuy&ecirc;n ch&#7913;ng minh r&#7857;ng d&#7919; li&#7879;u c&oacute; th&#7875; ph&#7909;c h&#7891;i. M&#7897;t gi&#7843;i ph&aacute;p v&#7915;a ph&#7843;i nh&#432;ng &#273;&#432;&#7907;c ki&#7875;m th&#7917; &#273;&#7873;u &#273;&#7863;n c&oacute; gi&aacute; tr&#7883; h&#417;n h&#7879; th&#7889;ng &#273;&#7855;t ti&#7873;n ch&#432;a t&#7915;ng di&#7877;n t&#7853;p.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.cisa.gov/stopransomware/ransomware-guide" target="_blank" rel="noopener noreferrer">CISA: StopRansomware Guide</a></li><li><a href="https://csrc.nist.gov/pubs/other/2020/04/24/protecting-data-from-ransomware-and-other-data-los/final" target="_blank" rel="noopener noreferrer">NIST: Protecting Data from Ransomware and Other Data Loss Events</a></li><li><a href="https://learn.microsoft.com/en-us/security/ransomware/protect-against-ransomware-phase1" target="_blank" rel="noopener noreferrer">Microsoft: Prepare for ransomware with backup and recovery</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

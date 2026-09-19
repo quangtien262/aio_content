@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ki&#7875;m th&#7917; Laravel v&#7899;i Pest: H&#432;&#7899;ng d&#7851;n th&#7921;c h&agrave;nh</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">ki&#7875;m th&#7917; Laravel, Pest PHP, feature test, unit test, Laravel testing, test t&#7921; &#273;&#7897;ng, CI Laravel</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, Pest PHP, Automated Testing, Feature Test, PHP, CI/CD</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n x&acirc;y d&#7921;ng ki&#7875;m th&#7917; t&#7921; &#273;&#7897;ng Laravel v&#7899;i Pest: ch&#7885;n test c&oacute; gi&aacute; tr&#7883;, qu&#7843;n l&yacute; database, vi&#7871;t feature test v&agrave; t&iacute;ch h&#7907;p v&agrave;o CI.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/kiem-thu-tu-dong-laravel-pest.jpg" alt="Ki&#7875;m th&#7917; t&#7921; &#273;&#7897;ng Laravel v&#7899;i Pest: T&#7915; test &#273;&#7847;u ti&ecirc;n &#273;&#7871;n quy tr&igrave;nh CI" width="1440" height="810"></p><h1>Ki&#7875;m th&#7917; t&#7921; &#273;&#7897;ng Laravel v&#7899;i Pest: T&#7915; test &#273;&#7847;u ti&ecirc;n &#273;&#7871;n quy tr&igrave;nh CI</h1><p><strong>Ki&#7875;m th&#7917; t&#7921; &#273;&#7897;ng kh&ocirc;ng nh&#7857;m ch&#7913;ng minh ph&#7847;n m&#7873;m kh&ocirc;ng c&oacute; l&#7895;i; n&oacute; t&#7841;o ra t&iacute;n hi&#7879;u s&#7899;m khi h&agrave;nh vi quan tr&#7885;ng b&#7883; thay &#273;&#7893;i ngo&agrave;i &yacute; mu&#7889;n.</strong> V&#7899;i Laravel v&agrave; Pest, nh&oacute;m c&oacute; th&#7875; b&#7855;t &#273;&#7847;u t&#7915; c&aacute;c lu&#7891;ng nghi&#7879;p v&#7909; nh&#7887;, vi&#7871;t test d&#7877; &#273;&#7885;c v&agrave; d&#7847;n x&acirc;y d&#7921;ng m&#7841;ng l&#432;&#7899;i b&#7843;o v&#7879; cho nh&#7919;ng ph&#7847;n r&#7911;i ro nh&#7845;t c&#7911;a h&#7879; th&#7889;ng.</p>
+<h2>N&ecirc;n b&#7855;t &#273;&#7847;u t&#7915; &#273;&acirc;u?</h2>
+<p>&#272;&#7915;ng &#273;&#7863;t m&#7909;c ti&ecirc;u ph&#7911; to&agrave;n b&#7897; code ngay l&#7853;p t&#7913;c. H&atilde;y &#432;u ti&ecirc;n nh&#7919;ng h&agrave;nh vi n&#7871;u h&#7887;ng s&#7869; g&acirc;y thi&#7879;t h&#7841;i r&otilde; r&agrave;ng: &#273;&#259;ng nh&#7853;p, ph&acirc;n quy&#7873;n, t&#7841;o &#273;&#417;n h&agrave;ng, thanh to&aacute;n, c&#7853;p nh&#7853;t t&#7891;n kho, API t&iacute;ch h&#7907;p v&agrave; c&aacute;c l&#7895;i t&#7915;ng xu&#7845;t hi&#7879;n tr&ecirc;n production.</p>
+<table><thead><tr><th>Lo&#7841;i test</th><th>Ph&ugrave; h&#7907;p v&#7899;i</th><th>&#272;&#7863;c &#273;i&#7875;m</th></tr></thead><tbody><tr><td>Unit</td><td>H&agrave;m t&iacute;nh to&aacute;n, quy t&#7855;c nghi&#7879;p v&#7909; &#273;&#7897;c l&#7853;p</td><td>Ch&#7841;y nhanh, &iacute;t ph&#7909; thu&#7897;c framework</td></tr><tr><td>Feature</td><td>HTTP, database, middleware, quy&#7873;n truy c&#7853;p</td><td>Cho t&iacute;n hi&#7879;u g&#7847;n v&#7899;i h&agrave;nh vi th&#7921;c t&#7871;</td></tr><tr><td>Browser</td><td>Lu&#7891;ng giao di&#7879;n quan tr&#7885;ng</td><td>Gi&aacute; tr&#7883; cao nh&#432;ng ch&#7853;m v&agrave; c&#7847;n ch&#259;m s&oacute;c nhi&#7873;u h&#417;n</td></tr><tr><td>Architecture</td><td>Quy t&#7855;c c&#7845;u tr&uacute;c v&agrave; dependency</td><td>Ng&#259;n codebase l&#7879;ch kh&#7887;i convention</td></tr></tbody></table>
+<h2>Test &#273;&#7847;u ti&ecirc;n b&#7857;ng Pest</h2>
+<pre><code>&lt;?php
+
+it('redirects guests away from the dashboard', function () {
+    $response = $this-&gt;get('/dashboard');
+
+    $response-&gt;assertRedirect('/login');
+});</code></pre>
+<p>T&ecirc;n test n&ecirc;n di&#7877;n &#273;&#7841;t k&#7871;t qu&#7843; quan s&aacute;t &#273;&#432;&#7907;c. Tr&aacute;nh &#273;&#7863;t t&ecirc;n theo method n&#7897;i b&#7897;, v&igrave; refactor c&oacute; th&#7875; &#273;&#7893;i method nh&#432;ng h&agrave;nh vi ng&#432;&#7901;i d&ugrave;ng v&#7851;n gi&#7919; nguy&ecirc;n.</p>
+<h2>Ki&#7875;m tra m&#7897;t lu&#7891;ng c&oacute; database</h2>
+<pre><code>&lt;?php
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
+it('allows an active user to update their profile', function () {
+    $user = User::factory()-&gt;create(['is_active' =&gt; true]);
+
+    $response = $this-&gt;actingAs($user)-&gt;put('/profile', [
+        'name' =&gt; 'Nguyen Minh An',
+        'email' =&gt; 'an@example.test',
+    ]);
+
+    $response-&gt;assertRedirect('/profile');
+    $this-&gt;assertDatabaseHas('users', [
+        'id' =&gt; $user-&gt;id,
+        'name' =&gt; 'Nguyen Minh An',
+    ]);
+});</code></pre>
+<p><code>RefreshDatabase</code> gi&uacute;p m&#7895;i test b&#7855;t &#273;&#7847;u t&#7915; tr&#7841;ng th&aacute;i d&#7919; li&#7879;u ki&#7875;m so&aacute;t &#273;&#432;&#7907;c. Factory t&#7841;o b&#7843;n ghi r&otilde; &yacute; ngh&#297;a h&#417;n vi&#7879;c ph&#7909; thu&#7897;c v&agrave;o database c&oacute; s&#7861;n tr&ecirc;n m&aacute;y ng&#432;&#7901;i vi&#7871;t test.</p>
+<h2>Test c&#7843; &#273;&#432;&#7901;ng th&agrave;nh c&ocirc;ng v&agrave; &#273;&#432;&#7901;ng t&#7915; ch&#7889;i</h2>
+<p>Ch&#7881; ki&#7875;m tra tr&#432;&#7901;ng h&#7907;p h&#7907;p l&#7879; d&#7877; b&#7887; s&oacute;t l&#7895; h&#7893;ng. V&#7899;i endpoint c&#7853;p nh&#7853;t h&#7891; s&#417;, n&ecirc;n th&ecirc;m c&aacute;c t&igrave;nh hu&#7889;ng nh&#432; ng&#432;&#7901;i d&ugrave;ng ch&#432;a &#273;&#259;ng nh&#7853;p, email sai &#273;&#7883;nh d&#7841;ng, email tr&ugrave;ng v&agrave; t&agrave;i kho&#7843;n b&#7883; kh&oacute;a. V&#7899;i ph&acirc;n quy&#7873;n, h&atilde;y ki&#7875;m tra c&#7843; ng&#432;&#7901;i c&oacute; quy&#7873;n v&agrave; ng&#432;&#7901;i kh&ocirc;ng c&oacute; quy&#7873;n.</p>
+<blockquote>Test gi&aacute; tr&#7883; cao b&#7843;o v&#7879; m&#7897;t cam k&#7871;t nghi&#7879;p v&#7909;. N&oacute; kh&ocirc;ng c&#7847;n bi&#7871;t controller g&#7885;i bao nhi&ecirc;u method; n&oacute; c&#7847;n ch&#7913;ng minh ng&#432;&#7901;i d&ugrave;ng &#273;&uacute;ng vai tr&ograve; nh&#7853;n &#273;&#432;&#7907;c &#273;&uacute;ng k&#7871;t qu&#7843;.</blockquote>
+<h2>Gi&#7919; test &#7893;n &#273;&#7883;nh v&agrave; d&#7877; b&#7843;o tr&igrave;</h2>
+<ul><li>D&ugrave;ng factory state nh&#432; <code>active()</code> ho&#7863;c <code>admin()</code> &#273;&#7875; d&#7919; li&#7879;u th&#7875; hi&#7879;n r&otilde; &yacute; &#273;&#7883;nh.</li><li>Kh&ocirc;ng g&#7885;i API b&ecirc;n th&#7913; ba th&#7853;t; d&ugrave;ng fake cho mail, queue, notification, storage v&agrave; HTTP client.</li><li>&#272;&oacute;ng b&#259;ng th&#7901;i gian khi logic li&ecirc;n quan &#273;&#7871;n h&#7841;n d&ugrave;ng ho&#7863;c l&#7883;ch ch&#7841;y.</li><li>Kh&ocirc;ng ph&#7909; thu&#7897;c th&#7913; t&#7921; test; m&#7895;i test ph&#7843;i t&#7921; chu&#7849;n b&#7883; tr&#7841;ng th&aacute;i.</li><li>&#431;u ti&ecirc;n assertion v&#7873; k&#7871;t qu&#7843; nghi&#7879;p v&#7909;, h&#7841;n ch&#7871; kh&oacute;a test v&agrave;o HTML ho&#7863;c c&#7845;u tr&uacute;c n&#7897;i b&#7897;.</li></ul>
+<h2>Fake c&aacute;c t&aacute;c v&#7909; ph&#7909;</h2>
+<pre><code>use Illuminate\Support\Facades\Queue;
+use App\Jobs\SendWelcomeEmail;
+
+it('queues a welcome email after registration', function () {
+    Queue::fake();
+
+    $this-&gt;post('/register', [
+        'name' =&gt; 'Lan',
+        'email' =&gt; 'lan@example.test',
+        'password' =&gt; 'Strong-password-123',
+        'password_confirmation' =&gt; 'Strong-password-123',
+    ])-&gt;assertRedirect('/dashboard');
+
+    Queue::assertPushed(SendWelcomeEmail::class);
+});</code></pre>
+<h2>Ch&#7841;y nhanh tr&ecirc;n m&aacute;y l&#7853;p tr&igrave;nh</h2>
+<pre><code>php artisan test
+php artisan test --stop-on-failure
+php artisan test --filter=profile
+php artisan test --parallel --processes=4</code></pre>
+<p>Ch&#7841;y song song c&oacute; th&#7875; r&uacute;t ng&#7855;n th&#7901;i gian, nh&#432;ng test ph&#7843;i c&ocirc; l&#7853;p t&agrave;i nguy&ecirc;n. T&#7879;p d&ugrave;ng chung, c&#7893;ng m&#7841;ng c&#7889; &#273;&#7883;nh ho&#7863;c d&#7883;ch v&#7909; b&ecirc;n ngo&agrave;i c&oacute; th&#7875; g&acirc;y l&#7895;i ng&#7851;u nhi&ecirc;n gi&#7919;a c&aacute;c process.</p>
+<h2>&#272;&#432;a test v&agrave;o CI</h2>
+<pre><code>name: tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - run: composer install --no-interaction --prefer-dist
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: php artisan test</code></pre>
+<p>&#272;&acirc;y l&agrave; khung kh&#7903;i &#273;&#7847;u. D&#7921; &aacute;n d&ugrave;ng MySQL, Redis ho&#7863;c tr&igrave;nh duy&#7879;t c&#7847;n th&ecirc;m service v&agrave; c&#7845;u h&igrave;nh t&#432;&#417;ng &#7913;ng. Kh&ocirc;ng d&ugrave;ng th&ocirc;ng tin b&iacute; m&#7853;t production cho CI v&agrave; ph&#7843;i t&aacute;ch ri&ecirc;ng database test.</p>
+<h2>D&#7845;u hi&#7879;u test &#273;ang th&agrave;nh g&aacute;nh n&#7863;ng</h2>
+<ul><li>Test th&#7845;t b&#7841;i ng&#7851;u nhi&ecirc;n khi code kh&ocirc;ng &#273;&#7893;i.</li><li>M&#7897;t thay &#273;&#7893;i giao di&#7879;n nh&#7887; l&agrave;m h&#7887;ng nhi&#7873;u test kh&ocirc;ng li&ecirc;n quan.</li><li>Fixture qu&aacute; l&#7899;n khi&#7871;n ng&#432;&#7901;i &#273;&#7885;c kh&ocirc;ng bi&#7871;t d&#7919; li&#7879;u n&agrave;o quan tr&#7885;ng.</li><li>Test mock m&#7885;i l&#7899;p trung gian v&agrave; ch&#7881; x&aacute;c nh&#7853;n c&aacute;ch tri&#7875;n khai hi&#7879;n t&#7841;i.</li><li>B&#7897; test ch&#7853;m &#273;&#7871;n m&#7913;c nh&oacute;m b&#7887; qua tr&#432;&#7899;c khi push.</li></ul>
+<p>Khi th&#7845;y c&aacute;c d&#7845;u hi&#7879;u n&agrave;y, h&atilde;y gi&#7843;m d&#7919; li&#7879;u, c&ocirc; l&#7853;p d&#7883;ch v&#7909; ngo&agrave;i, chia test theo m&#7913;c &#273;&#7897; v&agrave; gi&#7919; m&#7897;t nh&oacute;m smoke test ch&#7841;y nhanh. X&oacute;a test tr&ugrave;ng l&#7863;p c&#361;ng l&agrave; b&#7843;o tr&igrave; c&oacute; gi&aacute; tr&#7883;.</p>
+<h2>L&#7897; tr&igrave;nh &aacute;p d&#7909;ng th&#7921;c t&#7871;</h2>
+<ol><li>Ch&#7885;n ba &#273;&#7871;n n&#259;m lu&#7891;ng kinh doanh quan tr&#7885;ng nh&#7845;t.</li><li>Vi&#7871;t feature test cho th&agrave;nh c&ocirc;ng, validation v&agrave; ph&acirc;n quy&#7873;n.</li><li>Th&ecirc;m regression test m&#7895;i khi s&#7917;a m&#7897;t l&#7895;i production.</li><li>Ch&#7841;y nh&oacute;m test nhanh tr&ecirc;n m&#7885;i pull request.</li><li>Theo d&otilde;i th&#7901;i gian ch&#7841;y v&agrave; l&#7895;i kh&ocirc;ng &#7893;n &#273;&#7883;nh.</li><li>M&#7903; r&#7897;ng sang browser test ho&#7863;c architecture test khi gi&aacute; tr&#7883; &#273;&atilde; r&otilde;.</li></ol>
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>M&#7897;t b&#7897; test h&#7919;u &iacute;ch kh&ocirc;ng &#273;&#432;&#7907;c &#273;o ch&#7881; b&#7857;ng ph&#7847;n tr&#259;m coverage. N&oacute; &#273;&#432;&#7907;c &#273;o b&#7857;ng kh&#7843; n&#259;ng ph&aacute;t hi&#7879;n thay &#273;&#7893;i nguy hi&#7875;m s&#7899;m, gi&#7843;i th&iacute;ch l&#7895;i r&otilde; v&agrave; ch&#7841;y &#273;&#7911; nhanh &#273;&#7875; &#273;&#7897;i ng&#361; s&#7917; d&#7909;ng th&#432;&#7901;ng xuy&ecirc;n. V&#7899;i Laravel v&agrave; Pest, h&atilde;y b&#7855;t &#273;&#7847;u b&#7857;ng h&agrave;nh vi quan tr&#7885;ng, qu&#7843;n l&yacute; d&#7919; li&#7879;u ch&#7863;t ch&#7869; v&agrave; &#273;&#7875; CI bi&#7871;n c&aacute;c cam k&#7871;t &#273;&oacute; th&agrave;nh b&#432;&#7899;c ki&#7875;m tra l&#7863;p l&#7841;i &#273;&#432;&#7907;c.</p>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://laravel.com/docs/testing" target="_blank" rel="noopener noreferrer">Laravel Testing</a></li><li><a href="https://pestphp.com/docs/writing-tests" target="_blank" rel="noopener noreferrer">Writing Tests with Pest</a></li><li><a href="https://pestphp.com/docs/arch-testing" target="_blank" rel="noopener noreferrer">Pest Architecture Testing</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

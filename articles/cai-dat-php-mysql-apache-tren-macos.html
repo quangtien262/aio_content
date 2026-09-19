@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i PHP, MySQL v&agrave; Apache tr&ecirc;n macOS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i PHP macOS, c&agrave;i MySQL macOS, c&agrave;i Apache macOS, Homebrew, PHP Apache macOS, m&ocirc;i tr&#432;&#7901;ng PHP</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">PHP, MySQL, Apache, macOS, Homebrew, Web Development</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n c&agrave;i PHP, MySQL v&agrave; Apache tr&ecirc;n macOS b&#7857;ng Homebrew, c&#7845;u h&igrave;nh PHP v&#7899;i Apache, Virtual Host v&agrave; ki&#7875;m tra m&ocirc;i tr&#432;&#7901;ng local.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/cai-dat-php-mysql-apache-macos.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t PHP, MySQL v&agrave; Apache tr&ecirc;n macOS b&#7857;ng Homebrew" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t PHP, MySQL v&agrave; Apache tr&ecirc;n macOS b&#7857;ng Homebrew</h1><p><strong>Homebrew gi&uacute;p t&aacute;ch m&ocirc;i tr&#432;&#7901;ng l&#7853;p tr&igrave;nh kh&#7887;i c&aacute;c th&agrave;nh ph&#7847;n h&#7879; th&#7889;ng &#273;i k&egrave;m macOS v&agrave; l&agrave;m cho vi&#7879;c n&acirc;ng c&#7845;p, g&#7905; b&#7887; d&#7877; ki&#7875;m so&aacute;t h&#417;n.</strong> B&agrave;i vi&#7871;t n&agrave;y d&#7921;ng m&#7897;t b&#7897; PHP, MySQL v&agrave; Apache ph&#7909;c v&#7909; ph&aacute;t tri&#7875;n local, &aacute;p d&#7909;ng &#273;&#432;&#7907;c cho c&#7843; m&aacute;y Apple Silicon v&agrave; Intel.</p>
+<h2>Chu&#7849;n b&#7883; Homebrew v&agrave; Command Line Tools</h2>
+<pre><code>xcode-select --install
+brew --version
+brew update</code></pre>
+<p>N&#7871;u ch&#432;a c&oacute; Homebrew, c&agrave;i theo l&#7879;nh ch&iacute;nh th&#7913;c t&#7841;i <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">brew.sh</a>. Kh&ocirc;ng hardcode &#273;&#432;&#7901;ng d&#7851;n <code>/opt/homebrew</code> ho&#7863;c <code>/usr/local</code>; d&ugrave;ng <code>brew --prefix</code> &#273;&#7875; c&#7845;u h&igrave;nh ho&#7841;t &#273;&#7897;ng tr&ecirc;n c&#7843; hai ki&#7871;n tr&uacute;c.</p>
+<h2>C&agrave;i PHP, MySQL v&agrave; Apache</h2>
+<pre><code>brew install php mysql httpd
+php -v
+mysql --version
+$(brew --prefix httpd)/bin/httpd -v</code></pre>
+<p>Homebrew c&agrave;i Apache d&#432;&#7899;i t&ecirc;n formula <code>httpd</code>. C&#7845;u h&igrave;nh m&#7863;c &#273;&#7883;nh d&ugrave;ng c&#7893;ng 8080 &#273;&#7875; kh&ocirc;ng c&#7847;n quy&#7873;n qu&#7843;n tr&#7883;. Document root m&#7863;c &#273;&#7883;nh n&#7857;m t&#7841;i <code>$(brew --prefix)/var/www</code>.</p>
+<h2>Kh&#7903;i &#273;&#7897;ng d&#7883;ch v&#7909;</h2>
+<pre><code>brew services start php
+brew services start mysql
+brew services start httpd
+brew services list</code></pre>
+<p>M&#7903; <code>http://localhost:8080</code> &#273;&#7875; ki&#7875;m tra Apache. N&#7871;u ch&#7881; mu&#7889;n ch&#7841;y trong phi&ecirc;n terminal hi&#7879;n t&#7841;i, c&oacute; th&#7875; d&ugrave;ng l&#7879;nh tr&#7921;c ti&#7871;p thay cho <code>brew services</code>.</p>
+<h2>Kh&#7903;i t&#7841;o v&agrave; b&#7843;o v&#7879; MySQL local</h2>
+<pre><code>mysql_secure_installation
+mysql -u root -p</code></pre>
+<p>Trong d&#7921; &aacute;n th&#7853;t, n&ecirc;n t&#7841;o database v&agrave; t&agrave;i kho&#7843;n ri&ecirc;ng thay v&igrave; &#273;&#7875; &#7913;ng d&#7909;ng d&ugrave;ng root:</p>
+<pre><code>CREATE DATABASE demo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'demo'@'localhost' IDENTIFIED BY 'local_password';
+GRANT ALL PRIVILEGES ON demo.* TO 'demo'@'localhost';
+FLUSH PRIVILEGES;</code></pre>
+<h2>K&#7871;t n&#7889;i PHP v&#7899;i Apache</h2>
+<p>M&#7903; file <code>$(brew --prefix)/etc/httpd/httpd.conf</code>. &#272;&#432;&#7901;ng d&#7851;n module PHP thay &#273;&#7893;i theo phi&ecirc;n b&#7843;n v&agrave; ki&#7871;n tr&uacute;c, v&igrave; v&#7853;y h&atilde;y t&igrave;m ch&iacute;nh x&aacute;c b&#7857;ng:</p>
+<pre><code>brew --prefix php
+find "$(brew --prefix php)" -name 'libphp.so'</code></pre>
+<p>N&#7871;u formula PHP hi&#7879;n t&#7841;i cung c&#7845;p module Apache, th&ecirc;m d&ograve;ng <code>LoadModule</code> theo &#273;&#432;&#7901;ng d&#7851;n v&#7915;a t&igrave;m &#273;&#432;&#7907;c, r&#7891;i c&#7845;u h&igrave;nh x&#7917; l&yacute; t&#7879;p PHP:</p>
+<pre><code>&lt;IfModule php_module&gt;
+    DirectoryIndex index.php index.html
+    AddType application/x-httpd-php .php
+&lt;/IfModule&gt;</code></pre>
+<p>M&#7897;t s&#7889; phi&ecirc;n b&#7843;n Homebrew c&oacute; th&#7875; &#432;u ti&ecirc;n PHP-FPM thay v&igrave; <code>libphp</code>. Khi kh&ocirc;ng t&igrave;m th&#7845;y module, d&ugrave;ng PHP-FPM v&agrave; c&#7845;u h&igrave;nh <code>proxy_fcgi</code>; kh&ocirc;ng l&#7845;y &#273;&#432;&#7901;ng d&#7851;n t&#7915; m&#7897;t b&agrave;i c&#361; r&#7891;i d&aacute;n nguy&ecirc;n v&agrave;o m&aacute;y.</p>
+<h2>T&#7841;o Virtual Host cho d&#7921; &aacute;n</h2>
+<pre><code>&lt;VirtualHost *:8080&gt;
+    ServerName demo.test
+    DocumentRoot "/Users/yourname/Sites/demo/public"
+    &lt;Directory "/Users/yourname/Sites/demo/public"&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+<p>B&#7853;t file virtual hosts trong <code>httpd.conf</code>, sau &#273;&oacute; th&ecirc;m <code>127.0.0.1 demo.test</code> v&agrave;o <code>/etc/hosts</code>. Ki&#7875;m tra c&#7845;u h&igrave;nh tr&#432;&#7899;c khi restart:</p>
+<pre><code>$(brew --prefix httpd)/bin/httpd -t
+brew services restart httpd</code></pre>
+<h2>Ki&#7875;m tra PHP v&agrave; extension MySQL</h2>
+<pre><code>php -m | grep -E 'mysqli|pdo_mysql'
+php --ini
+echo '&lt;?php phpinfo();' &gt; "$(brew --prefix)/var/www/info.php"</code></pre>
+<p>Truy c&#7853;p trang ki&#7875;m tra r&#7891;i x&oacute;a <code>info.php</code> ngay sau &#273;&oacute; v&igrave; trang n&agrave;y ti&#7871;t l&#7897; nhi&#7873;u th&ocirc;ng tin c&#7845;u h&igrave;nh.</p>
+<h2>L&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li><strong>C&#7893;ng 8080 b&#7883; chi&#7871;m:</strong> d&ugrave;ng <code>lsof -nP -iTCP:8080 -sTCP:LISTEN</code> ho&#7863;c &#273;&#7893;i <code>Listen</code>.</li><li><strong>Apache t&#7843;i t&#7879;p PHP thay v&igrave; ch&#7841;y:</strong> ki&#7875;m tra module/FPM, <code>AddType</code> v&agrave; log Apache.</li><li><strong>L&#7879;nh PHP tr&#7887; sai b&#7843;n:</strong> ki&#7875;m tra <code>which php</code>, PATH v&agrave; ch&#7841;y <code>brew link --overwrite php</code> khi th&#7853;t s&#7921; c&#7847;n.</li><li><strong>MySQL kh&ocirc;ng kh&#7903;i &#273;&#7897;ng:</strong> xem <code>brew services list</code> v&agrave; log trong th&#432; m&#7909;c data c&#7911;a formula.</li></ul>
+<h2>Checklist ho&agrave;n t&#7845;t</h2><ol><li>Apache tr&#7843; v&#7873; trang local tr&ecirc;n &#273;&uacute;ng c&#7893;ng.</li><li><code>php -v</code> v&agrave; trang web d&ugrave;ng c&ugrave;ng phi&ecirc;n b&#7843;n PHP.</li><li>&#7912;ng d&#7909;ng k&#7871;t n&#7889;i b&#7857;ng t&agrave;i kho&#7843;n MySQL ri&ecirc;ng.</li><li>Virtual Host tr&#7887; &#273;&uacute;ng th&#432; m&#7909;c public.</li><li>Kh&ocirc;ng &#273;&#432;a m&#7853;t kh&#7849;u th&#7853;t ho&#7863;c <code>phpinfo()</code> v&agrave;o repository.</li></ol>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://formulae.brew.sh/formula/php" target="_blank" rel="noopener noreferrer">Homebrew PHP</a></li><li><a href="https://formulae.brew.sh/formula/mysql" target="_blank" rel="noopener noreferrer">Homebrew MySQL</a></li><li><a href="https://formulae.brew.sh/formula/httpd" target="_blank" rel="noopener noreferrer">Homebrew httpd</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

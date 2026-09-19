@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">optimizing-sqlite-queries-indexes-query-plan</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Optimize SQLite with Indexes and Query Plans</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">SQLite, SQLite optimization, EXPLAIN QUERY PLAN, SQLite index, PRAGMA optimize, composite index</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">SQLite, SQL, Database, Query Optimization, Index, Backend, Performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Measure and optimize SQLite queries with EXPLAIN QUERY PLAN, composite and covering indexes, and PRAGMA optimize.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/toi-uu-truy-van-sqlite.jpg" alt="Optimizing SQLite Queries: Indexes, EXPLAIN QUERY PLAN, and Common Mistakes" width="1440" height="810"></p><h1>Optimizing SQLite Queries: Indexes, EXPLAIN QUERY PLAN, and Common Mistakes</h1><p><strong>When a SQLite application becomes slow, adding indexes by instinct often increases storage and write cost without fixing the actual query.</strong> A better process measures a real workload, inspects its execution plan, designs an index around filtering and ordering, and measures again with production-like data.</p>
+
+<h2>Start with a slow query, not an index</h2>
+<p>Capture the SQL, parameters, duration, row count, and call frequency. A query taking 80 ms once an hour matters less than an 8 ms query executed thousands of times per action. Include lock time and ORM-generated query counts.</p>
+<pre><code>EXPLAIN QUERY PLAN
+SELECT id, total
+FROM orders
+WHERE customer_id = ?
+  AND status = ?
+ORDER BY created_at DESC
+LIMIT 20;</code></pre>
+<p><code>EXPLAIN QUERY PLAN</code> shows whether SQLite performs a table <code>SCAN</code>, an indexed <code>SEARCH</code>, or creates a temporary B-tree for sorting. Its output is intended for interactive debugging and can change between SQLite versions, so application logic should not parse its description text.</p>
+
+<h2>Design composite indexes around access patterns</h2>
+<pre><code>CREATE INDEX idx_orders_customer_status_created
+ON orders(customer_id, status, created_at DESC);</code></pre>
+<p>Equality columns commonly come first, followed by range or ordering columns. Column order matters because a multi-column index follows a left-most-prefix rule. An index beginning with <code>customer_id</code> can help customer queries but usually offers little to a query filtering only by <code>status</code>.</p>
+
+<h2>Covering indexes have a cost</h2>
+<p>If an index includes every column needed by the query, SQLite may return results without looking up the table. Adding <code>total</code> to the example index could make it covering. The tradeoff is a larger database, more work on every write, and fewer useful pages in cache.</p>
+<blockquote>Do not create one index per query. Look for indexes that support several important access patterns and remove redundant prefixes only after verifying they are unused.</blockquote>
+
+<h2>Why an index might not be used</h2>
+<ul><li>The table is small enough that a scan is cheaper.</li><li>The indexed value has low selectivity.</li><li>A function or transformation does not match an expression index.</li><li>Parameter and column data types do not align.</li><li>The query does not match the left-most prefix or returns most rows.</li><li>Planner statistics no longer represent current data.</li></ul>
+<p>Avoid using <code>INDEXED BY</code> as a routine tuning hint. SQLite documents it primarily as a way to detect unwanted plan changes, not as a soft instruction to the planner.</p>
+
+<h2>Refresh statistics with PRAGMA optimize</h2>
+<p>SQLite recommends running <code>PRAGMA optimize;</code> periodically and after schema changes, especially after creating indexes. Long-lived connections can run <code>PRAGMA optimize=0x10002;</code> when opened and invoke the regular command periodically or before closing. It is usually a no-op and performs ANALYZE work only when useful.</p>
+
+<h2>Watch for N+1 and deep pagination</h2>
+<p>A fast query still creates a slow system when called once per result row. Use eager loading, joins, or batches to remove N+1 patterns. For large tables, cursor pagination such as <code>WHERE id &lt; ? ORDER BY id DESC LIMIT ?</code> is often more stable than a deep OFFSET.</p>
+
+<h2>Safe optimization checklist</h2>
+<ol><li>Reproduce with production-like data volume.</li><li>Benchmark before and after under equivalent cache conditions.</li><li>Read the plan instead of guessing.</li><li>Change one thing at a time.</li><li>Measure INSERT, UPDATE, storage, and migration impact.</li><li>Test correctness as well as speed.</li><li>Monitor slow queries after release.</li></ol>
+
+<h2>Conclusion</h2>
+<p>SQLite optimization balances read speed, write overhead, and operational complexity. The query plan reveals what the database is doing; composite and covering indexes should be added only when measurements show that they improve an important access path.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.sqlite.org/eqp.html" target="_blank" rel="noopener noreferrer">SQLite: EXPLAIN QUERY PLAN</a></li><li><a href="https://www.sqlite.org/queryplanner.html" target="_blank" rel="noopener noreferrer">SQLite: Query Planning</a></li><li><a href="https://www.sqlite.org/lang_analyze.html" target="_blank" rel="noopener noreferrer">SQLite: ANALYZE and PRAGMA optimize</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

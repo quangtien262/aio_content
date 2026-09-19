@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">refresh-token-rotation-secure-api-authentication</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Secure Refresh Token Rotation for APIs</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">refresh token rotation, access token, JWT, OAuth 2.0, token reuse detection, API authentication, token family</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">OAuth 2.0, Refresh Token, JWT, API Security, Authentication, Backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design refresh token rotation with token families, hashed storage, atomic replacement, reuse detection, revocation, secure cookies, and focused tests.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/refresh-token-rotation.jpg" alt="Refresh Token Rotation in Practice: Secure API Authentication" width="1440" height="810"></p><h1>Refresh Token Rotation in Practice: Secure API Authentication</h1><p><strong>A short-lived access token limits the useful lifetime of a leak, but a refresh token is a long-lived credential that can mint new access tokens.</strong> If a backend accepts the same refresh token repeatedly, a stolen copy can preserve access quietly. Refresh token rotation replaces the credential after every use and detects replay of an older token.</p>
+<h2>Different responsibilities</h2><ul><li><strong>Access token:</strong> short-lived, sent to a resource server, restricted by audience and scope.</li><li><strong>Refresh token:</strong> sent only to the authorization server, longer-lived, and protected more carefully.</li></ul><p>A refresh token does not need to be a JWT. An opaque random value is often easier to revoke and exposes no claims. Either format needs high entropy, TLS, and exclusion from URLs and logs.</p>
+<h2>How rotation works</h2><ol><li>Login issues access token <code>A1</code> and refresh token <code>R1</code>.</li><li>The client exchanges <code>R1</code>.</li><li>The server marks <code>R1</code> used and returns <code>A2 + R2</code>.</li><li>The relationship remains stored even though <code>R1</code> is invalid.</li><li>If <code>R1</code> appears again, the server revokes the entire token family.</li></ol><p>The server cannot know whether the attacker or legitimate client made the replay, so both lose the grant and must authenticate again.</p>
+<h2>Suggested data model</h2><pre><code>refresh_tokens
+- id, family_id, user_id, client_id
+- token_hash, parent_id, replaced_by_id
+- status: active | used | revoked
+- issued_at, expires_at, used_at, revoked_at
+- scope, audience</code></pre><p>Store only a deterministic hash of the random token. Never place raw refresh tokens in databases, APM traces, analytics, or audit logs.</p>
+<h2>Make refresh atomic</h2><pre><code>BEGIN;
+SELECT * FROM refresh_tokens
+WHERE token_hash = :hash FOR UPDATE;
+-- reject expired/revoked
+-- reused: revoke family and fail
+-- active: mark used and insert R2
+COMMIT;</code></pre><p>A row lock or compare-and-swap prevents concurrent requests from both succeeding. Add unique constraints and indexes for token hash and family.</p>
+<h2>Handle legitimate races</h2><p>Several API calls may notice an expired access token simultaneously. The client should use single-flight refresh: one shared promise performs the exchange while other calls wait. A server grace window weakens replay protection; if unavoidable, keep it very short and return the same replacement for the same client context rather than creating another branch.</p>
+<h2>Web and mobile storage</h2><ul><li><strong>Web:</strong> prefer an <code>HttpOnly; Secure; SameSite</code> cookie plus appropriate CSRF defenses. Do not keep credentials in localStorage.</li><li><strong>Mobile:</strong> use Keychain/Keystore and prevent token backup to another device.</li><li><strong>BFF:</strong> let the browser hold only a session cookie while the backend-for-frontend manages OAuth tokens.</li></ul><p>Cookies do not eliminate XSS or CSRF. Apply CSP, output encoding, Origin/CSRF checks, and restrictive CORS.</p>
+<h2>Expiration and revocation</h2><p>Use both idle timeout and absolute lifetime. Revoke a family on device logout, password change, account suspension, detected reuse, or a risk event. Logout-all revokes every user family; logout-this-device revokes only the current family. Already issued access tokens may work until expiry unless resource servers use introspection or a denylist, so keep them short-lived.</p>
+<h2>API errors and observability</h2><pre><code>POST /oauth/token
+grant_type=refresh_token&amp;refresh_token=...
+
+200 { access_token, expires_in, refresh_token }
+400 { error: "invalid_grant" }</code></pre><p>Do not reveal whether a token was expired, reused, or unknown to an untrusted client. Record the internal reason with family ID, client ID, and correlation ID, never the token.</p>
+<h2>Test checklist</h2><ul><li>A token succeeds exactly once.</li><li>Concurrent refreshes cannot create two valid branches.</li><li>Reusing an old token revokes its family.</li><li>Expired tokens and wrong clients, scopes, or audiences fail.</li><li>Logout and password changes block later refreshes.</li><li>Logs and traces contain no raw credentials.</li><li>Cookie, CSRF, and CORS behavior is tested in real browsers.</li></ul>
+<h2>When to choose another approach</h2><p>A same-domain web app may be simpler with server-side session cookies. High-risk systems can use sender-constrained tokens such as DPoP or mTLS, potentially alongside rotation. Avoid building an authorization server when a mature OAuth/OIDC provider or library meets the requirements.</p>
+<h2>Conclusion</h2><p>Rotation is more than returning a new string. A secure design needs token families, use state, atomic replacement, reuse detection, revocation, and client-side single-flight behavior. Combined with short-lived access tokens and platform-appropriate storage, it gives a session a clear containment point when credentials leak.</p>
+<h2>References</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html" target="_blank" rel="noopener noreferrer">RFC 9700: OAuth 2.0 Security Best Current Practice</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP OAuth2 Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP Session Management Cheat Sheet</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

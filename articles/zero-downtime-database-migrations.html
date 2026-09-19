@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Database migration kh&ocirc;ng downtime v&#7899;i Expand&ndash;Contract</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">zero downtime migration, database migration, expand contract, PostgreSQL, backfill, dual write, schema migration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Database, PostgreSQL, Migration, Zero Downtime, Backend, DevOps, SQL</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n migration database kh&ocirc;ng downtime b&#7857;ng Expand&ndash;Migrate&ndash;Contract: t&#432;&#417;ng th&iacute;ch ng&#432;&#7907;c, backfill theo l&ocirc;, dual-write, index concurrently, constraint v&agrave; rollback.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/zero-downtime-database-migrations.jpg" alt="Database migration kh&ocirc;ng downtime: Expand, Migrate, Contract t&#7915; A &#273;&#7871;n Z" width="1440" height="810"></p><h1>Database migration kh&ocirc;ng downtime: Expand, Migrate, Contract t&#7915; A &#273;&#7871;n Z</h1><p><strong>M&#7897;t c&acirc;u <code>ALTER TABLE</code> ch&#7841;y th&agrave;nh c&ocirc;ng ch&#432;a c&oacute; ngh&#297;a l&agrave; deployment an to&agrave;n.</strong> Trong production, phi&ecirc;n b&#7843;n &#7913;ng d&#7909;ng c&#361; v&agrave; m&#7899;i th&#432;&#7901;ng c&ugrave;ng t&#7891;n t&#7841;i trong v&agrave;i ph&uacute;t ho&#7863;c l&acirc;u h&#417;n. M&#7897;t migration kh&oacute;a b&#7843;ng, &#273;&#7893;i t&ecirc;n c&#7897;t ngay l&#7853;p t&#7913;c ho&#7863;c backfill h&agrave;ng tri&#7879;u b&#7843;n ghi trong m&#7897;t transaction c&oacute; th&#7875; l&agrave;m request ch&#7853;m, c&#7841;n connection pool v&agrave; khi&#7871;n rollback tr&#7903; n&ecirc;n b&#7845;t kh&#7843; thi.</p>
+<p>M&ocirc; h&igrave;nh <strong>Expand&ndash;Migrate&ndash;Contract</strong> chia thay &#273;&#7893;i schema th&agrave;nh nhi&#7873;u l&#7847;n tri&#7875;n khai t&#432;&#417;ng th&iacute;ch ng&#432;&#7907;c. H&#7879; th&#7889;ng ti&#7871;p t&#7909;c ph&#7909;c v&#7909; trong khi d&#7919; li&#7879;u v&agrave; code &#273;&#432;&#7907;c chuy&#7875;n d&#7847;n sang c&#7845;u tr&uacute;c m&#7899;i.</p>
+
+<h2>V&igrave; sao migration g&acirc;y downtime?</h2>
+<p>Downtime th&#432;&#7901;ng kh&ocirc;ng &#273;&#7871;n t&#7915; l&#7895;i c&uacute; ph&aacute;p m&agrave; t&#7915; lock v&agrave; s&#7921; kh&ocirc;ng t&#432;&#417;ng th&iacute;ch gi&#7919;a nhi&#7873;u phi&ecirc;n b&#7843;n:</p>
+<ul>
+<li>&#7912;ng d&#7909;ng c&#361; v&#7851;n &#273;&#7885;c c&#7897;t v&#7915;a b&#7883; &#273;&#7893;i t&ecirc;n ho&#7863;c x&oacute;a.</li>
+<li><code>ALTER TABLE</code> ch&#7901; lock ph&iacute;a sau m&#7897;t transaction d&agrave;i, r&#7891;i ch&#7863;n c&aacute;c query m&#7899;i.</li>
+<li>T&#7841;o index th&ocirc;ng th&#432;&#7901;ng qu&eacute;t b&#7843;ng l&#7899;n v&agrave; ch&#7863;n ghi.</li>
+<li>Backfill kh&#7893;ng l&#7891; t&#7841;o WAL, replication lag, table bloat v&agrave; spike I/O.</li>
+<li>Th&ecirc;m constraint bu&#7897;c database qu&eacute;t to&agrave;n b&#7897; d&#7919; li&#7879;u ngay l&uacute;c deploy.</li>
+</ul>
+<blockquote>Nguy&ecirc;n t&#7855;c c&#7889;t l&otilde;i: thay &#273;&#7893;i database v&agrave; &#7913;ng d&#7909;ng theo t&#7915;ng b&#432;&#7899;c m&agrave; m&#7895;i b&#432;&#7899;c &#273;&#7873;u ch&#7841;y &#273;&#432;&#7907;c v&#7899;i phi&ecirc;n b&#7843;n &#273;&#7913;ng tr&#432;&#7899;c v&agrave; &#273;&#7913;ng sau n&oacute;.</blockquote>
+
+<h2>Ba giai &#273;o&#7841;n Expand&ndash;Migrate&ndash;Contract</h2>
+<ol>
+<li><strong>Expand:</strong> th&ecirc;m c&#7845;u tr&uacute;c m&#7899;i nh&#432;ng gi&#7919; nguy&ecirc;n c&#7845;u tr&uacute;c c&#361;; code c&#361; v&#7851;n ho&#7841;t &#273;&#7897;ng.</li>
+<li><strong>Migrate:</strong> &#7913;ng d&#7909;ng b&#7855;t &#273;&#7847;u ghi/&#273;&#7885;c c&#7845;u tr&uacute;c m&#7899;i, d&#7919; li&#7879;u c&#361; &#273;&#432;&#7907;c backfill v&agrave; ki&#7875;m ch&#7913;ng.</li>
+<li><strong>Contract:</strong> sau khi kh&ocirc;ng c&ograve;n consumer c&#361;, x&oacute;a code v&agrave; schema &#273;&atilde; l&#7895;i th&#7901;i.</li>
+</ol>
+<p>Ba giai &#273;o&#7841;n n&ecirc;n l&agrave; c&aacute;c deployment &#273;&#7897;c l&#7853;p. Kho&#7843;ng ch&#7901; gi&#7919;a ch&uacute;ng c&oacute; th&#7875; l&agrave; v&agrave;i gi&#7901; ho&#7863;c v&agrave;i ng&agrave;y t&ugrave;y traffic, kh&#7843; n&#259;ng quan s&aacute;t v&agrave; chu k&#7923; ph&aacute;t h&agrave;nh.</p>
+
+<h2>T&igrave;nh hu&#7889;ng m&#7851;u: t&aacute;ch h&#7885; t&ecirc;n kh&aacute;ch h&agrave;ng</h2>
+<p>B&#7843;ng <code>customers</code> &#273;ang c&oacute; c&#7897;t <code>full_name</code>. H&#7879; th&#7889;ng mu&#7889;n chuy&#7875;n sang <code>first_name</code> v&agrave; <code>last_name</code>. Kh&ocirc;ng n&ecirc;n &#273;&#7893;i ho&#7863;c x&oacute;a <code>full_name</code> trong m&#7897;t migration duy nh&#7845;t v&igrave; instance &#7913;ng d&#7909;ng c&#361; v&#7851;n c&#7847;n n&oacute;.</p>
+
+<h2>Giai &#273;o&#7841;n 1: Expand schema</h2>
+<pre><code>ALTER TABLE customers
+    ADD COLUMN first_name text,
+    ADD COLUMN last_name text;</code></pre>
+<p>Hai c&#7897;t m&#7899;i cho ph&eacute;p <code>NULL</code>, v&igrave; d&#7919; li&#7879;u c&#361; ch&#432;a &#273;&#432;&#7907;c chuy&#7875;n. Deploy n&agrave;y ch&#7881; m&#7903; r&#7897;ng schema, ch&#432;a &#273;&#7893;i h&agrave;nh vi &#273;&#7885;c. Tr&#432;&#7899;c khi ch&#7841;y, &#273;&#7863;t timeout ng&#7855;n &#273;&#7875; migration th&#7845;t b&#7841;i s&#7899;m thay v&igrave; x&#7871;p h&agrave;ng r&#7891;i g&acirc;y t&#7855;c ngh&#7869;n:</p>
+<pre><code>SET lock_timeout = '2s';
+SET statement_timeout = '15s';
+
+ALTER TABLE customers ADD COLUMN first_name text;</code></pre>
+<p>N&#7871;u kh&ocirc;ng l&#7845;y &#273;&#432;&#7907;c lock trong gi&#7899;i h&#7841;n, pipeline n&ecirc;n d&#7915;ng v&agrave; th&#7917; l&#7841;i &#7903; th&#7901;i &#273;i&#7875;m ph&ugrave; h&#7907;p. &#272;&#7915;ng t&#259;ng timeout m&ugrave; qu&aacute;ng; h&atilde;y t&igrave;m transaction gi&#7919; lock l&acirc;u.</p>
+
+<h2>Giai &#273;o&#7841;n 2: Deploy code t&#432;&#417;ng th&iacute;ch hai schema</h2>
+<p>Phi&ecirc;n b&#7843;n chuy&#7875;n ti&#7871;p c&oacute; th&#7875; ghi c&#7843; c&#7845;u tr&uacute;c c&#361; l&#7851;n m&#7899;i:</p>
+<pre><code>UPDATE customers
+SET full_name = :full_name,
+    first_name = :first_name,
+    last_name = :last_name
+WHERE id = :id;</code></pre>
+<p>Khi &#273;&#7885;c, &#432;u ti&ecirc;n c&#7897;t m&#7899;i v&agrave; fallback v&#7873; c&#7897;t c&#361;:</p>
+<pre><code>SELECT
+    id,
+    COALESCE(first_name || ' ' || last_name, full_name) AS display_name
+FROM customers
+WHERE id = :id;</code></pre>
+<p>Dual-write ch&#7881; n&ecirc;n t&#7891;n t&#7841;i t&#7841;m th&#7901;i. &#272;&#7863;t metric cho s&#7889; record thi&#7871;u c&#7897;t m&#7899;i v&agrave; log m&#7885;i tr&#432;&#7901;ng h&#7907;p hai bi&#7875;u di&#7877;n kh&ocirc;ng nh&#7845;t qu&aacute;n. N&#7871;u nhi&#7873;u service c&ugrave;ng ghi b&#7843;ng, t&#7845;t c&#7843; writer ph&#7843;i &#273;&#432;&#7907;c n&acirc;ng c&#7845;p tr&#432;&#7899;c khi chuy&#7875;n b&#432;&#7899;c.</p>
+
+<h2>Giai &#273;o&#7841;n 3: Backfill theo l&ocirc;</h2>
+<p>Kh&ocirc;ng update to&agrave;n b&#7897; b&#7843;ng trong m&#7897;t transaction. H&atilde;y x&#7917; l&yacute; batch nh&#7887; theo kh&oacute;a ch&iacute;nh, commit gi&#7919;a c&aacute;c batch v&agrave; gi&#7899;i h&#7841;n t&#7889;c &#273;&#7897;:</p>
+<pre><code>UPDATE customers
+SET first_name = split_part(full_name, ' ', 1),
+    last_name = substring(full_name FROM position(' ' IN full_name) + 1)
+WHERE id &gt; :last_id
+  AND id &lt;= :next_id
+  AND first_name IS NULL;</code></pre>
+<p>Trong th&#7921;c t&#7871;, vi&#7879;c t&aacute;ch t&ecirc;n c&#7847;n rule nghi&#7879;p v&#7909; t&#7889;t h&#417;n v&iacute; d&#7909; SQL tr&ecirc;n. &#272;i&#7875;m quan tr&#7885;ng l&agrave; job ph&#7843;i <strong>idempotent</strong>: ch&#7841;y l&#7841;i kh&ocirc;ng l&agrave;m h&#7887;ng d&#7919; li&#7879;u &#273;&atilde; ho&agrave;n t&#7845;t.</p>
+<ul>
+<li>Ch&#7885;n batch theo primary key thay v&igrave; <code>OFFSET</code>.</li>
+<li>&#272;o th&#7901;i gian batch, row count, replication lag, CPU, I/O v&agrave; WAL.</li>
+<li>Gi&#7843;m batch ho&#7863;c t&#7841;m d&#7915;ng khi database ch&#7883;u t&#7843;i cao.</li>
+<li>L&#432;u checkpoint &#273;&#7875; ti&#7871;p t&#7909;c sau l&#7895;i.</li>
+<li>Kh&ocirc;ng gi&#7919; transaction m&#7903; trong l&uacute;c sleep.</li>
+</ul>
+
+<h2>Ki&#7875;m ch&#7913;ng tr&#432;&#7899;c khi chuy&#7875;n read path</h2>
+<pre><code>SELECT count(*)
+FROM customers
+WHERE first_name IS NULL OR last_name IS NULL;</code></pre>
+<p>Ngo&agrave;i &#273;&#7871;m <code>NULL</code>, h&atilde;y so s&aacute;nh sample v&agrave; invariant nghi&#7879;p v&#7909;. Shadow read c&oacute; th&#7875; &#273;&#7885;c c&#7843; hai bi&#7875;u di&#7877;n, tr&#7843; k&#7871;t qu&#7843; m&#7899;i cho m&#7897;t t&#7927; l&#7879; traffic nh&#7887; v&agrave; ghi metric sai kh&aacute;c m&agrave; ch&#432;a &#7843;nh h&#432;&#7903;ng ng&#432;&#7901;i d&ugrave;ng.</p>
+<p>Khi d&#7919; li&#7879;u &#273;&#7841;t y&ecirc;u c&#7847;u, deploy phi&ecirc;n b&#7843;n &#273;&#7885;c ho&agrave;n to&agrave;n t&#7915; c&#7897;t m&#7899;i nh&#432;ng v&#7851;n ti&#7871;p t&#7909;c ghi c&#7897;t c&#361; trong m&#7897;t kho&#7843;ng quan s&aacute;t. Feature flag gi&uacute;p chuy&#7875;n l&#7841;i read path nhanh m&agrave; kh&ocirc;ng rollback schema.</p>
+
+<h2>Th&ecirc;m constraint m&agrave; kh&ocirc;ng kh&oacute;a l&acirc;u</h2>
+<p>V&#7899;i PostgreSQL, c&oacute; th&#7875; d&ugrave;ng <code>CHECK ... NOT VALID</code> &#273;&#7875; &aacute;p d&#7909;ng rule cho d&#7919; li&#7879;u m&#7899;i m&agrave; ch&#432;a qu&eacute;t ngay to&agrave;n b&#7897; b&#7843;ng, sau &#273;&oacute; validate ri&ecirc;ng:</p>
+<pre><code>ALTER TABLE customers
+ADD CONSTRAINT customers_first_name_present
+CHECK (first_name IS NOT NULL) NOT VALID;
+
+ALTER TABLE customers
+VALIDATE CONSTRAINT customers_first_name_present;</code></pre>
+<p>Sau khi validate, c&oacute; th&#7875; chuy&#7875;n th&agrave;nh <code>NOT NULL</code> theo kh&#7843; n&#259;ng c&#7911;a phi&ecirc;n b&#7843;n PostgreSQL v&agrave; k&#7871; ho&#7841;ch &#273;&atilde; th&#7917; nghi&#7879;m. <code>NOT VALID</code> ch&#7881; &aacute;p d&#7909;ng cho m&#7897;t s&#7889; lo&#7841;i constraint nh&#432; <code>CHECK</code> v&agrave; foreign key; kh&ocirc;ng gi&#7843; &#273;&#7883;nh m&#7885;i constraint &#273;&#7873;u h&#7895; tr&#7907;.</p>
+
+<h2>T&#7841;o index tr&ecirc;n b&#7843;ng l&#7899;n</h2>
+<pre><code>CREATE INDEX CONCURRENTLY idx_customers_last_name
+ON customers (last_name);</code></pre>
+<p><code>CONCURRENTLY</code> gi&#7843;m vi&#7879;c ch&#7863;n ghi nh&#432;ng ch&#7841;y l&acirc;u h&#417;n, d&ugrave;ng th&ecirc;m t&agrave;i nguy&ecirc;n v&agrave; kh&ocirc;ng &#273;&#432;&#7907;c &#273;&#7863;t trong transaction block th&ocirc;ng th&#432;&#7901;ng. N&#7871;u th&#7845;t b&#7841;i, PostgreSQL c&oacute; th&#7875; &#273;&#7875; l&#7841;i index <code>INVALID</code>; quy tr&igrave;nh deploy ph&#7843;i ph&aacute;t hi&#7879;n v&agrave; x&#7917; l&yacute; tr&#432;&#7899;c khi ch&#7841;y l&#7841;i.</p>
+<p>Kh&ocirc;ng t&#7841;o index ch&#7881; v&igrave; c&oacute; c&#7897;t m&#7899;i. X&aacute;c nh&#7853;n query th&#7921;c t&#7871; b&#7857;ng <code>EXPLAIN (ANALYZE, BUFFERS)</code> tr&ecirc;n m&ocirc;i tr&#432;&#7901;ng &#273;&#7841;i di&#7879;n v&agrave; theo d&otilde;i t&aacute;c &#273;&#7897;ng sau ph&aacute;t h&agrave;nh.</p>
+
+<h2>&#272;&#7893;i ki&#7875;u d&#7919; li&#7879;u an to&agrave;n</h2>
+<p>&#272;&#7893;i tr&#7921;c ti&#7871;p ki&#7875;u c&#7897;t c&oacute; th&#7875; rewrite b&#7843;ng ho&#7863;c gi&#7919; lock l&acirc;u. V&#7899;i b&#7843;ng l&#7899;n, h&atilde;y t&#7841;o c&#7897;t m&#7899;i, dual-write, backfill r&#7891;i &#273;&#7893;i read path:</p>
+<pre><code>ALTER TABLE orders ADD COLUMN amount_cents bigint;
+
+UPDATE orders
+SET amount_cents = round(amount * 100)
+WHERE amount_cents IS NULL
+  AND id &gt; :last_id
+  AND id &lt;= :next_id;</code></pre>
+<p>Sau khi m&#7885;i reader v&agrave; writer d&ugrave;ng <code>amount_cents</code>, c&#7897;t <code>amount</code> m&#7899;i &#273;&#432;&#7907;c &#273;&#432;a v&agrave;o giai &#273;o&#7841;n Contract.</p>
+
+<h2>Giai &#273;o&#7841;n cu&#7889;i: Contract c&oacute; ki&#7875;m so&aacute;t</h2>
+<p>Ch&#7881; x&oacute;a c&#7845;u tr&uacute;c c&#361; khi telemetry ch&#7913;ng minh kh&ocirc;ng c&ograve;n truy c&#7853;p. Th&#7913; t&#7921; &#273;i&#7875;n h&igrave;nh:</p>
+<ol>
+<li>D&#7915;ng dual-write v&agrave;o c&#7897;t c&#361;.</li>
+<li>Theo d&otilde;i &iacute;t nh&#7845;t m&#7897;t chu k&#7923; deploy &#273;&#7847;y &#273;&#7911; v&agrave; c&aacute;c worker ch&#7841;y ch&#7853;m.</li>
+<li>X&oacute;a code fallback, dashboard v&agrave; job t&#7841;m.</li>
+<li>&#272;&#7863;t lock timeout r&#7891;i x&oacute;a constraint/index/c&#7897;t c&#361; trong deployment ri&ecirc;ng.</li>
+</ol>
+<pre><code>SET lock_timeout = '2s';
+ALTER TABLE customers DROP COLUMN full_name;</code></pre>
+<p>Trong PostgreSQL, drop column th&#432;&#7901;ng &#273;&aacute;nh d&#7845;u c&#7897;t l&agrave; kh&ocirc;ng c&ograve;n nh&igrave;n th&#7845;y thay v&igrave; l&#7853;p t&#7913;c thu h&#7891;i to&agrave;n b&#7897; dung l&#432;&#7907;ng. &#272;&#7915;ng ch&#7841;y table rewrite ch&#7881; &#273;&#7875; l&#7845;y l&#7841;i disk n&#7871;u ch&#432;a &#273;&aacute;nh gi&aacute; I/O, lock v&agrave; c&#7917;a s&#7893; b&#7843;o tr&igrave;.</p>
+
+<h2>Rollback kh&ocirc;ng ch&#7881; l&agrave; ch&#7841;y migration down</h2>
+<p>Rollback code ch&#7881; an to&agrave;n khi schema m&#7899;i v&#7851;n t&#432;&#417;ng th&iacute;ch v&#7899;i phi&ecirc;n b&#7843;n c&#361;. V&igrave; v&#7853;y Expand gi&#7919; c&#7897;t c&#361; v&agrave; dual-write trong giai &#273;o&#7841;n chuy&#7875;n ti&#7871;p. Sau Contract, kh&ocirc;i ph&#7909;c th&#432;&#7901;ng kh&oacute; h&#417;n v&igrave; d&#7919; li&#7879;u c&#361; &#273;&atilde; ng&#7915;ng &#273;&#432;&#7907;c c&#7853;p nh&#7853;t ho&#7863;c &#273;&atilde; b&#7883; x&oacute;a.</p>
+<p>M&#7895;i k&#7871; ho&#7841;ch c&#7847;n tr&#7843; l&#7901;i: rollback code v&#7873; phi&ecirc;n b&#7843;n n&agrave;o, d&#7919; li&#7879;u n&agrave;o s&#7869; m&#7845;t, backfill c&oacute; &#273;&#7843;o ng&#432;&#7907;c &#273;&#432;&#7907;c kh&ocirc;ng, v&agrave; th&#7901;i &#273;i&#7875;m n&agrave;o &#273;&#432;&#7907;c xem l&agrave; &ldquo;point of no return&rdquo;. Backup kh&ocirc;ng thay th&#7871; rollback nhanh; restore database l&#7899;n c&oacute; th&#7875; l&acirc;u h&#417;n SLA.</p>
+
+<h2>Checklist tr&#432;&#7899;c production</h2>
+<ul>
+<li>Th&#7917; migration tr&ecirc;n b&#7843;n sao c&oacute; k&iacute;ch th&#432;&#7899;c v&agrave; ph&acirc;n b&#7889; d&#7919; li&#7879;u g&#7847;n production.</li>
+<li>Ki&#7875;m tra lo&#7841;i lock, th&#7901;i gian gi&#7919; lock v&agrave; kh&#7843; n&#259;ng table rewrite.</li>
+<li>&#272;&#7863;t <code>lock_timeout</code> v&agrave; <code>statement_timeout</code> ph&ugrave; h&#7907;p.</li>
+<li>B&#7843;o &#273;&#7843;m code c&#361; v&agrave; m&#7899;i c&ugrave;ng ch&#7841;y &#273;&#432;&#7907;c trong giai &#273;o&#7841;n rolling deploy.</li>
+<li>Backfill idempotent, c&oacute; checkpoint, throttle v&agrave; dashboard ti&#7871;n &#273;&#7897;.</li>
+<li>Theo d&otilde;i error rate, latency, connection pool, replication lag, WAL v&agrave; disk.</li>
+<li>C&oacute; feature flag cho read path v&agrave; runbook d&#7915;ng/ti&#7871;p t&#7909;c.</li>
+<li>Contract ch&#7881; di&#7877;n ra sau khi x&aacute;c nh&#7853;n kh&ocirc;ng c&ograve;n consumer c&#361;.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Database migration kh&ocirc;ng downtime l&agrave; b&agrave;i to&aacute;n v&#7873; kh&#7843; n&#259;ng t&#432;&#417;ng th&iacute;ch v&agrave; v&#7853;n h&agrave;nh, kh&ocirc;ng ch&#7881; l&agrave; vi&#7871;t SQL. Expand t&#7841;o &#273;&#432;&#7901;ng &#273;i m&#7899;i m&agrave; kh&ocirc;ng ph&aacute; &#273;&#432;&#7901;ng c&#361;; Migrate chuy&#7875;n code v&agrave; d&#7919; li&#7879;u c&oacute; quan s&aacute;t; Contract d&#7885;n c&#7845;u tr&uacute;c c&#361; khi &#273;&atilde; c&oacute; b&#7857;ng ch&#7913;ng an to&agrave;n. Chia nh&#7887; thay &#273;&#7893;i gi&uacute;p m&#7895;i b&#432;&#7899;c d&#7877; d&#7915;ng, d&#7877; &#273;o v&agrave; d&#7877; rollback h&#417;n m&#7897;t migration &ldquo;t&#7845;t c&#7843; trong m&#7897;t&rdquo;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://www.postgresql.org/docs/current/sql-altertable.html" target="_blank" rel="noopener noreferrer">PostgreSQL: ALTER TABLE</a></li><li><a href="https://www.postgresql.org/docs/current/ddl-alter.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Modifying Tables</a></li><li><a href="https://www.postgresql.org/docs/current/sql-createindex.html" target="_blank" rel="noopener noreferrer">PostgreSQL: CREATE INDEX</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ph&#7909;c h&#7891;i Windows 11 kh&ocirc;ng kh&#7903;i &#273;&#7897;ng b&#7857;ng WinRE</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Windows 11 kh&ocirc;ng kh&#7903;i &#273;&#7897;ng, WinRE, Startup Repair, Safe Mode, System Restore, DISM SFC, Reset this PC</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Windows 11, WinRE, Startup Repair, Safe Mode, System Restore, DISM, BitLocker, Recovery</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Quy tr&igrave;nh ph&#7909;c h&#7891;i Windows 11 kh&ocirc;ng kh&#7903;i &#273;&#7897;ng b&#7857;ng WinRE, Startup Repair, Safe Mode, g&#7905; update, System Restore, DISM/SFC v&agrave; Reset an to&agrave;n.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/windows-11-boot-recovery.jpg" alt="Windows 11 kh&ocirc;ng kh&#7903;i &#273;&#7897;ng: H&#432;&#7899;ng d&#7851;n ph&#7909;c h&#7891;i an to&agrave;n v&#7899;i WinRE" width="1440" height="810"></p><h1>Windows 11 kh&ocirc;ng kh&#7903;i &#273;&#7897;ng: H&#432;&#7899;ng d&#7851;n ph&#7909;c h&#7891;i an to&agrave;n v&#7899;i WinRE</h1><p><strong>Khi Windows 11 m&#7855;c k&#7865;t &#7903; logo, m&agrave;n h&igrave;nh &#273;en, m&agrave;n h&igrave;nh xanh ho&#7863;c v&ograve;ng l&#7863;p kh&#7903;i &#273;&#7897;ng, &#273;&#7915;ng v&#7897;i c&agrave;i l&#7841;i h&#7879; &#273;i&#7873;u h&agrave;nh.</strong> Windows Recovery Environment (WinRE) cung c&#7845;p nhi&#7873;u l&#7899;p ph&#7909;c h&#7891;i t&#7915; &iacute;t t&aacute;c &#273;&#7897;ng &#273;&#7871;n m&#7841;nh h&#417;n. &#272;i &#273;&uacute;ng th&#7913; t&#7921; gi&uacute;p s&#7917;a l&#7895;i m&agrave; gi&#7843;m nguy c&#417; m&#7845;t d&#7919; li&#7879;u v&agrave; &#7913;ng d&#7909;ng.</p>
+<blockquote>Tr&#432;&#7899;c m&#7885;i thao t&aacute;c Reset ho&#7863;c c&agrave;i l&#7841;i, h&atilde;y sao l&#432;u d&#7919; li&#7879;u n&#7871;u c&ograve;n kh&#7843; n&#259;ng truy c&#7853;p &#7893; &#273;&#297;a v&agrave; chu&#7849;n b&#7883; kh&oacute;a kh&ocirc;i ph&#7909;c BitLocker.</blockquote>
+
+<h2>Tr&#432;&#7899;c ti&ecirc;n: ph&acirc;n bi&#7879;t l&#7895;i Windows v&agrave; l&#7895;i ph&#7847;n c&#7913;ng</h2>
+<p>N&#7871;u m&aacute;y kh&ocirc;ng l&ecirc;n ngu&#7891;n, kh&ocirc;ng v&agrave;o &#273;&#432;&#7907;c BIOS/UEFI, &#7893; &#273;&#297;a kh&ocirc;ng xu&#7845;t hi&#7879;n, ph&aacute;t ti&#7871;ng b&#7845;t th&#432;&#7901;ng ho&#7863;c t&#7921; t&#7855;t do nhi&#7879;t, WinRE kh&ocirc;ng gi&#7843;i quy&#7871;t &#273;&#432;&#7907;c nguy&ecirc;n nh&acirc;n. Ng&#7855;t thi&#7871;t b&#7883; USB kh&ocirc;ng c&#7847;n thi&#7871;t, ki&#7875;m tra ngu&#7891;n, m&agrave;n h&igrave;nh, RAM v&agrave; tr&#7841;ng th&aacute;i &#7893; l&#432;u tr&#7919; tr&#432;&#7899;c.</p>
+<p>N&#7871;u BIOS nh&#7853;n &#7893; v&agrave; Windows b&#7855;t &#273;&#7847;u t&#7843;i r&#7891;i th&#7845;t b&#7841;i, kh&#7843; n&#259;ng cao quy tr&igrave;nh b&ecirc;n d&#432;&#7899;i ph&ugrave; h&#7907;p. Ghi l&#7841;i m&atilde; l&#7895;i, th&#7901;i &#273;i&#7875;m b&#7855;t &#273;&#7847;u v&agrave; thay &#273;&#7893;i g&#7847;n nh&#7845;t nh&#432; update, driver, ph&#7847;n m&#7873;m b&#7843;o m&#7853;t ho&#7863;c thay ph&#7847;n c&#7913;ng.</p>
+
+<h2>Chu&#7849;n b&#7883; d&#7919; li&#7879;u v&agrave; kh&oacute;a BitLocker</h2>
+<p>Nhi&#7873;u c&ocirc;ng c&#7909; WinRE y&ecirc;u c&#7847;u kh&oacute;a BitLocker 48 ch&#7919; s&#7889; khi &#7893; h&#7879; th&#7889;ng &#273;&#432;&#7907;c m&atilde; h&oacute;a. T&igrave;m kh&oacute;a trong t&agrave;i kho&#7843;n Microsoft, t&agrave;i kho&#7843;n c&#417; quan ho&#7863;c b&#7843;n in/l&#432;u tr&#7919; &#273;&atilde; t&#7841;o tr&#432;&#7899;c &#273;&oacute;. Kh&ocirc;ng &#273;&#259;ng kh&oacute;a l&ecirc;n di&#7877;n &#273;&agrave;n hay g&#7917;i trong &#7843;nh ch&#7909;p.</p>
+<p>N&#7871;u d&#7919; li&#7879;u ch&#432;a &#273;&#432;&#7907;c backup v&agrave; &#7893; c&oacute; d&#7845;u hi&#7879;u h&#7887;ng, h&#7841;n ch&#7871; ghi th&ecirc;m d&#7919; li&#7879;u. &#431;u ti&ecirc;n t&#7841;o image ho&#7863;c nh&#7901; k&#7929; thu&#7853;t vi&ecirc;n ph&#7909;c h&#7891;i. Reset, CHKDSK s&#7917;a l&#7895;i hay c&agrave;i l&#7841;i &#273;&#7873;u c&oacute; th&#7875; l&agrave;m t&igrave;nh h&igrave;nh kh&oacute; c&#7913;u h&#417;n tr&ecirc;n &#7893; v&#7853;t l&yacute; &#273;ang h&#7887;ng.</p>
+
+<h2>1. V&agrave;o Windows Recovery Environment</h2>
+<p>N&#7871;u c&ograve;n v&agrave;o Windows: m&#7903; <strong>Settings &gt; System &gt; Recovery &gt; Advanced startup &gt; Restart now</strong>. N&#7871;u kh&ocirc;ng kh&#7903;i &#273;&#7897;ng &#273;&#432;&#7907;c, Windows th&#432;&#7901;ng t&#7921; v&agrave;o WinRE sau nhi&#7873;u l&#7847;n boot th&#7845;t b&#7841;i. C&oacute; th&#7875; boot t&#7915; USB c&agrave;i &#273;&#7863;t Windows ch&iacute;nh th&#7913;c r&#7891;i ch&#7885;n <strong>Repair your computer</strong>, kh&ocirc;ng ch&#7885;n Install ngay.</p>
+<p>Vi&#7879;c c&#7889; &yacute; ng&#7855;t ngu&#7891;n khi Windows &#273;ang boot ch&#7881; n&ecirc;n d&ugrave;ng nh&#432; ph&#432;&#417;ng &aacute;n cu&#7889;i &#273;&#7875; k&iacute;ch ho&#7841;t Automatic Repair; l&#7863;p l&#7841;i kh&ocirc;ng &#273;&uacute;ng l&uacute;c c&oacute; th&#7875; l&agrave;m h&#7887;ng d&#7919; li&#7879;u &#273;ang ghi. Laptop c&#7847;n c&#7855;m ngu&#7891;n trong su&#7889;t qu&aacute; tr&igrave;nh ph&#7909;c h&#7891;i.</p>
+
+<h2>2. Ch&#7841;y Startup Repair</h2>
+<p>Ch&#7885;n <strong>Troubleshoot &gt; Advanced options &gt; Startup Repair</strong>. C&ocirc;ng c&#7909; ki&#7875;m tra m&#7897;t s&#7889; v&#7845;n &#273;&#7873; ng&#259;n Windows t&#7843;i v&agrave; l&agrave; b&#432;&#7899;c &iacute;t t&aacute;c &#273;&#7897;ng n&ecirc;n th&#7917; &#273;&#7847;u ti&ecirc;n.</p>
+<p>N&#7871;u Startup Repair b&aacute;o kh&ocirc;ng th&#7875; s&#7917;a, kh&ocirc;ng ch&#7841;y l&#7863;p l&#7841;i v&ocirc; h&#7841;n. Ghi l&#7841;i &#273;&#432;&#7901;ng d&#7851;n log n&#7871;u &#273;&#432;&#7907;c hi&#7875;n th&#7883; r&#7891;i chuy&#7875;n sang b&#432;&#7899;c d&#7921;a tr&ecirc;n thay &#273;&#7893;i g&#7847;n nh&#7845;t.</p>
+
+<h2>3. Kh&#7903;i &#273;&#7897;ng Safe Mode</h2>
+<p>Ch&#7885;n <strong>Advanced options &gt; Startup Settings &gt; Restart</strong>, sau &#273;&oacute; ch&#7885;n Safe Mode ho&#7863;c Safe Mode with Networking. Ch&#7871; &#273;&#7897; n&agrave;y t&#7843;i t&#7853;p driver v&agrave; d&#7883;ch v&#7909; t&#7889;i thi&#7875;u.</p>
+<ul><li>G&#7905; driver ho&#7863;c ph&#7847;n m&#7873;m v&#7915;a c&agrave;i tr&#432;&#7899;c khi l&#7895;i.</li><li>Trong Device Manager, rollback driver &#273;&#7891; h&#7885;a, storage ho&#7863;c network n&#7871;u l&#7895;i xu&#7845;t hi&#7879;n sau c&#7853;p nh&#7853;t.</li><li>T&#7855;t startup app kh&ocirc;ng c&#7847;n thi&#7871;t v&agrave; ki&#7875;m tra Event Viewer.</li><li>Qu&eacute;t malware b&#7857;ng Windows Security n&#7871;u nghi ng&#7901; nhi&#7877;m m&atilde; &#273;&#7897;c.</li></ul>
+<p>N&#7871;u Safe Mode ho&#7841;t &#273;&#7897;ng &#7893;n &#273;&#7883;nh, nguy&ecirc;n nh&acirc;n th&#432;&#7901;ng n&#7857;m &#7903; driver, d&#7883;ch v&#7909;, ph&#7847;n m&#7873;m ho&#7863;c c&#7845;u h&igrave;nh thay v&igrave; bootloader c&#417; b&#7843;n.</p>
+
+<h2>4. G&#7905; b&#7843;n c&#7853;p nh&#7853;t g&#7847;n nh&#7845;t</h2>
+<p>N&#7871;u l&#7895;i b&#7855;t &#273;&#7847;u ngay sau Windows Update, v&agrave;o <strong>Advanced options &gt; Uninstall Updates</strong>. Th&#7917; g&#7905; quality update g&#7847;n nh&#7845;t tr&#432;&#7899;c v&igrave; ph&#7841;m vi thay &#273;&#7893;i nh&#7887; h&#417;n. Ch&#7881; g&#7905; feature update khi c&oacute; c&#259;n c&#7913; v&agrave; t&ugrave;y ch&#7885;n c&ograve;n kh&#7843; d&#7909;ng.</p>
+<p>Sau khi m&aacute;y kh&#7903;i &#273;&#7897;ng l&#7841;i, t&#7841;m d&#7915;ng update trong th&#7901;i gian ng&#7855;n &#273;&#7875; ki&#7875;m tra th&ocirc;ng tin s&#7921; c&#7889; v&agrave; driver t&#432;&#417;ng th&iacute;ch; kh&ocirc;ng t&#7855;t c&#7853;p nh&#7853;t b&#7843;o m&#7853;t v&#297;nh vi&#7877;n.</p>
+
+<h2>5. D&ugrave;ng System Restore</h2>
+<p>Ch&#7885;n <strong>Advanced options &gt; System Restore</strong>, m&#7903; danh s&aacute;ch restore point tr&#432;&#7899;c th&#7901;i &#273;i&#7875;m l&#7895;i v&agrave; d&ugrave;ng <strong>Scan for affected programs</strong>. System Restore ho&agrave;n t&aacute;c system file, registry, driver v&agrave; &#7913;ng d&#7909;ng &#273;&atilde; thay &#273;&#7893;i nh&#432;ng kh&ocirc;ng nh&#7857;m x&oacute;a t&agrave;i li&#7879;u c&aacute; nh&acirc;n.</p>
+<p>C&aacute;c &#7913;ng d&#7909;ng ho&#7863;c driver c&agrave;i sau restore point c&oacute; th&#7875; b&#7883; g&#7905;. Kh&ocirc;ng t&#7855;t ngu&#7891;n khi qu&aacute; tr&igrave;nh &#273;ang ch&#7841;y. T&iacute;nh n&#259;ng ch&#7881; d&ugrave;ng &#273;&#432;&#7907;c khi m&aacute;y &#273;&atilde; c&oacute; restore point.</p>
+
+<h2>6. S&#7917;a component store v&agrave; system file</h2>
+<p>N&#7871;u Windows v&#7851;n v&agrave;o &#273;&#432;&#7907;c Safe Mode, m&#7903; Terminal/Command Prompt v&#7899;i quy&#7873;n Administrator v&agrave; ch&#7841;y:</p>
+<pre><code>DISM.exe /Online /Cleanup-Image /RestoreHealth
+sfc /scannow</code></pre>
+<p>DISM s&#7917;a component store m&agrave; SFC d&ugrave;ng l&agrave;m ngu&#7891;n, v&igrave; v&#7853;y ch&#7841;y DISM tr&#432;&#7899;c SFC. Kh&#7903;i &#273;&#7897;ng l&#7841;i sau khi ho&agrave;n t&#7845;t. N&#7871;u DISM b&aacute;o thi&#7871;u source, c&#7847;n image Windows c&ugrave;ng phi&ecirc;n b&#7843;n/build ho&#7863;c ngu&#7891;n s&#7917;a ch&#7919;a ph&ugrave; h&#7907;p; kh&ocirc;ng t&#7843;i file DLL r&#7901;i t&#7915; website kh&ocirc;ng tin c&#7853;y.</p>
+<p>Trong Command Prompt c&#7911;a WinRE, k&yacute; t&#7921; &#7893; Windows c&oacute; th&#7875; kh&ocirc;ng ph&#7843;i <code>C:</code>. X&aacute;c &#273;&#7883;nh &#273;&uacute;ng volume tr&#432;&#7899;c khi ch&#7841;y l&#7879;nh offline; c&acirc;u l&#7879;nh <code>/Online</code> &#7903; WinRE &aacute;p d&#7909;ng cho ch&iacute;nh m&ocirc;i tr&#432;&#7901;ng recovery, kh&ocirc;ng ph&#7843;i b&#7843;n Windows &#273;ang h&#7887;ng.</p>
+
+<h2>7. Ki&#7875;m tra &#7893; &#273;&#297;a c&oacute; ch&#7911; &#273;&iacute;ch</h2>
+<p>D&ugrave;ng c&ocirc;ng c&#7909; ch&#7849;n &#273;o&aacute;n SMART c&#7911;a nh&agrave; s&#7843;n xu&#7845;t khi nghi ng&#7901; &#7893; l&#432;u tr&#7919;. <code>chkdsk</code> ki&#7875;m tra filesystem, kh&ocirc;ng x&aacute;c nh&#7853;n to&agrave;n b&#7897; s&#7913;c kh&#7887;e ph&#7847;n c&#7913;ng. M&#7897;t l&#432;&#7907;t read-only c&oacute; th&#7875; d&ugrave;ng &#273;&#7875; &#273;&aacute;nh gi&aacute;:</p>
+<pre><code>chkdsk C:</code></pre>
+<p>Kh&ocirc;ng v&#7897;i d&ugrave;ng <code>/r</code> tr&ecirc;n &#7893; &#273;ang h&#7887;ng v&igrave; qu&aacute; tr&igrave;nh &#273;&#7885;c to&agrave;n b&#7897; c&oacute; th&#7875; k&eacute;o d&agrave;i v&agrave; g&acirc;y th&ecirc;m &aacute;p l&#7921;c. Sao l&#432;u ho&#7863;c clone tr&#432;&#7899;c khi s&#7917;a l&#7895;i n&#7863;ng.</p>
+
+<h2>8. Reinstall b&#7857;ng Windows Update khi m&aacute;y c&ograve;n v&agrave;o &#273;&#432;&#7907;c</h2>
+<p>Tr&ecirc;n Windows 11 &#273;&#432;&#7907;c h&#7895; tr&#7907;, <strong>Settings &gt; System &gt; Recovery &gt; Fix problems using Windows Update</strong> c&oacute; th&#7875; c&agrave;i l&#7841;i phi&ecirc;n b&#7843;n hi&#7879;n t&#7841;i trong khi gi&#7919; file, &#7913;ng d&#7909;ng v&agrave; c&agrave;i &#273;&#7863;t. &#272;&acirc;y l&agrave; l&#7921;a ch&#7885;n &iacute;t ph&aacute; h&#7911;y h&#417;n Reset khi Windows v&#7851;n kh&#7903;i &#273;&#7897;ng nh&#432;ng th&agrave;nh ph&#7847;n h&#7879; th&#7889;ng l&#7895;i.</p>
+<p>T&ugrave;y ch&#7885;n c&oacute; th&#7875; kh&ocirc;ng xu&#7845;t hi&#7879;n tr&ecirc;n thi&#7871;t b&#7883; do t&#7893; ch&#7913;c qu&#7843;n l&yacute; ho&#7863;c phi&ecirc;n b&#7843;n Windows c&#361;. V&#7851;n c&#7847;n backup tr&#432;&#7899;c v&igrave; kh&ocirc;ng c&oacute; thao t&aacute;c ph&#7909;c h&#7891;i n&agrave;o ho&agrave;n to&agrave;n kh&ocirc;ng r&#7911;i ro.</p>
+
+<h2>9. Reset this PC: hi&#7875;u &#273;&uacute;ng hai l&#7921;a ch&#7885;n</h2>
+<p>Trong WinRE, ch&#7885;n <strong>Troubleshoot &gt; Reset this PC</strong> khi c&aacute;c b&#432;&#7899;c tr&ecirc;n th&#7845;t b&#7841;i:</p>
+<ul><li><strong>Keep my files:</strong> gi&#7919; file c&aacute; nh&acirc;n nh&#432;ng g&#7905; &#7913;ng d&#7909;ng v&agrave; &#273;&#7863;t l&#7841;i c&agrave;i &#273;&#7863;t.</li><li><strong>Remove everything:</strong> x&oacute;a file, &#7913;ng d&#7909;ng v&agrave; c&agrave;i &#273;&#7863;t; ph&ugrave; h&#7907;p khi chuy&#7875;n giao m&aacute;y ho&#7863;c c&#7847;n l&agrave;m s&#7841;ch s&acirc;u sau khi &#273;&atilde; backup.</li></ul>
+<p><strong>Cloud download</strong> t&#7843;i image m&#7899;i v&agrave; c&#7847;n Internet &#7893;n &#273;&#7883;nh; <strong>Local reinstall</strong> d&ugrave;ng file c&oacute; s&#7861;n nh&#432;ng c&oacute; th&#7875; th&#7845;t b&#7841;i n&#7871;u ngu&#7891;n local h&#7887;ng. &#272;&#7885;c k&#7929; danh s&aacute;ch &#7893; b&#7883; &#7843;nh h&#432;&#7903;ng, &#273;&#7863;c bi&#7879;t tr&ecirc;n m&aacute;y c&oacute; nhi&#7873;u &#7893;.</p>
+
+<h2>10. C&agrave;i l&#7841;i b&#7857;ng USB khi kh&ocirc;ng c&ograve;n l&#7921;a ch&#7885;n kh&aacute;c</h2>
+<p>D&ugrave;ng m&#7897;t m&aacute;y &#273;&aacute;ng tin c&#7853;y t&#7843;i c&ocirc;ng c&#7909; t&#7841;o installation media t&#7915; Microsoft v&agrave; USB &iacute;t nh&#7845;t 8 GB. &#431;u ti&ecirc;n recovery image c&#7911;a h&atilde;ng m&aacute;y n&#7871;u c&#7847;n driver ho&#7863;c ti&#7879;n &iacute;ch ph&#7847;n c&#7913;ng &#273;&#7863;c th&ugrave;.</p>
+<p>Clean install c&oacute; th&#7875; x&oacute;a to&agrave;n b&#7897; file, &#7913;ng d&#7909;ng v&agrave; c&agrave;i &#273;&#7863;t. X&aacute;c nh&#7853;n backup, BitLocker key, license ph&#7847;n m&#7873;m, d&#7919; li&#7879;u tr&igrave;nh duy&#7879;t v&agrave; t&agrave;i kho&#7843;n &#273;&#7891;ng b&#7897; tr&#432;&#7899;c. Ng&#7855;t c&aacute;c &#7893; kh&ocirc;ng c&#7847;n thi&#7871;t &#273;&#7875; gi&#7843;m nguy c&#417; ch&#7885;n nh&#7847;m &#273;&iacute;ch.</p>
+
+<h2>Tr&#432;&#7901;ng h&#7907;p kh&ocirc;ng n&ecirc;n ti&#7871;p t&#7909;c t&#7921; s&#7917;a</h2>
+<ul><li>&#7892; &#273;&#297;a m&#7845;t kh&#7887;i BIOS, ph&aacute;t ti&#7871;ng l&#7841; ho&#7863;c SMART b&aacute;o l&#7895;i nghi&ecirc;m tr&#7885;ng.</li><li>D&#7919; li&#7879;u ch&#432;a backup c&oacute; gi&aacute; tr&#7883; cao.</li><li>M&aacute;y d&ugrave;ng BitLocker nh&#432;ng kh&ocirc;ng c&oacute; recovery key.</li><li>Thi&#7871;t b&#7883; thu&#7897;c doanh nghi&#7879;p, c&oacute; MDM ho&#7863;c ch&iacute;nh s&aacute;ch b&#7843;o m&#7853;t.</li><li>L&#7895;i quay l&#7841;i sau clean install, g&#7907;i &yacute; RAM, SSD, ngu&#7891;n ho&#7863;c mainboard.</li></ul>
+
+<h2>Checklist ph&ograve;ng ng&#7915;a</h2>
+<ol><li>B&#7853;t Windows Backup ho&#7863;c gi&#7843;i ph&aacute;p backup &#273;&#7897;c l&#7853;p.</li><li>L&#432;u kh&oacute;a BitLocker &#7903; &iacute;t nh&#7845;t m&#7897;t n&#417;i an to&agrave;n ngo&agrave;i m&aacute;y.</li><li>T&#7841;o Recovery Drive khi m&aacute;y &#273;ang ho&#7841;t &#273;&#7897;ng t&#7889;t.</li><li>Duy tr&igrave; restore point tr&#432;&#7899;c thay &#273;&#7893;i driver/h&#7879; th&#7889;ng l&#7899;n.</li><li>Gi&#7919; USB c&agrave;i &#273;&#7863;t v&agrave; th&ocirc;ng tin license/ph&#7847;n m&#7873;m quan tr&#7885;ng.</li><li>Theo d&otilde;i s&#7913;c kh&#7887;e SSD v&agrave; dung l&#432;&#7907;ng tr&#7889;ng.</li><li>Kh&ocirc;ng b&#7887; qua firmware, driver v&agrave; update b&#7843;o m&#7853;t t&#7915; ngu&#7891;n ch&iacute;nh th&#7913;c.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Ph&#7909;c h&#7891;i Windows 11 n&ecirc;n &#273;i theo b&#7853;c thang: Startup Repair, Safe Mode, g&#7905; update, System Restore, s&#7917;a system file, c&agrave;i l&#7841;i gi&#7919; nguy&ecirc;n d&#7919; li&#7879;u, r&#7891;i m&#7899;i Reset ho&#7863;c clean install. Th&#7913; t&#7921; n&agrave;y b&#7843;o to&agrave;n l&#7921;a ch&#7885;n v&agrave; gi&#7843;m thay &#273;&#7893;i kh&ocirc;ng c&#7847;n thi&#7871;t. Backup v&agrave; kh&oacute;a BitLocker &#273;&#432;&#7907;c chu&#7849;n b&#7883; tr&#432;&#7899;c s&#7921; c&#7889; v&#7851;n l&agrave; hai c&ocirc;ng c&#7909; ph&#7909;c h&#7891;i quan tr&#7885;ng nh&#7845;t.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/recovery-options-in-windows" target="_blank" rel="noopener noreferrer">Microsoft Support: Recovery options in Windows</a></li><li><a href="https://support.microsoft.com/en-us/windows/experience/backup-recovery/system-restore" target="_blank" rel="noopener noreferrer">Microsoft Support: System Restore</a></li><li><a href="https://support.microsoft.com/en-us/windows/deployment/install-upgrade/fix-issues-by-reinstalling-the-current-version-of-windows" target="_blank" rel="noopener noreferrer">Microsoft Support: Reinstall the current version using Windows Update</a></li><li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/installing-updates-features-roles/common-windows-update-errors" target="_blank" rel="noopener noreferrer">Microsoft Learn: DISM and SFC for update errors</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

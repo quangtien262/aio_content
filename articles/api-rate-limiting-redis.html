@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">API Rate Limiting th&#7921;c chi&#7871;n v&#7899;i Redis</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">API rate limiting, Redis, token bucket, sliding window, fixed window, HTTP 429, distributed rate limiter</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Rate Limiting, Redis, Backend, HTTP, Distributed Systems, Security</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; API rate limiting production v&#7899;i Redis: ch&#7885;n thu&#7853;t to&aacute;n, key v&agrave; quota, Lua atomic, ph&#7843;n h&#7891;i HTTP 429, ch&#7889;ng burst, fallback, quan s&aacute;t v&agrave; ki&#7875;m th&#7917;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/api-rate-limiting-redis.jpg" alt="API Rate Limiting th&#7921;c chi&#7871;n v&#7899;i Redis: Thu&#7853;t to&aacute;n, thi&#7871;t k&#7871; v&agrave; v&#7853;n h&agrave;nh" width="1440" height="810"></p><h1>API Rate Limiting th&#7921;c chi&#7871;n v&#7899;i Redis: Thu&#7853;t to&aacute;n, thi&#7871;t k&#7871; v&agrave; v&#7853;n h&agrave;nh</h1><p><strong>Rate limiting kh&ocirc;ng ch&#7881; &#273;&#7875; ch&#7863;n bot.</strong> N&oacute; b&#7843;o v&#7879; database v&agrave; d&#7883;ch v&#7909; ph&#7909; thu&#7897;c kh&#7887;i traffic burst, ph&acirc;n chia t&agrave;i nguy&ecirc;n c&ocirc;ng b&#7857;ng gi&#7919;a tenant, ki&#7875;m so&aacute;t chi ph&iacute; API v&agrave; gi&uacute;p h&#7879; th&#7889;ng suy gi&#7843;m c&oacute; ki&#7875;m so&aacute;t khi qu&aacute; t&#7843;i. M&#7897;t limiter thi&#7871;t k&#7871; sai l&#7841;i c&oacute; th&#7875; kh&oacute;a nh&#7847;m h&agrave;ng ngh&igrave;n ng&#432;&#7901;i d&ugrave;ng sau NAT ho&#7863;c tr&#7903; th&agrave;nh &#273;i&#7875;m l&#7895;i m&#7899;i.</p>
+<p>B&agrave;i vi&#7871;t n&agrave;y &#273;i t&#7915; l&#7921;a ch&#7885;n thu&#7853;t to&aacute;n &#273;&#7871;n tri&#7875;n khai Redis ph&acirc;n t&aacute;n, v&#7899;i m&#7909;c ti&ecirc;u t&#7841;o m&#7897;t ch&iacute;nh s&aacute;ch d&#7877; gi&#7843;i th&iacute;ch, c&oacute; kh&#7843; n&#259;ng quan s&aacute;t v&agrave; ho&#7841;t &#273;&#7897;ng nh&#7845;t qu&aacute;n tr&ecirc;n nhi&#7873;u application instance.</p>
+
+<h2>Rate limit kh&aacute;c quota v&agrave; concurrency limit</h2>
+<ul>
+<li><strong>Rate limit:</strong> s&#7889; request trong m&#7897;t kho&#7843;ng th&#7901;i gian, v&iacute; d&#7909; 100 request/ph&uacute;t.</li>
+<li><strong>Quota:</strong> t&#7893;ng m&#7913;c s&#7917; d&#7909;ng trong chu k&#7923; d&agrave;i, v&iacute; d&#7909; 1 tri&#7879;u request/th&aacute;ng.</li>
+<li><strong>Concurrency limit:</strong> s&#7889; t&aacute;c v&#7909; &#273;ang ch&#7841;y &#273;&#7891;ng th&#7901;i.</li>
+</ul>
+<p>M&#7897;t API upload file c&oacute; th&#7875; c&#7847;n c&#7843; ba: rate limit ch&#7889;ng spam, quota ki&#7875;m so&aacute;t chi ph&iacute; v&agrave; concurrency limit b&#7843;o v&#7879; CPU/I/O. &#272;&#7915;ng d&ugrave;ng m&#7897;t counter ph&uacute;t &#273;&#7875; thay th&#7871; m&#7885;i c&#417; ch&#7871;.</p>
+
+<h2>1. X&aacute;c &#273;&#7883;nh m&#7909;c ti&ecirc;u tr&#432;&#7899;c khi ch&#7885;n thu&#7853;t to&aacute;n</h2>
+<p>Tr&#7843; l&#7901;i c&aacute;c c&acirc;u h&#7887;i:</p>
+<ul>
+<li>T&agrave;i nguy&ecirc;n n&agrave;o c&#7847;n b&#7843;o v&#7879;: login, search, checkout hay API to&agrave;n c&#7909;c?</li>
+<li>Ai l&agrave; ch&#7911; th&#7875;: user, API key, tenant, IP hay device?</li>
+<li>C&oacute; ch&#7845;p nh&#7853;n burst ng&#7855;n kh&ocirc;ng?</li>
+<li>Limiter c&#7847;n ch&iacute;nh x&aacute;c to&agrave;n cluster hay m&#7895;i region c&oacute; ng&acirc;n s&aacute;ch ri&ecirc;ng?</li>
+<li>Khi Redis l&#7895;i, request n&ecirc;n &#273;&#432;&#7907;c ph&eacute;p hay b&#7883; t&#7915; ch&#7889;i?</li>
+</ul>
+<p>Ch&iacute;nh s&aacute;ch n&ecirc;n g&#7855;n v&#7899;i chi ph&iacute;. M&#7897;t request &#273;&#7885;c cache kh&ocirc;ng n&ecirc;n ti&ecirc;u c&ugrave;ng s&#7889; token v&#7899;i export b&aacute;o c&aacute;o ho&#7863;c ch&#7841;y AI inference.</p>
+
+<h2>2. Ch&#7885;n identity v&agrave; key an to&agrave;n</h2>
+<p>&#431;u ti&ecirc;n identity &#273;&atilde; x&aacute;c th&#7921;c: tenant ID, user ID ho&#7863;c API key ID. IP ch&#7881; l&agrave; t&iacute;n hi&#7879;u ph&#7909; v&igrave; NAT c&oacute; th&#7875; gom c&#7843; v&#259;n ph&ograve;ng v&agrave;o m&#7897;t &#273;&#7883;a ch&#7881;, trong khi attacker c&oacute; th&#7875; xoay proxy.</p>
+<pre><code>rl:v1:{tenant_id}:{route_group}:{window}</code></pre>
+<p>Kh&ocirc;ng &#273;&#432;a raw API key, email ho&#7863;c d&#7919; li&#7879;u c&aacute; nh&acirc;n v&agrave;o Redis key/log. Hash ho&#7863;c d&ugrave;ng internal ID. Ch&#7881; tin <code>X-Forwarded-For</code> t&#7915; reverse proxy do b&#7841;n ki&#7875;m so&aacute;t; client c&oacute; th&#7875; gi&#7843; header n&agrave;y n&#7871;u &#7913;ng d&#7909;ng ti&#7871;p x&uacute;c tr&#7921;c ti&#7871;p Internet.</p>
+<p>Th&#432;&#7901;ng c&#7847;n nhi&#7873;u l&#7899;p:</p>
+<ul>
+<li>Gi&#7899;i h&#7841;n IP th&ocirc; &#7903; CDN/WAF &#273;&#7875; h&#7845;p th&#7909; abuse.</li>
+<li>Gi&#7899;i h&#7841;n user/API key t&#7841;i gateway ho&#7863;c application.</li>
+<li>Gi&#7899;i h&#7841;n tenant &#273;&#7875; m&#7897;t kh&aacute;ch h&agrave;ng kh&ocirc;ng chi&#7871;m to&agrave;n b&#7897; capacity.</li>
+<li>Gi&#7899;i h&#7841;n global &#273;&#7875; b&#7843;o v&#7879; dependency khi g&#7847;n qu&aacute; t&#7843;i.</li>
+</ul>
+
+<h2>3. Fixed window: &#273;&#417;n gi&#7843;n nh&#432;ng c&oacute; burst &#7903; bi&ecirc;n</h2>
+<p>Fixed window &#273;&#7871;m request trong t&#7915;ng ph&uacute;t/gi&acirc;y:</p>
+<pre><code>bucket = floor(current_time / 60)
+key = "rl:user:42:" + bucket
+count = INCR(key)
+EXPIRE(key, 120)
+allow = count &lt;= 100</code></pre>
+<p>&#431;u &#273;i&#7875;m l&agrave; O(1), &iacute;t b&#7897; nh&#7899; v&agrave; d&#7877; v&#7853;n h&agrave;nh. Nh&#432;&#7907;c &#273;i&#7875;m: client c&oacute; th&#7875; g&#7917;i 100 request cu&#7889;i ph&uacute;t r&#7891;i 100 request &#273;&#7847;u ph&uacute;t k&#7871; ti&#7871;p, t&#7841;o 200 request trong v&agrave;i gi&acirc;y.</p>
+<p><code>INCR</code> v&agrave; <code>EXPIRE</code> ph&#7843;i &#273;&#432;&#7907;c th&#7921;c hi&#7879;n nguy&ecirc;n t&#7917; b&#7857;ng transaction/script &#273;&#7875; tr&aacute;nh key kh&ocirc;ng h&#7871;t h&#7841;n khi process ch&#7871;t gi&#7919;a hai l&#7879;nh.</p>
+
+<h2>4. Sliding window log: ch&iacute;nh x&aacute;c nh&#432;ng t&#7889;n b&#7897; nh&#7899;</h2>
+<p>M&#7895;i request &#273;&#432;&#7907;c l&#432;u v&agrave;o sorted set v&#7899;i timestamp, sau &#273;&oacute; x&oacute;a ph&#7847;n t&#7917; ngo&agrave;i c&#7917;a s&#7893; v&agrave; &#273;&#7871;m ph&#7847;n c&ograve;n l&#7841;i:</p>
+<pre><code>ZREMRANGEBYSCORE key 0 (now - window)
+ZADD key now unique_request_id
+ZCARD key
+EXPIRE key window</code></pre>
+<p>Thu&#7853;t to&aacute;n cho gi&#7899;i h&#7841;n tr&#432;&#7907;t ch&iacute;nh x&aacute;c nh&#432;ng chi ph&iacute; t&#259;ng theo s&#7889; request v&agrave; c&#7847;n ID duy nh&#7845;t khi nhi&#7873;u request c&ugrave;ng millisecond. Ph&ugrave; h&#7907;p endpoint nh&#7841;y c&#7843;m v&#7899;i l&#432;u l&#432;&#7907;ng v&#7915;a ph&#7843;i, kh&ocirc;ng l&yacute; t&#432;&#7903;ng cho h&agrave;ng tri&#7879;u key ho&#7841;t &#273;&#7897;ng li&ecirc;n t&#7909;c.</p>
+
+<h2>5. Sliding window counter: c&acirc;n b&#7857;ng chi ph&iacute; v&agrave; &#273;&#7897; m&#432;&#7907;t</h2>
+<p>Gi&#7919; counter c&#7911;a c&#7917;a s&#7893; hi&#7879;n t&#7841;i v&agrave; tr&#432;&#7899;c &#273;&oacute;, r&#7891;i n&#7897;i suy ph&#7847;n c&#7917;a s&#7893; tr&#432;&#7899;c c&ograve;n &#7843;nh h&#432;&#7903;ng:</p>
+<pre><code>estimated = current_count
+          + previous_count * remaining_fraction</code></pre>
+<p>N&oacute; d&ugrave;ng &iacute;t b&#7897; nh&#7899; h&#417;n log, gi&#7843;m burst &#7903; bi&ecirc;n t&#7889;t h&#417;n fixed window nh&#432;ng ch&#7881; l&agrave; x&#7845;p x&#7881;. &#272;&acirc;y l&agrave; l&#7921;a ch&#7885;n t&#7889;t cho quota request ph&#7893; th&ocirc;ng khi sai s&#7889; nh&#7887; &#273;&#432;&#7907;c ch&#7845;p nh&#7853;n.</p>
+
+<h2>6. Token bucket: ph&ugrave; h&#7907;p API c&oacute; burst h&#7907;p l&#7879;</h2>
+<p>Bucket c&oacute; s&#7913;c ch&#7913;a <code>capacity</code>, token &#273;&#432;&#7907;c n&#7841;p theo t&#7889;c &#273;&#7897; <code>refill_rate</code>. M&#7895;i request l&#7845;y m&#7897;t ho&#7863;c nhi&#7873;u token. Khi h&#7871;t token, request b&#7883; t&#7915; ch&#7889;i; sau th&#7901;i gian r&#7843;nh, bucket t&iacute;ch l&#361;y &#273;&#7911; token &#273;&#7875; cho ph&eacute;p burst c&oacute; gi&#7899;i h&#7841;n.</p>
+<p>V&iacute; d&#7909; capacity 60, refill 1 token/gi&acirc;y: client c&oacute; th&#7875; burst t&#7889;i &#273;a 60 request sau th&#7901;i gian r&#7843;nh, nh&#432;ng trung b&igrave;nh d&agrave;i h&#7841;n l&agrave; 1 request/gi&acirc;y. Request &#273;&#7855;t c&oacute; th&#7875; t&#7889;n 5&ndash;20 token.</p>
+
+<h2>7. Token bucket atomic b&#7857;ng Redis Lua</h2>
+<p>Read&ndash;calculate&ndash;write ph&#7843;i nguy&ecirc;n t&#7917; &#273;&#7875; hai request &#273;&#7891;ng th&#7901;i kh&ocirc;ng c&ugrave;ng ti&ecirc;u m&#7897;t token. Lua script ch&#7841;y atomic trong Redis:</p>
+<pre><code>local key = KEYS[1]
+local capacity = tonumber(ARGV[1])
+local refill_rate = tonumber(ARGV[2])
+local now_ms = tonumber(ARGV[3])
+local cost = tonumber(ARGV[4])
+
+local values = redis.call('HMGET', key, 'tokens', 'updated_at')
+local tokens = tonumber(values[1]) or capacity
+local updated_at = tonumber(values[2]) or now_ms
+
+local elapsed = math.max(0, now_ms - updated_at) / 1000
+tokens = math.min(capacity, tokens + elapsed * refill_rate)
+
+local allowed = 0
+if tokens &gt;= cost then
+    tokens = tokens - cost
+    allowed = 1
+end
+
+redis.call('HSET', key, 'tokens', tokens, 'updated_at', now_ms)
+redis.call('PEXPIRE', key, math.ceil((capacity / refill_rate) * 2000))
+
+return { allowed, math.floor(tokens) }</code></pre>
+<p>&#7912;ng d&#7909;ng ph&#7843;i truy&#7873;n th&#7901;i gian nh&#7845;t qu&aacute;n ho&#7863;c d&ugrave;ng th&#7901;i gian t&#7915; Redis &#273;&#7875; gi&#7843;m clock skew. Script ph&#7843;i r&#7845;t ng&#7855;n v&igrave; Redis ch&#7863;n ho&#7841;t &#273;&#7897;ng kh&aacute;c trong l&uacute;c th&#7921;c thi. V&#7899;i Redis Cluster, m&#7885;i key c&#7911;a m&#7897;t l&#7847;n g&#7885;i ph&#7843;i c&ugrave;ng hash slot; thi&#7871;t k&#7871; limiter m&#7897;t key cho m&#7895;i subject gi&uacute;p &#273;&#417;n gi&#7843;n h&oacute;a.</p>
+
+<h2>8. &#272;&#7863;t limiter &#7903; &#273;&acirc;u?</h2>
+<ul>
+<li><strong>CDN/WAF:</strong> ch&#7863;n bot v&agrave; volumetric abuse s&#7899;m, nh&#432;ng &iacute;t hi&#7875;u identity nghi&#7879;p v&#7909;.</li>
+<li><strong>API gateway:</strong> ch&iacute;nh s&aacute;ch t&#7853;p trung, ph&ugrave; h&#7907;p API key/tenant v&agrave; gi&#7843;m traffic v&agrave;o app.</li>
+<li><strong>Application:</strong> hi&#7875;u user, route v&agrave; chi ph&iacute; nghi&#7879;p v&#7909; ch&iacute;nh x&aacute;c nh&#7845;t.</li>
+<li><strong>Downstream service:</strong> t&#7921; b&#7843;o v&#7879; capacity ri&ecirc;ng, ngay c&#7843; khi caller n&#7897;i b&#7897; l&#7895;i.</li>
+</ul>
+<p>Production th&#432;&#7901;ng d&ugrave;ng nhi&#7873;u l&#7899;p. Kh&ocirc;ng d&#7921;a v&agrave;o limiter trong application &#273;&#7875; ch&#7889;ng DDoS v&igrave; request &#273;&atilde; &#273;i qua network v&agrave; web server. Ng&#432;&#7907;c l&#7841;i, limiter &#7903; CDN kh&ocirc;ng thay &#273;&#432;&#7907;c quota tenant trong nghi&#7879;p v&#7909;.</p>
+
+<h2>9. Ph&#7843;n h&#7891;i HTTP 429 h&#7919;u &iacute;ch</h2>
+<pre><code>HTTP/1.1 429 Too Many Requests
+Content-Type: application/problem+json
+Retry-After: 12
+RateLimit-Limit: 100
+RateLimit-Remaining: 0
+RateLimit-Reset: 12
+
+{
+  "type": "https://api.example.com/problems/rate-limit",
+  "title": "Rate limit exceeded",
+  "status": 429,
+  "retry_after": 12
+}</code></pre>
+<p><code>Retry-After</code> cho client bi&#7871;t khi n&agrave;o th&#7917; l&#7841;i. RFC 9333 &#273;&#7883;nh ngh&#297;a c&aacute;c field RateLimit &#273;&#7875; m&ocirc; t&#7843; limit, remaining v&agrave; reset; khi h&#7895; tr&#7907;, h&atilde;y gi&#7919; semantics nh&#7845;t qu&aacute;n v&agrave; kh&ocirc;ng coi header l&agrave; c&#417; ch&#7871; b&#7843;o m&#7853;t. Kh&ocirc;ng ti&#7871;t l&#7897; chi ti&#7871;t c&oacute; th&#7875; gi&uacute;p bypass policy.</p>
+<p>Client n&ecirc;n d&ugrave;ng exponential backoff v&#7899;i jitter, t&ocirc;n tr&#7885;ng <code>Retry-After</code>, gi&#7899;i h&#7841;n s&#7889; l&#7847;n retry v&agrave; kh&ocirc;ng retry &#273;&#7891;ng lo&#7841;t &#273;&uacute;ng m&#7897;t th&#7901;i &#273;i&#7875;m.</p>
+
+<h2>10. &#272;&#7915;ng t&iacute;nh request th&#7845;t b&#7841;i gi&#7889;ng nhau m&#7897;t c&aacute;ch m&aacute;y m&oacute;c</h2>
+<p>Th&#432;&#7901;ng limiter quy&#7871;t &#273;&#7883;nh tr&#432;&#7899;c khi handler ch&#7841;y, n&ecirc;n request &#273;&#432;&#7907;c ph&eacute;p s&#7869; ti&ecirc;u token d&ugrave; tr&#7843; 4xx/5xx. Ho&agrave;n token sau l&#7895;i t&#7841;o th&ecirc;m race condition v&agrave; c&oacute; th&#7875; b&#7883; abuse. Thay v&agrave;o &#273;&oacute;, thi&#7871;t k&#7871; budget ri&ecirc;ng:</p>
+<ul>
+<li>Login th&#7845;t b&#7841;i gi&#7899;i h&#7841;n ch&#7863;t theo account + IP.</li>
+<li>Request validate sai v&#7851;n ti&ecirc;u ng&acirc;n s&aacute;ch &#273;&#7875; ch&#7889;ng spam.</li>
+<li>Health check n&#7897;i b&#7897; c&oacute; policy ri&ecirc;ng.</li>
+<li>Job &#273;&atilde; nh&#7853;n v&agrave;o queue d&ugrave;ng concurrency/backpressure thay v&igrave; ch&#7881; request rate.</li>
+</ul>
+
+<h2>11. Redis l&#7895;i: fail-open hay fail-closed?</h2>
+<p><strong>Fail-open</strong> cho request &#273;i qua khi limiter unavailable, ph&ugrave; h&#7907;p endpoint &#273;&#7885;c &iacute;t r&#7911;i ro nh&#432;ng c&oacute; th&#7875; l&agrave;m dependency qu&aacute; t&#7843;i. <strong>Fail-closed</strong> t&#7915; ch&#7889;i, ph&ugrave; h&#7907;p login, OTP, thanh to&aacute;n ho&#7863;c gi&#7899;i h&#7841;n chi ph&iacute; nghi&ecirc;m ng&#7863;t nh&#432;ng bi&#7871;n Redis th&agrave;nh dependency availability.</p>
+<p>C&oacute; th&#7875; d&ugrave;ng chi&#7871;n l&#432;&#7907;c lai: timeout Redis r&#7845;t ng&#7855;n, local emergency limiter cho t&#7915;ng instance, circuit breaker v&agrave; policy theo route. Kh&ocirc;ng silently bypass; ph&#7843;i c&oacute; metric/c&#7843;nh b&aacute;o khi fallback &#273;&#432;&#7907;c k&iacute;ch ho&#7841;t.</p>
+
+<h2>12. Hot key, memory v&agrave; multi-region</h2>
+<p>Global key cho to&agrave;n h&#7879; th&#7889;ng d&#7877; tr&#7903; th&agrave;nh hot key. Ph&acirc;n b&#7893; limit theo tenant/route ho&#7863;c chia ng&acirc;n s&aacute;ch theo region khi t&iacute;nh nh&#7845;t qu&aacute;n tuy&#7879;t &#273;&#7889;i kh&ocirc;ng c&#7847;n thi&#7871;t. Multi-region limiter &#273;&#7891;ng b&#7897; m&#7841;nh l&agrave;m t&#259;ng latency; quota region c&#7897;ng l&#7841;i c&oacute; th&#7875; v&#432;&#7907;t global limit trong th&#7901;i gian ng&#7855;n, n&ecirc;n &#273;&#7875; safety margin.</p>
+<p>&#272;&#7863;t TTL cho m&#7885;i key t&#7841;m. Theo d&otilde;i memory, eviction, command latency v&agrave; hit rate. Kh&ocirc;ng d&ugrave;ng Redis cache v&#7899;i eviction t&ugrave;y &yacute; m&agrave; kh&ocirc;ng hi&#7875;u h&#7853;u qu&#7843;: key limiter b&#7883; evict c&oacute; th&#7875; reset ng&acirc;n s&aacute;ch s&#7899;m.</p>
+
+<h2>13. Observability</h2>
+<ul>
+<li>Allowed v&agrave; rejected theo route, tenant, plan v&agrave; region.</li>
+<li>T&#7927; l&#7879; 429 v&agrave; s&#7889; subject ch&#7841;m ng&#432;&#7905;ng.</li>
+<li>Redis latency, timeout, error, memory v&agrave; eviction.</li>
+<li>Th&#7901;i gian ch&#7841;y Lua/function v&agrave; hot key.</li>
+<li>S&#7889; l&#7847;n fail-open/fail-closed/fallback local.</li>
+<li>T&#432;&#417;ng quan gi&#7919;a rejection, downstream latency v&agrave; saturation.</li>
+</ul>
+<p>Kh&ocirc;ng g&#7855;n raw user ID v&agrave;o metric cardinality cao. Log c&oacute; sampling v&agrave; hash identity; dashboard d&ugrave;ng dimension gi&#7899;i h&#7841;n nh&#432; route/plan/region.</p>
+
+<h2>14. Ki&#7875;m th&#7917; tr&#432;&#7899;c production</h2>
+<ol>
+<li>Unit test th&#7901;i &#273;i&#7875;m bi&ecirc;n c&#7917;a s&#7893;, refill v&agrave; request cost.</li>
+<li>Concurrency test nhi&#7873;u request c&ugrave;ng m&#7897;t key.</li>
+<li>Load test v&#7899;i nhi&#7873;u key v&agrave; m&#7897;t hot key.</li>
+<li>Chaos test Redis timeout, failover v&agrave; connection pool c&#7841;n.</li>
+<li>X&aacute;c minh TTL, memory growth v&agrave; cleanup.</li>
+<li>Test client x&#7917; l&yacute; 429, Retry-After v&agrave; jitter.</li>
+<li>Canary policy v&#7899;i ng&#432;&#7905;ng cao, ch&#7881; quan s&aacute;t tr&#432;&#7899;c khi enforcement.</li>
+</ol>
+
+<h2>Checklist thi&#7871;t k&#7871;</h2>
+<ul>
+<li>Policy g&#7855;n v&#7899;i t&agrave;i nguy&ecirc;n v&agrave; chi ph&iacute; th&#7921;c t&#7871;.</li>
+<li>Identity &#432;u ti&ecirc;n user/API key/tenant, kh&ocirc;ng ch&#7881; IP.</li>
+<li>Thu&#7853;t to&aacute;n ph&ugrave; h&#7907;p burst v&agrave; &#273;&#7897; ch&iacute;nh x&aacute;c c&#7847;n thi&#7871;t.</li>
+<li>Quy&#7871;t &#273;&#7883;nh atomic trong Redis v&agrave; key c&oacute; TTL.</li>
+<li>429 c&oacute; h&#432;&#7899;ng d&#7851;n retry nh&#7845;t qu&aacute;n.</li>
+<li>Fail-open/closed &#273;&#432;&#7907;c ch&#7885;n theo route v&agrave; c&oacute; c&#7843;nh b&aacute;o.</li>
+<li>Gi&#7899;i h&#7841;n c&oacute; version, feature flag v&agrave; kh&#7843; n&#259;ng rollback.</li>
+<li>Dashboard &#273;o rejection c&ugrave;ng s&#7913;c kh&#7887;e dependency.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Rate limiting t&#7889;t l&agrave; c&#417; ch&#7871; &#273;i&#7873;u ph&#7889;i capacity, kh&ocirc;ng ph&#7843;i m&#7897;t con s&#7889; t&ugrave;y &yacute; &#273;&#7863;t tr&#432;&#7899;c API. H&atilde;y b&#7855;t &#273;&#7847;u t&#7915; identity v&agrave; chi ph&iacute;, ch&#7885;n fixed/sliding/token bucket theo h&agrave;nh vi burst, th&#7921;c thi quy&#7871;t &#273;&#7883;nh atomic tr&ecirc;n Redis, tr&#7843; 429 h&#7919;u &iacute;ch v&agrave; chu&#7849;n b&#7883; cho ch&iacute;nh l&uacute;c Redis g&#7863;p s&#7921; c&#7889;. Policy r&otilde; r&agrave;ng, quan s&aacute;t &#273;&#432;&#7907;c v&agrave; rollout d&#7847;n s&#7869; b&#7843;o v&#7879; h&#7879; th&#7889;ng m&agrave; kh&ocirc;ng g&acirc;y kh&oacute; ch&#7883;u kh&ocirc;ng c&#7847;n thi&#7871;t cho ng&#432;&#7901;i d&ugrave;ng h&#7907;p l&#7879;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://www.rfc-editor.org/rfc/rfc9333.html" target="_blank" rel="noopener noreferrer">RFC 9333: RateLimit Fields for HTTP</a></li><li><a href="https://redis.io/docs/latest/develop/use-cases/rate-limiter/" target="_blank" rel="noopener noreferrer">Redis: Rate limiter use case</a></li><li><a href="https://redis.io/docs/latest/develop/programmability/" target="_blank" rel="noopener noreferrer">Redis programmability and atomic execution</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

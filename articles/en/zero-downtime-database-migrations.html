@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">zero-downtime-database-migrations-expand-contract</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Zero-Downtime Database Migrations with Expand&ndash;Contract</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">zero downtime migration, database migration, expand contract, PostgreSQL, backfill, dual write, schema migration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Database, PostgreSQL, Migration, Zero Downtime, Backend, DevOps, SQL</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">A practical guide to zero-downtime database migrations using Expand&ndash;Migrate&ndash;Contract, backward compatibility, batched backfills, concurrent indexes, constraints, and rollback planning.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/zero-downtime-database-migrations.jpg" alt="Zero-Downtime Database Migrations: Expand, Migrate, Contract" width="1440" height="810"></p><h1>Zero-Downtime Database Migrations: Expand, Migrate, Contract</h1><p><strong>A successful <code>ALTER TABLE</code> does not automatically make a deployment safe.</strong> In production, old and new application versions commonly overlap for minutes or longer. A migration that locks a table, renames a column immediately, or backfills millions of rows in one transaction can increase latency, exhaust the connection pool, and make rollback impossible.</p>
+<p>The <strong>Expand&ndash;Migrate&ndash;Contract</strong> pattern divides a schema change into several backward-compatible releases. The service remains available while code and data gradually move to the new structure.</p>
+
+<h2>Why do migrations cause downtime?</h2>
+<p>Downtime usually comes from locks and version incompatibility rather than SQL syntax:</p>
+<ul>
+<li>Old application instances still read a column that was renamed or removed.</li>
+<li><code>ALTER TABLE</code> waits behind a long transaction and then blocks incoming queries.</li>
+<li>A regular index build scans a large table while blocking writes.</li>
+<li>A massive backfill creates WAL, replication lag, table bloat, and an I/O spike.</li>
+<li>A new constraint forces the database to scan all existing data during deployment.</li>
+</ul>
+<blockquote>The core rule: evolve the database and application in steps where every step works with both the version before it and the version after it.</blockquote>
+
+<h2>The three Expand&ndash;Migrate&ndash;Contract stages</h2>
+<ol>
+<li><strong>Expand:</strong> add the new structure while preserving the old one.</li>
+<li><strong>Migrate:</strong> make the application read and write the new structure, backfill old data, and verify it.</li>
+<li><strong>Contract:</strong> remove obsolete code and schema only after every old consumer is gone.</li>
+</ol>
+<p>These should be independent deployments. The observation period between them may last hours or days depending on traffic, observability, and the release cycle.</p>
+
+<h2>Example: split a customer's full name</h2>
+<p>The <code>customers</code> table currently stores <code>full_name</code>. We want separate <code>first_name</code> and <code>last_name</code> columns. Renaming or deleting <code>full_name</code> in one migration is unsafe because old application instances still depend on it.</p>
+
+<h2>Stage 1: Expand the schema</h2>
+<pre><code>ALTER TABLE customers
+    ADD COLUMN first_name text,
+    ADD COLUMN last_name text;</code></pre>
+<p>The new columns initially allow <code>NULL</code> because historical rows have not been migrated. This deployment only expands the schema. Set short timeouts so the migration fails early instead of waiting in a lock queue and causing a pile-up:</p>
+<pre><code>SET lock_timeout = '2s';
+SET statement_timeout = '15s';
+
+ALTER TABLE customers ADD COLUMN first_name text;</code></pre>
+<p>If the lock cannot be acquired, stop and retry in a safer window. Do not blindly increase the timeout; identify the long-running transaction first.</p>
+
+<h2>Stage 2: Deploy code compatible with both schemas</h2>
+<p>The transition release can write the old and new representations:</p>
+<pre><code>UPDATE customers
+SET full_name = :full_name,
+    first_name = :first_name,
+    last_name = :last_name
+WHERE id = :id;</code></pre>
+<p>Reads prefer new columns and fall back to the old one:</p>
+<pre><code>SELECT
+    id,
+    COALESCE(first_name || ' ' || last_name, full_name) AS display_name
+FROM customers
+WHERE id = :id;</code></pre>
+<p>Dual-write should be temporary. Track records missing new values and log mismatches between representations. If several services write the table, every writer must be upgraded before proceeding.</p>
+
+<h2>Stage 3: Backfill in batches</h2>
+<p>Do not update the whole table in one transaction. Process small primary-key ranges, commit between batches, and throttle the job:</p>
+<pre><code>UPDATE customers
+SET first_name = split_part(full_name, ' ', 1),
+    last_name = substring(full_name FROM position(' ' IN full_name) + 1)
+WHERE id &gt; :last_id
+  AND id &lt;= :next_id
+  AND first_name IS NULL;</code></pre>
+<p>Real name parsing requires better business rules than this simplified SQL. The important property is <strong>idempotency</strong>: rerunning the job must not corrupt completed rows.</p>
+<ul>
+<li>Batch by primary key instead of <code>OFFSET</code>.</li>
+<li>Measure batch duration, row count, replication lag, CPU, I/O, and WAL.</li>
+<li>Reduce the batch size or pause under database pressure.</li>
+<li>Store checkpoints for recovery.</li>
+<li>Never keep a transaction open while sleeping.</li>
+</ul>
+
+<h2>Verify before switching the read path</h2>
+<pre><code>SELECT count(*)
+FROM customers
+WHERE first_name IS NULL OR last_name IS NULL;</code></pre>
+<p>Beyond counting nulls, compare samples and business invariants. Shadow reads can evaluate both representations, expose the new result to a small traffic percentage, and record differences without affecting every user.</p>
+<p>Once verification passes, deploy a version that reads only the new columns while continuing to write the old column during an observation window. A feature flag offers a quick read-path fallback without rolling back the schema.</p>
+
+<h2>Add constraints without a long blocking scan</h2>
+<p>PostgreSQL supports <code>CHECK ... NOT VALID</code>, which enforces the rule for new writes without immediately scanning all historical rows. Validate separately:</p>
+<pre><code>ALTER TABLE customers
+ADD CONSTRAINT customers_first_name_present
+CHECK (first_name IS NOT NULL) NOT VALID;
+
+ALTER TABLE customers
+VALIDATE CONSTRAINT customers_first_name_present;</code></pre>
+<p>After validation, convert it to <code>NOT NULL</code> according to your PostgreSQL version and tested plan. <code>NOT VALID</code> applies only to selected constraint types such as checks and foreign keys; do not assume universal support.</p>
+
+<h2>Build an index on a large table</h2>
+<pre><code>CREATE INDEX CONCURRENTLY idx_customers_last_name
+ON customers (last_name);</code></pre>
+<p><code>CONCURRENTLY</code> reduces write blocking but takes longer, consumes resources, and cannot run inside a regular transaction block. A failure may leave an <code>INVALID</code> index, so deployment automation must detect and resolve it before retrying.</p>
+<p>Do not add an index merely because a column is new. Validate real queries with <code>EXPLAIN (ANALYZE, BUFFERS)</code> in a representative environment and monitor after release.</p>
+
+<h2>Change a data type safely</h2>
+<p>A direct type change may rewrite the table or hold a long lock. For large tables, create a new column, dual-write, backfill, and then switch reads:</p>
+<pre><code>ALTER TABLE orders ADD COLUMN amount_cents bigint;
+
+UPDATE orders
+SET amount_cents = round(amount * 100)
+WHERE amount_cents IS NULL
+  AND id &gt; :last_id
+  AND id &lt;= :next_id;</code></pre>
+<p>Only after every reader and writer uses <code>amount_cents</code> should <code>amount</code> enter the Contract stage.</p>
+
+<h2>The final Contract stage</h2>
+<p>Remove old structures only when telemetry proves they are unused. A typical order is:</p>
+<ol>
+<li>Stop dual-writing the old column.</li>
+<li>Observe at least one complete deployment cycle and slow background workers.</li>
+<li>Remove fallback code, temporary dashboards, and migration jobs.</li>
+<li>Set a lock timeout and remove old constraints, indexes, or columns in a separate deployment.</li>
+</ol>
+<pre><code>SET lock_timeout = '2s';
+ALTER TABLE customers DROP COLUMN full_name;</code></pre>
+<p>In PostgreSQL, dropping a column generally makes it invisible rather than immediately reclaiming all disk space. Do not trigger a table rewrite solely to recover space without assessing I/O, locks, and the maintenance window.</p>
+
+<h2>Rollback is not simply running &ldquo;down&rdquo;</h2>
+<p>A code rollback is safe only while the new schema remains compatible with the old application. That is why Expand preserves old columns and the transition release dual-writes them. After Contract, recovery becomes harder because old data may no longer be updated or may have been deleted.</p>
+<p>Every plan should state which code version can be restored, what data could be lost, whether the backfill is reversible, and where the point of no return lies. A backup does not replace fast rollback; restoring a large database may exceed the service SLA.</p>
+
+<h2>Production checklist</h2>
+<ul>
+<li>Test against a copy with production-like size and data distribution.</li>
+<li>Identify the lock mode, lock duration, and whether a table rewrite occurs.</li>
+<li>Set appropriate <code>lock_timeout</code> and <code>statement_timeout</code>.</li>
+<li>Ensure old and new code can overlap during a rolling deployment.</li>
+<li>Make the backfill idempotent, checkpointed, throttled, and observable.</li>
+<li>Monitor errors, latency, connection pools, replication lag, WAL, and disk.</li>
+<li>Use a feature flag for the read path and maintain a stop/resume runbook.</li>
+<li>Contract only after confirming that no old consumer remains.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Zero-downtime database migration is a compatibility and operations problem, not merely a SQL problem. Expand introduces the new path without breaking the old one; Migrate moves code and data with observation; Contract removes legacy structures after evidence says it is safe. Small reversible steps are easier to pause, measure, and roll back than one all-or-nothing migration.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.postgresql.org/docs/current/sql-altertable.html" target="_blank" rel="noopener noreferrer">PostgreSQL: ALTER TABLE</a></li><li><a href="https://www.postgresql.org/docs/current/ddl-alter.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Modifying Tables</a></li><li><a href="https://www.postgresql.org/docs/current/sql-createindex.html" target="_blank" rel="noopener noreferrer">PostgreSQL: CREATE INDEX</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

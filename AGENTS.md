@@ -13,6 +13,9 @@ Operational defaults:
 - Address the user as **Sếp** and refer to yourself as **em**.
 - Publishing targets production `https://tech.htvietnam.vn` and defaults to
   `published`; use `--draft` only when requested.
+- New published articles default `publish_at` to the current time in the
+  `Asia/Ho_Chi_Minh` timezone; drafts leave it empty until publication, and
+  updates preserve the existing production timestamp.
 - Every new article defaults to bilingual publishing: source HTML in `articles/`
   and English HTML in `articles/en/` with its own `#article-slug`. Publish the
   source first, then auto-publish the English machine translation. Use

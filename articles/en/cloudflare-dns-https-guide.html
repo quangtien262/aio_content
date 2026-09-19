@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">configure-cloudflare-dns-https-securely</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Configure Cloudflare DNS and HTTPS Securely</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Cloudflare DNS, HTTPS, Full strict, DNSSEC, Origin CA, website security, SSL configuration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Cloudflare, DNS, HTTPS, TLS, DNSSEC, Origin Server, Website Security, DevOps</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Move DNS to Cloudflare, enable Full (strict) HTTPS and DNSSEC, protect the origin, preserve email, and troubleshoot common SSL errors.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/cloudflare-dns-https-guide.jpg" alt="How to Configure Cloudflare DNS and HTTPS Securely" width="1440" height="810"></p><h1>How to Configure Cloudflare DNS and HTTPS Securely</h1><p><strong>Cloudflare can improve HTTPS, performance, and attack resistance, but a rushed DNS migration can interrupt the website, email, or APIs.</strong> This guide uses a safer sequence: inventory DNS, prepare the origin certificate, change nameservers, enable proxying, select Full (strict), activate DNSSEC, and validate services before tightening the firewall.</p>
+
+<h2>Where Cloudflare sits in the architecture</h2>
+<p>For a proxied web record, the browser establishes TLS with Cloudflare and Cloudflare creates a separate connection to the origin. Because there are two legs, a browser padlock alone does not prove that the Cloudflare-to-origin connection is encrypted and correctly authenticated. The SSL/TLS mode controls that second leg.</p>
+<blockquote>The goal is valid end-to-end HTTPS. Do not use Flexible as a long-term fix: traffic to the origin remains unencrypted and redirect configurations commonly create loops.</blockquote>
+
+<h2>1. Prepare before changing nameservers</h2>
+<p>Confirm access to the domain registrar, current DNS provider, and web server. Export the zone or capture every existing record. Document the origin IP, email provider, subdomains, verification records, APIs, and webhooks.</p>
+<ul><li>Test the site directly at the origin and confirm port 443 is open.</li><li>Install a valid origin TLS certificate for the correct hostnames.</li><li>Record A, AAAA, CNAME, MX, TXT, CAA, and SRV entries, especially SPF, DKIM, and DMARC.</li><li>Lower TTL in advance when the current provider allows it.</li><li>Define a monitoring window and rollback path.</li></ul>
+<p>Do not immediately delete the old DNS zone. Retain it for several days as a reference while caches and delegation update.</p>
+
+<h2>2. Add the domain and review every record</h2>
+<p>Add the domain to Cloudflare, choose the appropriate plan, and let it scan records. Treat the scan as a starting point and compare every entry with the original zone. Recreate anything missing before changing nameservers.</p>
+<p>For website A, AAAA, and CNAME records, an orange cloud means traffic passes through Cloudflare. DNS only exposes the destination and clients connect directly. MX and TXT records are not proxied, and mail-server hostnames should remain DNS only.</p>
+<ul><li><strong>Usually proxy:</strong> HTTP/HTTPS sites that need CDN, WAF, or origin-IP protection.</li><li><strong>Usually DNS only:</strong> mail, SSH, FTP, unsupported ports, and services requiring direct connections.</li><li><strong>Evaluate first:</strong> APIs, webhooks, and WebSockets; proxy them only when protocol, upload, and timeout limits fit.</li></ul>
+
+<h2>3. Change nameservers at the registrar</h2>
+<p>Cloudflare assigns two nameservers. Replace the registrar's current nameservers with those exact values. Do not add IP addresses or create them merely as NS records in the old zone. Wait for the zone to become Active, then query it from multiple networks.</p>
+<pre><code>dig NS example.com
+dig A example.com
+dig MX example.com
+dig TXT example.com</code></pre>
+<p>On Windows, use <code>nslookup -type=ns example.com</code>. Cached answers can differ until their TTL expires. A missing web or email record, however, must be corrected in Cloudflare rather than solved by waiting.</p>
+
+<h2>4. Install TLS at the origin</h2>
+<p>Prefer a publicly trusted certificate such as Let&rsquo;s Encrypt when the origin may need direct access. Cloudflare Origin CA works well when the origin is reachable only through Cloudflare's proxy, but browsers do not trust it when proxying is disabled or users connect directly.</p>
+<p>The certificate must be unexpired, cover the correct hostname, and match its private key. Configure the virtual host to return the right certificate through SNI. Monitor an Origin CA certificate's expiry yourself because Cloudflare currently does not send expiry notifications for it.</p>
+<pre><code>openssl s_client -connect 203.0.113.10:443 -servername example.com</code></pre>
+<p>This command inspects the origin certificate chain. Never commit private keys, a Global API Key, or API tokens; use a secret manager and least-privilege tokens.</p>
+
+<h2>5. Select Full (strict) and avoid Flexible</h2>
+<p>Choose <strong>Full (strict)</strong> after the origin has a valid certificate. It encrypts both legs and checks that the origin certificate is current, matches the hostname, and was issued by a public CA or Cloudflare Origin CA. It should be the production default.</p>
+<ul><li><strong>Flexible:</strong> uses HTTP to the origin; unsuitable for sensitive traffic and prone to redirect loops.</li><li><strong>Full:</strong> encrypts the origin connection without validating its certificate.</li><li><strong>Full (strict):</strong> encrypts and validates the origin; failed validation commonly produces error 526.</li></ul>
+<p>Once strict mode works, redirect HTTP to HTTPS in one intentional place. Configure trusted proxy headers when the application sits behind a reverse proxy so it does not redirect indefinitely. Repair mixed content by serving resources over HTTPS.</p>
+
+<h2>6. Enable DNSSEC in the correct order</h2>
+<p>DNSSEC helps resolvers detect forged DNS responses. Enable it in Cloudflare, copy the DS information, and add the exact DS record at the registrar. Wait for confirmation and validate the signed delegation with a DNSSEC checker.</p>
+<blockquote>Do not leave an old DS record when changing authoritative DNS providers. A mismatched DS can make the domain fail for validating resolvers.</blockquote>
+<p>When moving away from Cloudflare later, follow both providers' DNSSEC transition procedure or remove the DS at the correct time instead of only changing nameservers.</p>
+
+<h2>7. Protect the origin after validation</h2>
+<p>A proxy cannot hide an origin IP that remains in DNS history, DNS-only subdomains, or a mail server sharing the same address. Separate web and mail where practical, audit old records, and avoid publishing the IP in application content.</p>
+<p>After the site is stable, the origin firewall can allow web traffic only from Cloudflare IP ranges. Update that list automatically from the official source and retain a separate administration path. Authenticated Origin Pulls adds assurance that origin connections come from Cloudflare. Cloudflare Tunnel is another option that uses an authenticated outbound connection without exposing a public web port.</p>
+<p>Check IPv4, IPv6, health checks, cron jobs, webhooks, and monitoring before enforcing rules. Authenticated Origin Pulls is not required for traffic already carried by Cloudflare Tunnel.</p>
+
+<h2>8. Apply caching and security carefully</h2>
+<p>Start by caching static images, CSS, and JavaScript. Do not indiscriminately cache sign-in pages, carts, dashboards, personalized content, or write APIs. Send explicit <code>Cache-Control</code> headers and purge affected objects after urgent deployments.</p>
+<p>Minimum TLS Version, WAF, and rate limiting can be configured as the plan permits. Enable HSTS only after every affected site and subdomain works reliably over HTTPS. Incorrect <code>includeSubDomains</code> or preload settings can make HTTP-only subdomains inaccessible for a long time.</p>
+
+<h2>9. Test the website, email, and business flows</h2>
+<pre><code>curl -I http://example.com
+curl -I https://example.com
+curl --resolve example.com:443:203.0.113.10 https://example.com/ -I</code></pre>
+<p>Confirm that HTTP redirects once to HTTPS, canonical hostnames do not create chains, the certificate covers the domain, and the page has no mixed content. Test sign-in, forms, uploads, payments, APIs, webhooks, WebSockets, and background jobs.</p>
+<p>Send and receive email both internally and externally. Verify MX destinations, ensure the mail hostname is not proxied, retain one valid SPF record, and confirm DKIM and DMARC survived the zone migration.</p>
+
+<h2>10. Diagnose common errors</h2>
+<ul><li><strong>521 Web server is down:</strong> the origin rejects connections, its web service is stopped, or a firewall blocks Cloudflare.</li><li><strong>522 Connection timed out:</strong> the origin did not respond in time; inspect routing, server load, and firewall rules.</li><li><strong>525 SSL handshake failed:</strong> origin TLS negotiation failed; inspect protocols, ciphers, SNI, and certificates.</li><li><strong>526 Invalid SSL certificate:</strong> Full (strict) cannot validate the origin certificate; check expiry, hostname, and CA chain.</li><li><strong>Redirect loop:</strong> commonly caused by Flexible plus an origin HTTPS redirect, or an application that does not trust proxy headers.</li><li><strong>Email stopped:</strong> usually a missing MX/TXT record, a proxied mail hostname, or invalid SPF/DKIM.</li></ul>
+
+<h2>Completion checklist</h2>
+<ol><li>The zone is Active and the registrar shows the assigned nameservers.</li><li>Website, email, verification, and service records match the original inventory.</li><li>The origin has a valid certificate and SSL/TLS uses Full (strict).</li><li>HTTP reaches HTTPS without loops or mixed content.</li><li>DNSSEC validates and the registrar's DS matches.</li><li>Sending, receiving, SPF, DKIM, and DMARC all pass.</li><li>Authentication, forms, APIs, webhooks, and uploads have been tested.</li><li>Caches do not store private content and firewall rules do not block required services.</li><li>Certificate expiry and 5xx errors are monitored.</li></ol>
+
+<h2>Conclusion</h2>
+<p>A secure Cloudflare deployment is not about enabling every feature at once. Preserve DNS, prepare HTTPS at the origin, change nameservers, validate services, turn on Full (strict) and DNSSEC, and only then restrict origin access. Checkpoints between stages provide edge protection and CDN benefits without sacrificing availability.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/" target="_blank" rel="noopener noreferrer">Cloudflare: SSL/TLS encryption modes</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/" target="_blank" rel="noopener noreferrer">Cloudflare: Full (strict)</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/" target="_blank" rel="noopener noreferrer">Cloudflare: Origin CA certificates</a></li><li><a href="https://developers.cloudflare.com/dns/proxy-status/" target="_blank" rel="noopener noreferrer">Cloudflare: Proxy status</a></li><li><a href="https://developers.cloudflare.com/dns/dnssec/" target="_blank" rel="noopener noreferrer">Cloudflare: DNSSEC</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/" target="_blank" rel="noopener noreferrer">Cloudflare: Authenticated Origin Pulls</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

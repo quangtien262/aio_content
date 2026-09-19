@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&#7845;u h&igrave;nh Cloudflare DNS v&agrave; HTTPS an to&agrave;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Cloudflare DNS, HTTPS, Full strict, DNSSEC, Origin CA, b&#7843;o m&#7853;t website, c&#7845;u h&igrave;nh SSL</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Cloudflare, DNS, HTTPS, TLS, DNSSEC, Origin Server, Website Security, DevOps</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n chuy&#7875;n DNS sang Cloudflare, b&#7853;t HTTPS Full (strict), DNSSEC, b&#7843;o v&#7879; m&aacute;y ch&#7911; g&#7889;c v&agrave; x&#7917; l&yacute; l&#7895;i SSL, email th&#432;&#7901;ng g&#7863;p.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/cloudflare-dns-https-guide.jpg" alt="H&#432;&#7899;ng d&#7851;n c&#7845;u h&igrave;nh Cloudflare DNS v&agrave; HTTPS an to&agrave;n cho website" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&#7845;u h&igrave;nh Cloudflare DNS v&agrave; HTTPS an to&agrave;n cho website</h1><p><strong>Cloudflare c&oacute; th&#7875; c&#7843;i thi&#7879;n HTTPS, hi&#7879;u n&#259;ng v&agrave; kh&#7843; n&#259;ng ch&#7889;ng t&#7845;n c&ocirc;ng cho website, nh&#432;ng m&#7897;t l&#7847;n chuy&#7875;n DNS v&#7897;i v&agrave;ng c&#361;ng c&oacute; th&#7875; l&agrave;m gi&aacute;n &#273;o&#7841;n web, email ho&#7863;c API.</strong> H&#432;&#7899;ng d&#7851;n n&agrave;y &#273;i theo th&#7913; t&#7921; an to&agrave;n: ki&#7875;m k&ecirc; DNS, chu&#7849;n b&#7883; ch&#7913;ng ch&#7881; t&#7841;i m&aacute;y ch&#7911; g&#7889;c, chuy&#7875;n nameserver, b&#7853;t proxy, ch&#7885;n Full (strict), k&iacute;ch ho&#7841;t DNSSEC v&agrave; ki&#7875;m th&#7917; tr&#432;&#7899;c khi si&#7871;t firewall.</p>
+
+<h2>Cloudflare n&#7857;m &#7903; &#273;&acirc;u trong ki&#7871;n tr&uacute;c?</h2>
+<p>Khi b&#7843;n ghi web b&#7853;t proxy, tr&igrave;nh duy&#7879;t k&#7871;t n&#7889;i TLS t&#7899;i Cloudflare; Cloudflare t&#7841;o m&#7897;t k&#7871;t n&#7889;i ri&ecirc;ng t&#7899;i m&aacute;y ch&#7911; g&#7889;c. V&igrave; c&oacute; hai ch&#7863;ng, bi&#7875;u t&#432;&#7907;ng &#7893; kh&oacute;a tr&ecirc;n tr&igrave;nh duy&#7879;t kh&ocirc;ng t&#7921; ch&#7913;ng minh ch&#7863;ng Cloudflare&ndash;origin &#273;&atilde; &#273;&#432;&#7907;c m&atilde; h&oacute;a v&agrave; x&aacute;c th&#7921;c &#273;&uacute;ng. Ch&#7871; &#273;&#7897; SSL/TLS quy&#7871;t &#273;&#7883;nh ch&#7863;ng th&#7913; hai n&agrave;y.</p>
+<blockquote>M&#7909;c ti&ecirc;u n&ecirc;n l&agrave; HTTPS h&#7907;p l&#7879; t&#7915; &#273;&#7847;u &#273;&#7871;n cu&#7889;i. Kh&ocirc;ng d&ugrave;ng Flexible nh&#432; gi&#7843;i ph&aacute;p l&acirc;u d&agrave;i v&igrave; l&#432;u l&#432;&#7907;ng t&#7915; Cloudflare t&#7899;i origin kh&ocirc;ng &#273;&#432;&#7907;c m&atilde; h&oacute;a v&agrave; c&#7845;u h&igrave;nh redirect r&#7845;t d&#7877; t&#7841;o v&ograve;ng l&#7863;p.</blockquote>
+
+<h2>1. Chu&#7849;n b&#7883; tr&#432;&#7899;c khi &#273;&#7893;i nameserver</h2>
+<p>&#272;&#259;ng nh&#7853;p &#273;&#432;&#7907;c c&#7843; nh&agrave; &#273;&#259;ng k&yacute; t&ecirc;n mi&#7873;n, h&#7879; th&#7889;ng DNS hi&#7879;n t&#7841;i v&agrave; m&aacute;y ch&#7911; web. Xu&#7845;t zone DNS ho&#7863;c ch&#7909;p l&#7841;i to&agrave;n b&#7897; b&#7843;n ghi. Ghi r&otilde; IP origin, nh&agrave; cung c&#7845;p email, c&aacute;c subdomain, d&#7883;ch v&#7909; x&aacute;c minh, API v&agrave; webhook &#273;ang s&#7917; d&#7909;ng.</p>
+<ul><li>Ki&#7875;m tra website ho&#7841;t &#273;&#7897;ng tr&#7921;c ti&#7871;p t&#7841;i origin v&agrave; c&#7893;ng 443 &#273;ang m&#7903;.</li><li>&#272;&#7843;m b&#7843;o origin c&oacute; ch&#7913;ng ch&#7881; TLS h&#7907;p l&#7879; cho &#273;&uacute;ng hostname.</li><li>Ghi l&#7841;i A, AAAA, CNAME, MX, TXT, CAA v&agrave; SRV; ch&uacute; &yacute; SPF, DKIM, DMARC.</li><li>Gi&#7843;m TTL tr&#432;&#7899;c khi chuy&#7875;n n&#7871;u h&#7879; th&#7889;ng DNS hi&#7879;n t&#7841;i cho ph&eacute;p.</li><li>Chu&#7849;n b&#7883; c&#7917;a s&#7893; theo d&otilde;i v&agrave; c&aacute;ch quay l&#7841;i c&#7845;u h&igrave;nh c&#361;.</li></ul>
+<p>Kh&ocirc;ng x&oacute;a zone c&#361; ngay sau khi thay nameserver. Gi&#7919; n&oacute; trong v&agrave;i ng&agrave;y &#273;&#7875; c&oacute; d&#7919; li&#7879;u &#273;&#7889;i chi&#7871;u trong th&#7901;i gian c&#7853;p nh&#7853;t DNS.</p>
+
+<h2>2. Th&ecirc;m domain v&agrave; r&agrave; so&aacute;t b&#7843;n ghi</h2>
+<p>Th&ecirc;m domain v&agrave;o Cloudflare, ch&#7885;n g&oacute;i ph&ugrave; h&#7907;p v&agrave; ch&#7901; h&#7879; th&#7889;ng qu&eacute;t b&#7843;n ghi. K&#7871;t qu&#7843; qu&eacute;t ch&#7881; l&agrave; &#273;i&#7875;m kh&#7903;i &#273;&#7847;u; h&atilde;y so s&aacute;nh t&#7915;ng d&ograve;ng v&#7899;i zone g&#7889;c. T&#7841;o l&#7841;i nh&#7919;ng b&#7843;n ghi b&#7883; thi&#7871;u tr&#432;&#7899;c khi &#273;&#7893;i nameserver.</p>
+<p>V&#7899;i b&#7843;n ghi A, AAAA ho&#7863;c CNAME ph&#7909;c v&#7909; website, bi&#7875;u t&#432;&#7907;ng &#273;&aacute;m m&acirc;y m&agrave;u cam ngh&#297;a l&agrave; l&#432;u l&#432;&#7907;ng &#273;i qua Cloudflare. DNS only ch&#7881; tr&#7843; &#273;&#7883;a ch&#7881; &#273;&iacute;ch v&agrave; ng&#432;&#7901;i d&ugrave;ng k&#7871;t n&#7889;i tr&#7921;c ti&#7871;p. MX v&agrave; TXT kh&ocirc;ng &#273;&#432;&#7907;c proxy; m&aacute;y ch&#7911; mail c&#361;ng n&ecirc;n &#273;&#7875; DNS only.</p>
+<ul><li><strong>N&ecirc;n proxy:</strong> website v&agrave; subdomain HTTP/HTTPS mu&#7889;n d&ugrave;ng CDN, WAF ho&#7863;c che IP origin.</li><li><strong>N&ecirc;n &#273;&#7875; DNS only:</strong> mail, SSH, FTP, c&#7893;ng kh&ocirc;ng &#273;&#432;&#7907;c h&#7895; tr&#7907; v&agrave; d&#7883;ch v&#7909; c&#7847;n k&#7871;t n&#7889;i tr&#7921;c ti&#7871;p.</li><li><strong>C&#7847;n c&acirc;n nh&#7855;c:</strong> API, webhook v&agrave; WebSocket; proxy &#273;&#432;&#7907;c n&#7871;u giao th&#7913;c, gi&#7899;i h&#7841;n t&#7843;i l&ecirc;n v&agrave; timeout ph&ugrave; h&#7907;p.</li></ul>
+
+<h2>3. &#272;&#7893;i nameserver t&#7841;i nh&agrave; &#273;&#259;ng k&yacute;</h2>
+<p>Cloudflare cung c&#7845;p hai nameserver. Thay nameserver hi&#7879;n t&#7841;i t&#7841;i registrar b&#7857;ng &#273;&uacute;ng hai gi&aacute; tr&#7883; &#273;&oacute;, kh&ocirc;ng th&ecirc;m IP v&agrave; kh&ocirc;ng t&#7841;o ch&uacute;ng nh&#432; b&#7843;n ghi NS trong zone c&#361;. Ch&#7901; tr&#7841;ng th&aacute;i zone chuy&#7875;n sang Active r&#7891;i ki&#7875;m tra t&#7915; nhi&#7873;u m&#7841;ng.</p>
+<pre><code>dig NS example.com
+dig A example.com
+dig MX example.com
+dig TXT example.com</code></pre>
+<p>Tr&ecirc;n Windows c&oacute; th&#7875; d&ugrave;ng <code>nslookup -type=ns example.com</code>. DNS c&oacute; th&#7875; &#273;&#432;&#7907;c cache theo TTL n&ecirc;n k&#7871;t qu&#7843; ch&#432;a &#273;&#7891;ng nh&#7845;t ngay l&#7853;p t&#7913;c kh&ocirc;ng nh&#7845;t thi&#7871;t l&agrave; l&#7895;i. Tuy nhi&ecirc;n, n&#7871;u web ho&#7863;c email m&#7845;t b&#7843;n ghi, h&atilde;y b&#7893; sung t&#7841;i Cloudflare thay v&igrave; ch&#7901;.</p>
+
+<h2>4. C&agrave;i ch&#7913;ng ch&#7881; TLS t&#7841;i m&aacute;y ch&#7911; g&#7889;c</h2>
+<p>&#431;u ti&ecirc;n ch&#7913;ng ch&#7881; c&ocirc;ng khai nh&#432; Let&rsquo;s Encrypt n&#7871;u origin &#273;&ocirc;i l&uacute;c c&#7847;n truy c&#7853;p tr&#7921;c ti&#7871;p. Cloudflare Origin CA c&#361;ng ph&ugrave; h&#7907;p khi origin ch&#7881; nh&#7853;n l&#432;u l&#432;&#7907;ng qua proxy Cloudflare, nh&#432;ng tr&igrave;nh duy&#7879;t kh&ocirc;ng tin c&#7853;y ch&#7913;ng ch&#7881; n&agrave;y n&#7871;u t&#7855;t proxy ho&#7863;c truy c&#7853;p th&#7859;ng origin.</p>
+<p>Ch&#7913;ng ch&#7881; ph&#7843;i ch&#432;a h&#7871;t h&#7841;n, bao ph&#7911; &#273;&uacute;ng hostname v&agrave; &#273;i k&egrave;m private key t&#432;&#417;ng &#7913;ng. C&#7845;u h&igrave;nh virtual host &#273;&#7875; tr&#7843; &#273;&uacute;ng ch&#7913;ng ch&#7881; b&#7857;ng SNI. V&#7899;i Origin CA, t&#7921; theo d&otilde;i ng&agrave;y h&#7871;t h&#7841;n v&igrave; Cloudflare hi&#7879;n kh&ocirc;ng g&#7917;i th&ocirc;ng b&aacute;o h&#7871;t h&#7841;n cho lo&#7841;i ch&#7913;ng ch&#7881; n&agrave;y.</p>
+<pre><code>openssl s_client -connect 203.0.113.10:443 -servername example.com</code></pre>
+<p>L&#7879;nh tr&ecirc;n gi&uacute;p xem chu&#7895;i ch&#7913;ng ch&#7881; t&#7841;i origin. Kh&ocirc;ng &#273;&#432;a private key, Global API Key ho&#7863;c API token v&agrave;o source code; d&ugrave;ng secret manager v&agrave; token c&oacute; quy&#7873;n t&#7889;i thi&#7875;u.</p>
+
+<h2>5. Ch&#7885;n Full (strict), tr&aacute;nh Flexible</h2>
+<p>Trong SSL/TLS, ch&#7885;n <strong>Full (strict)</strong> khi origin &#273;&atilde; c&oacute; ch&#7913;ng ch&#7881; h&#7907;p l&#7879;. Ch&#7871; &#273;&#7897; n&agrave;y m&atilde; h&oacute;a c&#7843; hai ch&#7863;ng v&agrave; x&aacute;c minh ch&#7913;ng ch&#7881; origin c&ograve;n h&#7841;n, &#273;&uacute;ng hostname, &#273;&#432;&#7907;c c&#7845;p b&#7903;i CA c&ocirc;ng khai ho&#7863;c Cloudflare Origin CA. &#272;&acirc;y l&agrave; l&#7921;a ch&#7885;n n&ecirc;n d&ugrave;ng cho production.</p>
+<ul><li><strong>Flexible:</strong> Cloudflare d&ugrave;ng HTTP t&#7899;i origin; kh&ocirc;ng ph&ugrave; h&#7907;p v&#7899;i d&#7919; li&#7879;u nh&#7841;y c&#7843;m v&agrave; d&#7877; g&acirc;y redirect loop.</li><li><strong>Full:</strong> m&atilde; h&oacute;a t&#7899;i origin nh&#432;ng kh&ocirc;ng x&aacute;c minh t&iacute;nh h&#7907;p l&#7879; c&#7911;a ch&#7913;ng ch&#7881; origin.</li><li><strong>Full (strict):</strong> m&atilde; h&oacute;a v&agrave; x&aacute;c minh origin; l&#7895;i x&aacute;c minh th&#432;&#7901;ng tr&#7843; m&atilde; 526.</li></ul>
+<p>Sau khi strict ho&#7841;t &#273;&#7897;ng, b&#7853;t chuy&#7875;n h&#432;&#7899;ng HTTP sang HTTPS t&#7841;i m&#7897;t n&#417;i c&oacute; ch&#7911; &#273;&iacute;ch. N&#7871;u &#7913;ng d&#7909;ng &#273;&#7913;ng sau reverse proxy, c&#7845;u h&igrave;nh trusted proxy &#273;&#7875; &#7913;ng d&#7909;ng hi&#7875;u header giao th&#7913;c v&agrave; kh&ocirc;ng t&#7921; redirect v&ocirc; h&#7841;n. S&#7917;a mixed content b&#7857;ng URL HTTPS thay v&igrave; t&#7855;t ki&#7875;m tra tr&igrave;nh duy&#7879;t.</p>
+
+<h2>6. B&#7853;t DNSSEC &#273;&uacute;ng tr&igrave;nh t&#7921;</h2>
+<p>DNSSEC gi&uacute;p resolver ph&aacute;t hi&#7879;n c&acirc;u tr&#7843; l&#7901;i DNS b&#7883; gi&#7843; m&#7841;o. B&#7853;t DNSSEC t&#7841;i Cloudflare, l&#7845;y th&ocirc;ng tin DS r&#7891;i th&ecirc;m ch&iacute;nh x&aacute;c DS t&#7841;i registrar. Ch&#7901; tr&#7841;ng th&aacute;i x&aacute;c nh&#7853;n ho&#7841;t &#273;&#7897;ng v&agrave; ki&#7875;m tra b&#7857;ng c&ocirc;ng c&#7909; DNSSEC.</p>
+<blockquote>Kh&ocirc;ng &#273;&#7875; b&#7843;n ghi DS c&#361; khi &#273;&#7893;i nh&agrave; cung c&#7845;p DNS. DS kh&ocirc;ng kh&#7899;p c&oacute; th&#7875; khi&#7871;n domain kh&ocirc;ng ph&acirc;n gi&#7843;i &#273;&#432;&#7907;c v&#7899;i c&aacute;c resolver x&aacute;c th&#7921;c.</blockquote>
+<p>N&#7871;u sau n&agrave;y chuy&#7875;n nameserver kh&#7887;i Cloudflare, h&atilde;y th&#7921;c hi&#7879;n quy tr&igrave;nh chuy&#7875;n DNSSEC c&#7911;a hai nh&agrave; cung c&#7845;p ho&#7863;c x&oacute;a DS &#273;&uacute;ng th&#7901;i &#273;i&#7875;m, thay v&igrave; ch&#7881; &#273;&#7893;i nameserver.</p>
+
+<h2>7. B&#7843;o v&#7879; origin sau khi ki&#7875;m th&#7917;</h2>
+<p>Proxy kh&ocirc;ng che &#273;&#432;&#7907;c origin n&#7871;u IP v&#7851;n xu&#7845;t hi&#7879;n trong l&#7883;ch s&#7917; DNS, subdomain DNS only ho&#7863;c m&aacute;y ch&#7911; mail d&ugrave;ng chung IP. T&aacute;ch mail kh&#7887;i web n&#7871;u c&oacute; th&#7875;, r&agrave; so&aacute;t b&#7843;n ghi c&#361; v&agrave; kh&ocirc;ng c&ocirc;ng khai IP trong n&#7897;i dung &#7913;ng d&#7909;ng.</p>
+<p>Sau khi x&aacute;c nh&#7853;n web &#7893;n &#273;&#7883;nh, c&oacute; th&#7875; gi&#7899;i h&#7841;n c&#7893;ng web t&#7841;i firewall ch&#7881; nh&#7853;n d&#7843;i IP Cloudflare. C&#7853;p nh&#7853;t danh s&aacute;ch n&agrave;y t&#7921; &#273;&#7897;ng t&#7915; ngu&#7891;n ch&iacute;nh th&#7913;c v&agrave; gi&#7919; &#273;&#432;&#7901;ng qu&#7843;n tr&#7883; ri&ecirc;ng &#273;&#7875; tr&aacute;nh t&#7921; kh&oacute;a m&igrave;nh. Authenticated Origin Pulls b&#7893; sung x&aacute;c th&#7921;c r&#7857;ng k&#7871;t n&#7889;i t&#7899;i origin &#273;&#7871;n t&#7915; Cloudflare; Cloudflare Tunnel l&agrave; l&#7921;a ch&#7885;n kh&aacute;c khi mu&#7889;n k&#7871;t n&#7889;i outbound v&agrave; kh&ocirc;ng m&#7903; c&#7893;ng web c&ocirc;ng khai.</p>
+<p>Ch&#7881; si&#7871;t firewall sau khi ki&#7875;m tra IPv4, IPv6, health check, cron, webhook v&agrave; d&#7883;ch v&#7909; gi&aacute;m s&aacute;t. N&#7871;u d&ugrave;ng Tunnel th&igrave; kh&ocirc;ng c&#7847;n Authenticated Origin Pulls cho lu&#7891;ng Tunnel.</p>
+
+<h2>8. C&#7845;u h&igrave;nh cache v&agrave; b&#7843;o m&#7853;t c&oacute; ki&#7875;m so&aacute;t</h2>
+<p>Cache asset t&#297;nh nh&#432; &#7843;nh, CSS v&agrave; JavaScript tr&#432;&#7899;c. Kh&ocirc;ng cache t&ugrave;y ti&#7879;n trang &#273;&#259;ng nh&#7853;p, gi&#7887; h&agrave;ng, dashboard, n&#7897;i dung c&aacute; nh&acirc;n h&oacute;a ho&#7863;c API ghi d&#7919; li&#7879;u. &#272;&#7875; &#7913;ng d&#7909;ng g&#7917;i <code>Cache-Control</code> r&otilde; r&agrave;ng v&agrave; purge cache sau khi tri&#7875;n khai n&#7897;i dung c&#7847;n c&#7853;p nh&#7853;t ngay.</p>
+<p>C&oacute; th&#7875; &#273;&#7863;t Minimum TLS Version, WAF v&agrave; rate limiting t&ugrave;y g&oacute;i. Ch&#7881; b&#7853;t HSTS khi to&agrave;n b&#7897; website v&agrave; subdomain c&#7847;n &aacute;p d&#7909;ng &#273;&atilde; ch&#7841;y HTTPS &#7893;n &#273;&#7883;nh; c&#7845;u h&igrave;nh <code>includeSubDomains</code> ho&#7863;c preload sai c&oacute; th&#7875; khi&#7871;n subdomain HTTP kh&ocirc;ng th&#7875; truy c&#7853;p trong th&#7901;i gian d&agrave;i.</p>
+
+<h2>9. Ki&#7875;m tra web, email v&agrave; lu&#7891;ng nghi&#7879;p v&#7909;</h2>
+<pre><code>curl -I http://example.com
+curl -I https://example.com
+curl --resolve example.com:443:203.0.113.10 https://example.com/ -I</code></pre>
+<p>Ki&#7875;m tra HTTP chuy&#7875;n &#273;&uacute;ng m&#7897;t l&#7847;n sang HTTPS, hostname chu&#7849;n kh&ocirc;ng t&#7841;o chu&#7895;i redirect, ch&#7913;ng ch&#7881; &#273;&uacute;ng t&ecirc;n mi&#7873;n v&agrave; n&#7897;i dung kh&ocirc;ng c&oacute; mixed content. Sau &#273;&oacute; th&#7917; &#273;&#259;ng nh&#7853;p, bi&#7875;u m&#7851;u, upload, thanh to&aacute;n, API, webhook, WebSocket v&agrave; c&aacute;c t&aacute;c v&#7909; n&#7873;n.</p>
+<p>G&#7917;i v&agrave; nh&#7853;n email &#7903; c&#7843; trong l&#7851;n ngo&agrave;i t&#7893; ch&#7913;c. X&aacute;c nh&#7853;n MX tr&#7887; &#273;&uacute;ng, hostname mail kh&ocirc;ng b&#7853;t proxy v&agrave; SPF ch&#7881; c&oacute; m&#7897;t b&#7843;n ghi h&#7907;p l&#7879;; ki&#7875;m tra DKIM v&agrave; DMARC v&#7851;n c&ograve;n nguy&ecirc;n sau khi chuy&#7875;n zone.</p>
+
+<h2>10. Ch&#7849;n &#273;o&aacute;n l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li><strong>521 Web server is down:</strong> origin t&#7915; ch&#7889;i k&#7871;t n&#7889;i, d&#7883;ch v&#7909; web d&#7915;ng ho&#7863;c firewall ch&#7863;n Cloudflare.</li><li><strong>522 Connection timed out:</strong> Cloudflare kh&ocirc;ng nh&#7853;n ph&#7843;n h&#7891;i k&#7883;p th&#7901;i; ki&#7875;m tra route, t&#7843;i m&aacute;y ch&#7911; v&agrave; firewall.</li><li><strong>525 SSL handshake failed:</strong> b&#7855;t tay TLS v&#7899;i origin th&#7845;t b&#7841;i; ki&#7875;m tra giao th&#7913;c, cipher, SNI v&agrave; ch&#7913;ng ch&#7881;.</li><li><strong>526 Invalid SSL certificate:</strong> Full (strict) kh&ocirc;ng x&aacute;c minh &#273;&#432;&#7907;c ch&#7913;ng ch&#7881; origin; ki&#7875;m tra h&#7841;n, hostname v&agrave; chu&#7895;i CA.</li><li><strong>Redirect loop:</strong> th&#432;&#7901;ng do Flexible k&#7871;t h&#7907;p redirect HTTPS t&#7841;i origin ho&#7863;c &#7913;ng d&#7909;ng kh&ocirc;ng tin proxy header.</li><li><strong>Email ng&#7915;ng ho&#7841;t &#273;&#7897;ng:</strong> th&#432;&#7901;ng do thi&#7871;u MX/TXT, proxy nh&#7847;m hostname mail ho&#7863;c SPF/DKIM sai.</li></ul>
+
+<h2>Checklist tr&#432;&#7899;c khi k&#7871;t th&uacute;c</h2>
+<ol><li>Cloudflare b&aacute;o zone Active v&agrave; nameserver &#273;&uacute;ng.</li><li>T&#7845;t c&#7843; b&#7843;n ghi web, mail, x&aacute;c minh v&agrave; d&#7883;ch v&#7909; ph&#7909; &#273;&atilde; &#273;&#432;&#7907;c &#273;&#7889;i chi&#7871;u.</li><li>Origin c&oacute; ch&#7913;ng ch&#7881; h&#7907;p l&#7879;, SSL/TLS &#273;&#7863;t Full (strict).</li><li>HTTP chuy&#7875;n sang HTTPS kh&ocirc;ng c&oacute; v&ograve;ng l&#7863;p ho&#7863;c mixed content.</li><li>DNSSEC ho&#7841;t &#273;&#7897;ng v&agrave; DS kh&#7899;p.</li><li>Email g&#7917;i, nh&#7853;n, SPF, DKIM v&agrave; DMARC &#273;&#7873;u &#273;&#7841;t.</li><li>Lu&#7891;ng &#273;&#259;ng nh&#7853;p, bi&#7875;u m&#7851;u, API, webhook v&agrave; upload &#273;&atilde; &#273;&#432;&#7907;c th&#7917;.</li><li>Cache kh&ocirc;ng l&#432;u n&#7897;i dung ri&ecirc;ng t&#432;; firewall ch&#432;a ch&#7863;n nh&#7847;m d&#7883;ch v&#7909;.</li><li>Ch&#7913;ng ch&#7881;, l&#7895;i 5xx v&agrave; ng&agrave;y h&#7871;t h&#7841;n &#273;&#432;&#7907;c gi&aacute;m s&aacute;t.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>C&#7845;u h&igrave;nh Cloudflare an to&agrave;n kh&ocirc;ng b&#7855;t &#273;&#7847;u b&#7857;ng vi&#7879;c b&#7853;t th&#7853;t nhi&#7873;u t&iacute;nh n&#259;ng. Tr&igrave;nh t&#7921; &#273;&uacute;ng l&agrave; b&#7843;o to&agrave;n DNS, chu&#7849;n b&#7883; HTTPS t&#7841;i origin, chuy&#7875;n nameserver, x&aacute;c minh d&#7883;ch v&#7909;, b&#7853;t Full (strict) v&agrave; DNSSEC, r&#7891;i m&#7899;i gi&#7899;i h&#7841;n truy c&#7853;p origin. Tri&#7875;n khai theo t&#7915;ng b&#432;&#7899;c c&oacute; &#273;i&#7875;m ki&#7875;m tra gi&uacute;p website nh&#7853;n &#273;&#432;&#7907;c l&#7907;i &iacute;ch c&#7911;a CDN v&agrave; l&#7899;p b&#7843;o v&#7879; bi&ecirc;n m&agrave; kh&ocirc;ng &#273;&aacute;nh &#273;&#7893;i t&iacute;nh s&#7861;n s&agrave;ng.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/" target="_blank" rel="noopener noreferrer">Cloudflare: SSL/TLS encryption modes</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/" target="_blank" rel="noopener noreferrer">Cloudflare: Full (strict)</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/" target="_blank" rel="noopener noreferrer">Cloudflare: Origin CA certificates</a></li><li><a href="https://developers.cloudflare.com/dns/proxy-status/" target="_blank" rel="noopener noreferrer">Cloudflare: Proxy status</a></li><li><a href="https://developers.cloudflare.com/dns/dnssec/" target="_blank" rel="noopener noreferrer">Cloudflare: DNSSEC</a></li><li><a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/" target="_blank" rel="noopener noreferrer">Cloudflare: Authenticated Origin Pulls</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

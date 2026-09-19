@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">api-idempotency-keys-prevent-duplicate-orders-payments</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Designing Safe Idempotency Keys for APIs</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">idempotency key, API idempotency, duplicate payment prevention, API retry, duplicate request, PostgreSQL, distributed systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Idempotency, Backend, PostgreSQL, Payments, Distributed Systems, HTTP</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design production Idempotency Keys for POST and PATCH APIs with request fingerprints, concurrency control, response storage, TTL, transactions, retries, payments, and outbox integration.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/api-idempotency-key-design.jpg" alt="API Idempotency Keys: Prevent Duplicate Orders and Payments" width="1440" height="810"></p><h1>API Idempotency Keys: Prevent Duplicate Orders and Payments</h1><p><strong>A client sends an order request, the server completes it, but the response is lost in transit.</strong> The client sees only a timeout and retries. If the API creates another order or charges the card twice, the fault lies in server design, not in the client's reasonable retry behavior.</p>
+<p>An Idempotency Key lets multiple attempts of one operation produce one business effect. The server recognizes a retry using a client-supplied key, compares the request, and returns the stored result instead of executing again.</p>
+
+<h2>What is idempotency?</h2>
+<p>An idempotent operation has the same intended effect after one or many identical executions. HTTP defines GET, PUT, and DELETE as idempotent in semantics, while POST commonly is not. An idempotent method does not make an implementation automatically safe: a DELETE endpoint that emails on every call still repeats a side effect.</p>
+<p>Idempotency Keys are especially useful when creating orders, bookings, invoices, payouts, charges, refunds, infrastructure resources, and any POST/PATCH request that a client, proxy, or queue may retry.</p>
+<blockquote>The goal is not to block every duplicate request; it is to ensure retries of the same intent do not create additional effects.</blockquote>
+
+<h2>1. The client&ndash;server contract</h2>
+<p>The client generates a high-entropy random key, commonly a UUID, and keeps it unchanged across retries:</p>
+<pre><code>POST /v1/orders HTTP/1.1
+Authorization: Bearer ...
+Idempotency-Key: 8e03978e-40d5-43e8-bc93-6894a57f9324
+Content-Type: application/json
+
+{
+  "cart_id": "cart-9821",
+  "shipping_address_id": "address-17"
+}</code></pre>
+<p>A new business operation needs a new key. Avoid short timestamps, counters, or payload hashes as keys: collisions and predictability are risks, and two valid intents may have identical payloads.</p>
+<p>The server must document format, maximum length, supported operations, and retention. The IETF has discussed <code>Idempotency-Key</code> in an Internet-Draft; it remains work in progress rather than a completed RFC.</p>
+
+<h2>2. Scope keys by tenant and operation</h2>
+<p>Do not use the client key as a globally unique lookup by itself. Different customers can generate the same UUID, and the same key on separate endpoints may represent separate intents. Use a composite identity:</p>
+<pre><code>(tenant_id, operation, idempotency_key)</code></pre>
+<p>Derive <code>tenant_id</code> from the authenticated principal, not an arbitrary request field. Use a stable operation name such as <code>orders.create</code> rather than a dynamic URL.</p>
+
+<h2>3. Store an idempotency record</h2>
+<pre><code>CREATE TABLE idempotency_keys (
+    tenant_id uuid NOT NULL,
+    operation varchar(100) NOT NULL,
+    idempotency_key varchar(255) NOT NULL,
+    request_hash char(64) NOT NULL,
+    status varchar(20) NOT NULL,
+    resource_type varchar(100),
+    resource_id varchar(100),
+    response_code integer,
+    response_headers jsonb,
+    response_body jsonb,
+    locked_until timestamptz,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    completed_at timestamptz,
+    expires_at timestamptz NOT NULL,
+    PRIMARY KEY (tenant_id, operation, idempotency_key)
+);
+
+CREATE INDEX idx_idempotency_expiry
+ON idempotency_keys (expires_at);</code></pre>
+<p>Common states are <code>processing</code>, <code>completed</code>, and optionally <code>failed</code>. The request hash prevents reuse with a different payload. Store either the resource ID for reconstruction or the status and body for exact replay.</p>
+
+<h2>4. Create a stable request fingerprint</h2>
+<p>Hashing raw JSON is unstable because field order and whitespace can differ without changing meaning. Parse and validate JSON, normalize allowed fields and defaults, sort object keys deterministically, include the method/operation and meaningful parameters, then hash the canonical representation with SHA-256:</p>
+<pre><code>fingerprint = SHA256(
+    operation + "\n" + canonical_json(validated_input)
+)</code></pre>
+<p>Do not hash authorization tokens or irrelevant volatile headers. For large uploads, use a verified content checksum and metadata. If a key matches but the fingerprint differs, return a conflict; never replay the first response for the second payload.</p>
+
+<h2>5. Claim the key with a uniqueness constraint</h2>
+<p>Two identical requests may arrive concurrently. Application-level check-then-insert races; let the database constraint arbitrate:</p>
+<pre><code>INSERT INTO idempotency_keys (
+    tenant_id, operation, idempotency_key,
+    request_hash, status, locked_until, expires_at
+) VALUES (
+    :tenant_id, :operation, :key,
+    :hash, 'processing', now() + interval '30 seconds',
+    now() + interval '24 hours'
+)
+ON CONFLICT DO NOTHING;</code></pre>
+<p>The successful insert owns execution. A losing request reads the existing row. A different hash receives <code>409 Conflict</code>; completed returns the stored result; processing either waits briefly or returns an in-progress conflict. Take over an expired lease only when the previous effect can be determined safely.</p>
+
+<h2>6. Keep business data in the transaction</h2>
+<p>For a single-database operation, create the business record and complete the idempotency row atomically:</p>
+<pre><code>BEGIN;
+
+SELECT * FROM idempotency_keys
+WHERE tenant_id = :tenant
+  AND operation = 'orders.create'
+  AND idempotency_key = :key
+FOR UPDATE;
+
+INSERT INTO orders (...) VALUES (...)
+RETURNING id;
+
+UPDATE idempotency_keys
+SET status = 'completed',
+    resource_type = 'order',
+    resource_id = :order_id,
+    response_code = 201,
+    response_body = :body,
+    completed_at = now()
+WHERE tenant_id = :tenant
+  AND operation = 'orders.create'
+  AND idempotency_key = :key;
+
+COMMIT;</code></pre>
+<p>A crash before commit rolls back both records. A crash after commit but before response delivery leaves a completed row that can replay the created order.</p>
+
+<h2>7. Full response or resource reference?</h2>
+<p><strong>Full response storage</strong> replays the exact status and body but consumes storage and may retain personal data. <strong>Resource references</strong> are smaller, yet reconstructed responses may differ after the resource changes. A hybrid stores the ID, status, and minimum response snapshot required by the contract.</p>
+<p>Never replay sensitive or short-lived headers such as <code>Set-Cookie</code>. Allowlist safe headers instead of serializing everything.</p>
+
+<h2>8. Should errors be cached?</h2>
+<ul>
+<li><strong>Validation before execution:</strong> usually do not claim or persist the key.</li>
+<li><strong>Final business rejection:</strong> storing a 4xx decision can produce consistent retries.</li>
+<li><strong>5xx before any effect:</strong> execution can generally be retried.</li>
+<li><strong>Failure after an external effect:</strong> persist enough state to reconcile rather than blindly repeat.</li>
+</ul>
+<p>Some APIs, including Stripe, store status and body once endpoint execution begins, including 500 responses. Do not copy a policy mechanically; base it on when your system can prove whether effects occurred and document it for clients.</p>
+
+<h2>9. Integrate payment providers</h2>
+<p>Your API's key and the provider's key protect different boundaries. Derive a stable provider key from an internal payment attempt rather than creating a new UUID on each worker retry:</p>
+<pre><code>provider_key = "payment-attempt:" + payment_attempt_id</code></pre>
+<p>Persist provider request IDs and state. When a timeout leaves charge status unknown, query the provider by key or request ID before issuing another command. Deduplicate provider webhooks by their event IDs.</p>
+<p>Do not hold a database transaction open during a payment network call. Commit intent through a state machine and transactional outbox, then let a worker perform the idempotent external effect.</p>
+
+<h2>10. Idempotency and Transactional Outbox complement each other</h2>
+<p>Idempotency protects inbound API retries. Outbox reliably publishes events after commit. One order transaction can claim the key, create the order, insert <code>OrderCreated</code>, store the idempotent response, and commit everything together.</p>
+<p>Event consumers still require their own deduplication because brokers may redeliver. One idempotency key does not automatically propagate guarantees across every service.</p>
+
+<h2>11. TTL and key reuse</h2>
+<p>Retention must exceed the actual retry window for clients, queues, offline mobile apps, and webhooks. Twenty-four hours may fit interactive APIs; payouts or long provisioning may need more. Publish the retention policy.</p>
+<p>After deletion, reusing a key can create a new operation, so clients should never recycle keys. High-value transactions should also have a long-lived unique business identifier such as <code>merchant_order_id</code>.</p>
+<pre><code>DELETE FROM idempotency_keys
+WHERE expires_at &lt; now()
+  AND status &lt;&gt; 'processing'
+LIMIT 5000;</code></pre>
+<p>Clean in batches or partitions and never delete unreconciled processing rows.</p>
+
+<h2>12. Security and abuse</h2>
+<ul>
+<li>Limit key length and format to prevent storage abuse.</li>
+<li>Scope lookups by authenticated principal.</li>
+<li>Recheck current authorization before returning a cached response.</li>
+<li>Rate-limit new keys because attackers can send endless UUIDs.</li>
+<li>Minimize or encrypt personal data in stored responses.</li>
+<li>Do not log payment bodies merely for idempotency debugging.</li>
+</ul>
+<p>A key is not a credential. Knowing it must never grant access to a resource.</p>
+
+<h2>13. Observability</h2>
+<ul>
+<li>New, replayed, conflicting, and in-progress request ratios.</li>
+<li>Processing-to-completed latency.</li>
+<li>Expired leases and operations needing reconciliation.</li>
+<li>Table size, insertion/deletion rate, and record age.</li>
+<li>Duplicates prevented by operation, not raw key.</li>
+<li>Provider timeouts and lookup outcomes.</li>
+</ul>
+<p>Keep request IDs and trace IDs separate. A request ID identifies one attempt; an idempotency key groups attempts of one logical operation.</p>
+
+<h2>14. Required test scenarios</h2>
+<ol>
+<li>Two concurrent identical requests create one resource.</li>
+<li>The same key with a different payload returns conflict.</li>
+<li>A crash before commit leaves no business record.</li>
+<li>A crash after commit but before response replays correctly.</li>
+<li>A payment-provider timeout reconciles without a second charge.</li>
+<li>A retry after TTL follows the documented policy.</li>
+<li>Authorization changes do not expose an old response.</li>
+<li>Cleanup never removes a processing request.</li>
+</ol>
+
+<h2>Production checklist</h2>
+<ul>
+<li>Clients generate high-entropy keys and preserve them across retries.</li>
+<li>The server scopes by tenant, operation, and key.</li>
+<li>Canonical payload fingerprints are compared.</li>
+<li>A uniqueness constraint handles races.</li>
+<li>Business data and idempotency results commit atomically where possible.</li>
+<li>4xx, 5xx, in-progress, and lease-expiry policies are explicit.</li>
+<li>External effects have separate provider keys and state machines.</li>
+<li>TTL, cleanup, security, and metrics are operationalized.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Idempotency Keys turn retries from a risk into a normal part of fault-tolerant APIs. Correct design requires more than a cache: scope the key, fingerprint the request, resolve races with uniqueness constraints, connect business effects to transactions, and model external side effects separately. Idempotency does not promise that code executes exactly once; it ensures multiple attempts of one intent produce one business outcome.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://docs.stripe.com/api/idempotent_requests" target="_blank" rel="noopener noreferrer">Stripe: Idempotent requests</a></li><li><a href="https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/" target="_blank" rel="noopener noreferrer">IETF Internet-Draft: Idempotency-Key HTTP Header Field</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110.html" target="_blank" rel="noopener noreferrer">RFC 9110: HTTP Semantics</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Refresh token rotation an to&agrave;n cho API</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">refresh token rotation, access token, JWT, OAuth 2.0, token reuse detection, API authentication, token family</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">OAuth 2.0, Refresh Token, JWT, API Security, Authentication, Backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; refresh token rotation cho API: token family, hash l&#432;u tr&#7919;, transaction ch&#7889;ng race, reuse detection, revoke, cookie an to&agrave;n v&agrave; ki&#7875;m th&#7917;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/refresh-token-rotation.jpg" alt="Refresh token rotation th&#7921;c chi&#7871;n: Thi&#7871;t k&#7871; &#273;&#259;ng nh&#7853;p an to&agrave;n cho API" width="1440" height="810"></p><h1>Refresh token rotation th&#7921;c chi&#7871;n: Thi&#7871;t k&#7871; &#273;&#259;ng nh&#7853;p an to&agrave;n cho API</h1><p><strong>Access token ng&#7855;n h&#7841;n gi&#7843;m th&#7901;i gian k&#7867; t&#7845;n c&ocirc;ng c&oacute; th&#7875; s&#7917; d&#7909;ng token b&#7883; l&#7897;, nh&#432;ng refresh token l&#7841;i l&agrave; th&ocirc;ng tin &#273;&#259;ng nh&#7853;p d&agrave;i h&#7841;n c&oacute; kh&#7843; n&#259;ng t&#7841;o access token m&#7899;i.</strong> N&#7871;u backend ch&#7845;p nh&#7853;n m&#7897;t refresh token nhi&#7873;u l&#7847;n, b&#7843;n sao b&#7883; &#273;&aacute;nh c&#7855;p c&oacute; th&#7875; duy tr&igrave; phi&ecirc;n g&#7847;n nh&#432; &acirc;m th&#7847;m. Refresh token rotation gi&#7843;i quy&#7871;t v&#7845;n &#273;&#7873; b&#7857;ng c&aacute;ch thay token sau m&#7895;i l&#7847;n s&#7917; d&#7909;ng v&agrave; ph&aacute;t hi&#7879;n token c&#361; b&#7883; ph&aacute;t l&#7841;i.</p>
+
+<h2>Access token v&agrave; refresh token c&oacute; vai tr&ograve; kh&aacute;c nhau</h2>
+<ul><li><strong>Access token:</strong> s&#7889;ng ng&#7855;n, g&#7917;i t&#7899;i resource server, gi&#7899;i h&#7841;n audience v&agrave; scope.</li><li><strong>Refresh token:</strong> ch&#7881; g&#7917;i t&#7899;i authorization server &#273;&#7875; &#273;&#7893;i token m&#7899;i, s&#7889;ng l&acirc;u h&#417;n v&agrave; ph&#7843;i &#273;&#432;&#7907;c b&#7843;o v&#7879; ch&#7863;t h&#417;n.</li></ul>
+<p>JWT kh&ocirc;ng b&#7855;t bu&#7897;c cho refresh token. M&#7897;t chu&#7895;i ng&#7851;u nhi&ecirc;n opaque th&#432;&#7901;ng d&#7877; thu h&#7891;i, d&#7877; ki&#7875;m so&aacute;t v&agrave; kh&ocirc;ng l&agrave;m l&#7897; claim. D&ugrave; d&ugrave;ng &#273;&#7883;nh d&#7841;ng n&agrave;o, token ph&#7843;i c&oacute; entropy cao, truy&#7873;n qua TLS v&agrave; kh&ocirc;ng xu&#7845;t hi&#7879;n trong URL ho&#7863;c log.</p>
+
+<h2>Rotation ho&#7841;t &#273;&#7897;ng nh&#432; th&#7871; n&agrave;o?</h2>
+<ol><li>&#272;&#259;ng nh&#7853;p th&agrave;nh c&ocirc;ng t&#7841;o access token <code>A1</code> v&agrave; refresh token <code>R1</code>.</li><li>Client g&#7917;i <code>R1</code> t&#7899;i endpoint refresh.</li><li>Server x&aacute;c th&#7921;c, &#273;&aacute;nh d&#7845;u <code>R1</code> &#273;&atilde; d&ugrave;ng v&agrave; ph&aacute;t <code>A2 + R2</code>.</li><li><code>R1</code> kh&ocirc;ng c&ograve;n h&#7907;p l&#7879; nh&#432;ng quan h&#7879; c&#7911;a n&oacute; v&#7899;i phi&ecirc;n v&#7851;n &#273;&#432;&#7907;c gi&#7919; &#273;&#7875; ph&aacute;t hi&#7879;n reuse.</li><li>N&#7871;u <code>R1</code> xu&#7845;t hi&#7879;n l&#7847;n n&#7919;a, server thu h&#7891;i to&agrave;n b&#7897; token family.</li></ol>
+<p>Server kh&ocirc;ng bi&#7871;t request th&#7913; hai &#273;&#7871;n t&#7915; client h&#7907;p l&#7879; hay k&#7867; t&#7845;n c&ocirc;ng. V&igrave; v&#7853;y ph&#7843;n &#7913;ng an to&agrave;n l&agrave; h&#7911;y family v&agrave; bu&#7897;c &#273;&#259;ng nh&#7853;p l&#7841;i.</p>
+
+<h2>M&ocirc; h&igrave;nh d&#7919; li&#7879;u &#273;&#7873; xu&#7845;t</h2>
+<pre><code>refresh_tokens
+- id (UUID)
+- family_id (UUID)
+- user_id, client_id
+- token_hash
+- parent_id
+- status: active | used | revoked
+- issued_at, expires_at, used_at, revoked_at
+- replaced_by_id
+- scope, audience
+- device_label, last_ip (optional metadata)</code></pre>
+<p>Ch&#7881; l&#432;u hash c&#7911;a token, t&#432;&#417;ng t&#7921; password reset token. Khi nh&#7853;n token, server hash b&#7857;ng h&agrave;m nh&#7845;t qu&aacute;n c&oacute; kh&oacute;a ho&#7863;c SHA-256 v&#7899;i token ng&#7851;u nhi&ecirc;n &#273;&#7911; m&#7841;nh r&#7891;i tra c&#7913;u. Kh&ocirc;ng ghi token th&ocirc; v&agrave;o database, APM hay audit log.</p>
+
+<h2>Lu&#7891;ng refresh ph&#7843;i nguy&ecirc;n t&#7917;</h2>
+<pre><code>BEGIN;
+SELECT * FROM refresh_tokens
+WHERE token_hash = :hash
+FOR UPDATE;
+
+-- reject expired/revoked token
+-- if status = used: revoke entire family and fail
+-- if active: mark used, insert replacement R2
+
+COMMIT;</code></pre>
+<p>Kh&oacute;a h&agrave;ng ho&#7863;c compare-and-swap ng&#259;n hai request song song c&ugrave;ng &#273;&#7893;i m&#7897;t token th&agrave;nh c&ocirc;ng. Unique constraint cho <code>token_hash</code>, transaction ng&#7855;n v&agrave; index theo hash/family l&agrave; c&aacute;c l&#7899;p b&#7843;o v&#7879; c&#7847;n thi&#7871;t.</p>
+
+<h2>X&#7917; l&yacute; race condition h&#7907;p l&#7879;</h2>
+<p>Browser c&oacute; th&#7875; g&#7917;i hai request API c&ugrave;ng l&uacute;c, c&#7843; hai th&#7845;y access token h&#7871;t h&#7841;n v&agrave; c&ugrave;ng refresh. N&#7871;u request &#273;&#7847;u &#273;&atilde; rotate, request th&#7913; hai tr&ocirc;ng gi&#7889;ng replay. C&aacute;ch t&#7889;t nh&#7845;t l&agrave; client d&ugrave;ng single-flight: ch&#7881; m&#7897;t promise refresh ch&#7841;y, c&aacute;c request kh&aacute;c ch&#7901; k&#7871;t qu&#7843;.</p>
+<p>M&#7897;t grace window ph&iacute;a server c&oacute; th&#7875; gi&#7843;m logout gi&#7843; nh&#432;ng c&#361;ng m&#7903; c&#7917;a ph&aacute;t l&#7841;i. N&#7871;u b&#7855;t bu&#7897;c d&ugrave;ng, c&#7917;a s&#7893; ph&#7843;i r&#7845;t ng&#7855;n, ch&#7881; tr&#7843; l&#7841;i &#273;&uacute;ng replacement &#273;&atilde; t&#7841;o v&agrave; g&#7855;n v&#7899;i c&ugrave;ng client context; kh&ocirc;ng ph&aacute;t th&ecirc;m nh&aacute;nh token m&#7899;i.</p>
+
+<h2>L&#432;u token tr&ecirc;n web v&agrave; mobile</h2>
+<ul><li><strong>Web:</strong> &#432;u ti&ecirc;n refresh token trong cookie <code>HttpOnly; Secure; SameSite</code>, k&#7871;t h&#7907;p CSRF protection ph&ugrave; h&#7907;p. Kh&ocirc;ng l&#432;u credential trong <code>localStorage</code>.</li><li><strong>Mobile:</strong> d&ugrave;ng Keychain/Keystore v&agrave; tr&aacute;nh backup token sang thi&#7871;t b&#7883; kh&aacute;c.</li><li><strong>BFF:</strong> browser ch&#7881; gi&#7919; session cookie, backend-for-frontend qu&#7843;n l&yacute; token OAuth ph&iacute;a server.</li></ul>
+<p>Access token n&ecirc;n &#7903; memory khi c&oacute; th&#7875;. Cookie kh&ocirc;ng t&#7921; lo&#7841;i b&#7887; XSS hay CSRF; v&#7851;n c&#7847;n CSP, encode output, ki&#7875;m tra Origin/CSRF token v&agrave; gi&#7899;i h&#7841;n CORS.</p>
+
+<h2>Th&#7901;i h&#7841;n v&agrave; thu h&#7891;i</h2>
+<p>D&ugrave;ng c&#7843; idle timeout v&agrave; absolute lifetime. M&#7895;i l&#7847;n refresh c&oacute; th&#7875; k&eacute;o d&agrave;i idle window nh&#432;ng kh&ocirc;ng v&#432;&#7907;t qu&aacute; tu&#7893;i tuy&#7879;t &#273;&#7889;i c&#7911;a authorization. Thu h&#7891;i family khi logout thi&#7871;t b&#7883;, &#273;&#7893;i m&#7853;t kh&#7849;u, kh&oacute;a t&agrave;i kho&#7843;n, ph&aacute;t hi&#7879;n reuse ho&#7863;c c&oacute; s&#7921; ki&#7879;n r&#7911;i ro.</p>
+<p>&ldquo;Logout t&#7845;t c&#7843; thi&#7871;t b&#7883;&rdquo; thu h&#7891;i m&#7885;i family c&#7911;a user; &ldquo;logout thi&#7871;t b&#7883; n&agrave;y&rdquo; ch&#7881; thu h&#7891;i family hi&#7879;n t&#7841;i. Access token &#273;&atilde; ph&aacute;t c&oacute; th&#7875; c&ograve;n hi&#7879;u l&#7921;c &#273;&#7871;n khi h&#7871;t h&#7841;n, tr&#7915; khi resource server c&oacute; introspection/denylist. &#272;&acirc;y l&agrave; l&yacute; do access token c&#7847;n s&#7889;ng ng&#7855;n.</p>
+
+<h2>Response v&agrave; l&#7895;i API</h2>
+<pre><code>POST /oauth/token
+grant_type=refresh_token&amp;refresh_token=...
+
+200 { access_token, expires_in, refresh_token }
+400 { error: "invalid_grant" }</code></pre>
+<p>Kh&ocirc;ng ti&#7871;t l&#7897; token &ldquo;h&#7871;t h&#7841;n&rdquo;, &ldquo;&#273;&atilde; d&ugrave;ng&rdquo; hay &ldquo;kh&ocirc;ng t&#7891;n t&#7841;i&rdquo; cho client kh&ocirc;ng tin c&#7853;y. Ghi l&yacute; do chi ti&#7871;t v&agrave;o security event n&#7897;i b&#7897;, k&egrave;m family ID, client ID v&agrave; correlation ID nh&#432;ng kh&ocirc;ng ch&#7913;a token.</p>
+
+<h2>Checklist ki&#7875;m th&#7917;</h2>
+<ul><li>M&#7897;t token ch&#7881; &#273;&#7893;i th&agrave;nh c&ocirc;ng &#273;&uacute;ng m&#7897;t l&#7847;n.</li><li>Hai refresh song song kh&ocirc;ng t&#7841;o hai nh&aacute;nh h&#7907;p l&#7879;.</li><li>D&ugrave;ng l&#7841;i token c&#361; thu h&#7891;i c&#7843; family.</li><li>Token h&#7871;t h&#7841;n, sai client, scope ho&#7863;c audience b&#7883; t&#7915; ch&#7889;i.</li><li>Logout v&agrave; &#273;&#7893;i m&#7853;t kh&#7849;u th&#7921;c s&#7921; ch&#7863;n refresh ti&#7871;p theo.</li><li>Database, log, trace v&agrave; analytics kh&ocirc;ng ch&#7913;a token th&ocirc;.</li><li>Cookie v&agrave; CSRF/CORS &#273;&#432;&#7907;c ki&#7875;m th&#7917; tr&ecirc;n browser th&#7853;t.</li><li>Cleanup x&oacute;a b&#7843;n ghi h&#7871;t h&#7841;n nh&#432;ng gi&#7919; &#273;&#7911; d&#7845;u v&#7871;t ph&aacute;t hi&#7879;n reuse trong th&#7901;i gian ch&iacute;nh s&aacute;ch y&ecirc;u c&#7847;u.</li></ul>
+
+<h2>Khi n&agrave;o n&ecirc;n d&ugrave;ng gi&#7843;i ph&aacute;p kh&aacute;c?</h2>
+<p>&#7912;ng d&#7909;ng web c&ugrave;ng domain c&oacute; th&#7875; &#273;&#417;n gi&#7843;n h&#417;n v&#7899;i session cookie ph&iacute;a server. H&#7879; th&#7889;ng r&#7911;i ro cao c&oacute; th&#7875; d&ugrave;ng sender-constrained token nh&#432; DPoP ho&#7863;c mTLS, &#273;&ocirc;i khi k&#7871;t h&#7907;p rotation. Kh&ocirc;ng t&#7921; x&acirc;y authorization server n&#7871;u m&#7897;t nh&agrave; cung c&#7845;p ho&#7863;c th&#432; vi&#7879;n OAuth/OIDC tr&#432;&#7903;ng th&agrave;nh &#273;&aacute;p &#7913;ng y&ecirc;u c&#7847;u.</p>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Rotation kh&ocirc;ng ch&#7881; l&agrave; ph&aacute;t chu&#7895;i m&#7899;i. Thi&#7871;t k&#7871; &#273;&uacute;ng c&#7847;n token family, tr&#7841;ng th&aacute;i s&#7917; d&#7909;ng, thao t&aacute;c nguy&ecirc;n t&#7917;, ph&aacute;t hi&#7879;n reuse, chi&#7871;n l&#432;&#7907;c revoke v&agrave; client single-flight. Khi c&aacute;c ph&#7847;n n&agrave;y &#273;i c&ugrave;ng access token ng&#7855;n h&#7841;n v&agrave; l&#432;u tr&#7919; ph&ugrave; h&#7907;p n&#7873;n t&#7843;ng, phi&ecirc;n &#273;&#259;ng nh&#7853;p v&#7915;a thu&#7853;n ti&#7879;n v&#7915;a c&oacute; &#273;i&#7875;m ch&#7863;n r&otilde; r&agrave;ng khi credential b&#7883; l&#7897;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc9700.html" target="_blank" rel="noopener noreferrer">RFC 9700: OAuth 2.0 Security Best Current Practice</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP OAuth2 Cheat Sheet</a></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP Session Management Cheat Sheet</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">install-php-mysql-apache-macos-homebrew</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Install PHP, MySQL, and Apache on macOS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">install PHP macOS, install MySQL macOS, install Apache macOS, Homebrew, PHP Apache macOS, PHP environment</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">PHP, MySQL, Apache, macOS, Homebrew, Web Development</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Install PHP, MySQL, and Apache on macOS with Homebrew, connect PHP to Apache, configure a virtual host, and verify the local stack.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/cai-dat-php-mysql-apache-macos.jpg" alt="How to Install PHP, MySQL, and Apache on macOS with Homebrew" width="1440" height="810"></p><h1>How to Install PHP, MySQL, and Apache on macOS with Homebrew</h1><p><strong>Homebrew keeps development tools separate from the components bundled with macOS and makes upgrades easier to control.</strong> This guide builds a local PHP, MySQL, and Apache stack for both Apple Silicon and Intel Macs.</p>
+<h2>Prepare Homebrew and command-line tools</h2><pre><code>xcode-select --install
+brew --version
+brew update</code></pre><p>Install Homebrew from <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">brew.sh</a> if needed. Use <code>brew --prefix</code> instead of hardcoding <code>/opt/homebrew</code> or <code>/usr/local</code>.</p>
+<h2>Install the stack</h2><pre><code>brew install php mysql httpd
+php -v
+mysql --version
+$(brew --prefix httpd)/bin/httpd -v</code></pre><p>Homebrew distributes Apache as <code>httpd</code>. Its default configuration uses port 8080 and serves files from <code>$(brew --prefix)/var/www</code>.</p>
+<h2>Start services</h2><pre><code>brew services start php
+brew services start mysql
+brew services start httpd
+brew services list</code></pre><p>Open <code>http://localhost:8080</code> to verify Apache.</p>
+<h2>Initialize MySQL</h2><pre><code>mysql_secure_installation
+mysql -u root -p</code></pre><p>Create a dedicated database user for the application:</p><pre><code>CREATE DATABASE demo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'demo'@'localhost' IDENTIFIED BY 'local_password';
+GRANT ALL PRIVILEGES ON demo.* TO 'demo'@'localhost';
+FLUSH PRIVILEGES;</code></pre>
+<h2>Connect PHP to Apache</h2><p>Edit <code>$(brew --prefix)/etc/httpd/httpd.conf</code>. Locate the installed module instead of copying a version-specific path:</p><pre><code>brew --prefix php
+find "$(brew --prefix php)" -name 'libphp.so'</code></pre><p>If available, load that module and configure PHP files:</p><pre><code>&lt;IfModule php_module&gt;
+    DirectoryIndex index.php index.html
+    AddType application/x-httpd-php .php
+&lt;/IfModule&gt;</code></pre><p>Some Homebrew PHP versions may favor PHP-FPM. If <code>libphp.so</code> is unavailable, configure <code>proxy_fcgi</code> and FPM rather than pasting an obsolete module path.</p>
+<h2>Create a virtual host</h2><pre><code>&lt;VirtualHost *:8080&gt;
+    ServerName demo.test
+    DocumentRoot "/Users/yourname/Sites/demo/public"
+    &lt;Directory "/Users/yourname/Sites/demo/public"&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre><p>Enable virtual hosts, add <code>127.0.0.1 demo.test</code> to <code>/etc/hosts</code>, then validate and restart:</p><pre><code>$(brew --prefix httpd)/bin/httpd -t
+brew services restart httpd</code></pre>
+<h2>Verify PHP and MySQL support</h2><pre><code>php -m | grep -E 'mysqli|pdo_mysql'
+php --ini
+echo '&lt;?php phpinfo();' &gt; "$(brew --prefix)/var/www/info.php"</code></pre><p>Remove the information page after testing because it exposes detailed configuration.</p>
+<h2>Common problems</h2><ul><li>Find port conflicts with <code>lsof -nP -iTCP:8080 -sTCP:LISTEN</code>.</li><li>If PHP downloads as text, inspect the module or FPM configuration and Apache logs.</li><li>If the CLI uses the wrong PHP, inspect <code>which php</code> and your PATH.</li><li>If MySQL fails, inspect the service status and formula data logs.</li></ul>
+<h2>Completion checklist</h2><ol><li>Apache serves the local site on the expected port.</li><li>The CLI and web server use the intended PHP version.</li><li>The application connects with a dedicated MySQL user.</li><li>The virtual host points to the public directory.</li><li>No real password or <code>phpinfo()</code> page is committed.</li></ol>
+<h2>References</h2><ul><li><a href="https://formulae.brew.sh/formula/php" target="_blank" rel="noopener noreferrer">Homebrew PHP</a></li><li><a href="https://formulae.brew.sh/formula/mysql" target="_blank" rel="noopener noreferrer">Homebrew MySQL</a></li><li><a href="https://formulae.brew.sh/formula/httpd" target="_blank" rel="noopener noreferrer">Homebrew httpd</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

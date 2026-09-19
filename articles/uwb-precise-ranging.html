@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Ki&#7871;n th&#7913;c c&ocirc;ng ngh&#7879;</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">UWB l&agrave; g&igrave;? C&aacute;ch &#273;&#7883;nh v&#7883; ch&iacute;nh x&aacute;c &#7903; c&#7921; ly g&#7847;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">UWB l&agrave; g&igrave;, Ultra Wideband, &#273;&#7883;nh v&#7883; ch&iacute;nh x&aacute;c, precise ranging, kh&oacute;a th&ocirc;ng minh, t&igrave;m &#273;&#7891;, UWB vs Bluetooth, UWB vs GPS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">UWB, Ultra Wideband, Precise Ranging, Smart Home, Bluetooth, IoT, Location Technology</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">T&igrave;m hi&#7875;u UWB &#273;o kho&#7843;ng c&aacute;ch v&agrave; h&#432;&#7899;ng nh&#432; th&#7871; n&agrave;o, kh&aacute;c Bluetooth, NFC v&agrave; GPS ra sao, &#7913;ng d&#7909;ng th&#7921;c t&#7871;, b&#7843;o m&#7853;t, gi&#7899;i h&#7841;n v&agrave; c&aacute;ch ki&#7875;m tra t&#432;&#417;ng th&iacute;ch.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/uwb-precise-ranging.jpg" alt="UWB l&agrave; g&igrave;? C&ocirc;ng ngh&#7879; &#273;&#7883;nh v&#7883; ch&iacute;nh x&aacute;c cho thi&#7871;t b&#7883; th&ocirc;ng minh" width="1440" height="810"></p><h1>UWB l&agrave; g&igrave;? C&ocirc;ng ngh&#7879; &#273;&#7883;nh v&#7883; ch&iacute;nh x&aacute;c cho thi&#7871;t b&#7883; th&ocirc;ng minh</h1><p><strong>Ultra Wideband (UWB) l&agrave; c&ocirc;ng ngh&#7879; v&ocirc; tuy&#7871;n t&#7847;m ng&#7855;n &#273;&#432;&#7907;c t&#7889;i &#432;u cho vi&#7879;c &#273;o kho&#7843;ng c&aacute;ch v&agrave; v&#7883; tr&iacute; t&#432;&#417;ng &#273;&#7889;i gi&#7919;a c&aacute;c thi&#7871;t b&#7883;.</strong> Thay v&igrave; ch&#7881; suy &#273;o&aacute;n &ldquo;g&#7847;n hay xa&rdquo; t&#7915; c&#432;&#7901;ng &#273;&#7897; t&iacute;n hi&#7879;u, UWB &#273;o th&#7901;i gian t&iacute;n hi&#7879;u truy&#7873;n qua l&#7841;i. Nh&#7901; &#273;&oacute;, thi&#7871;t b&#7883; t&#432;&#417;ng th&iacute;ch c&oacute; th&#7875; x&aacute;c &#273;&#7883;nh kho&#7843;ng c&aacute;ch ch&iacute;nh x&aacute;c v&agrave; trong m&#7897;t s&#7889; c&#7845;u h&igrave;nh c&ograve;n bi&#7871;t h&#432;&#7899;ng c&#7911;a v&#7853;t th&#7875;.</p>
+
+<h2>UWB ho&#7841;t &#273;&#7897;ng nh&#432; th&#7871; n&agrave;o?</h2>
+<p>UWB truy&#7873;n c&aacute;c xung r&#7845;t ng&#7855;n tr&ecirc;n d&#7843;i ph&#7893; r&#7897;ng. Hai thi&#7871;t b&#7883; trao &#273;&#7893;i t&iacute;n hi&#7879;u, &#273;o th&#7901;i gian bay (time of flight) r&#7891;i quy &#273;&#7893;i th&agrave;nh kho&#7843;ng c&aacute;ch. V&igrave; s&oacute;ng v&ocirc; tuy&#7871;n truy&#7873;n g&#7847;n t&#7889;c &#273;&#7897; &aacute;nh s&aacute;ng, sai s&#7889; th&#7901;i gian c&#7921;c nh&#7887; c&#361;ng &#7843;nh h&#432;&#7903;ng k&#7871;t qu&#7843;; ph&#7847;n c&#7913;ng ph&#7843;i c&oacute; &#273;&#7891;ng h&#7891; v&agrave; thu&#7853;t to&aacute;n chuy&ecirc;n d&#7909;ng.</p>
+<p>M&#7897;t phi&ecirc;n ranging th&#432;&#7901;ng g&#7891;m thi&#7871;t b&#7883; kh&#7903;i t&#7841;o v&agrave; thi&#7871;t b&#7883; ph&#7843;n h&#7891;i. Ch&uacute;ng v&#7851;n c&#7847;n m&#7897;t k&ecirc;nh ngo&agrave;i b&#259;ng nh&#432; Bluetooth Low Energy &#273;&#7875; kh&aacute;m ph&aacute; nhau, trao &#273;&#7893;i tham s&#7889; v&agrave; kh&oacute;a phi&ecirc;n tr&#432;&#7899;c khi UWB b&#7855;t &#273;&#7847;u &#273;o. UWB v&igrave; th&#7871; th&#432;&#7901;ng b&#7893; sung cho Bluetooth thay v&igrave; thay th&#7871; ho&agrave;n to&agrave;n.</p>
+
+<h2>Kh&aacute;c Bluetooth, NFC v&agrave; GPS ra sao?</h2>
+<table><thead><tr><th>C&ocirc;ng ngh&#7879;</th><th>&#272;i&#7875;m m&#7841;nh</th><th>Ph&ugrave; h&#7907;p</th></tr></thead><tbody>
+<tr><td>UWB</td><td>&#272;o kho&#7843;ng c&aacute;ch ch&iacute;nh x&aacute;c, c&oacute; th&#7875; x&aacute;c &#273;&#7883;nh h&#432;&#7899;ng, t&#7889;t &#7903; c&#7921; ly g&#7847;n</td><td>T&igrave;m &#273;&#7891; ch&iacute;nh x&aacute;c, kh&oacute;a s&#7889;, &#273;&#7883;nh v&#7883; trong nh&agrave;</td></tr>
+<tr><td>Bluetooth LE</td><td>Ph&#7893; bi&#7871;n, ti&#7871;t ki&#7879;m &#273;i&#7879;n, truy&#7873;n d&#7919; li&#7879;u v&agrave; kh&aacute;m ph&aacute; thi&#7871;t b&#7883;</td><td>Ph&#7909; ki&#7879;n, beacon, c&#7843;m bi&#7871;n, k&ecirc;nh thi&#7871;t l&#7853;p cho UWB</td></tr>
+<tr><td>NFC</td><td>C&#7921; ly r&#7845;t ng&#7855;n, thao t&aacute;c ch&#7841;m r&otilde; r&agrave;ng</td><td>Thanh to&aacute;n, th&#7867; truy c&#7853;p, gh&eacute;p n&#7889;i</td></tr>
+<tr><td>GPS/GNSS</td><td>&#272;&#7883;nh v&#7883; tuy&#7879;t &#273;&#7889;i ngo&agrave;i tr&#7901;i tr&ecirc;n ph&#7841;m vi to&agrave;n c&#7847;u</td><td>B&#7843;n &#273;&#7891;, d&#7851;n &#273;&#432;&#7901;ng, theo d&otilde;i ph&#432;&#417;ng ti&#7879;n</td></tr>
+</tbody></table>
+<p>Kh&ocirc;ng n&ecirc;n n&oacute;i UWB &ldquo;ch&iacute;nh x&aacute;c tuy&#7879;t &#273;&#7889;i&rdquo;. Android m&ocirc; t&#7843; kh&#7843; n&#259;ng ranging kho&#7843;ng 10 cm trong &#273;i&#7873;u ki&#7879;n ph&ugrave; h&#7907;p, nh&#432;ng k&#7871;t qu&#7843; th&#7921;c t&#7871; ph&#7909; thu&#7897;c antenna, h&#432;&#7899;ng c&#7847;m, v&#7853;t c&#7843;n, ph&#7843;n x&#7841; &#273;a &#273;&#432;&#7901;ng, kho&#7843;ng c&aacute;ch v&agrave; c&aacute;ch tri&#7875;n khai s&#7843;n ph&#7849;m.</p>
+
+<h2>Nh&#7919;ng &#7913;ng d&#7909;ng th&#7921;c t&#7871;</h2>
+<ul>
+<li><strong>T&igrave;m &#273;&#7891;:</strong> &#273;i&#7879;n tho&#7841;i hi&#7875;n th&#7883; c&#7843; kho&#7843;ng c&aacute;ch v&agrave; h&#432;&#7899;ng t&#7899;i th&#7867; theo d&otilde;i &#7903; g&#7847;n.</li>
+<li><strong>Kh&oacute;a xe v&agrave; kh&oacute;a c&#7917;a:</strong> x&aacute;c minh thi&#7871;t b&#7883; &#273;&#432;&#7907;c &#7911;y quy&#7873;n &#273;ang &#7903; &#273;&uacute;ng v&#7883; tr&iacute;, kh&ocirc;ng ch&#7881; xu&#7845;t hi&#7879;n tr&ecirc;n m&#7841;ng.</li>
+<li><strong>Nh&agrave; th&ocirc;ng minh:</strong> &#273;i&#7873;u khi&#7875;n thi&#7871;t b&#7883; theo ph&ograve;ng ho&#7863;c h&#432;&#7899;ng ng&#432;&#7901;i d&ugrave;ng &#273;ang tr&#7887; t&#7899;i.</li>
+<li><strong>Kho v&agrave; nh&agrave; m&aacute;y:</strong> &#273;&#7883;nh v&#7883; c&ocirc;ng c&#7909;, pallet ho&#7863;c robot b&#7857;ng h&#7879; th&#7889;ng anchor &#273;&atilde; hi&#7879;u chu&#7849;n.</li>
+<li><strong>Tr&#7843;i nghi&#7879;m kh&ocirc;ng gian:</strong> t&#432;&#417;ng t&aacute;c AR, chuy&#7875;n n&#7897;i dung v&agrave; t&igrave;m ng&#432;&#7901;i/thi&#7871;t b&#7883; &#7903; g&#7847;n.</li>
+</ul>
+
+<h2>T&#7841;i sao &#273;o kho&#7843;ng c&aacute;ch c&oacute; th&#7875; an to&agrave;n h&#417;n RSSI?</h2>
+<p>Bluetooth beacon truy&#7873;n th&#7889;ng th&#432;&#7901;ng &#432;&#7899;c l&#432;&#7907;ng kho&#7843;ng c&aacute;ch t&#7915; RSSI, nh&#432;ng c&#432;&#7901;ng &#273;&#7897; t&iacute;n hi&#7879;u thay &#273;&#7893;i m&#7841;nh khi c&oacute; t&#432;&#7901;ng, c&#417; th&#7875; ng&#432;&#7901;i ho&#7863;c c&ocirc;ng su&#7845;t ph&aacute;t kh&aacute;c nhau. UWB d&#7921;a v&agrave;o th&#7901;i gian truy&#7873;n v&agrave; c&oacute; th&#7875; d&ugrave;ng c&#417; ch&#7871; Secure Time Stamp (STS) &#273;&#7875; b&#7843;o v&#7879; ph&eacute;p &#273;o t&#7889;t h&#417;n tr&#432;&#7899;c h&agrave;nh vi gi&#7843; m&#7841;o ho&#7863;c relay.</p>
+<p>Tuy nhi&ecirc;n, c&oacute; chip UWB kh&ocirc;ng t&#7921; &#273;&#7897;ng bi&#7871;n m&#7897;t s&#7843;n ph&#7849;m th&agrave;nh kh&oacute;a an to&agrave;n. H&#7879; th&#7889;ng v&#7851;n c&#7847;n x&aacute;c th&#7921;c m&#7853;t m&atilde;, qu&#7843;n l&yacute; kh&oacute;a, ch&#7889;ng replay, gi&#7899;i h&#7841;n quy&#7873;n, c&#7853;p nh&#7853;t firmware v&agrave; ph&#432;&#417;ng &aacute;n ph&#7909;c h&#7891;i khi m&#7845;t thi&#7871;t b&#7883;.</p>
+
+<h2>&#272;i&#7873;u ki&#7879;n t&#432;&#417;ng th&iacute;ch</h2>
+<p>C&#7843; hai &#273;&#7847;u ph&#7843;i c&oacute; ph&#7847;n c&#7913;ng UWB v&agrave; h&#7895; tr&#7907; c&ugrave;ng profile/protocol. T&ecirc;n d&ograve;ng &#273;i&#7879;n tho&#7841;i kh&ocirc;ng &#273;&#7911; &#273;&#7875; k&#7871;t lu&#7853;n v&igrave; m&#7897;t s&#7889; phi&ecirc;n b&#7843;n theo khu v&#7921;c ho&#7863;c c&#7845;u h&igrave;nh c&oacute; th&#7875; kh&aacute;c nhau. Tr&ecirc;n Android, &#7913;ng d&#7909;ng c&oacute; th&#7875; ki&#7875;m tra feature <code>android.hardware.uwb</code>; t&agrave;i li&#7879;u Android y&ecirc;u c&#7847;u Android 12 tr&#7903; l&ecirc;n cho API Jetpack UWB. Trong h&#7879; sinh th&aacute;i Apple, Nearby Interaction cung c&#7845;p kho&#7843;ng c&aacute;ch v&agrave;, tr&ecirc;n thi&#7871;t b&#7883; ph&ugrave; h&#7907;p, h&#432;&#7899;ng t&#7899;i peer ho&#7863;c ph&#7909; ki&#7879;n.</p>
+<p>Khi mua kh&oacute;a, tracker hay thi&#7871;t b&#7883; IoT, h&atilde;y ki&#7875;m tra:</p>
+<ul>
+<li>Model &#273;i&#7879;n tho&#7841;i c&#7909; th&#7875; c&oacute; UWB hay kh&ocirc;ng.</li>
+<li>Ph&#7909; ki&#7879;n h&#7895; tr&#7907; h&#7879; sinh th&aacute;i v&agrave; profile n&agrave;o.</li>
+<li>T&iacute;nh n&#259;ng c&oacute; ho&#7841;t &#273;&#7897;ng &#7903; qu&#7889;c gia/khu v&#7921;c &#273;ang d&ugrave;ng kh&ocirc;ng.</li>
+<li>Ranging n&#7873;n, quy&#7873;n &#7913;ng d&#7909;ng v&agrave; y&ecirc;u c&#7847;u Bluetooth.</li>
+<li>C&#417; ch&#7871; fallback khi UWB b&#7883; t&#7855;t ho&#7863;c kh&ocirc;ng kh&#7843; d&#7909;ng.</li>
+</ul>
+
+<h2>Gi&#7899;i h&#7841;n c&#7847;n bi&#7871;t</h2>
+<ul>
+<li><strong>Ph&#7841;m vi ng&#7855;n:</strong> UWB kh&ocirc;ng thay GNSS hay m&#7841;ng di &#273;&#7897;ng &#273;&#7875; theo d&otilde;i &#273;&#432;&#7901;ng d&agrave;i.</li>
+<li><strong>V&#7853;t c&#7843;n:</strong> t&#432;&#7901;ng, kim lo&#7841;i, c&#417; th&#7875; ng&#432;&#7901;i v&agrave; h&#432;&#7899;ng antenna c&oacute; th&#7875; l&agrave;m gi&#7843;m ch&#7845;t l&#432;&#7907;ng.</li>
+<li><strong>Kh&ocirc;ng ph&#7893; c&#7853;p:</strong> nhi&#7873;u &#273;i&#7879;n tho&#7841;i v&agrave; ph&#7909; ki&#7879;n v&#7851;n kh&ocirc;ng c&oacute; chip UWB.</li>
+<li><strong>Ti&ecirc;u th&#7909; n&#259;ng l&#432;&#7907;ng:</strong> ranging li&ecirc;n t&#7909;c c&#7847;n &#273;&#432;&#7907;c qu&#7843;n l&yacute; theo phi&ecirc;n v&agrave; ng&#7919; c&#7843;nh.</li>
+<li><strong>Quy&#7873;n ri&ecirc;ng t&#432;:</strong> d&#7919; li&#7879;u kho&#7843;ng c&aacute;ch/h&#432;&#7899;ng ti&#7871;t l&#7897; h&agrave;nh vi kh&ocirc;ng gian, c&#7847;n s&#7921; &#273;&#7891;ng &yacute; v&agrave; th&#7901;i gian l&#432;u h&#7907;p l&yacute;.</li>
+</ul>
+
+<h2>UWB c&oacute; &#273;&aacute;ng quan t&acirc;m?</h2>
+<p>UWB &#273;&aacute;ng gi&aacute; khi s&#7843;n ph&#7849;m c&#7847;n tr&#7843; l&#7901;i c&acirc;u h&#7887;i &ldquo;v&#7853;t th&#7875; &#7903; ch&iacute;nh x&aacute;c &#273;&acirc;u so v&#7899;i t&ocirc;i?&rdquo; ch&#7913; kh&ocirc;ng ch&#7881; &ldquo;thi&#7871;t b&#7883; c&oacute; &#7903; g&#7847;n kh&ocirc;ng?&rdquo;. V&#7899;i tracker, kh&oacute;a s&#7889; v&agrave; t&#7921; &#273;&#7897;ng h&oacute;a theo v&#7883; tr&iacute;, kh&aacute;c bi&#7879;t n&agrave;y t&#7841;o ra tr&#7843;i nghi&#7879;m t&#7921; nhi&ecirc;n h&#417;n. Nh&#432;ng ng&#432;&#7901;i mua n&ecirc;n &#273;&aacute;nh gi&aacute; c&#7843; h&#7879; sinh th&aacute;i, t&#432;&#417;ng th&iacute;ch v&agrave; ch&iacute;nh s&aacute;ch b&#7843;o m&#7853;t thay v&igrave; ch&#7881; nh&igrave;n th&#7845;y nh&atilde;n UWB.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul>
+<li><a href="https://developer.android.com/develop/connectivity/uwb" target="_blank" rel="noopener noreferrer">Android Developers: Ultra-wideband communication</a></li>
+<li><a href="https://developer.apple.com/documentation/nearbyinteraction" target="_blank" rel="noopener noreferrer">Apple Developer: Nearby Interaction</a></li>
+<li><a href="https://www.firaconsortium.org/" target="_blank" rel="noopener noreferrer">FiRa Consortium</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

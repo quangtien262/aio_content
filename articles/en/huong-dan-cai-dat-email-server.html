@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">install-email-server-ubuntu-postfix-dovecot</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Install Postfix and Dovecot Mail Server on Ubuntu</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">install email server, Postfix, Dovecot, Rspamd, DKIM, SPF, DMARC, Ubuntu mail server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Email Server, Postfix, Dovecot, Rspamd, DKIM, DMARC, Ubuntu Server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Build an Ubuntu email server with Postfix, Dovecot, Rspamd, TLS, SPF, DKIM, DMARC, backups, and open-relay testing.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/huong-dan-cai-dat-email-server.jpg" alt="How to Install an Email Server on Ubuntu with Postfix and Dovecot" width="1440" height="810"></p><h1>How to Install an Email Server on Ubuntu with Postfix and Dovecot</h1><p><strong>Self-hosting email requires more than installing SMTP and IMAP.</strong> Reliable delivery depends on IP reputation, reverse DNS, TLS, SPF, DKIM, DMARC, spam filtering, open-relay prevention, queue monitoring, and recoverable backups. This guide builds a single-domain Ubuntu mail server with Postfix, Dovecot, and Rspamd.</p>
+<blockquote>If email is business-critical and no one can operate it continuously, use a managed provider. A correct configuration still requires patching, blacklist monitoring, abuse handling, and recovery work.</blockquote>
+
+<h2>Architecture</h2>
+<table><thead><tr><th>Component</th><th>Role</th></tr></thead><tbody><tr><td>Postfix</td><td>Inbound/outbound SMTP and authenticated submission</td></tr><tr><td>Dovecot</td><td>Maildir storage, IMAP, and SMTP authentication</td></tr><tr><td>Rspamd + Redis</td><td>Spam scoring, milter integration, and DKIM signing</td></tr><tr><td>Let's Encrypt</td><td>SMTP and IMAP TLS certificate</td></tr><tr><td>Fail2ban/UFW</td><td>Brute-force mitigation and network exposure control</td></tr></tbody></table>
+<p>Examples use <code>example.com</code>, <code>mail.example.com</code>, and <code>203.0.113.10</code>. Replace every placeholder.</p>
+
+<h2>1. Verify VPS requirements</h2>
+<ul><li>The provider allows outbound TCP 25 and does not use a shared sending IP.</li><li>You can set the IP's PTR to <code>mail.example.com</code>.</li><li>The IP is not on major blocklists or an obviously poor-reputation range.</li><li>The server has a static IP and roughly 2 GB RAM for a small stack.</li><li>You control A, MX, and TXT records.</li></ul>
+<p>If outbound 25 is blocked, use a reputable SMTP relay. Do not bypass provider policy.</p>
+
+<h2>2. Create foundational DNS</h2>
+<table><thead><tr><th>Type</th><th>Name</th><th>Example value</th></tr></thead><tbody><tr><td>A</td><td>mail</td><td>203.0.113.10</td></tr><tr><td>MX</td><td>@</td><td>10 mail.example.com.</td></tr><tr><td>TXT</td><td>@</td><td>v=spf1 mx -all</td></tr></tbody></table>
+<p>Ask the VPS provider to set <code>203.0.113.10</code> PTR to <code>mail.example.com</code>. Forward-confirmed reverse DNS means the hostname resolves back to the same address.</p>
+<p>Until IPv6 and its PTR are correctly configured, avoid an AAAA record for the mail host and use IPv4 in Postfix.</p>
+
+<h2>3. Prepare Ubuntu and the firewall</h2>
+<pre><code>hostnamectl set-hostname mail.example.com
+apt update &amp;&amp; apt full-upgrade -y
+apt install -y postfix dovecot-imapd dovecot-lmtpd \
+  rspamd redis-server certbot fail2ban swaks ufw</code></pre>
+<p>Select <strong>Internet Site</strong> in the Postfix prompt and use <code>example.com</code> as the system mail name.</p>
+<pre><code>ufw default deny incoming
+ufw default allow outgoing
+ufw allow from ADMIN_IP to any port 22 proto tcp
+ufw allow 25/tcp
+ufw allow 80/tcp
+ufw allow 587/tcp
+ufw allow 993/tcp
+ufw enable</code></pre>
+<p>Port 25 handles server SMTP, 587 authenticated submission, 993 IMAPS, and 80 certificate validation. Do not expose databases, Redis, or internal administration ports.</p>
+
+<h2>4. Issue a TLS certificate</h2>
+<pre><code>certbot certonly --standalone \
+  -d mail.example.com \
+  --agree-tos -m admin@example.com --no-eff-email</code></pre>
+<p>Create a deploy hook that reloads Postfix and Dovecot after renewal, then run <code>certbot renew --dry-run</code>. The certificate lives under <code>/etc/letsencrypt/live/mail.example.com/</code>.</p>
+
+<h2>5. Configure Postfix</h2>
+<pre><code>postconf -e 'myhostname = mail.example.com'
+postconf -e 'mydomain = example.com'
+postconf -e 'myorigin = $mydomain'
+postconf -e 'mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain'
+postconf -e 'inet_interfaces = all'
+postconf -e 'inet_protocols = ipv4'
+postconf -e 'mynetworks = 127.0.0.0/8'
+postconf -e 'home_mailbox = Maildir/'
+postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.example.com/fullchain.pem'
+postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.example.com/privkey.pem'
+postconf -e 'smtpd_tls_security_level = may'
+postconf -e 'smtp_tls_security_level = may'
+postconf -e 'smtpd_sasl_type = dovecot'
+postconf -e 'smtpd_sasl_path = private/auth'
+postconf -e 'smtpd_sasl_auth_enable = yes'
+postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'</code></pre>
+<p>Trust only localhost in <code>mynetworks</code>. Broad networks can turn the host into an open relay.</p>
+<p>Enable submission in <code>/etc/postfix/master.cf</code>:</p>
+<pre><code>submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject</code></pre>
+
+<h2>6. Configure Dovecot</h2>
+<p>Set <code>mail_location = maildir:~/Maildir</code> in <code>10-mail.conf</code>. In <code>10-auth.conf</code>, use:</p>
+<pre><code>disable_plaintext_auth = yes
+auth_mechanisms = plain login</code></pre>
+<p>Add this listener inside <code>service auth</code> in <code>10-master.conf</code>:</p>
+<pre><code>unix_listener /var/spool/postfix/private/auth {
+  mode = 0660
+  user = postfix
+  group = postfix
+}</code></pre>
+<p>For Dovecot 2.3 on Ubuntu, configure <code>10-ssl.conf</code>:</p>
+<pre><code>ssl = required
+ssl_cert = &lt;/etc/letsencrypt/live/mail.example.com/fullchain.pem
+ssl_key = &lt;/etc/letsencrypt/live/mail.example.com/privkey.pem</code></pre>
+<p>Dovecot syntax changes across major releases. Check <code>dovecot --version</code> and validate with <code>doveconf -n</code>.</p>
+
+<h2>7. Create the first mailbox</h2>
+<pre><code>adduser alice
+maildirmake.dovecot /home/alice/Maildir
+chown -R alice:alice /home/alice/Maildir</code></pre>
+<p>The login is <code>alice</code> and the address is <code>alice@example.com</code>. System users are simple for one domain, but virtual users backed by SQL/LDAP or a packaged mail suite are better for many domains or hundreds of mailboxes.</p>
+
+<h2>8. Integrate Rspamd</h2>
+<p>Verify the Rspamd milter on <code>127.0.0.1:11332</code>, then:</p>
+<pre><code>postconf -e 'milter_protocol = 6'
+postconf -e 'milter_default_action = accept'
+postconf -e 'smtpd_milters = inet:127.0.0.1:11332'
+postconf -e 'non_smtpd_milters = inet:127.0.0.1:11332'</code></pre>
+<p>The accept fallback keeps SMTP available during a temporary filter failure, but monitoring must catch prolonged outages.</p>
+
+<h2>9. Generate DKIM</h2>
+<pre><code>mkdir -p /var/lib/rspamd/dkim
+rspamadm dkim_keygen -b 2048 \
+  -s mail -d example.com \
+  -k /var/lib/rspamd/dkim/example.com.mail.key \
+  &gt; /root/example.com.mail.dkim.txt
+chown -R _rspamd:_rspamd /var/lib/rspamd/dkim
+chmod 600 /var/lib/rspamd/dkim/example.com.mail.key</code></pre>
+<p>Publish the TXT public key at <code>mail._domainkey.example.com</code>. Configure Rspamd's <code>dkim_signing</code> module with selector <code>mail</code>, the domain, and private-key path. Confirm the package service user before assigning ownership.</p>
+<pre><code>postfix check
+doveconf -n
+rspamadm configtest
+systemctl restart postfix dovecot rspamd</code></pre>
+
+<h2>10. Add DMARC</h2>
+<pre><code>_dmarc.example.com. TXT
+"v=DMARC1; p=none; rua=mailto:dmarc@example.com; adkim=s; aspf=s"</code></pre>
+<p>Begin with monitoring. After every legitimate sender passes and aligns SPF/DKIM, move gradually to <code>quarantine</code> and then <code>reject</code>. Do not enforce rejection before inventorying CRM, invoicing, and marketing senders.</p>
+
+<h2>11. Test relay and delivery</h2>
+<pre><code>postconf -n
+ss -lntp | grep -E ':25|:587|:993'
+swaks --server mail.example.com \
+  --from outside@example.net \
+  --to user@another-domain.test</code></pre>
+<p>Unauthenticated relay to an external domain must be rejected. Test authenticated submission with TLS, deliver to Gmail or Outlook, and inspect <code>Authentication-Results</code> for SPF, DKIM, and DMARC.</p>
+<table><thead><tr><th>Service</th><th>Server</th><th>Port</th><th>Security</th></tr></thead><tbody><tr><td>IMAP</td><td>mail.example.com</td><td>993</td><td>TLS</td></tr><tr><td>SMTP submission</td><td>mail.example.com</td><td>587</td><td>STARTTLS and authentication</td></tr></tbody></table>
+
+<h2>12. Fail2ban, logs, and queue</h2>
+<p>Enable suitable Postfix SASL and Dovecot jails, confirming Ubuntu's journal or log paths. Monitor:</p>
+<pre><code>journalctl -u postfix -u dovecot -u rspamd -f
+postqueue -p
+rspamc stat
+fail2ban-client status</code></pre>
+<p>Alert on queue growth, disk pressure, certificate expiry, stopped filters, and delivery-error spikes. Do not retry permanently rejected mail forever.</p>
+
+<h2>13. Backup and recovery</h2>
+<p>Back up mailbox storage, Postfix/Dovecot/Rspamd configuration, DKIM private keys, DNS records, user data, and firewall/PTR documentation. Encrypt backups, store them outside the VPS, and test mailbox restoration in isolation. Treat DKIM keys as secrets and rotate the selector if one is exposed.</p>
+
+<h2>14. Operational limits</h2>
+<ul><li>A new IP can be throttled even with correct configuration; reputation takes time.</li><li>Do not use this server for bulk marketing without unsubscribe, complaints, and warm-up controls.</li><li>One VPS is a single point of failure; a secondary MX is not a mailbox backup.</li><li>Webmail such as Roundcube is another application to secure and patch.</li><li>Avoid catch-all mailboxes because they attract spam.</li></ul>
+
+<h2>Production checklist</h2>
+<ul><li>Forward and reverse DNS match; SMTP HELO uses the correct FQDN.</li><li>MX, SPF, DKIM, and DMARC resolve correctly.</li><li>Port 25 is not an open relay; port 587 requires TLS and authentication.</li><li>IMAP requires TLS and certificate renewal passes dry-run.</li><li>Database and Redis are private; SSH uses keys and source restrictions.</li><li>Queue, disk, blocklists, logs, certificates, and backups are monitored.</li><li>An off-host backup has passed a restore test.</li><li><code>postmaster@</code>, <code>abuse@</code>, and DMARC reports are monitored.</li></ul>
+
+<h2>Conclusion</h2>
+<p>A functional mail server can be built in hours; a trustworthy one requires continuous operations. Postfix, Dovecot, and Rspamd are a strong small-scale foundation when DNS, TLS, authentication, monitoring, and backups are complete. If PTR, outbound port 25, or on-call operations are unavailable, choose managed email or an SMTP relay.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.postfix.org/BASIC_CONFIGURATION_README.html" target="_blank" rel="noopener noreferrer">Postfix: Basic Configuration</a></li><li><a href="https://doc.dovecot.org/main/core/config/ssl.html" target="_blank" rel="noopener noreferrer">Dovecot: SSL/TLS Configuration</a></li><li><a href="https://docs.rspamd.com/tutorials/integration/" target="_blank" rel="noopener noreferrer">Rspamd: MTA Integration</a></li><li><a href="https://support.google.com/mail/answer/81126" target="_blank" rel="noopener noreferrer">Google: Email sender guidelines</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

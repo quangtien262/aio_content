@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">T&#7889;i &#432;u truy v&#7845;n SQLite b&#7857;ng index v&agrave; query plan</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">SQLite, t&#7889;i &#432;u SQLite, EXPLAIN QUERY PLAN, SQLite index, PRAGMA optimize, composite index</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">SQLite, SQL, Database, Query Optimization, Index, Backend, Performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n &#273;o v&agrave; t&#7889;i &#432;u truy v&#7845;n SQLite b&#7857;ng EXPLAIN QUERY PLAN, index gh&eacute;p, covering index v&agrave; PRAGMA optimize.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/toi-uu-truy-van-sqlite.jpg" alt="T&#7889;i &#432;u truy v&#7845;n SQLite: Index, EXPLAIN QUERY PLAN v&agrave; nh&#7919;ng l&#7895;i th&#432;&#7901;ng g&#7863;p" width="1440" height="810"></p><h1>T&#7889;i &#432;u truy v&#7845;n SQLite: Index, EXPLAIN QUERY PLAN v&agrave; nh&#7919;ng l&#7895;i th&#432;&#7901;ng g&#7863;p</h1><p><strong>Khi &#7913;ng d&#7909;ng SQLite ch&#7853;m, th&ecirc;m index theo c&#7843;m t&iacute;nh th&#432;&#7901;ng t&#7841;o th&ecirc;m dung l&#432;&#7907;ng v&agrave; chi ph&iacute; ghi m&agrave; ch&#432;a ch&#7855;c s&#7917;a &#273;&uacute;ng truy v&#7845;n.</strong> Quy tr&igrave;nh hi&#7879;u qu&#7843; l&agrave; &#273;o truy v&#7845;n th&#7853;t, &#273;&#7885;c k&#7871; ho&#7841;ch th&#7921;c thi, thi&#7871;t k&#7871; index theo &#273;i&#7873;u ki&#7879;n l&#7885;c v&agrave; s&#7855;p x&#7871;p, r&#7891;i &#273;o l&#7841;i tr&ecirc;n d&#7919; li&#7879;u c&oacute; k&iacute;ch th&#432;&#7899;c g&#7847;n production.</p>
+
+<h2>B&#7855;t &#273;&#7847;u b&#7857;ng truy v&#7845;n ch&#7853;m, kh&ocirc;ng b&#7855;t &#273;&#7847;u b&#7857;ng index</h2>
+<p>Ghi nh&#7853;n c&acirc;u SQL, tham s&#7889;, th&#7901;i gian ch&#7841;y, s&#7889; h&agrave;ng v&agrave; t&#7847;n su&#7845;t g&#7885;i. M&#7897;t truy v&#7845;n 80 ms ch&#7841;y m&#7895;i gi&#7901; &iacute;t quan tr&#7885;ng h&#417;n truy v&#7845;n 8 ms xu&#7845;t hi&#7879;n h&agrave;ng ngh&igrave;n l&#7847;n trong m&#7897;t thao t&aacute;c. H&atilde;y ki&#7875;m tra c&#7843; th&#7901;i gian kh&oacute;a v&agrave; s&#7889; l&#7847;n truy v&#7845;n do ORM t&#7841;o ra.</p>
+<pre><code>EXPLAIN QUERY PLAN
+SELECT id, total
+FROM orders
+WHERE customer_id = ?
+  AND status = ?
+ORDER BY created_at DESC
+LIMIT 20;</code></pre>
+<p><code>EXPLAIN QUERY PLAN</code> cho bi&#7871;t SQLite &#273;ang qu&eacute;t to&agrave;n b&#7843;ng (<code>SCAN</code>), t&igrave;m qua index (<code>SEARCH ... USING INDEX</code>) hay t&#7841;o B-tree t&#7841;m &#273;&#7875; s&#7855;p x&#7871;p. &#272;&#7847;u ra d&agrave;nh cho g&#7905; l&#7895;i t&#432;&#417;ng t&aacute;c v&agrave; c&oacute; th&#7875; thay &#273;&#7893;i gi&#7919;a c&aacute;c phi&ecirc;n b&#7843;n; kh&ocirc;ng n&ecirc;n vi&#7871;t logic &#7913;ng d&#7909;ng ph&#7909; thu&#7897;c chu&#7895;i m&ocirc; t&#7843; n&agrave;y.</p>
+
+<h2>Thi&#7871;t k&#7871; index gh&eacute;p theo truy v&#7845;n</h2>
+<p>V&#7899;i truy v&#7845;n tr&ecirc;n, m&#7897;t index h&#7907;p l&yacute; l&agrave;:</p>
+<pre><code>CREATE INDEX idx_orders_customer_status_created
+ON orders(customer_id, status, created_at DESC);</code></pre>
+<p>C&aacute;c c&#7897;t so s&aacute;nh b&#7857;ng th&#432;&#7901;ng &#273;&#7913;ng tr&#432;&#7899;c, sau &#273;&oacute; &#273;&#7871;n c&#7897;t ph&#7841;m vi ho&#7863;c s&#7855;p x&#7871;p. Th&#7913; t&#7921; c&#7897;t r&#7845;t quan tr&#7885;ng v&igrave; index nhi&#7873;u c&#7897;t ho&#7841;t &#273;&#7897;ng theo ti&#7873;n t&#7889; b&ecirc;n tr&aacute;i. M&#7897;t index b&#7855;t &#273;&#7847;u b&#7857;ng <code>customer_id</code> c&oacute; th&#7875; h&#7895; tr&#7907; truy v&#7845;n theo kh&aacute;ch h&agrave;ng, nh&#432;ng th&#432;&#7901;ng kh&ocirc;ng gi&uacute;p nhi&#7873;u cho truy v&#7845;n ch&#7881; l&#7885;c <code>status</code>.</p>
+
+<h2>Covering index: nhanh h&#417;n nh&#432;ng kh&ocirc;ng mi&#7877;n ph&iacute;</h2>
+<p>N&#7871;u index ch&#7913;a c&#7843; c&aacute;c c&#7897;t c&#7847;n tr&#7843; v&#7873;, SQLite c&oacute; th&#7875; &#273;&#7885;c k&#7871;t qu&#7843; m&agrave; kh&ocirc;ng quay l&#7841;i b&#7843;ng. Th&ecirc;m <code>total</code> v&agrave;o cu&#7889;i index c&oacute; th&#7875; t&#7841;o covering index cho v&iacute; d&#7909; tr&ecirc;n. &#272;&#7893;i l&#7841;i, file c&#417; s&#7903; d&#7919; li&#7879;u l&#7899;n h&#417;n, m&#7895;i l&#7847;n ghi ph&#7843;i c&#7853;p nh&#7853;t nhi&#7873;u d&#7919; li&#7879;u h&#417;n v&agrave; cache ch&#7913;a &iacute;t trang h&#7919;u &iacute;ch h&#417;n.</p>
+<blockquote>Kh&ocirc;ng t&#7841;o m&#7897;t index ri&ecirc;ng cho m&#7885;i truy v&#7845;n. H&atilde;y t&igrave;m index c&oacute; th&#7875; ph&#7909;c v&#7909; nhi&#7873;u truy v&#7845;n quan tr&#7885;ng v&agrave; lo&#7841;i b&#7887; index tr&ugrave;ng ti&#7873;n t&#7889; khi &#273;&atilde; x&aacute;c minh kh&ocirc;ng c&ograve;n c&#7847;n thi&#7871;t.</blockquote>
+
+<h2>Khi index kh&ocirc;ng &#273;&#432;&#7907;c s&#7917; d&#7909;ng</h2>
+<ul><li>B&#7843;ng nh&#7887; khi&#7871;n qu&eacute;t to&agrave;n b&#7843;ng r&#7867; h&#417;n.</li><li>C&#7897;t c&oacute; &#273;&#7897; ch&#7885;n l&#7885;c th&#7845;p, ch&#7859;ng h&#7841;n ph&#7847;n l&#7899;n h&agrave;ng c&oacute; c&ugrave;ng tr&#7841;ng th&aacute;i.</li><li>&#272;i&#7873;u ki&#7879;n d&ugrave;ng h&agrave;m ho&#7863;c ph&eacute;p bi&#7871;n &#273;&#7893;i kh&ocirc;ng kh&#7899;p expression index.</li><li>Ki&#7875;u d&#7919; li&#7879;u tham s&#7889; v&agrave; c&#7897;t kh&ocirc;ng ph&ugrave; h&#7907;p.</li><li>Index kh&ocirc;ng kh&#7899;p ti&#7873;n t&#7889; tr&aacute;i ho&#7863;c truy v&#7845;n tr&#7843; v&#7873; ph&#7847;n l&#7899;n b&#7843;ng.</li><li>Th&#7889;ng k&ecirc; ch&#432;a ph&#7843;n &aacute;nh d&#7919; li&#7879;u hi&#7879;n t&#7841;i.</li></ul>
+<p>&#272;&#7915;ng &eacute;p index b&#7857;ng <code>INDEXED BY</code> nh&#432; m&#7897;t m&#7865;o t&#7889;i &#432;u th&ocirc;ng th&#432;&#7901;ng. T&agrave;i li&#7879;u SQLite m&ocirc; t&#7843; n&oacute; ch&#7911; y&#7871;u nh&#432; c&aacute;ch ph&aacute;t hi&#7879;n thay &#273;&#7893;i k&#7871; ho&#7841;ch ngo&agrave;i &yacute; mu&#7889;n, kh&ocirc;ng ph&#7843;i l&#7901;i g&#7907;i &yacute; m&#7873;m cho planner.</p>
+
+<h2>C&#7853;p nh&#7853;t th&#7889;ng k&ecirc; b&#7857;ng PRAGMA optimize</h2>
+<p>SQLite khuy&#7871;n ngh&#7883; ch&#7841;y <code>PRAGMA optimize;</code> &#273;&#7883;nh k&#7923; v&agrave; sau thay &#273;&#7893;i schema, &#273;&#7863;c bi&#7879;t sau khi t&#7841;o index. V&#7899;i k&#7871;t n&#7889;i t&#7891;n t&#7841;i l&acirc;u, c&oacute; th&#7875; ch&#7841;y <code>PRAGMA optimize=0x10002;</code> khi m&#7903; r&#7891;i g&#7885;i <code>PRAGMA optimize;</code> theo chu k&#7923; ho&#7863;c tr&#432;&#7899;c khi &#273;&oacute;ng. L&#7879;nh th&#432;&#7901;ng kh&ocirc;ng l&agrave;m g&igrave; v&agrave; ch&#7881; ch&#7841;y ANALYZE khi planner c&oacute; th&#7875; h&#432;&#7903;ng l&#7907;i.</p>
+
+<h2>&#272;&#7915;ng qu&ecirc;n m&#7851;u N+1 v&agrave; ph&acirc;n trang</h2>
+<p>M&#7897;t truy v&#7845;n nhanh v&#7851;n t&#7841;o h&#7879; th&#7889;ng ch&#7853;m n&#7871;u b&#7883; g&#7885;i m&#7897;t l&#7847;n cho m&#7895;i h&agrave;ng. D&ugrave;ng eager loading, join ho&#7863;c truy v&#7845;n theo l&ocirc; &#273;&#7875; lo&#7841;i N+1. V&#7899;i b&#7843;ng l&#7899;n, ph&acirc;n trang b&#7857;ng con tr&#7887; nh&#432; <code>WHERE id &lt; ? ORDER BY id DESC LIMIT ?</code> th&#432;&#7901;ng &#7893;n &#273;&#7883;nh h&#417;n OFFSET s&acirc;u.</p>
+
+<h2>Checklist t&#7889;i &#432;u an to&agrave;n</h2>
+<ol><li>T&aacute;i hi&#7879;n tr&ecirc;n d&#7919; li&#7879;u g&#7847;n k&iacute;ch th&#432;&#7899;c th&#7853;t.</li><li>&#272;o tr&#432;&#7899;c v&agrave; sau b&#7857;ng c&ugrave;ng truy v&#7845;n, tham s&#7889; v&agrave; cache state.</li><li>&#272;&#7885;c query plan, kh&ocirc;ng suy &#273;o&aacute;n.</li><li>Th&ecirc;m m&#7897;t thay &#273;&#7893;i t&#7841;i m&#7897;t th&#7901;i &#273;i&#7875;m.</li><li>&#272;o t&aacute;c &#273;&#7897;ng l&ecirc;n INSERT, UPDATE, dung l&#432;&#7907;ng v&agrave; migration.</li><li>Ch&#7841;y test &#273;&uacute;ng k&#7871;t qu&#7843;, kh&ocirc;ng ch&#7881; benchmark t&#7889;c &#273;&#7897;.</li><li>Theo d&otilde;i truy v&#7845;n ch&#7853;m sau khi ph&aacute;t h&agrave;nh.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>T&#7889;i &#432;u SQLite l&agrave; b&agrave;i to&aacute;n c&acirc;n b&#7857;ng gi&#7919;a t&#7889;c &#273;&#7897; &#273;&#7885;c, chi ph&iacute; ghi v&agrave; &#273;&#7897; ph&#7913;c t&#7841;p v&#7853;n h&agrave;nh. Query plan cho bi&#7871;t c&#417; s&#7903; d&#7919; li&#7879;u &#273;ang l&agrave;m g&igrave;; index gh&eacute;p v&agrave; covering index ch&#7881; n&ecirc;n &#273;&#432;&#7907;c th&ecirc;m khi s&#7889; li&#7879;u ch&#7913;ng minh ch&uacute;ng gi&#7843;i quy&#7871;t m&#7897;t &#273;&#432;&#7901;ng truy c&#7853;p quan tr&#7885;ng.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.sqlite.org/eqp.html" target="_blank" rel="noopener noreferrer">SQLite: EXPLAIN QUERY PLAN</a></li><li><a href="https://www.sqlite.org/queryplanner.html" target="_blank" rel="noopener noreferrer">SQLite: Query Planning</a></li><li><a href="https://www.sqlite.org/lang_analyze.html" target="_blank" rel="noopener noreferrer">SQLite: ANALYZE and PRAGMA optimize</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

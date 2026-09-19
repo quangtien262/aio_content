@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Chuy&#7875;n WordPress sang hosting m&#7899;i kh&ocirc;ng downtime</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">chuy&#7875;n hosting WordPress, migrate WordPress, kh&ocirc;ng downtime, WP-CLI, chuy&#7875;n website, DNS, backup WordPress</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">WordPress, Hosting, Website Migration, WP-CLI, DNS, Backup, Guides</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Quy tr&igrave;nh chuy&#7875;n WordPress sang hosting m&#7899;i an to&agrave;n: backup, gi&#7843;m TTL, &#273;&#7891;ng b&#7897; file v&agrave; database, ki&#7875;m th&#7917; b&#7857;ng hosts, chuy&#7875;n DNS, SSL v&agrave; rollback.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/wordpress-hosting-migration-guide.jpg" alt="H&#432;&#7899;ng d&#7851;n chuy&#7875;n WordPress sang hosting m&#7899;i kh&ocirc;ng downtime" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n chuy&#7875;n WordPress sang hosting m&#7899;i kh&ocirc;ng downtime</h1><p><strong>Chuy&#7875;n hosting WordPress kh&ocirc;ng kh&oacute; &#7903; thao t&aacute;c copy file, m&agrave; kh&oacute; &#7903; vi&#7879;c kh&ocirc;ng m&#7845;t &#273;&#417;n h&agrave;ng, b&igrave;nh lu&#7853;n ho&#7863;c d&#7919; li&#7879;u ph&aacute;t sinh trong l&uacute;c chuy&#7875;n.</strong> M&#7897;t quy tr&igrave;nh t&#7889;t ph&#7843;i chu&#7849;n b&#7883; &#273;&#432;&#7901;ng lui, ki&#7875;m th&#7917; m&aacute;y ch&#7911; m&#7899;i tr&#432;&#7899;c khi &#273;&#7893;i DNS v&agrave; ki&#7875;m so&aacute;t kho&#7843;ng th&#7901;i gian hai m&aacute;y ch&#7911; c&ugrave;ng t&#7891;n t&#7841;i.</p>
+<p>H&#432;&#7899;ng d&#7851;n n&agrave;y &aacute;p d&#7909;ng cho website WordPress &#273;&#417;n l&#7867; gi&#7919; nguy&ecirc;n t&ecirc;n mi&#7873;n. Multisite, WooCommerce l&#432;u l&#432;&#7907;ng l&#7899;n ho&#7863;c h&#7879; th&#7889;ng c&oacute; nhi&#7873;u d&#7883;ch v&#7909; ghi d&#7919; li&#7879;u c&#7847;n k&#7871; ho&#7841;ch ri&ecirc;ng v&agrave; n&ecirc;n di&#7877;n t&#7853;p tr&ecirc;n staging.</p>
+
+<h2>M&#7909;c ti&ecirc;u v&agrave; nguy&ecirc;n t&#7855;c</h2>
+<ul>
+<li>Website c&ocirc;ng khai v&#7851;n truy c&#7853;p &#273;&#432;&#7907;c trong ph&#7847;n l&#7899;n qu&aacute; tr&igrave;nh.</li>
+<li>B&#7843;n sao tr&ecirc;n m&aacute;y ch&#7911; m&#7899;i &#273;&#432;&#7907;c ki&#7875;m th&#7917; tr&#432;&#7899;c khi nh&#7853;n traffic th&#7853;t.</li>
+<li>Kho&#7843;ng &#273;&oacute;ng b&#259;ng ghi d&#7919; li&#7879;u cu&#7889;i c&ugrave;ng ng&#7855;n v&agrave; c&oacute; th&ocirc;ng b&aacute;o r&otilde; r&agrave;ng.</li>
+<li>M&aacute;y ch&#7911; c&#361; &#273;&#432;&#7907;c gi&#7919; nguy&ecirc;n &#273;&#7911; l&acirc;u &#273;&#7875; rollback.</li>
+<li>M&#7885;i secret, backup v&agrave; t&agrave;i kho&#7843;n t&#7841;m &#273;&#432;&#7907;c d&#7885;n sau khi ho&agrave;n t&#7845;t.</li>
+</ul>
+<blockquote>DNS kh&ocirc;ng chuy&#7875;n ng&#432;&#7901;i d&ugrave;ng &#273;&#7891;ng lo&#7841;t. Trong th&#7901;i gian cache, m&#7897;t s&#7889; truy c&#7853;p c&oacute; th&#7875; &#273;&#7871;n m&aacute;y ch&#7911; c&#361; v&agrave; s&#7889; kh&aacute;c &#273;&#7871;n m&aacute;y ch&#7911; m&#7899;i.</blockquote>
+
+<h2>1. Ki&#7875;m k&ecirc; tr&#432;&#7899;c khi di chuy&#7875;n</h2>
+<p>Ghi l&#7841;i PHP, MySQL/MariaDB, WordPress, web server, extension PHP, cron, dung l&#432;&#7907;ng file/database v&agrave; c&#7845;u h&igrave;nh email. Ki&#7875;m tra plugin cache, security, backup, object cache, CDN v&agrave; c&aacute;c t&iacute;ch h&#7907;p thanh to&aacute;n ho&#7863;c webhook.</p>
+<pre><code>wp core version
+wp plugin list
+wp theme list
+wp db size
+wp cron event list</code></pre>
+<p>X&aacute;c nh&#7853;n hosting m&#7899;i h&#7895; tr&#7907; phi&ecirc;n b&#7843;n PHP v&agrave; extension c&#7847;n d&ugrave;ng. Ki&#7875;m tra gi&#7899;i h&#7841;n upload, memory, execution time, cron, SSL, HTTP/2 ho&#7863;c HTTP/3, quy&#7873;n file v&agrave; kh&#7843; n&#259;ng g&#7917;i mail. Kh&ocirc;ng n&acirc;ng c&#7845;p WordPress, PHP v&agrave; plugin c&ugrave;ng l&uacute;c v&#7899;i chuy&#7875;n hosting; qu&aacute; nhi&#7873;u thay &#273;&#7893;i l&agrave;m kh&oacute; x&aacute;c &#273;&#7883;nh nguy&ecirc;n nh&acirc;n khi c&oacute; l&#7895;i.</p>
+
+<h2>2. Gi&#7843;m TTL DNS tr&#432;&#7899;c ng&agrave;y chuy&#7875;n</h2>
+<p>Tr&#432;&#7899;c 24&ndash;48 gi&#7901;, gi&#7843;m TTL c&#7911;a record web xu&#7889;ng kho&#7843;ng 300 gi&acirc;y n&#7871;u DNS provider cho ph&eacute;p. Vi&#7879;c n&agrave;y kh&ocirc;ng l&agrave;m cache c&#361; bi&#7871;n m&#7845;t ngay; ph&#7843;i ch&#7901; TTL tr&#432;&#7899;c &#273;&oacute; h&#7871;t h&#7841;n.</p>
+<p>Ki&#7875;m k&ecirc; to&agrave;n b&#7897; record tr&#432;&#7899;c khi thay nameserver ho&#7863;c zone: <code>A</code>, <code>AAAA</code>, <code>CNAME</code>, <code>MX</code>, SPF, DKIM, DMARC v&agrave; record x&aacute;c minh. N&#7871;u ch&#7881; chuy&#7875;n website, kh&ocirc;ng thay &#273;&#7893;i record email. M&#7897;t record <code>AAAA</code> c&#361; c&oacute; th&#7875; khi&#7871;n ng&#432;&#7901;i d&ugrave;ng IPv6 ti&#7871;p t&#7909;c v&agrave;o m&aacute;y ch&#7911; c&#361; d&ugrave; record <code>A</code> &#273;&atilde; &#273;&#7893;i.</p>
+
+<h2>3. T&#7841;o v&agrave; ki&#7875;m tra backup</h2>
+<p>C&#7847;n t&#7889;i thi&#7875;u hai ph&#7847;n: to&agrave;n b&#7897; file WordPress v&agrave; database. Kh&ocirc;ng qu&ecirc;n <code>wp-content/uploads</code>, plugin, theme, mu-plugin, <code>.htaccess</code>, c&#7845;u h&igrave;nh Nginx/Apache v&agrave; cron b&ecirc;n ngo&agrave;i WordPress.</p>
+<pre><code>wp db export ~/backup/site-pre-migration.sql
+tar -czf ~/backup/site-files.tar.gz \
+  --exclude='wp-content/cache' \
+  /var/www/example.com</code></pre>
+<p>L&#432;u backup ngo&agrave;i m&aacute;y ch&#7911; ngu&#7891;n, m&atilde; h&oacute;a n&#7871;u ch&#7913;a d&#7919; li&#7879;u nh&#7841;y c&#7843;m v&agrave; ki&#7875;m tra file c&oacute; &#273;&#7885;c &#273;&#432;&#7907;c. T&#7889;t nh&#7845;t h&atilde;y th&#7917; restore v&agrave;o m&ocirc;i tr&#432;&#7901;ng t&#7841;m. M&#7897;t file backup ch&#432;a t&#7915;ng &#273;&#432;&#7907;c kh&ocirc;i ph&#7909;c ch&#7881; l&agrave; gi&#7843; &#273;&#7883;nh.</p>
+
+<h2>4. Chu&#7849;n b&#7883; hosting m&#7899;i</h2>
+<p>T&#7841;o virtual host, database v&agrave; database user v&#7899;i quy&#7873;n t&#7889;i thi&#7875;u. C&agrave;i &#273;&uacute;ng runtime, b&#7853;t HTTPS v&agrave; c&#7845;u h&igrave;nh redirect nh&#432;ng ch&#432;a &#273;&#7893;i DNS. N&#7871;u d&ugrave;ng Let's Encrypt m&agrave; domain ch&#432;a tr&#7887; sang m&aacute;y m&#7899;i, d&ugrave;ng DNS challenge ho&#7863;c ch&#7913;ng ch&#7881; t&#7841;m theo kh&#7843; n&#259;ng nh&agrave; cung c&#7845;p.</p>
+<p>Copy file b&#7857;ng c&ocirc;ng c&#7909; gi&#7919; timestamp v&agrave; permission. V&#7899;i SSH, <code>rsync</code> thu&#7853;n ti&#7879;n cho nhi&#7873;u l&#7847;n &#273;&#7891;ng b&#7897;:</p>
+<pre><code>rsync -aH --delete \
+  --exclude='wp-content/cache/' \
+  user@old-server:/var/www/example.com/ \
+  /var/www/example.com/</code></pre>
+<p>Th&#7853;n tr&#7885;ng v&#7899;i <code>--delete</code>: ch&#7841;y dry-run v&agrave; ki&#7875;m tra &#273;&uacute;ng source/destination tr&#432;&#7899;c. Kh&ocirc;ng copy cache, session ho&#7863;c backup c&#361; n&#7871;u kh&ocirc;ng c&#7847;n.</p>
+
+<h2>5. Import database v&agrave; c&#7853;p nh&#7853;t c&#7845;u h&igrave;nh</h2>
+<pre><code>wp db import ~/backup/site-pre-migration.sql
+wp db check</code></pre>
+<p>C&#7853;p nh&#7853;t <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code> v&agrave; <code>DB_HOST</code> trong <code>wp-config.php</code>. Kh&ocirc;ng &#273;&#432;a file c&#7845;u h&igrave;nh ho&#7863;c SQL dump v&agrave;o th&#432; m&#7909;c public c&oacute; th&#7875; t&#7843;i qua web.</p>
+<p>N&#7871;u gi&#7919; nguy&ecirc;n domain v&agrave; &#273;&#432;&#7901;ng d&#7851;n, th&#432;&#7901;ng kh&ocirc;ng c&#7847;n search-replace URL. N&#7871;u domain ho&#7863;c giao th&#7913;c thay &#273;&#7893;i, kh&ocirc;ng d&ugrave;ng l&#7879;nh SQL <code>REPLACE()</code> m&ugrave; qu&aacute;ng v&igrave; WordPress l&#432;u nhi&#7873;u gi&aacute; tr&#7883; serialized. WP-CLI x&#7917; l&yacute; serialized data:</p>
+<pre><code>wp search-replace 'http://old.example' 'https://new.example' \
+  --skip-columns=guid --dry-run
+
+wp search-replace 'http://old.example' 'https://new.example' \
+  --skip-columns=guid</code></pre>
+<p>Lu&ocirc;n ch&#7841;y <code>--dry-run</code> tr&#432;&#7899;c. V&#7899;i Multisite, c&#7847;n t&ugrave;y ch&#7885;n v&agrave; quy tr&igrave;nh ri&ecirc;ng; kh&ocirc;ng &aacute;p d&#7909;ng nguy&ecirc;n xi v&iacute; d&#7909; c&#7911;a single site.</p>
+
+<h2>6. Ki&#7875;m th&#7917; tr&#432;&#7899;c khi &#273;&#7893;i DNS</h2>
+<p>C&aacute;ch ch&iacute;nh x&aacute;c nh&#7845;t l&agrave; s&#7917;a file <code>hosts</code> tr&ecirc;n m&aacute;y ki&#7875;m th&#7917; &#273;&#7875; domain th&#7853;t tr&#7887; t&#7841;m &#273;&#7871;n IP hosting m&#7899;i. Tr&igrave;nh duy&#7879;t g&#7917;i &#273;&uacute;ng hostname, WordPress d&ugrave;ng &#273;&uacute;ng URL v&agrave; HTTPS/SNI &#273;&#432;&#7907;c ki&#7875;m tra g&#7847;n gi&#7889;ng production.</p>
+<pre><code>203.0.113.20 example.com www.example.com</code></pre>
+<p>Sau khi l&#432;u, x&oacute;a DNS cache n&#7871;u c&#7847;n v&agrave; m&#7903; c&#7917;a s&#7893; ri&ecirc;ng t&#432;. Ch&#7881; m&aacute;y &#273;&atilde; s&#7917;a hosts nh&igrave;n th&#7845;y hosting m&#7899;i; ng&#432;&#7901;i d&ugrave;ng v&#7851;n &#7903; m&aacute;y c&#361;.</p>
+<p>Ki&#7875;m tra t&#7889;i thi&#7875;u:</p>
+<ul>
+<li>Trang ch&#7911;, b&agrave;i vi&#7871;t, category, t&igrave;m ki&#7871;m v&agrave; URL 404.</li>
+<li>&#272;&#259;ng nh&#7853;p/&#273;&#259;ng xu&#7845;t qu&#7843;n tr&#7883;, upload &#7843;nh v&agrave; ch&#7881;nh s&#7917;a b&agrave;i.</li>
+<li>Form li&ecirc;n h&#7879;, email giao d&#7883;ch, CAPTCHA v&agrave; webhook.</li>
+<li>Gi&#7887; h&agrave;ng, checkout, callback thanh to&aacute;n tr&ecirc;n m&ocirc;i tr&#432;&#7901;ng test ph&ugrave; h&#7907;p.</li>
+<li>Permalink, redirect, robots.txt, sitemap v&agrave; canonical URL.</li>
+<li>&#7842;nh, CSS, JavaScript, font v&agrave; mixed content.</li>
+<li>WP-Cron, cron h&#7879; th&#7889;ng, queue v&agrave; t&aacute;c v&#7909; backup.</li>
+</ul>
+<pre><code>wp core verify-checksums
+wp plugin status
+wp rewrite flush
+wp cache flush</code></pre>
+<p><code>wp rewrite flush</code> ch&#7881; ch&#7841;y khi c&#7847;n v&agrave; sau khi web server &#273;&atilde; c&oacute; rule permalink &#273;&uacute;ng. Xem PHP error log, web server log v&agrave; console tr&igrave;nh duy&#7879;t thay v&igrave; ch&#7881; nh&igrave;n trang ch&#7911;.</p>
+
+<h2>7. &#272;&#7891;ng b&#7897; l&#7847;n cu&#7889;i m&agrave; kh&ocirc;ng m&#7845;t d&#7919; li&#7879;u</h2>
+<p>Website n&#7897;i dung &iacute;t thay &#273;&#7893;i c&oacute; th&#7875; b&#7853;t maintenance/read-only ng&#7855;n tr&ecirc;n m&aacute;y c&#361;, d&#7915;ng cron/queue, export database l&#7847;n cu&#7889;i v&agrave; rsync ph&#7847;n upload ph&aacute;t sinh. V&#7899;i WooCommerce ho&#7863;c membership, &#273;&acirc;y l&agrave; b&#432;&#7899;c quan tr&#7885;ng nh&#7845;t.</p>
+<ol>
+<li>Th&ocirc;ng b&aacute;o c&#7917;a s&#7893; b&#7843;o tr&igrave; ng&#7855;n v&agrave; t&#7841;m ch&#7863;n thao t&aacute;c ghi.</li>
+<li>D&#7915;ng worker, WP-Cron ho&#7863;c webhook consumer tr&ecirc;n m&aacute;y c&#361;.</li>
+<li>Export database cu&#7889;i c&ugrave;ng.</li>
+<li>&#272;&#7891;ng b&#7897; l&#7841;i <code>wp-content/uploads</code> v&agrave; file ph&aacute;t sinh.</li>
+<li>Import database cu&#7889;i v&agrave;o m&aacute;y m&#7899;i.</li>
+<li>X&oacute;a cache, ch&#7841;y smoke test v&agrave; m&#7903; ghi tr&ecirc;n m&aacute;y m&#7899;i.</li>
+</ol>
+<p>Kh&ocirc;ng &#273;&#7875; cron v&agrave; queue ch&#7841;y tr&ecirc;n c&#7843; hai m&aacute;y c&ugrave;ng l&uacute;c v&igrave; email, subscription ho&#7863;c job c&oacute; th&#7875; b&#7883; x&#7917; l&yacute; hai l&#7847;n. V&#7899;i website kh&ocirc;ng ch&#7845;p nh&#7853;n maintenance window, c&#7847;n replication ho&#7863;c c&#417; ch&#7871; &#273;&#7891;ng b&#7897; c&#7845;p &#7913;ng d&#7909;ng ph&#7913;c t&#7841;p h&#417;n.</p>
+
+<h2>8. Chuy&#7875;n DNS</h2>
+<p>&#272;&#7893;i record <code>A</code>/<code>AAAA</code> sang IP m&#7899;i, ho&#7863;c c&#7853;p nh&#7853;t load balancer theo ki&#7871;n tr&uacute;c. Kh&ocirc;ng x&oacute;a c&#7845;u h&igrave;nh c&#361;. Theo d&otilde;i access log &#7903; c&#7843; hai m&aacute;y &#273;&#7875; th&#7845;y traffic d&#7883;ch chuy&#7875;n.</p>
+<pre><code>dig +short example.com A
+dig +short example.com AAAA
+curl -I https://example.com</code></pre>
+<p>Ki&#7875;m tra t&#7915; nhi&#7873;u m&#7841;ng ho&#7863;c resolver, kh&ocirc;ng ch&#7881; m&aacute;y &#273;&atilde; ch&#7881;nh hosts. N&#7871;u d&ugrave;ng CDN/proxy, purge cache c&oacute; ki&#7875;m so&aacute;t v&agrave; x&aacute;c nh&#7853;n origin m&#7899;i. Gi&#7919; maintenance/read-only tr&ecirc;n m&aacute;y c&#361; trong giai &#273;o&#7841;n DNS chuy&#7875;n ti&#7871;p &#273;&#7875; kh&ocirc;ng ph&aacute;t sinh d&#7919; li&#7879;u ph&acirc;n m&#7843;nh.</p>
+
+<h2>9. Theo d&otilde;i sau chuy&#7875;n &#273;&#7893;i</h2>
+<p>Trong 24&ndash;72 gi&#7901; &#273;&#7847;u, theo d&otilde;i:</p>
+<ul>
+<li>HTTP 4xx/5xx, PHP fatal error v&agrave; slow query.</li>
+<li>CPU, RAM, disk, inode, I/O v&agrave; connection database.</li>
+<li>&#272;&#259;ng nh&#7853;p, form, &#273;&#417;n h&agrave;ng, thanh to&aacute;n v&agrave; email.</li>
+<li>WP-Cron, queue, backup v&agrave; webhook.</li>
+<li>SSL chain, redirect HTTP&rarr;HTTPS v&agrave; mixed content.</li>
+<li>Traffic c&ograve;n &#273;&#7871;n IP c&#361; v&agrave; bot d&ugrave;ng DNS cache d&agrave;i.</li>
+</ul>
+<p>Khi &#7893;n &#273;&#7883;nh, t&#259;ng TTL v&#7873; m&#7913;c v&#7853;n h&agrave;nh th&ocirc;ng th&#432;&#7901;ng. T&#7841;o backup m&#7899;i t&#7915; hosting m&#7899;i v&agrave; th&#7917; m&#7897;t thao t&aacute;c restore nh&#7887;.</p>
+
+<h2>10. K&#7871; ho&#7841;ch rollback</h2>
+<p>N&#7871;u l&#7895;i nghi&ecirc;m tr&#7885;ng tr&#432;&#7899;c khi c&oacute; d&#7919; li&#7879;u m&#7899;i tr&ecirc;n hosting m&#7899;i, &#273;&#7893;i DNS v&#7873; IP c&#361; v&agrave; m&#7903; l&#7841;i d&#7883;ch v&#7909; c&#361;. N&#7871;u m&aacute;y m&#7899;i &#273;&atilde; nh&#7853;n &#273;&#417;n h&agrave;ng ho&#7863;c n&#7897;i dung, rollback kh&ocirc;ng c&ograve;n l&agrave; &#273;&#7893;i DNS &#273;&#417;n gi&#7843;n: ph&#7843;i quy&#7871;t &#273;&#7883;nh c&aacute;ch h&#7907;p nh&#7845;t d&#7919; li&#7879;u ph&aacute;t sinh.</p>
+<p>&#272;&#7863;t ng&#432;&#7905;ng rollback tr&#432;&#7899;c khi chuy&#7875;n, v&iacute; d&#7909; t&#7927; l&#7879; l&#7895;i, checkout th&#7845;t b&#7841;i ho&#7863;c latency. Ghi r&otilde; ng&#432;&#7901;i ra quy&#7871;t &#273;&#7883;nh, th&#7901;i gian ch&#7901; DNS v&agrave; c&aacute;ch x&#7917; l&yacute; d&#7919; li&#7879;u m&#7899;i. Gi&#7919; m&aacute;y c&#361;, database v&agrave; backup nguy&ecirc;n tr&#7841;ng &iacute;t nh&#7845;t v&agrave;i ng&agrave;y ho&#7863;c theo y&ecirc;u c&#7847;u tu&acirc;n th&#7911;.</p>
+
+<h2>D&#7885;n d&#7865;p an to&agrave;n</h2>
+<p>Sau th&#7901;i gian quan s&aacute;t v&agrave; khi kh&ocirc;ng c&ograve;n traffic h&#7907;p l&#7879; t&#7899;i m&aacute;y c&#361;:</p>
+<ul>
+<li>Thu h&#7891;i SSH key, t&agrave;i kho&#7843;n v&agrave; token di chuy&#7875;n t&#7841;m.</li>
+<li>X&oacute;a SQL dump kh&#7887;i web root v&agrave; th&#432; m&#7909;c t&#7841;m.</li>
+<li>T&#7855;t cron/worker c&#361;, sau &#273;&oacute; m&#7899;i h&#7911;y hosting c&#361;.</li>
+<li>C&#7853;p nh&#7853;t t&agrave;i li&#7879;u h&#7841; t&#7847;ng, monitoring, backup v&agrave; danh s&aacute;ch IP.</li>
+<li>Ki&#7875;m tra l&#7841;i quy&#7873;n file: th&#432; m&#7909;c th&#432;&#7901;ng 755, file 644, tr&aacute;nh 777.</li>
+<li>&#272;&#7893;i secret n&#7871;u ch&uacute;ng t&#7915;ng &#273;&#432;&#7907;c chia s&#7867; qua k&ecirc;nh kh&ocirc;ng an to&agrave;n.</li>
+</ul>
+
+<h2>Checklist nhanh</h2>
+<ol>
+<li>Ki&#7875;m k&ecirc; runtime, plugin, cron v&agrave; t&iacute;ch h&#7907;p.</li>
+<li>Gi&#7843;m TTL tr&#432;&#7899;c 24&ndash;48 gi&#7901;.</li>
+<li>Backup file v&agrave; database, ki&#7875;m tra kh&#7843; n&#259;ng restore.</li>
+<li>D&#7921;ng hosting m&#7899;i, copy v&agrave; import b&#7843;n &#273;&#7847;u.</li>
+<li>Ki&#7875;m th&#7917; b&#7857;ng hosts v&#7899;i domain th&#7853;t.</li>
+<li>&#272;&oacute;ng b&#259;ng ghi ng&#7855;n, &#273;&#7891;ng b&#7897; database/file l&#7847;n cu&#7889;i.</li>
+<li>Chuy&#7875;n DNS v&agrave; theo d&otilde;i c&#7843; hai m&aacute;y.</li>
+<li>Gi&#7919; m&aacute;y c&#361; cho rollback, sau &#273;&oacute; d&#7885;n secret v&agrave; backup t&#7841;m.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>M&#7897;t l&#7847;n chuy&#7875;n WordPress an to&agrave;n c&#7847;n nhi&#7873;u v&ograve;ng &#273;&#7891;ng b&#7897; v&agrave; ki&#7875;m ch&#7913;ng, kh&ocirc;ng ph&#7843;i m&#7897;t c&uacute; copy r&#7891;i &#273;&#7893;i DNS. Chu&#7849;n b&#7883; backup c&oacute; th&#7875; restore, th&#7917; hosting m&#7899;i b&#7857;ng hosts, ki&#7875;m so&aacute;t thao t&aacute;c ghi trong l&#7847;n &#273;&#7891;ng b&#7897; cu&#7889;i v&agrave; gi&#7919; &#273;&#432;&#7901;ng rollback s&#7869; gi&#7843;m &#273;&aacute;ng k&#7875; r&#7911;i ro m&#7845;t d&#7919; li&#7879;u ho&#7863;c gi&aacute;n &#273;o&#7841;n d&#7883;ch v&#7909;.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://developer.wordpress.org/advanced-administration/upgrade/migrating/" target="_blank" rel="noopener noreferrer">WordPress: Migrating WordPress</a></li><li><a href="https://developer.wordpress.org/cli/commands/db/" target="_blank" rel="noopener noreferrer">WP-CLI database commands</a></li><li><a href="https://developer.wordpress.org/cli/commands/search-replace/" target="_blank" rel="noopener noreferrer">WP-CLI search-replace</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

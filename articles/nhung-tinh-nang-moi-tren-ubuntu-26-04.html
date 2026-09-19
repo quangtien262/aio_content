@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ubuntu 26.04 LTS c&oacute; g&igrave; m&#7899;i?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Ubuntu 26.04, Ubuntu 26.04 LTS, Resolute Raccoon, GNOME 50, Wayland, t&iacute;nh n&#259;ng Ubuntu m&#7899;i</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Ubuntu 26.04, Ubuntu LTS, GNOME 50, Linux Desktop, Wayland, H&#7879; &#273;i&#7873;u h&agrave;nh</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">T&#7893;ng h&#7907;p nh&#7919;ng &#273;i&#7875;m m&#7899;i tr&ecirc;n Ubuntu 26.04 LTS: GNOME 50, Wayland, &#7913;ng d&#7909;ng m&#7863;c &#273;&#7883;nh m&#7899;i, Snap portal, ARM64 v&agrave; l&#432;u &yacute; n&acirc;ng c&#7845;p.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/tinh-nang-moi-ubuntu-26-04.jpg" alt="Nh&#7919;ng t&iacute;nh n&#259;ng m&#7899;i &#273;&aacute;ng ch&uacute; &yacute; tr&ecirc;n Ubuntu 26.04 LTS" width="1440" height="810"></p><h1>Nh&#7919;ng t&iacute;nh n&#259;ng m&#7899;i &#273;&aacute;ng ch&uacute; &yacute; tr&ecirc;n Ubuntu 26.04 LTS</h1><p><strong>Ubuntu 26.04 LTS &ldquo;Resolute Raccoon&rdquo; &#273;&#432;&#7907;c ph&aacute;t h&agrave;nh ng&agrave;y 23/04/2026 v&agrave; nh&#7853;n c&#7853;p nh&#7853;t b&#7843;o m&#7853;t ti&ecirc;u chu&#7849;n &#273;&#7871;n th&aacute;ng 4/2031.</strong> V&#7899;i ng&#432;&#7901;i n&acirc;ng c&#7845;p t&#7915; Ubuntu 24.04 LTS, &#273;&acirc;y l&agrave; b&#432;&#7899;c nh&#7843;y hai n&#259;m, bao g&#7891;m thay &#273;&#7893;i t&#7915; c&aacute;c b&#7843;n 24.10, 25.04, 25.10 v&agrave; ph&#7847;n m&#7899;i ri&ecirc;ng c&#7911;a 26.04.</p>
+<h2>GNOME 50 v&agrave; desktop m&#432;&#7907;t h&#417;n</h2><p>Ubuntu 26.04 s&#7917; d&#7909;ng GNOME 50. Ng&#432;&#7901;i d&ugrave;ng nh&#7853;n &#273;&#432;&#7907;c giao di&#7879;n Files v&agrave; Calendar tinh ch&#7881;nh, t&ugrave;y ch&#7885;n Reduced Motion, parental controls t&#7889;t h&#417;n, c&#7843;i thi&#7879;n screen reader Orca, qu&#7843;n l&yacute; &acirc;m thanh r&otilde; r&agrave;ng h&#417;n v&agrave; kh&#7843; n&#259;ng ch&#7885;n ng&agrave;y &#273;&#7847;u tu&#7847;n.</p><p>Fractional scaling &#273;&#432;&#7907;c b&#7853;t m&#7863;c &#273;&#7883;nh v&#7899;i c&aacute;c m&#7913;c t&#7889;i &#432;u &#273;&#7875; gi&#7843;m m&#7901;. Variable Refresh Rate, color management, HiDPI v&agrave; tr&#7843;i nghi&#7879;m NVIDIA tr&ecirc;n Wayland c&#361;ng &#273;&#432;&#7907;c c&#7843;i thi&#7879;n.</p>
+<h2>Ubuntu Desktop chuy&#7875;n h&#7859;n sang Wayland</h2><p>Phi&ecirc;n Ubuntu Desktop m&#7863;c &#273;&#7883;nh ch&#7881; ch&#7841;y tr&ecirc;n Wayland v&igrave; GNOME Shell kh&ocirc;ng c&ograve;n cung c&#7845;p phi&ecirc;n X.org. &#7912;ng d&#7909;ng X11 v&#7851;n c&oacute; th&#7875; ch&#7841;y qua XWayland; c&aacute;c desktop kh&aacute;c nh&#432; Xfce, MATE ho&#7863;c KDE v&#7851;n c&oacute; th&#7875; cung c&#7845;p l&#7921;a ch&#7885;n X11 ri&ecirc;ng.</p><blockquote>Tr&#432;&#7899;c khi n&acirc;ng c&#7845;p m&aacute;y d&ugrave;ng ph&#7847;n m&#7873;m &#273;i&#7873;u khi&#7875;n t&#7915; xa, capture m&agrave;n h&igrave;nh, thi&#7871;t b&#7883; chuy&ecirc;n d&#7909;ng ho&#7863;c driver c&#361;, h&atilde;y ki&#7875;m tra kh&#7843; n&#259;ng t&#432;&#417;ng th&iacute;ch Wayland trong m&ocirc;i tr&#432;&#7901;ng th&#7917; nghi&#7879;m.</blockquote>
+<h2>T&igrave;m &#7913;ng d&#7909;ng Snap v&agrave; t&igrave;m web t&#7915; Overview</h2><p>Global Search c&#7911;a GNOME Shell c&oacute; th&#7875; t&igrave;m &#7913;ng d&#7909;ng Snap ch&#432;a c&agrave;i v&agrave; kh&#7903;i t&#7841;o t&igrave;m ki&#7871;m web b&#7857;ng tr&igrave;nh duy&#7879;t m&#7863;c &#273;&#7883;nh. C&#7843; hai search provider &#273;&#7873;u c&oacute; th&#7875; t&#7855;t trong Settings n&#7871;u kh&ocirc;ng ph&ugrave; h&#7907;p v&#7899;i c&aacute;ch l&agrave;m vi&#7879;c.</p>
+<h2>Snap t&iacute;ch h&#7907;p desktop t&#7889;t h&#417;n</h2><p>C&aacute;c &#7913;ng d&#7909;ng Snap d&ugrave;ng XDG Desktop Portals c&oacute; th&#7875; l&agrave;m vi&#7879;c t&#7921; nhi&ecirc;n h&#417;n v&#7899;i file, th&#432; m&#7909;c, camera, notification v&agrave; USB. Quy&#7873;n portal &#273;&#432;&#7907;c qu&#7843;n l&yacute; trong GNOME Settings, gi&uacute;p ng&#432;&#7901;i d&ugrave;ng quan s&aacute;t v&agrave; &#273;i&#7873;u ch&#7881;nh quy&#7873;n truy c&#7853;p r&otilde; r&agrave;ng h&#417;n.</p>
+<h2>B&#7897; &#7913;ng d&#7909;ng m&#7863;c &#273;&#7883;nh thay &#273;&#7893;i</h2><table><thead><tr><th>Nh&oacute;m</th><th>&#7912;ng d&#7909;ng m&#7899;i</th><th>&#272;i&#7875;m &#273;&aacute;ng ch&uacute; &yacute;</th></tr></thead><tbody><tr><td>PDF</td><td>Papers</td><td>D&#7921;a tr&ecirc;n Evince, chuy&#7875;n sang GTK4 v&agrave; m&#7897;t ph&#7847;n vi&#7871;t b&#7857;ng Rust</td></tr><tr><td>&#7842;nh</td><td>Loupe</td><td>Thay Eye of GNOME, d&ugrave;ng Glycin</td></tr><tr><td>Terminal</td><td>Ptyxis</td><td>T&iacute;ch h&#7907;p t&#7889;t v&#7899;i Podman, Toolbox, Distrobox v&agrave; ph&#7909;c h&#7891;i session</td></tr><tr><td>Gi&aacute;m s&aacute;t</td><td>Resources</td><td>Theo d&otilde;i CPU, RAM, GPU, m&#7841;ng, l&#432;u tr&#7919; v&agrave; &#273;i&#7879;n n&#259;ng</td></tr></tbody></table>
+<h2>HDR, remote desktop v&agrave; kh&#7843; n&#259;ng ti&#7871;p c&#7853;n</h2><p>GNOME qua c&aacute;c phi&ecirc;n b&#7843;n 47&ndash;50 b&#7893; sung HDR, screen sharing n&#7897;i dung HDR, remote desktop t&#259;ng t&#7889;c ph&#7847;n c&#7913;ng, extended virtual monitor, multi-touch v&agrave; c&#7843;i thi&#7879;n NVIDIA. Installer c&#361;ng s&#7917;a nhi&#7873;u v&#7845;n &#273;&#7873; khi&#7871;n screen reader kh&ocirc;ng &#273;&#7885;c &#273;&#432;&#7907;c th&ocirc;ng tin quan tr&#7885;ng.</p>
+<h2>H&#7895; tr&#7907; ARM64 v&agrave; Raspberry Pi</h2><p>Ubuntu ti&#7871;p t&#7909;c m&#7903; r&#7897;ng image Desktop ARM64 chung cho n&#7873;n t&#7843;ng UEFI, m&aacute;y &#7843;o v&agrave; m&#7897;t s&#7889; thi&#7871;t b&#7883; Windows on Arm. Raspberry Pi c&oacute; layout boot m&#7899;i: t&agrave;i s&#7843;n boot m&#7899;i &#273;&#432;&#7907;c th&#7917; tr&#432;&#7899;c khi x&aacute;c nh&#7853;n l&agrave; b&#7897; &ldquo;known good&rdquo;, gi&uacute;p qu&aacute; tr&igrave;nh c&#7853;p nh&#7853;t &#273;&aacute;ng tin c&#7853;y h&#417;n.</p>
+<h2>Y&ecirc;u c&#7847;u h&#7879; th&#7889;ng v&agrave; v&ograve;ng &#273;&#7901;i</h2><ul><li>Desktop khuy&#7871;n ngh&#7883; CPU dual-core 2 GHz, RAM t&#7889;i thi&#7875;u 6 GB v&agrave; 25 GB l&#432;u tr&#7919;.</li><li>Ubuntu Server c&oacute; th&#7875; b&#7855;t &#273;&#7847;u t&#7915; kho&#7843;ng 1,5 GB RAM v&agrave; 4 GB l&#432;u tr&#7919;, t&ugrave;y workload.</li><li>LTS nh&#7853;n c&#7853;p nh&#7853;t ti&ecirc;u chu&#7849;n 5 n&#259;m; Ubuntu Pro m&#7903; r&#7897;ng ESM &#273;&#7871;n 10 n&#259;m.</li></ul>
+<h2>L&#432;u &yacute; tr&#432;&#7899;c khi n&acirc;ng c&#7845;p</h2><ol><li>Sao l&#432;u d&#7919; li&#7879;u v&agrave; x&aacute;c minh kh&#7843; n&#259;ng ph&#7909;c h&#7891;i.</li><li>C&#7853;p nh&#7853;t ho&agrave;n to&agrave;n b&#7843;n hi&#7879;n t&#7841;i v&agrave; &#273;&#7885;c known issues m&#7899;i nh&#7845;t.</li><li>Ki&#7875;m tra &#7913;ng d&#7909;ng/driver ph&#7909; thu&#7897;c X11.</li><li>G&#7905; ho&#7863;c v&ocirc; hi&#7879;u h&oacute;a repository b&ecirc;n th&#7913; ba kh&ocirc;ng h&#7895; tr&#7907; 26.04.</li><li>V&#7899;i m&aacute;y s&#7843;n xu&#7845;t, ch&#7901; point release v&agrave; th&#7917; tr&ecirc;n thi&#7871;t b&#7883; &#273;&#7841;i di&#7879;n tr&#432;&#7899;c khi tri&#7875;n khai r&#7897;ng.</li></ol>
+<h2>K&#7871;t lu&#7853;n</h2><p>Ubuntu 26.04 LTS t&#7853;p trung v&agrave;o m&#7897;t desktop Wayland hi&#7879;n &#273;&#7841;i, GNOME 50, kh&#7843; n&#259;ng ti&#7871;p c&#7853;n, ph&#7847;n c&#7913;ng m&#7899;i v&agrave; t&iacute;ch h&#7907;p &#7913;ng d&#7909;ng sandbox t&#7889;t h&#417;n. Gi&aacute; tr&#7883; l&#7899;n nh&#7845;t v&#7899;i t&#7893; ch&#7913;c v&#7851;n l&agrave; v&ograve;ng &#273;&#7901;i LTS d&agrave;i; nh&#432;ng k&#7871; ho&#7841;ch n&acirc;ng c&#7845;p n&ecirc;n d&#7921;a tr&ecirc;n &#7913;ng d&#7909;ng v&agrave; thi&#7871;t b&#7883; th&#7921;c t&#7871;, kh&ocirc;ng ch&#7881; danh s&aacute;ch t&iacute;nh n&#259;ng.</p>
+<h2>Ngu&#7891;n tham kh&#7843;o</h2><ul><li><a href="https://documentation.ubuntu.com/release-notes/26.04/" target="_blank" rel="noopener noreferrer">Ubuntu 26.04 LTS release notes</a></li><li><a href="https://documentation.ubuntu.com/release-notes/26.04/summary-for-lts-users/" target="_blank" rel="noopener noreferrer">Summary for LTS users</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

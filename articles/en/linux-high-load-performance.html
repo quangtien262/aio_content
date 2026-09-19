@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">high-linux-load-diagnose-cpu-io-memory-processes</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Diagnosing High Linux Load and Slow Servers</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">high Linux load, load average, top, pidstat, vmstat, iostat, Linux PSI, high CPU, iowait, Linux performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Performance, Load Average, CPU, I/O, PSI, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Diagnose high Linux load with uptime, top, pidstat, vmstat, iostat, and PSI; distinguish CPU saturation, I/O bottlenecks, memory pressure, steal time, and stuck tasks.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/linux-high-load-performance.jpg" alt="High Linux Load and Slow Servers: Diagnose CPU, I/O, Memory, and Processes" width="1440" height="810"></p><h1>High Linux Load and Slow Servers: Diagnose CPU, I/O, Memory, and Processes</h1><p><strong>A load average of 20 does not automatically mean 100% CPU usage.</strong> Linux load includes tasks running or waiting for CPU and tasks in uninterruptible sleep, often waiting for I/O. A high-load server may be constrained by CPU, disks, NFS, memory reclaim, a hypervisor, or another kernel path.</p>
+<p>This guide moves from system-wide signals to the exact process or cgroup causing pressure with <code>uptime</code>, <code>top</code>, <code>vmstat</code>, <code>pidstat</code>, <code>iostat</code>, <code>sar</code>, and Pressure Stall Information (PSI).</p>
+
+<h2>First, define what users experience</h2>
+<p>Attach &ldquo;slow&rdquo; to a measurable symptom: rising API latency, timeouts, lagging SSH, one slow service, reduced throughput, or impact limited to a container or tenant. Record the timestamp and timezone, and correlate with deployments, backups, cron, and traffic.</p>
+<p>Do not restart immediately. It removes process state, queues, and evidence. When data loss or cascading failure is active, shed load first but preserve a minimal snapshot.</p>
+
+<h2>1. Interpret load average correctly</h2>
+<pre><code>uptime
+cat /proc/loadavg
+nproc
+lscpu</code></pre>
+<p>The three load values cover roughly 1, 5, and 15 minutes. They count runnable tasks (<code>R</code>) and tasks in uninterruptible I/O wait (<code>D</code>); they are not CPU percentages.</p>
+<p>Comparing load with logical CPU count is only an orientation. Load 8 on eight CPUs may be healthy for a CPU-bound workload meeting its SLA; load 4 can be severe when every request waits on one slow disk. Trend matters: a one-minute value above longer windows means rising pressure, below them indicates recovery, and all three elevated indicates sustained pressure.</p>
+
+<h2>2. Take a top-level snapshot</h2>
+<pre><code>top
+top -H -p PID</code></pre>
+<ul>
+<li><code>us</code>: user-space work.</li>
+<li><code>sy</code>: kernel/system work.</li>
+<li><code>id</code>: idle time.</li>
+<li><code>wa</code>: CPU idle while I/O is outstanding; it is not disk utilization.</li>
+<li><code>hi</code>/<code>si</code>: hardware/software interrupts.</li>
+<li><code>st</code>: vCPU time taken by the hypervisor.</li>
+</ul>
+<p>Press <code>1</code> for per-CPU view, <code>P</code> for CPU sorting, and <code>M</code> for memory. A process at 400% can legitimately consume four logical CPUs. Because snapshots miss bursts, continue with interval sampling.</p>
+
+<h2>3. Use vmstat to separate CPU, blocked tasks, and swapping</h2>
+<pre><code>vmstat 1 10
+vmstat -y 1 10</code></pre>
+<p><code>-y</code> skips the first line, which averages since boot.</p>
+<ul>
+<li><code>r</code>: runnable tasks; sustained values above CPU count suggest a run queue.</li>
+<li><code>b</code>: tasks blocked on I/O.</li>
+<li><code>si</code>/<code>so</code>: swap activity.</li>
+<li><code>us/sy/id/wa/st</code>: CPU distribution.</li>
+<li><code>cs</code>: context switches, meaningful alongside throughput and scheduler load.</li>
+</ul>
+<p>High <code>r</code> with near-zero idle and low wait points toward CPU saturation. High <code>b</code> and wait points toward I/O. Continuous swap activity suggests memory pressure. High steal time indicates hypervisor contention.</p>
+
+<h2>4. Attribute pressure with pidstat</h2>
+<pre><code>pidstat -u -r -d -w -p ALL 1 10
+pidstat -t -u -p PID 1 10</code></pre>
+<p><code>-u</code> reports CPU, <code>-r</code> memory and faults, <code>-d</code> I/O, <code>-w</code> context switches, and <code>-t</code> threads. Thread view matters for JVMs, databases, web servers, and thread pools where one hot thread can hide inside a process total.</p>
+<pre><code>ps -eo pid,ppid,stat,psr,ni,%cpu,%mem,wchan:24,comm,args \
+  --sort=-%cpu | head -30</code></pre>
+
+<h2>5. Find tasks in uninterruptible sleep</h2>
+<p>Important states include <code>R</code> runnable, <code>S</code> interruptible sleep, <code>D</code> uninterruptible sleep, <code>Z</code> zombie, and <code>T</code> stopped. Many D-state tasks can raise load while CPU remains idle.</p>
+<pre><code>ps -eo state,pid,ppid,wchan:32,comm,args | awk '$1 ~ /^D/'
+cat /proc/PID/stack
+cat /proc/PID/wchan</code></pre>
+<p>The wait channel or kernel stack may expose block I/O, NFS, filesystem, locking, or driver waits. A D-state task usually cannot be killed immediately because signals are handled only when the kernel operation returns. Reboot may be a last resort, but identify the failing path first.</p>
+
+<h2>6. Identify the constrained block device</h2>
+<pre><code>iostat -xz 1 10</code></pre>
+<ul>
+<li><code>r/s</code>, <code>w/s</code>: IOPS.</li>
+<li><code>rkB/s</code>, <code>wkB/s</code>: throughput.</li>
+<li><code>await</code>: average queue plus service latency.</li>
+<li><code>aqu-sz</code>: average queue depth.</li>
+<li><code>%util</code>: time the device reports busy.</li>
+</ul>
+<p>Do not apply one &ldquo;100% util&rdquo; rule to every device. NVMe, RAID, SAN, and virtual disks support different concurrency. Judge latency against the workload SLA and its baseline, along with queue and throughput.</p>
+<pre><code>dmesg -T | grep -Ei 'error|timeout|reset|nvme|blk|ext4|xfs'
+journalctl -k --since '-30 min'</code></pre>
+
+<h2>7. Distinguish memory usage from pressure</h2>
+<pre><code>free -h
+vmstat 1
+cat /proc/meminfo
+cat /proc/pressure/memory</code></pre>
+<p>Linux uses otherwise idle RAM for page cache, so low <code>free</code> is not automatically bad. Inspect <code>available</code>, swap activity, reclaim behavior, and PSI. Tasks can stall on reclaim, compaction, or swap before an OOM event.</p>
+<pre><code>ps -eo pid,ppid,%mem,rss,vsz,comm,args --sort=-rss | head -30
+systemd-cgtop
+cat /sys/fs/cgroup/system.slice/SERVICE.service/memory.events</code></pre>
+<p>Do not schedule periodic cache dropping as a fix. It can increase I/O and hide the actual cause.</p>
+
+<h2>8. Use PSI to measure lost work time</h2>
+<pre><code>cat /proc/pressure/cpu
+cat /proc/pressure/memory
+cat /proc/pressure/io</code></pre>
+<p>PSI reports the percentage of time tasks were delayed by CPU, memory, or I/O scarcity over 10, 60, and 300 seconds. <code>some</code> means at least one task was stalled; <code>full</code> means all non-idle tasks were stalled together. Sustained full memory or I/O pressure is especially serious.</p>
+<p>Load tells how many tasks are runnable or blocked; PSI tells how much productive time contention took away. With cgroup v2, per-service <code>cpu.pressure</code>, <code>memory.pressure</code>, and <code>io.pressure</code> prevent one workload from disappearing inside host averages.</p>
+
+<h2>9. Classify CPU saturation</h2>
+<p>When user time dominates, profile functions rather than simply killing the process:</p>
+<pre><code>perf top
+perf stat -p PID sleep 10</code></pre>
+<p>High system time can come from syscalls, networking, filesystems, locks, or kernel work. High softirq requires packet and NIC investigation:</p>
+<pre><code>mpstat -P ALL 1 10
+mpstat -I ALL 1 10
+cat /proc/interrupts</code></pre>
+<p>High steal time on a VM means the hypervisor is not scheduling enough vCPU. Guest code optimization cannot resolve a noisy host; change instance/host or contact the provider.</p>
+
+<h2>10. Examine run queues and context switches</h2>
+<pre><code>mpstat -P ALL 1
+pidstat -w -p ALL 1
+sar -q 1 10</code></pre>
+<p>Full CPU usage is not necessarily bad when throughput and latency meet targets. A growing run queue and CPU wait are the concern. Thread explosion, lock contention, or spin loops can produce high context switching with poor throughput. Compare worker count, thread pools, connection pools, garbage collection, and CPU quotas with the last change.</p>
+
+<h2>11. Containers and cgroups</h2>
+<p>A container can be throttled while the host has spare resources:</p>
+<pre><code>docker stats --no-stream
+systemd-cgtop
+cat /sys/fs/cgroup/CGROUP/cpu.stat
+cat /sys/fs/cgroup/CGROUP/memory.current
+cat /sys/fs/cgroup/CGROUP/memory.events</code></pre>
+<p>Rising <code>nr_throttled</code> and <code>throttled_usec</code> in <code>cpu.stat</code> indicate CPU quota pressure. In Kubernetes, inspect pod limits, throttling, and node pressure. Do not raise limits before understanding traffic and regression.</p>
+
+<h2>12. Historical evidence beats a snapshot</h2>
+<pre><code>sar -u -f /var/log/sysstat/sa19
+sar -q -f /var/log/sysstat/sa19
+sar -r -f /var/log/sysstat/sa19
+sar -d -p -f /var/log/sysstat/sa19</code></pre>
+<p>When the incident has ended, current <code>top</code> cannot reconstruct it. Enable sysstat or a monitoring agent in advance. Correlate with deployments, cron, backups, traffic, database checkpoints, and cloud events. Compare the same hour and weekday to distinguish expected peaks from regressions.</p>
+
+<h2>13. Mitigate safely during an incident</h2>
+<ul>
+<li>Rate-limit or shed noncritical requests.</li>
+<li>Pause batch jobs, backups, index builds, or low-priority workers.</li>
+<li>Scale after confirming saturation and application readiness.</li>
+<li>Reduce concurrency when a dependency is overloaded; more workers may worsen it.</li>
+<li>Roll back the deployment or configuration that caused regression.</li>
+<li>Use <code>renice</code>/<code>ionice</code> cautiously for batch work, not as the permanent fix.</li>
+</ul>
+<p>Do not kill a database, flush caches, drop caches, or reboot solely because load is high. Capture metrics, process lists, stacks, logs, and I/O state first, and assess data and failover impact.</p>
+
+<h2>14. Common false conclusions</h2>
+<ul>
+<li>High load always means high CPU: D-state tasks count too.</li>
+<li>Low free memory means shortage: page cache is useful.</li>
+<li>High iowait proves a failed disk: inspect devices, tasks, and the storage path.</li>
+<li>100% util means every disk is saturated: concurrent devices differ.</li>
+<li>A 300% process is a bug: it may legitimately use three cores.</li>
+<li>More workers always increase throughput: contention and queues may grow.</li>
+<li>A restart is a fix: it often erases symptoms and evidence.</li>
+</ul>
+
+<h2>Fifteen-minute playbook</h2>
+<ol>
+<li>Record latency, errors, throughput, and time.</li>
+<li><code>uptime</code>, <code>nproc</code>: trend and CPU count.</li>
+<li><code>vmstat -y 1 10</code>: runnable, blocked, swap, wait, steal.</li>
+<li><code>cat /proc/pressure/*</code>: which resource stalls tasks.</li>
+<li><code>pidstat -u -r -d -w -p ALL 1 10</code>: responsible tasks.</li>
+<li><code>iostat -xz 1 10</code>: device latency, queue, throughput.</li>
+<li><code>ps</code>: D-state tasks, hot threads, command lines.</li>
+<li>Inspect cgroup quotas and throttling.</li>
+<li>Correlate logs, deployments, cron, and traffic.</li>
+<li>Apply reversible load reduction, verify the SLA, and write a postmortem.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>Load average is the starting signal, not a diagnosis. Understanding a slow Linux host requires separating CPU wait from I/O wait, sampling trends, attributing work to processes, threads, and cgroups, and measuring lost time with PSI. Combining <code>vmstat</code>, <code>pidstat</code>, <code>iostat</code>, and historical data turns &ldquo;high load&rdquo; into a specific cause, a reversible mitigation, and a verifiable prevention change.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://www.man7.org/linux/man-pages/man5/proc_loadavg.5.html" target="_blank" rel="noopener noreferrer">Linux man-pages: /proc/loadavg</a></li><li><a href="https://www.man7.org/linux/man-pages/man8/vmstat.8.html" target="_blank" rel="noopener noreferrer">procps-ng: vmstat</a></li><li><a href="https://man7.org/linux/man-pages/man1/pidstat.1.html" target="_blank" rel="noopener noreferrer">sysstat: pidstat</a></li><li><a href="https://docs.kernel.org/accounting/psi.html" target="_blank" rel="noopener noreferrer">Linux Kernel: Pressure Stall Information</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

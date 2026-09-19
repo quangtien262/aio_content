@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">linux-high-memory-oom-killer-troubleshooting</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Diagnose Linux High Memory and OOM Killer Events</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux high memory, OOM Killer, Linux memory leak, free available, vmstat, PSI memory, systemd memory limit</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Memory, OOM Killer, Performance, Troubleshooting, systemd, cgroups, Sysadmin</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Read Linux memory correctly, distinguish cache from pressure, identify leaking processes, analyze OOM kills, recover safely, and prevent recurrence.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/linux-memory-oom-troubleshooting.jpg" alt="High Memory Usage and the Linux OOM Killer: Safe Diagnosis and Recovery" width="1440" height="810"></p><h1>High Memory Usage and the Linux OOM Killer: Safe Diagnosis and Recovery</h1><p><strong>High &ldquo;used&rdquo; RAM on Linux does not automatically mean memory exhaustion.</strong> The kernel uses idle RAM for page cache and can reclaim it for applications. A real incident appears when <code>MemAvailable</code> remains low, swapping becomes active, processes stall, or the kernel invokes the OOM Killer.</p>
+
+<h2>Understand used, free, and available</h2>
+<pre><code>free -h
+cat /proc/meminfo | head -20</code></pre>
+<p>In <code>free</code>, examine <strong>available</strong> before <strong>free</strong>. <code>MemAvailable</code> estimates memory available to new applications without swapping, including reclaimable page cache and slab. A large cache often shows efficient RAM use rather than a leak.</p>
+<p>Persistent declining availability, swap traffic, latency, and killed workloads are meaningful signals. One snapshot is insufficient; collect a time series.</p>
+
+<h2>1. Confirm memory pressure</h2>
+<pre><code>free -h
+vmstat 1 10
+cat /proc/pressure/memory
+swapon --show</code></pre>
+<p>In <code>vmstat</code>, <code>si</code> and <code>so</code> report swap-in and swap-out. Used swap alone is not proof of current pressure; continuous traffic with latency is concerning. PSI in <code>/proc/pressure/memory</code> measures time tasks are stalled by memory contention. Sustained <code>full</code> pressure means all non-idle workloads are stalled and the system risks thrashing or OOM.</p>
+
+<h2>2. Find memory-consuming processes</h2>
+<pre><code>ps -eo pid,ppid,user,comm,rss,vsz,%mem --sort=-rss | head -20
+top
+systemd-cgtop</code></pre>
+<p>RSS is resident memory, but summing it may count shared pages more than once. VSZ includes mapped address space and is not physical RAM consumption. Inspect a candidate:</p>
+<pre><code>cat /proc/PID/status
+cat /proc/PID/smaps_rollup
+pmap -x PID | tail -1</code></pre>
+<p><code>smaps_rollup</code> distinguishes private, shared, anonymous, and file-backed memory. In containers or systemd, inspect cgroups because a cgroup OOM can occur while the host still has memory.</p>
+
+<h2>3. Separate valid load, cache, and leaks</h2>
+<ul><li><strong>Valid load:</strong> memory follows traffic and declines after load drops or workers recycle.</li><li><strong>Page cache:</strong> Cached is high while MemAvailable remains healthy.</li><li><strong>Memory leak:</strong> private or anonymous RSS grows across load cycles without returning to baseline.</li><li><strong>Unbounded queue:</strong> backlog retains objects; fix throughput and backpressure.</li><li><strong>tmpfs/shmem:</strong> files in <code>/dev/shm</code> or tmpfs consume RAM.</li><li><strong>Kernel/slab:</strong> process RSS does not explain usage; inspect <code>Slab</code>, <code>SReclaimable</code>, and relevant subsystems.</li></ul>
+<p>Graph RSS, request rate, queue depth, and deployment times together. Time correlation is more useful than restarting and erasing evidence.</p>
+
+<h2>4. Confirm an OOM kill</h2>
+<pre><code>journalctl -k -g 'Out of memory|Killed process|oom-kill' --since today
+dmesg -T | grep -Ei 'out of memory|killed process|oom-kill'
+journalctl -u systemd-oomd --since today
+oomctl</code></pre>
+<p>The kernel OOM Killer selects a task using heuristics, memory and swap consumption, and <code>oom_score_adj</code>. <code>systemd-oomd</code> is a userspace mechanism that may act earlier using cgroup and pressure data. Logs reveal whether the event was global or cgroup-scoped, the victim, usage, and constraints.</p>
+<p>The killed process is not necessarily the only cause. Traffic spikes, incorrect limits, worker counts, another leak, or host overcommit may have created the condition.</p>
+
+<h2>5. Stabilize an active incident</h2>
+<ol><li>Stop or reduce noncritical traffic and jobs.</li><li>Capture <code>free</code>, <code>vmstat</code>, process, cgroup, and OOM evidence.</li><li>Scale workloads elsewhere or reduce concurrency safely.</li><li>Restart the leaking service when immediate recovery is required.</li><li>Add temporary swap only with a clear latency and storage assessment.</li><li>Monitor afterward; a restart is not a root-cause fix.</li></ol>
+<p>Do not treat <code>echo 3 &gt; /proc/sys/vm/drop_caches</code> as a RAM fix. Dropping useful cache can worsen I/O and latency; the kernel already reclaims cache when required.</p>
+
+<h2>6. Swap is a buffer, not free RAM</h2>
+<p>Swap can absorb bursts and move cold pages out of RAM, buying response time, but storage is far slower. No swap creates a thinner safety margin; large swap does not repair an infinite leak.</p>
+<pre><code>swapon --show
+cat /proc/sys/vm/swappiness
+vmstat 1</code></pre>
+<p>Tune <code>vm.swappiness</code> only after measuring the workload. A low value does not mean &ldquo;never swap.&rdquo; Databases, latency-sensitive services, and Kubernetes require workload-specific guidance.</p>
+
+<h2>7. Set limits and preserve headroom</h2>
+<p>A systemd service can use cgroup controls:</p>
+<pre><code>[Service]
+MemoryHigh=1500M
+MemoryMax=2G
+OOMPolicy=stop</code></pre>
+<p><code>MemoryHigh</code> creates soft pressure and throttling; <code>MemoryMax</code> is a hard ceiling. Derive values from valid peak data. After editing the unit:</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl restart example.service
+systemctl show example.service -p MemoryCurrent -p MemoryPeak -p MemoryHigh -p MemoryMax</code></pre>
+<p>Container limits must include heap, native allocations, page cache, and sidecars. Reserve headroom for the kernel, SSH, monitoring, and background daemons; do not allocate 100% of host RAM.</p>
+
+<h2>8. Fix the application instead of only adding RAM</h2>
+<ul><li>Limit workers and concurrency using peak memory per worker.</li><li>Stream or chunk data instead of loading entire files or query results.</li><li>Bound queues, timeouts, payloads, and uploads.</li><li>Configure cache eviction and maximum memory.</li><li>Recycle workers after a measured request count as risk reduction, not a permanent leak mask.</li><li>Profile heap and native memory in a production-like environment.</li></ul>
+<p>More RAM is valid when the working set truly grows. If the curve grows without bound, it only postpones OOM.</p>
+
+<h2>9. Monitor and alert early</h2>
+<p>Track <code>MemAvailable</code>, cgroup working set, swap I/O, memory PSI, OOM events, restart counts, and queue depth. Alert on sustained pressure and duration rather than RAM-used percentage alone.</p>
+<p>Retain post-deployment metrics long enough to detect slow leaks. Alerts should link to a runbook with evidence commands, service ownership, and explicit scale or restart conditions.</p>
+
+<h2>Common mistakes</h2>
+<ul><li>Calling high used RAM a leak without checking available and cache.</li><li>Adding all RSS values as an exact system total.</li><li>Restarting before preserving logs and charts.</li><li>Disabling OOM behavior or setting <code>oom_score_adj=-1000</code> broadly.</li><li>Running drop_caches periodically as optimization.</li><li>Adding swap or RAM while queues and concurrency remain unbounded.</li><li>Monitoring only the host and missing container/cgroup OOM events.</li></ul>
+
+<h2>Incident checklist</h2>
+<ol><li>Confirm MemAvailable, swap activity, and PSI over time.</li><li>Identify the process/cgroup and memory type that is growing.</li><li>Read kernel and systemd-oomd logs to classify the OOM.</li><li>Preserve evidence before restart or termination.</li><li>Shed load and recover services by priority.</li><li>Fix leaks, concurrency, queue behavior, or cache policy.</li><li>Set appropriate MemoryHigh/MemoryMax and host headroom.</li><li>Load-test and alert before the OOM threshold.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Linux memory investigation begins with pressure and reclaimability, not a red used-memory number. Combine MemAvailable, PSI, swap I/O, process and cgroup metrics, and OOM logs to find the cause. A restart may restore service, but limits, backpressure, and application fixes prevent recurrence.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://docs.kernel.org/filesystems/proc.html" target="_blank" rel="noopener noreferrer">Linux Kernel: The /proc filesystem</a></li><li><a href="https://docs.kernel.org/accounting/psi.html" target="_blank" rel="noopener noreferrer">Linux Kernel: Pressure Stall Information</a></li><li><a href="https://docs.kernel.org/admin-guide/sysctl/vm.html" target="_blank" rel="noopener noreferrer">Linux Kernel: VM sysctl documentation</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html" target="_blank" rel="noopener noreferrer">systemd: Resource control</a></li><li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-oomd.service.html" target="_blank" rel="noopener noreferrer">systemd: systemd-oomd</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

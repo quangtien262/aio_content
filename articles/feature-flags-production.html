@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Feature flag th&#7921;c chi&#7871;n cho production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">feature flag, feature toggle, progressive rollout, canary release, kill switch, OpenFeature, ph&aacute;t h&agrave;nh ph&#7847;n m&#7873;m</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Feature Flags, Progressive Delivery, OpenFeature, DevOps, Backend, Observability</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; feature flag production: rollout &#7893;n &#273;&#7883;nh, targeting context, fallback, kill switch, quan s&aacute;t theo variant, ki&#7875;m th&#7917; v&agrave; d&#7885;n technical debt.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/feature-flags-production.jpg" alt="Feature flag th&#7921;c chi&#7871;n: Ph&aacute;t h&agrave;nh t&iacute;nh n&#259;ng an to&agrave;n kh&ocirc;ng c&#7847;n deploy l&#7841;i" width="1440" height="810"></p><h1>Feature flag th&#7921;c chi&#7871;n: Ph&aacute;t h&agrave;nh t&iacute;nh n&#259;ng an to&agrave;n kh&ocirc;ng c&#7847;n deploy l&#7841;i</h1><p><strong>Feature flag t&aacute;ch th&#7901;i &#273;i&#7875;m deploy code kh&#7887;i th&#7901;i &#273;i&#7875;m ph&aacute;t h&agrave;nh t&iacute;nh n&#259;ng.</strong> Nh&oacute;m ph&aacute;t tri&#7875;n c&oacute; th&#7875; &#273;&#432;a code l&ecirc;n production &#7903; tr&#7841;ng th&aacute;i t&#7855;t, m&#7903; cho nh&acirc;n vi&ecirc;n, t&#259;ng d&#7847;n t&#7927; l&#7879; ng&#432;&#7901;i d&ugrave;ng v&agrave; t&#7855;t nhanh khi c&oacute; s&#7921; c&#7889; m&agrave; kh&ocirc;ng c&#7847;n build l&#7841;i. Nh&#432;ng n&#7871;u thi&#7871;u v&ograve;ng &#273;&#7901;i, flag s&#7869; tr&#7903; th&agrave;nh c&#7845;u h&igrave;nh s&#7889;ng v&#297;nh vi&#7877;n v&agrave; l&agrave;m m&#7885;i nh&aacute;nh code kh&oacute; hi&#7875;u h&#417;n.</p>
+
+<h2>Deployment kh&ocirc;ng ph&#7843;i release</h2>
+<p>Deployment &#273;&#432;a artifact &#273;&#7871;n m&ocirc;i tr&#432;&#7901;ng. Release quy&#7871;t &#273;&#7883;nh ai &#273;&#432;&#7907;c d&ugrave;ng h&agrave;nh vi m&#7899;i. Feature flag n&#7857;m t&#7841;i &#273;i&#7875;m quy&#7871;t &#273;&#7883;nh runtime:</p>
+<pre><code>const enabled = flags.getBooleanValue(
+  'checkout-v2',
+  false,
+  { targetingKey: user.id, plan: user.plan }
+);
+
+return enabled ? checkoutV2(order) : checkoutV1(order);</code></pre>
+<p>Gi&aacute; tr&#7883; m&#7863;c &#273;&#7883;nh l&agrave; m&#7897;t ph&#7847;n c&#7911;a thi&#7871;t k&#7871; an to&agrave;n. V&#7899;i t&iacute;nh n&#259;ng m&#7899;i ch&#432;a &#273;&#432;&#7907;c ki&#7875;m ch&#7913;ng, fallback th&#432;&#7901;ng l&agrave; <code>false</code>. V&#7899;i kill switch b&#7843;o v&#7879; h&#7879; th&#7889;ng, t&ecirc;n v&agrave; ng&#7919; ngh&#297;a n&ecirc;n r&otilde; &#273;&#7875; l&uacute;c kh&#7849;n c&#7845;p kh&ocirc;ng b&#7853;t nh&#7847;m.</p>
+
+<h2>B&#7889;n lo&#7841;i flag ph&#7893; bi&#7871;n</h2>
+<table><thead><tr><th>Lo&#7841;i</th><th>M&#7909;c &#273;&iacute;ch</th><th>Tu&#7893;i th&#7885;</th></tr></thead><tbody><tr><td>Release</td><td>&#7848;n code ch&#432;a s&#7861;n s&agrave;ng, rollout d&#7847;n</td><td>Ng&#7855;n</td></tr><tr><td>Experiment</td><td>So s&aacute;nh variant theo gi&#7843; thuy&#7871;t</td><td>&#272;&#7871;n khi &#273;&#7911; d&#7919; li&#7879;u</td></tr><tr><td>Ops / kill switch</td><td>Gi&#7843;m t&#7843;i, v&ocirc; hi&#7879;u h&oacute;a t&iacute;ch h&#7907;p l&#7895;i</td><td>C&oacute; th&#7875; d&agrave;i</td></tr><tr><td>Entitlement</td><td>Quy&#7873;n theo g&oacute;i ho&#7863;c h&#7907;p &#273;&#7891;ng</td><td>D&agrave;i, c&#7847;n qu&#7843;n tr&#7883; nh&#432; policy</td></tr></tbody></table>
+<p>Kh&ocirc;ng d&ugrave;ng release flag nh&#432; h&#7879; th&#7889;ng ph&acirc;n quy&#7873;n. Quy&#7873;n truy c&#7853;p ph&#7843;i &#273;&#432;&#7907;c ki&#7875;m tra ph&iacute;a server, c&oacute; audit v&agrave; m&#7863;c &#273;&#7883;nh t&#7915; ch&#7889;i.</p>
+
+<h2>Rollout theo ph&#7847;n tr&#259;m ph&#7843;i &#7893;n &#273;&#7883;nh</h2>
+<p>Kh&ocirc;ng g&#7885;i random cho m&#7895;i request. C&ugrave;ng m&#7897;t ng&#432;&#7901;i c&oacute; th&#7875; l&uacute;c th&#7845;y giao di&#7879;n c&#361;, l&uacute;c th&#7845;y giao di&#7879;n m&#7899;i, l&agrave;m h&#7887;ng tr&#7843;i nghi&#7879;m v&agrave; d&#7919; li&#7879;u th&#7917; nghi&#7879;m. H&atilde;y hash &#7893;n &#273;&#7883;nh:</p>
+<pre><code>bucket = hash(flagKey + ':' + targetingKey) % 10000
+enabled = bucket &lt; rolloutBasisPoints</code></pre>
+<p><code>targetingKey</code> c&oacute; th&#7875; l&agrave; user, account ho&#7863;c tenant t&ugrave;y &#273;&#417;n v&#7883; c&#7847;n nh&#7845;t qu&aacute;n. V&#7899;i B2B, rollout theo tenant th&#432;&#7901;ng an to&agrave;n h&#417;n rollout t&#7915;ng user v&igrave; m&#7885;i th&agrave;nh vi&ecirc;n d&ugrave;ng c&ugrave;ng workflow.</p>
+
+<h2>Evaluation context: &#273;&#7911; d&ugrave;ng, kh&ocirc;ng gom PII t&ugrave;y ti&#7879;n</h2>
+<p>OpenFeature chu&#7849;n h&oacute;a evaluation API, provider, context v&agrave; hook. Context c&oacute; th&#7875; ch&#7913;a application, region, tenant, plan ho&#7863;c targeting key. Ch&#7881; &#273;&#432;a thu&#7897;c t&iacute;nh th&#7921;c s&#7921; c&#7847;n cho rule; tr&aacute;nh email, t&ecirc;n v&agrave; d&#7919; li&#7879;u nh&#7841;y c&#7843;m khi m&#7897;t ID gi&#7843; danh &#273;&atilde; &#273;&#7911;.</p>
+<p>Quy t&#7855;c c&#7847;n c&oacute; th&#7913; t&#7921; d&#7877; &#273;&#7885;c: override kh&#7849;n c&#7845;p, allowlist n&#7897;i b&#7897;, &#273;i&#7873;u ki&#7879;n t&#432;&#417;ng th&iacute;ch, rollout ph&#7847;n tr&#259;m, cu&#7889;i c&ugrave;ng l&agrave; default. Ghi l&#7841;i reason/variant thay v&igrave; copy to&agrave;n b&#7897; context v&agrave;o log.</p>
+
+<h2>Client-side hay server-side?</h2>
+<ul><li><strong>Server-side:</strong> ph&ugrave; h&#7907;p logic nghi&#7879;p v&#7909;, thu&#7853;t to&aacute;n, t&iacute;ch h&#7907;p v&agrave; ki&#7875;m so&aacute;t d&#7919; li&#7879;u. Gi&aacute; tr&#7883; flag kh&ocirc;ng b&#7883; ng&#432;&#7901;i d&ugrave;ng s&#7917;a tr&#7921;c ti&#7871;p.</li><li><strong>Client-side:</strong> ph&ugrave; h&#7907;p tr&igrave;nh b&agrave;y giao di&#7879;n, nh&#432;ng m&#7885;i flag t&#7843;i xu&#7889;ng &#273;&#7873;u c&oacute; th&#7875; b&#7883; quan s&aacute;t. Kh&ocirc;ng d&ugrave;ng &#273;&#7875; b&#7843;o v&#7879; secret ho&#7863;c authorization.</li></ul>
+<p>N&#7871;u c&#7843; frontend v&agrave; backend c&ugrave;ng ph&#7909; thu&#7897;c m&#7897;t rollout, backend v&#7851;n ph&#7843;i l&agrave; ngu&#7891;n quy&#7871;t &#273;&#7883;nh cho h&agrave;nh vi c&oacute; &#7843;nh h&#432;&#7903;ng d&#7919; li&#7879;u. Tr&aacute;nh &#273;&#7875; hai ph&iacute;a evaluate theo context kh&aacute;c nhau.</p>
+
+<h2>&#272;i&#7873;u g&igrave; x&#7843;y ra khi h&#7879; th&#7889;ng flag l&#7895;i?</h2>
+<p>SDK n&ecirc;n cache c&#7845;u h&igrave;nh c&#7909;c b&#7897; v&agrave; evaluation kh&ocirc;ng n&ecirc;n g&#7885;i HTTP &#273;&#7891;ng b&#7897; tr&ecirc;n t&#7915;ng request. X&aacute;c &#273;&#7883;nh r&otilde;:</p>
+<ul><li>Gi&aacute; tr&#7883; m&#7863;c &#273;&#7883;nh theo t&#7915;ng flag.</li><li>Th&#7901;i gian cho ph&eacute;p d&ugrave;ng cache c&#361;.</li><li>H&agrave;nh vi khi provider ch&#432;a s&#7861;n s&agrave;ng ho&#7863;c sai ki&#7875;u d&#7919; li&#7879;u.</li><li>C&#7843;nh b&aacute;o khi &#273;ang d&ugrave;ng default v&igrave; l&#7895;i, kh&ocirc;ng ph&#7843;i v&igrave; rule.</li></ul>
+<p>Kh&ocirc;ng c&oacute; m&#7897;t quy t&#7855;c fail-open cho m&#7885;i flag. T&iacute;nh n&#259;ng trang tr&iacute; c&oacute; th&#7875; b&#7853;t theo m&#7863;c &#273;&#7883;nh; thanh to&aacute;n m&#7899;i n&ecirc;n quay v&#7873; lu&#7891;ng c&#361;; quy&#7873;n truy c&#7853;p ph&#7843;i fail closed.</p>
+
+<h2>Quan s&aacute;t rollout theo variant</h2>
+<p>Dashboard t&#7893;ng c&oacute; th&#7875; che l&#7895;i v&igrave; ch&#7881; 5% traffic d&ugrave;ng code m&#7899;i. M&#7885;i golden signal c&#7847;n t&aacute;ch theo variant: request count, error rate, latency, conversion v&agrave; business invariant. Log evaluation n&ecirc;n ch&#7913;a flag key, variant, reason, provider v&agrave; version ruleset; h&#7841;n ch&#7871; gi&aacute; tr&#7883;/context nh&#7841;y c&#7843;m.</p>
+<p>&#272;&#7863;t ng&#432;&#7905;ng d&#7915;ng tr&#432;&#7899;c khi rollout: v&iacute; d&#7909; error rate t&#259;ng qu&aacute; m&#7913;c cho ph&eacute;p ho&#7863;c p95 v&#432;&#7907;t SLO. Kill switch ph&#7843;i &#273;&#432;&#7907;c th&#7917; tr&#432;&#7899;c s&#7921; c&#7889; v&agrave; ch&#7881; ng&#432;&#7901;i c&oacute; quy&#7873;n m&#7899;i thay &#273;&#7893;i &#273;&#432;&#7907;c.</p>
+
+<h2>Quy tr&igrave;nh rollout g&#7907;i &yacute;</h2>
+<ol><li>Deploy v&#7899;i flag t&#7855;t v&agrave; ki&#7875;m tra &#273;&#432;&#7901;ng c&#361;.</li><li>B&#7853;t cho developer/nh&acirc;n vi&ecirc;n n&#7897;i b&#7897;.</li><li>M&#7903; canary 1%, quan s&aacute;t &#273;&#7911; m&#7897;t chu k&#7923; t&#7843;i.</li><li>T&#259;ng 5%, 25%, 50%, 100% theo checkpoint.</li><li>D&#7915;ng ho&#7863;c rollback flag n&#7871;u v&#432;&#7907;t guardrail.</li><li>Sau khi &#7893;n &#273;&#7883;nh, x&oacute;a &#273;&#432;&#7901;ng c&#361; v&agrave; x&oacute;a flag.</li></ol>
+<p>Th&#7901;i gian quan s&aacute;t ph&#7843;i ph&ugrave; h&#7907;p l&#432;u l&#432;&#7907;ng v&agrave; chu k&#7923; nghi&#7879;p v&#7909;; n&#259;m ph&uacute;t kh&ocirc;ng &#273;&#7841;i di&#7879;n cho job cu&#7889;i ng&agrave;y hay h&oacute;a &#273;&#417;n cu&#7889;i th&aacute;ng.</p>
+
+<h2>Ki&#7875;m th&#7917; m&agrave; kh&ocirc;ng nh&acirc;n &#273;&ocirc;i m&#7885;i t&#7893; h&#7907;p</h2>
+<ul><li>Unit test &#273;&#432;&#7901;ng b&#7853;t v&agrave; t&#7855;t &#7903; &#273;i&#7875;m quy&#7871;t &#273;&#7883;nh ch&iacute;nh.</li><li>Contract test ki&#7875;u d&#7919; li&#7879;u, default v&agrave; context b&#7855;t bu&#7897;c.</li><li>Integration test provider l&#7895;i, timeout v&agrave; cache c&#361;.</li><li>E2E t&#7853;p trung v&agrave;o lu&#7891;ng quan tr&#7885;ng thay v&igrave; m&#7885;i t&#7893; h&#7907;p flag.</li><li>Production smoke test cho cohort n&#7897;i b&#7897; tr&#432;&#7899;c rollout c&ocirc;ng khai.</li></ul>
+<p>Nhi&#7873;u flag t&#432;&#417;ng t&aacute;c t&#7841;o s&#7889; t&#7893; h&#7907;p t&#259;ng theo c&#7845;p s&#7889; nh&acirc;n. Gi&#7843;m s&#7889; flag s&#7889;ng &#273;&#7891;ng th&#7901;i v&agrave; tr&aacute;nh nh&aacute;nh l&#7891;ng nhau quan tr&#7885;ng h&#417;n c&#7889; test m&#7885;i t&#7893; h&#7907;p.</p>
+
+<h2>D&#7885;n flag l&agrave; m&#7897;t ph&#7847;n c&#7911;a Definition of Done</h2>
+<p>M&#7895;i flag c&#7847;n owner, m&#7909;c &#273;&iacute;ch, ng&agrave;y t&#7841;o, ng&agrave;y h&#7871;t h&#7841;n, default v&agrave; ticket x&oacute;a. Khi rollout &#273;&#7841;t 100% v&agrave; &#7893;n &#273;&#7883;nh, t&#7841;o PR x&oacute;a nh&aacute;nh c&#361;, rule, dashboard t&#7841;m v&agrave; flag tr&ecirc;n control plane. C&oacute; th&#7875; d&ugrave;ng lint ho&#7863;c b&aacute;o c&aacute;o &#273;&#7875; c&#7843;nh b&aacute;o flag qu&aacute; h&#7841;n.</p>
+
+<h2>Checklist production</h2>
+<ul><li>Key &#7893;n &#273;&#7883;nh, t&ecirc;n ph&#7843;n &aacute;nh h&agrave;nh vi, kh&ocirc;ng ph&#7843;n &aacute;nh implementation t&#7841;m th&#7901;i.</li><li>Default an to&agrave;n v&agrave; &#273;&#432;&#7907;c test khi provider kh&ocirc;ng ho&#7841;t &#273;&#7897;ng.</li><li>Rollout hash theo user/account/tenant nh&#7845;t qu&aacute;n.</li><li>Kh&ocirc;ng d&ugrave;ng client flag thay authorization.</li><li>Metrics v&agrave; log ph&acirc;n t&aacute;ch theo variant nh&#432;ng kh&ocirc;ng l&#7897; PII.</li><li>Thay &#273;&#7893;i rule c&oacute; RBAC, audit log v&agrave; quy tr&igrave;nh kh&#7849;n c&#7845;p.</li><li>M&#7895;i release flag c&oacute; owner v&agrave; ng&agrave;y x&oacute;a.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Feature flag l&agrave; c&ocirc;ng c&#7909; ki&#7875;m so&aacute;t r&#7911;i ro ph&aacute;t h&agrave;nh, kh&ocirc;ng ph&#7843;i n&#417;i c&#7845;t code d&#7903; dang v&ocirc; th&#7901;i h&#7841;n. Khi c&oacute; default an to&agrave;n, rollout &#7893;n &#273;&#7883;nh, telemetry theo variant, kill switch &#273;&atilde; th&#7917; v&agrave; k&#7927; lu&#7853;t x&oacute;a flag, &#273;&#7897;i ng&#361; c&oacute; th&#7875; ph&aacute;t h&agrave;nh nh&#7887; h&#417;n, h&#7885;c nhanh h&#417;n v&agrave; ph&#7909;c h&#7891;i m&agrave; kh&ocirc;ng ph&#7909; thu&#7897;c m&#7897;t l&#7847;n deploy m&#7899;i.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2><ul><li><a href="https://openfeature.dev/docs/reference/intro/" target="_blank" rel="noopener noreferrer">OpenFeature: Introduction</a></li><li><a href="https://openfeature.dev/specification/sections/evaluation-context/" target="_blank" rel="noopener noreferrer">OpenFeature: Evaluation Context</a></li><li><a href="https://opentelemetry.io/docs/specs/semconv/feature-flags/" target="_blank" rel="noopener noreferrer">OpenTelemetry: Feature flag semantic conventions</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

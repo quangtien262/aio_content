@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">C&agrave;i email server Postfix, Dovecot tr&ecirc;n Ubuntu</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">c&agrave;i email server, Postfix, Dovecot, Rspamd, DKIM, SPF, DMARC, Ubuntu mail server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Email Server, Postfix, Dovecot, Rspamd, DKIM, DMARC, Ubuntu Server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n d&#7921;ng email server Ubuntu v&#7899;i Postfix, Dovecot, Rspamd, TLS, SPF, DKIM, DMARC, backup v&agrave; ki&#7875;m tra ch&#7889;ng open relay.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/huong-dan-cai-dat-email-server.jpg" alt="H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t email server tr&ecirc;n Ubuntu v&#7899;i Postfix v&agrave; Dovecot" width="1440" height="810"></p><h1>H&#432;&#7899;ng d&#7851;n c&agrave;i &#273;&#7863;t email server tr&ecirc;n Ubuntu v&#7899;i Postfix v&agrave; Dovecot</h1><p><strong>T&#7921; v&#7853;n h&agrave;nh email server kh&ocirc;ng ch&#7881; l&agrave; c&agrave;i SMTP v&agrave; IMAP.</strong> &#272;&#7875; th&#432; &#273;&#7871;n &#273;&uacute;ng inbox, m&aacute;y ch&#7911; c&#7847;n IP c&oacute; uy t&iacute;n, reverse DNS, TLS, SPF, DKIM, DMARC, l&#7885;c spam, ch&#7889;ng open relay, gi&aacute;m s&aacute;t queue v&agrave; backup c&oacute; th&#7875; kh&ocirc;i ph&#7909;c. B&agrave;i n&agrave;y d&#7921;ng m&#7897;t m&aacute;y ch&#7911; cho m&#7897;t domain tr&ecirc;n Ubuntu b&#7857;ng Postfix, Dovecot v&agrave; Rspamd.</p>
+<blockquote>N&#7871;u email l&agrave; d&#7883;ch v&#7909; s&#7889;ng c&ograve;n nh&#432;ng kh&ocirc;ng c&oacute; ng&#432;&#7901;i tr&#7921;c v&#7853;n h&agrave;nh, h&atilde;y d&ugrave;ng nh&agrave; cung c&#7845;p email &#273;&#432;&#7907;c qu&#7843;n l&yacute;. M&#7897;t c&#7845;u h&igrave;nh &#273;&uacute;ng h&ocirc;m nay v&#7851;n c&#7847;n v&aacute; l&#7895;i, theo d&otilde;i blacklist, x&#7917; l&yacute; spam v&agrave; ph&#7909;c h&#7891;i d&#7919; li&#7879;u v&#7873; sau.</blockquote>
+
+<h2>Ki&#7871;n tr&uacute;c s&#7917; d&#7909;ng</h2>
+<table><thead><tr><th>Th&agrave;nh ph&#7847;n</th><th>Vai tr&ograve;</th></tr></thead><tbody><tr><td>Postfix</td><td>Nh&#7853;n v&agrave; g&#7917;i SMTP; cung c&#7845;p submission cho ng&#432;&#7901;i d&ugrave;ng</td></tr><tr><td>Dovecot</td><td>L&#432;u mailbox d&#7841;ng Maildir, IMAP v&agrave; x&aacute;c th&#7921;c SMTP</td></tr><tr><td>Rspamd + Redis</td><td>Ch&#7845;m &#273;i&#7875;m spam, t&iacute;ch h&#7907;p milter v&agrave; k&yacute; DKIM</td></tr><tr><td>Let's Encrypt</td><td>Ch&#7913;ng ch&#7881; TLS cho SMTP/IMAP</td></tr><tr><td>Fail2ban/UFW</td><td>Gi&#7843;m brute force v&agrave; gi&#7899;i h&#7841;n b&#7873; m&#7863;t m&#7841;ng</td></tr></tbody></table>
+<p>V&iacute; d&#7909; d&ugrave;ng domain <code>example.com</code>, hostname <code>mail.example.com</code> v&agrave; IPv4 <code>203.0.113.10</code>. H&atilde;y thay to&agrave;n b&#7897; gi&aacute; tr&#7883; m&#7851;u b&#7857;ng th&ocirc;ng tin th&#7853;t.</p>
+
+<h2>1. Ki&#7875;m tra &#273;i&#7873;u ki&#7879;n tr&#432;&#7899;c khi thu&ecirc; VPS</h2>
+<ul><li>Nh&agrave; cung c&#7845;p cho ph&eacute;p outbound TCP 25 v&agrave; kh&ocirc;ng NAT chung IP g&#7917;i th&#432;.</li><li>C&oacute; th&#7875; &#273;&#7863;t PTR/reverse DNS c&#7911;a IP th&agrave;nh <code>mail.example.com</code>.</li><li>IP ch&#432;a n&#7857;m trong blacklist l&#7899;n v&agrave; kh&ocirc;ng ph&#7843;i d&#7843;i c&oacute; uy t&iacute;n x&#7845;u.</li><li>M&aacute;y c&oacute; IP t&#297;nh, t&#7889;i thi&#7875;u kho&#7843;ng 2 GB RAM cho stack nh&#7887;.</li><li>Domain cho ph&eacute;p ch&#7881;nh A, MX v&agrave; TXT.</li></ul>
+<p>N&#7871;u outbound 25 b&#7883; ch&#7863;n, c&oacute; th&#7875; d&ugrave;ng SMTP relay uy t&iacute;n cho chi&#7873;u g&#7917;i. Kh&ocirc;ng t&igrave;m c&aacute;ch v&#432;&#7907;t ch&iacute;nh s&aacute;ch nh&agrave; cung c&#7845;p.</p>
+
+<h2>2. T&#7841;o DNS n&#7873;n t&#7843;ng</h2>
+<table><thead><tr><th>Lo&#7841;i</th><th>T&ecirc;n</th><th>Gi&aacute; tr&#7883; m&#7851;u</th></tr></thead><tbody><tr><td>A</td><td>mail</td><td>203.0.113.10</td></tr><tr><td>MX</td><td>@</td><td>10 mail.example.com.</td></tr><tr><td>TXT</td><td>@</td><td>v=spf1 mx -all</td></tr></tbody></table>
+<p>Y&ecirc;u c&#7847;u nh&agrave; cung c&#7845;p VPS &#273;&#7863;t PTR c&#7911;a <code>203.0.113.10</code> v&#7873; <code>mail.example.com</code>. Forward-confirmed reverse DNS ph&#7843;i kh&#7899;p: hostname n&agrave;y c&#361;ng c&#7847;n ph&acirc;n gi&#7843;i tr&#7903; l&#7841;i &#273;&uacute;ng IP.</p>
+<p>N&#7871;u ch&#432;a v&#7853;n h&agrave;nh IPv6 &#273;&#7847;y &#273;&#7911; v&agrave; ch&#432;a c&oacute; PTR IPv6, &#273;&#7915;ng t&#7841;o AAAA cho mail host v&agrave; n&ecirc;n c&#7845;u h&igrave;nh Postfix ch&#7881; d&ugrave;ng IPv4.</p>
+
+<h2>3. Chu&#7849;n b&#7883; Ubuntu v&agrave; firewall</h2>
+<pre><code>hostnamectl set-hostname mail.example.com
+apt update &amp;&amp; apt full-upgrade -y
+apt install -y postfix dovecot-imapd dovecot-lmtpd \
+  rspamd redis-server certbot fail2ban swaks ufw</code></pre>
+<p>Khi Postfix h&#7887;i, ch&#7885;n <strong>Internet Site</strong> v&agrave; nh&#7853;p <code>example.com</code> l&agrave;m system mail name.</p>
+<pre><code>ufw default deny incoming
+ufw default allow outgoing
+ufw allow from ADMIN_IP to any port 22 proto tcp
+ufw allow 25/tcp
+ufw allow 80/tcp
+ufw allow 587/tcp
+ufw allow 993/tcp
+ufw enable</code></pre>
+<p>Port 25 d&agrave;nh cho server-to-server, 587 cho ng&#432;&#7901;i d&ugrave;ng g&#7917;i th&#432; c&oacute; x&aacute;c th&#7921;c, 993 cho IMAPS v&agrave; 80 d&ugrave;ng c&#7845;p/gia h&#7841;n ch&#7913;ng ch&#7881;. Kh&ocirc;ng m&#7903; database, Redis ho&#7863;c c&#7893;ng qu&#7843;n tr&#7883; n&#7897;i b&#7897; ra Internet.</p>
+
+<h2>4. C&#7845;p ch&#7913;ng ch&#7881; TLS</h2>
+<p>&#272;&#7843;m b&#7843;o A record &#273;&atilde; tr&#7887; &#273;&uacute;ng v&agrave; port 80 ch&#432;a b&#7883; chi&#7871;m:</p>
+<pre><code>certbot certonly --standalone \
+  -d mail.example.com \
+  --agree-tos -m admin@example.com --no-eff-email</code></pre>
+<p>Ch&#7913;ng ch&#7881; n&#7857;m t&#7841;i <code>/etc/letsencrypt/live/mail.example.com/</code>. Th&ecirc;m deploy hook &#273;&#7875; reload d&#7883;ch v&#7909; sau gia h&#7841;n:</p>
+<pre><code>cat &gt; /etc/letsencrypt/renewal-hooks/deploy/reload-mail.sh &lt;&lt;'SH'
+#!/bin/sh
+systemctl reload postfix
+systemctl reload dovecot
+SH
+chmod 750 /etc/letsencrypt/renewal-hooks/deploy/reload-mail.sh
+certbot renew --dry-run</code></pre>
+
+<h2>5. C&#7845;u h&igrave;nh Postfix</h2>
+<p>Thi&#7871;t l&#7853;p identity, mailbox, TLS, Dovecot SASL v&agrave; gi&#7899;i h&#7841;n relay:</p>
+<pre><code>postconf -e 'myhostname = mail.example.com'
+postconf -e 'mydomain = example.com'
+postconf -e 'myorigin = $mydomain'
+postconf -e 'mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain'
+postconf -e 'inet_interfaces = all'
+postconf -e 'inet_protocols = ipv4'
+postconf -e 'mynetworks = 127.0.0.0/8'
+postconf -e 'home_mailbox = Maildir/'
+postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.example.com/fullchain.pem'
+postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.example.com/privkey.pem'
+postconf -e 'smtpd_tls_security_level = may'
+postconf -e 'smtp_tls_security_level = may'
+postconf -e 'smtpd_sasl_type = dovecot'
+postconf -e 'smtpd_sasl_path = private/auth'
+postconf -e 'smtpd_sasl_auth_enable = yes'
+postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'</code></pre>
+<p><code>mynetworks</code> ch&#7881; tin localhost. Kh&ocirc;ng th&ecirc;m d&#7843;i m&#7841;ng r&#7897;ng t&ugrave;y ti&#7879;n v&igrave; c&oacute; th&#7875; bi&#7871;n m&aacute;y th&agrave;nh open relay.</p>
+<p>Trong <code>/etc/postfix/master.cf</code>, b&#7853;t service submission v&agrave; y&ecirc;u c&#7847;u TLS:</p>
+<pre><code>submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject</code></pre>
+
+<h2>6. C&#7845;u h&igrave;nh Dovecot</h2>
+<p>Trong <code>/etc/dovecot/conf.d/10-mail.conf</code>:</p>
+<pre><code>mail_location = maildir:~/Maildir</code></pre>
+<p>Trong <code>10-auth.conf</code>:</p>
+<pre><code>disable_plaintext_auth = yes
+auth_mechanisms = plain login</code></pre>
+<p>Trong block <code>service auth</code> c&#7911;a <code>10-master.conf</code>:</p>
+<pre><code>unix_listener /var/spool/postfix/private/auth {
+  mode = 0660
+  user = postfix
+  group = postfix
+}</code></pre>
+<p>Trong <code>10-ssl.conf</code> c&#7911;a Dovecot 2.3 tr&ecirc;n Ubuntu:</p>
+<pre><code>ssl = required
+ssl_cert = &lt;/etc/letsencrypt/live/mail.example.com/fullchain.pem
+ssl_key = &lt;/etc/letsencrypt/live/mail.example.com/privkey.pem</code></pre>
+<p>C&uacute; ph&aacute;p Dovecot c&oacute; thay &#273;&#7893;i gi&#7919;a c&aacute;c nh&aacute;nh l&#7899;n. Lu&ocirc;n &#273;&#7889;i chi&#7871;u phi&ecirc;n b&#7843;n c&agrave;i &#273;&#7863;t b&#7857;ng <code>dovecot --version</code> v&agrave; ki&#7875;m tra c&#7845;u h&igrave;nh b&#7857;ng <code>doveconf -n</code>.</p>
+
+<h2>7. T&#7841;o mailbox &#273;&#7847;u ti&ecirc;n</h2>
+<p>M&ocirc; h&igrave;nh &#273;&#417;n gi&#7843;n d&ugrave;ng system user cho m&#7897;t domain:</p>
+<pre><code>adduser alice
+maildirmake.dovecot /home/alice/Maildir
+chown -R alice:alice /home/alice/Maildir</code></pre>
+<p>T&agrave;i kho&#7843;n &#273;&#259;ng nh&#7853;p l&agrave; <code>alice</code>; &#273;&#7883;a ch&#7881; nh&#7853;n l&agrave; <code>alice@example.com</code>. M&ocirc; h&igrave;nh n&agrave;y d&#7877; hi&#7875;u nh&#432;ng kh&ocirc;ng ph&ugrave; h&#7907;p khi c&#7847;n nhi&#7873;u domain ho&#7863;c h&agrave;ng tr&#259;m mailbox. Khi &#273;&oacute; n&ecirc;n d&ugrave;ng virtual users v&#7899;i SQL/LDAP ho&#7863;c m&#7897;t mail suite &#273;&#432;&#7907;c &#273;&oacute;ng g&oacute;i.</p>
+
+<h2>8. T&iacute;ch h&#7907;p Rspamd v&#7899;i Postfix</h2>
+<p>Rspamd th&#432;&#7901;ng l&#7855;ng nghe milter &#7903; <code>localhost:11332</code>. X&aacute;c minh b&#7857;ng <code>ss -lntp</code>, sau &#273;&oacute;:</p>
+<pre><code>postconf -e 'milter_protocol = 6'
+postconf -e 'milter_default_action = accept'
+postconf -e 'smtpd_milters = inet:127.0.0.1:11332'
+postconf -e 'non_smtpd_milters = inet:127.0.0.1:11332'</code></pre>
+<p><code>milter_default_action=accept</code> gi&uacute;p SMTP kh&ocirc;ng ng&#7915;ng ho&agrave;n to&agrave;n khi b&#7897; l&#7885;c t&#7841;m l&#7895;i, nh&#432;ng c&#7847;n c&#7843;nh b&aacute;o &#273;&#7875; kh&ocirc;ng b&#7887; qua s&#7921; c&#7889; k&eacute;o d&agrave;i.</p>
+
+<h2>9. T&#7841;o DKIM v&agrave; xu&#7845;t b&#7843;n DNS</h2>
+<pre><code>mkdir -p /var/lib/rspamd/dkim
+rspamadm dkim_keygen -b 2048 \
+  -s mail -d example.com \
+  -k /var/lib/rspamd/dkim/example.com.mail.key \
+  &gt; /root/example.com.mail.dkim.txt
+chown -R _rspamd:_rspamd /var/lib/rspamd/dkim
+chmod 600 /var/lib/rspamd/dkim/example.com.mail.key</code></pre>
+<p>File TXT ch&#7913;a public key c&#7847;n &#273;&#7863;t t&#7841;i <code>mail._domainkey.example.com</code>. C&#7845;u h&igrave;nh module <code>dkim_signing</code> c&#7911;a Rspamd d&ugrave;ng selector <code>mail</code>, domain <code>example.com</code> v&agrave; private key tr&ecirc;n. T&ecirc;n user d&#7883;ch v&#7909; c&oacute; th&#7875; kh&aacute;c theo package; ki&#7875;m tra b&#7857;ng <code>systemctl cat rspamd</code>.</p>
+<p>Kh&#7903;i &#273;&#7897;ng l&#7841;i v&agrave; ki&#7875;m tra:</p>
+<pre><code>postfix check
+doveconf -n
+rspamadm configtest
+systemctl restart postfix dovecot rspamd
+systemctl --no-pager --full status postfix dovecot rspamd</code></pre>
+
+<h2>10. Th&ecirc;m DMARC</h2>
+<p>B&#7855;t &#273;&#7847;u &#7903; ch&#7871; &#273;&#7897; quan s&aacute;t:</p>
+<pre><code>_dmarc.example.com. TXT
+"v=DMARC1; p=none; rua=mailto:dmarc@example.com; adkim=s; aspf=s"</code></pre>
+<p>Sau khi m&#7885;i ngu&#7891;n g&#7917;i h&#7907;p ph&aacute;p &#273;&#7873;u pass v&agrave; align SPF/DKIM, n&acirc;ng d&#7847;n l&ecirc;n <code>quarantine</code> r&#7891;i <code>reject</code>. Kh&ocirc;ng b&#7853;t <code>p=reject</code> ngay n&#7871;u domain c&ograve;n g&#7917;i qua CRM, h&oacute;a &#273;&#417;n ho&#7863;c d&#7883;ch v&#7909; marketing ch&#432;a &#273;&#432;&#7907;c ki&#7875;m k&ecirc;.</p>
+
+<h2>11. Ki&#7875;m tra ch&#7889;ng open relay v&agrave; lu&#7891;ng th&#432;</h2>
+<pre><code>postconf -n
+ss -lntp | grep -E ':25|:587|:993'
+swaks --server mail.example.com \
+  --from outside@example.net \
+  --to user@another-domain.test</code></pre>
+<p>Ph&eacute;p th&#7917; relay kh&ocirc;ng x&aacute;c th&#7921;c t&#7899;i domain b&ecirc;n ngo&agrave;i ph&#7843;i b&#7883; t&#7915; ch&#7889;i. Ti&#7871;p theo, ki&#7875;m tra submission c&oacute; x&aacute;c th&#7921;c v&agrave; TLS b&#7857;ng t&agrave;i kho&#7843;n th&#7853;t, g&#7917;i th&#432; &#273;&#7871;n Gmail/Outlook r&#7891;i xem header <code>Authentication-Results</code> &#273;&#7875; x&aacute;c nh&#7853;n SPF, DKIM v&agrave; DMARC.</p>
+<p>C&#7845;u h&igrave;nh mail client:</p>
+<table><thead><tr><th>D&#7883;ch v&#7909;</th><th>M&aacute;y ch&#7911;</th><th>C&#7893;ng</th><th>B&#7843;o m&#7853;t</th></tr></thead><tbody><tr><td>IMAP</td><td>mail.example.com</td><td>993</td><td>TLS</td></tr><tr><td>SMTP submission</td><td>mail.example.com</td><td>587</td><td>STARTTLS, b&#7855;t bu&#7897;c x&aacute;c th&#7921;c</td></tr></tbody></table>
+
+<h2>12. Fail2ban, log v&agrave; queue</h2>
+<p>B&#7853;t jail ph&ugrave; h&#7907;p cho <code>postfix</code>, <code>postfix-sasl</code> v&agrave; <code>dovecot</code>, nh&#432;ng ki&#7875;m tra t&ecirc;n log/journal c&#7911;a phi&ecirc;n b&#7843;n Ubuntu. Theo d&otilde;i:</p>
+<pre><code>journalctl -u postfix -u dovecot -u rspamd -f
+postqueue -p
+rspamc stat
+fail2ban-client status</code></pre>
+<p>C&#7843;nh b&aacute;o khi queue t&#259;ng, disk g&#7847;n &#273;&#7847;y, ch&#7913;ng ch&#7881; s&#7855;p h&#7871;t h&#7841;n, Rspamd d&#7915;ng ho&#7863;c t&#7927; l&#7879; g&#7917;i l&#7895;i t&#259;ng. Kh&ocirc;ng t&#7921; &#273;&#7897;ng retry v&ocirc; h&#7841;n th&#432; b&#7883; t&#7915; ch&#7889;i v&#297;nh vi&#7877;n.</p>
+
+<h2>13. Backup v&agrave; kh&ocirc;i ph&#7909;c</h2>
+<p>Sao l&#432;u &iacute;t nh&#7845;t:</p>
+<ul><li><code>/home/*/Maildir</code> ho&#7863;c kho mailbox th&#7921;c t&#7871;;</li><li><code>/etc/postfix</code>, <code>/etc/dovecot</code>, <code>/etc/rspamd</code>;</li><li>DKIM private keys v&agrave; th&ocirc;ng tin DNS;</li><li>user/group c&#7847;n thi&#7871;t ho&#7863;c database virtual users;</li><li>t&agrave;i li&#7879;u firewall, PTR v&agrave; quy tr&igrave;nh c&#7845;p l&#7841;i TLS.</li></ul>
+<p>M&atilde; h&oacute;a backup, l&#432;u ngo&agrave;i VPS v&agrave; ki&#7875;m th&#7917; restore mailbox sang m&aacute;y c&ocirc; l&#7853;p. DKIM key c&#7847;n &#273;&#432;&#7907;c b&#7843;o v&#7879; nh&#432; secret; n&#7871;u l&#7897;, xoay selector v&agrave; kh&oacute;a.</p>
+
+<h2>14. Nh&#7919;ng gi&#7899;i h&#7841;n c&#7847;n bi&#7871;t</h2>
+<ul><li>IP m&#7899;i c&oacute; th&#7875; b&#7883; h&#7841;n ch&#7871; d&ugrave; c&#7845;u h&igrave;nh &#273;&uacute;ng; reputation c&#7847;n th&#7901;i gian v&agrave; l&#432;u l&#432;&#7907;ng h&#7907;p l&#7879;.</li><li>Kh&ocirc;ng d&ugrave;ng h&#7879; th&#7889;ng n&agrave;y &#273;&#7875; g&#7917;i marketing h&agrave;ng lo&#7841;t n&#7871;u ch&#432;a c&oacute; unsubscribe, qu&#7843;n l&yacute; complaint v&agrave; warm-up ph&ugrave; h&#7907;p.</li><li>M&#7897;t VPS &#273;&#417;n l&agrave; single point of failure; MX ph&#7909; kh&ocirc;ng thay th&#7871; mailbox backup.</li><li>Webmail nh&#432; Roundcube l&agrave; m&#7897;t &#7913;ng d&#7909;ng ri&ecirc;ng c&#7847;n v&aacute; l&#7895;i v&agrave; b&#7843;o v&#7879;.</li><li>Catch-all l&agrave;m t&#259;ng spam; n&ecirc;n t&#7841;o &#273;&#7883;a ch&#7881; c&#7909; th&#7875; v&agrave; alias c&oacute; ch&#7911; &#273;&iacute;ch.</li></ul>
+
+<h2>Checklist production</h2>
+<ul><li>A/PTR kh&#7899;p hai chi&#7873;u; HELO d&ugrave;ng &#273;&uacute;ng FQDN.</li><li>MX, SPF, DKIM v&agrave; DMARC ph&acirc;n gi&#7843;i &#273;&uacute;ng.</li><li>Port 25 kh&ocirc;ng open relay; 587 b&#7855;t bu&#7897;c TLS v&agrave; x&aacute;c th&#7921;c.</li><li>IMAP ch&#7881; d&ugrave;ng TLS; certificate renewal &#273;&atilde; dry-run th&agrave;nh c&ocirc;ng.</li><li>Database/Redis kh&ocirc;ng public; SSH gi&#7899;i h&#7841;n theo IP v&agrave; d&ugrave;ng key.</li><li>Queue, disk, blacklist, log, certificate v&agrave; backup c&oacute; c&#7843;nh b&aacute;o.</li><li>Backup ngo&agrave;i m&aacute;y &#273;&atilde; restore th&#7917;.</li><li><code>postmaster@</code>, <code>abuse@</code> v&agrave; &#273;&#7883;a ch&#7881; nh&#7853;n DMARC &#273;&#432;&#7907;c theo d&otilde;i.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>M&#7897;t email server ho&#7841;t &#273;&#7897;ng &#273;&#432;&#7907;c c&oacute; th&#7875; d&#7921;ng trong v&agrave;i gi&#7901;; m&#7897;t email server &#273;&aacute;ng tin c&#7853;y c&#7847;n v&#7853;n h&agrave;nh li&ecirc;n t&#7909;c. Postfix, Dovecot v&agrave; Rspamd t&#7841;o n&#7873;n t&#7843;ng t&#7889;t cho quy m&ocirc; nh&#7887; khi DNS, TLS, authentication, gi&aacute;m s&aacute;t v&agrave; backup &#273;&#432;&#7907;c l&agrave;m &#273;&#7847;y &#273;&#7911;. N&#7871;u kh&ocirc;ng ki&#7875;m so&aacute;t &#273;&#432;&#7907;c PTR, outbound port 25 ho&#7863;c ng&#432;&#7901;i tr&#7921;c s&#7921; c&#7889;, n&ecirc;n d&ugrave;ng d&#7883;ch v&#7909; email qu&#7843;n l&yacute; ho&#7863;c SMTP relay.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.postfix.org/BASIC_CONFIGURATION_README.html" target="_blank" rel="noopener noreferrer">Postfix: Basic Configuration</a></li><li><a href="https://doc.dovecot.org/main/core/config/ssl.html" target="_blank" rel="noopener noreferrer">Dovecot: SSL/TLS Configuration</a></li><li><a href="https://docs.rspamd.com/tutorials/integration/" target="_blank" rel="noopener noreferrer">Rspamd: MTA Integration</a></li><li><a href="https://support.google.com/mail/answer/81126" target="_blank" rel="noopener noreferrer">Google: Email sender guidelines</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

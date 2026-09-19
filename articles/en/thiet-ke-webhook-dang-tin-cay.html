@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">designing-reliable-webhooks</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Design Reliable and Secure Webhooks</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">webhook, idempotency, webhook signature, retry, queue, event processing</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Webhook, Idempotency, API, Queue, Security, Backend, Distributed Systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Build secure webhooks with signature verification, deduplication, fast responses, queues, retries, and observability.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/thiet-ke-webhook-dang-tin-cay.jpg" alt="Designing Reliable Webhooks: Signatures, Idempotency, Retries, and Queues" width="1440" height="810"></p><h1>Designing Reliable Webhooks: Signatures, Idempotency, Retries, and Queues</h1><p><strong>A webhook delivers events over a network, so applications must assume an event can be delayed, duplicated, reordered, or missed on the first attempt.</strong> A 200 response does not mean the business operation is complete; a reliable architecture separates ingestion from processing.</p>
+
+<h2>A minimal ingestion flow</h2>
+<ol><li>Read the raw request body and required headers.</li><li>Verify the signature and timestamp tolerance.</li><li>Check the event ID in an idempotency store.</li><li>Persist the event and receipt state in a transaction.</li><li>Enqueue processing.</li><li>Return a 2xx response quickly.</li></ol>
+<p>Stripe notes that modifying the raw body before verification breaks signature checking. Signature algorithms, headers, and tolerances vary by provider, so use the sender's official SDK or documentation.</p>
+
+<h2>Idempotency prevents repeated effects</h2>
+<p>A provider may redeliver an event after a timeout or error. Create a unique constraint on <code>provider + event_id</code> and treat a uniqueness conflict as an already-received event. A separate check followed by insert is vulnerable to races.</p>
+<pre><code>BEGIN;
+INSERT INTO webhook_events(provider, event_id, payload, status)
+VALUES (?, ?, ?, 'received')
+ON CONFLICT(provider, event_id) DO NOTHING;
+COMMIT;</code></pre>
+<p>Idempotency must extend to business effects. Updating an order and marking an event should share a transaction. Email or external calls need a business key or transactional outbox so they are not executed twice.</p>
+
+<h2>Respond quickly and process in the background</h2>
+<p>The endpoint should not create invoices, send email, and synchronize a CRM before responding. Durably persist, enqueue, and return 2xx to avoid timeouts and unnecessary redelivery. A worker can retry with backoff and move permanent failures to a dead-letter queue.</p>
+<blockquote>Return 2xx only after the event is durably stored or reliably handed to a queue. A success response before that point can lose the event if the process stops.</blockquote>
+
+<h2>Do not assume event order</h2>
+<p>Events may be processed concurrently or arrive out of sequence. Use versions, timestamps, state machines, and conditional updates to reject stale transitions. When supported, retrieve the resource's current state from the provider API rather than trusting an old snapshot.</p>
+
+<h2>Use bounded retries</h2>
+<p>Retry transient failures such as timeouts, 429, and 5xx responses. Invalid data should be recorded and routed for manual review. Use exponential backoff with jitter, cap the attempt count, and set timeouts on every outbound request.</p>
+
+<h2>Secure the endpoint</h2>
+<ul><li>Require HTTPS and verify signatures before business parsing.</li><li>Keep secrets in a secret manager and support overlapping rotation.</li><li>Limit body size and subscribed event types.</li><li>Do not log secrets or complete sensitive payloads.</li><li>Treat IP allowlists as an additional layer, not primary authentication.</li></ul>
+
+<h2>Observability and operations</h2>
+<p>Track a correlation ID, received time, attempt count, state, last error, and processing duration. Dashboards should expose verification failures, queue lag, retries, dead letters, and the age of unfinished events. Replay tools need authorization and audit logs and must still pass through idempotency controls.</p>
+
+<h2>Required test scenarios</h2>
+<ul><li>Bad signatures, expired timestamps, and modified bodies.</li><li>The same event delivered concurrently.</li><li>A worker stopping after a database update but before acknowledgement.</li><li>Out-of-order events.</li><li>Dependencies returning 429, 500, or timeout.</li><li>Replay from the dead-letter queue.</li></ul>
+
+<h2>Conclusion</h2>
+<p>Reliable webhook handling assumes at-least-once delivery: authenticate the sender, persist durably, deduplicate, process asynchronously, and make operations observable. With these layers in place, retries become a recovery mechanism instead of a source of duplicate data.</p>
+
+<h2>Reference</h2>
+<ul><li><a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener noreferrer">Stripe Docs: Receive events in a webhook endpoint</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

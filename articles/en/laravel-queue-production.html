@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">laravel-queues-in-production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Laravel Queues in Production with Redis and Horizon</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Laravel Queue, Laravel Horizon, Redis, production queues, job retries, failed jobs, idempotency</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Laravel, PHP, Queue, Redis, Horizon, Backend, DevOps, Production</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Run Laravel Queues safely with Redis and Horizon: workers, timeouts, retries, idempotency, failed jobs, monitoring, and deployment.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/laravel-queue-production.jpg" alt="Laravel Queues in Production: Redis, Horizon, Retries, and Safe Job Processing" width="1440" height="810"></p><h1>Laravel Queues in Production: Redis, Horizon, Retries, and Safe Job Processing</h1><p><strong>Queues make Laravel requests faster, but moving work into the background does not automatically make a system reliable.</strong> In production, workers can stop mid-job, external APIs can time out, and the same job can be delivered again. A sound design explicitly controls retries, timeouts, idempotency, resources, and observability.</p>
+
+<h2>What belongs on a queue?</h2>
+<p>Queues fit work that does not need to finish before the response: sending email, generating reports, processing images, synchronizing data, delivering webhooks, or importing large files. Operations that directly determine the result a user is waiting for, such as authorization or inventory reservation, often remain synchronous or need a dedicated business workflow.</p>
+<blockquote>A queue is an asynchronous processing boundary, not a place to hide every slow code path.</blockquote>
+
+<h2>Choose Redis and install Laravel Horizon</h2>
+<p>Horizon provides a dashboard and worker configuration for Redis-powered Laravel queues. Current Laravel documentation requires Horizon to use Redis and notes that Horizon is not currently compatible with Redis Cluster.</p>
+<pre><code>composer require laravel/horizon
+php artisan horizon:install
+php artisan migrate</code></pre>
+<p>Configure the production connection:</p>
+<pre><code>QUEUE_CONNECTION=redis
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379</code></pre>
+<p>Do not expose Redis directly to the Internet. Restrict network access, enable authentication where appropriate, monitor memory, and choose a persistence policy that reflects how much job loss the system can tolerate.</p>
+
+<h2>Give every job explicit limits</h2>
+<p>A production job should define its attempt limit, runtime limit, and delay between retries. An array backoff increases the delay while a dependency is temporarily unhealthy.</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
+use Throwable;
+
+class SyncInvoice implements ShouldQueue
+{
+    use Queueable;
+
+    public int $tries = 5;
+    public int $timeout = 90;
+    public bool $failOnTimeout = true;
+
+    public function __construct(public int $invoiceId) {}
+
+    public function backoff(): array
+    {
+        return [10, 30, 120, 300];
+    }
+
+    public function handle(): void
+    {
+        // Call the service with separate connection and request timeouts.
+    }
+
+    public function failed(?Throwable $exception): void
+    {
+        // Record context and alert; do not swallow the failure.
+    }
+}</code></pre>
+<p>Retry transient faults such as timeouts, 429 responses, and 5xx errors. Validation errors, missing required data, or authorization failures usually will not heal on another attempt; fail them deliberately and route them to the appropriate workflow.</p>
+
+<h2>Align the three timeout boundaries</h2>
+<p>A safe configuration generally follows this order:</p>
+<pre><code>job timeout &lt; Horizon supervisor timeout &lt; Redis retry_after</code></pre>
+<p>For example, use a 90-second job timeout, a 100-second Horizon timeout, and a 120-second <code>retry_after</code>. Horizon needs time to terminate a stuck worker before the queue considers the job lost and delivers it again. If the worker timeout exceeds or sits too close to <code>retry_after</code>, two workers may process the same job.</p>
+<p>At the process-manager layer, <code>stopwaitsecs</code> must exceed the longest valid job runtime so a deployment or restart does not kill useful work midway.</p>
+
+<h2>Dispatch only after the transaction commits</h2>
+<p>When a job depends on data written inside a transaction, a fast worker can run before commit and fail to find the record. Enable <code>after_commit</code> on the queue connection or specify it on dispatch:</p>
+<pre><code>DB::transaction(function () use ($order) {
+    $order-&gt;markAsPaid();
+
+    GenerateInvoice::dispatch($order-&gt;id)-&gt;afterCommit();
+});</code></pre>
+<p>Pass IDs and minimal data to jobs. Serializing an Eloquent model with a large loaded relationship graph creates large payloads, preserves stale state, and puts more pressure on Redis.</p>
+
+<h2>Idempotency is the duplicate-processing defense</h2>
+<p>Queues commonly provide at-least-once delivery. A job can complete an external effect and then lose its acknowledgement when the worker stops, causing redelivery. Charging money, creating invoices, and sending webhooks must therefore tolerate repeated execution.</p>
+<ul><li>Use a unique business key such as <code>invoice_id + action</code>.</li><li>Enforce it with a database unique constraint, not only an application check.</li><li>Commit state and business changes in one transaction when possible.</li><li>Use a transactional outbox when coordinating database state with a message or external API.</li><li>Use <code>ShouldBeUnique</code> to reduce duplicate dispatches, but do not treat it as an exactly-once guarantee.</li></ul>
+
+<h2>Separate queues by priority and resource profile</h2>
+<p>Email, heavy media work, and payment-related jobs should not all compete in one queue. A practical split is <code>high</code>, <code>default</code>, <code>notifications</code>, and <code>media</code>. Define separate supervisors in <code>config/horizon.php</code> for workloads with different resource or priority needs.</p>
+<pre><code>'production' =&gt; [
+    'supervisor-critical' =&gt; [
+        'connection' =&gt; 'redis',
+        'queue' =&gt; ['high'],
+        'balance' =&gt; 'simple',
+        'processes' =&gt; 4,
+        'tries' =&gt; 3,
+        'timeout' =&gt; 100,
+    ],
+    'supervisor-default' =&gt; [
+        'connection' =&gt; 'redis',
+        'queue' =&gt; ['default', 'notifications'],
+        'balance' =&gt; 'auto',
+        'minProcesses' =&gt; 2,
+        'maxProcesses' =&gt; 10,
+        'balanceMaxShift' =&gt; 1,
+        'balanceCooldown' =&gt; 3,
+        'tries' =&gt; 5,
+        'timeout' =&gt; 100,
+        'backoff' =&gt; [10, 30, 120],
+    ],
+],</code></pre>
+<p><code>auto</code> allocates workers according to load, but it does not enforce strict queue priority. Give critical workloads dedicated supervisors, and set worker limits according to CPU, memory, database connections, and dependency rate limits.</p>
+
+<h2>Run Horizon as a managed service</h2>
+<p>Production needs Supervisor, systemd, or an equivalent process manager to restart Horizon after machine reboots and process failures. The managed command is:</p>
+<pre><code>php artisan horizon</code></pre>
+<p>The Horizon dashboard exposes operational information. Restrict it through the gate in <code>HorizonServiceProvider</code>, and place it behind HTTPS and application authentication.</p>
+
+<h2>Deploy without leaving workers on old code</h2>
+<p>Workers are long-lived processes and do not reload source code after each request. Laravel 13 can use <code>php artisan reload</code> during deployment to reload long-running services. For Horizon specifically, <code>php artisan horizon:terminate</code> asks current processes to exit gracefully after finishing their job, and the process manager starts fresh instances.</p>
+<pre><code>php artisan migrate --force
+php artisan optimize
+php artisan horizon:terminate</code></pre>
+<p>Do not deploy changes that are incompatible with queued payloads. When a constructor or payload format changes, support the old version during a transition window or drain the queue before release.</p>
+
+<h2>Operate failed jobs and observe the system</h2>
+<p>Operators should understand why a job failed before retrying it in bulk:</p>
+<pre><code>php artisan queue:failed
+php artisan queue:retry &lt;job-id&gt;
+php artisan queue:retry all
+php artisan horizon:forget &lt;job-id&gt;</code></pre>
+<p>Dashboards and alerts should track queue wait time, oldest-job age, throughput, p95/p99 runtime, retries, failed jobs, worker restarts, Redis memory, and dependency failures. Schedule Horizon snapshots and prune metrics and failed-job data according to an explicit retention policy.</p>
+
+<h2>Test before production</h2>
+<ul><li>Use <code>Queue::fake()</code> to assert that a job is dispatched to the right queue with the right data.</li><li>Test <code>handle()</code> directly for transient and permanent failures.</li><li>Run integration tests with real Redis and workers for critical paths.</li><li>Simulate a worker stopping after a business effect but before acknowledgement.</li><li>Run concurrent jobs against the same business key.</li><li>Deploy while the queue is active and confirm new workers use the intended code version.</li></ul>
+
+<h2>Production checklist</h2>
+<ol><li>Redis is reachable only from trusted networks and its memory is monitored.</li><li>Every job has finite timeouts, attempts, and backoff.</li><li>Timeouts follow <code>job &lt; Horizon &lt; retry_after</code>.</li><li>Jobs that depend on transactions are dispatched after commit.</li><li>Critical business effects use idempotency keys and unique constraints.</li><li>Heavy or critical queues have dedicated supervisors.</li><li>Horizon runs under a process monitor and its dashboard is protected.</li><li>Deployment gracefully reloads or terminates workers.</li><li>Failed jobs have alerts, ownership, and a controlled replay process.</li></ol>
+
+<h2>Conclusion</h2>
+<p>A reliable Laravel queue is not defined by worker count but by explicit boundaries: retries do not duplicate business effects, workers restart without losing work, and operators can see where latency is building. Redis and Horizon provide a strong foundation; safety comes from aligned timeouts, idempotency, workload isolation, and a controlled deployment process.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://laravel.com/framework/docs/queues" target="_blank" rel="noopener noreferrer">Laravel Documentation: Queues</a></li><li><a href="https://laravel.com/framework/docs/horizon" target="_blank" rel="noopener noreferrer">Laravel Documentation: Horizon</a></li><li><a href="https://laravel.com/framework/docs/deployment" target="_blank" rel="noopener noreferrer">Laravel Documentation: Deployment</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

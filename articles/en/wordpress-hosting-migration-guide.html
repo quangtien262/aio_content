@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">migrate-wordpress-new-hosting-without-downtime</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Migrate WordPress Hosting Without Downtime</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">WordPress hosting migration, migrate WordPress, zero downtime, WP-CLI, website migration, DNS, WordPress backup</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">WordPress, Hosting, Website Migration, WP-CLI, DNS, Backup, Guides</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">A safe WordPress hosting migration workflow covering backups, lower DNS TTL, file and database sync, hosts-file testing, cutover, SSL, monitoring, and rollback.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/wordpress-hosting-migration-guide.jpg" alt="How to Migrate WordPress to New Hosting Without Downtime" width="1440" height="810"></p><h1>How to Migrate WordPress to New Hosting Without Downtime</h1><p><strong>The difficult part of moving WordPress is not copying files; it is avoiding lost orders, comments, or content created during the move.</strong> A reliable migration needs a rollback path, tests on the new server before DNS changes, and control over the period when both servers exist.</p>
+<p>This guide covers a single WordPress site that keeps the same domain. Multisite, high-traffic WooCommerce, or systems with several writers need a tailored plan and a staging rehearsal.</p>
+
+<h2>Goals and principles</h2>
+<ul>
+<li>The public site remains reachable through most of the process.</li>
+<li>The new server is tested before receiving real traffic.</li>
+<li>The final write freeze is short and clearly communicated.</li>
+<li>The old server remains intact long enough for rollback.</li>
+<li>Temporary secrets, backups, and accounts are removed afterward.</li>
+</ul>
+<blockquote>DNS does not move every visitor at once. During cache expiry, some requests may reach the old server while others reach the new one.</blockquote>
+
+<h2>1. Inventory the current site</h2>
+<p>Record PHP, MySQL/MariaDB, WordPress, web server, PHP extensions, cron jobs, file/database size, and email configuration. Identify cache, security, backup, object-cache, CDN, payment, and webhook integrations.</p>
+<pre><code>wp core version
+wp plugin list
+wp theme list
+wp db size
+wp cron event list</code></pre>
+<p>Confirm that the destination supports the required PHP version and extensions. Check upload, memory and execution limits, cron, SSL, file permissions, and outbound mail. Avoid upgrading WordPress, PHP, and plugins during the hosting migration; too many simultaneous changes make failures harder to diagnose.</p>
+
+<h2>2. Lower DNS TTL before cutover day</h2>
+<p>Lower web-record TTL to about 300 seconds 24&ndash;48 hours beforehand if the DNS provider permits it. Existing caches do not disappear immediately; the previous TTL must expire first.</p>
+<p>Inventory the complete zone before changing nameservers or records: <code>A</code>, <code>AAAA</code>, <code>CNAME</code>, <code>MX</code>, SPF, DKIM, DMARC, and verification records. If only the website moves, preserve email records. A stale <code>AAAA</code> record can keep IPv6 users on the old server after the <code>A</code> record changes.</p>
+
+<h2>3. Create and verify backups</h2>
+<p>Back up both the database and all WordPress files. Include uploads, plugins, themes, mu-plugins, <code>.htaccess</code>, Nginx/Apache configuration, and cron jobs outside WordPress.</p>
+<pre><code>wp db export ~/backup/site-pre-migration.sql
+tar -czf ~/backup/site-files.tar.gz \
+  --exclude='wp-content/cache' \
+  /var/www/example.com</code></pre>
+<p>Store backups away from the source server, encrypt sensitive data, and verify that archives can be read. Ideally, restore them into a temporary environment. An untested backup is only an assumption.</p>
+
+<h2>4. Prepare the new hosting environment</h2>
+<p>Create the virtual host, database, and least-privileged database user. Install the matching runtime, enable HTTPS, and configure redirects without changing DNS yet. When the domain does not point to the destination, use a DNS challenge or a temporary certificate according to provider capabilities.</p>
+<p>Copy files with a tool that preserves timestamps and permissions. Over SSH, <code>rsync</code> supports efficient repeated synchronization:</p>
+<pre><code>rsync -aH --delete \
+  --exclude='wp-content/cache/' \
+  user@old-server:/var/www/example.com/ \
+  /var/www/example.com/</code></pre>
+<p>Treat <code>--delete</code> carefully: perform a dry run and verify source and destination first. Do not copy cache, sessions, or old backups unless needed.</p>
+
+<h2>5. Import the database and update configuration</h2>
+<pre><code>wp db import ~/backup/site-pre-migration.sql
+wp db check</code></pre>
+<p>Update <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code>, and <code>DB_HOST</code> in <code>wp-config.php</code>. Never leave configuration files or SQL dumps in a web-accessible directory.</p>
+<p>Keeping the same domain and path usually requires no URL replacement. When the domain or protocol changes, avoid blind SQL <code>REPLACE()</code> because WordPress stores serialized values. WP-CLI understands serialized data:</p>
+<pre><code>wp search-replace 'http://old.example' 'https://new.example' \
+  --skip-columns=guid --dry-run
+
+wp search-replace 'http://old.example' 'https://new.example' \
+  --skip-columns=guid</code></pre>
+<p>Always run <code>--dry-run</code> first. Multisite requires different options and procedures; do not apply a single-site example unchanged.</p>
+
+<h2>6. Test before changing DNS</h2>
+<p>Edit the tester's <code>hosts</code> file so the real domain temporarily resolves to the destination IP. The browser sends the correct hostname, WordPress uses its real URL, and HTTPS/SNI behavior closely matches production.</p>
+<pre><code>203.0.113.20 example.com www.example.com</code></pre>
+<p>Flush the local DNS cache if necessary and use a private browser window. Only the modified computer sees the new host; visitors stay on the old server.</p>
+<p>At minimum, test:</p>
+<ul>
+<li>Home, posts, categories, search, and 404 pages.</li>
+<li>Admin login/logout, media uploads, and post editing.</li>
+<li>Contact forms, transactional email, CAPTCHA, and webhooks.</li>
+<li>Cart, checkout, and payment callbacks in an appropriate test mode.</li>
+<li>Permalinks, redirects, robots.txt, sitemap, and canonical URLs.</li>
+<li>Images, CSS, JavaScript, fonts, and mixed content.</li>
+<li>WP-Cron, system cron, queues, and backup jobs.</li>
+</ul>
+<pre><code>wp core verify-checksums
+wp plugin status
+wp rewrite flush
+wp cache flush</code></pre>
+<p>Run <code>wp rewrite flush</code> only when needed and after web-server permalink rules are correct. Inspect PHP errors, web-server logs, and the browser console instead of judging only the home page.</p>
+
+<h2>7. Perform the final synchronization without data loss</h2>
+<p>For a site with occasional writes, enable a brief maintenance or read-only mode on the old server, stop cron and queues, export the final database, and synchronize recent uploads. For WooCommerce or memberships, this is the most important step.</p>
+<ol>
+<li>Announce a short maintenance window and temporarily block writes.</li>
+<li>Stop workers, WP-Cron, or webhook consumers on the old host.</li>
+<li>Export the final database.</li>
+<li>Synchronize new uploads and generated files.</li>
+<li>Import the final database on the new host.</li>
+<li>Clear caches, run smoke tests, and enable writes on the destination.</li>
+</ol>
+<p>Do not run cron and queues on both servers simultaneously; emails, subscriptions, or jobs may execute twice. A site that cannot accept a maintenance window needs replication or a more advanced application-level synchronization design.</p>
+
+<h2>8. Switch DNS</h2>
+<p>Change <code>A</code>/<code>AAAA</code> records to the new IP, or update the load balancer according to the architecture. Keep the old configuration intact. Watch access logs on both hosts as traffic shifts.</p>
+<pre><code>dig +short example.com A
+dig +short example.com AAAA
+curl -I https://example.com</code></pre>
+<p>Check from several networks or resolvers, not just the hosts-file test computer. If a CDN or proxy is present, purge it carefully and confirm the new origin. Keep the old server read-only during DNS transition to avoid split data.</p>
+
+<h2>9. Monitor after cutover</h2>
+<p>For the first 24&ndash;72 hours, watch:</p>
+<ul>
+<li>HTTP 4xx/5xx responses, PHP fatal errors, and slow queries.</li>
+<li>CPU, RAM, disk, inodes, I/O, and database connections.</li>
+<li>Logins, forms, orders, payments, and email delivery.</li>
+<li>WP-Cron, queues, backups, and webhooks.</li>
+<li>Certificate chains, HTTP-to-HTTPS redirects, and mixed content.</li>
+<li>Traffic still reaching the old IP through long-lived DNS caches.</li>
+</ul>
+<p>Once stable, restore the normal DNS TTL. Create a fresh backup from the new host and perform a small restoration test.</p>
+
+<h2>10. Plan the rollback</h2>
+<p>If a severe issue appears before the new host receives fresh data, point DNS back and reopen the old service. Once the destination has accepted orders or content, rollback is no longer a simple DNS change; newly created data must be reconciled.</p>
+<p>Define rollback thresholds before cutover, such as error rate, failed checkout rate, or latency. Document the decision owner, DNS wait time, and treatment of new records. Keep the old server, database, and backups intact for several days or as compliance requires.</p>
+
+<h2>Clean up safely</h2>
+<p>After the observation period and once legitimate traffic no longer reaches the old host:</p>
+<ul>
+<li>Revoke temporary SSH keys, accounts, and migration tokens.</li>
+<li>Delete SQL dumps from web roots and temporary directories.</li>
+<li>Disable old cron jobs and workers before canceling the old host.</li>
+<li>Update infrastructure, monitoring, backup, and IP documentation.</li>
+<li>Recheck file permissions: commonly 755 for directories and 644 for files, never blanket 777.</li>
+<li>Rotate secrets if they passed through an unsafe channel.</li>
+</ul>
+
+<h2>Quick checklist</h2>
+<ol>
+<li>Inventory runtimes, plugins, cron jobs, and integrations.</li>
+<li>Lower TTL 24&ndash;48 hours in advance.</li>
+<li>Back up files and database, then verify restoration.</li>
+<li>Build the destination and perform the initial copy/import.</li>
+<li>Test through the hosts file with the real domain.</li>
+<li>Briefly freeze writes and perform the final database/file sync.</li>
+<li>Switch DNS and monitor both servers.</li>
+<li>Keep the old host for rollback, then clean temporary secrets and backups.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>A safe WordPress migration requires repeated synchronization and verification, not one copy followed by a DNS switch. A tested backup, hosts-file validation, controlled writes during the final sync, and a preserved rollback path substantially reduce the risk of data loss and service interruption.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://developer.wordpress.org/advanced-administration/upgrade/migrating/" target="_blank" rel="noopener noreferrer">WordPress: Migrating WordPress</a></li><li><a href="https://developer.wordpress.org/cli/commands/db/" target="_blank" rel="noopener noreferrer">WP-CLI database commands</a></li><li><a href="https://developer.wordpress.org/cli/commands/search-replace/" target="_blank" rel="noopener noreferrer">WP-CLI search-replace</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

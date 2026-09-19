@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">git-worktree-multiple-branches-without-stashing</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">A Practical Git Worktree Guide for Developers</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Git worktree, Git branch, parallel branches, git stash, hotfix, linked worktree, Git workflow</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Git, Git Worktree, Version Control, Developer Tools, Workflow, Programming</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Learn Git worktree in practice: run feature and hotfix branches side by side, manage linked worktrees, clean metadata, lock, move, repair, and avoid common mistakes.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/git-worktree-practical-guide.jpg" alt="Git Worktree in Practice: Work on Multiple Branches Without Stashing" width="1440" height="810"></p><h1>Git Worktree in Practice: Work on Multiple Branches Without Stashing</h1><p><strong>You are halfway through a feature when production suddenly needs a hotfix.</strong> The familiar response is to stash your changes, switch branches, fix the issue, and restore the original workspace. That becomes awkward when many files are uncommitted, dependencies are running, and the IDE already holds valuable context. <code>git worktree</code> solves this by giving one repository multiple working directories, each with its own checked-out branch.</p>
+
+<h2>What is Git worktree?</h2>
+<p>A conventional repository has one working tree: the directory containing the files you edit. Git worktree can attach additional <em>linked worktrees</em> to that repository. They share the Git object database and history while keeping their own <code>HEAD</code>, index, and working files.</p>
+<p>Because Git data is shared, a worktree is lighter than cloning the entire repository again. A commit created in a feature worktree is immediately visible from the main repository; there is no need to fetch between local directories.</p>
+<blockquote>A worktree is not a disposable copy. It is a real Git workspace with an independent branch and file state.</blockquote>
+
+<h2>When should you use it?</h2>
+<ul>
+<li>A long-running feature is in progress when an urgent hotfix arrives.</li>
+<li>You need two application versions running side by side for comparison.</li>
+<li>You want to review a pull request without disturbing current development.</li>
+<li>Tests or migrations must run on one branch while you code on another.</li>
+<li>Several tasks or coding agents need isolated workspaces in parallel.</li>
+</ul>
+<p>If you only need to inspect an old file or switch from a clean workspace, <code>git switch</code> remains simpler. Worktrees are most valuable when contexts must stay alive at the same time.</p>
+
+<h2>1. Create a worktree for a new feature</h2>
+<p>Assume the main repository is in <code>shop</code> on the <code>main</code> branch:</p>
+<pre><code>cd shop
+git fetch origin
+git worktree add -b feature/checkout ../shop-checkout origin/main</code></pre>
+<p>This creates <code>feature/checkout</code> from <code>origin/main</code> and checks it out into the sibling directory <code>shop-checkout</code>. Open a new IDE window or terminal:</p>
+<pre><code>cd ../shop-checkout
+git status
+git branch --show-current</code></pre>
+<p>Every commit here belongs to the feature branch. The main repository keeps its current branch and all original uncommitted changes untouched.</p>
+
+<h2>2. Create a hotfix while the feature stays open</h2>
+<pre><code>git fetch origin
+git worktree add -b hotfix/payment-timeout ../shop-hotfix origin/main
+
+cd ../shop-hotfix
+# fix the issue and run tests
+git add .
+git commit -m "Fix payment timeout handling"
+git push -u origin hotfix/payment-timeout</code></pre>
+<p>The feature requires no stash, and its development server can keep running. Once the hotfix is merged, remove the worktree properly:</p>
+<pre><code>cd ../shop
+git worktree remove ../shop-hotfix
+git branch -d hotfix/payment-timeout</code></pre>
+<p><code>worktree remove</code> removes only a clean worktree. Git refuses when tracked changes or untracked files remain, protecting your data. Inspect, commit, or back up anything important before considering <code>--force</code>.</p>
+
+<h2>3. Check out an existing branch</h2>
+<pre><code>git fetch origin
+git worktree add ../shop-release release/2.4</code></pre>
+<p>A normal branch cannot be checked out in two worktrees at once. This restriction prevents two directories from silently mutating the same branch. If a branch is already in use, <code>git worktree list</code> shows where it lives.</p>
+<p>To inspect a commit without attaching a branch, for example during an investigation or benchmark, use detached HEAD:</p>
+<pre><code>git worktree add --detach ../shop-benchmark v2.3.1</code></pre>
+<p>Create a branch before cleanup if you need to preserve commits made in detached mode.</p>
+
+<h2>4. Manage the worktree inventory</h2>
+<pre><code>git worktree list
+git worktree list --porcelain</code></pre>
+<p>The default output is human-friendly. The stable <code>--porcelain</code> format is intended for scripts. Avoid reading or modifying administrative files in <code>.git/worktrees</code> yourself.</p>
+<p>A practical convention is to keep linked worktrees beside the main repository:</p>
+<pre><code>projects/
+&#9500;&#9472;&#9472; shop/              # main worktree
+&#9500;&#9472;&#9472; shop-feature-cart/
+&#9500;&#9472;&#9472; shop-hotfix-auth/
+&#9492;&#9472;&#9472; shop-review-482/</code></pre>
+<p>Name directories after their purpose and issue or PR number. Do not place a worktree inside the main repository: search tools, file watchers, or Docker build contexts may accidentally scan another branch's source.</p>
+
+<h2>5. Dependencies, environment variables, and ports</h2>
+<p>Worktrees share Git objects, not ignored files. Each directory usually needs its own <code>node_modules</code>, <code>vendor</code>, or virtual environment. That isolation is useful, though it consumes extra disk space.</p>
+<ul>
+<li>Create a separate <code>.env</code> for each worktree and never commit secrets.</li>
+<li>Use distinct databases, schemas, or container names when versions run concurrently.</li>
+<li>Assign different ports, such as 3000 for the main app and 3001 for the feature.</li>
+<li>Do not share build or cache directories unless the tool explicitly supports concurrency.</li>
+</ul>
+<p>A project bootstrap script can copy <code>.env.example</code>, install dependencies, and print a suggested port after a worktree is created.</p>
+
+<h2>6. Move, lock, and repair worktrees</h2>
+<p>Use Git when relocating a linked worktree instead of dragging the directory:</p>
+<pre><code>git worktree move ../shop-feature-cart ../archive/shop-cart</code></pre>
+<p>If a worktree lives on removable storage or a network share that is not always mounted, lock it so its metadata is not pruned:</p>
+<pre><code>git worktree lock --reason "External SSD" ../archive/shop-cart
+git worktree unlock ../archive/shop-cart</code></pre>
+<p>If the directory was moved manually or the main repository path changed, run:</p>
+<pre><code>git worktree repair ../archive/shop-cart</code></pre>
+<p>Worktrees containing submodules have additional move and removal limitations. Check your Git version and current documentation before automating that workflow.</p>
+
+<h2>7. Clean up stale metadata</h2>
+<p>If someone deletes a linked directory directly, its administrative metadata may remain. Preview the cleanup first:</p>
+<pre><code>git worktree prune --dry-run --verbose
+git worktree prune --verbose</code></pre>
+<p><code>prune</code> removes metadata for missing worktrees; it does not delete merged branches. Branch cleanup remains a separate <code>git branch -d</code> operation.</p>
+
+<h2>8. A safe pull request review workflow</h2>
+<pre><code>git fetch origin pull/482/head:review/pr-482
+git worktree add ../shop-review-482 review/pr-482
+
+cd ../shop-review-482
+# install dependencies, run tests, inspect code
+</code></pre>
+<p>After the review:</p>
+<pre><code>cd ../shop
+git worktree remove ../shop-review-482
+git branch -D review/pr-482</code></pre>
+<p>This workflow preserves the feature workspace while letting you test the actual proposed code. On platforms that do not expose a <code>pull/.../head</code> ref, fetch the corresponding remote branch and create the worktree from that remote-tracking branch.</p>
+
+<h2>9. Common mistakes</h2>
+<ul>
+<li><strong>&ldquo;branch is already checked out&rdquo;:</strong> the branch belongs to another worktree; use <code>git worktree list</code> instead of forcing checkout.</li>
+<li><strong>Deleting a directory in a file manager:</strong> use <code>git worktree remove</code> to remove both the directory and metadata.</li>
+<li><strong>Assuming stash belongs to one workspace:</strong> stashes belong to the shared repository and are visible from every worktree.</li>
+<li><strong>Two servers compete for one port:</strong> assign separate ports, databases, and container names.</li>
+<li><strong>Force-removing without inspection:</strong> untracked files can be lost; always run <code>git status</code> in the correct worktree.</li>
+<li><strong>Accumulating abandoned worktrees:</strong> periodically review their branches, ages, and PR states.</li>
+</ul>
+
+<h2>Team adoption checklist</h2>
+<ol>
+<li>Keep linked worktrees outside the main repository directory.</li>
+<li>Give every task one clearly named branch and worktree.</li>
+<li>Separate ports, databases, caches, and environment variables for concurrent runs.</li>
+<li>Commit or preserve important data before removal.</li>
+<li>Use <code>remove</code>, <code>move</code>, and <code>repair</code> instead of manual file operations.</li>
+<li>Clean up the worktree after merge and delete the branch according to team policy.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p><code>git worktree</code> does not replace branches, commits, or stashes. It adds the ability to keep multiple development contexts active at once. For long-running features, urgent fixes, and parallel reviews, worktrees reduce context switching while retaining Git's data safeguards. Start with one small hotfix worktree, establish a clear directory convention, and remove it as soon as the task is complete.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://git-scm.com/docs/git-worktree" target="_blank" rel="noopener noreferrer">Official git-worktree documentation</a></li><li><a href="https://git-scm.com/docs/git-branch" target="_blank" rel="noopener noreferrer">Official git-branch documentation</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">whats-new-ios-27-notable-iphone-features</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">What Is New in iOS 27? Key Features</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">iOS 27, iOS 27 features, Siri AI, Apple Intelligence, iOS 27 Health, FaceTime, Screen Time</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">iOS 27, iPhone, Siri AI, Apple Intelligence, Mobile OS, Operating Systems</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Explore iOS 27 features including Siri AI, redesigned Health, smarter Safari, FaceTime Dual Capture, Screen Time, Home, and Maps.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/tinh-nang-moi-ios-27.jpg" alt="What Is New in iOS 27? The Most Notable iPhone Features" width="1440" height="810"></p><h1>What Is New in iOS 27? The Most Notable iPhone Features</h1><p><strong>Apple released iOS 27 on September 14, 2026, with a focus on the next generation of Apple Intelligence, Siri AI, and practical improvements across familiar apps.</strong> Safari, Health, FaceTime, Maps, Home, and family safety tools all receive meaningful updates.</p>
+<p>Not every feature is available on every supported iPhone. Apple Intelligence depends on hardware, language, and region, while some server-based capabilities are also subject to daily usage limits.</p>
+
+<h2>Siri AI understands context and takes deeper action</h2>
+<p>Siri AI is the headline feature. It offers more natural conversation, broad world knowledge, onscreen awareness, and personal context from Mail, Messages, Photos, Notes, and other supported apps.</p>
+<p>It can perform more systemwide app actions and help draft, edit, or share content. A dedicated Siri app keeps conversation history synchronized through iCloud on compatible devices.</p>
+<blockquote>Siri AI launches in beta, and availability varies by language, region, and device. Check Apple's current availability page before upgrading primarily for this feature.</blockquote>
+
+<h2>Visual Intelligence comes to Camera</h2>
+<p>Visual Intelligence is integrated into Camera, allowing users to ask questions or take actions based on what is in front of the lens. It can identify useful information and suggest relevant actions without requiring several app switches.</p>
+
+<h2>Safari organizes tabs and monitors web pages</h2>
+<ul><li><strong>Automatic topic groups:</strong> related tabs can be organized with Apple Intelligence.</li><li><strong>Notify Me:</strong> Safari can monitor a page for changes such as restocks or price updates.</li><li><strong>Described extensions:</strong> users can describe a desired website customization.</li></ul>
+
+<h2>Health is redesigned around insights and long-term trends</h2>
+<p>The redesigned Health app includes an Insights tab for heart, sleep, readiness, fitness, vitals, and cycle data. A For You area provides personalized recommendations and relevant educational content.</p>
+<p>Cycle Tracking adds support for perimenopause and menopause, including symptom logging, pattern notifications, and educational resources. Some advanced Health experiences require Apple Intelligence hardware, an Apple Watch, or regional availability.</p>
+
+<h2>FaceTime adds Dual Capture and translated captions</h2>
+<p>Dual Capture can share the front and rear camera views during a FaceTime call. On supported Apple Intelligence devices, Live Captions can display translated captions in the viewer's preferred language.</p>
+
+<h2>Stronger Screen Time and child safety</h2>
+<table><thead><tr><th>Feature</th><th>Purpose</th></tr></thead><tbody><tr><td>Ask to Browse</td><td>Children request approval before opening a new website in Safari</td></tr><tr><td>Time Allowances</td><td>Age-informed starting points for time in social, entertainment, and game categories</td></tr><tr><td>Communication Safety</td><td>Expanded protection for violent, graphic, and sensitive imagery, including live FaceTime</td></tr><tr><td>Redesigned Screen Time</td><td>A clearer overview and faster controls for changing access</td></tr></tbody></table>
+<p>Devices in a Family Sharing group need the corresponding generation of Apple's operating systems to use the complete updated experience.</p>
+
+<h2>A smarter Home app with 4K camera support</h2>
+<p>Apple Intelligence can consolidate related activity alerts, describe selected HomeKit Secure Video footage before playback, and find clips by what happened. Compatible cameras can stream and record in 4K.</p>
+
+<h2>Useful updates for Maps, Phone, AirPods, and fitness</h2>
+<ul><li><strong>Maps:</strong> enhanced Flyover combines aerial imagery with Visual Intelligence for greater detail; Local Lists surface trending places in supported regions.</li><li><strong>Phone:</strong> Call Context can proactively surface information related to a business call, such as a flight confirmation from Mail.</li><li><strong>AirPods:</strong> Custom EQ adjusts low, mid, and high frequencies on compatible models.</li><li><strong>GymKit:</strong> iPhone connects to compatible cardio equipment for live metrics.</li></ul>
+
+<h2>Liquid Glass controls and larger widgets</h2>
+<p>A new slider adjusts Liquid Glass from very clear to more heavily tinted, helping users balance visual style and readability. Extra-large Home Screen widgets can show more information at a glance.</p>
+
+<h2>Accessibility improvements</h2>
+<p>Apple Intelligence can generate synchronized captions and translate existing captions. VoiceOver gains richer image descriptions and can be accessed through the Action button on supported devices.</p>
+
+<h2>Which iPhones support iOS 27?</h2>
+<p>Apple lists iPhone 11, iPhone SE second generation, and later models as compatible with iOS 27. Siri AI and most Apple Intelligence features require iPhone 15 Pro/15 Pro Max, iPhone 16 models, or newer compatible devices.</p>
+<p>Device availability varies by market, so confirm the latest list on Apple's iOS 27 page.</p>
+
+<h2>Before upgrading</h2>
+<ol><li>Back up the iPhone to iCloud or a computer.</li><li>Check free storage and update critical apps.</li><li>Confirm that the device, language, and region support the desired features.</li><li>For work devices, validate VPN, device management, and enterprise authentication apps.</li><li>Do not upgrade for one Apple Intelligence feature if the device is not supported.</li></ol>
+
+<h2>Conclusion</h2>
+<p>iOS 27 is a substantial update for personal intelligence, health, and family safety. Siri AI attracts the most attention, while Safari, FaceTime, Home, Maps, and accessibility improvements may provide the most consistent daily value. Users should distinguish platform-wide features from those limited to Apple Intelligence hardware.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://support.apple.com/guide/iphone/whats-new-in-ios-27-iphfed2c4091/ios" target="_blank" rel="noopener noreferrer">Apple Support: What's new in iOS 27</a></li><li><a href="https://www.apple.com/os/ios/" target="_blank" rel="noopener noreferrer">Apple: iOS 27</a></li><li><a href="https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/" target="_blank" rel="noopener noreferrer">Apple Newsroom: 2026 software updates</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

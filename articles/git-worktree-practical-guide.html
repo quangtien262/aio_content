@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Git worktree th&#7921;c chi&#7871;n cho l&#7853;p tr&igrave;nh vi&ecirc;n</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Git worktree, Git branch, l&agrave;m nhi&#7873;u nh&aacute;nh song song, git stash, hotfix, linked worktree, Git workflow</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Git, Git Worktree, Version Control, Developer Tools, Workflow, Programming</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n Git worktree t&#7915; c&#417; b&#7843;n &#273;&#7871;n th&#7921;c chi&#7871;n: t&#7841;o feature v&agrave; hotfix song song, qu&#7843;n l&yacute; branch, d&#7885;n d&#7865;p, lock, move, repair v&agrave; tr&aacute;nh l&#7895;i th&#432;&#7901;ng g&#7863;p.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/git-worktree-practical-guide.jpg" alt="Git worktree th&#7921;c chi&#7871;n: L&agrave;m nhi&#7873;u nh&aacute;nh song song kh&ocirc;ng c&#7847;n stash" width="1440" height="810"></p><h1>Git worktree th&#7921;c chi&#7871;n: L&agrave;m nhi&#7873;u nh&aacute;nh song song kh&ocirc;ng c&#7847;n stash</h1><p><strong>B&#7841;n &#273;ang s&#7917;a m&#7897;t t&iacute;nh n&#259;ng d&#7903; dang th&igrave; production c&#7847;n hotfix ngay.</strong> C&aacute;ch quen thu&#7897;c l&agrave; stash thay &#273;&#7893;i, chuy&#7875;n nh&aacute;nh, s&#7917;a l&#7895;i r&#7891;i quay l&#7841;i. Nh&#432;ng khi workspace c&oacute; nhi&#7873;u file ch&#432;a commit, dependency &#273;ang ch&#7841;y v&agrave; IDE &#273;&atilde; m&#7903; &#273;&uacute;ng ng&#7919; c&#7843;nh, chu&#7895;i thao t&aacute;c &#273;&oacute; v&#7915;a m&#7845;t th&#7901;i gian v&#7915;a d&#7877; nh&#7847;m. <code>git worktree</code> gi&#7843;i quy&#7871;t b&agrave;i to&aacute;n b&#7857;ng c&aacute;ch cho m&#7897;t repository c&oacute; nhi&#7873;u th&#432; m&#7909;c l&agrave;m vi&#7879;c, m&#7895;i th&#432; m&#7909;c checkout m&#7897;t nh&aacute;nh ri&ecirc;ng.</p>
+
+<h2>Git worktree l&agrave; g&igrave;?</h2>
+<p>M&#7897;t repository th&ocirc;ng th&#432;&#7901;ng c&oacute; m&#7897;t working tree: th&#432; m&#7909;c ch&#7913;a source code b&#7841;n &#273;ang ch&#7881;nh s&#7917;a. Git worktree cho ph&eacute;p g&#7855;n th&ecirc;m c&aacute;c <em>linked worktree</em> v&agrave;o c&ugrave;ng repository. Ch&uacute;ng d&ugrave;ng chung object database v&agrave; l&#7883;ch s&#7917; Git, nh&#432;ng m&#7895;i n&#417;i c&oacute; <code>HEAD</code>, index v&agrave; file l&agrave;m vi&#7879;c ri&ecirc;ng.</p>
+<p>V&igrave; d&ugrave;ng chung d&#7919; li&#7879;u Git, worktree nh&#7865; h&#417;n clone l&#7841;i to&agrave;n b&#7897; repository. Commit t&#7841;o &#7903; worktree feature xu&#7845;t hi&#7879;n ngay trong repository ch&iacute;nh; b&#7841;n kh&ocirc;ng c&#7847;n fetch gi&#7919;a c&aacute;c th&#432; m&#7909;c tr&ecirc;n c&ugrave;ng m&aacute;y.</p>
+<blockquote>Worktree kh&ocirc;ng ph&#7843;i b&#7843;n sao t&#7841;m th&#7901;i. M&#7895;i worktree l&agrave; m&#7897;t workspace Git th&#7921;c th&#7909;, c&oacute; branch v&agrave; tr&#7841;ng th&aacute;i file &#273;&#7897;c l&#7853;p.</blockquote>
+
+<h2>Khi n&agrave;o n&ecirc;n d&ugrave;ng?</h2>
+<ul>
+<li>&#272;ang l&agrave;m feature d&agrave;i ng&agrave;y nh&#432;ng c&#7847;n x&#7917; l&yacute; hotfix kh&#7849;n c&#7845;p.</li>
+<li>Mu&#7889;n ch&#7841;y hai phi&ecirc;n b&#7843;n &#7913;ng d&#7909;ng c&#7841;nh nhau &#273;&#7875; so s&aacute;nh h&agrave;nh vi.</li>
+<li>Review pull request m&agrave; kh&ocirc;ng l&agrave;m x&aacute;o tr&#7897;n nh&aacute;nh &#273;ang ph&aacute;t tri&#7875;n.</li>
+<li>Ch&#7841;y test ho&#7863;c migration tr&ecirc;n m&#7897;t nh&aacute;nh trong khi v&#7851;n vi&#7871;t code &#7903; nh&aacute;nh kh&aacute;c.</li>
+<li>L&agrave;m vi&#7879;c v&#7899;i nhi&#7873;u t&aacute;c v&#7909; ho&#7863;c coding agent song song, m&#7895;i t&aacute;c v&#7909; c&oacute; workspace ri&ecirc;ng.</li>
+</ul>
+<p>N&#7871;u ch&#7881; c&#7847;n xem nhanh m&#7897;t file c&#361; ho&#7863;c &#273;&#7893;i nh&aacute;nh khi workspace &#273;ang s&#7841;ch, <code>git switch</code> v&#7851;n &#273;&#417;n gi&#7843;n h&#417;n. Worktree ph&aacute;t huy gi&aacute; tr&#7883; khi c&aacute;c ng&#7919; c&#7843;nh c&#7847;n t&#7891;n t&#7841;i &#273;&#7891;ng th&#7901;i.</p>
+
+<h2>1. T&#7841;o worktree cho m&#7897;t feature m&#7899;i</h2>
+<p>Gi&#7843; s&#7917; repository ch&iacute;nh n&#7857;m trong th&#432; m&#7909;c <code>shop</code> v&agrave; &#273;ang &#7903; nh&aacute;nh <code>main</code>:</p>
+<pre><code>cd shop
+git fetch origin
+git worktree add -b feature/checkout ../shop-checkout origin/main</code></pre>
+<p>L&#7879;nh tr&ecirc;n t&#7841;o nh&aacute;nh <code>feature/checkout</code> t&#7915; <code>origin/main</code>, &#273;&#7891;ng th&#7901;i checkout nh&aacute;nh &#273;&oacute; v&agrave;o th&#432; m&#7909;c ngang c&#7845;p <code>shop-checkout</code>. Sau &#273;&oacute; m&#7903; IDE ho&#7863;c terminal m&#7899;i:</p>
+<pre><code>cd ../shop-checkout
+git status
+git branch --show-current</code></pre>
+<p>M&#7885;i commit trong th&#432; m&#7909;c n&agrave;y thu&#7897;c nh&aacute;nh feature. Repository ch&iacute;nh v&#7851;n gi&#7919; nguy&ecirc;n branch v&agrave; to&agrave;n b&#7897; thay &#273;&#7893;i ch&#432;a commit ban &#273;&#7847;u.</p>
+
+<h2>2. T&#7841;o hotfix trong l&uacute;c feature c&ograve;n dang d&#7903;</h2>
+<pre><code>git fetch origin
+git worktree add -b hotfix/payment-timeout ../shop-hotfix origin/main
+
+cd ../shop-hotfix
+# s&#7917;a l&#7895;i, ch&#7841;y test
+git add .
+git commit -m "Fix payment timeout handling"
+git push -u origin hotfix/payment-timeout</code></pre>
+<p>Feature kh&ocirc;ng c&#7847;n stash v&agrave; dev server c&#7911;a feature c&oacute; th&#7875; ti&#7871;p t&#7909;c ch&#7841;y. Sau khi hotfix &#273;&#432;&#7907;c merge, x&oacute;a worktree &#273;&uacute;ng c&aacute;ch:</p>
+<pre><code>cd ../shop
+git worktree remove ../shop-hotfix
+git branch -d hotfix/payment-timeout</code></pre>
+<p><code>worktree remove</code> ch&#7881; x&oacute;a worktree s&#7841;ch. N&#7871;u c&ograve;n file s&#7917;a ho&#7863;c file ch&#432;a &#273;&#432;&#7907;c theo d&otilde;i, Git s&#7869; t&#7915; ch&#7889;i &#273;&#7875; b&#7843;o v&#7879; d&#7919; li&#7879;u. H&atilde;y ki&#7875;m tra v&agrave; commit ho&#7863;c sao l&#432;u ph&#7847;n c&#7847;n thi&#7871;t tr&#432;&#7899;c khi c&acirc;n nh&#7855;c <code>--force</code>.</p>
+
+<h2>3. Checkout m&#7897;t nh&aacute;nh &#273;&atilde; t&#7891;n t&#7841;i</h2>
+<pre><code>git fetch origin
+git worktree add ../shop-release release/2.4</code></pre>
+<p>M&#7897;t branch th&ocirc;ng th&#432;&#7901;ng kh&ocirc;ng th&#7875; &#273;&#432;&#7907;c checkout &#273;&#7891;ng th&#7901;i &#7903; hai worktree. R&agrave;ng bu&#7897;c n&agrave;y ng&#259;n hai th&#432; m&#7909;c c&ugrave;ng &acirc;m th&#7847;m thay &#273;&#7893;i m&#7897;t branch. N&#7871;u nh&aacute;nh &#273;ang &#273;&#432;&#7907;c d&ugrave;ng, <code>git worktree list</code> cho bi&#7871;t n&oacute; n&#7857;m &#7903; &#273;&acirc;u.</p>
+<p>&#272;&#7875; xem m&#7897;t commit m&agrave; kh&ocirc;ng g&#7855;n v&#7899;i branch, ch&#7859;ng h&#7841;n ph&#7909;c v&#7909; &#273;i&#7873;u tra ho&#7863;c benchmark, d&ugrave;ng detached HEAD:</p>
+<pre><code>git worktree add --detach ../shop-benchmark v2.3.1</code></pre>
+<p>N&#7871;u c&#7847;n gi&#7919; commit t&#7841;o trong ch&#7871; &#273;&#7897; detached, h&atilde;y t&#7841;o branch tr&#432;&#7899;c khi d&#7885;n worktree.</p>
+
+<h2>4. Qu&#7843;n l&yacute; danh s&aacute;ch worktree</h2>
+<pre><code>git worktree list
+git worktree list --porcelain</code></pre>
+<p>D&#7841;ng m&#7863;c &#273;&#7883;nh ph&ugrave; h&#7907;p cho con ng&#432;&#7901;i; <code>--porcelain</code> c&oacute; &#273;&#7883;nh d&#7841;ng &#7893;n &#273;&#7883;nh &#273;&#7875; script x&#7917; l&yacute;. Kh&ocirc;ng n&ecirc;n t&#7921; &#273;&#7885;c ho&#7863;c ch&#7881;nh c&aacute;c file qu&#7843;n tr&#7883; trong <code>.git/worktrees</code>.</p>
+<p>M&#7897;t quy &#432;&#7899;c th&#432; m&#7909;c d&#7877; qu&#7843;n l&yacute; l&agrave; &#273;&#7863;t linked worktree c&#7841;nh repository ch&iacute;nh:</p>
+<pre><code>projects/
+&#9500;&#9472;&#9472; shop/              # main worktree
+&#9500;&#9472;&#9472; shop-feature-cart/
+&#9500;&#9472;&#9472; shop-hotfix-auth/
+&#9492;&#9472;&#9472; shop-review-482/</code></pre>
+<p>T&ecirc;n th&#432; m&#7909;c n&ecirc;n th&#7875; hi&#7879;n m&#7909;c &#273;&iacute;ch v&agrave; s&#7889; issue/PR. Kh&ocirc;ng &#273;&#7863;t worktree b&ecirc;n trong repository ch&iacute;nh v&igrave; c&ocirc;ng c&#7909; t&igrave;m ki&#7871;m, watcher ho&#7863;c Docker build context c&oacute; th&#7875; qu&eacute;t l&#7851;n source c&#7911;a nh&aacute;nh kh&aacute;c.</p>
+
+<h2>5. Dependency, bi&#7871;n m&ocirc;i tr&#432;&#7901;ng v&agrave; c&#7893;ng d&#7883;ch v&#7909;</h2>
+<p>C&aacute;c worktree chia s&#7867; Git object nh&#432;ng kh&ocirc;ng chia s&#7867; file b&#7883; ignore. M&#7895;i th&#432; m&#7909;c th&#432;&#7901;ng c&#7847;n c&agrave;i dependency ri&ecirc;ng nh&#432; <code>node_modules</code>, <code>vendor</code> ho&#7863;c virtual environment. &#272;&acirc;y l&agrave; &#273;i&#7873;u t&#7889;t v&#7873; t&iacute;nh c&ocirc; l&#7853;p nh&#432;ng t&#7889;n th&ecirc;m dung l&#432;&#7907;ng.</p>
+<ul>
+<li>T&#7841;o <code>.env</code> ri&ecirc;ng cho t&#7915;ng worktree v&agrave; kh&ocirc;ng commit secret.</li>
+<li>D&ugrave;ng database/schema ho&#7863;c container name kh&aacute;c n&#7871;u hai phi&ecirc;n b&#7843;n ch&#7841;y &#273;&#7891;ng th&#7901;i.</li>
+<li>&#272;&#7863;t port kh&aacute;c nhau, v&iacute; d&#7909; &#7913;ng d&#7909;ng ch&iacute;nh &#7903; 3000 v&agrave; feature &#7903; 3001.</li>
+<li>Kh&ocirc;ng d&ugrave;ng chung th&#432; m&#7909;c build/cache n&#7871;u c&ocirc;ng c&#7909; kh&ocirc;ng b&#7843;o &#273;&#7843;m concurrency.</li>
+</ul>
+<p>C&oacute; th&#7875; vi&#7871;t script bootstrap c&#7911;a d&#7921; &aacute;n &#273;&#7875; copy <code>.env.example</code>, c&agrave;i dependency v&agrave; in ra port &#273;&#7873; xu&#7845;t ngay sau khi t&#7841;o worktree.</p>
+
+<h2>6. Di chuy&#7875;n, kh&oacute;a v&agrave; s&#7917;a worktree</h2>
+<p>Mu&#7889;n &#273;&#7893;i v&#7883; tr&iacute; linked worktree, &#432;u ti&ecirc;n l&#7879;nh Git thay v&igrave; k&eacute;o th&#7843; th&#432; m&#7909;c:</p>
+<pre><code>git worktree move ../shop-feature-cart ../archive/shop-cart</code></pre>
+<p>N&#7871;u worktree n&#7857;m tr&ecirc;n &#7893; r&#7901;i ho&#7863;c network share &#273;&ocirc;i khi kh&ocirc;ng &#273;&#432;&#7907;c mount, h&atilde;y kh&oacute;a &#273;&#7875; metadata kh&ocirc;ng b&#7883; d&#7885;n:</p>
+<pre><code>git worktree lock --reason "External SSD" ../archive/shop-cart
+git worktree unlock ../archive/shop-cart</code></pre>
+<p>N&#7871;u b&#7841;n &#273;&atilde; di chuy&#7875;n th&#432; m&#7909;c th&#7911; c&ocirc;ng ho&#7863;c &#273;&#432;&#7901;ng d&#7851;n repository ch&iacute;nh thay &#273;&#7893;i, d&ugrave;ng:</p>
+<pre><code>git worktree repair ../archive/shop-cart</code></pre>
+<p>Worktree c&oacute; submodule c&oacute; th&ecirc;m gi&#7899;i h&#7841;n khi move/remove; lu&ocirc;n ki&#7875;m tra phi&ecirc;n b&#7843;n Git v&agrave; t&agrave;i li&#7879;u hi&#7879;n h&agrave;nh tr&#432;&#7899;c khi t&#7921; &#273;&#7897;ng h&oacute;a quy tr&igrave;nh n&agrave;y.</p>
+
+<h2>7. D&#7885;n metadata b&#7883; s&oacute;t</h2>
+<p>N&#7871;u ai &#273;&oacute; x&oacute;a th&#7859;ng th&#432; m&#7909;c linked worktree, metadata c&oacute; th&#7875; c&ograve;n l&#7841;i. H&atilde;y xem tr&#432;&#7899;c r&#7891;i m&#7899;i d&#7885;n:</p>
+<pre><code>git worktree prune --dry-run --verbose
+git worktree prune --verbose</code></pre>
+<p><code>prune</code> d&#7885;n th&ocirc;ng tin c&#7911;a worktree kh&ocirc;ng c&ograve;n t&#7891;n t&#7841;i; n&oacute; kh&ocirc;ng ph&#7843;i l&#7879;nh d&#7885;n branch &#273;&atilde; merge. Vi&#7879;c x&oacute;a branch v&#7851;n th&#7921;c hi&#7879;n ri&ecirc;ng b&#7857;ng <code>git branch -d</code>.</p>
+
+<h2>8. Workflow review pull request an to&agrave;n</h2>
+<pre><code>git fetch origin pull/482/head:review/pr-482
+git worktree add ../shop-review-482 review/pr-482
+
+cd ../shop-review-482
+# c&agrave;i dependency, ch&#7841;y test, &#273;&#7885;c code
+</code></pre>
+<p>Khi review xong:</p>
+<pre><code>cd ../shop
+git worktree remove ../shop-review-482
+git branch -D review/pr-482</code></pre>
+<p>Workflow n&agrave;y gi&#7919; nguy&ecirc;n workspace feature v&agrave; gi&uacute;p review &#273;&uacute;ng code th&#7921;c t&#7871;. V&#7899;i n&#7873;n t&#7843;ng kh&ocirc;ng cung c&#7845;p ref <code>pull/.../head</code>, fetch branch remote t&#432;&#417;ng &#7913;ng r&#7891;i t&#7841;o worktree t&#7915; remote-tracking branch.</p>
+
+<h2>9. Nh&#7919;ng l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<ul>
+<li><strong>&ldquo;branch is already checked out&rdquo;:</strong> branch &#273;ang n&#7857;m trong worktree kh&aacute;c; xem <code>git worktree list</code> thay v&igrave; &eacute;p checkout.</li>
+<li><strong>X&oacute;a th&#432; m&#7909;c b&#7857;ng tr&igrave;nh qu&#7843;n l&yacute; file:</strong> d&ugrave;ng <code>git worktree remove</code> &#273;&#7875; d&#7885;n c&#7843; th&#432; m&#7909;c l&#7851;n metadata.</li>
+<li><strong>Nh&#7847;m r&#7857;ng stash d&ugrave;ng chung theo workspace:</strong> stash thu&#7897;c repository chung, n&ecirc;n n&#7897;i dung stash c&oacute; th&#7875; nh&igrave;n th&#7845;y t&#7915; m&#7885;i worktree.</li>
+<li><strong>Hai server tranh c&ugrave;ng port:</strong> c&#7845;p port, database v&agrave; t&ecirc;n container ri&ecirc;ng.</li>
+<li><strong>Force remove khi ch&#432;a ki&#7875;m tra:</strong> c&oacute; th&#7875; m&#7845;t file untracked; lu&ocirc;n ch&#7841;y <code>git status</code> trong &#273;&uacute;ng worktree.</li>
+<li><strong>T&#7841;o qu&aacute; nhi&#7873;u worktree b&#7887; qu&ecirc;n:</strong> &#273;&#7883;nh k&#7923; xem danh s&aacute;ch, tu&#7893;i branch v&agrave; tr&#7841;ng th&aacute;i PR.</li>
+</ul>
+
+<h2>Checklist &aacute;p d&#7909;ng cho &#273;&#7897;i nh&oacute;m</h2>
+<ol>
+<li>&#272;&#7863;t linked worktree ngo&agrave;i th&#432; m&#7909;c repository ch&iacute;nh.</li>
+<li>M&#7895;i task d&ugrave;ng m&#7897;t branch v&agrave; m&#7897;t worktree r&otilde; t&ecirc;n.</li>
+<li>T&aacute;ch port, database, cache v&agrave; bi&#7871;n m&ocirc;i tr&#432;&#7901;ng khi ch&#7841;y song song.</li>
+<li>Commit ho&#7863;c l&#432;u d&#7919; li&#7879;u c&#7847;n thi&#7871;t tr&#432;&#7899;c khi remove.</li>
+<li>D&ugrave;ng <code>remove</code>, <code>move</code> v&agrave; <code>repair</code> thay cho thao t&aacute;c file th&#7911; c&ocirc;ng.</li>
+<li>D&#7885;n worktree sau khi PR merge v&agrave; x&oacute;a branch theo ch&iacute;nh s&aacute;ch c&#7911;a &#273;&#7897;i.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p><code>git worktree</code> kh&ocirc;ng thay th&#7871; branch, commit hay stash; n&oacute; b&#7893; sung kh&#7843; n&#259;ng gi&#7919; nhi&#7873;u ng&#7919; c&#7843;nh l&agrave;m vi&#7879;c c&ugrave;ng l&uacute;c. V&#7899;i feature d&agrave;i ng&agrave;y, hotfix kh&#7849;n c&#7845;p v&agrave; review song song, worktree gi&uacute;p gi&#7843;m chuy&#7875;n &#273;&#7893;i ng&#7919; c&#7843;nh m&agrave; v&#7851;n d&#7921;a tr&ecirc;n c&#417; ch&#7871; b&#7843;o v&#7879; d&#7919; li&#7879;u c&#7911;a Git. H&atilde;y b&#7855;t &#273;&#7847;u b&#7857;ng m&#7897;t worktree hotfix nh&#7887;, &#273;&#7863;t quy &#432;&#7899;c th&#432; m&#7909;c r&otilde; r&agrave;ng v&agrave; d&#7885;n n&oacute; ngay khi c&ocirc;ng vi&#7879;c ho&agrave;n t&#7845;t.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://git-scm.com/docs/git-worktree" target="_blank" rel="noopener noreferrer">T&agrave;i li&#7879;u ch&iacute;nh th&#7913;c git-worktree</a></li><li><a href="https://git-scm.com/docs/git-branch" target="_blank" rel="noopener noreferrer">T&agrave;i li&#7879;u ch&iacute;nh th&#7913;c git-branch</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

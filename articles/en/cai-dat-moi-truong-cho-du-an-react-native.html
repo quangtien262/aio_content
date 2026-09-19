@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">set-up-react-native-development-environment</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Set Up a React Native Development Environment</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">React Native setup, React Native environment, Expo, Android Studio, Xcode, React Native CLI, Node.js</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">React Native, Expo, Android Studio, Xcode, Mobile Development, JavaScript</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Prepare a React Native environment with Expo or the native toolchain, Android Studio, Xcode, emulators, and physical devices.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/cai-dat-moi-truong-react-native.jpg" alt="How to Set Up a React Native Development Environment" width="1440" height="810"></p><h1>How to Set Up a React Native Development Environment</h1><p><strong>React Native has two common setup paths: start quickly with Expo or install the complete native toolchain for local Android and iOS builds.</strong> Choosing early prevents unnecessary downloads and configuration.</p>
+<h2>Expo or native toolchain?</h2><table><thead><tr><th>Path</th><th>Best for</th><th>Required tools</th></tr></thead><tbody><tr><td>Expo</td><td>Learning, MVPs, common app features, rapid cross-platform work</td><td>Node.js LTS and a device/Expo Go; native IDEs can come later</td></tr><tr><td>Native toolchain</td><td>Custom native modules, specialist SDKs, full local build control</td><td>Node.js, JDK, Android Studio; Xcode and CocoaPods for iOS</td></tr></tbody></table>
+<h2>Install Node.js LTS</h2><p>Use nvm, fnm, or Volta so projects can pin compatible Node versions.</p><pre><code>node --version
+npm --version
+git --version</code></pre><p>Do not install a global React Native CLI; use <code>npx</code> to invoke the project-compatible tool.</p>
+<h2>The Expo path</h2><pre><code>npx create-expo-app@latest my-mobile-app
+cd my-mobile-app
+npx expo start</code></pre><p>Scan the QR code on a device, or press <code>a</code>/<code>i</code> for an emulator or simulator. Use <code>npx expo start --tunnel</code> when the local network blocks discovery.</p>
+<h2>Prepare Android</h2><ol><li>Install Android Studio and the SDK required by the React Native version.</li><li>Install matching platform, build tools, platform-tools, and emulator packages.</li><li>Create an Android Virtual Device.</li><li>Configure <code>ANDROID_HOME</code> and add <code>platform-tools</code> to PATH.</li><li>Install the JDK required by the project's React Native release.</li></ol><pre><code>adb --version
+adb devices
+java -version
+npx react-native doctor</code></pre>
+<h2>Prepare iOS on macOS</h2><p>Local iOS builds require macOS and Xcode. Open Xcode once to accept its license and install components, then install CocoaPods when required:</p><pre><code>xcode-select -p
+sudo gem install cocoapods
+cd ios &amp;&amp; pod install &amp;&amp; cd ..</code></pre><p>Projects using Bundler should prefer <code>bundle exec pod install</code>.</p>
+<h2>Create a project without Expo</h2><pre><code>npx @react-native-community/cli@latest init MyApp
+cd MyApp
+npm start
+npm run android
+npm run ios</code></pre><p>Always check the documentation for the exact React Native release because Node, JDK, Gradle, Xcode, and CocoaPods requirements change.</p>
+<h2>Connect physical devices</h2><ul><li>Android: enable Developer options and USB debugging, then verify with <code>adb devices</code>.</li><li>iOS: select a Development Team in Xcode and trust the certificate on the device.</li><li>Ensure the device can reach Metro; firewalls and VPNs may block development ports.</li></ul>
+<h2>Environment variables and secrets</h2><p>Expo exposes variables prefixed with <code>EXPO_PUBLIC_</code> to client code. Anything bundled into a mobile app can be inspected, so never include private backend credentials.</p>
+<h2>Common problems</h2><ul><li>For &ldquo;SDK location not found,&rdquo; inspect <code>ANDROID_HOME</code> and <code>local.properties</code>.</li><li>If a device is missing, check the cable, debugging authorization, and restart ADB.</li><li>For CocoaPods failures, use a pinned Gemfile and clear caches selectively.</li><li>For stale Metro state, reset its cache with the CLI's supported option.</li></ul>
+<h2>Completion checklist</h2><ol><li>Dependencies install from the lock file.</li><li>Metro starts and the app opens on an emulator or physical device.</li><li><code>react-native doctor</code> reports no required-tool failures.</li><li>Node and JDK versions are documented or pinned.</li><li>No secret is committed or bundled in the client.</li></ol>
+<h2>References</h2><ul><li><a href="https://reactnative.dev/docs/set-up-your-environment" target="_blank" rel="noopener noreferrer">React Native environment setup</a></li><li><a href="https://docs.expo.dev/get-started/create-a-project/" target="_blank" rel="noopener noreferrer">Create an Expo project</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

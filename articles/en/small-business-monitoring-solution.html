@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Solutions</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">website-server-monitoring-small-business-actionable-alerts</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Website and Server Monitoring for Small Businesses</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">website monitoring, server monitoring, small business monitoring, uptime monitoring, Prometheus Grafana, system alerts</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Monitoring, Website Monitoring, Server Monitoring, Prometheus, Grafana, Uptime, SME, IT Operations</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design practical website and server monitoring for a small business with uptime checks, metrics, dashboards, alerts, runbooks, and a rollout plan.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/small-business-monitoring-solution.jpg" alt="Website and Server Monitoring for Small Businesses: From Uptime to Actionable Alerts" width="1440" height="810"></p><h1>Website and Server Monitoring for Small Businesses: From Uptime to Actionable Alerts</h1><p><strong>A good monitoring system is not the one with the most charts; it is the one that detects the right failure, reaches the right person, and provides enough context to act.</strong> For a small business, the goal is visibility into customer experience, infrastructure health, and emerging risk without creating another complex platform that needs constant care.</p>
+
+<h2>Start with the business question</h2>
+<p>Before selecting tools, identify services that directly affect revenue or operations: the public website, API, email, VPN, internal software, database, or office connection. Each service needs an owner, an availability expectation, and an acceptable interruption window.</p>
+<p>A brochure website may tolerate a business-hours response, while checkout or an order API needs immediate escalation. When every event is urgent, responders quickly learn to ignore alerts.</p>
+
+<h2>The four essential monitoring layers</h2>
+<table><thead><tr><th>Layer</th><th>Question</th><th>Primary signals</th></tr></thead><tbody><tr><td>External checks</td><td>Can customers reach the service?</td><td>HTTP, DNS, TLS, TCP, content, response time</td></tr><tr><td>Infrastructure</td><td>Is a host approaching resource exhaustion?</td><td>CPU, memory, disk, inodes, network, load, services</td></tr><tr><td>Application</td><td>Is the application correct and fast?</td><td>Request rate, errors, latency, queues, database connections</td></tr><tr><td>Business</td><td>Does the value-producing flow work?</td><td>Orders, payments, login, transactional email, synchronization</td></tr></tbody></table>
+<p>Ping alone is insufficient: a server can answer ping while its website returns 500. Conversely, high CPU does not always affect customers. Combine user-facing signals with internal data for both detection and diagnosis.</p>
+
+<h2>A minimum viable architecture</h2>
+<ol><li>An uptime service outside the primary infrastructure checks websites, APIs, DNS, and TLS.</li><li>An agent or exporter on servers exposes resource and service metrics.</li><li>A time-series store such as Prometheus provides history and deeper queries when needed.</li><li>A dashboard layer such as Grafana supports investigation and trends.</li><li>An alert manager provides grouping, silencing, and routing.</li><li>A notification channel remains independent of the monitored system.</li></ol>
+<blockquote>Do not place all monitoring on the same server as the website. When that host loses power or fills its disk, monitoring disappears with it and cannot report the failure.</blockquote>
+
+<h2>Select tools by operational maturity</h2>
+<h3>Level 1: A few websites or VPS instances</h3>
+<p>Use a managed uptime service or a lightweight self-hosted tool for HTTP, keyword, TCP, and TLS checks. Add disk, memory, and service alerts from the VPS provider. This level fits teams without a dedicated operator.</p>
+<h3>Level 2: Multiple servers and applications</h3>
+<p>Use Prometheus to collect time-series metrics over HTTP, exporters for operating systems and applications, Grafana for dashboards, and Alertmanager or Grafana Alerting for notifications. This stack is flexible but needs ownership for updates, backup, retention, and security.</p>
+<h3>Level 3: Many services or an on-call requirement</h3>
+<p>Add centralized logs, tracing, SLOs, schedules, escalation, and incident management. Upgrade only when complexity measurably reduces detection or recovery time; do not deploy a full observability stack simply because the components are available.</p>
+
+<h2>The first monitors to create</h2>
+<ul><li><strong>Primary website:</strong> HTTPS 200, important content keyword, and latency.</li><li><strong>API health:</strong> a lightweight endpoint that still checks core dependencies.</li><li><strong>DNS:</strong> expected address or critical record.</li><li><strong>TLS:</strong> alerts 30, 14, and 7 days before expiration.</li><li><strong>Synthetic business flow:</strong> test login or sandbox transaction when safe.</li><li><strong>Servers:</strong> disk, inodes, memory, load, network, and service processes.</li><li><strong>Database:</strong> connections, query latency, storage, replication, and backup status.</li><li><strong>Queues:</strong> depth, oldest-job age, failures, and worker count.</li><li><strong>Backups:</strong> last success and restore-test result, not merely job status.</li></ul>
+
+<h2>Use golden signals instead of watching everything</h2>
+<p>For web services, four useful signal groups are latency, traffic, errors, and saturation. They reveal whether customers are slow or failing, current load, and resources near their limits. Infrastructure dashboards still matter, but wake-up alerts should prioritize symptoms affecting users.</p>
+<p>Ninety percent CPU for one minute may be expected work. A five-percent checkout error rate lasting five minutes is usually more actionable. Use time windows and pending periods to filter short spikes.</p>
+
+<h2>Design actionable alerts</h2>
+<p>Every alert should answer six questions:</p>
+<ol><li>Which service is affected?</li><li>What is the customer or business impact?</li><li>Which signal crossed what condition and for how long?</li><li>How urgent is it?</li><li>Who owns the response?</li><li>Where are the runbook and investigation dashboard?</li></ol>
+<p>Prometheus separates rule evaluation from notification delivery: rules produce alerts, while Alertmanager groups, inhibits, silences, and routes them. This lets related symptoms become one incident instead of dozens of notifications when one database breaks several services.</p>
+
+<h2>Three notification levels</h2>
+<table><thead><tr><th>Level</th><th>Example</th><th>Channel</th></tr></thead><tbody><tr><td>Critical</td><td>Checkout unavailable, data loss, widespread API errors</td><td>Call or push to on-call with escalation</td></tr><tr><td>Warning</td><td>Rapid disk growth, elevated latency below SLO breach</td><td>Operations channel during business hours</td></tr><tr><td>Info</td><td>Deployment, successful backup, renewed certificate</td><td>Dashboard or event log, no page</td></tr></tbody></table>
+<p>If no action is possible, an event belongs on a dashboard rather than in an alert. Review alerts monthly and fix or remove those that never lead to action.</p>
+
+<h2>Dashboards for decisions</h2>
+<p>Do not place every metric on one screen. Maintain three views:</p>
+<ul><li><strong>Service overview:</strong> availability, latency, errors, traffic, and open incidents.</li><li><strong>Investigation:</strong> CPU, memory, disk, database, queues, dependencies, and deployment markers.</li><li><strong>Capacity:</strong> 30-90 day trends, storage growth, peak traffic, and projected limits.</li></ul>
+<p>Every chart needs clear units, source, and scope. Average latency can hide very slow requests; use percentiles such as p95 or p99 where appropriate.</p>
+
+<h2>Runbooks turn alerts into responses</h2>
+<p>A short runbook should include verification steps, the first safe action, rollback conditions, escalation contacts, and evidence to preserve. A disk-space alert, for example, should link to a process for checking filesystems, inodes, logs, containers, and open deleted files.</p>
+<p>During maintenance, use a scoped, expiring silence instead of disabling all alerts. Confirm monitors recover and the silence expires afterward.</p>
+
+<h2>Secure the monitoring system</h2>
+<ul><li>Do not expose dashboards or metrics endpoints publicly without need.</li><li>Use HTTPS, SSO or MFA, and role-based access.</li><li>Never place passwords, tokens, customer email, or sensitive queries in metric labels.</li><li>Protect notification webhooks and rotate secrets.</li><li>Control cardinality; user IDs and request IDs can rapidly inflate metric storage.</li><li>Back up configuration, dashboards, rules, and contact points.</li><li>Place monitoring in a different failure domain from critical workloads.</li></ul>
+
+<h2>A 30-day rollout</h2>
+<ol><li><strong>Week 1:</strong> inventory services, owners, criticality, and contacts.</li><li><strong>Week 2:</strong> deploy external uptime, TLS expiry, and backup monitoring.</li><li><strong>Week 3:</strong> collect server and application metrics, build an overview, and create the five most important alerts.</li><li><strong>Week 4:</strong> simulate a website outage, near-full disk, and false positive; tune thresholds, routing, and runbooks.</li></ol>
+<p>Track two initial operational measures: mean time to detect and mean time to recover. The first objective is not a beautiful dashboard; it is learning about failures before customers do and reducing confusion during response.</p>
+
+<h2>Estimate cost honestly</h2>
+<p>Self-hosted does not mean free. Costs include the monitoring server, metric and log storage, backups, patching, security, and operator time. Managed services charge a subscription but reduce operational work. A hybrid often suits a small team: external uptime from outside, with internal metrics self-hosted or managed according to capability.</p>
+<p>Do not retain every metric forever. Choose scrape intervals and retention for investigation, reporting, and capacity planning. Detailed data can expire sooner while aggregates remain longer.</p>
+
+<h2>Acceptance checklist</h2>
+<ol><li>Every important service has an owner and priority.</li><li>External monitoring does not share the website's failure domain.</li><li>HTTP, DNS, TLS, and critical business flows are covered.</li><li>Servers, databases, queues, and backups expose required signals.</li><li>Alerts use pending periods and have explicit recipients.</li><li>Every critical alert links to a dashboard and runbook.</li><li>Notification and escalation paths have been tested.</li><li>Dashboards, rules, and configuration are backed up.</li><li>Alert noise and capacity are reviewed monthly.</li></ol>
+
+<h2>Conclusion</h2>
+<p>Small-business monitoring should begin with critical services and human response, not a tool catalog. One trustworthy external check, a few correct metrics, an owned alert, and a runbook often provide more value than hundreds of dashboards. As the environment grows, Prometheus, Grafana, and alert routing provide a clear expansion path without requiring everything on day one.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener noreferrer">Prometheus: Overview</a></li><li><a href="https://prometheus.io/docs/alerting/latest/overview/" target="_blank" rel="noopener noreferrer">Prometheus: Alerting overview</a></li><li><a href="https://grafana.com/docs/grafana/latest/alerting/best-practices/" target="_blank" rel="noopener noreferrer">Grafana: Alerting best practices</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

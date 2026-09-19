@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">install-n8n-docker-compose-postgresql-https</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Install n8n with Docker Compose, PostgreSQL, and HTTPS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">install n8n, n8n Docker Compose, n8n PostgreSQL, self-host n8n, n8n HTTPS, n8n webhook, workflow automation</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">n8n, Docker Compose, PostgreSQL, Automation, Self-Hosted, HTTPS, Guides</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Self-host n8n with Docker Compose, PostgreSQL, Nginx HTTPS, correct webhook URLs, a stable encryption key, backups, safe updates, security, and production monitoring.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/n8n-docker-postgresql-guide.jpg" alt="How to Install n8n with Docker Compose, PostgreSQL, and HTTPS" width="1440" height="810"></p><h1>How to Install n8n with Docker Compose, PostgreSQL, and HTTPS</h1><p><strong>n8n connects APIs, webhooks, schedules, and applications into automated workflows.</strong> Self-hosting gives control over data and infrastructure, but it also makes you responsible for secrets, backups, HTTPS, upgrades, and recovery.</p>
+<p>This guide deploys one n8n instance with Docker Compose, PostgreSQL, and an Nginx reverse proxy. It suits a small team or moderate workload; multi-worker queue mode requires Redis and a separate architecture.</p>
+
+<h2>Target architecture</h2>
+<ul>
+<li>Nginx terminates HTTPS at <code>automation.example.com</code>.</li>
+<li>n8n binds port 5678 to localhost only.</li>
+<li>PostgreSQL stays on an internal network without a public port.</li>
+<li>The database and <code>/home/node/.n8n</code> use persistent volumes.</li>
+<li>Secrets live in a restricted environment file outside Git.</li>
+</ul>
+<blockquote>A database backup without <code>N8N_ENCRYPTION_KEY</code> may leave encrypted credentials unusable. Protect that key as one of the system's most important assets.</blockquote>
+
+<h2>1. Prepare the server and DNS</h2>
+<p>Use an updated Linux host with Docker Engine and the Compose plugin. Point <code>automation.example.com</code> at the server. Permit only administrative SSH, HTTP, and HTTPS through the firewall; never expose 5432 or 5678 publicly.</p>
+<pre><code>docker --version
+docker compose version
+df -h
+free -h</code></pre>
+<p>Separate development and production when workflows send real email, create invoices, or delete data. Do not test unfamiliar nodes directly in production.</p>
+
+<h2>2. Create the project directories</h2>
+<pre><code>sudo mkdir -p /opt/n8n
+sudo chown "$USER":"$USER" /opt/n8n
+cd /opt/n8n
+mkdir -p n8n_data postgres_data backups</code></pre>
+<p>Keep backups outside the web root. For bind mounts, verify container UID/GID and write permissions; named volumes may be easier in some environments.</p>
+
+<h2>3. Create secrets and the environment file</h2>
+<pre><code>openssl rand -base64 36
+openssl rand -hex 32</code></pre>
+<p>Create <code>.env</code>:</p>
+<pre><code>N8N_VERSION=2.5.5
+POSTGRES_PASSWORD=replace-with-a-long-random-password
+N8N_ENCRYPTION_KEY=replace-with-a-stable-random-key
+N8N_DOMAIN=automation.example.com
+GENERIC_TIMEZONE=Asia/Ho_Chi_Minh</code></pre>
+<pre><code>chmod 600 .env</code></pre>
+<p>The version is an example pin. Select a supported release, read its notes, and test before upgrading. Avoid <code>latest</code> in production because a pull can introduce uncontrolled breaking changes.</p>
+
+<h2>4. Create the Docker Compose file</h2>
+<pre><code>services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: n8n
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n -d n8n"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [backend]
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_PORT: 5432
+      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_USER: n8n
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD}
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      N8N_HOST: ${N8N_DOMAIN}
+      N8N_PORT: 5678
+      N8N_PROTOCOL: https
+      N8N_PROXY_HOPS: 1
+      WEBHOOK_URL: https://${N8N_DOMAIN}/
+      N8N_EDITOR_BASE_URL: https://${N8N_DOMAIN}/
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE}
+      TZ: ${GENERIC_TIMEZONE}
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: 336
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    networks: [backend]
+
+networks:
+  backend:</code></pre>
+<p>PostgreSQL has no public <code>ports</code> mapping. n8n binds localhost so Nginx is the only public entrance. <code>WEBHOOK_URL</code> controls callback URLs presented to webhook and OAuth providers.</p>
+<p>Tune execution retention to investigation and compliance requirements. Excess retention grows the database and may preserve sensitive payloads.</p>
+
+<h2>5. Start and inspect the containers</h2>
+<pre><code>docker compose config
+docker compose pull
+docker compose up -d
+docker compose ps
+docker compose logs --tail=100 n8n</code></pre>
+<p>Resolved Compose output may expose secrets; never paste it into public tickets. Test locally with <code>curl -I http://127.0.0.1:5678</code>. If startup fails, inspect database health, credentials, directory permissions, and logs. Do not delete volumes without a backup.</p>
+
+<h2>6. Configure Nginx reverse proxy</h2>
+<pre><code>server {
+    listen 80;
+    server_name automation.example.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:5678;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 300;
+        proxy_send_timeout 300;
+    }
+}</code></pre>
+<pre><code>sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+<p>Issue a TLS certificate with Certbot or the provider's tooling, enable HTTP-to-HTTPS redirect, and use the real domain. Long editor and execution connections require correct WebSocket headers and proxy timeouts.</p>
+<p>When another CDN or load balancer sits before Nginx, set <code>N8N_PROXY_HOPS</code> to the exact number of trusted proxies. Incorrect trust can produce wrong scheme/IP detection or accept spoofed headers.</p>
+
+<h2>7. Create the owner and protect the editor</h2>
+<p>Create the owner with a unique strong password and enable two-factor authentication when supported. Avoid shared owner accounts; grant role-based access and revoke it promptly during offboarding.</p>
+<p>The editor holds credentials for databases, email, cloud, and APIs. Restrict it with a VPN, identity-aware proxy, or IP allowlist when only internal staff need access. Public webhooks may require separate path or ingress policy.</p>
+
+<h2>8. Test a webhook end to end</h2>
+<ol>
+<li>Create a workflow with Webhook and Respond to Webhook nodes.</li>
+<li>Use the Test URL while the editor is listening.</li>
+<li>Activate the workflow and switch to the Production URL.</li>
+<li>Send a request from an external machine.</li>
+<li>Inspect the execution, response code, and body.</li>
+</ol>
+<pre><code>curl -X POST https://automation.example.com/webhook/health-test \
+  -H 'Content-Type: application/json' \
+  -d '{"source":"external-check"}'</code></pre>
+<p>Protect webhooks with secret headers, HMAC signatures, OAuth, or node-supported authentication. An obscure URL is not authentication. Add idempotency or deduplication when provider retries could repeat side effects.</p>
+
+<h2>9. Manage credentials and the encryption key</h2>
+<p>n8n encrypts credentials using its encryption key. Keep it stable through restarts, migrations, and restores. An arbitrary replacement can make existing credentials unreadable.</p>
+<ul>
+<li>Do not commit the key in Compose.</li>
+<li>Keep a protected copy in a password or secret manager.</li>
+<li>Do not export workflows with credentials or share secret screenshots.</li>
+<li>Create least-privilege, rotatable integration credentials.</li>
+<li>Prefer service accounts over personal accounts.</li>
+</ul>
+
+<h2>10. Control execution and binary data</h2>
+<p>Large files can fill disk quickly. Limit input size, define execution retention, and monitor volumes. Do not retain binary or sensitive payloads longer than necessary.</p>
+<p>Avoid placing secrets in ordinary node data because execution logs may save inputs and outputs. Use credential and secret mechanisms. For high volume or large binaries, evaluate external-storage capabilities available to the installed edition and version.</p>
+
+<h2>11. Back up three critical components</h2>
+<ol>
+<li>PostgreSQL workflows, executions, and metadata.</li>
+<li>The <code>n8n_data</code> instance directory.</li>
+<li><code>N8N_ENCRYPTION_KEY</code> and deployment configuration.</li>
+</ol>
+<pre><code>cd /opt/n8n
+
+docker compose exec -T postgres \
+  pg_dump -U n8n -d n8n -Fc \
+  &gt; backups/n8n-$(date +%F).dump
+
+tar -czf backups/n8n-data-$(date +%F).tar.gz n8n_data</code></pre>
+<p>Copy backups off-host, encrypt them, enforce retention, and test restoration. Files on the same VPS do not protect against disk loss or compromise.</p>
+
+<h2>12. Update safely</h2>
+<ol>
+<li>Read release notes and breaking changes.</li>
+<li>Back up database, data directory, and encryption key.</li>
+<li>Test critical workflows on staging.</li>
+<li>Change <code>N8N_VERSION</code> to the approved release.</li>
+<li>Pull and recreate in a change window.</li>
+<li>Verify login, webhooks, schedules, credentials, and executions.</li>
+</ol>
+<pre><code>docker compose pull
+docker compose up -d
+docker compose logs --tail=200 n8n</code></pre>
+<p>Database migrations can make image rollback nontrivial. Verify downgrade guidance, preserve a pre-migration backup, and avoid uncontrolled automatic production upgrades.</p>
+
+<h2>13. Monitor and alert</h2>
+<ul>
+<li>Container restarts, health, and error logs.</li>
+<li>CPU, RAM, disk, inode, and volume growth.</li>
+<li>PostgreSQL connections, size, slow queries, and backup age.</li>
+<li>Workflow failure rate, duration, and waiting executions.</li>
+<li>Webhook latency, 4xx/5xx, and certificate expiry.</li>
+<li>Missed schedules and expired integration credentials.</li>
+</ul>
+<p>Use an external monitor against a harmless health/webhook endpoint. Send alarms through a channel that does not depend entirely on n8n itself.</p>
+
+<h2>14. Additional hardening</h2>
+<ul>
+<li>Install only reviewed community nodes.</li>
+<li>Restrict Code, Execute Command, and risky nodes.</li>
+<li>Block unnecessary outbound access to metadata and internal services.</li>
+<li>Run the n8n security audit periodically.</li>
+<li>Update the host, Docker, images, and dependencies on a schedule.</li>
+<li>Separate development and production credentials.</li>
+<li>Apply least privilege to PostgreSQL and every integration.</li>
+</ul>
+
+<h2>Production checklist</h2>
+<ol>
+<li>Pin and stage-test the image version.</li>
+<li>Keep PostgreSQL and 5678 private; expose the editor only through HTTPS.</li>
+<li>Set correct webhook URL, timezone, and proxy hops.</li>
+<li>Keep a stable encryption key outside Git and back it up.</li>
+<li>Control owner access, 2FA, and user roles.</li>
+<li>Authenticate, validate, and deduplicate webhooks.</li>
+<li>Set execution/binary retention and monitor disk.</li>
+<li>Test restoration of database, data, and secrets.</li>
+<li>Maintain external monitoring and a rollback runbook.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>Production self-hosting does not end with <code>docker compose up</code>. A reliable n8n deployment needs a persistent database, protected encryption key, correct webhook URL, HTTPS reverse proxy, least-privilege credentials, and tested backups. Treat the automation platform as a production service so its workflows can be trusted.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://docs.n8n.io/hosting/installation/docker/" target="_blank" rel="noopener noreferrer">n8n Docs: Docker installation</a></li><li><a href="https://docs.n8n.io/hosting/configuration/configuration-examples/webhook-url/" target="_blank" rel="noopener noreferrer">n8n Docs: Webhook URL behind a reverse proxy</a></li><li><a href="https://docs.n8n.io/hosting/securing/security-audit/" target="_blank" rel="noopener noreferrer">n8n Docs: Security audit</a></li><li><a href="https://docs.n8n.io/hosting/installation/updating/" target="_blank" rel="noopener noreferrer">n8n Docs: Updating</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

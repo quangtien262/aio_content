@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Technology</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">what-is-risc-v-vs-arm-x86</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">What Is RISC-V and How Does It Differ from ARM and x86?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">what is RISC-V, instruction set architecture, open ISA, RISC-V vs ARM, RISC-V vs x86, RV64, RISC-V chips</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">RISC-V, ISA, CPU Architecture, Semiconductor, ARM, x86, Open Standard, Processor</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Understand RISC-V as an open ISA, its modular extensions and profiles, differences from ARM and x86, advantages, limitations, and uses.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/risc-v-explained.jpg" alt="What Is RISC-V? How the Open Chip Architecture Differs from ARM and x86" width="1440" height="810"></p><h1>What Is RISC-V? How the Open Chip Architecture Differs from ARM and x86</h1><p><strong>RISC&#8209;V is an open-standard Instruction Set Architecture (ISA) based on RISC principles.</strong> It defines the language software uses to communicate with a processor: instructions, registers, privilege modes, and extensions. RISC&#8209;V is not one CPU design, a chip manufacturer, or a promise that every related implementation is open source.</p>
+
+<h2>Where does an ISA fit?</h2>
+<p>An ISA is the contract between software and hardware. A compiler produces ISA instructions; a processor implementation executes them. Two RISC&#8209;V chips may have very different pipelines, caches, cores, accelerators, power, and performance while running compatible software when they share the required profile and platform contracts.</p>
+<p>Microarchitecture is how a designer implements the ISA. Comparing RISC&#8209;V with a particular CPU model using architecture names alone is like estimating two vehicles' speed from their fuel type.</p>
+
+<h2>What does &ldquo;open&rdquo; mean in RISC&#8209;V?</h2>
+<p>The ISA specification and ratified extensions are public, royalty-free, and governed by RISC&#8209;V International. Organizations can build cores, SoCs, and tools without purchasing traditional ISA-use rights.</p>
+<p>A RISC&#8209;V implementation may still:</p>
+<ul><li>Use an open-source core or closed commercial IP.</li><li>Contain proprietary accelerators and extensions.</li><li>Use licensed manufacturing processes and libraries.</li><li>Depend on non-open firmware, drivers, or tools.</li></ul>
+<blockquote>RISC&#8209;V is open at the ISA specification layer; the openness of a final product depends on its vendor.</blockquote>
+
+<h2>Modularity: a small base plus extensions</h2>
+<p>A RISC&#8209;V ISA begins with an integer base such as RV32I or RV64I. Standard extensions add required capabilities:</p>
+<ul><li><strong>M:</strong> integer multiplication and division.</li><li><strong>A:</strong> atomic instructions for multicore synchronization.</li><li><strong>F/D:</strong> single and double-precision floating point.</li><li><strong>C:</strong> compressed instructions for smaller code.</li><li><strong>V:</strong> vector operations for data parallelism.</li></ul>
+<p>A small embedded device can select a minimal set, while a Linux application processor requires much more. Custom encoding space supports specialized instructions without colliding with regions reserved for standards.</p>
+
+<h2>Profiles address software fragmentation</h2>
+<p>Modularity creates freedom but also many extension combinations. If every chip selects a different set, operating systems and binaries lack a common target. RISC&#8209;V Profiles combine a base with mandatory and optional extensions into standard configurations.</p>
+<p>RVA23 targets 64-bit application processors, allowing software to rely on guaranteed features instead of probing many small extensions. Profiles do not prohibit custom designs; they create a baseline for binary portability and toolchains.</p>
+
+<h2>How does RISC&#8209;V differ from ARM and x86?</h2>
+<table><thead><tr><th>Aspect</th><th>RISC&#8209;V</th><th>ARM</th><th>x86</th></tr></thead><tbody><tr><td>ISA model</td><td>Open, modular standard</td><td>Commercially licensed ISA/IP</td><td>Commercial ISA concentrated among few vendors</td></tr><tr><td>Customization</td><td>Standard extensions and custom space</td><td>Depends on IP/license and SoC design</td><td>Limited access for third-party compatible CPUs</td></tr><tr><td>Desktop/server ecosystem</td><td>Developing</td><td>Strong and growing</td><td>Highly mature</td></tr><tr><td>Embedded ecosystem</td><td>From tiny cores to SoCs</td><td>Highly mature</td><td>Not the primary focus</td></tr></tbody></table>
+<p>RISC versus CISC does not by itself determine modern chip performance or efficiency. Decode, branch prediction, cache, out-of-order execution, memory controllers, accelerators, manufacturing, and software optimization all matter.</p>
+
+<h2>Why do organizations care?</h2>
+<ul><li><strong>Design control:</strong> select extensions and build workload-specific accelerators.</li><li><strong>Less ISA-layer dependency:</strong> avoid relying on one architecture licensor.</li><li><strong>Shared investment:</strong> compilers, operating systems, and tools target common standards.</li><li><strong>Specialization:</strong> optimize IoT, storage, automotive, security, and AI datapaths.</li><li><strong>Education and research:</strong> open specifications support learning and experimentation.</li></ul>
+<p>A royalty-free ISA does not make chip development free. Verification, physical design, tape-out, fabrication, firmware, compliance, and software support remain expensive.</p>
+
+<h2>Where is RISC&#8209;V used?</h2>
+<p>Early adoption is prominent in microcontrollers, embedded cores, and controllers inside storage, networking, and SoCs, where customization, footprint, and control provide clear value.</p>
+<p>Linux application processors, development boards, accelerators, and servers are also advancing. &ldquo;Runs Linux&rdquo; does not immediately make a platform a drop-in x86 or ARM PC replacement: stable firmware, GPU/NPU drivers, power management, multimedia, native applications, and update processes are required.</p>
+
+<h2>The software ecosystem matters more than instructions alone</h2>
+<p>A usable platform needs compilers, debuggers, kernels, bootloaders, firmware, ABIs, package repositories, drivers, and documentation. GCC, LLVM, Linux, and major projects support RISC&#8209;V, but maturity varies by profile, board, and vendor.</p>
+<p>Before selecting a product, verify:</p>
+<ol><li>Supported ISA string and profile.</li><li>Official distribution image versus community builds.</li><li>Mainline drivers for networking, storage, display, and accelerators.</li><li>Boot firmware, secure boot, updates, and support lifecycle.</li><li>Toolchain, profiler, debugger, and CI availability.</li><li>Native versions of required binaries or the cost of emulation.</li></ol>
+
+<h2>Security: an open ISA is not automatically secure</h2>
+<p>A public specification enables review, but vulnerabilities can exist in microarchitecture, cache, speculation, firmware, debug interfaces, drivers, supply chains, or custom extensions. Products still need threat modeling, secure boot, roots of trust, isolation, signed updates, and disclosure processes.</p>
+<p>Custom instructions may accelerate workloads while increasing audit and portability costs. Prefer ratified standard extensions where possible and customize only with a toolchain, verification, virtualization, and maintenance plan.</p>
+
+<h2>Main challenges</h2>
+<ul><li>Extension and platform combinations can fragment software.</li><li>Driver and firmware maturity varies among boards.</li><li>Products perform very differently despite the same RISC&#8209;V label.</li><li>Closed or binary-only software may lack RISC&#8209;V builds.</li><li>Custom extensions reduce portability to other hardware.</li><li>Some markets lack verification, compiler, and system-software expertise.</li></ul>
+<p>Profiles, specification ratification, and upstream support are essential for narrowing these gaps.</p>
+
+<h2>When is RISC&#8209;V a good fit?</h2>
+<p><strong>It fits</strong> specialized SoCs, organizations seeking roadmap control, teams capable of hardware/software co-design, high-volume embedded products, education, and research.</p>
+<p><strong>Use caution</strong> when a project relies on closed binaries, specialized drivers, platform certification, or extremely short time-to-market without experienced staff. A mature ARM or x86 platform may reduce overall risk even if its ISA is less open.</p>
+
+<h2>Common misconceptions</h2>
+<ul><li><strong>&ldquo;RISC&#8209;V is a free chip&rdquo;:</strong> the ISA is open; designing and making chips still costs money.</li><li><strong>&ldquo;Every RISC&#8209;V chip is open source&rdquo;:</strong> implementations may be proprietary.</li><li><strong>&ldquo;RISC&#8209;V is always faster or more efficient&rdquo;:</strong> that depends on implementation and technology.</li><li><strong>&ldquo;RISC&#8209;V software runs on every RISC&#8209;V chip&rdquo;:</strong> extensions, profiles, ABIs, and platforms matter.</li><li><strong>&ldquo;RISC&#8209;V will immediately replace ARM and x86&rdquo;:</strong> several ISAs can coexist across workloads.</li></ul>
+
+<h2>Conclusion</h2>
+<p>RISC&#8209;V changes the foundation of chip development through an open, modular ISA that many parties can build upon. Its value is choice and specialization, not a guarantee that every chip is cheaper or faster. A successful RISC&#8209;V product still depends on silicon design, compatible profiles, toolchains, operating systems, drivers, and long-term support.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://riscv.org/about/" target="_blank" rel="noopener noreferrer">RISC&#8209;V International: About RISC&#8209;V</a></li><li><a href="https://riscv.org/specifications/ratified/" target="_blank" rel="noopener noreferrer">RISC&#8209;V International: Ratified specifications</a></li><li><a href="https://docs.riscv.org/reference/isa/unpriv/intro.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V ISA: Introduction</a></li><li><a href="https://docs.riscv.org/reference/profiles-overview/index.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V Profiles</a></li><li><a href="https://docs.riscv.org/reference/rva23/v1.0/rva23-profiles.html" target="_blank" rel="noopener noreferrer">RISC&#8209;V RVA23 Profile</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

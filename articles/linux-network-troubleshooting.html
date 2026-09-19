@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#7879; &#273;i&#7873;u h&agrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ch&#7849;n &#273;o&aacute;n l&#7895;i m&#7841;ng Linux t&#7915; link &#273;&#7871;n &#7913;ng d&#7909;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">l&#7895;i m&#7841;ng Linux, ip command, ss, dig, curl, tcpdump, DNS Linux, routing Linux, firewall Linux</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Networking, Troubleshooting, DNS, TCP/IP, tcpdump, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Quy tr&igrave;nh ch&#7849;n &#273;o&aacute;n m&#7841;ng Linux theo t&#7915;ng l&#7899;p: interface, IP, route, ARP, DNS, socket, firewall, HTTP/TLS, MTU, packet capture v&agrave; container namespace.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/linux-network-troubleshooting.jpg" alt="Ch&#7849;n &#273;o&aacute;n l&#7895;i m&#7841;ng Linux t&#7915; A-Z v&#7899;i ip, ss, dig, curl v&agrave; tcpdump" width="1440" height="810"></p><h1>Ch&#7849;n &#273;o&aacute;n l&#7895;i m&#7841;ng Linux t&#7915; A-Z v&#7899;i ip, ss, dig, curl v&agrave; tcpdump</h1><p><strong>&ldquo;Kh&ocirc;ng v&agrave;o &#273;&#432;&#7907;c server&rdquo; c&oacute; th&#7875; l&agrave; h&agrave;ng ch&#7909;c l&#7895;i kh&aacute;c nhau:</strong> interface down, sai IP, thi&#7871;u default route, DNS tr&#7843; nh&#7847;m &#273;&#7883;a ch&#7881;, service ch&#7881; listen localhost, firewall drop packet, TLS sai SNI ho&#7863;c &#7913;ng d&#7909;ng treo ph&iacute;a sau reverse proxy. Ch&#7841;y ng&#7851;u nhi&ecirc;n nhi&#7873;u l&#7879;nh th&#432;&#7901;ng t&#7841;o th&ecirc;m nhi&#7877;u.</p>
+<p>C&aacute;ch hi&#7879;u qu&#7843; l&agrave; ch&#7849;n &#273;o&aacute;n t&#7915; l&#7899;p th&#7845;p l&ecirc;n cao, ki&#7875;m tra t&#7915;ng gi&#7843; thuy&#7871;t v&agrave; so s&aacute;nh t&#7915; c&#7843; ph&iacute;a client l&#7851;n server. B&agrave;i vi&#7871;t d&ugrave;ng c&aacute;c c&ocirc;ng c&#7909; ph&#7893; bi&#7871;n tr&ecirc;n Linux: <code>ip</code>, <code>ss</code>, <code>ping</code>, <code>dig</code>, <code>curl</code>, <code>openssl</code>, <code>traceroute</code> v&agrave; <code>tcpdump</code>.</p>
+
+<h2>Tr&#432;&#7899;c khi s&#7917;a: x&aacute;c &#273;&#7883;nh ph&#7841;m vi s&#7921; c&#7889;</h2>
+<p>Ghi l&#7841;i b&#7889;n th&ocirc;ng tin: ai b&#7883; &#7843;nh h&#432;&#7903;ng, d&#7883;ch v&#7909; n&agrave;o, b&#7855;t &#273;&#7847;u l&uacute;c n&agrave;o v&agrave; thay &#273;&#7893;i g&igrave; v&#7915;a di&#7877;n ra. Sau &#273;&oacute; ki&#7875;m tra:</p>
+<ul>
+<li>M&#7897;t client hay m&#7885;i client?</li>
+<li>M&#7897;t hostname/port hay to&agrave;n b&#7897; Internet?</li>
+<li>IPv4, IPv6 hay c&#7843; hai?</li>
+<li>Host v&#7853;t l&yacute;, VM, container hay Kubernetes pod?</li>
+<li>Ch&#7881; t&#7915; m&#7841;ng ngo&agrave;i hay ngay c&#7843; localhost?</li>
+</ul>
+<p>Kh&ocirc;ng restart m&#7885;i th&#7913; ngay. Restart c&oacute; th&#7875; x&oacute;a tr&#7841;ng th&aacute;i, log v&agrave; connection h&#7919;u &iacute;ch. Ch&#7909;p l&#7841;i output, timestamp v&agrave; c&#7845;u h&igrave;nh tr&#432;&#7899;c khi thay &#273;&#7893;i.</p>
+
+<h2>1. Ki&#7875;m tra interface v&agrave; physical link</h2>
+<pre><code>ip -br link
+ip -br address
+ip -s link show dev eth0</code></pre>
+<p><code>UP</code> cho bi&#7871;t interface &#273;&#432;&#7907;c b&#7853;t v&#7873; m&#7863;t qu&#7843;n tr&#7883;; <code>LOWER_UP</code> cho bi&#7871;t kernel th&#7845;y carrier/link. N&#7871;u thi&#7871;u <code>LOWER_UP</code>, ki&#7875;m tra c&aacute;p, switch port, virtual NIC, hypervisor ho&#7863;c Wi-Fi association.</p>
+<p><code>ip -s link</code> hi&#7875;n th&#7883; packet, error, drop v&agrave; overrun. Counter error/drop t&#259;ng nhanh c&oacute; th&#7875; ch&#7881; ra duplex, driver, MTU, buffer ho&#7863;c congestion. So s&aacute;nh hai l&#7847;n c&aacute;ch nhau v&agrave;i gi&acirc;y thay v&igrave; ch&#7881; nh&igrave;n s&#7889; tuy&#7879;t &#273;&#7889;i.</p>
+<pre><code>sudo ethtool eth0
+sudo ethtool -S eth0</code></pre>
+<p>V&#7899;i server v&#7853;t l&yacute;, <code>ethtool</code> gi&uacute;p xem link detected, speed, duplex v&agrave; driver statistics. Tr&ecirc;n VM/container, m&#7897;t s&#7889; tr&#432;&#7901;ng c&oacute; th&#7875; kh&ocirc;ng c&oacute; &yacute; ngh&#297;a nh&#432; ph&#7847;n c&#7913;ng th&#7853;t.</p>
+
+<h2>2. Ki&#7875;m tra &#273;&#7883;a ch&#7881; IP</h2>
+<pre><code>ip address show
+ip -4 address show dev eth0
+ip -6 address show dev eth0</code></pre>
+<p>X&aacute;c nh&#7853;n IP, prefix length, interface v&agrave; tr&#7841;ng th&aacute;i <code>tentative</code>/<code>deprecated</code>. Sai prefix c&oacute; th&#7875; khi&#7871;n host t&#432;&#7903;ng m&#7897;t &#273;&#7883;a ch&#7881; remote n&#7857;m c&ugrave;ng subnet v&agrave; ARP sai thay v&igrave; g&#7917;i qua gateway.</p>
+<p>N&#7871;u d&ugrave;ng DHCP:</p>
+<pre><code>networkctl status eth0
+journalctl -u systemd-networkd --since '-15 min'
+nmcli device show eth0</code></pre>
+<p>Ch&#7885;n l&#7879;nh ph&ugrave; h&#7907;p network manager c&#7911;a h&#7879; th&#7889;ng. Ubuntu Server th&#432;&#7901;ng qu&#7843;n l&yacute; c&#7845;u h&igrave;nh b&#7873;n v&#7919;ng qua Netplan, nh&#432;ng backend c&oacute; th&#7875; l&agrave; <code>systemd-networkd</code> ho&#7863;c NetworkManager.</p>
+
+<h2>3. Ki&#7875;m tra route m&agrave; kernel th&#7921;c s&#7921; ch&#7885;n</h2>
+<pre><code>ip route show
+ip -6 route show
+ip route get 1.1.1.1
+ip route get 203.0.113.50 from 192.0.2.10</code></pre>
+<p><code>ip route get</code> h&#7919;u &iacute;ch h&#417;n ch&#7881; nh&igrave;n b&#7843;ng route v&igrave; n&oacute; cho bi&#7871;t interface, gateway v&agrave; source IP kernel s&#7869; d&ugrave;ng cho m&#7897;t destination c&#7909; th&#7875;. Tr&ecirc;n host nhi&#7873;u NIC, policy routing c&oacute; th&#7875; l&agrave;m traffic &#273;i kh&aacute;c d&#7921; ki&#7871;n:</p>
+<pre><code>ip rule show
+ip route show table all</code></pre>
+<p>Ki&#7875;m tra route tr&ugrave;ng nhau, metric, default gateway v&agrave; source-based rule. Asymmetric routing c&oacute; th&#7875; khi&#7871;n request v&agrave;o m&#7897;t interface nh&#432;ng response ra interface kh&aacute;c v&agrave; b&#7883; firewall/upstream drop.</p>
+
+<h2>4. Ki&#7875;m tra neighbor/ARP v&agrave; gateway</h2>
+<pre><code>ip neigh show
+ping -c 3 192.0.2.1
+arping -I eth0 -c 3 192.0.2.1</code></pre>
+<p>Tr&#7841;ng th&aacute;i neighbor <code>FAILED</code> ho&#7863;c <code>INCOMPLETE</code> ngh&#297;a host kh&ocirc;ng ph&acirc;n gi&#7843;i &#273;&#432;&#7907;c MAC c&#7911;a &#273;&#7883;a ch&#7881; c&ugrave;ng link. Nguy&ecirc;n nh&acirc;n c&oacute; th&#7875; l&agrave; sai VLAN, prefix, gateway, security group &#7903; hypervisor ho&#7863;c thi&#7871;t b&#7883; kh&ocirc;ng c&ugrave;ng broadcast domain.</p>
+<p>Ping b&#7883; ch&#7863;n kh&ocirc;ng ch&#7913;ng minh host down. ICMP l&agrave; m&#7897;t t&iacute;n hi&#7879;u; h&atilde;y ti&#7871;p t&#7909;c th&#7917; &#273;&uacute;ng TCP port. Nh&#432;ng n&#7871;u ngay c&#7843; gateway c&ugrave;ng subnet kh&ocirc;ng c&oacute; ARP reply, l&#7895;i n&#7857;m th&#7845;p h&#417;n DNS/TLS.</p>
+
+<h2>5. T&aacute;ch l&#7895;i m&#7841;ng v&agrave; l&#7895;i DNS</h2>
+<p>Th&#7917; k&#7871;t n&#7889;i b&#7857;ng IP v&agrave; hostname. N&#7871;u IP ho&#7841;t &#273;&#7897;ng c&ograve;n hostname kh&ocirc;ng, t&#7853;p trung v&agrave;o resolver/DNS:</p>
+<pre><code>resolvectl status
+resolvectl query api.example.com
+dig api.example.com A
+dig api.example.com AAAA
+dig @1.1.1.1 api.example.com A
+getent ahosts api.example.com</code></pre>
+<p><code>dig</code> h&#7887;i DNS tr&#7921;c ti&#7871;p; <code>getent</code> &#273;i qua Name Service Switch gi&#7889;ng nhi&#7873;u &#7913;ng d&#7909;ng, n&ecirc;n c&ograve;n ph&#7843;n &aacute;nh <code>/etc/hosts</code>, mDNS ho&#7863;c resolver kh&aacute;c. So s&aacute;nh hai k&#7871;t qu&#7843; khi &#7913;ng d&#7909;ng v&agrave; <code>dig</code> kh&ocirc;ng gi&#7889;ng nhau.</p>
+<p>Ki&#7875;m tra A v&agrave; AAAA. M&#7897;t record IPv6 sai c&oacute; th&#7875; l&agrave;m client &#432;u ti&ecirc;n &#273;&#432;&#7901;ng kh&ocirc;ng ho&#7841;t &#273;&#7897;ng. D&ugrave;ng <code>curl -4</code> v&agrave; <code>curl -6</code> &#273;&#7875; c&ocirc; l&#7853;p:</p>
+<pre><code>curl -4 -v https://api.example.com/health
+curl -6 -v https://api.example.com/health</code></pre>
+<p>Kh&ocirc;ng s&#7917;a tr&#7921;c ti&#7871;p <code>/etc/resolv.conf</code> tr&ecirc;n h&#7879; th&#7889;ng m&agrave; file n&agrave;y do systemd-resolved/NetworkManager sinh ra; thay &#273;&#7893;i s&#7869; b&#7883; ghi &#273;&egrave;. S&#7917;a Netplan ho&#7863;c network manager &#273;&uacute;ng ch&#7895;.</p>
+
+<h2>6. D&#7883;ch v&#7909; c&oacute; listen &#273;&uacute;ng &#273;&#7883;a ch&#7881; kh&ocirc;ng?</h2>
+<pre><code>sudo ss -lntup
+sudo ss -lntp 'sport = :443'
+sudo ss -lnup 'sport = :53'</code></pre>
+<p>Ph&acirc;n bi&#7879;t:</p>
+<ul>
+<li><code>127.0.0.1:8080</code>: ch&#7881; truy c&#7853;p t&#7915; local namespace.</li>
+<li><code>0.0.0.0:8080</code>: listen m&#7885;i &#273;&#7883;a ch&#7881; IPv4.</li>
+<li><code>[::]:8080</code>: listen IPv6; h&agrave;nh vi dual-stack ph&#7909; thu&#7897;c c&#7845;u h&igrave;nh.</li>
+</ul>
+<p>N&#7871;u kh&ocirc;ng c&oacute; socket listen, ki&#7875;m tra service v&agrave; log:</p>
+<pre><code>systemctl status nginx --no-pager
+journalctl -u nginx --since '-15 min' --no-pager</code></pre>
+<p>Service &ldquo;active&rdquo; ch&#432;a ch&#7855;c listen port mong mu&#7889;n; process c&oacute; th&#7875; ch&#7841;y nh&#432;ng bind sai IP, c&#7845;u h&igrave;nh upstream l&#7895;i ho&#7863;c child worker ch&#7871;t.</p>
+
+<h2>7. Hi&#7875;u connection refused, timeout v&agrave; reset</h2>
+<ul>
+<li><strong>Connection refused:</strong> packet &#273;&#7871;n host v&agrave; nh&#7853;n TCP RST; th&#432;&#7901;ng kh&ocirc;ng c&oacute; listener ho&#7863;c firewall reject.</li>
+<li><strong>Timeout:</strong> kh&ocirc;ng nh&#7853;n ph&#7843;n h&#7891;i; c&oacute; th&#7875; route, firewall drop, security group, NAT ho&#7863;c host down.</li>
+<li><strong>Connection reset:</strong> k&#7871;t n&#7889;i &#273;&#432;&#7907;c t&#7841;o r&#7891;i m&#7897;t b&ecirc;n &#273;&oacute;ng c&#432;&#7905;ng b&#7913;c; xem application/proxy/TLS log.</li>
+<li><strong>No route to host:</strong> kernel kh&ocirc;ng c&oacute; route ho&#7863;c nh&#7853;n ICMP unreachable; th&ocirc;ng b&aacute;o &#273;&ocirc;i khi c&#361;ng &#273;&#7871;n t&#7915; firewall reject.</li>
+</ul>
+<pre><code>nc -vz -w 3 api.example.com 443
+curl -v --connect-timeout 3 https://api.example.com/health</code></pre>
+<p><code>curl -v</code> cho bi&#7871;t DNS, IP &#273;&#432;&#7907;c ch&#7885;n, th&#7901;i gian connect, TLS v&agrave; HTTP. Kh&ocirc;ng d&ugrave;ng <code>-k</code> nh&#432; c&aacute;ch &ldquo;s&#7917;a&rdquo; TLS; n&oacute; ch&#7881; b&#7887; verify v&agrave; che gi&#7845;u l&#7895;i ch&#7913;ng ch&#7881;.</p>
+
+<h2>8. Ki&#7875;m tra firewall &#7903; m&#7885;i l&#7899;p</h2>
+<pre><code>sudo ufw status verbose
+sudo nft list ruleset
+sudo iptables-save</code></pre>
+<p>H&#7879; th&#7889;ng c&oacute; th&#7875; d&ugrave;ng nftables trong khi c&ocirc;ng c&#7909; compatibility v&#7851;n hi&#7875;n th&#7883; iptables. Ngo&agrave;i host c&ograve;n c&oacute; cloud security group, network ACL, load balancer, firewall v&#7853;t l&yacute; v&agrave; policy Kubernetes.</p>
+<p>Kh&ocirc;ng flush firewall t&#7915; xa tr&ecirc;n production. Th&ecirc;m rule c&oacute; scope nh&#7887;, time-box n&#7871;u c&oacute; th&#7875;, v&agrave; gi&#7919; session SSH d&#7921; ph&ograve;ng. B&#7853;t log c&oacute; ch&#7885;n l&#7885;c v&igrave; log m&#7885;i packet c&oacute; th&#7875; g&acirc;y I/O l&#7899;n:</p>
+<pre><code>sudo ufw logging medium
+journalctl -k --since '-10 min' | grep -i 'UFW'</code></pre>
+
+<h2>9. Ki&#7875;m tra HTTP v&agrave; TLS &#273;&uacute;ng hostname</h2>
+<pre><code>curl -v https://api.example.com/health
+curl --resolve api.example.com:443:203.0.113.20 \
+  https://api.example.com/health
+
+openssl s_client \
+  -connect 203.0.113.20:443 \
+  -servername api.example.com \
+  -showcerts &lt;/dev/null</code></pre>
+<p><code>--resolve</code> &eacute;p IP nh&#432;ng gi&#7919; hostname/SNI/Host header, r&#7845;t h&#7919;u &iacute;ch &#273;&#7875; test origin tr&#432;&#7899;c khi &#273;&#7893;i DNS. G&#7885;i tr&#7921;c ti&#7871;p <code>https://IP</code> c&oacute; th&#7875; ch&#7885;n sai virtual host v&agrave; certificate.</p>
+<p>Ki&#7875;m tra certificate chain, SAN, ng&agrave;y h&#7871;t h&#7841;n, SNI v&agrave; redirect loop. N&#7871;u reverse proxy tr&#7843; 502/504, m&#7841;ng client&rarr;proxy c&oacute; th&#7875; ho&agrave;n to&agrave;n t&#7889;t; ti&#7871;p t&#7909;c ki&#7875;m tra proxy&rarr;upstream b&#7857;ng IP/port t&#7915; ch&iacute;nh namespace proxy.</p>
+
+<h2>10. &#272;o &#273;&#432;&#7901;ng &#273;i v&agrave; packet loss &#273;&uacute;ng c&aacute;ch</h2>
+<pre><code>tracepath api.example.com
+traceroute -T -p 443 api.example.com
+mtr -rwzc 50 api.example.com</code></pre>
+<p>Router gi&#7919;a &#273;&#432;&#7901;ng c&oacute; th&#7875; kh&ocirc;ng tr&#7843; ICMP nh&#432;ng v&#7851;n forward traffic, n&ecirc;n d&#7845;u <code>*</code> kh&ocirc;ng t&#7921; &#273;&#7897;ng l&agrave; l&#7895;i. Packet loss &#7903; hop trung gian ch&#7881; &#273;&aacute;ng lo n&#7871;u ti&#7871;p t&#7909;c xu&#7845;t hi&#7879;n &#7903; hop sau/destination. &#431;u ti&ecirc;n TCP traceroute t&#7899;i port th&#7853;t khi ICMP b&#7883; l&#7885;c.</p>
+<p>So s&aacute;nh t&#7915; nhi&#7873;u source. M&#7897;t &#273;&#432;&#7901;ng l&#7895;i t&#7915; ISP A kh&ocirc;ng ch&#7913;ng minh server l&#7895;i to&agrave;n c&#7909;c.</p>
+
+<h2>11. MTU v&agrave; Path MTU Discovery</h2>
+<p>D&#7845;u hi&#7879;u MTU mismatch: ping nh&#7887; &#273;&#432;&#7907;c nh&#432;ng HTTPS/upload l&#7899;n treo, &#273;&#7863;c bi&#7879;t qua VPN, tunnel ho&#7863;c cloud overlay.</p>
+<pre><code>ip link show dev eth0
+tracepath api.example.com
+ping -M do -s 1472 -c 3 api.example.com</code></pre>
+<p>1472 byte + 28 byte IPv4 ICMP header t&#432;&#417;ng &#7913;ng MTU 1500; v&#7899;i IPv6/header/tunnel con s&#7889; kh&aacute;c. Gi&#7843;m payload &#273;&#7875; t&igrave;m ng&#432;&#7905;ng. &#272;&#7915;ng &#273;&#7893;i MTU v&#7897;i n&#7871;u ch&#432;a x&aacute;c nh&#7853;n c&#7843; interface, tunnel v&agrave; thi&#7871;t b&#7883; trung gian. Firewall ch&#7863;n ICMP &ldquo;fragmentation needed&rdquo; c&oacute; th&#7875; l&agrave;m PMTUD th&#7845;t b&#7841;i.</p>
+
+<h2>12. tcpdump: xem packet c&oacute; th&#7921;c s&#7921; &#273;i qua &#273;&acirc;u</h2>
+<pre><code>sudo tcpdump -ni any host 203.0.113.20 and port 443
+sudo tcpdump -ni eth0 'tcp port 443 and (tcp[tcpflags] &amp; tcp-syn != 0)'
+sudo tcpdump -ni any port 53
+</code></pre>
+<p>&#272;&#7885;c handshake:</p>
+<ul>
+<li>Ch&#7881; th&#7845;y SYN &#273;i, kh&ocirc;ng c&oacute; SYN-ACK: l&#7895;i tr&ecirc;n &#273;&#432;&#7901;ng, firewall drop ho&#7863;c server kh&ocirc;ng tr&#7843;.</li>
+<li>Th&#7845;y SYN r&#7891;i RST: port b&#7883; t&#7915; ch&#7889;i/no listener.</li>
+<li>Kh&ocirc;ng th&#7845;y SYN r&#7901;i host: DNS, route, local firewall ho&#7863;c application ch&#432;a g&#7917;i.</li>
+<li>Server th&#7845;y SYN v&agrave; g&#7917;i SYN-ACK nh&#432;ng client kh&ocirc;ng th&#7845;y: &#273;&#432;&#7901;ng v&#7873;/asymmetric routing/upstream firewall.</li>
+</ul>
+<p>L&#432;u capture ng&#7855;n &#273;&#7875; ph&acirc;n t&iacute;ch:</p>
+<pre><code>sudo timeout 30 tcpdump -ni any -s 0 \
+  -w /tmp/network-issue.pcap \
+  'host 203.0.113.20 and port 443'</code></pre>
+<p>PCAP c&oacute; th&#7875; ch&#7913;a credential, cookie v&agrave; d&#7919; li&#7879;u ng&#432;&#7901;i d&ugrave;ng. Gi&#7899;i h&#7841;n filter/duration, b&#7843;o v&#7879; file v&agrave; x&oacute;a an to&agrave;n sau &#273;i&#7873;u tra.</p>
+
+<h2>13. Container v&agrave; network namespace</h2>
+<p>Ki&#7875;m tra t&#7915; host kh&ocirc;ng &#273;&#7911; n&#7871;u &#7913;ng d&#7909;ng ch&#7841;y trong container/pod. M&#7895;i namespace c&oacute; interface, route, DNS v&agrave; firewall ri&ecirc;ng:</p>
+<pre><code>docker exec -it app sh
+ip address
+ip route
+cat /etc/resolv.conf
+getent hosts database
+nc -vz database 5432</code></pre>
+<p>V&#7899;i Docker, <code>127.0.0.1</code> trong container l&agrave; ch&iacute;nh container, kh&ocirc;ng ph&#7843;i host. D&ugrave;ng service name tr&ecirc;n network Compose. Ki&#7875;m tra network membership, published port v&agrave; policy/NAT:</p>
+<pre><code>docker network inspect app_default
+docker port app
+sudo nsenter -t PID -n ss -lntp</code></pre>
+<p>Trong Kubernetes, ki&#7875;m tra pod DNS, Service selector/endpoints, NetworkPolicy v&agrave; test t&#7915; debug pod c&ugrave;ng namespace.</p>
+
+<h2>14. Connection tracking v&agrave; c&#7841;n port</h2>
+<p>Traffic cao c&oacute; th&#7875; g&#7863;p conntrack full, ephemeral port exhaustion ho&#7863;c qu&aacute; nhi&#7873;u socket:</p>
+<pre><code>ss -s
+ss -ant state time-wait | wc -l
+cat /proc/sys/net/ipv4/ip_local_port_range
+sudo conntrack -S
+dmesg | grep -i conntrack</code></pre>
+<p>Kh&ocirc;ng &ldquo;s&#7917;a&rdquo; b&#7857;ng c&aacute;ch gi&#7843;m TIME_WAIT ho&#7863;c t&#259;ng m&#7885;i sysctl theo b&agrave;i blog. T&igrave;m ngu&#7891;n connection churn, thi&#7871;u keep-alive, NAT bottleneck ho&#7863;c connection pool sai tr&#432;&#7899;c; sau &#273;&oacute; m&#7899;i capacity-plan kernel limits.</p>
+
+<h2>15. Thay &#273;&#7893;i c&#7845;u h&igrave;nh m&#7841;ng an to&agrave;n t&#7915; xa</h2>
+<p>Sai Netplan c&oacute; th&#7875; c&#7855;t ch&iacute;nh SSH session. Tr&ecirc;n Ubuntu, &#432;u ti&ecirc;n:</p>
+<pre><code>sudo netplan generate
+sudo netplan try</code></pre>
+<p><code>netplan try</code> y&ecirc;u c&#7847;u x&aacute;c nh&#7853;n v&agrave; c&oacute; th&#7875; rollback khi m&#7845;t k&#7871;t n&#7889;i. Tuy v&#7853;y v&#7851;n c&#7847;n console/out-of-band access cho server quan tr&#7885;ng. Backup file c&#7845;u h&igrave;nh, ki&#7875;m tra YAML v&agrave; thay &#273;&#7893;i t&#7915;ng ph&#7847;n nh&#7887;.</p>
+
+<h2>Playbook 10 ph&uacute;t</h2>
+<ol>
+<li><code>ip -br link</code> v&agrave; <code>ip -br addr</code>: link/IP &#273;&uacute;ng ch&#432;a?</li>
+<li><code>ip route get DEST</code>: route/source/interface n&agrave;o &#273;&#432;&#7907;c ch&#7885;n?</li>
+<li><code>ip neigh</code> v&agrave; ping gateway: c&ugrave;ng link c&oacute; ho&#7841;t &#273;&#7897;ng?</li>
+<li><code>dig</code> + <code>getent</code>: DNS v&agrave; resolver c&oacute; &#273;&#7891;ng &yacute;?</li>
+<li><code>ss -lntup</code>: service c&oacute; listen &#273;&uacute;ng IP/port?</li>
+<li><code>nc</code>/<code>curl -v</code>: refused, timeout, TLS hay HTTP?</li>
+<li>Ki&#7875;m tra host/cloud/container firewall.</li>
+<li><code>curl --resolve</code>: t&aacute;ch DNS kh&#7887;i HTTPS/SNI.</li>
+<li><code>tcpdump</code> &#7903; client v&agrave; server: packet d&#7915;ng &#7903; &#273;&acirc;u?</li>
+<li>Ch&#7881; s&#7917;a sau khi c&oacute; gi&#7843; thuy&#7871;t v&agrave; c&aacute;ch rollback.</li>
+</ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Ch&#7849;n &#273;o&aacute;n m&#7841;ng Linux hi&#7879;u qu&#7843; l&agrave; qu&aacute; tr&igrave;nh lo&#7841;i tr&#7915; c&oacute; th&#7913; t&#7921;: link, IP, route, neighbor, DNS, socket, firewall, transport, TLS r&#7891;i &#7913;ng d&#7909;ng. M&#7895;i c&ocirc;ng c&#7909; tr&#7843; l&#7901;i m&#7897;t c&acirc;u h&#7887;i kh&aacute;c nhau; kh&ocirc;ng c&oacute; l&#7879;nh duy nh&#7845;t ch&#7913;ng minh &ldquo;m&#7841;ng t&#7889;t&rdquo;. Khi ki&#7875;m tra t&#7915; &#273;&uacute;ng namespace, quan s&aacute;t c&#7843; hai chi&#7873;u v&agrave; l&#432;u b&#7857;ng ch&#7913;ng tr&#432;&#7899;c khi s&#7917;a, nh&#7919;ng s&#7921; c&#7889; t&#432;&#7903;ng ng&#7851;u nhi&ecirc;n th&#432;&#7901;ng tr&#7903; th&agrave;nh m&#7897;t &#273;i&#7875;m &#273;&#7913;t r&otilde; r&agrave;ng.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul><li><a href="https://ubuntu.com/server/docs/explanation/networking/networking-key-concepts/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Networking key concepts</a></li><li><a href="https://ubuntu.com/server/docs/explanation/networking/configuring-networks/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Configuring networks</a></li><li><a href="https://ubuntu.com/server/docs/how-to/networking/install-dns/" target="_blank" rel="noopener noreferrer">Ubuntu Server: DNS testing</a></li><li><a href="https://ubuntu.com/server/docs/how-to/security/firewalls/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Firewalls</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

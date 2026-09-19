@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Thi&#7871;t k&#7871; cache Redis an to&agrave;n cho backend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Redis cache, cache-aside, cache invalidation, cache stampede, TTL Redis, backend performance, negative caching</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Redis, Caching, Backend, Performance, Cache Aside, Distributed Systems, Database, Scalability</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n thi&#7871;t k&#7871; cache Redis cho backend v&#7899;i cache-aside, TTL, invalidation, ch&#7889;ng stampede, gi&#7899;i h&#7841;n b&#7897; nh&#7899; v&agrave; gi&aacute;m s&aacute;t production.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/redis-caching-backend.jpg" alt="Thi&#7871;t k&#7871; cache Redis an to&agrave;n cho backend: TTL, invalidation v&agrave; ch&#7889;ng cache stampede" width="1440" height="810"></p><h1>Thi&#7871;t k&#7871; cache Redis an to&agrave;n cho backend: TTL, invalidation v&agrave; ch&#7889;ng cache stampede</h1><p><strong>Cache c&oacute; th&#7875; gi&#7843;m latency v&agrave; t&#7843;i database r&#7845;t m&#7841;nh, nh&#432;ng c&#361;ng c&oacute; th&#7875; tr&#7843; d&#7919; li&#7879;u c&#361;, che l&#7895;i v&agrave; t&#7841;o m&#7897;t &#273;&#7907;t truy v&#7845;n &#273;&#7891;ng th&#7901;i khi key h&#7871;t h&#7841;n.</strong> Thi&#7871;t k&#7871; cache production c&#7847;n x&aacute;c &#273;&#7883;nh ngu&#7891;n d&#7919; li&#7879;u chu&#7849;n, m&#7913;c &#273;&#7897; stale ch&#7845;p nh&#7853;n &#273;&#432;&#7907;c, c&aacute;ch invalidation v&agrave; h&agrave;nh vi c&#7911;a &#7913;ng d&#7909;ng khi Redis kh&ocirc;ng kh&#7843; d&#7909;ng.</p>
+
+<h2>Khi n&agrave;o n&ecirc;n th&ecirc;m cache?</h2>
+<p>Ch&#7881; th&ecirc;m cache sau khi &#273;&atilde; &#273;o bottleneck. Cache ph&ugrave; h&#7907;p v&#7899;i d&#7919; li&#7879;u &#273;&#432;&#7907;c &#273;&#7885;c l&#7863;p l&#7841;i, chi ph&iacute; t&iacute;nh to&aacute;n cao, &iacute;t thay &#273;&#7893;i h&#417;n t&#7847;n su&#7845;t &#273;&#7885;c v&agrave; c&oacute; th&#7875; ch&#7845;p nh&#7853;n stale trong m&#7897;t kho&#7843;ng x&aacute;c &#273;&#7883;nh. V&iacute; d&#7909;: danh m&#7909;c s&#7843;n ph&#7849;m, c&#7845;u h&igrave;nh c&ocirc;ng khai, profile, k&#7871;t qu&#7843; truy v&#7845;n t&#7893;ng h&#7907;p ho&#7863;c response t&#7915; d&#7883;ch v&#7909; ch&#7853;m.</p>
+<p>Kh&ocirc;ng n&ecirc;n cache &#273;&#7875; che truy v&#7845;n sai, thi&#7871;u index ho&#7863;c API thi&#7871;t k&#7871; k&eacute;m. D&#7919; li&#7879;u nh&#432; s&#7889; d&#432;, tr&#7841;ng th&aacute;i thanh to&aacute;n hay quy&#7873;n truy c&#7853;p c&#7847;n &#273;&aacute;nh gi&aacute; r&#7845;t th&#7853;n tr&#7885;ng; m&#7897;t cache hit nhanh nh&#432;ng sai v&#7851;n l&agrave; l&#7895;i.</p>
+
+<h2>Cache-aside: m&ocirc; h&igrave;nh d&#7877; ki&#7875;m so&aacute;t</h2>
+<p>Trong cache-aside, &#7913;ng d&#7909;ng t&#7921; qu&#7843;n l&yacute; cache:</p>
+<ol><li>&#272;&#7885;c Redis theo cache key.</li><li>N&#7871;u hit, deserialize v&agrave; tr&#7843; d&#7919; li&#7879;u.</li><li>N&#7871;u miss, &#273;&#7885;c ngu&#7891;n chu&#7849;n nh&#432; database.</li><li>Ghi k&#7871;t qu&#7843; v&agrave;o Redis v&#7899;i TTL.</li><li>Khi d&#7919; li&#7879;u thay &#273;&#7893;i, ghi database r&#7891;i x&oacute;a cache key.</li></ol>
+<pre><code>async function getProduct(id) {
+  const key = `shop:v3:product:${id}`;
+  const cached = await redis.get(key);
+
+  if (cached !== null) {
+    return JSON.parse(cached);
+  }
+
+  const product = await database.products.findById(id);
+  await redis.set(key, JSON.stringify(product), { EX: 300 });
+  return product;
+}</code></pre>
+<p>&#431;u &#273;i&#7875;m l&agrave; cache ch&#7881; ch&#7913;a d&#7919; li&#7879;u th&#7921;c s&#7921; &#273;&#432;&#7907;c truy c&#7853;p v&agrave; database lu&ocirc;n l&agrave; ngu&#7891;n chu&#7849;n. Nh&#432;&#7907;c &#273;i&#7875;m l&agrave; request miss ch&#7853;m h&#417;n, logic cache n&#7857;m trong &#7913;ng d&#7909;ng v&agrave; c&#7847;n x&#7917; l&yacute; &#273;&#7891;ng th&#7901;i.</p>
+
+<h2>Thi&#7871;t k&#7871; key c&oacute; namespace v&agrave; version</h2>
+<p>Cache key n&ecirc;n m&ocirc; t&#7843; &#7913;ng d&#7909;ng, phi&ecirc;n b&#7843;n schema, lo&#7841;i d&#7919; li&#7879;u v&agrave; &#273;&#7883;nh danh:</p>
+<pre><code>shop:v3:product:8421
+shop:v3:category:18:page:2:sort:newest
+billing:v1:customer-summary:991</code></pre>
+<p>Version trong key gi&uacute;p tri&#7875;n khai schema cache m&#7899;i m&agrave; kh&ocirc;ng ph&#7843;i qu&eacute;t v&agrave; s&#7917;a m&#7885;i entry c&#361;. Tr&aacute;nh nh&uacute;ng d&#7919; li&#7879;u nh&#7841;y c&#7843;m ho&#7863;c chu&#7895;i ng&#432;&#7901;i d&ugrave;ng ch&#432;a chu&#7849;n h&oacute;a v&agrave;o key. V&#7899;i truy v&#7845;n c&oacute; nhi&#7873;u tham s&#7889;, canonicalize v&agrave; hash ph&#7847;n tham s&#7889; &#273;&#7875; tr&aacute;nh hai key cho c&ugrave;ng m&#7897;t truy v&#7845;n.</p>
+
+<h2>TTL l&agrave; gi&#7899;i h&#7841;n stale, kh&ocirc;ng ph&#7843;i con s&#7889; t&ugrave;y &yacute;</h2>
+<p>TTL n&ecirc;n xu&#7845;t ph&aacute;t t&#7915; nghi&#7879;p v&#7909;: d&#7919; li&#7879;u &#273;&#432;&#7907;c ph&eacute;p c&#361; bao l&acirc;u v&agrave; database ch&#7883;u &#273;&#432;&#7907;c bao nhi&ecirc;u miss. Gi&aacute; s&#7843;n ph&#7849;m c&oacute; th&#7875; l&agrave; v&agrave;i ph&uacute;t; feature flag quan tr&#7885;ng c&oacute; th&#7875; ch&#7881; v&agrave;i gi&acirc;y; n&#7897;i dung t&#297;nh c&oacute; th&#7875; l&acirc;u h&#417;n.</p>
+<p>Kh&ocirc;ng &#273;&#7863;t t&#7845;t c&#7843; key h&#7871;t h&#7841;n c&ugrave;ng m&#7897;t th&#7901;i &#273;i&#7875;m. Th&ecirc;m jitter ng&#7851;u nhi&ecirc;n gi&uacute;p ph&acirc;n t&aacute;n expiration:</p>
+<pre><code>const baseTtl = 300;
+const jitter = Math.floor(Math.random() * 60);
+await redis.set(key, payload, { EX: baseTtl + jitter });</code></pre>
+<p>M&#7885;i entry cache-aside n&ecirc;n c&oacute; TTL, k&#7875; c&#7843; khi &#7913;ng d&#7909;ng c&oacute; invalidation. TTL l&agrave; l&#7899;p an to&agrave;n khi event ho&#7863;c thao t&aacute;c x&oacute;a key b&#7883; b&#7887; l&#7905;.</p>
+
+<h2>Invalidation: ghi database tr&#432;&#7899;c, x&oacute;a cache sau</h2>
+<pre><code>await database.transaction(async (tx) =&gt; {
+  await tx.products.update(productId, changes);
+});
+
+await redis.del(`shop:v3:product:${productId}`);</code></pre>
+<p>X&oacute;a key th&#432;&#7901;ng an to&agrave;n h&#417;n ghi gi&aacute; tr&#7883; m&#7899;i v&agrave;o cache v&igrave; l&#7847;n &#273;&#7885;c ti&#7871;p theo s&#7869; t&#7843;i l&#7841;i t&#7915; ngu&#7891;n chu&#7849;n. N&#7871;u x&oacute;a cache tr&#432;&#7899;c r&#7891;i database update th&#7845;t b&#7841;i ho&#7863;c b&#7883; ch&#7853;m, request kh&aacute;c c&oacute; th&#7875; &#273;&#7885;c d&#7919; li&#7879;u c&#361; t&#7915; database v&agrave; &#273;&#432;a n&oacute; tr&#7903; l&#7841;i cache.</p>
+<p>V&#7851;n t&#7891;n t&#7841;i c&#7917;a s&#7893; l&#7895;i gi&#7919;a commit database v&agrave; <code>DEL</code>. V&#7899;i d&#7919; li&#7879;u quan tr&#7885;ng, d&ugrave;ng transactional outbox ho&#7863;c change data capture &#273;&#7875; ph&aacute;t event invalidation c&oacute; th&#7875; retry. TTL gi&#7899;i h&#7841;n th&#7901;i gian stale n&#7871;u event cu&#7889;i c&ugrave;ng v&#7851;n th&#7845;t b&#7841;i.</p>
+
+<h2>Tr&aacute;nh race condition khi &#273;&#7885;c v&agrave; ghi</h2>
+<p>M&#7897;t request miss &#273;&#7885;c d&#7919; li&#7879;u c&#361;, sau &#273;&oacute; request kh&aacute;c update database v&agrave; x&oacute;a key; request &#273;&#7847;u ti&ecirc;n c&oacute; th&#7875; ghi d&#7919; li&#7879;u c&#361; tr&#7903; l&#7841;i cache. C&aacute;ch gi&#7843;m r&#7911;i ro:</p>
+<ul><li>D&ugrave;ng TTL ng&#7855;n h&#417;n cho d&#7919; li&#7879;u thay &#273;&#7893;i th&#432;&#7901;ng xuy&ecirc;n.</li><li>K&egrave;m version ho&#7863;c <code>updated_at</code> trong value v&agrave; ch&#7881; ghi n&#7871;u version c&ograve;n h&#7907;p l&#7879;.</li><li>Th&#7921;c hi&#7879;n delayed double delete cho m&#7897;t s&#7889; lu&#7891;ng c&oacute; race &#273;&atilde; &#273;&#432;&#7907;c &#273;o.</li><li>D&ugrave;ng event invalidation sau commit v&agrave; thi&#7871;t k&#7871; consumer idempotent.</li><li>Kh&ocirc;ng cache d&#7919; li&#7879;u y&ecirc;u c&#7847;u read-after-write nghi&ecirc;m ng&#7863;t tr&ecirc;n lu&#7891;ng &#273;&oacute;.</li></ul>
+
+<h2>Ch&#7889;ng cache stampede</h2>
+<p>Khi m&#7897;t key n&oacute;ng h&#7871;t h&#7841;n, h&agrave;ng tr&#259;m request c&oacute; th&#7875; c&ugrave;ng miss v&agrave; &#273;&aacute;nh v&agrave;o database. D&ugrave;ng single-flight ho&#7863;c mutex theo key &#273;&#7875; ch&#7881; m&#7897;t request load d&#7919; li&#7879;u:</p>
+<pre><code>const lockKey = `lock:${key}`;
+const token = crypto.randomUUID();
+const acquired = await redis.set(lockKey, token, { NX: true, PX: 5000 });
+
+if (acquired) {
+  try {
+    const value = await loadFromDatabase();
+    await redis.set(key, JSON.stringify(value), { EX: 300 });
+    return value;
+  } finally {
+    await releaseOnlyIfTokenMatches(lockKey, token);
+  }
+}
+
+return await waitBrieflyAndReadCacheAgain();</code></pre>
+<p>Lock ph&#7843;i c&oacute; TTL d&agrave;i h&#417;n th&#7901;i gian load x&#7845;u nh&#7845;t, d&ugrave;ng token duy nh&#7845;t v&agrave; ch&#7881; owner m&#7899;i &#273;&#432;&#7907;c release. Request kh&ocirc;ng l&#7845;y &#273;&#432;&#7907;c lock n&ecirc;n &#273;&#7907;i ng&#7855;n, &#273;&#7885;c l&#7841;i cache ho&#7863;c d&ugrave;ng stale value; kh&ocirc;ng quay v&ograve;ng b&#7853;n v&ocirc; h&#7841;n.</p>
+
+<h2>Stale-while-revalidate cho d&#7919; li&#7879;u &#273;&#7885;c nhi&#7873;u</h2>
+<p>C&oacute; th&#7875; l&#432;u hai m&#7889;c: soft TTL v&agrave; hard TTL. Sau soft TTL, &#7913;ng d&#7909;ng v&#7851;n tr&#7843; d&#7919; li&#7879;u c&#361; trong khi m&#7897;t worker refresh n&#7873;n; sau hard TTL m&#7899;i b&#7855;t bu&#7897;c ch&#7901; ngu&#7891;n chu&#7849;n. M&ocirc; h&igrave;nh n&agrave;y gi&#7843;m latency v&agrave; stampede, nh&#432;ng ch&#7881; ph&ugrave; h&#7907;p khi nghi&#7879;p v&#7909; ch&#7845;p nh&#7853;n stale c&oacute; gi&#7899;i h&#7841;n.</p>
+<p>Kh&ocirc;ng d&ugrave;ng stale-while-revalidate cho quy&#7873;n, h&#7841;n m&#7913;c ho&#7863;c d&#7919; li&#7879;u m&agrave; gi&aacute; tr&#7883; c&#361; c&oacute; th&#7875; g&acirc;y giao d&#7883;ch sai.</p>
+
+<h2>Negative caching v&agrave; cache penetration</h2>
+<p>Request l&#7863;p cho ID kh&ocirc;ng t&#7891;n t&#7841;i v&#7851;n c&oacute; th&#7875; xuy&ecirc;n qua cache v&agrave; l&agrave;m database qu&aacute; t&#7843;i. Cache sentinel &ldquo;not found&rdquo; v&#7899;i TTL ng&#7855;n:</p>
+<pre><code>if (cached === '__NOT_FOUND__') return null;
+
+const value = await loadFromDatabase(id);
+if (value === null) {
+  await redis.set(key, '__NOT_FOUND__', { EX: 30 });
+  return null;
+}</code></pre>
+<p>TTL negative ph&#7843;i ng&#7855;n h&#417;n positive &#273;&#7875; b&#7843;n ghi v&#7915;a t&#7841;o s&#7899;m xu&#7845;t hi&#7879;n. Lu&ocirc;n validate &#273;&#7883;nh d&#7841;ng ID, rate-limit client v&agrave; kh&ocirc;ng &#273;&#7875; attacker t&#7841;o v&ocirc; h&#7841;n key ng&#7851;u nhi&ecirc;n.</p>
+
+<h2>Gi&#7899;i h&#7841;n b&#7897; nh&#7899; v&agrave; eviction policy</h2>
+<p>Redis c&#7847;n <code>maxmemory</code> v&agrave; policy ph&ugrave; h&#7907;p. V&#7899;i instance ch&#7881; d&agrave;nh cho cache, <code>allkeys-lru</code> ho&#7863;c <code>allkeys-lfu</code> th&#432;&#7901;ng l&agrave; &#273;i&#7875;m b&#7855;t &#273;&#7847;u h&#7907;p l&yacute; t&ugrave;y access pattern. <code>noeviction</code> s&#7869; tr&#7843; l&#7895;i cho write m&#7899;i khi ch&#7841;m gi&#7899;i h&#7841;n.</p>
+<p>Kh&ocirc;ng n&ecirc;n d&ugrave;ng c&ugrave;ng m&#7897;t Redis instance cho cache c&oacute; th&#7875; b&#7883; eviction v&agrave; d&#7919; li&#7879;u c&#7847;n b&#7873;n nh&#432; queue ho&#7863;c session quan tr&#7885;ng n&#7871;u c&oacute; th&#7875; t&aacute;ch. Policy <code>volatile-*</code> ch&#7881; lo&#7841;i key c&oacute; TTL v&agrave; c&oacute; th&#7875; h&agrave;nh x&#7917; nh&#432; noeviction n&#7871;u c&aacute;c key kh&aacute;c kh&ocirc;ng c&oacute; expiry.</p>
+
+<h2>&#7912;ng d&#7909;ng ph&#7843;i l&agrave;m g&igrave; khi Redis l&#7895;i?</h2>
+<p>Cache th&#432;&#7901;ng l&agrave; l&#7899;p t&#7889;i &#432;u, kh&ocirc;ng ph&#7843;i ngu&#7891;n chu&#7849;n. Khi Redis timeout:</p>
+<ul><li>&#272;&#7863;t connect/read timeout ng&#7855;n, kh&ocirc;ng &#273;&#7875; request treo l&acirc;u h&#417;n database.</li><li>Circuit-break cache sau chu&#7895;i l&#7895;i &#273;&#7875; tr&aacute;nh retry storm.</li><li>Fallback database c&oacute; rate limit v&agrave; concurrency cap &#273;&#7875; kh&ocirc;ng l&agrave;m s&#7853;p ngu&#7891;n chu&#7849;n.</li><li>Kh&ocirc;ng fail request ch&#7881; v&igrave; thao t&aacute;c ghi cache th&#7845;t b&#7841;i, n&#7871;u nghi&#7879;p v&#7909; cho ph&eacute;p.</li><li>Kh&ocirc;ng swallow l&#7895;i ho&agrave;n to&agrave;n; ghi metrics v&agrave; c&#7843;nh b&aacute;o theo t&#7927; l&#7879;.</li></ul>
+<p>N&#7871;u Redis l&#432;u session, lock ho&#7863;c rate-limit state, n&oacute; kh&ocirc;ng c&ograve;n l&agrave; &ldquo;cache thu&#7847;n t&uacute;y&rdquo;; ch&iacute;nh s&aacute;ch availability v&agrave; failure ph&#7843;i &#273;&#432;&#7907;c thi&#7871;t k&#7871; ri&ecirc;ng.</p>
+
+<h2>Serialization, n&eacute;n v&agrave; payload</h2>
+<p>Cache object nh&#7887;, &#7893;n &#273;&#7883;nh v&agrave; ch&#7881; ch&#7913;a tr&#432;&#7901;ng c&#7847;n d&ugrave;ng. Payload l&#7899;n t&#259;ng network, CPU serialize v&agrave; memory fragmentation. G&#7855;n schema version, x&#7917; l&yacute; deserialize failure nh&#432; cache miss v&agrave; x&oacute;a entry h&#7887;ng.</p>
+<p>Ch&#7881; n&eacute;n khi s&#7889; li&#7879;u ch&#7913;ng minh ti&#7871;t ki&#7879;m b&#259;ng th&ocirc;ng/b&#7897; nh&#7899; l&#7899;n h&#417;n chi ph&iacute; CPU. Kh&ocirc;ng cache object ch&#7913;a secret ho&#7863;c d&#7919; li&#7879;u c&aacute; nh&acirc;n n&#7871;u ch&#432;a &#273;&aacute;nh gi&aacute; m&atilde; h&oacute;a, retention v&agrave; quy&#7873;n truy c&#7853;p Redis.</p>
+
+<h2>Nh&#7919;ng ch&#7881; s&#7889; c&#7847;n theo d&otilde;i</h2>
+<ul><li>Hit rate v&agrave; miss rate theo nh&oacute;m key.</li><li>P50, p95, p99 latency c&#7911;a Redis v&agrave; loader database.</li><li>Evicted keys, expired keys, memory used v&agrave; fragmentation.</li><li>Connection count, rejected connections v&agrave; timeout.</li><li>S&#7889; lock contention, th&#7901;i gian ch&#7901; v&agrave; loader concurrency.</li><li>T&#7927; l&#7879; fallback database khi Redis l&#7895;i.</li><li>&#272;&#7897; tr&#7877; invalidation v&agrave; s&#7889; event retry/dead-letter.</li></ul>
+<p>Hit rate cao kh&ocirc;ng t&#7921; &#273;&#7897;ng t&#7889;t. Cache c&oacute; th&#7875; hit d&#7919; li&#7879;u sai ho&#7863;c gi&#7919; object &iacute;t gi&aacute; tr&#7883;. &#272;o th&ecirc;m database load, end-to-end latency v&agrave; &#273;&#7897; m&#7899;i d&#7919; li&#7879;u.</p>
+
+<h2>Ki&#7875;m th&#7917; production behavior</h2>
+<ol><li>Cache hit, miss, expiry v&agrave; invalidation sau update.</li><li>Nhi&#7873;u request &#273;&#7891;ng th&#7901;i v&agrave;o m&#7897;t cold key ch&#7881; t&#7841;o m&#7897;t database load.</li><li>Redis timeout, m&#7845;t k&#7871;t n&#7889;i v&agrave; &#273;&#7841;t maxmemory.</li><li>Database ch&#7853;m trong l&uacute;c lock g&#7847;n h&#7871;t TTL.</li><li>Event invalidation &#273;&#7871;n tr&ugrave;ng ho&#7863;c sai th&#7913; t&#7921;.</li><li>Negative cache kh&ocirc;ng che b&#7843;n ghi m&#7899;i qu&aacute; l&acirc;u.</li><li>Deploy schema value m&#7899;i v&#7851;n &#273;&#7885;c an to&agrave;n ho&#7863;c miss c&oacute; ki&#7875;m so&aacute;t.</li></ol>
+
+<h2>Checklist tr&#432;&#7899;c khi ph&aacute;t h&agrave;nh</h2>
+<ol><li>&#272;&atilde; &#273;o bottleneck v&agrave; x&aacute;c &#273;&#7883;nh cache th&#7921;c s&#7921; c&#7847;n thi&#7871;t.</li><li>Database ho&#7863;c service g&#7889;c v&#7851;n l&agrave; ngu&#7891;n d&#7919; li&#7879;u chu&#7849;n.</li><li>Key c&oacute; namespace, version v&agrave; kh&ocirc;ng ch&#7913;a secret.</li><li>M&#7885;i entry c&oacute; TTL d&#7921;a tr&ecirc;n m&#7913;c stale ch&#7845;p nh&#7853;n &#273;&#432;&#7907;c.</li><li>Update ghi ngu&#7891;n chu&#7849;n tr&#432;&#7899;c r&#7891;i invalidation sau commit.</li><li>Hot key c&oacute; jitter v&agrave; stampede protection.</li><li>Redis c&oacute; maxmemory, eviction policy v&agrave; gi&aacute;m s&aacute;t.</li><li>Fallback &#273;&#432;&#7907;c gi&#7899;i h&#7841;n &#273;&#7875; b&#7843;o v&#7879; database.</li><li>Cache failure kh&ocirc;ng l&agrave;m sai nghi&#7879;p v&#7909;.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Cache Redis an to&agrave;n kh&ocirc;ng ch&#7881; l&agrave; th&ecirc;m <code>GET</code> tr&#432;&#7899;c query. Thi&#7871;t k&#7871; t&#7889;t coi cache l&agrave; d&#7919; li&#7879;u c&oacute; th&#7875; m&#7845;t, c&oacute; th&#7875; stale v&agrave; c&oacute; th&#7875; kh&ocirc;ng truy c&#7853;p &#273;&#432;&#7907;c. Cache-aside, TTL c&oacute; ch&#7911; &#273;&iacute;ch, invalidation sau commit, single-flight v&agrave; gi&#7899;i h&#7841;n b&#7897; nh&#7899; gi&uacute;p t&#259;ng t&#7889;c backend m&agrave; kh&ocirc;ng bi&#7871;n cache th&agrave;nh ngu&#7891;n l&#7895;i kh&oacute; ki&#7875;m so&aacute;t.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://redis.io/docs/latest/develop/use-cases/cache-aside/" target="_blank" rel="noopener noreferrer">Redis Docs: Cache-aside</a></li><li><a href="https://redis.io/docs/latest/develop/reference/eviction/" target="_blank" rel="noopener noreferrer">Redis Docs: Key eviction</a></li><li><a href="https://redis.io/docs/latest/develop/use/keyspace/" target="_blank" rel="noopener noreferrer">Redis Docs: Keys and expiration</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

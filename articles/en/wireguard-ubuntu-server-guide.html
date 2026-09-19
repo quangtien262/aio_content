@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">install-secure-wireguard-vpn-ubuntu-server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Install WireGuard VPN Securely on Ubuntu Server</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">install WireGuard Ubuntu, WireGuard VPN server, wg0 configuration, UFW WireGuard, remote access VPN, split tunnel</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">WireGuard, Ubuntu Server, VPN, UFW, Remote Access, Network Security, Linux, Sysadmin</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Install WireGuard on Ubuntu Server, create keys and peers, configure UFW and NAT, choose split or full tunnel, add phones, and troubleshoot.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/wireguard-ubuntu-server-guide.jpg" alt="How to Install a Secure WireGuard VPN on Ubuntu Server" width="1440" height="810"></p><h1>How to Install a Secure WireGuard VPN on Ubuntu Server</h1><p><strong>WireGuard is a compact, modern, cross-platform VPN suited to secure remote access to servers and private networks.</strong> This guide builds a peer-to-site deployment on Ubuntu Server: every device receives a unique key pair, the server routes VPN traffic, and the firewall limits access.</p>
+<blockquote>A VPN does not replace application authorization. A user connected to the network should still reach only the services they need.</blockquote>
+
+<h2>Example architecture and values</h2>
+<ul><li>The Ubuntu Server has a public IP or receives a forwarded UDP port.</li><li>Its Internet interface is <code>eth0</code>; replace this with the actual name.</li><li>WireGuard network: <code>10.66.66.0/24</code>.</li><li>VPN server: <code>10.66.66.1</code>; first client: <code>10.66.66.2</code>.</li><li>UDP port: <code>51820</code>.</li></ul>
+<p>Find the outgoing interface with <code>ip route get 1.1.1.1</code>. If the server is behind a router, forward UDP 51820 to its LAN address and reserve that address in DHCP. Ordinary port forwarding does not work behind CGNAT; obtain a public IP, suitable IPv6, an intermediary VPS, or another tunnel design.</p>
+
+<h2>1. Update Ubuntu and install WireGuard</h2>
+<pre><code>sudo apt update
+sudo apt upgrade
+sudo apt install wireguard qrencode
+sudo mkdir -p /etc/wireguard
+sudo chmod 700 /etc/wireguard</code></pre>
+<p><code>qrencode</code> is optional and used for phone enrollment. Before changing a remote firewall, keep a second SSH session open or ensure provider-console access so a mistake does not lock out administration.</p>
+
+<h2>2. Generate server keys</h2>
+<pre><code>sudo sh -c 'umask 077; wg genkey &gt; /etc/wireguard/server.key'
+sudo sh -c 'wg pubkey &lt; /etc/wireguard/server.key &gt; /etc/wireguard/server.pub'
+sudo cat /etc/wireguard/server.pub</code></pre>
+<p>Only root should read the private key. Never send it through chat or email or commit it to Git. The public key can be shared with peers. Give every client its own pair so one device can be revoked independently.</p>
+
+<h2>3. Enable IP forwarding</h2>
+<p>Forwarding may not be needed when clients access only services on the VPN server itself. When the server is a gateway to the Internet or LAN, create:</p>
+<pre><code>sudo tee /etc/sysctl.d/70-wireguard-routing.conf &gt; /dev/null &lt;&lt;'EOF'
+net.ipv4.ip_forward = 1
+EOF
+sudo sysctl -p /etc/sysctl.d/70-wireguard-routing.conf</code></pre>
+<p>Run <code>sysctl net.ipv4.ip_forward</code> and expect <code>1</code>. Enable IPv6 forwarding only after designing IPv6 addressing and firewall rules rather than copying IPv4 assumptions.</p>
+
+<h2>4. Create the server configuration</h2>
+<p>Create <code>/etc/wireguard/wg0.conf</code>:</p>
+<pre><code>[Interface]
+Address = 10.66.66.1/24
+ListenPort = 51820
+PrivateKey = SERVER_PRIVATE_KEY
+
+# Client laptop
+[Peer]
+PublicKey = CLIENT_PUBLIC_KEY
+AllowedIPs = 10.66.66.2/32</code></pre>
+<p>Replace placeholders with real key values, then run <code>sudo chmod 600 /etc/wireguard/wg0.conf</code>. In WireGuard, <code>AllowedIPs</code> selects the peer for outbound traffic and acts as a source-address ACL on receipt. Never assign the same <code>/32</code> to two clients.</p>
+<p>To avoid embedding the server private key in the primary config, Ubuntu documentation demonstrates <code>PostUp = wg set %i private-key /etc/wireguard/server.key</code>. Either way, protect both key and configuration files with filesystem permissions.</p>
+
+<h2>5. Configure UFW and NAT</h2>
+<p>Allow SSH first and then open WireGuard:</p>
+<pre><code>sudo ufw allow OpenSSH
+sudo ufw allow 51820/udp
+sudo ufw route allow in on wg0 out on eth0 from 10.66.66.0/24
+sudo ufw route allow in on eth0 out on wg0 to 10.66.66.0/24</code></pre>
+<p>For clients to use the server as an Internet gateway, add this NAT block near the top of <code>/etc/ufw/before.rules</code>, before existing <code>*filter</code> tables:</p>
+<pre><code>*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s 10.66.66.0/24 -o eth0 -j MASQUERADE
+COMMIT</code></pre>
+<p>Set <code>DEFAULT_FORWARD_POLICY="ACCEPT"</code> in <code>/etc/default/ufw</code>, then:</p>
+<pre><code>sudo ufw enable
+sudo ufw reload
+sudo ufw status verbose</code></pre>
+<p>Replace <code>eth0</code> with the actual Internet interface. For LAN-only access where the LAN router has a return route to <code>10.66.66.0/24</code>, routing without NAT preserves client addresses in logs; adapt routes and firewall rules to the real topology.</p>
+
+<h2>6. Create the first client</h2>
+<p>Generating keys on the client is preferable because its private key never leaves the device. On Linux:</p>
+<pre><code>umask 077
+wg genkey &gt; client.key
+wg pubkey &lt; client.key &gt; client.pub</code></pre>
+<p>Add the client public key to its server <code>[Peer]</code> block. The client configuration is:</p>
+<pre><code>[Interface]
+PrivateKey = CLIENT_PRIVATE_KEY
+Address = 10.66.66.2/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = SERVER_PUBLIC_KEY
+Endpoint = vpn.example.com:51820
+AllowedIPs = 10.66.66.0/24
+PersistentKeepalive = 25</code></pre>
+<p><code>PersistentKeepalive = 25</code> helps a client behind NAT maintain its mapping but is not necessary on every peer. Use dynamic DNS when the server public address changes.</p>
+
+<h2>7. Choose split tunnel or full tunnel</h2>
+<p>The configuration above is a <strong>split tunnel</strong>: only <code>10.66.66.0/24</code> uses the VPN. To reach a LAN, add its subnet, such as <code>192.168.10.0/24</code>, to client <code>AllowedIPs</code> and permit the exact forwarding flow.</p>
+<p>For a <strong>full tunnel</strong>, use <code>AllowedIPs = 0.0.0.0/0</code>, adding <code>::/0</code> only after IPv6 is configured. All client Internet traffic then crosses the server, requiring forwarding, NAT, DNS, and adequate capacity. It protects traffic on public Wi-Fi but adds load, latency, and operational responsibility.</p>
+
+<h2>8. Start and test the tunnel</h2>
+<pre><code>sudo wg-quick up wg0
+sudo wg show
+ip address show wg0
+sudo systemctl enable wg-quick@wg0</code></pre>
+<p>Connect the client, run <code>ping 10.66.66.1</code>, test private services, and inspect <code>latest handshake</code> and <code>transfer</code> in <code>sudo wg show</code>. With a full tunnel, verify the client's public IP and DNS path.</p>
+<p>Use <code>sudo systemctl reload wg-quick@wg0</code> to add peers with less disruption. Address, route, and hook changes may still require a full restart.</p>
+
+<h2>9. Add a phone securely with a QR code</h2>
+<pre><code>qrencode -t ansiutf8 &lt; phone.conf</code></pre>
+<p>In the mobile WireGuard application, create a tunnel from QR and scan it in a private administrative session. The QR contains the private key, so treat it as a password: do not screenshot it, attach it to a ticket, or retain temporary files unnecessarily.</p>
+
+<h2>10. Revoke a device</h2>
+<p>Remove the device's <code>[Peer]</code> block from the server and reload the service. Do not reuse keys for replacement hardware. If a server private key is exposed, create a new server pair and update every client; rotate only one peer when that peer's private key is compromised.</p>
+
+<h2>Troubleshooting</h2>
+<ul><li><strong>No handshake:</strong> inspect UDP 51820, port forwarding, public IP or CGNAT, Endpoint, and public keys.</li><li><strong>Handshake but no ping:</strong> check <code>AllowedIPs</code>, duplicate addresses, UFW, and <code>ip route</code>.</li><li><strong>Server reachable but no LAN or Internet:</strong> check IP forwarding, FORWARD rules, NAT, and return routes.</li><li><strong>IP works but names fail:</strong> inspect client DNS and resolver reachability through the tunnel.</li><li><strong>Some sites hang:</strong> test a lower MTU such as <code>MTU = 1380</code> after confirming a path-MTU issue.</li><li><strong>Mobile connection drops:</strong> apply <code>PersistentKeepalive = 25</code> to the peer behind NAT.</li></ul>
+<pre><code>sudo wg show
+sudo journalctl -u wg-quick@wg0
+ip route
+sudo ufw status verbose
+sudo ss -lunp | grep 51820</code></pre>
+
+<h2>Security and operations checklist</h2>
+<ol><li>Every device has a unique key and VPN address.</li><li>Private keys and configurations have restricted permissions.</li><li>Firewall rules expose only necessary services to the VPN subnet.</li><li>Public SSH is removed where administration can use the VPN.</li><li>Peer owner, issue date, and revocation date are recorded.</li><li>An encrypted server configuration backup exists off-host.</li><li>Ubuntu is patched and unexpected handshakes are monitored.</li><li>Peer revocation and configuration recovery are tested.</li></ol>
+
+<h2>Conclusion</h2>
+<p>A sound WireGuard VPN is more than a successful handshake. It needs per-device keys, precise <code>AllowedIPs</code>, restrictive firewall rules, intentional routing or NAT, and a clear revocation process. Start with a small split tunnel, verify each flow, and expand to LAN or full-tunnel access only when required.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/" target="_blank" rel="noopener noreferrer">Ubuntu Server: WireGuard VPN</a></li><li><a href="https://ubuntu.com/server/docs/explanation/intro-to/wireguard-vpn/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Introduction to WireGuard</a></li><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/common-tasks/" target="_blank" rel="noopener noreferrer">Ubuntu Server: WireGuard common tasks</a></li><li><a href="https://ubuntu.com/server/docs/how-to/wireguard-vpn/troubleshooting/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Troubleshooting WireGuard</a></li><li><a href="https://ubuntu.com/server/docs/how-to/security/firewalls/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Firewalls and IP masquerading</a></li><li><a href="https://www.wireguard.com/quickstart/" target="_blank" rel="noopener noreferrer">WireGuard: Quick Start</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

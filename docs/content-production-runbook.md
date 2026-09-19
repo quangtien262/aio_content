@@ -10,6 +10,10 @@
   `website_key`, vì API lấy context từ token.
 - Lệnh đăng bài mặc định tạo/cập nhật và xuất bản ngay. Chỉ dùng `--draft` khi
   Sếp yêu cầu duyệt trước.
+- Bài mới khi xuất bản phải có `publish_at` là thời gian hiện tại theo múi giờ
+  `Asia/Ho_Chi_Minh`. Publisher tự điền giá trị này; bài nháp để trống cho đến
+  khi được xuất bản. Khi cập nhật bài đã có mapping, publisher giữ nguyên
+  `publish_at` cũ để bài không bị đổi ngày ngoài ý muốn.
 - Mỗi bài mới mặc định phải có cả bản nguồn tiếng Việt và bản tiếng Anh; cả hai
   được publish trong cùng một lần chạy tuần tự.
 - Luôn gọi người dùng là **Sếp** và xưng **em**.

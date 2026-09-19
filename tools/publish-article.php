@@ -32,6 +32,9 @@ function main(array $argv): void
     $article = parseArticle($file, $options['category']);
     $defaultStatus = $config['CONTENT_API_DEFAULT_STATUS'] ?? 'published';
     $article['status'] = $options['draft'] ? 'draft' : ($options['publish'] ? 'published' : $defaultStatus);
+    $article['publish_at'] = $article['status'] === 'published'
+        ? (new DateTimeImmutable('now', new DateTimeZone('Asia/Ho_Chi_Minh')))->format(DateTimeInterface::ATOM)
+        : null;
     $englishFile = resolveEnglishFile($file, $options['english'], $options['vi_only']);
     $english = $englishFile === null ? null : translationPayload(parseArticle($englishFile, $article['category_id']));
     if ($english !== null) {
@@ -53,6 +56,18 @@ function main(array $argv): void
     $token = trim($config['CONTENT_API_TOKEN'] ?? '');
     if ($baseUrl === '' || $token === '') {
         fail('Thiếu CONTENT_API_BASE_URL hoặc CONTENT_API_TOKEN trong .publisher.env.');
+    }
+
+    if (! $options['english_only']) {
+        $existing = requestGet(sprintf(
+            '%s/api/v1/cms/posts/%s',
+            $baseUrl,
+            rawurlencode($article['external_id']),
+        ), $token);
+        $existingPublishAt = $existing['data']['publish_at'] ?? null;
+        if (is_string($existingPublishAt) && trim($existingPublishAt) !== '') {
+            $article['publish_at'] = $existingPublishAt;
+        }
     }
 
     if (! $options['english_only'] && ! $options['no_image'] && $article['cover_path'] !== null) {
@@ -340,6 +355,41 @@ function requestJson(string $url, string $token, array $payload): array
 function requestMultipart(string $url, string $token, array $payload): array
 {
     return executeRequest($url, $token, $payload, []);
+}
+
+function requestGet(string $url, string $token): ?array
+{
+    $handle = curl_init($url);
+    $options = [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 60,
+        CURLOPT_HTTPHEADER => [
+            'Accept: application/json',
+            'Authorization: Bearer '.$token,
+        ],
+    ];
+    $caBundle = getenv('CONTENT_API_CA_BUNDLE');
+    if (is_string($caBundle) && $caBundle !== '' && is_file($caBundle)) {
+        $options[CURLOPT_CAINFO] = $caBundle;
+    }
+    curl_setopt_array($handle, $options);
+    $raw = curl_exec($handle);
+    $status = (int) curl_getinfo($handle, CURLINFO_RESPONSE_CODE);
+    $error = curl_error($handle);
+    curl_close($handle);
+
+    if ($raw === false) {
+        fail('Không kết nối được API: '.$error);
+    }
+    if ($status === 404) {
+        return null;
+    }
+    $decoded = json_decode($raw, true);
+    if (! is_array($decoded) || $status < 200 || $status >= 300) {
+        fail('Không đọc được bài hiện có từ API (HTTP '.$status.').');
+    }
+
+    return $decoded;
 }
 
 function executeRequest(string $url, string $token, string|array $payload, array $headers): array

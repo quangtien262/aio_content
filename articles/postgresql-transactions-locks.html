@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">PostgreSQL transaction, isolation, lock v&agrave; deadlock</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">PostgreSQL transaction, isolation level, SELECT FOR UPDATE, row lock, deadlock, MVCC, serializable retry</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">PostgreSQL, Transaction, MVCC, Database Lock, Deadlock, SQL, Backend, Concurrency</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Hi&#7875;u transaction PostgreSQL, Read Committed, Repeatable Read, Serializable, row lock, deadlock, retry v&agrave; c&aacute;ch quan s&aacute;t session b&#7883; block.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/postgresql-transactions-locks.jpg" alt="PostgreSQL transaction th&#7921;c chi&#7871;n: Isolation, row lock v&agrave; x&#7917; l&yacute; deadlock" width="1440" height="810"></p><h1>PostgreSQL transaction th&#7921;c chi&#7871;n: Isolation, row lock v&agrave; x&#7917; l&yacute; deadlock</h1><p><strong>Transaction kh&ocirc;ng ch&#7881; l&agrave; b&#7885;c nhi&#7873;u c&acirc;u SQL trong <code>BEGIN</code> v&agrave; <code>COMMIT</code>.</strong> Khi nhi&#7873;u request c&ugrave;ng &#273;&#7885;c v&agrave; s&#7917;a d&#7919; li&#7879;u, &#7913;ng d&#7909;ng ph&#7843;i ch&#7885;n isolation level ph&ugrave; h&#7907;p, kh&oacute;a &#273;&uacute;ng h&agrave;ng, gi&#7919; transaction ng&#7855;n v&agrave; chu&#7849;n b&#7883; retry c&aacute;c l&#7895;i concurrency c&oacute; ch&#7911; &#273;&iacute;ch.</p>
+
+<h2>ACID kh&ocirc;ng t&#7921; &#273;&#7897;ng b&#7843;o v&#7879; m&#7885;i business rule</h2>
+<p>PostgreSQL b&#7843;o &#273;&#7843;m atomicity v&agrave; consistency &#7903; m&#7913;c constraint/transaction, nh&#432;ng database kh&ocirc;ng t&#7921; hi&#7875;u quy t&#7855;c &ldquo;kh&ocirc;ng b&aacute;n v&#432;&#7907;t t&#7891;n kho&rdquo; hay &ldquo;t&#7893;ng s&#7889; gh&#7871; kh&ocirc;ng v&#432;&#7907;t gi&#7899;i h&#7841;n&rdquo; n&#7871;u &#7913;ng d&#7909;ng ch&#7881; &#273;&#7885;c r&#7891;i ghi b&#7857;ng hai c&acirc;u r&#7901;i r&#7841;c. Hai transaction c&oacute; th&#7875; c&ugrave;ng &#273;&#7885;c m&#7897;t tr&#7841;ng th&aacute;i h&#7907;p l&#7879; v&agrave; c&ugrave;ng ra quy&#7871;t &#273;&#7883;nh xung &#273;&#7897;t.</p>
+<blockquote>Constraint b&#7843;o v&#7879; invariant &#273;&#417;n gi&#7843;n; lock ho&#7863;c isolation cao h&#417;n b&#7843;o v&#7879; quy&#7871;t &#273;&#7883;nh d&#7921;a tr&ecirc;n d&#7919; li&#7879;u &#273;ang thay &#273;&#7893;i.</blockquote>
+
+<h2>MVCC: &#273;&#7885;c v&agrave; ghi &#273;&#7891;ng th&#7901;i</h2>
+<p>PostgreSQL d&ugrave;ng Multi-Version Concurrency Control. M&#7895;i statement/transaction &#273;&#7885;c m&#7897;t snapshot ph&ugrave; h&#7907;p, trong khi update t&#7841;o row version m&#7899;i. V&igrave; v&#7853;y reader th&#432;&#7901;ng kh&ocirc;ng ch&#7863;n writer v&agrave; writer kh&ocirc;ng ch&#7863;n reader nh&#432; m&ocirc; h&igrave;nh kh&oacute;a &#273;&#7885;c &#273;&#417;n gi&#7843;n.</p>
+<p>MVCC t&#259;ng concurrency nh&#432;ng kh&ocirc;ng lo&#7841;i b&#7887; conflict gi&#7919;a hai writer. Row version c&#361; c&#361;ng ph&#7843;i &#273;&#432;&#7907;c VACUUM thu d&#7885;n; transaction m&#7903; qu&aacute; l&acirc;u gi&#7919; snapshot c&#361; v&agrave; c&oacute; th&#7875; l&agrave;m bloat t&#259;ng.</p>
+
+<h2>1. Transaction &#273;&uacute;ng c&#7845;u tr&uacute;c</h2>
+<pre><code>BEGIN;
+
+UPDATE accounts
+SET balance = balance - 500
+WHERE id = 10 AND balance &gt;= 500;
+
+UPDATE accounts
+SET balance = balance + 500
+WHERE id = 20;
+
+COMMIT;</code></pre>
+<p>&#7912;ng d&#7909;ng ph&#7843;i ki&#7875;m tra s&#7889; h&agrave;ng &#7843;nh h&#432;&#7903;ng c&#7911;a c&acirc;u tr&#7915; ti&#7873;n; n&#7871;u l&agrave; 0, rollback v&igrave; kh&ocirc;ng &#273;&#7911; s&#7889; d&#432; ho&#7863;c account kh&ocirc;ng t&#7891;n t&#7841;i. D&ugrave;ng ph&eacute;p update nguy&ecirc;n t&#7917; t&#7889;t h&#417;n &#273;&#7885;c balance v&#7873; &#7913;ng d&#7909;ng r&#7891;i ghi gi&aacute; tr&#7883; m&#7899;i.</p>
+<p>Kh&ocirc;ng g&#7885;i API, g&#7917;i email ho&#7863;c ch&#7901; input c&#7911;a ng&#432;&#7901;i d&ugrave;ng khi &#273;ang gi&#7919; transaction. Th&#7921;c hi&#7879;n side effect sau commit, ho&#7863;c d&ugrave;ng transactional outbox &#273;&#7875; li&ecirc;n k&#7871;t ghi database v&#7899;i message &#273;&aacute;ng tin c&#7853;y.</p>
+
+<h2>2. Read Committed: m&#7863;c &#273;&#7883;nh v&agrave; ph&ugrave; h&#7907;p ph&#7847;n l&#7899;n CRUD</h2>
+<p>&#7902; Read Committed, m&#7895;i statement th&#7845;y snapshot t&#7841;i l&uacute;c statement b&#7855;t &#273;&#7847;u. Hai c&acirc;u <code>SELECT</code> trong c&ugrave;ng transaction c&oacute; th&#7875; th&#7845;y k&#7871;t qu&#7843; kh&aacute;c n&#7871;u transaction kh&aacute;c commit &#7903; gi&#7919;a.</p>
+<p>M&#7913;c n&agrave;y ph&ugrave; h&#7907;p khi m&#7895;i thao t&aacute;c ghi c&oacute; th&#7875; di&#7877;n &#273;&#7841;t nguy&ecirc;n t&#7917; b&#7857;ng <code>UPDATE ... WHERE</code>, UPSERT, unique/check constraint ho&#7863;c row lock r&otilde; r&agrave;ng. N&oacute; kh&ocirc;ng &#273;&#7911; khi business rule d&#7921;a tr&ecirc;n nhi&#7873;u l&#7847;n &#273;&#7885;c m&agrave; kh&ocirc;ng kh&oacute;a.</p>
+
+<h2>3. Repeatable Read: m&#7897;t snapshot &#7893;n &#273;&#7883;nh</h2>
+<p>Repeatable Read cho transaction nh&igrave;n snapshot &#7893;n &#273;&#7883;nh t&#7915; truy v&#7845;n &#273;&#7847;u ti&ecirc;n. N&oacute; h&#7919;u &iacute;ch cho b&aacute;o c&aacute;o nhi&#7873;u c&acirc;u c&#7847;n c&ugrave;ng th&#7901;i &#273;i&#7875;m v&agrave; logic ph&#7913;c t&#7841;p, nh&#432;ng update xung &#273;&#7897;t c&oacute; th&#7875; ph&aacute;t sinh l&#7895;i serialization. &#7912;ng d&#7909;ng ph&#7843;i s&#7861;n s&agrave;ng ch&#7841;y l&#7841;i to&agrave;n b&#7897; transaction.</p>
+<p>Kh&ocirc;ng d&ugrave;ng isolation cao nh&#432; m&#7897;t c&aacute;ch tr&aacute;nh thi&#7871;t k&#7871; concurrency. Transaction c&agrave;ng d&agrave;i c&agrave;ng gi&#7919; snapshot l&acirc;u, t&#259;ng kh&#7843; n&#259;ng conflict v&agrave; &#7843;nh h&#432;&#7903;ng vacuum.</p>
+
+<h2>4. Serializable: k&#7871;t qu&#7843; nh&#432; ch&#7841;y tu&#7847;n t&#7921;</h2>
+<p>Serializable c&#7911;a PostgreSQL d&ugrave;ng Serializable Snapshot Isolation &#273;&#7875; ch&#7881; cho ph&eacute;p commit khi k&#7871;t qu&#7843; t&#432;&#417;ng &#273;&#432;&#417;ng m&#7897;t th&#7913; t&#7921; tu&#7847;n t&#7921; h&#7907;p l&#7879;. Database c&oacute; th&#7875; h&#7911;y m&#7897;t transaction v&#7899;i SQLSTATE <code>40001</code> khi ph&aacute;t hi&#7879;n anomaly c&oacute; th&#7875; x&#7843;y ra.</p>
+<p>&#272;&acirc;y l&agrave; l&#7921;a ch&#7885;n m&#7841;nh cho invariant li&ecirc;n quan nhi&#7873;u h&agrave;ng ho&#7863;c predicate, nh&#432;ng h&#7907;p &#273;&#7891;ng l&agrave; <strong>application ph&#7843;i retry</strong>. Kh&ocirc;ng ch&#7881; ch&#7841;y l&#7841;i c&acirc;u SQL th&#7845;t b&#7841;i; ph&#7843;i ch&#7841;y l&#7841;i to&agrave;n b&#7897; callback transaction, g&#7891;m m&#7885;i quy&#7871;t &#273;&#7883;nh d&#7921;a tr&ecirc;n d&#7919; li&#7879;u &#273;&atilde; &#273;&#7885;c.</p>
+
+<h2>5. SELECT FOR UPDATE v&agrave; c&aacute;c row lock</h2>
+<pre><code>BEGIN;
+
+SELECT id, stock
+FROM products
+WHERE id = 42
+FOR UPDATE;
+
+UPDATE products
+SET stock = stock - 1
+WHERE id = 42 AND stock &gt; 0;
+
+COMMIT;</code></pre>
+<p><code>FOR UPDATE</code> ng&#259;n transaction kh&aacute;c update, delete ho&#7863;c l&#7845;y lock xung &#273;&#7897;t tr&ecirc;n h&agrave;ng t&#7899;i khi transaction k&#7871;t th&uacute;c. D&ugrave;ng khi c&#7847;n &#273;&#7885;c tr&#7841;ng th&aacute;i, th&#7921;c hi&#7879;n logic trong &#7913;ng d&#7909;ng r&#7891;i ghi l&#7841;i. N&#7871;u c&oacute; th&#7875; d&ugrave;ng m&#7897;t c&acirc;u <code>UPDATE ... WHERE stock &gt; 0 RETURNING ...</code>, c&aacute;ch &#273;&oacute; th&#432;&#7901;ng ng&#7855;n v&agrave; &iacute;t lock h&#417;n.</p>
+<ul><li><code>FOR NO KEY UPDATE</code>: lock y&#7871;u h&#417;n khi kh&ocirc;ng thay kh&oacute;a li&ecirc;n quan foreign key.</li><li><code>FOR SHARE</code> v&agrave; <code>FOR KEY SHARE</code>: b&#7843;o v&#7879; c&aacute;c tr&#432;&#7901;ng h&#7907;p &#273;&#7885;c/tham chi&#7871;u c&#7909; th&#7875;.</li><li><code>NOWAIT</code>: l&#7895;i ngay thay v&igrave; ch&#7901;.</li><li><code>SKIP LOCKED</code>: b&#7887; h&agrave;ng &#273;ang kh&oacute;a, h&#7919;u &iacute;ch cho worker queue nh&#432;ng kh&ocirc;ng cho truy v&#7845;n t&#7893;ng qu&aacute;t v&igrave; t&#7841;o view kh&ocirc;ng nh&#7845;t qu&aacute;n.</li></ul>
+
+<h2>6. Deadlock h&igrave;nh th&agrave;nh nh&#432; th&#7871; n&agrave;o?</h2>
+<p>Transaction A kh&oacute;a account 10 r&#7891;i ch&#7901; account 20; transaction B &#273;&atilde; kh&oacute;a account 20 r&#7891;i ch&#7901; account 10. PostgreSQL ph&aacute;t hi&#7879;n v&ograve;ng ch&#7901; v&agrave; abort m&#7897;t transaction v&#7899;i SQLSTATE <code>40P01</code>. Kh&ocirc;ng &#273;&#432;&#7907;c ph&#7909; thu&#7897;c transaction n&agrave;o s&#7869; b&#7883; ch&#7885;n.</p>
+<p>Bi&#7879;n ph&aacute;p ph&ograve;ng ng&#7915;a t&#7889;t nh&#7845;t l&agrave; kh&oacute;a nhi&#7873;u object theo c&ugrave;ng th&#7913; t&#7921;:</p>
+<pre><code>SELECT id
+FROM accounts
+WHERE id IN (10, 20)
+ORDER BY id
+FOR UPDATE;</code></pre>
+<p>Sau &#273;&oacute; m&#7899;i c&#7853;p nh&#7853;t. Transaction ph&#7843;i ng&#7855;n v&agrave; l&#7845;y lock m&#7841;nh nh&#7845;t c&#7847;n d&ugrave;ng t&#7915; &#273;&#7847;u. Deadlock v&#7851;n c&oacute; th&#7875; x&#7843;y ra, n&ecirc;n code production c&#7847;n retry gi&#7899;i h&#7841;n.</p>
+
+<h2>7. Retry &#273;&uacute;ng c&aacute;ch v&#7899;i backoff</h2>
+<pre><code>for ($attempt = 1; $attempt &lt;= 3; $attempt++) {
+    try {
+        return runWholeTransaction();
+    } catch (DatabaseException $e) {
+        if (! in_array($e-&gt;sqlState(), ['40001', '40P01'], true)) {
+            throw $e;
+        }
+
+        if ($attempt === 3) {
+            throw $e;
+        }
+
+        usleep(random_int(20_000, 100_000) * $attempt);
+    }
+}</code></pre>
+<p>Retry to&agrave;n b&#7897; transaction v&#7899;i s&#7889; l&#7847;n h&#7919;u h&#7841;n v&agrave; jitter. Callback ph&#7843;i an to&agrave;n &#273;&#7875; ch&#7841;y l&#7841;i: kh&ocirc;ng g&#7917;i email, charge payment ho&#7863;c publish message kh&ocirc;ng idempotent tr&#432;&#7899;c commit. Unique violation <code>23505</code> &#273;&ocirc;i khi do race nh&#432;ng c&#361;ng c&oacute; th&#7875; l&agrave; l&#7895;i d&#7919; li&#7879;u c&#7889; &#273;&#7883;nh; kh&ocirc;ng retry m&ugrave; qu&aacute;ng.</p>
+
+<h2>8. Timeout &#273;&#7875; th&#7845;t b&#7841;i c&oacute; ki&#7875;m so&aacute;t</h2>
+<pre><code>SET LOCAL lock_timeout = '2s';
+SET LOCAL statement_timeout = '10s';
+SET LOCAL idle_in_transaction_session_timeout = '30s';</code></pre>
+<p><code>lock_timeout</code> gi&#7899;i h&#7841;n th&#7901;i gian ch&#7901; lock; <code>statement_timeout</code> gi&#7899;i h&#7841;n statement; <code>idle_in_transaction_session_timeout</code> x&#7917; l&yacute; session m&#7903; transaction r&#7891;i b&#7887; qu&ecirc;n. &#272;&#7863;t theo SLA v&agrave; workload, kh&ocirc;ng d&ugrave;ng m&#7897;t gi&aacute; tr&#7883; cho m&#7885;i truy v&#7845;n.</p>
+<p><code>SET LOCAL</code> ch&#7881; c&oacute; hi&#7879;u l&#7921;c trong transaction hi&#7879;n t&#7841;i. Khi timeout, transaction c&oacute; th&#7875; &#7903; tr&#7841;ng th&aacute;i aborted v&agrave; c&#7847;n rollback tr&#432;&#7899;c khi connection &#273;&#432;&#7907;c tr&#7843; v&#7873; pool.</p>
+
+<h2>9. T&igrave;m session &#273;ang block production</h2>
+<pre><code>SELECT
+    blocked.pid AS blocked_pid,
+    blocked.query AS blocked_query,
+    blocker.pid AS blocker_pid,
+    blocker.query AS blocker_query,
+    now() - blocker.xact_start AS blocker_age
+FROM pg_stat_activity blocked
+JOIN pg_stat_activity blocker
+  ON blocker.pid = ANY(pg_blocking_pids(blocked.pid))
+WHERE cardinality(pg_blocking_pids(blocked.pid)) &gt; 0;</code></pre>
+<p><code>pg_locks</code> cho c&aacute;i nh&igrave;n to&agrave;n cluster v&#7873; lock &#273;&atilde; c&#7845;p v&agrave; &#273;ang ch&#7901;; k&#7871;t h&#7907;p <code>pg_stat_activity</code> &#273;&#7875; th&#7845;y query, user, state v&agrave; transaction age. T&igrave;m session <code>idle in transaction</code> v&igrave; n&oacute; c&oacute; th&#7875; gi&#7919; lock v&agrave; snapshot d&ugrave; kh&ocirc;ng ch&#7841;y c&acirc;u l&#7879;nh.</p>
+<p>Kh&ocirc;ng v&#7897;i <code>pg_terminate_backend</code> tr&ecirc;n production. X&aacute;c &#273;&#7883;nh blocker, t&aacute;c &#273;&#7897;ng rollback, owner v&agrave; kh&#7843; n&#259;ng &#7913;ng d&#7909;ng retry. Sau s&#7921; c&#7889;, s&#7917;a code ho&#7863;c timeout thay v&igrave; ch&#7881; kill session.</p>
+
+<h2>10. Constraint v&agrave; idempotency tr&#432;&#7899;c lock th&#7911; c&ocirc;ng</h2>
+<p>&#431;u ti&ecirc;n &#273;&#7875; database b&#7843;o v&#7879; invariant b&#7857;ng <code>UNIQUE</code>, <code>CHECK</code>, <code>FOREIGN KEY</code>, exclusion constraint v&agrave; atomic DML. V&iacute; d&#7909; idempotency key c&oacute; unique index gi&uacute;p hai request tr&ugrave;ng kh&ocirc;ng t&#7841;o hai payment record.</p>
+<p>Advisory lock ph&ugrave; h&#7907;p cho t&agrave;i nguy&ecirc;n logic kh&ocirc;ng &aacute;nh x&#7841; tr&#7921;c ti&#7871;p th&agrave;nh row, nh&#432;ng key ph&#7843;i &#7893;n &#273;&#7883;nh v&agrave; lock transaction-level th&#432;&#7901;ng an to&agrave;n h&#417;n session-level. Advisory lock l&agrave; cooperative: m&#7885;i code path ph&#7843;i tu&acirc;n th&#7911; c&ugrave;ng quy &#432;&#7899;c.</p>
+
+<h2>Anti-pattern th&#432;&#7901;ng g&#7863;p</h2>
+<ul><li>&#272;&#7885;c s&#7889; d&#432;/t&#7891;n kho r&#7891;i update kh&ocirc;ng &#273;i&#7873;u ki&#7879;n.</li><li>Gi&#7919; transaction trong khi g&#7885;i HTTP ho&#7863;c ch&#7901; queue.</li><li>Retry ri&ecirc;ng statement thay v&igrave; to&agrave;n transaction.</li><li>Lock c&aacute;c h&agrave;ng theo th&#7913; t&#7921; kh&aacute;c nhau gi&#7919;a code path.</li><li>D&ugrave;ng <code>SKIP LOCKED</code> cho truy v&#7845;n c&#7847;n k&#7871;t qu&#7843; &#273;&#7847;y &#273;&#7911;.</li><li>&#272;&#7875; session <code>idle in transaction</code> qua connection pool.</li><li>N&acirc;ng m&#7885;i transaction l&ecirc;n Serializable nh&#432;ng kh&ocirc;ng x&#7917; l&yacute; <code>40001</code>.</li></ul>
+
+<h2>Checklist production</h2>
+<ol><li>Business invariant c&oacute; constraint &#7903; database khi bi&#7875;u di&#7877;n &#273;&#432;&#7907;c.</li><li>Transaction ng&#7855;n, kh&ocirc;ng ch&#7913;a network side effect.</li><li>Isolation level &#273;&#432;&#7907;c ch&#7885;n theo anomaly c&#7847;n ng&#259;n.</li><li>Lock nhi&#7873;u row theo th&#7913; t&#7921; nh&#7845;t qu&aacute;n.</li><li><code>40001</code> v&agrave; <code>40P01</code> &#273;&#432;&#7907;c retry to&agrave;n transaction c&oacute; gi&#7899;i h&#7841;n.</li><li>Side effect d&ugrave;ng idempotency/outbox.</li><li>Timeout v&agrave; connection-pool behavior &#273;&#432;&#7907;c c&#7845;u h&igrave;nh.</li><li>Dashboard theo d&otilde;i lock wait, deadlock v&agrave; transaction age.</li></ol>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Concurrency &#273;&uacute;ng trong PostgreSQL l&agrave; s&#7921; k&#7871;t h&#7907;p c&#7911;a atomic SQL, constraint, MVCC, isolation v&agrave; lock c&oacute; ch&#7911; &#273;&iacute;ch. Read Committed &#273;&aacute;p &#7913;ng ph&#7847;n l&#7899;n CRUD n&#7871;u statement &#273;&#432;&#7907;c thi&#7871;t k&#7871; t&#7889;t; row lock x&#7917; l&yacute; read-modify-write; Serializable b&#7843;o v&#7879; invariant ph&#7913;c t&#7841;p v&#7899;i y&ecirc;u c&#7847;u retry. Transaction ng&#7855;n, th&#7913; t&#7921; lock nh&#7845;t qu&aacute;n v&agrave; quan s&aacute;t production t&#7889;t gi&uacute;p deadlock tr&#7903; th&agrave;nh l&#7895;i c&oacute; th&#7875; ki&#7875;m so&aacute;t thay v&igrave; s&#7921; c&#7889; b&iacute; &#7849;n.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.postgresql.org/docs/current/mvcc.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Concurrency Control</a></li><li><a href="https://www.postgresql.org/docs/current/transaction-iso.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Transaction Isolation</a></li><li><a href="https://www.postgresql.org/docs/current/explicit-locking.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Explicit Locking and Deadlocks</a></li><li><a href="https://www.postgresql.org/docs/current/mvcc-serialization-failure-handling.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Serialization Failure Handling</a></li><li><a href="https://www.postgresql.org/docs/current/monitoring-locks.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Viewing Locks</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

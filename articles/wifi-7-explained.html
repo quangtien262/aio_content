@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Ki&#7871;n th&#7913;c c&ocirc;ng ngh&#7879;</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Wi-Fi 7 l&agrave; g&igrave; v&agrave; khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p?</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Wi-Fi 7 l&agrave; g&igrave;, 802.11be, Multi-Link Operation, MLO, 320 MHz, 4K QAM, Wi-Fi 6E, router Wi-Fi 7</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Wi-Fi 7, 802.11be, MLO, 6 GHz, Wireless, Networking, Router, Connectivity</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Hi&#7875;u Wi-Fi 7, MLO, k&ecirc;nh 320 MHz, 4K QAM, puncturing, kh&aacute;c bi&#7879;t v&#7899;i Wi-Fi 6/6E v&agrave; c&aacute;c &#273;i&#7873;u ki&#7879;n &#273;&#7875; n&acirc;ng c&#7845;p th&#7921;c s&#7921; c&oacute; l&#7907;i.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/wifi-7-explained.jpg" alt="Wi-Fi 7 l&agrave; g&igrave;? MLO, k&ecirc;nh 320 MHz v&agrave; khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p" width="1440" height="810"></p><h1>Wi-Fi 7 l&agrave; g&igrave;? MLO, k&ecirc;nh 320 MHz v&agrave; khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p</h1><p><strong>Wi&#8209;Fi 7 l&agrave; th&#7871; h&#7879; Wi&#8209;Fi d&#7921;a tr&ecirc;n IEEE 802.11be, t&#7853;p trung v&agrave;o th&ocirc;ng l&#432;&#7907;ng r&#7845;t cao, &#273;&#7897; tr&#7877; &#7893;n &#273;&#7883;nh h&#417;n v&agrave; s&#7917; d&#7909;ng ph&#7893; hi&#7879;u qu&#7843; h&#417;n.</strong> &#272;i&#7875;m thay &#273;&#7893;i &#273;&aacute;ng ch&uacute; &yacute; kh&ocirc;ng ch&#7881; l&agrave; t&#7889;c &#273;&#7897; t&#7889;i &#273;a, m&agrave; l&agrave; kh&#7843; n&#259;ng d&ugrave;ng nhi&#7873;u li&ecirc;n k&#7871;t c&ugrave;ng l&uacute;c, k&ecirc;nh r&#7897;ng h&#417;n v&agrave; ti&#7871;p t&#7909;c truy&#7873;n tr&ecirc;n ph&#7847;n ph&#7893; s&#7841;ch khi m&#7897;t ph&#7847;n k&ecirc;nh b&#7883; nhi&#7877;u.</p>
+
+<h2>Wi&#8209;Fi 7 kh&aacute;c Wi&#8209;Fi 6 v&agrave; 6E &#7903; &#273;&acirc;u?</h2>
+<table><thead><tr><th>&#272;&#7863;c &#273;i&#7875;m</th><th>Wi&#8209;Fi 6/6E</th><th>Wi&#8209;Fi 7</th></tr></thead><tbody><tr><td>Chu&#7849;n n&#7873;n</td><td>802.11ax</td><td>802.11be (EHT)</td></tr><tr><td>&#272;&#7897; r&#7897;ng k&ecirc;nh t&#7889;i &#273;a</td><td>160 MHz</td><td>320 MHz</td></tr><tr><td>&#272;i&#7873;u ch&#7871; cao nh&#7845;t</td><td>1024-QAM</td><td>4096-QAM (4K QAM)</td></tr><tr><td>D&ugrave;ng nhi&#7873;u li&ecirc;n k&#7871;t</td><td>Thi&#7871;t b&#7883; th&#432;&#7901;ng ho&#7841;t &#273;&#7897;ng tr&ecirc;n m&#7897;t link</td><td>Multi-Link Operation</td></tr><tr><td>X&#7917; l&yacute; ph&#7847;n k&ecirc;nh b&#7883; nhi&#7877;u</td><td>H&#7841;n ch&#7871; h&#417;n</td><td>Preamble puncturing linh ho&#7841;t h&#417;n</td></tr></tbody></table>
+<p>Wi&#8209;Fi 6E kh&ocirc;ng ph&#7843;i m&#7897;t th&#7871; h&#7879; radio ho&agrave;n to&agrave;n m&#7899;i; n&oacute; &#273;&#432;a kh&#7843; n&#259;ng Wi&#8209;Fi 6 sang b&#259;ng t&#7847;n 6 GHz. Wi&#8209;Fi 7 ti&#7871;p t&#7909;c d&ugrave;ng 2,4, 5 v&agrave; 6 GHz, &#273;&#7891;ng th&#7901;i b&#7893; sung c&#417; ch&#7871; m&#7899;i &#273;&#7875; ph&#7889;i h&#7907;p c&aacute;c link. Kh&#7843; n&#259;ng s&#7917; d&#7909;ng 6 GHz v&agrave; &#273;&#7897; r&#7897;ng k&ecirc;nh c&#7909; th&#7875; ph&#7909; thu&#7897;c quy &#273;&#7883;nh t&#7915;ng qu&#7889;c gia, router v&agrave; client.</p>
+
+<h2>1. Multi-Link Operation l&agrave; thay &#273;&#7893;i quan tr&#7885;ng nh&#7845;t</h2>
+<p>Tr&#432;&#7899;c &#273;&acirc;y, m&#7897;t client th&#432;&#7901;ng ch&#7885;n m&#7897;t b&#259;ng t&#7847;n ho&#7863;c channel t&#7841;i m&#7897;t th&#7901;i &#273;i&#7875;m. Multi-Link Operation (MLO) cho ph&eacute;p thi&#7871;t b&#7883; Wi&#8209;Fi 7 thi&#7871;t l&#7853;p nhi&#7873;u link v&agrave;, t&ugrave;y tri&#7875;n khai, truy&#7873;n &#273;&#7891;ng th&#7901;i ho&#7863;c chuy&#7875;n linh ho&#7841;t gi&#7919;a ch&uacute;ng.</p>
+<ul><li><strong>T&#259;ng th&ocirc;ng l&#432;&#7907;ng:</strong> d&#7919; li&#7879;u c&oacute; th&#7875; &#273;&#432;&#7907;c ph&acirc;n ph&#7889;i qua nhi&#7873;u link.</li><li><strong>Gi&#7843;m &#273;&#7897; tr&#7877;:</strong> h&#7879; th&#7889;ng ch&#7885;n link &#273;ang &iacute;t b&#7853;n thay v&igrave; ch&#7901; tr&ecirc;n m&#7897;t channel.</li><li><strong>T&#259;ng &#273;&#7897; tin c&#7853;y:</strong> khi m&#7897;t b&#259;ng t&#7847;n nhi&#7877;u, l&#432;u l&#432;&#7907;ng c&oacute; th&#7875; d&ugrave;ng link c&ograve;n l&#7841;i.</li></ul>
+<p>L&#7907;i &iacute;ch th&#7921;c t&#7871; ph&#7909; thu&#7897;c c&#7843; access point l&#7851;n client h&#7895; tr&#7907; c&ugrave;ng ch&#7871; &#273;&#7897; MLO. M&#7897;t nh&atilde;n &ldquo;Wi&#8209;Fi 7&rdquo; kh&ocirc;ng c&oacute; ngh&#297;a m&#7885;i thi&#7871;t b&#7883; &#273;&#7873;u d&ugrave;ng &#273;&#7891;ng th&#7901;i hai radio ho&#7863;c &#273;&#7841;t c&ugrave;ng m&#7913;c hi&#7879;u n&#259;ng.</p>
+
+<h2>2. K&ecirc;nh 320 MHz: r&#7897;ng h&#417;n nh&#432;ng kh&ocirc;ng ph&#7843;i &#7903; &#273;&acirc;u c&#361;ng t&#7889;t</h2>
+<p>Wi&#8209;Fi 7 c&oacute; th&#7875; d&ugrave;ng k&ecirc;nh r&#7897;ng t&#7899;i 320 MHz, g&#7845;p &#273;&ocirc;i m&#7913;c 160 MHz c&#7911;a Wi&#8209;Fi 6/6E. K&ecirc;nh r&#7897;ng gi&#7889;ng nh&#432; th&ecirc;m l&agrave;n &#273;&#432;&#7901;ng, c&oacute; th&#7875; t&#259;ng t&#7889;c &#273;&#7897; peak cho truy&#7873;n file l&#7899;n ho&#7863;c backhaul mesh.</p>
+<p>Nh&#432;ng 320 MHz c&#7847;n ph&#7893; s&#7841;ch, th&#432;&#7901;ng g&#7855;n v&#7899;i b&#259;ng 6 GHz, v&agrave; c&oacute; ph&#7841;m vi xuy&ecirc;n t&#432;&#7901;ng ng&#7855;n h&#417;n 2,4 GHz. Trong chung c&#432; &#273;&ocirc;ng m&#7841;ng, d&ugrave;ng channel h&#7865;p h&#417;n &#273;&ocirc;i khi &#7893;n &#273;&#7883;nh h&#417;n. Thi&#7871;t b&#7883; client 160 MHz c&#361;ng kh&ocirc;ng h&#432;&#7903;ng to&agrave;n b&#7897; l&#7907;i &iacute;ch c&#7911;a access point 320 MHz.</p>
+
+<h2>3. 4K QAM t&#259;ng m&#7853;t &#273;&#7897; d&#7919; li&#7879;u</h2>
+<p>4096-QAM m&atilde; h&oacute;a nhi&#7873;u bit h&#417;n trong m&#7895;i symbol so v&#7899;i 1024-QAM. &#272;i&#7873;u n&agrave;y n&acirc;ng t&#7889;c &#273;&#7897; khi t&iacute;n hi&#7879;u m&#7841;nh v&agrave; s&#7841;ch. &#272;&#7893;i l&#7841;i, c&aacute;c m&#7913;c &#273;i&#7873;u ch&#7871; cao &#273;&ograve;i h&#7887;i t&#7927; l&#7879; t&iacute;n hi&#7879;u tr&ecirc;n nhi&#7877;u t&#7889;t, n&ecirc;n hi&#7879;u qu&#7843; l&#7899;n nh&#7845;t th&#432;&#7901;ng xu&#7845;t hi&#7879;n khi client &#7903; g&#7847;n access point.</p>
+<blockquote>4K QAM l&agrave;m t&#7889;c &#273;&#7897; &#273;&#7881;nh cao h&#417;n; n&oacute; kh&ocirc;ng l&agrave;m m&#7897;t t&iacute;n hi&#7879;u y&#7871;u xuy&ecirc;n th&ecirc;m nhi&#7873;u b&#7913;c t&#432;&#7901;ng.</blockquote>
+
+<h2>4. Preamble puncturing t&#7853;n d&#7909;ng ph&#7847;n k&ecirc;nh c&ograve;n s&#7841;ch</h2>
+<p>Tr&ecirc;n m&#7897;t channel r&#7897;ng, ch&#7881; m&#7897;t &#273;o&#7841;n ph&#7893; b&#7883; nhi&#7877;u c&oacute; th&#7875; l&agrave;m gi&#7843;m kh&#7843; n&#259;ng d&ugrave;ng to&agrave;n b&#7897; channel. Preamble puncturing cho ph&eacute;p lo&#7841;i ph&#7847;n b&#7883; &#7843;nh h&#432;&#7903;ng v&agrave; ti&#7871;p t&#7909;c truy&#7873;n tr&ecirc;n ph&#7847;n c&ograve;n l&#7841;i. &#272;&acirc;y l&agrave; c&#7843;i ti&#7871;n c&oacute; gi&aacute; tr&#7883; trong m&ocirc;i tr&#432;&#7901;ng &#273;&ocirc;ng thi&#7871;t b&#7883;, d&ugrave; hi&#7879;u qu&#7843; ph&#7909; thu&#7897;c chipset, firmware v&agrave; &#273;i&#7873;u ki&#7879;n v&ocirc; tuy&#7871;n.</p>
+
+<h2>T&#7889;c &#273;&#7897; tr&ecirc;n h&#7897;p kh&ocirc;ng ph&#7843;i t&#7889;c &#273;&#7897; m&#7897;t thi&#7871;t b&#7883;</h2>
+<p>Router th&#432;&#7901;ng qu&#7843;ng c&aacute;o t&#7893;ng t&#7889;c &#273;&#7897; l&yacute; thuy&#7871;t c&#7911;a nhi&#7873;u b&#259;ng t&#7847;n v&agrave; spatial stream. M&#7897;t laptop 2x2 ch&#7881; d&ugrave;ng s&#7889; stream, &#273;&#7897; r&#7897;ng k&ecirc;nh v&agrave; ch&#7871; &#273;&#7897; m&agrave; adapter c&#7911;a n&oacute; h&#7895; tr&#7907;. T&#7889;c &#273;&#7897; &#7913;ng d&#7909;ng c&ograve;n b&#7883; tr&#7915; overhead v&agrave; gi&#7899;i h&#7841;n b&#7903;i:</p>
+<ul><li>T&#7889;c &#273;&#7897; &#273;&#432;&#7901;ng Internet v&agrave; c&#7893;ng WAN.</li><li>C&#7893;ng LAN 1 GbE, 2.5 GbE hay 10 GbE.</li><li>S&#7889; spatial stream c&#7911;a router v&agrave; client.</li><li>Kho&#7843;ng c&aacute;ch, v&#7853;t c&#7843;n, nhi&#7877;u v&agrave; v&#7883; tr&iacute; &#273;&#7863;t access point.</li><li>Backhaul mesh d&ugrave;ng d&acirc;y hay d&ugrave;ng chung ph&#7893; v&ocirc; tuy&#7871;n.</li><li>Hi&#7879;u n&#259;ng CPU, l&#432;u tr&#7919; v&agrave; server &#273;&iacute;ch.</li></ul>
+<p>V&iacute; d&#7909; router c&oacute; li&ecirc;n k&#7871;t Wi&#8209;Fi tr&ecirc;n 1 Gbps nh&#432;ng NAS ch&#7881; n&#7889;i c&#7893;ng Gigabit v&#7851;n kh&ocirc;ng th&#7875; truy&#7873;n file v&#432;&#7907;t &#273;&aacute;ng k&#7875; gi&#7899;i h&#7841;n c&#7911;a c&#7893;ng &#273;&oacute;.</p>
+
+<h2>Wi&#8209;Fi 7 c&oacute; t&#432;&#417;ng th&iacute;ch thi&#7871;t b&#7883; c&#361; kh&ocirc;ng?</h2>
+<p>C&oacute;. Access point Wi&#8209;Fi 7 &#273;&#432;&#7907;c thi&#7871;t k&#7871; t&#432;&#417;ng th&iacute;ch ng&#432;&#7907;c v&#7899;i thi&#7871;t b&#7883; th&#7871; h&#7879; tr&#432;&#7899;c tr&ecirc;n c&aacute;c b&#259;ng t&#7847;n ch&uacute;ng h&#7895; tr&#7907;. Tuy nhi&ecirc;n client Wi&#8209;Fi 6 kh&ocirc;ng t&#7921; nh&#7853;n MLO, 320 MHz hay 4K QAM khi k&#7871;t n&#7889;i v&agrave;o router m&#7899;i.</p>
+<p>Thi&#7871;t b&#7883; ch&#7881; h&#7895; tr&#7907; WPA2 c&#361; v&agrave; IoT 2,4 GHz c&oacute; th&#7875; c&#7847;n SSID ho&#7863;c policy ri&ecirc;ng. Kh&ocirc;ng n&ecirc;n h&#7841; b&#7843;o m&#7853;t to&agrave;n m&#7841;ng ch&#7881; &#273;&#7875; gi&#7919; m&#7897;t thi&#7871;t b&#7883; l&#7895;i th&#7901;i; t&aacute;ch IoT sang VLAN/guest network khi h&#7879; th&#7889;ng cho ph&eacute;p.</p>
+
+<h2>Wi&#8209;Fi 7 c&#7843;i thi&#7879;n mesh nh&#432; th&#7871; n&agrave;o?</h2>
+<p>Mesh c&oacute; th&#7875; d&ugrave;ng MLO v&agrave; ph&#7893; 6 GHz &#273;&#7875; t&#259;ng kh&#7843; n&#259;ng c&#7911;a backhaul kh&ocirc;ng d&acirc;y, &#273;&#7891;ng th&#7901;i &#273;i&#7873;u ph&#7889;i l&#432;u l&#432;&#7907;ng client linh ho&#7841;t h&#417;n. Nh&#432;ng node &#273;&#7863;t qu&aacute; xa v&#7851;n nh&#7853;n t&iacute;n hi&#7879;u y&#7871;u. Ethernet backhaul ti&#7871;p t&#7909;c l&agrave; l&#7921;a ch&#7885;n &#7893;n &#273;&#7883;nh nh&#7845;t khi c&oacute; th&#7875; &#273;i d&acirc;y.</p>
+<p>Tr&#432;&#7899;c khi mua th&ecirc;m node, &#432;u ti&ecirc;n v&#7883; tr&iacute;: &#273;&#7863;t node &#7903; n&#417;i v&#7851;n nh&#7853;n t&iacute;n hi&#7879;u t&#7889;t t&#7915; node tr&#432;&#7899;c, kh&ocirc;ng ph&#7843;i ngay trong v&ugrave;ng m&#7845;t s&oacute;ng. Ki&#7875;m tra router v&agrave; satellite c&oacute; c&#7893;ng multi-gig n&#7871;u &#273;&#432;&#7901;ng Internet ho&#7863;c NAS v&#432;&#7907;t 1 Gbps.</p>
+
+<h2>Khi n&agrave;o n&ecirc;n n&acirc;ng c&#7845;p?</h2>
+<p><strong>N&acirc;ng c&#7845;p c&oacute; &yacute; ngh&#297;a khi:</strong></p>
+<ul><li>C&oacute; nhi&#7873;u client Wi&#8209;Fi 7 ho&#7863;c d&#7921; ki&#7871;n thay thi&#7871;t b&#7883; trong v&agrave;i n&#259;m t&#7899;i.</li><li>&#272;&#432;&#7901;ng Internet tr&ecirc;n 1 Gbps ho&#7863;c th&#432;&#7901;ng truy&#7873;n d&#7919; li&#7879;u l&#7899;n v&#7899;i NAS n&#7897;i b&#7897;.</li><li>&#7912;ng d&#7909;ng c&#7847;n &#273;&#7897; tr&#7877; &#7893;n &#273;&#7883;nh nh&#432; game, XR, desktop t&#7915; xa v&agrave; realtime collaboration.</li><li>M&#7841;ng mesh kh&ocirc;ng d&acirc;y c&#7847;n backhaul m&#7841;nh h&#417;n.</li><li>Router c&#361; thi&#7871;u b&#7843;n v&aacute;, hay qu&aacute; t&#7843;i ho&#7863;c kh&ocirc;ng ph&#7911; s&oacute;ng &#273;&#7911;.</li></ul>
+<p><strong>Ch&#432;a c&#7847;n v&#7897;i khi:</strong> ph&#7847;n l&#7899;n client v&#7851;n l&agrave; Wi&#8209;Fi 5/6, Internet d&#432;&#7899;i 500 Mbps, v&#7845;n &#273;&#7873; ch&iacute;nh l&agrave; v&#7883; tr&iacute; router ho&#7863;c c&#259;n nh&agrave; c&#7847;n th&ecirc;m access point. N&acirc;ng c&#7845;p t&#7915; m&#7897;t h&#7879; th&#7889;ng Wi&#8209;Fi 6/6E &#273;&#432;&#7907;c thi&#7871;t k&#7871; t&#7889;t c&oacute; th&#7875; kh&ocirc;ng t&#7841;o kh&aacute;c bi&#7879;t d&#7877; nh&#7853;n th&#7845;y cho duy&#7879;t web v&agrave; streaming th&ocirc;ng th&#432;&#7901;ng.</p>
+
+<h2>C&aacute;ch ch&#7885;n router ho&#7863;c access point Wi&#8209;Fi 7</h2>
+<ol><li>Ki&#7875;m tra c&aacute;c b&#259;ng t&#7847;n &#273;&#432;&#7907;c h&#7895; tr&#7907;, kh&ocirc;ng ch&#7881; t&ecirc;n Wi&#8209;Fi 7.</li><li>Xem client quan tr&#7885;ng h&#7895; tr&#7907; 160 hay 320 MHz v&agrave; lo&#7841;i MLO n&agrave;o.</li><li>&#431;u ti&ecirc;n &iacute;t nh&#7845;t c&#7893;ng WAN/LAN 2.5 GbE n&#7871;u c&#7847;n t&#7889;c &#273;&#7897; multi-gig.</li><li>V&#7899;i mesh, ki&#7875;m tra backhaul, s&#7889; radio v&agrave; c&#7893;ng Ethernet t&#7915;ng node.</li><li>&#272;&aacute;nh gi&aacute; ch&iacute;nh s&aacute;ch c&#7853;p nh&#7853;t firmware, WPA3, guest network v&agrave; VLAN.</li><li>Ch&#7885;n s&#7889; access point theo m&#7863;t b&#7857;ng v&agrave; v&#7853;t li&#7879;u t&#432;&#7901;ng, kh&ocirc;ng theo qu&#7843;ng c&aacute;o di&#7879;n t&iacute;ch.</li></ol>
+
+<h2>&#272;o hi&#7879;u n&#259;ng &#273;&uacute;ng c&aacute;ch</h2>
+<p>&#272;o Internet b&#7857;ng speed test ch&#7881; ph&#7843;n &aacute;nh c&#7843; Wi&#8209;Fi l&#7851;n ISP. &#272;&#7875; &#273;&aacute;nh gi&aacute; m&#7841;ng n&#7897;i b&#7897;, d&ugrave;ng m&#7897;t server c&oacute; d&acirc;y multi-gig v&agrave; c&ocirc;ng c&#7909; nh&#432; iPerf3. &#272;o t&#7841;i c&ugrave;ng v&#7883; tr&iacute;, nhi&#7873;u th&#7901;i &#273;i&#7875;m v&agrave; ghi c&#7843; throughput, latency, jitter, packet loss.</p>
+<p>Ki&#7875;m tra ri&ecirc;ng 5 GHz, 6 GHz v&agrave; MLO n&#7871;u giao di&#7879;n cho ph&eacute;p. M&#7897;t ph&eacute;p &#273;o s&aacute;t router kh&ocirc;ng &#273;&#7841;i di&#7879;n cho ph&ograve;ng ng&#7911; sau hai b&#7913;c t&#432;&#7901;ng. V&#7899;i doanh nghi&#7879;p, kh&#7843;o s&aacute;t ph&#7893; v&agrave; thi&#7871;t k&#7871; channel/power quan tr&#7885;ng h&#417;n mua access point c&oacute; th&ocirc;ng s&#7889; cao nh&#7845;t.</p>
+
+<h2>Nh&#7919;ng hi&#7875;u l&#7847;m ph&#7893; bi&#7871;n</h2>
+<ul><li><strong>&ldquo;Wi&#8209;Fi 7 s&#7869; l&agrave;m Internet nhanh h&#417;n&rdquo;:</strong> kh&ocirc;ng v&#432;&#7907;t &#273;&#432;&#7907;c t&#7889;c &#273;&#7897; g&oacute;i c&#432;&#7899;c v&agrave; c&#7893;ng WAN.</li><li><strong>&ldquo;320 MHz lu&ocirc;n t&#7889;t h&#417;n&rdquo;:</strong> channel r&#7897;ng c&#7847;n ph&#7893; s&#7841;ch v&agrave; client t&#432;&#417;ng th&iacute;ch.</li><li><strong>&ldquo;MLO c&#7897;ng t&#7889;c &#273;&#7897; m&#7885;i b&#259;ng t&#7847;n&rdquo;:</strong> ch&#7871; &#273;&#7897; th&#7921;c t&#7871; ph&#7909; thu&#7897;c ph&#7847;n c&#7913;ng, driver v&agrave; khu v&#7921;c.</li><li><strong>&ldquo;&#272;&#7893;i router s&#7869; h&#7871;t &#273;i&#7875;m ch&#7871;t&rdquo;:</strong> v&#7883; tr&iacute;, c&ocirc;ng su&#7845;t v&agrave; s&#7889; access point m&#7899;i quy&#7871;t &#273;&#7883;nh v&ugrave;ng ph&#7911;.</li><li><strong>&ldquo;Thi&#7871;t b&#7883; c&#361; c&#361;ng nhanh nh&#432; Wi&#8209;Fi 7&rdquo;:</strong> t&#432;&#417;ng th&iacute;ch ng&#432;&#7907;c kh&ocirc;ng b&#7893; sung t&iacute;nh n&#259;ng radio m&#7899;i cho client c&#361;.</li></ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Gi&aacute; tr&#7883; l&#7899;n nh&#7845;t c&#7911;a Wi&#8209;Fi 7 n&#7857;m &#7903; MLO, kh&#7843; n&#259;ng d&ugrave;ng ph&#7893; linh ho&#7841;t v&agrave; &#273;&#7897; tr&#7877; &#273;&aacute;ng tin c&#7853;y h&#417;n, kh&ocirc;ng ch&#7881; &#7903; m&#7897;t con s&#7889; t&#7889;c &#273;&#7897;. N&acirc;ng c&#7845;p &#273;&aacute;ng gi&aacute; khi c&#7843; client, h&#7841; t&#7847;ng c&oacute; d&acirc;y, &#273;&#432;&#7901;ng Internet v&agrave; nhu c&#7847;u s&#7917; d&#7909;ng c&ugrave;ng t&#7853;n d&#7909;ng &#273;&#432;&#7907;c c&aacute;c c&#7843;i ti&#7871;n &#273;&oacute;. N&#7871;u v&#7845;n &#273;&#7873; hi&#7879;n t&#7841;i l&agrave; v&ugrave;ng ph&#7911; ho&#7863;c b&#7889; tr&iacute; sai, h&atilde;y s&#7917;a ki&#7871;n tr&uacute;c m&#7841;ng tr&#432;&#7899;c khi &#273;&#7893;i th&#7871; h&#7879; Wi&#8209;Fi.</p>
+
+<h2>Ngu&#7891;n tham kh&#7843;o</h2>
+<ul><li><a href="https://www.intel.com/content/www/us/en/products/details/wireless/wi-fi-7-series.html" target="_blank" rel="noopener noreferrer">Intel: Wi&#8209;Fi 7 technology</a></li><li><a href="https://www.qualcomm.com/wi-fi/wi-fi-7" target="_blank" rel="noopener noreferrer">Qualcomm: Wi&#8209;Fi 7 overview</a></li><li><a href="https://standards.ieee.org/ieee/802.11be/7516/" target="_blank" rel="noopener noreferrer">IEEE: 802.11be standard project</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

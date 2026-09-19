@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Operating Systems</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">linux-network-troubleshooting-ip-ss-dig-curl-tcpdump</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Linux Network Troubleshooting from Link to Application</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Linux network troubleshooting, ip command, ss, dig, curl, tcpdump, Linux DNS, Linux routing, Linux firewall</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Linux, Networking, Troubleshooting, DNS, TCP/IP, tcpdump, System Administration</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">A layer-by-layer Linux networking playbook covering interfaces, IP, routes, neighbors, DNS, sockets, firewalls, HTTP/TLS, MTU, packet captures, and container namespaces.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/linux-network-troubleshooting.jpg" alt="Linux Network Troubleshooting with ip, ss, dig, curl, and tcpdump" width="1440" height="810"></p><h1>Linux Network Troubleshooting with ip, ss, dig, curl, and tcpdump</h1><p><strong>&ldquo;Cannot reach the server&rdquo; can describe dozens of failures:</strong> a down interface, wrong address, missing default route, incorrect DNS, a service bound only to localhost, dropped packets, wrong TLS SNI, or a stalled upstream behind a proxy. Running random commands usually adds noise.</p>
+<p>A better method starts at lower layers, tests one hypothesis at a time, and compares observations from both client and server. This guide uses common Linux tools: <code>ip</code>, <code>ss</code>, <code>ping</code>, <code>dig</code>, <code>curl</code>, <code>openssl</code>, <code>traceroute</code>, and <code>tcpdump</code>.</p>
+
+<h2>Before changing anything: define the blast radius</h2>
+<p>Record who is affected, which service, when it began, and what changed. Determine whether it affects one or all clients, one port or all Internet access, IPv4 or IPv6, a host/VM/container, and external traffic or localhost too.</p>
+<p>Do not restart everything immediately. Restarts erase useful state, logs, and connections. Capture command output, timestamps, and configuration before modification.</p>
+
+<h2>1. Check interfaces and physical link</h2>
+<pre><code>ip -br link
+ip -br address
+ip -s link show dev eth0</code></pre>
+<p><code>UP</code> means administratively enabled; <code>LOWER_UP</code> means the kernel sees carrier. Without it, inspect cable, switch port, virtual NIC, hypervisor, or wireless association.</p>
+<p><code>ip -s link</code> exposes packet errors and drops. Counters rising quickly can indicate driver, duplex, MTU, buffering, or congestion problems. Compare two samples rather than one lifetime total.</p>
+<pre><code>sudo ethtool eth0
+sudo ethtool -S eth0</code></pre>
+<p>On physical servers, <code>ethtool</code> provides carrier, speed, duplex, and driver statistics. Some values are less meaningful on virtual interfaces.</p>
+
+<h2>2. Verify IP addressing</h2>
+<pre><code>ip address show
+ip -4 address show dev eth0
+ip -6 address show dev eth0</code></pre>
+<p>Confirm the address, prefix, interface, and tentative/deprecated status. A wrong prefix may make the host ARP for a remote destination instead of using its gateway.</p>
+<pre><code>networkctl status eth0
+journalctl -u systemd-networkd --since '-15 min'
+nmcli device show eth0</code></pre>
+<p>Use the commands matching the active network manager. Ubuntu Server commonly persists configuration through Netplan, backed by systemd-networkd or NetworkManager.</p>
+
+<h2>3. Inspect the route the kernel will use</h2>
+<pre><code>ip route show
+ip -6 route show
+ip route get 1.1.1.1
+ip route get 203.0.113.50 from 192.0.2.10</code></pre>
+<p><code>ip route get</code> shows the selected interface, gateway, and source address for a specific destination. Multi-homed systems may also use policy routing:</p>
+<pre><code>ip rule show
+ip route show table all</code></pre>
+<p>Look for overlapping routes, metrics, default gateways, and source-based rules. Asymmetric routing can bring a request through one interface and send the response through another, where a firewall or upstream drops it.</p>
+
+<h2>4. Inspect neighbors and the gateway</h2>
+<pre><code>ip neigh show
+ping -c 3 192.0.2.1
+arping -I eth0 -c 3 192.0.2.1</code></pre>
+<p><code>FAILED</code> or <code>INCOMPLETE</code> neighbor state means the host cannot resolve the MAC address on the local link. Causes include a wrong VLAN, prefix, gateway, hypervisor security group, or different broadcast domain.</p>
+<p>Blocked ping does not prove a host is down. Continue with the actual TCP port. But if the local gateway gives no ARP response, the problem is below DNS and TLS.</p>
+
+<h2>5. Separate networking from DNS</h2>
+<pre><code>resolvectl status
+resolvectl query api.example.com
+dig api.example.com A
+dig api.example.com AAAA
+dig @1.1.1.1 api.example.com A
+getent ahosts api.example.com</code></pre>
+<p><code>dig</code> queries DNS directly, while <code>getent</code> follows the Name Service Switch used by many applications, including hosts files and other resolvers. Compare them when application behavior disagrees with <code>dig</code>.</p>
+<p>Test both A and AAAA. Broken IPv6 can be isolated with:</p>
+<pre><code>curl -4 -v https://api.example.com/health
+curl -6 -v https://api.example.com/health</code></pre>
+<p>Do not directly edit generated <code>/etc/resolv.conf</code>; fix Netplan or the active network manager.</p>
+
+<h2>6. Is the service listening on the right address?</h2>
+<pre><code>sudo ss -lntup
+sudo ss -lntp 'sport = :443'
+sudo ss -lnup 'sport = :53'</code></pre>
+<ul>
+<li><code>127.0.0.1:8080</code> is reachable only from that network namespace.</li>
+<li><code>0.0.0.0:8080</code> listens on all IPv4 addresses.</li>
+<li><code>[::]:8080</code> listens on IPv6; dual-stack behavior depends on configuration.</li>
+</ul>
+<pre><code>systemctl status nginx --no-pager
+journalctl -u nginx --since '-15 min' --no-pager</code></pre>
+<p>An active service may still bind the wrong address, have a failed upstream, or lose workers.</p>
+
+<h2>7. Understand refused, timeout, and reset</h2>
+<ul>
+<li><strong>Connection refused:</strong> the host returned TCP RST, commonly due to no listener or firewall reject.</li>
+<li><strong>Timeout:</strong> no response, possibly due to routing, packet drop, security group, NAT, or a down host.</li>
+<li><strong>Connection reset:</strong> a peer forcibly closed an established connection; inspect application, proxy, and TLS logs.</li>
+<li><strong>No route to host:</strong> no route or an unreachable response, sometimes generated by a firewall reject.</li>
+</ul>
+<pre><code>nc -vz -w 3 api.example.com 443
+curl -v --connect-timeout 3 https://api.example.com/health</code></pre>
+<p><code>curl -v</code> separates DNS, selected IP, connect, TLS, and HTTP phases. Do not use <code>-k</code> as a TLS fix; it only hides certificate validation failures.</p>
+
+<h2>8. Check every firewall layer</h2>
+<pre><code>sudo ufw status verbose
+sudo nft list ruleset
+sudo iptables-save</code></pre>
+<p>Beyond the host, inspect cloud security groups, network ACLs, load balancers, physical firewalls, and Kubernetes policies. Never flush a production firewall over remote SSH. Make narrow changes and retain an out-of-band path.</p>
+<pre><code>sudo ufw logging medium
+journalctl -k --since '-10 min' | grep -i 'UFW'</code></pre>
+<p>Log selectively; logging every packet can create serious I/O.</p>
+
+<h2>9. Test HTTP and TLS with the correct hostname</h2>
+<pre><code>curl -v https://api.example.com/health
+curl --resolve api.example.com:443:203.0.113.20 \
+  https://api.example.com/health
+
+openssl s_client \
+  -connect 203.0.113.20:443 \
+  -servername api.example.com \
+  -showcerts &lt;/dev/null</code></pre>
+<p><code>--resolve</code> forces an IP while preserving SNI and Host, making it useful for testing an origin before DNS cutover. Calling <code>https://IP</code> can select the wrong certificate and virtual host.</p>
+<p>Inspect chain, SAN, expiry, SNI, and redirects. A 502/504 means client-to-proxy networking may be healthy; test proxy-to-upstream from the proxy's own namespace.</p>
+
+<h2>10. Measure path and packet loss carefully</h2>
+<pre><code>tracepath api.example.com
+traceroute -T -p 443 api.example.com
+mtr -rwzc 50 api.example.com</code></pre>
+<p>Intermediate routers may suppress ICMP while forwarding normally. An asterisk alone is not failure. Intermediate packet loss matters when it persists through later hops and the destination. Test the real TCP port and compare from multiple source networks.</p>
+
+<h2>11. MTU and Path MTU Discovery</h2>
+<p>An MTU mismatch can allow small pings while large HTTPS requests or uploads stall, especially across VPNs and overlays.</p>
+<pre><code>ip link show dev eth0
+tracepath api.example.com
+ping -M do -s 1472 -c 3 api.example.com</code></pre>
+<p>For IPv4, 1472 plus 28 bytes of headers corresponds to MTU 1500. IPv6 and tunnels differ. Reduce the payload to find the threshold, and verify the complete path before changing MTU. Blocking ICMP &ldquo;fragmentation needed&rdquo; can break PMTUD.</p>
+
+<h2>12. Use tcpdump to locate the packet</h2>
+<pre><code>sudo tcpdump -ni any host 203.0.113.20 and port 443
+sudo tcpdump -ni eth0 'tcp port 443 and (tcp[tcpflags] &amp; tcp-syn != 0)'
+sudo tcpdump -ni any port 53</code></pre>
+<ul>
+<li>SYN leaves with no SYN-ACK: path, drop, or nonresponsive server.</li>
+<li>SYN followed by RST: rejected port or no listener.</li>
+<li>No outgoing SYN: resolver, route, local firewall, or application issue.</li>
+<li>Server sends SYN-ACK but client never sees it: return path, asymmetry, or upstream firewall.</li>
+</ul>
+<pre><code>sudo timeout 30 tcpdump -ni any -s 0 \
+  -w /tmp/network-issue.pcap \
+  'host 203.0.113.20 and port 443'</code></pre>
+<p>Packet captures can contain credentials, cookies, and personal data. Limit filters and duration, protect the file, and delete it securely afterward.</p>
+
+<h2>13. Containers and network namespaces</h2>
+<p>Host tests are insufficient when the process runs in another namespace:</p>
+<pre><code>docker exec -it app sh
+ip address
+ip route
+cat /etc/resolv.conf
+getent hosts database
+nc -vz database 5432</code></pre>
+<p>Inside Docker, <code>127.0.0.1</code> refers to the container itself. Use Compose service names. Inspect membership, published ports, and namespaces:</p>
+<pre><code>docker network inspect app_default
+docker port app
+sudo nsenter -t PID -n ss -lntp</code></pre>
+<p>For Kubernetes, inspect pod DNS, Service selectors/endpoints, NetworkPolicy, and test from a debug pod in the same namespace.</p>
+
+<h2>14. Connection tracking and ephemeral ports</h2>
+<pre><code>ss -s
+ss -ant state time-wait | wc -l
+cat /proc/sys/net/ipv4/ip_local_port_range
+sudo conntrack -S
+dmesg | grep -i conntrack</code></pre>
+<p>High traffic can exhaust conntrack entries, ports, or sockets. Do not copy random TIME_WAIT/sysctl tweaks. First find connection churn, missing keep-alive, NAT bottlenecks, or incorrect pools; then capacity-plan limits.</p>
+
+<h2>15. Change remote network configuration safely</h2>
+<pre><code>sudo netplan generate
+sudo netplan try</code></pre>
+<p><code>netplan try</code> requests confirmation and can roll back on lost connectivity. Critical servers still need console or out-of-band access. Back up configuration, validate YAML, and make one small change at a time.</p>
+
+<h2>Ten-minute playbook</h2>
+<ol>
+<li><code>ip -br link</code> and <code>ip -br addr</code>: link and address.</li>
+<li><code>ip route get DEST</code>: selected route, source, and interface.</li>
+<li><code>ip neigh</code> and gateway reachability.</li>
+<li><code>dig</code> plus <code>getent</code>: DNS versus system resolver.</li>
+<li><code>ss -lntup</code>: listener address and port.</li>
+<li><code>nc</code>/<code>curl -v</code>: refused, timeout, TLS, or HTTP.</li>
+<li>Host, cloud, and container firewalls.</li>
+<li><code>curl --resolve</code>: isolate DNS from HTTPS/SNI.</li>
+<li><code>tcpdump</code> on client and server: locate the stopping point.</li>
+<li>Change only after forming a hypothesis and rollback plan.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>Effective Linux network troubleshooting is ordered elimination: link, IP, route, neighbor, DNS, socket, firewall, transport, TLS, then application. Each tool answers a different question; no single command proves that &ldquo;the network is fine.&rdquo; Testing from the correct namespace, observing both directions, and preserving evidence before changes turns apparently random incidents into a specific broken point.</p>
+
+<h2>References</h2>
+<ul><li><a href="https://ubuntu.com/server/docs/explanation/networking/networking-key-concepts/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Networking key concepts</a></li><li><a href="https://ubuntu.com/server/docs/explanation/networking/configuring-networks/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Configuring networks</a></li><li><a href="https://ubuntu.com/server/docs/how-to/networking/install-dns/" target="_blank" rel="noopener noreferrer">Ubuntu Server: DNS testing</a></li><li><a href="https://ubuntu.com/server/docs/how-to/security/firewalls/" target="_blank" rel="noopener noreferrer">Ubuntu Server: Firewalls</a></li></ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>
