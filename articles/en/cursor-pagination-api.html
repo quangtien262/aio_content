@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Programming</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">api-cursor-pagination-stable-efficient-pages</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Designing Stable API Cursor Pagination</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">cursor pagination, keyset pagination, API pagination, PostgreSQL, REST API, database index, backend performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Pagination, PostgreSQL, Backend, REST API, Database, Performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Design production cursor pagination for REST APIs with total ordering, keyset queries, indexes, opaque cursors, bidirectional navigation, filters, mutations, and tests.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/cursor-pagination-api.jpg" alt="API Cursor Pagination: Stable Pages While Data Keeps Changing" width="1440" height="810"></p><h1>API Cursor Pagination: Stable Pages While Data Keeps Changing</h1><p><strong><code>OFFSET 100000</code> looks harmless, but the database may still have to find and discard a large number of records before returning a few dozen.</strong> While a user moves between pages, new data can also arrive at the front, causing an item to appear twice or disappear from the reading journey.</p>
+<p>Cursor pagination, also called keyset pagination, does not ask how many rows to skip. It asks where to continue in a stable ordering. This model fits feeds, transaction histories, audit logs, order lists, and APIs whose data is large or changes frequently.</p>
+
+<h2>How do offset and cursor pagination differ?</h2>
+<table><thead><tr><th>Criterion</th><th>Offset pagination</th><th>Cursor pagination</th></tr></thead><tbody>
+<tr><td>Request</td><td><code>?page=200&amp;limit=50</code></td><td><code>?after=opaque-token&amp;limit=50</code></td></tr>
+<tr><td>Query model</td><td>Skip N rows</td><td>Continue from sort keys</td></tr>
+<tr><td>Deep pages</td><td>Can get progressively slower</td><td>Usually stable with a matching index</td></tr>
+<tr><td>Changing data</td><td>Prone to duplicates and gaps</td><td>More stable relative to key ordering</td></tr>
+<tr><td>Jump to page 73</td><td>Easy</td><td>Not the primary goal</td></tr>
+</tbody></table>
+<p>Offset remains reasonable for small datasets, admin tables requiring numbered jumps, or static reports. Cursor pagination is not the default for every screen; it exchanges random page access for continuity and predictable work.</p>
+
+<h2>1. Start with a total order</h2>
+<p>A cursor is correct only when every record has one deterministic position. Sorting by <code>created_at DESC</code> is insufficient because multiple rows can share a timestamp. Add a unique tie-breaker, usually the primary key:</p>
+<pre><code>ORDER BY created_at DESC, id DESC</code></pre>
+<p>The pair <code>(created_at, id)</code> creates a total order when <code>id</code> is unique and both values remain stable throughout a record's lifetime. Avoid a mutable field such as <code>updated_at</code> when records moving during traversal would be undesirable.</p>
+<p>SQL does not guarantee row order without <code>ORDER BY</code>. Results that appear to follow a primary key in development may change with a different query plan or production dataset.</p>
+
+<h2>2. Match the keyset predicate to sort direction</h2>
+<p>The first page fetches the newest orders:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+ORDER BY created_at DESC, id DESC
+LIMIT :limit_plus_one;</code></pre>
+<p>If the last record has <code>created_at = 2026-09-19T08:30:00Z</code> and <code>id = 9102</code>, the next page compares the same key set:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+  AND (created_at, id) &lt; (:cursor_created_at, :cursor_id)
+ORDER BY created_at DESC, id DESC
+LIMIT :limit_plus_one;</code></pre>
+<p>PostgreSQL compares row constructors left to right. The equivalent expanded predicate is:</p>
+<pre><code>created_at &lt; :cursor_created_at
+OR (created_at = :cursor_created_at AND id &lt; :cursor_id)</code></pre>
+<p>The operator must change with sort direction. Mixed <code>ASC</code>/<code>DESC</code> orders, <code>NULL</code> handling, and expression-based sorts need specific design and tests; do not apply one <code>&lt;</code> rule mechanically.</p>
+
+<h2>3. Match the index to filters and ordering</h2>
+<p>The query is efficient when the database can walk a B-tree index instead of sorting or scanning most of the table:</p>
+<pre><code>CREATE INDEX orders_tenant_created_id_idx
+ON orders (tenant_id, created_at DESC, id DESC);</code></pre>
+<p><code>tenant_id</code> comes first because every query scopes by tenant; the remaining columns match the cursor order. If the API always filters by <code>status</code>, evaluate another index based on real selectivity and workload instead of adding every filter to one oversized index.</p>
+<p>Use <code>EXPLAIN (ANALYZE, BUFFERS)</code> with production-like data. An index that looks correct may still be skipped when a query returns much of the table, statistics are stale, or parameter types do not match.</p>
+
+<h2>4. Keep cursors opaque and verifiable</h2>
+<p>Clients do not need to know that a cursor contains a timestamp and ID. The server can serialize a versioned payload and base64url-encode it:</p>
+<pre><code>{
+  "v": 1,
+  "created_at": "2026-09-19T08:30:00.000000Z",
+  "id": 9102,
+  "filter": "sha256:..."
+}</code></pre>
+<p>Base64 is encoding, not security. If cursor manipulation could cross an access boundary or create abnormal queries, sign the payload with HMAC and verify it using constant-time comparison. Do not place sensitive data in a cursor; use authenticated encryption or server-side state when secrecy is required.</p>
+<p>The <code>v</code> field allows future format changes. Decoders should cap token size, validate types and dates, and reject unsupported versions with a clear 400 error instead of allowing parser or database failures to become 500 responses.</p>
+
+<h2>5. Bind cursors to filters and scope</h2>
+<p>A cursor generated for <code>status=paid</code> should not be reused with <code>status=pending</code>. Likewise, a cursor from tenant A must never open tenant B's data.</p>
+<p>Either include normalized filters and scope in the signed payload or store a filter hash and compare it with the current request. Tenant or user scope must still come from the authenticated principal and always appear in the query's <code>WHERE</code>. Cursor integrity does not replace authorization.</p>
+
+<h2>6. Design a client-friendly response</h2>
+<pre><code>{
+  "data": [ ... ],
+  "page": {
+    "next_cursor": "eyJ2IjoxLC4uLn0.signature",
+    "previous_cursor": null,
+    "has_more": true
+  }
+}</code></pre>
+<p>Fetch <code>limit + 1</code> records to determine whether another page exists, then return only <code>limit</code>. This avoids a <code>COUNT(*)</code> on every request. Total counts may be expensive and quickly stale; provide them only when the product truly needs them, perhaps through a separate endpoint or approximation.</p>
+<p>Enforce page-size limits on the server, for example 25 by default and 100 maximum. A huge client-provided limit can overload database reads, memory, and serialization.</p>
+
+<h2>7. Support previous pages without reversing the UI</h2>
+<p>To move backward, a cursor commonly carries the first record key of the current page. For a descending display, query records greater than that key in ascending order, limit the result, then reverse it before returning so the UI remains descending:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+  AND (created_at, id) &gt; (:cursor_created_at, :cursor_id)
+ORDER BY created_at ASC, id ASC
+LIMIT :limit_plus_one;</code></pre>
+<p>Do not use one ambiguous token for both directions. Issue separate <code>next_cursor</code> and <code>previous_cursor</code> values or encode and strictly validate direction.</p>
+
+<h2>8. What happens when data changes?</h2>
+<p>Cursor pagination is more stable than offset pagination, but it does not automatically create a snapshot:</p>
+<ul>
+<li><strong>New records at the front:</strong> a reader moving toward older data usually is not displaced; they simply have not seen the new items.</li>
+<li><strong>Deleted records:</strong> traversal continues from key values without repairing an offset position.</li>
+<li><strong>Changed sort keys:</strong> a record may reappear or be missed because it moved.</li>
+<li><strong>Changed filter fields:</strong> a record can enter or leave the result set between requests.</li>
+</ul>
+<p>Live semantics are often acceptable for feeds. Exports and workflows that must read one immutable set need a snapshot boundary such as <code>created_at &lt;= :as_of</code>, an appropriate transaction snapshot, or a materialized export job. A cursor does not replace isolation.</p>
+
+<h2>9. Timestamps, IDs, and NULL values create traps</h2>
+<ul>
+<li>Preserve timestamp precision during encoding and decoding; rounding microseconds can skip records.</li>
+<li>Do not assume random UUIDs represent time; use them as tie-breakers, not substitutes for a time key.</li>
+<li>For nullable sort columns, define <code>NULLS FIRST/LAST</code> and matching predicates or use a normalized non-null column.</li>
+<li>Text collation can change ordering across locales or versions; text cursors need a stable contract and careful migrations.</li>
+<li>Avoid floating-point cursor keys when values may be recomputed.</li>
+</ul>
+
+<h2>10. Error contracts and observability</h2>
+<p>An expired cursor, bad signature, filter mismatch, or unsupported version should return 400 with a machine-readable code. Do not expose stack traces or signature details. When an anchor row has been deleted, a valid keyset query can still continue because it uses key values rather than requiring the row to exist.</p>
+<p>Monitor latency by estimated depth, rows read versus returned, invalid-cursor rates, page sizes, query plans, and requests hitting the limit. Decoded cursor payloads may contain identifiers; log version, direction, and a shortened hash rather than the entire token.</p>
+
+<h2>11. Required test scenarios</h2>
+<ol>
+<li>Records sharing a timestamp appear exactly once because of the tie-breaker.</li>
+<li>Inserting a new record between requests does not repeat an item on the next page.</li>
+<li>Deleting the previous page's last record does not break continuation.</li>
+<li>A cursor changed by one byte is rejected.</li>
+<li>A cursor from another filter or tenant is not accepted.</li>
+<li>Moving next and then previous returns the same window and order.</li>
+<li>Zero, negative, and excessive limits follow the documented policy.</li>
+<li>Timestamp precision survives an encode/decode round trip.</li>
+<li>A deep traversal still uses the expected index on a large dataset.</li>
+</ol>
+
+<h2>Production checklist</h2>
+<ul>
+<li>The order has a unique tie-breaker and stable sort keys.</li>
+<li>The keyset predicate exactly matches order and direction.</li>
+<li>The composite index begins with important scope/filter columns, then sort keys.</li>
+<li>The cursor is opaque, versioned, size-limited, and signed when appropriate.</li>
+<li>Authorization is always enforced independently of the cursor.</li>
+<li>The response uses <code>limit + 1</code> and caps page size.</li>
+<li>Insert, update, delete, and snapshot semantics are documented.</li>
+<li>Next/previous navigation, filter mismatch, and invalid cursors are tested.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Cursor pagination is not merely the last ID encoded in base64. Production design starts with a total order, a directionally correct predicate, and a matching index; only then come tokens, signatures, filters, bidirectional navigation, and mutation semantics. Done well, an API can traverse millions of records with steadier cost and fewer duplicates or gaps than offset pagination.</p>
+
+<h2>References</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/current/queries-limit.html" target="_blank" rel="noopener noreferrer">PostgreSQL: LIMIT and OFFSET</a></li>
+<li><a href="https://www.postgresql.org/docs/current/indexes-ordering.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Indexes and ORDER BY</a></li>
+<li><a href="https://www.postgresql.org/docs/current/functions-comparisons.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Row Constructor Comparison</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

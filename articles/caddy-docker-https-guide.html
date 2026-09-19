@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>H&#432;&#7899;ng d&#7851;n</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">H&#432;&#7899;ng d&#7851;n Docker, Caddy v&agrave; HTTPS t&#7921; &#273;&#7897;ng</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Caddy Docker, HTTPS t&#7921; &#273;&#7897;ng, reverse proxy, Docker Compose, TLS, tri&#7875;n khai &#7913;ng d&#7909;ng, Caddyfile</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Caddy, Docker, HTTPS, Reverse Proxy, Docker Compose, DevOps, TLS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n &#273;&#432;a &#7913;ng d&#7909;ng Docker l&ecirc;n Internet qua Caddy reverse proxy, c&#7845;p v&agrave; gia h&#7841;n HTTPS t&#7921; &#273;&#7897;ng, c&#7845;u h&igrave;nh Compose, DNS, firewall, reload v&agrave; x&#7917; l&yacute; l&#7895;i.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/caddy-docker-https-guide.jpg" alt="Tri&#7875;n khai &#7913;ng d&#7909;ng Docker v&#7899;i Caddy v&agrave; HTTPS t&#7921; &#273;&#7897;ng" width="1440" height="810"></p><h1>Tri&#7875;n khai &#7913;ng d&#7909;ng Docker v&#7899;i Caddy v&agrave; HTTPS t&#7921; &#273;&#7897;ng</h1><p><strong>M&#7897;t &#7913;ng d&#7909;ng ch&#7841;y t&#7889;t trong container ch&#432;a &#273;&#7891;ng ngh&#297;a &#273;&atilde; s&#7861;n s&agrave;ng ph&#7909;c v&#7909; Internet.</strong> B&#7841;n c&ograve;n c&#7847;n domain, TLS, chuy&#7875;n h&#432;&#7899;ng HTTP sang HTTPS, l&#432;u ch&#7913;ng th&#432; b&#7873;n v&#7919;ng v&agrave; m&#7897;t reverse proxy &#273;&#7913;ng tr&#432;&#7899;c &#7913;ng d&#7909;ng.</p>
+<p>Trong h&#432;&#7899;ng d&#7851;n n&agrave;y, Caddy nh&#7853;n traffic c&ocirc;ng khai tr&ecirc;n c&#7893;ng 80/443, t&#7921; qu&#7843;n l&yacute; ch&#7913;ng th&#432; HTTPS cho domain v&agrave; chuy&#7875;n request t&#7899;i &#7913;ng d&#7909;ng qua m&#7841;ng n&#7897;i b&#7897; Docker Compose. K&#7871;t qu&#7843; l&agrave; ch&#7881; Caddy l&#7897; ra Internet; c&#7893;ng &#7913;ng d&#7909;ng kh&ocirc;ng c&#7847;n publish tr&#7921;c ti&#7871;p l&ecirc;n m&aacute;y ch&#7911;.</p>
+
+<h2>M&ocirc; h&igrave;nh tri&#7875;n khai</h2>
+<pre><code>Internet
+   |
+   |  HTTP :80 / HTTPS :443
+   v
+Caddy container
+   |
+   |  Docker network: http://app:8080
+   v
+Application container</code></pre>
+<p>Caddy h&#7895; tr&#7907; Automatic HTTPS khi site address l&agrave; m&#7897;t hostname h&#7907;p l&#7879;. V&#7899;i domain c&ocirc;ng khai, DNS ph&#7843;i tr&#7887; &#273;&uacute;ng m&aacute;y ch&#7911; v&agrave; c&#7893;ng 80/443 ph&#7843;i t&#7899;i &#273;&#432;&#7907;c Caddy &#273;&#7875; qu&aacute; tr&igrave;nh c&#7845;p ch&#7913;ng th&#432; v&agrave; ph&#7909;c v&#7909; traffic ho&#7841;t &#273;&#7897;ng.</p>
+
+<h2>1. &#272;i&#7873;u ki&#7879;n chu&#7849;n b&#7883;</h2>
+<ul>
+<li>M&#7897;t m&aacute;y ch&#7911; Linux c&oacute; Docker Engine v&agrave; Docker Compose plugin.</li>
+<li>M&#7897;t domain ho&#7863;c subdomain b&#7841;n qu&#7843;n l&yacute;, v&iacute; d&#7909; <code>app.example.com</code>.</li>
+<li>Quy&#7873;n ch&#7881;nh DNS v&agrave; firewall/security group.</li>
+<li>&#7912;ng d&#7909;ng c&oacute; image container v&agrave; l&#7855;ng nghe HTTP tr&ecirc;n <code>0.0.0.0:8080</code>.</li>
+</ul>
+<p>Ki&#7875;m tra Docker:</p>
+<pre><code>docker version
+docker compose version</code></pre>
+<p>V&iacute; d&#7909; d&ugrave;ng Linux shell. Tr&ecirc;n Windows ho&#7863;c macOS, c&uacute; ph&aacute;p &#273;&#432;&#7901;ng d&#7851;n/quy&#7873;n file c&oacute; th&#7875; kh&aacute;c, nh&#432;ng nguy&ecirc;n t&#7855;c network v&agrave; volume c&#7911;a Compose v&#7851;n gi&#7889;ng nhau.</p>
+
+<h2>2. Tr&#7887; DNS v&#7873; m&aacute;y ch&#7911;</h2>
+<p>T&#7841;o record <code>A</code> cho IPv4 v&agrave; <code>AAAA</code> ch&#7881; khi m&aacute;y ch&#7911; th&#7921;c s&#7921; ph&#7909;c v&#7909; IPv6:</p>
+<pre><code>app.example.com  A     203.0.113.10
+app.example.com  AAAA  2001:db8::10</code></pre>
+<p>C&aacute;c &#273;&#7883;a ch&#7881; tr&ecirc;n ch&#7881; l&agrave; d&#7843;i v&iacute; d&#7909;, ph&#7843;i thay b&#7857;ng IP th&#7853;t. Sau khi DNS c&#7853;p nh&#7853;t, x&aacute;c minh t&#7915; m&#7897;t m&#7841;ng b&ecirc;n ngo&agrave;i:</p>
+<pre><code>dig +short app.example.com A
+dig +short app.example.com AAAA</code></pre>
+<p>M&#7897;t record AAAA tr&#7887; sai th&#432;&#7901;ng g&acirc;y hi&#7879;n t&#432;&#7907;ng m&aacute;y d&ugrave;ng IPv6 kh&ocirc;ng truy c&#7853;p &#273;&#432;&#7907;c d&ugrave; IPv4 ho&#7841;t &#273;&#7897;ng. N&#7871;u ch&#432;a c&#7845;u h&igrave;nh IPv6 end-to-end, &#273;&#7915;ng t&#7841;o AAAA ch&#7881; &#273;&#7875; &ldquo;&#273;&#7911; b&#7897;&rdquo;.</p>
+
+<h2>3. M&#7903; c&#7893;ng m&#7841;ng c&#7847;n thi&#7871;t</h2>
+<p>Cho ph&eacute;p inbound TCP 80 v&agrave; TCP 443. N&#7871;u mu&#7889;n HTTP/3, cho ph&eacute;p th&ecirc;m UDP 443. Gi&#7919; SSH gi&#7899;i h&#7841;n theo IP qu&#7843;n tr&#7883; khi c&oacute; th&#7875;.</p>
+<pre><code># V&iacute; d&#7909; v&#7899;i UFW; ki&#7875;m tra ch&iacute;nh s&aacute;ch hi&#7879;n t&#7841;i tr&#432;&#7899;c khi &aacute;p d&#7909;ng
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 443/udp
+sudo ufw status</code></pre>
+<p>Cloud firewall/security group v&agrave; firewall trong h&#7879; &#273;i&#7873;u h&agrave;nh l&agrave; hai l&#7899;p ri&ecirc;ng. Router/NAT c&#361;ng ph&#7843;i forward &#273;&uacute;ng n&#7871;u m&aacute;y ch&#7911; n&#7857;m sau m&#7841;ng ri&ecirc;ng. Kh&ocirc;ng t&#7855;t firewall to&agrave;n b&#7897; &#273;&#7875; x&#7917; l&yacute; nhanh l&#7895;i c&#7845;p ch&#7913;ng th&#432;.</p>
+
+<h2>4. T&#7841;o c&#7845;u tr&uacute;c d&#7921; &aacute;n</h2>
+<pre><code>mkdir -p caddy-docker/caddy
+cd caddy-docker
+touch compose.yaml caddy/Caddyfile .env</code></pre>
+<p>&#272;&#7863;t domain v&agrave;o <code>.env</code>:</p>
+<pre><code>APP_DOMAIN=app.example.com</code></pre>
+<p><code>.env</code> trong v&iacute; d&#7909; kh&ocirc;ng c&#7847;n ch&#7913;a b&iacute; m&#7853;t, nh&#432;ng th&oacute;i quen t&#7889;t l&agrave; kh&ocirc;ng commit file m&ocirc;i tr&#432;&#7901;ng production. N&#7871;u &#7913;ng d&#7909;ng c&#7847;n secret, d&ugrave;ng secret manager ho&#7863;c c&#417; ch&#7871; secret ph&ugrave; h&#7907;p thay v&igrave; nh&uacute;ng v&agrave;o image hay Caddyfile.</p>
+
+<h2>5. Vi&#7871;t compose.yaml</h2>
+<pre><code>services:
+  app:
+    image: registry.example.com/my-app:&lt;approved-version&gt;
+    restart: unless-stopped
+    expose:
+      - "8080"
+    networks:
+      - web
+
+  caddy:
+    image: caddy:&lt;approved-version&gt;-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?APP_DOMAIN is required}
+    volumes:
+      - ./caddy:/etc/caddy:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+
+networks:
+  web:
+
+volumes:
+  caddy_data:
+  caddy_config:</code></pre>
+<p>Thay <code>&lt;approved-version&gt;</code> b&#7857;ng version ho&#7863;c digest &#273;&atilde; &#273;&#432;&#7907;c ki&#7875;m th&#7917;; kh&ocirc;ng &#273;&#7875; tag <code>latest</code> tr&ocirc;i t&#7921; do tr&ecirc;n production. Image &#7913;ng d&#7909;ng ph&#7843;i l&#7855;ng nghe c&#7893;ng 8080 b&ecirc;n trong container.</p>
+<p><code>expose</code> m&ocirc; t&#7843; c&#7893;ng n&#7897;i b&#7897; nh&#432;ng kh&ocirc;ng publish n&oacute; l&ecirc;n host. Hai service c&ugrave;ng network <code>web</code> c&oacute; th&#7875; t&igrave;m nhau b&#7857;ng service name, n&ecirc;n Caddy g&#7885;i <code>app:8080</code>, kh&ocirc;ng g&#7885;i IP container v&agrave; kh&ocirc;ng d&ugrave;ng <code>localhost:8080</code>.</p>
+<p>Volume <code>caddy_data</code> &#273;&#7863;c bi&#7879;t quan tr&#7885;ng v&igrave; ch&#7913;a ch&#7913;ng th&#432;, private key v&agrave; state c&#7847;n thi&#7871;t. Kh&ocirc;ng coi n&oacute; l&agrave; cache v&agrave; kh&ocirc;ng x&oacute;a khi ch&#432;a hi&#7875;u t&aacute;c &#273;&#7897;ng.</p>
+
+<h2>6. Vi&#7871;t Caddyfile</h2>
+<pre><code>{$APP_DOMAIN} {
+    encode zstd gzip
+
+    reverse_proxy app:8080
+
+    log {
+        output stdout
+        format console
+    }
+}</code></pre>
+<p>Ch&#7881; c&#7847;n hostname trong site block, Caddy s&#7869; k&iacute;ch ho&#7841;t Automatic HTTPS, l&#7845;y/gia h&#7841;n ch&#7913;ng th&#432; v&agrave; thi&#7871;t l&#7853;p chuy&#7875;n h&#432;&#7899;ng HTTP sang HTTPS. <code>reverse_proxy</code> gi&#7919; method v&agrave; URI tr&#7915; khi c&oacute; rewrite.</p>
+<p>Kh&ocirc;ng th&ecirc;m <code>tls_insecure_skip_verify</code> &#273;&#7875; &ldquo;s&#7917;a nhanh&rdquo; upstream HTTPS. Trong m&ocirc; h&igrave;nh m&#7897;t Docker network ri&ecirc;ng, HTTP t&#7915; Caddy t&#7899;i app th&#432;&#7901;ng &#273;&#7911;. N&#7871;u traffic upstream &#273;i qua m&#7841;ng kh&ocirc;ng tin c&#7853;y, c&#7845;u h&igrave;nh TLS/mTLS &#273;&uacute;ng c&aacute;ch v&agrave; trust CA c&#7909; th&#7875;.</p>
+
+<h2>7. Ki&#7875;m tra c&#7845;u h&igrave;nh tr&#432;&#7899;c khi ch&#7841;y</h2>
+<p>Compose c&oacute; th&#7875; render c&#7845;u h&igrave;nh cu&#7889;i c&ugrave;ng v&agrave; ph&aacute;t hi&#7879;n bi&#7871;n thi&#7871;u:</p>
+<pre><code>docker compose config</code></pre>
+<p>Ki&#7875;m tra Caddyfile b&#7857;ng ch&iacute;nh image &#273;&atilde; ch&#7885;n:</p>
+<pre><code>docker compose run --rm --no-deps caddy \
+  caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile</code></pre>
+<p>N&#7871;u d&ugrave;ng ACME staging trong giai &#273;o&#7841;n th&#7917; nghi&#7879;m, nh&#7899; b&#7887; endpoint staging tr&#432;&#7899;c khi ph&#7909;c v&#7909; th&#7853;t; ch&#7913;ng th&#432; staging kh&ocirc;ng &#273;&#432;&#7907;c tr&igrave;nh duy&#7879;t tin c&#7853;y. Tr&aacute;nh l&#7863;p &#273;i l&#7863;p l&#7841;i thao t&aacute;c xin ch&#7913;ng th&#432; production khi DNS/firewall c&ograve;n sai v&igrave; CA c&oacute; rate limit.</p>
+
+<h2>8. Kh&#7903;i &#273;&#7897;ng v&agrave; theo d&otilde;i log</h2>
+<pre><code>docker compose up -d
+docker compose ps
+docker compose logs --tail=100 caddy
+docker compose logs --tail=100 app</code></pre>
+<p>Trong log Caddy, t&igrave;m th&ocirc;ng tin l&#7845;y ch&#7913;ng th&#432; ho&#7863;c l&#7895;i challenge. Trong log app, x&aacute;c nh&#7853;n service &#273;&atilde; l&#7855;ng nghe &#7903; <code>0.0.0.0:8080</code>, kh&ocirc;ng ch&#7881; <code>127.0.0.1</code> b&ecirc;n trong container.</p>
+<p><code>depends_on</code> ch&#7881; s&#7855;p x&#7871;p th&#7913; t&#7921; kh&#7903;i &#273;&#7897;ng c&#417; b&#7843;n, kh&ocirc;ng ch&#7913;ng minh &#7913;ng d&#7909;ng &#273;&atilde; s&#7861;n s&agrave;ng. &#7902; h&#7879; th&#7889;ng quan tr&#7885;ng, th&ecirc;m healthcheck cho app v&agrave; thi&#7871;t k&#7871; app kh&#7903;i &#273;&#7897;ng/reconnect an to&agrave;n. Khi upstream t&#7841;m ch&#432;a s&#7861;n s&agrave;ng, Caddy c&oacute; th&#7875; tr&#7843; 502 r&#7891;i ho&#7841;t &#273;&#7897;ng l&#7841;i khi app l&ecirc;n.</p>
+
+<h2>9. X&aacute;c minh t&#7915; b&ecirc;n ngo&agrave;i</h2>
+<pre><code>curl -I http://app.example.com
+curl -I https://app.example.com
+curl -v https://app.example.com/health</code></pre>
+<p>K&#7923; v&#7885;ng request HTTP &#273;&#432;&#7907;c redirect sang HTTPS, ch&#7913;ng th&#432; kh&#7899;p hostname v&agrave; endpoint &#7913;ng d&#7909;ng tr&#7843; &#273;&uacute;ng status. Ki&#7875;m tra th&ecirc;m b&#7857;ng tr&igrave;nh duy&#7879;t tr&ecirc;n m&#7897;t thi&#7871;t b&#7883;/m&#7841;ng kh&aacute;c &#273;&#7875; tr&aacute;nh k&#7871;t qu&#7843; b&#7883; &#7843;nh h&#432;&#7903;ng b&#7903;i DNS cache ho&#7863;c file hosts c&#7909;c b&#7897;.</p>
+<p>Kh&ocirc;ng d&ugrave;ng <code>curl -k</code> trong b&#432;&#7899;c x&aacute;c minh production; t&ugrave;y ch&#7885;n &#273;&oacute; b&#7887; qua l&#7895;i ch&#7913;ng th&#432; m&agrave; b&#7841;n &#273;ang c&#7847;n ph&aacute;t hi&#7879;n.</p>
+
+<h2>10. Reload c&#7845;u h&igrave;nh kh&ocirc;ng d&#7915;ng container</h2>
+<p>Sau khi s&#7917;a Caddyfile, validate r&#7891;i graceful reload:</p>
+<pre><code>docker compose exec -w /etc/caddy caddy \
+  caddy validate --config Caddyfile --adapter caddyfile
+
+docker compose exec -w /etc/caddy caddy caddy reload</code></pre>
+<p>Mount c&#7843; th&#432; m&#7909;c <code>./caddy</code> v&agrave;o <code>/etc/caddy</code> gi&uacute;p tr&aacute;nh m&#7897;t s&#7889; editor thay inode khi&#7871;n bind mount m&#7897;t file &#273;&#417;n kh&ocirc;ng th&#7845;y n&#7897;i dung m&#7899;i. Reload t&#7889;t h&#417;n restart v&igrave; Caddy c&oacute; th&#7875; &aacute;p d&#7909;ng config m&agrave; kh&ocirc;ng ch&#7911; &#273;&#7897;ng l&agrave;m gi&aacute;n &#273;o&#7841;n k&#7871;t n&#7889;i &#273;ang ph&#7909;c v&#7909;.</p>
+
+<h2>11. C&#7853;p nh&#7853;t image c&oacute; ki&#7875;m so&aacute;t</h2>
+<ol>
+<li>&#272;&#7885;c release notes v&agrave; ch&#7885;n version/digest m&#7899;i trong m&ocirc;i tr&#432;&#7901;ng test.</li>
+<li>Pull image, validate config v&agrave; ch&#7841;y smoke test.</li>
+<li>C&#7853;p nh&#7853;t production theo c&#7917;a s&#7893; thay &#273;&#7893;i.</li>
+<li>X&aacute;c minh HTTPS, health endpoint v&agrave; log sau c&#7853;p nh&#7853;t.</li>
+</ol>
+<pre><code>docker compose pull
+docker compose up -d
+docker compose ps
+docker compose logs --since=10m caddy</code></pre>
+<p><code>docker compose down</code> kh&ocirc;ng x&oacute;a named volume m&#7863;c &#273;&#7883;nh, nh&#432;ng <code>down -v</code> s&#7869; x&oacute;a volume. Kh&ocirc;ng d&ugrave;ng <code>-v</code> tr&ecirc;n production n&#7871;u ch&#432;a c&oacute; ch&#7911; &#273;&iacute;ch v&agrave; backup.</p>
+
+<h2>12. Sao l&#432;u nh&#7919;ng g&igrave;?</h2>
+<ul>
+<li><code>compose.yaml</code>, Caddyfile v&agrave; t&agrave;i li&#7879;u DNS/firewall.</li>
+<li>D&#7919; li&#7879;u &#7913;ng d&#7909;ng/database theo quy tr&igrave;nh backup ri&ecirc;ng.</li>
+<li>Volume <code>caddy_data</code> n&#7871;u mu&#7889;n gi&#7919; state/certificates khi di chuy&#7875;n m&aacute;y.</li>
+</ul>
+<p>Private key n&#7857;m trong d&#7919; li&#7879;u Caddy, v&igrave; v&#7853;y backup ph&#7843;i &#273;&#432;&#7907;c m&atilde; h&oacute;a v&agrave; gi&#7899;i h&#7841;n quy&#7873;n. N&#7871;u m&#7845;t volume, Caddy th&#432;&#7901;ng c&oacute; th&#7875; xin ch&#7913;ng th&#432; l&#7841;i khi DNS/c&#7893;ng &#273;&uacute;ng, nh&#432;ng vi&#7879;c xin l&#7841;i h&agrave;ng lo&#7841;t c&oacute; th&#7875; g&#7863;p rate limit v&agrave; kh&ocirc;ng thay th&#7871; chi&#7871;n l&#432;&#7907;c backup.</p>
+
+<h2>13. X&#7917; l&yacute; l&#7895;i th&#432;&#7901;ng g&#7863;p</h2>
+<h3>Kh&ocirc;ng l&#7845;y &#273;&#432;&#7907;c ch&#7913;ng th&#432;</h3>
+<ul>
+<li>DNS ch&#432;a tr&#7887; &#273;&uacute;ng IP ho&#7863;c c&ograve;n record AAAA sai.</li>
+<li>C&#7893;ng 80/443 b&#7883; ch&#7863;n b&#7903;i cloud firewall, UFW ho&#7863;c router.</li>
+<li>M&#7897;t service kh&aacute;c &#273;ang chi&#7871;m c&#7893;ng.</li>
+<li>Proxy/CDN ph&iacute;a tr&#432;&#7899;c c&#7845;u h&igrave;nh ch&#7871; &#273;&#7897; TLS/DNS ch&#432;a ph&ugrave; h&#7907;p.</li>
+</ul>
+<pre><code>docker compose logs caddy
+sudo ss -lntup | grep -E ':(80|443)\b'</code></pre>
+
+<h3>HTTPS ho&#7841;t &#273;&#7897;ng nh&#432;ng tr&#7843; 502</h3>
+<ul>
+<li>App ch&#432;a s&#7861;n s&agrave;ng ho&#7863;c crash loop.</li>
+<li>App ch&#7881; bind <code>127.0.0.1</code> trong container.</li>
+<li>Sai service name/c&#7893;ng trong <code>reverse_proxy</code>.</li>
+<li>Caddy v&agrave; app kh&ocirc;ng c&ugrave;ng Docker network.</li>
+</ul>
+<pre><code>docker compose ps
+docker compose logs app
+docker compose exec caddy wget -qO- http://app:8080/health</code></pre>
+<p>Image Caddy t&#7889;i gi&#7843;n c&oacute; th&#7875; kh&ocirc;ng ch&#7913;a m&#7885;i c&ocirc;ng c&#7909; debug. N&#7871;u l&#7879;nh ki&#7875;m tra kh&ocirc;ng t&#7891;n t&#7841;i, d&ugrave;ng m&#7897;t container ch&#7849;n &#273;o&aacute;n t&#7841;m th&#7901;i g&#7855;n c&ugrave;ng network thay v&igrave; c&agrave;i c&ocirc;ng c&#7909; v&agrave;o container production &#273;ang ch&#7841;y.</p>
+
+<h3>Domain &#273;&uacute;ng nh&#432;ng app redirect loop</h3>
+<p>&#7912;ng d&#7909;ng c&oacute; th&#7875; ch&#432;a tin proxy headers ho&#7863;c t&#7921; &eacute;p HTTPS sai c&aacute;ch. Caddy g&#7917;i c&aacute;c header forward ph&#7893; bi&#7871;n; c&#7845;u h&igrave;nh framework ch&#7881; tin proxy th&#7921;c t&#7871;, kh&ocirc;ng tin m&#7885;i &#273;&#7883;a ch&#7881; Internet. Tr&aacute;nh ch&#7841;y &#273;&#7891;ng th&#7901;i nhi&#7873;u l&#7899;p redirect m&acirc;u thu&#7851;n.</p>
+
+<h2>14. Checklist hardening</h2>
+<ul>
+<li>Ch&#7881; publish 80/443 c&#7911;a Caddy; database, cache v&agrave; app &#7903; network n&#7897;i b&#7897;.</li>
+<li>Pin image version/digest v&agrave; c&oacute; l&#7883;ch c&#7853;p nh&#7853;t.</li>
+<li>Kh&ocirc;ng l&#432;u secret trong image, Git ho&#7863;c Caddyfile.</li>
+<li>Gi&#7919; <code>caddy_data</code> b&#7873;n v&#7919;ng, backup &#273;&#432;&#7907;c b&#7843;o v&#7879;.</li>
+<li>Gi&#7899;i h&#7841;n SSH v&agrave; theo d&otilde;i log, disk, certificate/endpoint health.</li>
+<li>&#272;&#7863;t upload/body limit v&agrave; timeout ph&ugrave; h&#7907;p t&#7841;i app ho&#7863;c proxy khi c&#7847;n.</li>
+<li>Ch&#7881; th&ecirc;m security header sau khi hi&#7875;u &#7913;ng d&#7909;ng; HSTS sai c&oacute; th&#7875; g&acirc;y t&aacute;c &#273;&#7897;ng d&agrave;i h&#7841;n.</li>
+<li>Kh&ocirc;ng t&#7855;t TLS verification &#273;&#7875; che l&#7895;i trust c&#7911;a upstream.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Caddy gi&uacute;p r&uacute;t ng&#7855;n ph&#7847;n TLS c&#7911;a m&#7897;t tri&#7875;n khai Docker, nh&#432;ng v&#7853;n h&agrave;nh an to&agrave;n v&#7851;n ph&#7909; thu&#7897;c v&agrave;o DNS &#273;&uacute;ng, c&#7893;ng m&#7841;ng r&otilde; r&agrave;ng, volume b&#7873;n v&#7919;ng, service discovery b&#7857;ng t&ecirc;n v&agrave; quy tr&igrave;nh validate/reload. V&#7899;i c&#7845;u tr&uacute;c tr&ecirc;n, &#7913;ng d&#7909;ng &#273;&#432;&#7907;c c&ocirc; l&#7853;p sau reverse proxy, HTTPS &#273;&#432;&#7907;c t&#7921; &#273;&#7897;ng qu&#7843;n l&yacute; v&agrave; c&#7845;u h&igrave;nh &#273;&#7911; &#273;&#417;n gi&#7843;n &#273;&#7875; ki&#7875;m tra, backup v&agrave; n&acirc;ng c&#7845;p c&oacute; ki&#7875;m so&aacute;t.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul>
+<li><a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener noreferrer">Caddy: Automatic HTTPS</a></li>
+<li><a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy" target="_blank" rel="noopener noreferrer">Caddy: reverse_proxy</a></li>
+<li><a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreferrer">Docker Official Image: Caddy</a></li>
+<li><a href="https://docs.docker.com/compose/how-tos/networking/" target="_blank" rel="noopener noreferrer">Docker Compose networking</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

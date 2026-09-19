@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Ki&#7875;m th&#7917; contract API v&#7899;i OpenAPI trong CI</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">ki&#7875;m th&#7917; contract API, OpenAPI, schema validation, API testing, Schemathesis, CI/CD, backend frontend</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">OpenAPI, API Testing, Contract Testing, CI/CD, Backend, Quality Assurance, REST API</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">H&#432;&#7899;ng d&#7851;n d&ugrave;ng OpenAPI l&agrave;m contract c&oacute; th&#7875; ki&#7875;m th&#7917;: ki&#7875;m tra schema, response th&#7921;c, sinh test bi&ecirc;n, ph&aacute;t hi&#7879;n breaking change v&agrave; ch&#7863;n l&#7895;i t&iacute;ch h&#7907;p trong CI.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/openapi-contract-testing.jpg" alt="Ki&#7875;m th&#7917; contract API v&#7899;i OpenAPI: Ch&#7863;n l&#7895;i t&iacute;ch h&#7907;p ngay trong CI" width="1440" height="810"></p><h1>Ki&#7875;m th&#7917; contract API v&#7899;i OpenAPI: Ch&#7863;n l&#7895;i t&iacute;ch h&#7907;p ngay trong CI</h1><p><strong>API v&#7851;n tr&#7843; HTTP 200, nh&#432;ng frontend &#273;&#7897;t nhi&ecirc;n l&#7895;i v&igrave; m&#7897;t field bi&#7871;n m&#7845;t, &#273;&#7893;i ki&#7875;u ho&#7863;c tr&#7903; th&agrave;nh <code>null</code>.</strong> Unit test c&#7911;a backend c&oacute; th&#7875; v&#7851;n xanh, t&agrave;i li&#7879;u Swagger v&#7851;n m&#7903; &#273;&#432;&#7907;c, nh&#432;ng h&#7907;p &#273;&#7891;ng m&agrave; consumer &#273;ang d&#7921;a v&agrave;o &#273;&atilde; b&#7883; ph&aacute; v&#7905;.</p>
+<p>Ki&#7875;m th&#7917; contract d&#7921;a tr&ecirc;n OpenAPI bi&#7871;n m&ocirc; t&#7843; API th&agrave;nh m&#7897;t artefact c&oacute; th&#7875; ki&#7875;m tra t&#7921; &#273;&#7897;ng. Thay v&igrave; ch&#7881; d&ugrave;ng file YAML &#273;&#7875; d&#7921;ng trang t&agrave;i li&#7879;u, &#273;&#7897;i ng&#361; d&ugrave;ng n&oacute; &#273;&#7875; x&aacute;c minh c&#7845;u tr&uacute;c request, response, status code v&agrave; content type trong m&#7895;i pull request.</p>
+
+<h2>Ki&#7875;m th&#7917; contract d&#7921;a tr&ecirc;n schema l&agrave; g&igrave;?</h2>
+<p>OpenAPI m&ocirc; t&#7843; giao di&#7879;n HTTP theo c&aacute;ch &#273;&#7897;c l&#7853;p ng&ocirc;n ng&#7919;: endpoint, method, tham s&#7889;, authentication, request body v&agrave; response. M&#7897;t c&ocirc;ng c&#7909; c&oacute; th&#7875; &#273;&#7885;c m&ocirc; t&#7843; n&agrave;y &#273;&#7875; sinh t&agrave;i li&#7879;u, client, mock ho&#7863;c test m&agrave; kh&ocirc;ng c&#7847;n hi&#7875;u m&atilde; ngu&#7891;n c&#7911;a service.</p>
+<p>Trong b&agrave;i n&agrave;y, &ldquo;contract testing&rdquo; c&oacute; ngh&#297;a l&agrave; <strong>ki&#7875;m tra implementation c&oacute; tu&acirc;n th&#7911; OpenAPI schema hay kh&ocirc;ng</strong>. N&oacute; kh&ocirc;ng ho&agrave;n to&agrave;n gi&#7889;ng consumer-driven contract testing, n&#417;i t&#7915;ng consumer c&ocirc;ng b&#7889; k&#7923; v&#7885;ng ri&ecirc;ng v&agrave; provider x&aacute;c minh c&aacute;c k&#7923; v&#7885;ng &#273;&oacute;. Hai c&aacute;ch c&oacute; th&#7875; b&#7893; sung nhau:</p>
+<table><thead><tr><th>L&#7899;p ki&#7875;m tra</th><th>Ph&aacute;t hi&#7879;n t&#7889;t</th><th>Kh&ocirc;ng thay th&#7871;</th></tr></thead><tbody>
+<tr><td>Schema lint</td><td>OpenAPI sai c&uacute; ph&aacute;p, reference h&#7887;ng, quy &#432;&#7899;c thi&#7871;u</td><td>H&agrave;nh vi c&#7911;a server &#273;ang ch&#7841;y</td></tr>
+<tr><td>Schema conformance</td><td>Status, header v&agrave; JSON th&#7921;c t&#7871; l&#7879;ch contract</td><td>Logic nghi&#7879;p v&#7909; s&acirc;u</td></tr>
+<tr><td>Consumer-driven contract</td><td>Provider l&agrave;m h&#7887;ng k&#7923; v&#7885;ng th&#7853;t c&#7911;a consumer</td><td>Kh&aacute;m ph&aacute; input bi&ecirc;n to&agrave;n API</td></tr>
+<tr><td>Integration/E2E</td><td>Lu&#7891;ng nghi&#7879;p v&#7909; qua nhi&#7873;u th&agrave;nh ph&#7847;n</td><td>Ph&#7843;n h&#7891;i nhanh, &#273;&#7883;nh v&#7883; l&#7895;i h&#7865;p</td></tr>
+</tbody></table>
+<blockquote>Contract test kh&ocirc;ng ch&#7913;ng minh API &#273;&uacute;ng to&agrave;n b&#7897; nghi&#7879;p v&#7909;. N&oacute; ch&#7913;ng minh giao di&#7879;n m&agrave; hai b&ecirc;n &#273;&atilde; th&#7887;a thu&#7853;n ch&#432;a b&#7883; thay &#273;&#7893;i ngo&agrave;i &yacute; mu&#7889;n.</blockquote>
+
+<h2>1. Ch&#7885;n m&#7897;t ngu&#7891;n s&#7921; th&#7853;t</h2>
+<p>Contract ch&#7881; c&oacute; gi&aacute; tr&#7883; khi &#273;&#7897;i ng&#361; bi&#7871;t artefact n&agrave;o l&agrave; ngu&#7891;n s&#7921; th&#7853;t. C&oacute; hai h&#432;&#7899;ng ph&#7893; bi&#7871;n:</p>
+<ul>
+<li><strong>Design-first:</strong> s&#7917;a <code>openapi.yaml</code>, review thay &#273;&#7893;i, sau &#273;&oacute; backend v&agrave; client c&ugrave;ng tri&#7875;n khai.</li>
+<li><strong>Code-first:</strong> sinh OpenAPI t&#7915; annotation, route ho&#7863;c type trong m&atilde; ngu&#7891;n, r&#7891;i ki&#7875;m tra file sinh ra trong CI.</li>
+</ul>
+<p>C&#7843; hai &#273;&#7873;u d&ugrave;ng &#273;&#432;&#7907;c, nh&#432;ng tr&aacute;nh duy tr&igrave; th&#7911; c&ocirc;ng hai b&#7843;n &#273;&#7897;c l&#7853;p. N&#7871;u spec trong repository n&oacute;i m&#7897;t ki&#7875;u c&ograve;n endpoint runtime n&oacute;i ki&#7875;u kh&aacute;c, trang t&agrave;i li&#7879;u &#273;&#7865;p ch&#7881; t&#7841;o c&#7843;m gi&aacute;c an to&agrave;n gi&#7843;.</p>
+<p>N&ecirc;n l&#432;u contract c&ugrave;ng source control, review diff nh&#432; code v&agrave; g&#7855;n phi&ecirc;n b&#7843;n API nghi&#7879;p v&#7909; trong <code>info.version</code>. Tr&#432;&#7901;ng <code>openapi</code> l&agrave; phi&ecirc;n b&#7843;n &#273;&#7863;c t&#7843; m&agrave; tooling d&ugrave;ng &#273;&#7875; di&#7877;n gi&#7843;i t&agrave;i li&#7879;u; n&oacute; kh&ocirc;ng thay cho phi&ecirc;n b&#7843;n s&#7843;n ph&#7849;m c&#7911;a API.</p>
+
+<h2>2. Vi&#7871;t schema &#273;&#7911; ch&#7863;t &#273;&#7875; c&oacute; th&#7875; ki&#7875;m th&#7917;</h2>
+<p>M&#7897;t schema to&agrave;n <code>type: object</code> v&agrave; cho ph&eacute;p m&#7885;i thu&#7897;c t&iacute;nh g&#7847;n nh&#432; kh&ocirc;ng b&#7843;o v&#7879; &#273;&#432;&#7907;c consumer. H&atilde;y m&ocirc; t&#7843; nh&#7919;ng &#273;i&#7873;u th&#7921;c s&#7921; t&#7841;o th&agrave;nh h&#7907;p &#273;&#7891;ng:</p>
+<ul>
+<li>Field b&#7855;t bu&#7897;c v&agrave; field c&oacute; th&#7875; v&#7855;ng m&#7863;t.</li>
+<li>Ki&#7875;u d&#7919; li&#7879;u, &#273;&#7883;nh d&#7841;ng, enum, gi&#7899;i h&#7841;n &#273;&#7897; d&agrave;i v&agrave; mi&#7873;n gi&aacute; tr&#7883;.</li>
+<li>Kh&#7843; n&#259;ng nh&#7853;n <code>null</code> t&aacute;ch bi&#7879;t v&#7899;i t&iacute;nh b&#7855;t bu&#7897;c.</li>
+<li>Content type, status code th&agrave;nh c&ocirc;ng v&agrave; c&aacute;c l&#7895;i c&oacute; c&#7845;u tr&uacute;c.</li>
+<li>Pagination, envelope v&agrave; quy t&#7855;c t&#432;&#417;ng th&iacute;ch khi th&ecirc;m field.</li>
+</ul>
+<pre><code>openapi: 3.1.0
+info:
+  title: Order API
+  version: 1.4.0
+paths:
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      parameters:
+        - in: path
+          name: orderId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+components:
+  schemas:
+    Order:
+      type: object
+      required: [id, status, total]
+      properties:
+        id: { type: string, format: uuid }
+        status:
+          type: string
+          enum: [pending, paid, cancelled]
+        total:
+          type: integer
+          minimum: 0
+          description: Amount in the smallest currency unit</code></pre>
+<p>OpenAPI 3.1 c&#259;n ch&#7881;nh Schema Object v&#7899;i JSON Schema Draft 2020-12. D&ugrave; v&#7853;y, h&atilde;y ch&#7885;n phi&ecirc;n b&#7843;n m&agrave; to&agrave;n b&#7897; linter, generator v&agrave; test runner trong pipeline h&#7895; tr&#7907;, thay v&igrave; ch&#7881; &#273;&#7893;i s&#7889; phi&ecirc;n b&#7843;n r&#7891;i hy v&#7885;ng tooling hi&#7875;u gi&#7889;ng nhau.</p>
+
+<h2>3. Lint contract tr&#432;&#7899;c khi kh&#7903;i &#273;&#7897;ng &#7913;ng d&#7909;ng</h2>
+<p>L&#7899;p nhanh nh&#7845;t ch&#7881; &#273;&#7885;c file t&#297;nh. N&oacute; n&ecirc;n th&#7845;t b&#7841;i khi YAML/JSON kh&ocirc;ng h&#7907;p l&#7879;, <code>$ref</code> kh&ocirc;ng gi&#7843;i &#273;&#432;&#7907;c, path parameter thi&#7871;u khai b&aacute;o ho&#7863;c operation kh&ocirc;ng c&oacute; response c&#7847;n thi&#7871;t.</p>
+<p>Ngo&agrave;i l&#7895;i &#273;&#7863;c t&#7843;, &#273;&#7897;i ng&#361; n&ecirc;n c&oacute; ruleset ri&ecirc;ng cho nh&#7919;ng quy &#432;&#7899;c quan tr&#7885;ng:</p>
+<ul>
+<li>M&#7885;i operation c&oacute; <code>operationId</code> duy nh&#7845;t.</li>
+<li>C&aacute;c endpoint &#273;&#432;&#7907;c b&#7843;o v&#7879; khai b&aacute;o security scheme.</li>
+<li>Response l&#7895;i d&ugrave;ng c&ugrave;ng m&#7897;t envelope, v&iacute; d&#7909; RFC 9457 Problem Details.</li>
+<li>Endpoint danh s&aacute;ch c&oacute; pagination v&agrave; gi&#7899;i h&#7841;n t&#7889;i &#273;a.</li>
+<li>Kh&ocirc;ng &#273;&#432;a d&#7919; li&#7879;u nh&#7841;y c&#7843;m v&agrave;o example.</li>
+</ul>
+<p>Lint ch&#7841;y trong v&agrave;i gi&acirc;y v&agrave; n&ecirc;n l&agrave; job &#273;&#7847;u ti&ecirc;n. N&#7871;u contract ch&#432;a t&#7921; h&#7907;p l&#7879;, ch&#432;a c&oacute; l&yacute; do &#273;&#7875; build container hay ch&#7841;y test t&#7889;n th&#7901;i gian.</p>
+
+<h2>4. X&aacute;c minh response th&#7921;c t&#7871; b&#7857;ng schema</h2>
+<p>Sau khi &#7913;ng d&#7909;ng kh&#7903;i &#273;&#7897;ng trong m&ocirc;i tr&#432;&#7901;ng test, g&#7885;i endpoint b&#7857;ng d&#7919; li&#7879;u &#273;&atilde; ki&#7875;m so&aacute;t v&agrave; validate &#273;&#7891;ng th&#7901;i:</p>
+<ol>
+<li>Status code c&oacute; &#273;&#432;&#7907;c khai b&aacute;o cho operation hay kh&ocirc;ng.</li>
+<li><code>Content-Type</code> c&oacute; kh&#7899;p media type hay kh&ocirc;ng.</li>
+<li>Body c&oacute; th&#7887;a schema c&#7911;a &#273;&uacute;ng status v&agrave; media type hay kh&ocirc;ng.</li>
+<li>Header b&#7855;t bu&#7897;c c&oacute; m&#7863;t v&agrave; &#273;&uacute;ng d&#7841;ng hay kh&ocirc;ng.</li>
+</ol>
+<p>M&#7897;t assertion ch&#7881; ki&#7875;m tra <code>response.status === 200</code> s&#7869; b&#7887; s&oacute;t nhi&#7873;u l&#7895;i. V&iacute; d&#7909; server tr&#7843; <code>total: "125000"</code> thay v&igrave; integer, ho&#7863;c tr&#7843; HTML error page v&#7899;i status 200. Validator contract ph&#7843;i ch&#7885;n schema theo response th&#7921;c t&#7871;, kh&ocirc;ng &eacute;p m&#7885;i k&#7871;t qu&#7843; v&agrave;o happy path.</p>
+<p>Ki&#7875;m tra c&#7843; response l&#7895;i. API th&#432;&#7901;ng &#273;&#432;&#7907;c test k&#7929; &#7903; 200 nh&#432;ng l&#7841;i &#273;&#7875; 401, 403, 404 v&agrave; 422 tr&#7843; b&#7889;n c&#7845;u tr&uacute;c kh&aacute;c nhau, khi&#7871;n client ph&#7843;i &#273;o&aacute;n.</p>
+
+<h2>5. Sinh test bi&ecirc;n t&#7915; OpenAPI</h2>
+<p>Test vi&#7871;t tay th&#432;&#7901;ng d&ugrave;ng v&agrave;i v&iacute; d&#7909; &ldquo;&#273;&#7865;p&rdquo;. Property-based testing &#273;&#7885;c constraint &#273;&#7875; sinh nhi&#7873;u input h&#7907;p l&#7879; v&agrave; kh&ocirc;ng h&#7907;p l&#7879;: chu&#7895;i r&#7895;ng, s&#7889; s&aacute;t bi&ecirc;n, enum ngo&agrave;i danh s&aacute;ch, Unicode, field thi&#7871;u ho&#7863;c object l&#7891;ng nhau.</p>
+<p>Schemathesis l&agrave; m&#7897;t c&ocirc;ng c&#7909; c&oacute; th&#7875; ch&#7841;y tr&#7921;c ti&#7871;p v&#7899;i schema t&#297;nh v&agrave; base URL c&#7911;a &#7913;ng d&#7909;ng test:</p>
+<pre><code>uvx schemathesis run ./openapi.yaml \
+  --url http://127.0.0.1:8080</code></pre>
+<p>Runner c&oacute; th&#7875; ph&aacute;t hi&#7879;n server error, status kh&ocirc;ng &#273;&#432;&#7907;c m&ocirc; t&#7843; v&agrave; response kh&ocirc;ng kh&#7899;p schema, &#273;&#7891;ng th&#7901;i &#273;&#432;a ra request c&oacute; th&#7875; t&aacute;i hi&#7879;n. Ch&#7841;y ban &#273;&#7847;u v&#7899;i endpoint &#273;&#7885;c ho&#7863;c m&#7897;t test environment c&oacute; th&#7875; reset; kh&ocirc;ng fuzz th&#7859;ng production.</p>
+<p>V&#7899;i endpoint c&oacute; authentication, truy&#7873;n credential test c&oacute; quy&#7873;n t&#7889;i thi&#7875;u. Secret ph&#7843;i l&#7845;y t&#7915; secret store c&#7911;a CI, kh&ocirc;ng ghi v&agrave;o OpenAPI, command &#273;&atilde; commit ho&#7863;c artefact test.</p>
+
+<h2>6. &#272;&#7915;ng &#273;&#7875; test ph&aacute; d&#7919; li&#7879;u</h2>
+<p>Generation-based test c&oacute; th&#7875; g&#7885;i POST, PATCH v&agrave; DELETE nhi&#7873;u l&#7847;n. Tr&#432;&#7899;c khi b&#7853;t to&agrave;n b&#7897; schema, c&#7847;n d&#7921;ng ranh gi&#7899;i an to&agrave;n:</p>
+<ul>
+<li>D&ugrave;ng database/container t&aacute;ch bi&#7879;t v&agrave; reset &#273;&#432;&#7907;c.</li>
+<li>Ch&#7863;n k&#7871;t n&#7889;i t&#7899;i payment, email v&agrave; d&#7883;ch v&#7909; production.</li>
+<li>Thay external side effect b&#7857;ng sandbox ho&#7863;c fake c&oacute; ki&#7875;m so&aacute;t.</li>
+<li>L&#7885;c operation nguy hi&#7875;m cho &#273;&#7871;n khi fixture v&agrave; cleanup ho&agrave;n ch&#7881;nh.</li>
+<li>G&#7855;n tenant test ri&ecirc;ng, quota nh&#7887; v&agrave; th&#7901;i gian s&#7889;ng ng&#7855;n.</li>
+</ul>
+<p>N&#7871;u API t&#7841;o chu&#7895;i resource ph&#7909; thu&#7897;c, khai b&aacute;o OpenAPI Links ho&#7863;c chu&#7849;n b&#7883; fixture r&otilde; r&agrave;ng. M&#7897;t test t&#7841;o order c&#7847;n bi&#7871;t customer/product h&#7907;p l&#7879;; g&#7917;i UUID ng&#7851;u nhi&ecirc;n r&#7891;i nh&#7853;n 404 h&agrave;ng ngh&igrave;n l&#7847;n kh&ocirc;ng t&#7841;o ra coverage c&oacute; &yacute; ngh&#297;a.</p>
+
+<h2>7. Thi&#7871;t k&#7871; pipeline theo t&#7847;ng</h2>
+<p>M&#7897;t pipeline c&acirc;n b&#7857;ng t&#7889;c &#273;&#7897; v&agrave; &#273;&#7897; tin c&#7853;y c&oacute; th&#7875; chia th&agrave;nh b&#7889;n t&#7847;ng:</p>
+<ol>
+<li><strong>Static:</strong> parse, lint, resolve reference v&agrave; ki&#7875;m tra policy.</li>
+<li><strong>Diff:</strong> so contract m&#7899;i v&#7899;i nh&aacute;nh ch&iacute;nh &#273;&#7875; ph&aacute;t hi&#7879;n breaking change.</li>
+<li><strong>Example tests:</strong> ch&#7841;y c&aacute;c ca nghi&#7879;p v&#7909; x&aacute;c &#273;&#7883;nh, &#7893;n &#273;&#7883;nh v&agrave; d&#7877; &#273;&#7885;c.</li>
+<li><strong>Generated tests:</strong> kh&aacute;m ph&aacute; input bi&ecirc;n tr&ecirc;n service v&#7915;a build.</li>
+</ol>
+<pre><code>contract-lint
+      |
+contract-breaking-change
+      |
+build-and-start-test-service
+      |
+example-tests + generated-schema-tests</code></pre>
+<p>Lint v&agrave; diff n&ecirc;n fail nhanh. Test sinh t&#7921; &#273;&#7897;ng c&oacute; th&#7875; gi&#7899;i h&#7841;n s&#7889; case trong pull request v&agrave; ch&#7841;y s&acirc;u h&#417;n theo l&#7883;ch. L&#432;u JUnit/report c&ugrave;ng seed ho&#7863;c curl command t&aacute;i hi&#7879;n &#273;&#7875; l&#7895;i ng&#7851;u nhi&ecirc;n v&#7851;n debug &#273;&#432;&#7907;c.</p>
+
+<h2>8. Nh&#7853;n di&#7879;n breaking change &#273;&uacute;ng b&#7889;i c&#7843;nh</h2>
+<p>M&#7897;t s&#7889; thay &#273;&#7893;i th&#432;&#7901;ng ph&aacute; consumer:</p>
+<ul>
+<li>X&oacute;a endpoint, status response, field ho&#7863;c enum value m&agrave; client c&#7847;n.</li>
+<li>&#272;&#7893;i ki&#7875;u d&#7919; li&#7879;u, format ho&#7863;c semantic c&#7911;a field.</li>
+<li>Bi&#7871;n field t&ugrave;y ch&#7885;n th&agrave;nh b&#7855;t bu&#7897;c trong request.</li>
+<li>Si&#7871;t min/max, pattern ho&#7863;c gi&#7899;i h&#7841;n &#273;&#7897; d&agrave;i c&#7911;a input.</li>
+<li>Th&ecirc;m y&ecirc;u c&#7847;u authentication m&#7899;i.</li>
+</ul>
+<p>&ldquo;Th&ecirc;m field response lu&ocirc;n t&#432;&#417;ng th&iacute;ch&rdquo; ch&#7881; &#273;&uacute;ng khi consumer &#273;&#432;&#7907;c thi&#7871;t k&#7871; &#273;&#7875; b&#7887; qua field l&#7841;. &ldquo;Th&ecirc;m enum value&rdquo; c&#361;ng c&oacute; th&#7875; ph&aacute; client d&ugrave;ng switch exhaustive. V&igrave; v&#7853;y diff tool &#273;&#432;a ra t&iacute;n hi&#7879;u, c&ograve;n policy t&#432;&#417;ng th&iacute;ch ph&#7843;i ph&#7843;n &aacute;nh SDK v&agrave; consumer th&#7921;c t&#7871; c&#7911;a t&#7893; ch&#7913;c.</p>
+<p>N&#7871;u thay &#273;&#7893;i c&oacute; ch&#7911; &#273;&iacute;ch, &#432;u ti&ecirc;n ti&#7871;n h&oacute;a t&#432;&#417;ng th&iacute;ch: th&ecirc;m field m&#7899;i tr&#432;&#7899;c, gi&#7919; field c&#361; trong giai &#273;o&#7841;n deprecation, &#273;o usage, r&#7891;i m&#7899;i x&oacute;a &#7903; version l&#7899;n ho&#7863;c sau c&#7917;a s&#7893; th&ocirc;ng b&aacute;o.</p>
+
+<h2>9. Tr&aacute;nh drift gi&#7919;a spec v&agrave; implementation</h2>
+<p>Drift x&#7843;y ra khi code &#273;&#7893;i m&agrave; contract kh&ocirc;ng &#273;&#7893;i, ho&#7863;c contract &#273;&#432;&#7907;c thi&#7871;t k&#7871; nh&#432;ng implementation ch&#432;a theo k&#7883;p. C&oacute; ba &#273;i&#7875;m ki&#7875;m so&aacute;t hi&#7879;u qu&#7843;:</p>
+<ul>
+<li>Pull request s&#7917;a route/DTO ph&#7843;i k&egrave;m diff OpenAPI t&#432;&#417;ng &#7913;ng.</li>
+<li>CI ch&#7841;y schema conformance tr&ecirc;n artefact v&#7915;a build, kh&ocirc;ng d&ugrave;ng server d&ugrave;ng chung c&#361;.</li>
+<li>Runtime ho&#7863;c smoke test &#273;&#7883;nh k&#7923; l&#7845;y schema &#273;ang public v&agrave; ki&#7875;m tra endpoint quan tr&#7885;ng.</li>
+</ul>
+<p>N&#7871;u code-first, h&atilde;y generate spec trong CI r&#7891;i fail khi working tree xu&#7845;t hi&#7879;n diff ch&#432;a commit. N&#7871;u design-first, mock gi&uacute;p frontend l&agrave;m vi&#7879;c s&#7899;m, nh&#432;ng provider v&#7851;n ph&#7843;i v&#432;&#7907;t qua conformance test tr&#432;&#7899;c khi merge.</p>
+
+<h2>10. Nh&#7919;ng &#273;i&#7873;u schema kh&ocirc;ng n&oacute;i h&#7871;t</h2>
+<p>OpenAPI m&ocirc; t&#7843; h&igrave;nh d&#7841;ng giao ti&#7871;p t&#7889;t h&#417;n &yacute; ngh&#297;a nghi&#7879;p v&#7909;. Schema c&oacute; th&#7875; x&aacute;c nh&#7853;n <code>total</code> l&agrave; integer kh&ocirc;ng &acirc;m, nh&#432;ng kh&ocirc;ng bi&#7871;t t&#7893;ng ti&#7873;n c&oacute; b&#7857;ng c&aacute;c d&ograve;ng h&agrave;ng sau gi&#7843;m gi&aacute; hay kh&ocirc;ng. N&oacute; c&#361;ng kh&ocirc;ng t&#7921; ch&#7913;ng minh:</p>
+<ul>
+<li>Authorization &#273;&uacute;ng theo owner/role.</li>
+<li>Transaction, idempotency v&agrave; concurrency an to&agrave;n.</li>
+<li>Pagination kh&ocirc;ng b&#7887; s&oacute;t ho&#7863;c tr&ugrave;ng record.</li>
+<li>SLA, rate limit v&agrave; latency &#273;&#7841;t m&#7909;c ti&ecirc;u.</li>
+<li>Workflow nhi&#7873;u b&#432;&#7899;c chuy&#7875;n tr&#7841;ng th&aacute;i h&#7907;p l&#7879;.</li>
+</ul>
+<p>Gi&#7919; unit, integration, security v&agrave; performance test. Contract test l&agrave; l&#7899;p b&#7843;o v&#7879; bi&ecirc;n giao ti&#7871;p, kh&ocirc;ng ph&#7843;i chi&#7871;c &ocirc; thay th&#7871; to&agrave;n b&#7897; chi&#7871;n l&#432;&#7907;c ch&#7845;t l&#432;&#7907;ng.</p>
+
+<h2>Checklist &aacute;p d&#7909;ng</h2>
+<ul>
+<li>C&oacute; m&#7897;t ngu&#7891;n s&#7921; th&#7853;t OpenAPI &#273;&#432;&#7907;c version control.</li>
+<li>Schema khai b&aacute;o required, nullability, enum, format v&agrave; l&#7895;i &#273;&#7911; r&otilde;.</li>
+<li>Lint v&agrave; resolve <code>$ref</code> ch&#7841;y tr&#432;&#7899;c build n&#7863;ng.</li>
+<li>Response runtime &#273;&#432;&#7907;c validate theo status v&agrave; content type th&#7921;c.</li>
+<li>Breaking-change check so s&aacute;nh v&#7899;i contract &#273;ang ph&aacute;t h&agrave;nh.</li>
+<li>Generated tests ch&#7881; ch&#7841;y trong m&ocirc;i tr&#432;&#7901;ng c&ocirc; l&#7853;p, reset &#273;&#432;&#7907;c.</li>
+<li>Credential test c&oacute; quy&#7873;n t&#7889;i thi&#7875;u v&agrave; kh&ocirc;ng n&#7857;m trong artefact.</li>
+<li>Failure l&#432;u request/seed c&oacute; th&#7875; t&aacute;i hi&#7879;n nh&#432;ng &#273;&atilde; che d&#7919; li&#7879;u nh&#7841;y c&#7843;m.</li>
+<li>Test nghi&#7879;p v&#7909;, authorization v&agrave; hi&#7879;u n&#259;ng v&#7851;n &#273;&#432;&#7907;c duy tr&igrave; ri&ecirc;ng.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>OpenAPI h&#7919;u &iacute;ch nh&#7845;t khi kh&ocirc;ng d&#7915;ng &#7903; trang t&agrave;i li&#7879;u. Khi contract &#273;&#432;&#7907;c lint, so diff v&agrave; &#273;&#7889;i chi&#7871;u v&#7899;i response th&#7853;t trong CI, sai l&#7879;ch gi&#7919;a backend, frontend v&agrave; SDK &#273;&#432;&#7907;c ph&aacute;t hi&#7879;n tr&#432;&#7899;c khi &#273;&#7871;n production. H&atilde;y b&#7855;t &#273;&#7847;u t&#7915; m&#7897;t endpoint quan tr&#7885;ng, l&agrave;m schema &#273;&#7911; ch&#7863;t, th&ecirc;m conformance test r&#7891;i m&#7903; r&#7897;ng d&#7847;n sang generation-based testing. M&#7897;t pipeline nh&#7887; nh&#432;ng ch&#7841;y tr&ecirc;n m&#7885;i thay &#273;&#7893;i &#273;&aacute;ng tin c&#7853;y h&#417;n m&#7897;t b&#7897; t&agrave;i li&#7879;u l&#7899;n ch&#7881; &#273;&#432;&#7907;c c&#7853;p nh&#7853;t tr&#432;&#7899;c ng&agrave;y ph&aacute;t h&agrave;nh.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul>
+<li><a href="https://spec.openapis.org/oas/" target="_blank" rel="noopener noreferrer">OpenAPI Specification</a></li>
+<li><a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md" target="_blank" rel="noopener noreferrer">OpenAPI Specification 3.1.0</a></li>
+<li><a href="https://schemathesis.readthedocs.io/en/stable/quick-start/" target="_blank" rel="noopener noreferrer">Schemathesis: Quick Start</a></li>
+<li><a href="https://github.com/schemathesis/schemathesis/blob/master/docs/guides/cicd.md" target="_blank" rel="noopener noreferrer">Schemathesis: CI/CD Integration</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

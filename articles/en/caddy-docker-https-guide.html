@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>Guides</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh">deploy-docker-application-caddy-automatic-https</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Docker, Caddy, and Automatic HTTPS Guide</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">Caddy Docker, automatic HTTPS, reverse proxy, Docker Compose, TLS, application deployment, Caddyfile</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">Caddy, Docker, HTTPS, Reverse Proxy, Docker Compose, DevOps, TLS</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Deploy a Docker application behind Caddy: automatic HTTPS, Compose networking, DNS and firewall setup, persistent certificates, validation, reloads, and troubleshooting.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../../assets/caddy-docker-https-guide.jpg" alt="Deploy a Docker Application with Caddy and Automatic HTTPS" width="1440" height="810"></p><h1>Deploy a Docker Application with Caddy and Automatic HTTPS</h1><p><strong>An application working inside a container is not automatically ready for the public Internet.</strong> It still needs a domain, TLS, HTTP-to-HTTPS redirects, persistent certificate storage, and a reverse proxy in front.</p>
+<p>In this guide, Caddy accepts public traffic on ports 80 and 443, automatically manages HTTPS certificates for a domain, and proxies requests to an application across an internal Docker Compose network. Only Caddy is exposed; the application port does not need to be published on the host.</p>
+
+<h2>Deployment model</h2>
+<pre><code>Internet
+   |
+   |  HTTP :80 / HTTPS :443
+   v
+Caddy container
+   |
+   |  Docker network: http://app:8080
+   v
+Application container</code></pre>
+<p>Caddy enables Automatic HTTPS when a site address contains a valid hostname. For a public domain, DNS must point to the server and ports 80 and 443 must reach Caddy so certificate issuance and traffic serving can work.</p>
+
+<h2>1. Prerequisites</h2>
+<ul>
+<li>A Linux server with Docker Engine and the Docker Compose plugin.</li>
+<li>A domain or subdomain you control, such as <code>app.example.com</code>.</li>
+<li>Permission to change DNS and firewall/security-group rules.</li>
+<li>A container image whose HTTP server listens on <code>0.0.0.0:8080</code>.</li>
+</ul>
+<pre><code>docker version
+docker compose version</code></pre>
+<p>The commands use a Linux shell. Path and file-permission syntax differs on Windows and macOS, but Compose networking and volume principles remain the same.</p>
+
+<h2>2. Point DNS to the server</h2>
+<p>Create an <code>A</code> record for IPv4 and an <code>AAAA</code> record only when the server genuinely serves IPv6:</p>
+<pre><code>app.example.com  A     203.0.113.10
+app.example.com  AAAA  2001:db8::10</code></pre>
+<p>These are documentation-only addresses; replace them with the real server IP. Verify propagation from an external network:</p>
+<pre><code>dig +short app.example.com A
+dig +short app.example.com AAAA</code></pre>
+<p>An incorrect AAAA record often makes the site fail only for IPv6-capable users. If IPv6 is not configured end to end, do not add AAAA merely for completeness.</p>
+
+<h2>3. Open the required network ports</h2>
+<p>Allow inbound TCP 80 and TCP 443. Add UDP 443 if you want HTTP/3. Restrict SSH to administration addresses where possible.</p>
+<pre><code># UFW example; inspect the current policy before applying it
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 443/udp
+sudo ufw status</code></pre>
+<p>Cloud security groups and the operating-system firewall are separate layers. A router must also forward these ports if the server sits behind NAT. Do not disable the entire firewall as a shortcut for certificate troubleshooting.</p>
+
+<h2>4. Create the project structure</h2>
+<pre><code>mkdir -p caddy-docker/caddy
+cd caddy-docker
+touch compose.yaml caddy/Caddyfile .env</code></pre>
+<p>Put the domain in <code>.env</code>:</p>
+<pre><code>APP_DOMAIN=app.example.com</code></pre>
+<p>This example value is not secret, but production environment files should generally remain outside version control. Use a secret manager or an appropriate secrets mechanism for application credentials rather than baking them into an image or Caddyfile.</p>
+
+<h2>5. Write compose.yaml</h2>
+<pre><code>services:
+  app:
+    image: registry.example.com/my-app:&lt;approved-version&gt;
+    restart: unless-stopped
+    expose:
+      - "8080"
+    networks:
+      - web
+
+  caddy:
+    image: caddy:&lt;approved-version&gt;-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?APP_DOMAIN is required}
+    volumes:
+      - ./caddy:/etc/caddy:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+
+networks:
+  web:
+
+volumes:
+  caddy_data:
+  caddy_config:</code></pre>
+<p>Replace <code>&lt;approved-version&gt;</code> with a tested version or digest; do not let a floating <code>latest</code> tag control production changes. The application image must listen on container port 8080.</p>
+<p><code>expose</code> documents the internal port without publishing it on the host. Services sharing the <code>web</code> network discover one another by service name, so Caddy connects to <code>app:8080</code>, not a container IP or <code>localhost:8080</code>.</p>
+<p>The <code>caddy_data</code> volume is especially important because it contains certificates, private keys, and operational state. It is not a disposable cache.</p>
+
+<h2>6. Write the Caddyfile</h2>
+<pre><code>{$APP_DOMAIN} {
+    encode zstd gzip
+
+    reverse_proxy app:8080
+
+    log {
+        output stdout
+        format console
+    }
+}</code></pre>
+<p>A hostname in the site block activates Automatic HTTPS. Caddy obtains and renews certificates and configures HTTP-to-HTTPS redirects. <code>reverse_proxy</code> preserves the method and URI unless a rewrite changes them.</p>
+<p>Do not add <code>tls_insecure_skip_verify</code> as a quick fix for an HTTPS upstream. Plain HTTP from Caddy to the app is commonly appropriate on a private Docker network. If upstream traffic crosses an untrusted network, configure TLS or mTLS with an explicit trust chain.</p>
+
+<h2>7. Validate before starting</h2>
+<p>Render the final Compose model and catch missing variables:</p>
+<pre><code>docker compose config</code></pre>
+<p>Validate the Caddyfile with the selected image:</p>
+<pre><code>docker compose run --rm --no-deps caddy \
+  caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile</code></pre>
+<p>If you use an ACME staging endpoint during testing, remove it before going live because browsers do not trust staging certificates. Avoid repeatedly requesting production certificates while DNS or firewall rules are wrong; certificate authorities enforce rate limits.</p>
+
+<h2>8. Start the stack and watch logs</h2>
+<pre><code>docker compose up -d
+docker compose ps
+docker compose logs --tail=100 caddy
+docker compose logs --tail=100 app</code></pre>
+<p>Look for certificate issuance or challenge errors in Caddy logs. Confirm in application logs that the server listens on <code>0.0.0.0:8080</code>, not only <code>127.0.0.1</code> inside the container.</p>
+<p><code>depends_on</code> provides basic startup ordering; it does not prove readiness. Add an application healthcheck for important deployments and make startup and reconnection resilient. Caddy may return 502 while the upstream is unavailable and recover once the app starts.</p>
+
+<h2>9. Verify from outside</h2>
+<pre><code>curl -I http://app.example.com
+curl -I https://app.example.com
+curl -v https://app.example.com/health</code></pre>
+<p>Expect HTTP to redirect to HTTPS, the certificate to match the hostname, and the application endpoint to return its intended status. Also test from a browser on another device or network to avoid local DNS cache or hosts-file effects.</p>
+<p>Do not use <code>curl -k</code> for production verification. It suppresses the certificate failures this step is meant to detect.</p>
+
+<h2>10. Reload configuration without stopping the container</h2>
+<p>After editing the Caddyfile, validate it and perform a graceful reload:</p>
+<pre><code>docker compose exec -w /etc/caddy caddy \
+  caddy validate --config Caddyfile --adapter caddyfile
+
+docker compose exec -w /etc/caddy caddy caddy reload</code></pre>
+<p>Mounting the <code>./caddy</code> directory to <code>/etc/caddy</code> avoids problems with editors that replace a single file's inode and leave a file bind mount seeing old content. Reloading is preferable to restarting because Caddy can apply configuration without intentionally interrupting active traffic.</p>
+
+<h2>11. Update images deliberately</h2>
+<ol>
+<li>Read release notes and test a chosen version or digest.</li>
+<li>Pull images, validate configuration, and run smoke tests.</li>
+<li>Update production during a controlled change window.</li>
+<li>Verify HTTPS, health endpoints, and logs afterward.</li>
+</ol>
+<pre><code>docker compose pull
+docker compose up -d
+docker compose ps
+docker compose logs --since=10m caddy</code></pre>
+<p><code>docker compose down</code> keeps named volumes by default, but <code>down -v</code> deletes them. Do not use <code>-v</code> in production without an explicit plan and backup.</p>
+
+<h2>12. What should be backed up?</h2>
+<ul>
+<li><code>compose.yaml</code>, the Caddyfile, and DNS/firewall documentation.</li>
+<li>Application and database data through their own backup procedures.</li>
+<li>The <code>caddy_data</code> volume when preserving state and certificates during migration matters.</li>
+</ul>
+<p>Caddy data contains private keys, so backups must be encrypted and access-controlled. Caddy can often obtain certificates again when DNS and ports remain correct, but bulk reissuance may encounter rate limits and is not a backup strategy.</p>
+
+<h2>13. Troubleshoot common failures</h2>
+<h3>Certificate issuance fails</h3>
+<ul>
+<li>DNS points to the wrong address or an incorrect AAAA record remains.</li>
+<li>Cloud firewall, UFW, or the router blocks ports 80/443.</li>
+<li>Another service already owns a port.</li>
+<li>An upstream proxy or CDN has an incompatible DNS/TLS mode.</li>
+</ul>
+<pre><code>docker compose logs caddy
+sudo ss -lntup | grep -E ':(80|443)\b'</code></pre>
+
+<h3>HTTPS works but returns 502</h3>
+<ul>
+<li>The app is not ready or is crash-looping.</li>
+<li>The app binds only to <code>127.0.0.1</code> in its container.</li>
+<li>The <code>reverse_proxy</code> service name or port is wrong.</li>
+<li>Caddy and the app do not share a Docker network.</li>
+</ul>
+<pre><code>docker compose ps
+docker compose logs app
+docker compose exec caddy wget -qO- http://app:8080/health</code></pre>
+<p>Minimal Caddy images may omit debugging tools. If a diagnostic command is unavailable, attach a temporary troubleshooting container to the same network rather than installing tools inside a running production container.</p>
+
+<h3>The domain works but the application redirects forever</h3>
+<p>The framework may not trust proxy headers or may enforce HTTPS incorrectly. Caddy sets common forwarding headers; configure the framework to trust only the actual proxy, not every Internet address. Avoid conflicting redirect logic across several layers.</p>
+
+<h2>14. Hardening checklist</h2>
+<ul>
+<li>Publish only Caddy's 80/443 ports; keep apps, databases, and caches internal.</li>
+<li>Pin image versions or digests and maintain an update schedule.</li>
+<li>Store no secrets in images, Git, or the Caddyfile.</li>
+<li>Persist <code>caddy_data</code> and protect its backups.</li>
+<li>Restrict SSH and monitor logs, disk, certificates, and endpoint health.</li>
+<li>Apply upload/body limits and timeouts where the application requires them.</li>
+<li>Add security headers only after understanding the application; incorrect HSTS has long-lived effects.</li>
+<li>Never disable TLS verification to hide an upstream trust failure.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Caddy simplifies the TLS portion of a Docker deployment, but safe operations still depend on correct DNS, explicit network access, persistent volumes, name-based service discovery, and validate/reload procedures. With this structure, the application stays isolated behind a reverse proxy, HTTPS is managed automatically, and the configuration remains small enough to inspect, back up, and upgrade deliberately.</p>
+
+<h2>References</h2>
+<ul>
+<li><a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener noreferrer">Caddy: Automatic HTTPS</a></li>
+<li><a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy" target="_blank" rel="noopener noreferrer">Caddy: reverse_proxy</a></li>
+<li><a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreferrer">Docker Official Image: Caddy</a></li>
+<li><a href="https://docs.docker.com/compose/how-tos/networking/" target="_blank" rel="noopener noreferrer">Docker Compose networking</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

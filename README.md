@@ -57,6 +57,7 @@ Cong cu tu dong bo anh dai dien, loai anh cover va H1 khoi body, giu SEO/tags, v
 Luu y: idempotency chi dung khi bai da co mapping `external_id`. Bai legacy tao
 truoc API phai backfill mapping truoc khi chay publisher; xem runbook.
 
-Checkpoint production 2026-09-18: 16 bai song ngu do workspace quan ly, gom ID
-`1-11`, `13`, `14`, `22-24`. File `gioi-thieu-ht-viet-nam-tech.html` thuoc
-luong dang khac va khong nam trong batch nay.
+Checkpoint production 2026-09-19: 19 bai song ngu do workspace quan ly, gom ID
+`1-11`, `13`, `14`, `22-24`, `80-82`. File
+`gioi-thieu-ht-viet-nam-tech.html` thuoc luong dang khac va khong nam trong batch
+nay.

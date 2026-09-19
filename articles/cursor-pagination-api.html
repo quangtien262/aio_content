@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<?xml encoding="UTF-8"><html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HT Vietnam Tech Content Template</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #5d6b82;
+      --line: #dbe3ef;
+      --brand: #0f766e;
+      --brand-dark: #115e59;
+      --accent: #d97706;
+      --code: #eef4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .copy-box {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfdff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    button:hover {
+      background: var(--brand-dark);
+    }
+
+    button.secondary {
+      background: #e8eef6;
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: #dce6f2;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+      background: #e9eef5;
+    }
+
+    .article-preview {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .article-content {
+      color: #1d2738;
+      font-size: 16px;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .article-content h1 {
+      margin: 0 0 16px;
+      font-size: 30px;
+    }
+
+    .article-content h2 {
+      margin: 28px 0 10px;
+      font-size: 23px;
+    }
+
+    .article-content h3 {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .article-content p {
+      margin: 0 0 14px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+
+    .article-content li {
+      margin-bottom: 7px;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid var(--brand);
+      margin: 18px 0;
+      padding: 10px 14px;
+      background: #f0fdfa;
+      color: #134e4a;
+    }
+
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #d7dee8;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .article-content th {
+      background: #eef4f8;
+    }
+
+    .article-content code {
+      background: var(--code);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    .hidden-source {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-preview {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HT Vi&#7879;t Nam Tech Content</strong>
+        <span>L&#7853;p tr&igrave;nh</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <aside class="panel" aria-label="SEO v&agrave; thao t&aacute;c copy">
+        <h2>Th&ocirc;ng tin SEO</h2>
+
+        <div class="field">
+          <label for="article-slug">Slug b&agrave;i vi&#7871;t</label>
+          <textarea id="article-slug" class="copy-box" rows="2" placeholder="&#272;&#7875; tr&#7889;ng v&#7899;i b&agrave;i ti&#7871;ng Vi&#7879;t; b&#7855;t bu&#7897;c &#273;i&#7873;n slug ti&#7871;ng Anh"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-title">Meta title</label>
+          <textarea id="meta-title" class="copy-box" rows="2">Thi&#7871;t k&#7871; Cursor Pagination &#7893;n &#273;&#7883;nh cho API</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-keywords">Meta keyword</label>
+          <textarea id="meta-keywords" class="copy-box" rows="3">cursor pagination, keyset pagination, API pagination, PostgreSQL, REST API, database index, backend performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="article-tags">Tags b&agrave;i vi&#7871;t</label>
+          <textarea id="article-tags" class="copy-box" rows="3">API, Pagination, PostgreSQL, Backend, REST API, Database, Performance</textarea>
+        </div>
+
+        <div class="field">
+          <label for="meta-description">Meta description</label>
+          <textarea id="meta-description" class="copy-box" rows="4">Thi&#7871;t k&#7871; cursor pagination production cho REST API: th&#7913; t&#7921; to&agrave;n ph&#7847;n, keyset query, index, opaque cursor, next/previous, filter, d&#7919; li&#7879;u thay &#273;&#7893;i v&agrave; ki&#7875;m th&#7917;.</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" data-copy-value="article-slug">Copy slug</button>
+          <button type="button" data-copy-value="meta-title">Copy title</button>
+          <button type="button" data-copy-value="meta-keywords">Copy keyword</button>
+          <button type="button" data-copy-value="article-tags">Copy tags</button>
+          <button type="button" data-copy-value="meta-description">Copy description</button>
+          <button class="secondary" type="button" data-copy-html="article-content">Copy HTML n&#7897;i dung</button>
+        </div>
+
+        <div id="copy-status" class="status" role="status" aria-live="polite"></div>
+      </aside>
+
+      <article class="article-preview">
+        <img class="cover" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1280&amp;q=80" alt="&#7842;nh &#273;&#7841;i di&#7879;n b&agrave;i vi&#7871;t c&ocirc;ng ngh&#7879;">
+
+        <div id="article-content" class="article-content"><p><img src="../assets/cursor-pagination-api.jpg" alt="Cursor Pagination cho API: Ph&acirc;n trang &#7893;n &#273;&#7883;nh khi d&#7919; li&#7879;u li&ecirc;n t&#7909;c thay &#273;&#7893;i" width="1440" height="810"></p><h1>Cursor Pagination cho API: Ph&acirc;n trang &#7893;n &#273;&#7883;nh khi d&#7919; li&#7879;u li&ecirc;n t&#7909;c thay &#273;&#7893;i</h1><p><strong><code>OFFSET 100000</code> tr&ocirc;ng v&ocirc; h&#7841;i, nh&#432;ng database v&#7851;n ph&#7843;i t&igrave;m v&agrave; b&#7887; qua m&#7897;t l&#432;&#7907;ng l&#7899;n record tr&#432;&#7899;c khi tr&#7843; v&agrave;i ch&#7909;c d&ograve;ng.</strong> Trong l&uacute;c ng&#432;&#7901;i d&ugrave;ng chuy&#7875;n trang, d&#7919; li&#7879;u m&#7899;i c&ograve;n c&oacute; th&#7875; &#273;&#432;&#7907;c ch&egrave;n v&agrave;o &#273;&#7847;u danh s&aacute;ch, khi&#7871;n m&#7897;t item xu&#7845;t hi&#7879;n hai l&#7847;n ho&#7863;c bi&#7871;n m&#7845;t kh&#7887;i h&agrave;nh tr&igrave;nh &#273;&#7885;c.</p>
+<p>Cursor pagination, c&ograve;n g&#7885;i l&agrave; keyset pagination, kh&ocirc;ng h&#7887;i &ldquo;b&#7887; qua bao nhi&ecirc;u d&ograve;ng&rdquo;. N&oacute; h&#7887;i &ldquo;ti&#7871;p t&#7909;c sau v&#7883; tr&iacute; &#7893;n &#273;&#7883;nh n&agrave;o trong th&#7913; t&#7921; &#273;&atilde; ch&#7885;n&rdquo;. C&aacute;ch ti&#7871;p c&#7853;n n&agrave;y ph&ugrave; h&#7907;p v&#7899;i feed, l&#7883;ch s&#7917; giao d&#7883;ch, audit log, danh s&aacute;ch &#273;&#417;n h&agrave;ng v&agrave; c&aacute;c API c&oacute; d&#7919; li&#7879;u l&#7899;n ho&#7863;c c&#7853;p nh&#7853;t th&#432;&#7901;ng xuy&ecirc;n.</p>
+
+<h2>Offset v&agrave; cursor kh&aacute;c nhau &#7903; &#273;&acirc;u?</h2>
+<table><thead><tr><th>Ti&ecirc;u ch&iacute;</th><th>Offset pagination</th><th>Cursor pagination</th></tr></thead><tbody>
+<tr><td>Request</td><td><code>?page=200&amp;limit=50</code></td><td><code>?after=opaque-token&amp;limit=50</code></td></tr>
+<tr><td>Truy v&#7845;n</td><td>B&#7887; qua N d&ograve;ng</td><td>&#272;i ti&#7871;p t&#7915; kh&oacute;a s&#7855;p x&#7871;p</td></tr>
+<tr><td>Trang s&acirc;u</td><td>C&oacute; th&#7875; ch&#7853;m d&#7847;n</td><td>Th&#432;&#7901;ng gi&#7919; chi ph&iacute; &#7893;n &#273;&#7883;nh v&#7899;i index ph&ugrave; h&#7907;p</td></tr>
+<tr><td>D&#7919; li&#7879;u thay &#273;&#7893;i</td><td>D&#7877; tr&ugrave;ng ho&#7863;c b&#7887; s&oacute;t</td><td>&#7892;n &#273;&#7883;nh h&#417;n theo th&#7913; t&#7921; kh&oacute;a</td></tr>
+<tr><td>Nh&#7843;y &#273;&#7871;n trang 73</td><td>D&#7877;</td><td>Kh&ocirc;ng ph&#7843;i m&#7909;c ti&ecirc;u ch&iacute;nh</td></tr>
+</tbody></table>
+<p>Offset v&#7851;n h&#7907;p l&yacute; cho t&#7853;p d&#7919; li&#7879;u nh&#7887;, trang qu&#7843;n tr&#7883; c&#7847;n nh&#7843;y theo s&#7889; trang ho&#7863;c b&aacute;o c&aacute;o t&#297;nh. Cursor kh&ocirc;ng ph&#7843;i l&#7921;a ch&#7885;n m&#7863;c &#273;&#7883;nh cho m&#7885;i m&agrave;n h&igrave;nh; n&oacute; &#273;&#7893;i kh&#7843; n&#259;ng nh&#7843;y ng&#7851;u nhi&ecirc;n l&#7845;y hi&#7879;u n&#259;ng v&agrave; t&iacute;nh li&ecirc;n t&#7909;c.</p>
+
+<h2>1. B&#7855;t &#273;&#7847;u t&#7915; m&#7897;t th&#7913; t&#7921; to&agrave;n ph&#7847;n</h2>
+<p>Cursor ch&#7881; &#273;&uacute;ng khi m&#7885;i record c&oacute; v&#7883; tr&iacute; x&aacute;c &#273;&#7883;nh duy nh&#7845;t. S&#7855;p x&#7871;p theo <code>created_at DESC</code> ch&#432;a &#273;&#7911; v&igrave; nhi&#7873;u row c&oacute; th&#7875; c&ugrave;ng timestamp. C&#7847;n th&ecirc;m tie-breaker duy nh&#7845;t, th&#432;&#7901;ng l&agrave; primary key:</p>
+<pre><code>ORDER BY created_at DESC, id DESC</code></pre>
+<p>C&#7863;p <code>(created_at, id)</code> t&#7841;o th&#7913; t&#7921; to&agrave;n ph&#7847;n n&#7871;u <code>id</code> duy nh&#7845;t v&agrave; c&#7843; hai gi&aacute; tr&#7883; kh&ocirc;ng &#273;&#7893;i trong v&ograve;ng &#273;&#7901;i record. Kh&ocirc;ng d&ugrave;ng m&#7897;t field c&oacute; th&#7875; b&#7883; s&#7917;a nh&#432; <code>updated_at</code> n&#7871;u vi&#7879;c record &#273;&#7893;i v&#7883; tr&iacute; gi&#7919;a l&uacute;c ph&acirc;n trang l&agrave; kh&ocirc;ng mong mu&#7889;n.</p>
+<p>SQL kh&ocirc;ng b&#7843;o &#273;&#7843;m th&#7913; t&#7921; khi thi&#7871;u <code>ORDER BY</code>. Ngay c&#7843; khi k&#7871;t qu&#7843; &ldquo;c&oacute; v&#7867;&rdquo; &#273;i theo primary key trong m&ocirc;i tr&#432;&#7901;ng ph&aacute;t tri&#7875;n, query plan ho&#7863;c d&#7919; li&#7879;u production c&oacute; th&#7875; t&#7841;o th&#7913; t&#7921; kh&aacute;c.</p>
+
+<h2>2. Vi&#7871;t keyset query &#273;&uacute;ng v&#7899;i chi&#7873;u s&#7855;p x&#7871;p</h2>
+<p>Trang &#273;&#7847;u l&#7845;y c&aacute;c order m&#7899;i nh&#7845;t:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+ORDER BY created_at DESC, id DESC
+LIMIT :limit_plus_one;</code></pre>
+<p>N&#7871;u record cu&#7889;i trang c&oacute; <code>created_at = 2026-09-19T08:30:00Z</code> v&agrave; <code>id = 9102</code>, trang k&#7871; ti&#7871;p d&ugrave;ng ph&eacute;p so s&aacute;nh c&ugrave;ng b&#7897; kh&oacute;a:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+  AND (created_at, id) &lt; (:cursor_created_at, :cursor_id)
+ORDER BY created_at DESC, id DESC
+LIMIT :limit_plus_one;</code></pre>
+<p>Trong PostgreSQL, row constructor &#273;&#432;&#7907;c so s&aacute;nh t&#7915; tr&aacute;i sang ph&#7843;i. D&#7841;ng t&#432;&#417;ng &#273;&#432;&#417;ng l&agrave;:</p>
+<pre><code>created_at &lt; :cursor_created_at
+OR (created_at = :cursor_created_at AND id &lt; :cursor_id)</code></pre>
+<p>To&aacute;n t&#7917; ph&#7843;i &#273;&#7893;i theo chi&#7873;u sort. Tr&#7897;n <code>ASC</code>/<code>DESC</code>, x&#7917; l&yacute; <code>NULL</code> ho&#7863;c sort theo bi&#7875;u th&#7913;c c&#7847;n &#273;&#432;&#7907;c thi&#7871;t k&#7871; v&agrave; test ri&ecirc;ng; kh&ocirc;ng &aacute;p d&#7909;ng m&aacute;y m&oacute;c m&#7897;t d&#7845;u <code>&lt;</code>.</p>
+
+<h2>3. T&#7841;o index kh&#7899;p filter v&agrave; order</h2>
+<p>Query nhanh khi database c&oacute; th&#7875; &#273;i theo B-tree index thay v&igrave; sort ho&#7863;c qu&eacute;t ph&#7847;n l&#7899;n b&#7843;ng:</p>
+<pre><code>CREATE INDEX orders_tenant_created_id_idx
+ON orders (tenant_id, created_at DESC, id DESC);</code></pre>
+<p><code>tenant_id</code> &#273;&#7913;ng tr&#432;&#7899;c v&igrave; m&#7885;i query &#273;&#7873;u l&#7885;c theo tenant; hai c&#7897;t c&ograve;n l&#7841;i kh&#7899;p th&#7913; t&#7921; cursor. N&#7871;u API lu&ocirc;n l&#7885;c th&ecirc;m <code>status</code>, c&acirc;n nh&#7855;c index kh&aacute;c d&#7921;a tr&ecirc;n selectivity v&agrave; workload th&#7921;c t&#7871;, kh&ocirc;ng gh&eacute;p m&#7885;i filter v&agrave;o m&#7897;t index kh&#7893;ng l&#7891;.</p>
+<p>D&ugrave;ng <code>EXPLAIN (ANALYZE, BUFFERS)</code> v&#7899;i d&#7919; li&#7879;u g&#7847;n production. M&#7897;t index &#273;&uacute;ng tr&ecirc;n gi&#7845;y v&#7851;n c&oacute; th&#7875; kh&ocirc;ng &#273;&#432;&#7907;c ch&#7885;n n&#7871;u query tr&#7843; ph&#7847;n l&#7899;n b&#7843;ng, th&#7889;ng k&ecirc; c&#361; ho&#7863;c ki&#7875;u tham s&#7889; kh&ocirc;ng kh&#7899;p.</p>
+
+<h2>4. Cursor ph&#7843;i opaque nh&#432;ng v&#7851;n ki&#7875;m ch&#7913;ng &#273;&#432;&#7907;c</h2>
+<p>Client kh&ocirc;ng c&#7847;n bi&#7871;t cursor ch&#7913;a timestamp v&agrave; ID. Server c&oacute; th&#7875; serialize payload versioned r&#7891;i base64url:</p>
+<pre><code>{
+  "v": 1,
+  "created_at": "2026-09-19T08:30:00.000000Z",
+  "id": 9102,
+  "filter": "sha256:..."
+}</code></pre>
+<p>Base64 ch&#7881; l&agrave; encoding, kh&ocirc;ng ph&#7843;i b&#7843;o m&#7853;t. N&#7871;u vi&#7879;c s&#7917;a cursor c&oacute; th&#7875; v&#432;&#7907;t ranh gi&#7899;i quy&#7873;n truy c&#7853;p ho&#7863;c t&#7841;o query b&#7845;t th&#432;&#7901;ng, k&yacute; payload b&#7857;ng HMAC v&agrave; x&aacute;c minh signature b&#7857;ng so s&aacute;nh constant-time. D&#7919; li&#7879;u nh&#7841;y c&#7843;m kh&ocirc;ng n&ecirc;n n&#7857;m trong cursor; n&#7871;u c&#7847;n b&iacute; m&#7853;t, d&ugrave;ng authenticated encryption ho&#7863;c l&#432;u state ph&iacute;a server.</p>
+<p>Field <code>v</code> cho ph&eacute;p &#273;&#7893;i format sau n&agrave;y. Decoder ph&#7843;i gi&#7899;i h&#7841;n k&iacute;ch th&#432;&#7899;c token, ki&#7875;m tra ki&#7875;u, ng&agrave;y h&#7907;p l&#7879; v&agrave; t&#7915; ch&#7889;i version kh&ocirc;ng h&#7895; tr&#7907; b&#7857;ng l&#7895;i 400 r&otilde; r&agrave;ng, thay v&igrave; &#273;&#7875; parser ho&#7863;c database ph&aacute;t sinh 500.</p>
+
+<h2>5. R&agrave;ng bu&#7897;c cursor v&#7899;i filter v&agrave; scope</h2>
+<p>M&#7897;t cursor sinh cho <code>status=paid</code> kh&ocirc;ng n&ecirc;n &#273;&#432;&#7907;c d&ugrave;ng l&#7841;i cho <code>status=pending</code>. T&#432;&#417;ng t&#7921;, cursor c&#7911;a tenant A tuy&#7879;t &#273;&#7889;i kh&ocirc;ng &#273;&#432;&#7907;c m&#7903; d&#7919; li&#7879;u tenant B.</p>
+<p>C&oacute; hai h&#432;&#7899;ng:</p>
+<ul>
+<li>&#272;&#432;a filter &#273;&atilde; chu&#7849;n h&oacute;a v&agrave; scope v&agrave;o payload c&oacute; ch&#7919; k&yacute;.</li>
+<li>L&#432;u hash c&#7911;a filter trong cursor r&#7891;i so v&#7899;i request hi&#7879;n t&#7841;i.</li>
+</ul>
+<p>Tenant/user scope v&#7851;n ph&#7843;i l&#7845;y t&#7915; principal &#273;&atilde; x&aacute;c th&#7921;c v&agrave; lu&ocirc;n xu&#7845;t hi&#7879;n trong <code>WHERE</code>. Ch&#7919; k&yacute; cursor b&#7843;o v&#7879; t&iacute;nh to&agrave;n v&#7865;n, kh&ocirc;ng thay th&#7871; authorization.</p>
+
+<h2>6. Thi&#7871;t k&#7871; response cho client d&#7877; d&ugrave;ng</h2>
+<pre><code>{
+  "data": [ ... ],
+  "page": {
+    "next_cursor": "eyJ2IjoxLC4uLn0.signature",
+    "previous_cursor": null,
+    "has_more": true
+  }
+}</code></pre>
+<p>L&#7845;y <code>limit + 1</code> record &#273;&#7875; bi&#7871;t c&ograve;n trang ti&#7871;p theo hay kh&ocirc;ng, sau &#273;&oacute; ch&#7881; tr&#7843; <code>limit</code>. C&aacute;ch n&agrave;y tr&aacute;nh ch&#7841;y <code>COUNT(*)</code> cho m&#7895;i request. Total count c&oacute; th&#7875; &#273;&#7855;t v&agrave; nhanh l&#7895;i th&#7901;i; ch&#7881; cung c&#7845;p n&#7871;u tr&#7843;i nghi&#7879;m s&#7843;n ph&#7849;m th&#7853;t s&#7921; c&#7847;n, c&oacute; th&#7875; b&#7857;ng endpoint ho&#7863;c s&#7889; li&#7879;u x&#7845;p x&#7881; ri&ecirc;ng.</p>
+<p>Gi&#7899;i h&#7841;n <code>limit</code> &#7903; server, v&iacute; d&#7909; m&#7863;c &#273;&#7883;nh 25 v&agrave; t&#7889;i &#273;a 100. Kh&ocirc;ng tin gi&aacute; tr&#7883; client v&igrave; page size c&#7921;c l&#7899;n c&oacute; th&#7875; g&acirc;y t&#7843;i database, memory v&agrave; serialization.</p>
+
+<h2>7. H&#7895; tr&#7907; trang tr&#432;&#7899;c m&agrave; kh&ocirc;ng &#273;&#7843;o l&#7897;n d&#7919; li&#7879;u</h2>
+<p>&#272;&#7875; &#273;i ng&#432;&#7907;c, cursor th&#432;&#7901;ng ch&#7913;a kh&oacute;a c&#7911;a record &#273;&#7847;u trang hi&#7879;n t&#7841;i. V&#7899;i danh s&aacute;ch hi&#7875;n th&#7883; gi&#7843;m d&#7847;n, server t&igrave;m c&aacute;c record l&#7899;n h&#417;n cursor theo chi&#7873;u t&#259;ng d&#7847;n, gi&#7899;i h&#7841;n N, r&#7891;i &#273;&#7843;o m&#7843;ng tr&#432;&#7899;c khi tr&#7843; &#273;&#7875; giao di&#7879;n v&#7851;n gi&#7919; th&#7913; t&#7921; gi&#7843;m d&#7847;n:</p>
+<pre><code>SELECT id, created_at, status, total
+FROM orders
+WHERE tenant_id = :tenant_id
+  AND (created_at, id) &gt; (:cursor_created_at, :cursor_id)
+ORDER BY created_at ASC, id ASC
+LIMIT :limit_plus_one;</code></pre>
+<p>Kh&ocirc;ng d&ugrave;ng chung m&#7897;t token m&#417; h&#7891; cho c&#7843; hai chi&#7873;u. C&oacute; th&#7875; ph&aacute;t h&agrave;nh <code>next_cursor</code> v&agrave; <code>previous_cursor</code> ri&ecirc;ng, ho&#7863;c encode direction r&#7891;i validate ch&#7863;t.</p>
+
+<h2>8. &#272;i&#7873;u g&igrave; x&#7843;y ra khi d&#7919; li&#7879;u thay &#273;&#7893;i?</h2>
+<p>Cursor pagination &#7893;n &#273;&#7883;nh h&#417;n offset nh&#432;ng kh&ocirc;ng t&#7921; t&#7841;o snapshot:</p>
+<ul>
+<li><strong>Record m&#7899;i &#7903; &#273;&#7847;u feed:</strong> ng&#432;&#7901;i &#273;ang &#273;i v&#7873; ph&iacute;a c&#361; th&#432;&#7901;ng kh&ocirc;ng b&#7883; &#273;&#7849;y l&#7879;ch; h&#7885; ch&#7881; ch&#432;a th&#7845;y record m&#7899;i.</li>
+<li><strong>Record b&#7883; x&oacute;a:</strong> h&agrave;nh tr&igrave;nh ti&#7871;p t&#7909;c t&#7915; kh&oacute;a, kh&ocirc;ng c&#7847;n b&ugrave; v&#7883; tr&iacute; offset.</li>
+<li><strong>Sort key b&#7883; s&#7917;a:</strong> record c&oacute; th&#7875; xu&#7845;t hi&#7879;n l&#7841;i ho&#7863;c b&#7883; b&#7887; qua v&igrave; n&oacute; chuy&#7875;n v&#7883; tr&iacute;.</li>
+<li><strong>Filter-relevant field &#273;&#7893;i:</strong> record c&oacute; th&#7875; v&agrave;o ho&#7863;c r&#7901;i t&#7853;p k&#7871;t qu&#7843; gi&#7919;a c&aacute;c request.</li>
+</ul>
+<p>V&#7899;i feed, semantics &ldquo;d&#7919; li&#7879;u &#273;ang s&#7889;ng&rdquo; th&#432;&#7901;ng ch&#7845;p nh&#7853;n &#273;&#432;&#7907;c. V&#7899;i export ho&#7863;c quy tr&igrave;nh ph&#7843;i &#273;&#7885;c &#273;&uacute;ng m&#7897;t t&#7853;p b&#7845;t bi&#7871;n, th&ecirc;m snapshot boundary nh&#432; <code>created_at &lt;= :as_of</code>, d&ugrave;ng transaction snapshot ph&ugrave; h&#7907;p ho&#7863;c materialize m&#7897;t export job. Cursor kh&ocirc;ng thay th&#7871; isolation.</p>
+
+<h2>9. Timestamp, ID v&agrave; NULL l&agrave; c&aacute;c b&#7851;y ph&#7893; bi&#7871;n</h2>
+<ul>
+<li>Gi&#7919; &#273;&#7897; ch&iacute;nh x&aacute;c timestamp nh&#7845;t qu&aacute;n khi encode/decode; l&agrave;m tr&ograve;n microsecond c&oacute; th&#7875; b&#7887; s&oacute;t record.</li>
+<li>Kh&ocirc;ng gi&#7843; &#273;&#7883;nh UUID ng&#7851;u nhi&ecirc;n ph&#7843;n &aacute;nh th&#7901;i gian; d&ugrave;ng n&oacute; l&agrave;m tie-breaker, kh&ocirc;ng d&ugrave;ng thay sort time.</li>
+<li>N&#7871;u sort column c&oacute; <code>NULL</code>, &#273;&#7883;nh ngh&#297;a r&otilde; <code>NULLS FIRST/LAST</code> v&agrave; predicate t&#432;&#417;ng &#7913;ng, ho&#7863;c d&ugrave;ng c&#7897;t non-null &#273;&atilde; chu&#7849;n h&oacute;a.</li>
+<li>Collation c&#7911;a text c&oacute; th&#7875; thay &#273;&#7893;i th&#7913; t&#7921; theo locale/version; cursor sort theo text c&#7847;n contract v&agrave; migration th&#7853;n tr&#7885;ng.</li>
+<li>Kh&ocirc;ng d&ugrave;ng floating-point l&agrave;m kh&oacute;a &#7893;n &#273;&#7883;nh n&#7871;u gi&aacute; tr&#7883; &#273;&#432;&#7907;c t&iacute;nh l&#7841;i.</li>
+</ul>
+
+<h2>10. Error contract v&agrave; kh&#7843; n&#259;ng quan s&aacute;t</h2>
+<p>Cursor h&#7871;t h&#7841;n, sai signature, kh&ocirc;ng &#273;&uacute;ng filter ho&#7863;c kh&ocirc;ng h&#7895; tr&#7907; version n&ecirc;n tr&#7843; 400 v&#7899;i m&atilde; l&#7895;i m&aacute;y &#273;&#7885;c &#273;&#432;&#7907;c. Kh&ocirc;ng tr&#7843; stack trace hay chi ti&#7871;t ch&#7919; k&yacute;. N&#7871;u cursor h&#7907;p l&#7879; nh&#432;ng record neo &#273;&atilde; b&#7883; x&oacute;a, keyset query v&#7851;n c&oacute; th&#7875; ti&#7871;p t&#7909;c v&igrave; n&oacute; d&ugrave;ng gi&aacute; tr&#7883; kh&oacute;a, kh&ocirc;ng c&#7847;n row c&ograve;n t&#7891;n t&#7841;i.</p>
+<p>Theo d&otilde;i latency theo page depth &#432;&#7899;c t&iacute;nh, s&#7889; row &#273;&#7885;c/tr&#7843;, t&#7927; l&#7879; cursor invalid, page size, query plan v&agrave; s&#7889; request ch&#7841;m gi&#7899;i h&#7841;n. Log payload cursor &#273;&atilde; gi&#7843;i m&atilde; c&oacute; th&#7875; ch&#7913;a &#273;&#7883;nh danh; &#432;u ti&ecirc;n log version, direction v&agrave; hash r&uacute;t g&#7885;n thay v&igrave; to&agrave;n b&#7897; token.</p>
+
+<h2>11. K&#7883;ch b&#7843;n ki&#7875;m th&#7917; b&#7855;t bu&#7897;c</h2>
+<ol>
+<li>Nhi&#7873;u record c&ugrave;ng timestamp v&#7851;n xu&#7845;t hi&#7879;n &#273;&uacute;ng m&#7897;t l&#7847;n nh&#7901; tie-breaker.</li>
+<li>Ch&egrave;n record m&#7899;i gi&#7919;a hai request kh&ocirc;ng l&agrave;m l&#7863;p item &#7903; trang k&#7871;.</li>
+<li>X&oacute;a record cu&#7889;i trang tr&#432;&#7899;c kh&ocirc;ng l&agrave;m query ti&#7871;p theo l&#7895;i.</li>
+<li>Cursor b&#7883; s&#7917;a m&#7897;t byte b&#7883; t&#7915; ch&#7889;i.</li>
+<li>Cursor c&#7911;a filter ho&#7863;c tenant kh&aacute;c kh&ocirc;ng &#273;&#432;&#7907;c ch&#7845;p nh&#7853;n.</li>
+<li>&#272;i next r&#7891;i previous tr&#7843; l&#7841;i c&ugrave;ng c&#7917;a s&#7893; v&agrave; th&#7913; t&#7921;.</li>
+<li>Limit b&#7857;ng 0, &acirc;m ho&#7863;c v&#432;&#7907;t max &#273;&#432;&#7907;c normalize/t&#7915; ch&#7889;i &#273;&uacute;ng contract.</li>
+<li>Timestamp gi&#7919; nguy&ecirc;n precision qua v&ograve;ng encode/decode.</li>
+<li>Query trang s&acirc;u v&#7851;n d&ugrave;ng index mong &#273;&#7907;i tr&ecirc;n d&#7919; li&#7879;u l&#7899;n.</li>
+</ol>
+
+<h2>Checklist production</h2>
+<ul>
+<li>Order c&oacute; tie-breaker duy nh&#7845;t v&agrave; sort key &#7893;n &#273;&#7883;nh.</li>
+<li>Keyset predicate kh&#7899;p ch&iacute;nh x&aacute;c v&#7899;i order v&agrave; h&#432;&#7899;ng.</li>
+<li>Composite index b&#7855;t &#273;&#7847;u b&#7857;ng scope/filter quan tr&#7885;ng r&#7891;i &#273;&#7871;n sort keys.</li>
+<li>Cursor opaque, versioned, gi&#7899;i h&#7841;n k&iacute;ch th&#432;&#7899;c v&agrave; &#273;&#432;&#7907;c k&yacute; khi c&#7847;n.</li>
+<li>Authorization lu&ocirc;n &aacute;p d&#7909;ng &#273;&#7897;c l&#7853;p v&#7899;i cursor.</li>
+<li>Response d&ugrave;ng <code>limit + 1</code>, page size c&oacute; gi&#7899;i h&#7841;n.</li>
+<li>Semantics khi insert, update, delete v&agrave; snapshot &#273;&#432;&#7907;c ghi r&otilde;.</li>
+<li>Next/previous, filter mismatch v&agrave; cursor l&#7895;i &#273;&#7873;u c&oacute; test.</li>
+</ul>
+
+<h2>K&#7871;t lu&#7853;n</h2>
+<p>Cursor pagination kh&ocirc;ng ch&#7881; l&agrave; base64 h&oacute;a ID cu&#7889;i trang. Thi&#7871;t k&#7871; production b&#7855;t &#273;&#7847;u t&#7915; th&#7913; t&#7921; to&agrave;n ph&#7847;n, predicate &#273;&uacute;ng chi&#7873;u v&agrave; index ph&ugrave; h&#7907;p; sau &#273;&oacute; m&#7899;i &#273;&#7871;n token, ch&#7919; k&yacute;, filter, &#273;i&#7873;u h&#432;&#7899;ng hai chi&#7873;u v&agrave; semantics khi d&#7919; li&#7879;u thay &#273;&#7893;i. L&agrave;m &#273;&uacute;ng, API c&oacute; th&#7875; &#273;i qua h&agrave;ng tri&#7879;u record v&#7899;i chi ph&iacute; &#7893;n &#273;&#7883;nh h&#417;n v&agrave; tr&#7843;i nghi&#7879;m &iacute;t tr&ugrave;ng/b&#7887; s&oacute;t h&#417;n so v&#7899;i offset.</p>
+
+<h2>T&agrave;i li&#7879;u tham kh&#7843;o</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/current/queries-limit.html" target="_blank" rel="noopener noreferrer">PostgreSQL: LIMIT and OFFSET</a></li>
+<li><a href="https://www.postgresql.org/docs/current/indexes-ordering.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Indexes and ORDER BY</a></li>
+<li><a href="https://www.postgresql.org/docs/current/functions-comparisons.html" target="_blank" rel="noopener noreferrer">PostgreSQL: Row Constructor Comparison</a></li>
+</ul></div>
+      </article>
+    </section>
+  </main>
+
+  <textarea id="html-source" class="hidden-source" aria-hidden="true"></textarea>
+
+  <script>
+    const statusEl = document.getElementById('copy-status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+      window.clearTimeout(setStatus.timer);
+      setStatus.timer = window.setTimeout(() => {
+        statusEl.textContent = '';
+      }, 1800);
+    }
+
+    async function copyText(text, label) {
+      await navigator.clipboard.writeText(text);
+      setStatus('Da copy ' + label + '.');
+    }
+
+    document.querySelectorAll('[data-copy-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.copyValue);
+        copyText(field.value.trim(), button.textContent.toLowerCase());
+      });
+    });
+
+    document.querySelectorAll('[data-copy-html]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.dataset.copyHtml);
+        const clone = content.cloneNode(true);
+        const firstImage = clone.querySelector('img');
+        if (firstImage) {
+          const wrapper = firstImage.closest('p');
+          wrapper ? wrapper.remove() : firstImage.remove();
+        }
+        copyText(clone.innerHTML.trim(), 'HTML noi dung');
+      });
+    });
+  </script>
+</body>
+</html>

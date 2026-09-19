@@ -1,6 +1,6 @@
 # Runbook nội dung tech.htvietnam.vn
 
-> Cập nhật gần nhất: 2026-09-18. Đây là tài liệu bắt buộc đọc trước khi tạo,
+> Cập nhật gần nhất: 2026-09-19. Đây là tài liệu bắt buộc đọc trước khi tạo,
 > sửa hoặc đăng bài từ workspace `E:\Project\tech_content`.
 
 ## 1. Phạm vi và nguyên tắc vận hành
@@ -181,14 +181,17 @@ Các bài production `#1-#7` đã hoàn tất bước này.
 
 ## 9. Trạng thái production đã xác minh
 
-Production có 16 bài nguồn và 16 bản tiếng Anh ở trạng thái `published`:
+Production có 19 bài nguồn và 19 bản tiếng Anh ở trạng thái `published`:
 
 - IDs `#1-#11`, `#13`, `#14`: 13 bài ban đầu.
 - `#22`: Quyền file Linux: chmod, chown và ACL.
 - `#23`: Quản lý dịch vụ và log Linux với systemd, journalctl.
 - `#24`: Checklist bảo mật Ubuntu Server sau khi cài đặt.
+- `#80`: Kiểm thử contract API với OpenAPI.
+- `#81`: Cursor Pagination cho API.
+- `#82`: Triển khai ứng dụng Docker với Caddy và HTTPS tự động.
 
-Toàn bộ URL VI/EN của 16 bài đã được kiểm tra HTTP 200 tại checkpoint này.
+Toàn bộ URL VI/EN của 19 bài đã được kiểm tra HTTP 200 tại checkpoint này.
 
 ID `#12` bị bỏ trống do một giao dịch deadlock và rollback; đây không phải dữ
 liệu thiếu cần phục hồi.
@@ -251,6 +254,12 @@ Ngày 2026-09-18 đã publish thêm ba bài Linux song ngữ thuộc category `#
 Cả sáu URL VI/EN đều HTTP 200. Ba cover production là JPEG, lần lượt khoảng
 103 KB, 201 KB và 160 KB. Nguồn nội dung nằm trong `content/linux-articles.php`;
 file review được tạo bằng `tools/generate-bilingual-articles.php`.
+
+Ngày 2026-09-19 đã publish thêm ba bài song ngữ: hai bài Lập trình `#80-#81`
+và một bài Hướng dẫn `#82`. Cả sáu URL VI/EN cùng ba ảnh production đều HTTP
+200; media tương ứng là `#83-#85`, định dạng JPEG, khoảng 119 KB, 93 KB và
+133 KB. Nguồn nội dung nằm trong `content/openapi-contract-testing.php`,
+`content/cursor-pagination-api.php` và `content/caddy-docker-https-guide.php`.
 
 Validation gần nhất: `ContentPublishingApiTest` pass 9 test/67 assertions; Pint,
 và `git diff --check` đã pass tại checkpoint triển khai API. Full regression
