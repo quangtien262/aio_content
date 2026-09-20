@@ -1,2 +1,4 @@
 .publisher.env
-aio
+aio/
+content/
+articles/
