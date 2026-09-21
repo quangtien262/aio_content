@@ -2,3 +2,6 @@
 aio/
 content/
 articles/
+automation/logs/
+automation/state/
+automation/tmp/

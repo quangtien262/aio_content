@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "success": { "type": "boolean" },
+    "external_id": { "type": "string" },
+    "post_id": { "type": "integer", "minimum": 0 },
+    "category_id": { "type": "integer", "minimum": 0 },
+    "vi_title": { "type": "string" },
+    "en_title": { "type": "string" },
+    "vi_url": { "type": "string" },
+    "en_url": { "type": "string" },
+    "image_url": { "type": "string" },
+    "error": { "type": "string" }
+  },
+  "required": [
+    "success",
+    "external_id",
+    "post_id",
+    "category_id",
+    "vi_title",
+    "en_title",
+    "vi_url",
+    "en_url",
+    "image_url",
+    "error"
+  ],
+  "additionalProperties": false
+}

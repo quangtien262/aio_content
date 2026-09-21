@@ -1,6 +1,6 @@
 # Runbook nội dung tech.htvietnam.vn
 
-> Cập nhật gần nhất: 2026-09-19. Đây là tài liệu bắt buộc đọc trước khi tạo,
+> Cập nhật gần nhất: 2026-09-21. Đây là tài liệu bắt buộc đọc trước khi tạo,
 > sửa hoặc đăng bài từ workspace `E:\Project\tech_content`.
 
 ## 1. Phạm vi và nguyên tắc vận hành
@@ -152,6 +152,24 @@ Các tùy chọn publisher cần nhớ:
 - `--no-image`: không upload cover; chỉ dùng khi chủ động giữ media hiện có.
 
 Không dùng đồng thời `--vi-only` và `--english-only`.
+
+### Automation theo lịch
+
+Windows Task Scheduler có task `HTVietnam-AIO-Content-Automation`, mặc định chạy
+mỗi giờ từ 06:00 đến 23:00 và dừng khi ledger ghi nhận đủ 20 bài đã verify trong
+ngày. Cấu hình nằm tại `automation/content-automation.json`; hướng dẫn vận hành,
+bật/tắt và giới hạn nằm tại `docs/content-automation.md`.
+
+Mỗi phiên automation chỉ được tạo và publish một bài; worker xử lý tuần tự, có
+lock chống chạy chồng và chỉ ghi nhận thành công sau khi URL VI, URL EN và ảnh
+production đều đạt postcondition. Automation tuyệt đối không dùng
+`tools/publish-all.ps1`.
+
+Để tạm dừng mà không xóa task, đặt `enabled` thành `false`. Mục tiêu bài/ngày là
+best-effort: máy tắt, người dùng chưa đăng nhập Windows, Codex hết phiên/quota,
+mất mạng hoặc production lỗi đều có thể làm thiếu chỉ tiêu. Kiểm tra ledger và
+log trong `automation/state/` và `automation/logs/`; hai thư mục này không được
+commit.
 
 Trước khi ghi thật, dry-run và xác nhận `category_id`, `status`, SEO, tags và
 translation `en`. Kiểm tra riêng file cover tồn tại và dưới 1 MB; publisher sẽ

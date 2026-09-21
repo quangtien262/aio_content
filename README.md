@@ -54,6 +54,12 @@ hoac thay doi anh va noi dung tieng Viet.
 
 Cong cu tu dong bo anh dai dien, loai anh cover va H1 khoi body, giu SEO/tags, va dung ten file nguon lam `external_id` de khong tao bai trung khi chay lai.
 
+## Tu dong hoa theo lich
+
+Windows Task Scheduler co the goi Codex CLI de tao va publish noi dung theo lich.
+Extension VS Code khong tu quan ly scheduled task. Cau hinh, worker, quality gate
+va cach bat/tat nam tai `docs/content-automation.md`.
+
 Luu y: idempotency chi dung khi bai da co mapping `external_id`. Bai legacy tao
 truoc API phai backfill mapping truoc khi chay publisher; xem runbook.
 

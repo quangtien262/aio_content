@@ -1,0 +1,27 @@
+{
+  "enabled": true,
+  "daily_target": 20,
+  "normal_batch_size": 2,
+  "maximum_batch_size": 5,
+  "maximum_attempts_per_article": 2,
+  "schedule": {
+    "start_time": "06:00",
+    "end_time": "23:00",
+    "interval_minutes": 60
+  },
+  "production_base_url": "https://tech.htvietnam.vn",
+  "allowed_categories": [
+    "kien-thuc-cong-nghe",
+    "huong-dan",
+    "giai-phap",
+    "lap-trinh",
+    "he-dieu-hanh"
+  ],
+  "minimum_vi_body_characters": 7000,
+  "minimum_en_body_characters": 7000,
+  "codex": {
+    "sandbox": "workspace-write",
+    "ephemeral": true,
+    "approve_for_me": true
+  }
+}
